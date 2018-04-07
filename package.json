@@ -1,0 +1,22 @@
+{
+  "name": "soundsvinyl.co",
+  "version": "1.0.0",
+  "description": "Music recommendation site",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TCotton/soundsvinyl.co.git"
+  },
+  "keywords": [
+    "angular"
+  ],
+  "author": "Andy Walpole",
+  "license": "CC-BY-NC-4.0",
+  "bugs": {
+    "url": "https://github.com/TCotton/soundsvinyl.co/issues"
+  },
+  "homepage": "https://github.com/TCotton/soundsvinyl.co#readme"
+}
