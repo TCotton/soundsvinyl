@@ -18,5 +18,13 @@
   "bugs": {
     "url": "https://github.com/TCotton/soundsvinyl.co/issues"
   },
-  "homepage": "https://github.com/TCotton/soundsvinyl.co#readme"
+  "homepage": "https://github.com/TCotton/soundsvinyl.co#readme",
+  "dependencies": {
+    "single-spa": "3.9.0"
+  },
+  "devDependencies": {
+    "jasmine": "^3.1.0",
+    "karma": "^2.0.0",
+    "webpack": "^4.5.0"
+  }
 }
