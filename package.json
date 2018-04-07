@@ -4,7 +4,12 @@
   "description": "Music recommendation site",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test"
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build --prod",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
   },
   "repository": {
     "type": "git",
