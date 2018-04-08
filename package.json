@@ -4,9 +4,9 @@
   "description": "Music recommendation site",
   "main": "index.js",
   "scripts": {
-    "startReact": "react-scripts start",
-    "testReact": "react-scripts test --env=jsdom",
-    "ejectReact": "react-scripts eject",
+    "start": "react-scripts start",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
     "dev": "webpack --mode development ./src/front/index.js --output  ./src/front/main.js",
     "build": "webpack --mode production"
   },
