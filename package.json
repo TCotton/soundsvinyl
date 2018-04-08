@@ -4,23 +4,19 @@
   "description": "Music recommendation site",
   "main": "index.js",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build --prod",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e",
     "startReact": "react-scripts start",
-    "buildReact": "react-scripts build",
     "testReact": "react-scripts test --env=jsdom",
-    "ejectReact": "react-scripts eject"
+    "ejectReact": "react-scripts eject",
+    "dev": "webpack --mode development ./src/front/index.js --output  ./src/front/main.js",
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TCotton/soundsvinyl.co.git"
   },
   "keywords": [
-    "angular"
+    "angular",
+    "react"
   ],
   "author": "Andy Walpole",
   "license": "CC-BY-NC-4.0",
@@ -64,10 +60,12 @@
     "karma-coverage-istanbul-reporter": "^1.4.2",
     "karma-jasmine": "^1.1.1",
     "karma-jasmine-html-reporter": "^1.0.0",
+    "legacy": "0.0.3",
     "protractor": "^5.3.1",
     "ts-node": "^5.0.1",
     "tslint": "^5.9.1",
     "typescript": "^2.8.1",
-    "webpack": "^4.5.0"
+    "webpack": "^3.11.0",
+    "webpack-cli": "^2.0.14"
   }
 }
