@@ -1,4 +1,5 @@
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 	mode: 'production',
@@ -62,10 +63,24 @@ module.exports = {
 				// -loader suffix is no longer optional in webpack2 for clarity reasons
 				// see webpack 1 upgrade guide
 
-				options: {
-					presets: ['es2015'],
-				},
+				/*				options: {
+									presets: ['es2015'],
+								},*/
 				// options for the loader
+			},
+
+			{
+				test: /\.css$/,
+				loader: 'style-loader!css-loader?modules!postcss-loader',
+				exclude: /node_modules/,
+			},
+			{
+				test: /\.scss$/,
+				loader: ExtractTextPlugin.extract({
+					fallback: 'style-loader',
+					use: ['css-loader?sourceMap', 'postcss-loader', 'sass-loader?sourceMap'],
+				}),
+				exclude: ['/node_modules/', /\.theme\.scss$/, /\.component\.scss$/],
 			},
 
 			{
@@ -179,7 +194,7 @@ module.exports = {
 	},
 
 	plugins: [
-		// ...
+		new ExtractTextPlugin('[name].[contenthash:8].css'),
 	],
 	// list of additional plugins
 
