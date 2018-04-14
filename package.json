@@ -3,12 +3,16 @@
   "version": "1.0.0",
   "description": "Music recommendation site",
   "main": "index.js",
+  "module": "main.js",
   "scripts": {
     "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "dev": "webpack --mode development ./src/front/index.js --output  ./src/front/main.js",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "lint": "npm run lint:sass",
+    "lint:sass": "./node_modules/.bin/sass-lint -c .sass-lint.yml -v -q -s scss \"src/**/*.scss\"",
+    "node": "node -r @std/esm main.mjs"
   },
   "repository": {
     "type": "git",
@@ -51,12 +55,14 @@
     "@types/jasminewd2": "2.0.3",
     "@types/node": "9.6.5",
     "babel-loader": "7.1.4",
+    "browserslist": "^3.2.4",
     "codelyzer": "4.2.1",
     "css-loader": "0.28.11",
     "eslint": "4.19.1",
     "eslint-loader": "2.0.0",
     "eslint-plugin-jasmine": "2.9.3",
     "eslint-plugin-react": "7.7.0",
+    "esm": "3.0.18",
     "file-loader": "1.1.11",
     "istanbul-instrumenter-loader": "3.0.1",
     "jasmine": "3.1.0",
