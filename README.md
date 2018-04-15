@@ -1,5 +1,4 @@
 [![Dependency Status](https://david-dm.org/tcotton/soundsvinyl.svg?style=flat-square)](https://david-dm.org/tcotton/soundsvinyl)
-
 [![devDependency Status](https://david-dm.org/tcotton/soundsvinyl/dev-status.svg?style=flat-square)](https://david-dm.org/tcotton/soundsvinyl#info=devDependencies)
 
 # soundsvinyl.co
