@@ -1,7 +1,7 @@
 options:
   merge-default-rules: false
 files:
-  include: 'src/**/*.scss'
+  include: 'src/**/**/*.scss'
 rules:
   indentation:
     - 2
@@ -20,4 +20,3 @@ rules:
   leading-zero: 1
   space-after-comma: 1
   trailing-semicolon: 1
-  
