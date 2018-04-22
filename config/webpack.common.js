@@ -80,7 +80,7 @@ module.exports = {
 					fallback: 'style-loader',
 					use: ['css-loader?sourceMap', 'postcss-loader', 'sass-loader?sourceMap'],
 				}),
-				exclude: ['/node_modules/', /\.theme\.scss$/, /\.component\.scss$/],
+				exclude: ['/node_modules/'],
 			},
 
 			{
@@ -185,7 +185,7 @@ module.exports = {
 			'/api': 'http://localhost:3000',
 		},
 		contentBase: path.join(__dirname, 'public'), // boolean | string | array, static file location
-		compress: true, // enable gzip compression
+		compress: false, // enable gzip compression
 		historyApiFallback: true, // true for index.html upon 404, object for multiple paths
 		hot: true, // hot module replacement. Depends on HotModuleReplacementPlugin
 		https: false, // true for self-signed, object for cert authority
@@ -194,7 +194,7 @@ module.exports = {
 	},
 
 	plugins: [
-		new ExtractTextPlugin('[name].[contenthash:8].css'),
+		new ExtractTextPlugin('[name].css'),
 	],
 	// list of additional plugins
 
