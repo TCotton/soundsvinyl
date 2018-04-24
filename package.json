@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Music recommendation site",
   "main": "index.js",
-  "module": "main.js",
   "scripts": {
     "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom",
@@ -13,8 +12,9 @@
     "lint": "npm run lint:sass  && npm run lint:js",
     "lint:sass": "./node_modules/.bin/sass-lint -c .sass-lint.yml -v -q -s scss \"src/**/*.scss\"",
     "lint:js": "./node_modules/.bin/eslint \"src/front-non-library/**/**/*.js\" \"test/karma.conf.js\"",
-    "node": "node -r @std/esm main.mjs",
-    "serve": "cross-env NODE_ENV=development webpack-dev-server --progress --inline --port 9001 --content-base src/front-non-library/"
+    "node": "node --experimental-modules ./node/index.mjs",
+    "serve": "cross-env NODE_ENV=development webpack-dev-server --progress --inline --port 9001 --content-base src/front-non-library/",
+    "watch": "cross-env NODE_ENV=development webpack-dev-server --open"
   },
   "repository": {
     "type": "git",
@@ -71,13 +71,14 @@
     "eslint-loader": "2.0.0",
     "eslint-plugin-jasmine": "2.9.3",
     "eslint-plugin-react": "7.7.0",
-    "esm": "3.0.21",
+    "esm": "^3.0.21",
     "extract-text-webpack-plugin": "4.0.0-beta.0",
     "file-loader": "1.1.11",
     "friendly-errors-webpack-plugin": "1.7.0",
     "hard-source-webpack-plugin": "0.6.4",
     "html-webpack-inline-chunk-plugin": "1.1.1",
     "html-webpack-plugin": "3.2.0",
+    "http-server": "^0.11.1",
     "istanbul-instrumenter-loader": "3.0.1",
     "jasmine": "3.1.0",
     "jasmine-core": "3.1.0",

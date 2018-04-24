@@ -8,8 +8,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
 	mode: 'development',
-	entry: './',
-
+	entry: {
+		'root-application': './src/root-application/root-application.js',
+	},
 	output: {
 		// options related to how webpack emits results
 
