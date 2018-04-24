@@ -2,8 +2,9 @@ console.dir(process.env.NODE_ENV);
 
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
 	mode: 'development',
@@ -61,14 +62,6 @@ module.exports = {
 				// flags to apply these rules, even if they are overridden (advanced option)
 
 				loader: 'babel-loader',
-				// the loader which should be applied, it'll be resolved relative to the context
-				// -loader suffix is no longer optional in webpack2 for clarity reasons
-				// see webpack 1 upgrade guide
-
-				/*				options: {
-									presets: ['es2015'],
-								},*/
-				// options for the loader
 			},
 
 			{
@@ -78,16 +71,17 @@ module.exports = {
 			},
 			{
 				test: /\.scss$/,
-				loader: ExtractTextPlugin.extract({
-					fallback: 'style-loader',
-					use: ['css-loader?sourceMap', 'postcss-loader', 'sass-loader?sourceMap'],
-				}),
-				exclude: ['/node_modules/', /\.theme\.scss$/, /\.component\.scss$/],
+				use: [
+					MiniCssExtractPlugin.loader,
+					'css-loader?sourceMap',
+					'postcss-loader',
+					'sass-loader?sourceMap',
+				],
+				exclude: ['/node_modules/'],
 			},
 
 			{
 				test: /\.html$/,
-
 				use: [
 					{
 						loader: 'html-loader',
@@ -193,12 +187,18 @@ module.exports = {
 	},
 
 	plugins: [
-		new ExtractTextPlugin('[name].[contenthash:8].css'),
+		new MiniCssExtractPlugin({
+			// Options similar to the same options in webpackOptions.output
+			// both options are optional
+			filename: '[name].css',
+			chunkFilename: '[id].css',
+		}),
 		new webpack.LoaderOptionsPlugin({
 			options: {
 				postcss: [autoprefixer],
 			},
 		}),
+		new HtmlWebpackPlugin(),
 	],
 	// list of additional plugins
 
