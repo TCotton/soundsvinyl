@@ -58,6 +58,7 @@
     "@types/node": "9.6.6",
     "autoprefixer": "8.3.0",
     "awesome-typescript-loader": "5.0.0",
+    "babel-cli": "^6.26.0",
     "babel-loader": "7.1.4",
     "browserslist": "3.2.4",
     "codelyzer": "4.3.0",
