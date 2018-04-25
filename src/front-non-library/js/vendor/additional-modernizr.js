@@ -1,3 +1,4 @@
+/* eslint complexity: 0, max-len: 0 */
 (function(Modernizr, document) {
 	// IE10
 	Modernizr.addTest('ie10', function() {
