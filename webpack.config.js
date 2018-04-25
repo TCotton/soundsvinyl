@@ -1,7 +1,5 @@
 const ENV = process.env.NODE_ENV;
 
-console.dir(ENV);
-
 global.__base = __dirname + '/';
 
 switch (ENV) {

@@ -3,16 +3,18 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const SassLintPlugin = require('sasslint-webpack-plugin');
 
 module.exports = {
 	mode: 'development',
 	entry: {
-		'root-application': './src/root-application/root-application.js',
+		index: './src/index.js',
 	},
+
 	output: {
 		// options related to how webpack emits results
 
-		path: path.resolve(__dirname, 'dist'), // string
+		path: path.resolve(global.__base, 'dist'), // string
 		// the target directory for all output files
 		// must be an absolute path (use the Node.js path module)
 
@@ -40,10 +42,10 @@ module.exports = {
 			{
 				test: /\.jsx?$/,
 				include: [
-					path.resolve(__dirname, 'app'),
+					path.resolve(global.__base, 'app'),
 				],
 				exclude: [
-					path.resolve(__dirname, 'app/demo-files'),
+					path.resolve(global.__base, 'app/demo-files'),
 				],
 				// these are matching conditions, each accepting a regular expression or string
 				// test and include have the same behavior, both must be matched
@@ -89,6 +91,7 @@ module.exports = {
 						},
 					},
 				],
+				exclude: ['/node_modules/'],
 			},
 
 			{ oneOf: [/* rules */] },
@@ -116,13 +119,18 @@ module.exports = {
 
 		modules: [
 			'node_modules',
-			path.resolve(__dirname, 'app'),
+			path.resolve(global.__base, 'app'),
 		],
 		// directories where to look for modules
 
-		extensions: ['.js', '.json', '.jsx', '.css'],
+		extensions: ['.js', '.json', '.jsx', '.css', '.scss'],
 		// extensions that are used
 
+		alias: {
+			Utilities: path.resolve(global.__base, 'src/utilities/'),
+			Templates: path.resolve(global.__base, 'src/templates/'),
+		}
+,
 		/*
 		alias: {
 				// a list of module name aliases
@@ -153,11 +161,12 @@ module.exports = {
 		},
 	},
 
-	devtool: 'source-map', // enum
+	devtool: 'inline-source-map', // enum
 	// enhance debugging by adding meta info for the browser devtools
 	// source-map most detailed at the expense of build speed.
 
-	context: __dirname, // string (absolute path!)
+	// context: global.__base, // string (absolute path!)
+	context: path.resolve(global.__base, 'src'),
 	// the home directory for webpack
 	// the entry and module.rules.loader option
 	//   is resolved relative to this directory
@@ -171,21 +180,27 @@ module.exports = {
 
 	stats: 'errors-only',
 	// lets you precisely control what bundle information gets displayed
-
+//		index: path.resolve(global.__base, 'src') + '/index.js',
 	devServer: {
 		proxy: { // proxy URLs to backend development server
 			'/api': 'http://localhost:3000',
 		},
-		contentBase: path.join(__dirname, 'src'), // boolean | string | array, static file location
-		compress: true, // enable gzip compression
-		historyApiFallback: true, // true for index.html upon 404, object for multiple paths
+		contentBase: [path.join(global.__base, 'public'), path.join(global.__base, 'src/assets/sass')], // boolean | string | array, static file location
+		compress: false, // enable gzip compression
+		historyApiFallback: {
+			disableDotRule: true
+		},
 		hot: true, // hot module replacement. Depends on HotModuleReplacementPlugin
 		https: false, // true for self-signed, object for cert authority
 		noInfo: true, // only errors & warns on hot reload
+		port: 9000,
 		// ...
 	},
 
 	plugins: [
+		new SassLintPlugin({
+			glob: global.__base + './src/front-non-library/assets/sass/**/*.scss',
+		}),
 		new MiniCssExtractPlugin({
 			// Options similar to the same options in webpackOptions.output
 			// both options are optional
@@ -198,6 +213,7 @@ module.exports = {
 			},
 		}),
 		new HtmlWebpackPlugin(),
+		new webpack.NamedModulesPlugin(),
 		new webpack.HotModuleReplacementPlugin({}),
 	],
 	// list of additional plugins
