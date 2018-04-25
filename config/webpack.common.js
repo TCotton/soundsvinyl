@@ -1,12 +1,14 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-	mode: 'production',
+	mode: 'development',
 	entry: {
-		home: 'index.js',
+		'root-application': './src/root-application/root-application.js',
 	},
-
 	output: {
 		// options related to how webpack emits results
 
@@ -51,7 +53,7 @@ module.exports = {
 				// - Use arrays of absolute paths in include and exclude
 				// - Try to avoid exclude and prefer include
 
-				issuer: { test, include, exclude },
+				// issuer: { test, include, exclude },
 				// conditions for the issuer (the origin of the import)
 
 				enforce: 'pre',
@@ -59,14 +61,6 @@ module.exports = {
 				// flags to apply these rules, even if they are overridden (advanced option)
 
 				loader: 'babel-loader',
-				// the loader which should be applied, it'll be resolved relative to the context
-				// -loader suffix is no longer optional in webpack2 for clarity reasons
-				// see webpack 1 upgrade guide
-
-				/*				options: {
-									presets: ['es2015'],
-								},*/
-				// options for the loader
 			},
 
 			{
@@ -76,19 +70,18 @@ module.exports = {
 			},
 			{
 				test: /\.scss$/,
-				loader: ExtractTextPlugin.extract({
-					fallback: 'style-loader',
-					use: ['css-loader?sourceMap', 'postcss-loader', 'sass-loader?sourceMap'],
-				}),
+				use: [
+					MiniCssExtractPlugin.loader,
+					'css-loader?sourceMap',
+					'postcss-loader',
+					'sass-loader?sourceMap',
+				],
 				exclude: ['/node_modules/'],
 			},
 
 			{
 				test: /\.html$/,
-
 				use: [
-					// apply multiple loaders and options
-					'htmllint-loader',
 					{
 						loader: 'html-loader',
 						options: {
@@ -111,10 +104,9 @@ module.exports = {
 			{ resource: [/* conditions */] },
 			// matches if any condition is matched (default for arrays)
 
-			{ resource: { not: /* condition */ } },
+			// { resource: { not: /* condition */ } },
 			// matches if the condition is not matched
 		],
-
 		/* Advanced module configuration (click to show) */
 	},
 
@@ -184,8 +176,8 @@ module.exports = {
 		proxy: { // proxy URLs to backend development server
 			'/api': 'http://localhost:3000',
 		},
-		contentBase: path.join(__dirname, 'public'), // boolean | string | array, static file location
-		compress: false, // enable gzip compression
+		contentBase: path.join(__dirname, 'src'), // boolean | string | array, static file location
+		compress: true, // enable gzip compression
 		historyApiFallback: true, // true for index.html upon 404, object for multiple paths
 		hot: true, // hot module replacement. Depends on HotModuleReplacementPlugin
 		https: false, // true for self-signed, object for cert authority
@@ -194,7 +186,19 @@ module.exports = {
 	},
 
 	plugins: [
-		new ExtractTextPlugin('[name].css'),
+		new MiniCssExtractPlugin({
+			// Options similar to the same options in webpackOptions.output
+			// both options are optional
+			filename: '[name].css',
+			chunkFilename: '[id].css',
+		}),
+		new webpack.LoaderOptionsPlugin({
+			options: {
+				postcss: [autoprefixer],
+			},
+		}),
+		new HtmlWebpackPlugin(),
+		new webpack.HotModuleReplacementPlugin({}),
 	],
 	// list of additional plugins
 
