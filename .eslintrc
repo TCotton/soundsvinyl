@@ -173,8 +173,8 @@
 			"last"
 		],
 		"complexity": [
-			0,
-			7
+			2,
+			5
 		],
 		"computed-property-spacing": [
 			0,
@@ -229,20 +229,20 @@
 			4
 		],
 		"max-len": [
-			0,
-			120,
+			2,
+			80,
 			2
 		],
 		"max-nested-callbacks": [
-			0,
+			2,
 			2
 		],
 		"max-params": [
-			0,
+			2,
 			3
 		],
 		"max-statements": [
-			0,
+			2,
 			10
 		],
 		"new-cap": 2,
