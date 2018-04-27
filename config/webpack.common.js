@@ -41,11 +41,25 @@ module.exports = {
 	},
 
 	module: {
+		strictExportPresence: true,
 		// configuration regarding modules
-
 		rules: [
 			// rules for modules (configure loaders, parser options, etc.)
-
+			{
+				test: /\.(js|jsx|mjs)$/,
+				enforce: 'pre',
+				use: [
+					{
+						options: {
+							eslintPath: require.resolve('eslint'),
+							ignore: false,
+							useEslintrc: true,
+						},
+						loader: require.resolve('eslint-loader'),
+					},
+				],
+				include: resolveApp('src'),
+			},
 			{
 				test: /\.(js|mjs)$/,
 				include: resolveApp('src'),
@@ -53,6 +67,7 @@ module.exports = {
 				options: {
 					// @remove-on-eject-begin
 					babelrc: true,
+					presets: 'es2015',
 					// @remove-on-eject-end
 					// This is a feature of `babel-loader` for webpack (not Babel itself).
 					// It enables caching results in ./node_modules/.cache/babel-loader/
@@ -60,7 +75,6 @@ module.exports = {
 					cacheDirectory: false,
 				},
 			},
-
 			{
 				test: /\.css$/,
 				use: [
@@ -99,20 +113,18 @@ module.exports = {
 				],
 				exclude: resolveApp('node_modules'),
 			},
-
-			{
+		/*	{
 				test: /\.html$/,
 				use: [
 					{
 						loader: 'html-loader',
 						options: {
-							/* ... */
+							/!* ... *!/
 						},
 					},
 				],
 				exclude: resolveApp('node_modules'),
-			},
-
+			},*/
 			{
 				oneOf: [
 					// "url" loader works like "file" loader except that it embeds assets
@@ -255,7 +267,7 @@ module.exports = {
 	// source-map most detailed at the expense of build speed.
 
 	// context: global.__base, // string (absolute path!)
-	context: path.resolve(global.__base, 'src'),
+	context: resolveApp('src'),
 	// the home directory for webpack
 	// the entry and module.rules.loader option
 	//   is resolved relative to this directory
@@ -287,15 +299,10 @@ module.exports = {
 	},
 
 	plugins: [
+		/*glob: global.__base + './src/front-non-library/assets/sass/!*.scss',*/
 		new SassLintPlugin({
-			glob: global.__base + './src/front-non-library/assets/sass/*.scss',
+			glob: resolveApp('src/front-non-library/assets/sass/*.scss'),
 		}),
-		/*	new MiniCssExtractPlugin({
-			// Options similar to the same options in webpackOptions.output
-			// both options are optional
-			filename: '[name].css',
-			chunkFilename: '[id].css',
-		}),*/
 		new webpack.LoaderOptionsPlugin({
 			options: {
 				postcss: [autoprefixer],
