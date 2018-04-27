@@ -67,16 +67,21 @@ module.exports = {
 
 			{
 				test: /\.css$/,
-				loader: 'style-loader!css-loader?modules!postcss-loader',
+				use: [
+					{ loader: 'style-loader', options: { sourceMap: true } },
+					{ loader: 'css-loader', options: { sourceMap: true } },
+					{ loader: 'postcss-loader', options: { sourceMap: true } },
+					{ loader: 'sass-loader', options: { sourceMap: true } },
+				],
 				exclude: /node_modules/,
 			},
 			{
 				test: /\.scss$/,
 				use: [
-					'style-loader',
-					'css-loader?sourceMap',
-					'postcss-loader',
-					'sass-loader?sourceMap',
+					{ loader: 'style-loader', options: { sourceMap: true } },
+					{ loader: 'css-loader', options: { sourceMap: true } },
+					{ loader: 'postcss-loader', options: { sourceMap: true } },
+					{ loader: 'sass-loader', options: { sourceMap: true } },
 				],
 				exclude: ['/node_modules/'],
 			},
@@ -130,7 +135,7 @@ module.exports = {
 			Utilities: path.resolve(global.__base, 'src/utilities/'),
 			Templates: path.resolve(global.__base, 'src/templates/'),
 		}
-,
+		,
 		/*
 		alias: {
 				// a list of module name aliases
@@ -185,7 +190,10 @@ module.exports = {
 		proxy: { // proxy URLs to backend development server
 			'/api': 'http://localhost:3000',
 		},
-		contentBase: [path.join(global.__base, 'src/front-non-library'), path.join(global.__base, 'src/assets/sass')], // boolean | string | array, static file location
+		contentBase: [
+			path.join(global.__base, 'src/front-non-library'),
+			path.join(global.__base, 'src/assets/sass')], // boolean | string | array, static file
+																										// location
 		compress: false, // enable gzip compression
 		historyApiFallback: {
 			disableDotRule: true,
