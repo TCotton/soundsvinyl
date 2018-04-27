@@ -8,7 +8,7 @@ const SassLintPlugin = require('sasslint-webpack-plugin');
 module.exports = {
 	mode: 'development',
 	entry: {
-		index: './src/index.js',
+		index: path.resolve(global.__base, 'src') + '/index.js',
 	},
 
 	output: {
@@ -73,7 +73,7 @@ module.exports = {
 			{
 				test: /\.scss$/,
 				use: [
-					MiniCssExtractPlugin.loader,
+					'style-loader',
 					'css-loader?sourceMap',
 					'postcss-loader',
 					'sass-loader?sourceMap',
@@ -185,10 +185,10 @@ module.exports = {
 		proxy: { // proxy URLs to backend development server
 			'/api': 'http://localhost:3000',
 		},
-		contentBase: [path.join(global.__base, 'public'), path.join(global.__base, 'src/assets/sass')], // boolean | string | array, static file location
+		contentBase: [path.join(global.__base, 'src/front-non-library'), path.join(global.__base, 'src/assets/sass')], // boolean | string | array, static file location
 		compress: false, // enable gzip compression
 		historyApiFallback: {
-			disableDotRule: true
+			disableDotRule: true,
 		},
 		hot: true, // hot module replacement. Depends on HotModuleReplacementPlugin
 		https: false, // true for self-signed, object for cert authority
@@ -199,7 +199,7 @@ module.exports = {
 
 	plugins: [
 		new SassLintPlugin({
-			glob: global.__base + './src/front-non-library/assets/sass/**/*.scss',
+			glob: global.__base + './src/front-non-library/assets/scss/*.scss',
 		}),
 		new MiniCssExtractPlugin({
 			// Options similar to the same options in webpackOptions.output
