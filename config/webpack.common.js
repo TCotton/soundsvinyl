@@ -1,15 +1,22 @@
 const path = require('path');
+const fs = require('fs');
 const webpack = require('webpack');
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const SassLintPlugin = require('sasslint-webpack-plugin');
+
+// Make sure any symlinks in the project folder are resolved:
+// https://github.com/facebookincubator/create-react-app/issues/637
+const appDirectory = fs.realpathSync(process.cwd());
+const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 module.exports = {
 	mode: 'development',
-	entry: {
-		index: path.resolve(global.__base, 'src') + '/index.js',
-	},
+	entry: [
+		require.resolve('./polyfills'),
+		resolveApp('src/root-application/root-application.js'),
+	],
 
 	output: {
 		// options related to how webpack emits results
@@ -40,29 +47,18 @@ module.exports = {
 			// rules for modules (configure loaders, parser options, etc.)
 
 			{
-				test: /\.jsx?$/,
-				include: [
-					path.resolve(global.__base, 'app'),
-				],
-				exclude: [
-					path.resolve(global.__base, 'app/demo-files'),
-				],
-				// these are matching conditions, each accepting a regular expression or string
-				// test and include have the same behavior, both must be matched
-				// exclude must not be matched (takes preferrence over test and include)
-				// Best practices:
-				// - Use RegExp only in test and for filename matching
-				// - Use arrays of absolute paths in include and exclude
-				// - Try to avoid exclude and prefer include
-
-				// issuer: { test, include, exclude },
-				// conditions for the issuer (the origin of the import)
-
-				enforce: 'pre',
-				enforce: 'post',
-				// flags to apply these rules, even if they are overridden (advanced option)
-
-				loader: 'babel-loader',
+				test: /\.(js|mjs)$/,
+				include: resolveApp('src'),
+				loader: require.resolve('babel-loader'),
+				options: {
+					// @remove-on-eject-begin
+					babelrc: true,
+					// @remove-on-eject-end
+					// This is a feature of `babel-loader` for webpack (not Babel itself).
+					// It enables caching results in ./node_modules/.cache/babel-loader/
+					// directory for faster rebuilds.
+					cacheDirectory: false,
+				},
 			},
 
 			{
@@ -70,20 +66,38 @@ module.exports = {
 				use: [
 					{ loader: 'style-loader', options: { sourceMap: true } },
 					{ loader: 'css-loader', options: { sourceMap: true } },
-					{ loader: 'postcss-loader', options: { sourceMap: true } },
+					{
+						loader: 'postcss-loader', options: {
+							sourceMap: true,
+							exec: true,
+							ident: 'postcss',
+							plugins: () => [
+								require('autoprefixer')(),
+							],
+						},
+					},
 					{ loader: 'sass-loader', options: { sourceMap: true } },
 				],
-				exclude: /node_modules/,
+				exclude: resolveApp('node_modules'),
 			},
 			{
 				test: /\.scss$/,
 				use: [
-					{ loader: 'style-loader', options: { sourceMap: true } },
-					{ loader: 'css-loader', options: { sourceMap: true } },
-					{ loader: 'postcss-loader', options: { sourceMap: true } },
-					{ loader: 'sass-loader', options: { sourceMap: true } },
+					{ loader: 'style-loader', options: { sourceMap: 'inline' } },
+					{ loader: 'css-loader', options: { sourceMap: 'inline' } },
+					{
+						loader: 'postcss-loader', options: {
+							sourceMap: 'inline',
+							exec: true,
+							ident: 'postcss',
+							plugins: () => [
+								require('autoprefixer')(),
+							],
+						},
+					},
+					{ loader: 'sass-loader', options: { sourceMap: 'inline' } },
 				],
-				exclude: ['/node_modules/'],
+				exclude: resolveApp('node_modules'),
 			},
 
 			{
@@ -96,10 +110,80 @@ module.exports = {
 						},
 					},
 				],
-				exclude: ['/node_modules/'],
+				exclude: resolveApp('node_modules'),
 			},
 
-			{ oneOf: [/* rules */] },
+			{
+				oneOf: [
+					// "url" loader works like "file" loader except that it embeds assets
+					// smaller than specified limit in bytes as data URLs to avoid requests.
+					// A missing `test` is equivalent to a match.
+					{
+						test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+						loader: require.resolve('url-loader'),
+						options: {
+							limit: 10000,
+							name: 'static/media/[name].[hash:8].[ext]',
+						},
+					},
+					// Process JS with Babel.
+					{
+						test: /\.(js|mjs)$/,
+						include: resolveApp('src'),
+						loader: require.resolve('babel-loader'),
+						options: {
+							// @remove-on-eject-begin
+							babelrc: true,
+							// @remove-on-eject-end
+							// This is a feature of `babel-loader` for webpack (not Babel itself).
+							// It enables caching results in ./node_modules/.cache/babel-loader/
+							// directory for faster rebuilds.
+							cacheDirectory: false,
+						},
+					},
+					// "postcss" loader applies autoprefixer to our CSS.
+					// "css" loader resolves paths in CSS and adds assets as dependencies.
+					// "style" loader turns CSS into JS modules that inject <style> tags.
+					// In production, we use a plugin to extract that CSS to a file, but
+					// in development "style" loader enables hot editing of CSS.
+					{
+						test: /\.css$/,
+						use: [
+							require.resolve('style-loader'),
+							{
+								loader: require.resolve('css-loader'),
+								options: {
+									importLoaders: 1,
+								},
+							},
+							{
+								loader: require.resolve('postcss-loader'),
+								options: {
+									// Necessary for external CSS imports to work
+									// https://github.com/facebookincubator/create-react-app/issues/2677
+									ident: 'postcss',
+								},
+							},
+						],
+					},
+					// "file" loader makes sure those assets get served by WebpackDevServer.
+					// When you `import` an asset, you get its (virtual) filename.
+					// In production, they would get copied to the `build` folder.
+					// This loader doesn't use a "test" so it will catch all modules
+					// that fall through the other loaders.
+					{
+						// Exclude `js` files to keep "css" loader working as it injects
+						// its runtime that would otherwise processed through "file" loader.
+						// Also exclude `html` and `json` extensions so they get processed
+						// by webpacks internal loaders.
+						exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
+						loader: require.resolve('file-loader'),
+						options: {
+							name: 'static/media/[name].[hash:8].[ext]',
+						},
+					},
+				],
+			},
 			// only use one of these nested rules
 
 			{ rules: [/* rules */] },
@@ -124,7 +208,7 @@ module.exports = {
 
 		modules: [
 			'node_modules',
-			path.resolve(global.__base, 'app'),
+			resolveApp('app'),
 		],
 		// directories where to look for modules
 
@@ -185,19 +269,16 @@ module.exports = {
 
 	stats: 'errors-only',
 	// lets you precisely control what bundle information gets displayed
-//		index: path.resolve(global.__base, 'src') + '/index.js',
+	// index: path.resolve(global.__base, 'src') + '/index.js',
 	devServer: {
 		proxy: { // proxy URLs to backend development server
 			'/api': 'http://localhost:3000',
 		},
-		contentBase: [
-			path.join(global.__base, 'src/front-non-library'),
-			path.join(global.__base, 'src/assets/sass')], // boolean | string | array, static file
-																										// location
 		compress: false, // enable gzip compression
 		historyApiFallback: {
 			disableDotRule: true,
 		},
+		watchContentBase: true,
 		hot: true, // hot module replacement. Depends on HotModuleReplacementPlugin
 		https: false, // true for self-signed, object for cert authority
 		noInfo: true, // only errors & warns on hot reload
@@ -207,14 +288,14 @@ module.exports = {
 
 	plugins: [
 		new SassLintPlugin({
-			glob: global.__base + './src/front-non-library/assets/scss/*.scss',
+			glob: global.__base + './src/front-non-library/assets/sass/*.scss',
 		}),
-		new MiniCssExtractPlugin({
+		/*	new MiniCssExtractPlugin({
 			// Options similar to the same options in webpackOptions.output
 			// both options are optional
 			filename: '[name].css',
 			chunkFilename: '[id].css',
-		}),
+		}),*/
 		new webpack.LoaderOptionsPlugin({
 			options: {
 				postcss: [autoprefixer],
