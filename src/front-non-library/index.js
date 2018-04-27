@@ -1,5 +1,7 @@
 let domEl;
 
+alert('YES!!!!');
+
 export function bootstrap(props) {
 	return Promise
 		.resolve()

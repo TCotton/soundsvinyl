@@ -3,6 +3,8 @@ import * as singleSpa from 'single-spa';
 
 const appName = 'app1';
 
+alert('ROOT APPLICATION! JS!!');
+
 /* The loading function is a function that returns a
 promise that resolves with the javascript application module.
  * The purpose of it is to facilitate lazy loading --
@@ -10,7 +12,7 @@ promise that resolves with the javascript application module.
  * In this example, import() is supported in webpack and returns a Promise,
  * but single-spa works with any loading function that returns a Promise.
  */
-const loadingFunction = () => import('./front-non-library/index.js');
+const loadingFunction = () => import('../front-non-library/index.js');
 
 /* Single-spa does some top-level routing to determine
 which application is active for any url.
