@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Router, hashHistory } from 'react-router';
 
-import './assets/sass/index.scss.css';
+import '../assets/sass/index.scss';
 import Main from './main';
 
 ReactDOM.render(

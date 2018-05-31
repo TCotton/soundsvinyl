@@ -5,9 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "karma start test/karma.conf.js",
-    "dev": "webpack --mode development ./app/index.js --output ./app/bundle.js",
-    "build": "webpack --mode production ./app/index.js  --output ./dist/bundle.js",
-    "start": "webpack-dev-server --mode development ./app/index.js --open",
+    "build": "webpack --mode production ./app/front/index.js --output ./dist/bundle.js",
+    "start": "webpack-dev-server --mode development ./app/front/index.js --open",
     "lint": "eslint app/**"
   },
   "repository": {
