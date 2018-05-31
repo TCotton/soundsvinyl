@@ -7,14 +7,6 @@ module.exports = {
 	resolve: {
 		alias: {
 			AddTodo: path.resolve(__dirname, 'app/components/AddTodo.js'),
-			Todo: path.resolve(__dirname, 'app/components/Todo.js'),
-			TodoApp: path.resolve(__dirname, 'app/components/TodoApp.js'),
-			TodoList: path.resolve(__dirname, 'app/components/TodoList.js'),
-			TodoSearch: path.resolve(__dirname, 'app/components/TodoSearch.js'),
-			TodoAPI: path.resolve(__dirname, 'app/api/TodoAPI.js'),
-			actions: path.resolve(__dirname, 'app/actions/index.js'),
-			reducers: path.resolve(__dirname, 'app/reducers/index.js'),
-			configureStore: path.resolve(__dirname, 'app/store/configureStore.js'),
 		}
 	},
 	module: {
