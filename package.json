@@ -6,7 +6,7 @@
   "scripts": {
     "test": "karma start test/karma.conf.js",
     "build": "webpack --mode production ./app/front/index.js --output ./dist/bundle.js",
-    "start": "webpack-dev-server --mode development ./app/front/index.js --open",
+    "start": "webpack-dev-server --mode development eslint app/** ./app/front/index.js --open",
     "lint": "eslint app/**"
   },
   "repository": {
