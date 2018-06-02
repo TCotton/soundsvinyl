@@ -29,7 +29,9 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				use: [MiniCssExtractPlugin.loader, 'css-loader']
+				use: [MiniCssExtractPlugin.loader,
+					'css-loader?modules="true"&importLoaders="1"&localIdentName=[name]__[local]___[hash:base64:5]',
+				]
 			},
 			{
 				test: /\.scss$/,
@@ -38,7 +40,13 @@ module.exports = {
 						loader: MiniCssExtractPlugin.loader
 					},
 					{
-						loader: 'css-loader' // translates CSS into CommonJS
+						loader: 'css-loader',
+						options: {
+							importLoaders: 2,
+							modules: true,
+							sourceMap: true,
+							localIdentName: '[name]__[local]___[hash:base64:5]'
+						}
 					},
 					{
 						loader: 'sass-loader' // compiles Sass to CSS

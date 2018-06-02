@@ -1,11 +1,28 @@
 {
 	"presets": [
-		["env", {
-			"targets": {
-				"chrome": "66"
+		[
+			"env",
+			{
+				"targets": {
+					"chrome": "66"
+				}
 			}
-		}],
+		],
 		"react",
 		"stage-0"
+	],
+	"plugins": [
+		[
+			"react-css-modules",
+			{
+				"filetypes": {
+					".scss": {
+						"syntax": "postcss-scss"
+					}
+				},
+				"exclude": "node_modules",
+				"webpackHotModuleReloading": true
+			}
+		]
 	]
 }

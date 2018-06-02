@@ -1,0 +1,13 @@
+@import '../assets/sass/tools';
+
+.navLeftColumn {
+	background: lightgray;
+	h1 {
+		@include font-calculator($font_family_header, 20px, 0);
+		color: $headerColour;
+	}
+}
+
+.navRightColumn {
+	background: lightblue;
+}

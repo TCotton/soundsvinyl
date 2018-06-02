@@ -46,7 +46,7 @@
 	font-family: #{$fontFamily};
 
 	@if $divider == 0 {
-		$margin: null;
+		margin-bottom: 0;
 	} @else if $divider == 2 {
 		$margin: (strip-units($baseLineHeight) / $fontSizeEm) * 2;
 		margin-bottom: #{double-size($fontSize, $margin)}#{"em"};

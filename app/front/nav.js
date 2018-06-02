@@ -1,27 +1,42 @@
 import React from 'react';
+import index from './nav.scss';
 
 class Nav extends React.Component {
-
 	render () {
 		return (
 			<nav>
+			<div className={index.navLeftColumn}>
+				<h1>soundsvinyl.co</h1>
+			</div>
+			<div className={index.navRightColumn}>
 				<ul>
-					<li>
-						Vinyl
-					</li>
-					<li>
-						About
-					</li>
-					<li>
-						data
-					</li>
-					<li>
-						Contact
-					</li>
-					<li>
-						My account
-					</li>
+					<a href='/'>
+						<li>
+							Vinyl
+						</li>
+					</a>
+					<a href='/'>
+						<li>
+							About
+						</li>
+					</a>
+					<a href='/'>
+						<li>
+							data
+						</li>
+					</a>
+					<a href='/'>
+						<li>
+							Contact
+						</li>
+					</a>
+					<a href='/'>
+						<li>
+							My account
+						</li>
+					</a>
 				</ul>
+			</div>
 			</nav>
 		)
 	}
