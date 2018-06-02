@@ -1,1 +1,18 @@
+@import 'variables';
+@import 'mixins';
+
 @import 'starter';
+
+body {
+	font-family: $font_family_body;
+	font-weight: 400;
+}
+
+p {
+	@include font-calculator($font_family_body, 14px);
+}
+
+h1, h2, h3, h4, h5 h6 {
+	font-family: 'Roboto Slab', serif;
+	font-weight: 400;
+}

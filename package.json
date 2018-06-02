@@ -6,7 +6,7 @@
   "scripts": {
     "test": "karma start test/karma.conf.js",
     "build": "webpack --mode production ./app/front/index.js --output ./dist/bundle.js",
-    "start": "webpack-dev-server --mode development eslint app/** ./app/front/index.js --open",
+    "start": "webpack-dev-server --mode development ./app/front/index.js --open",
     "lint": "eslint app/**"
   },
   "repository": {
@@ -33,6 +33,7 @@
     "node-uuid": "1.4.8",
     "prop-types": "15.6.1",
     "react": "16.3.2",
+    "react-a11y": "^1.0.0",
     "react-dom": "16.3.2",
     "react-redux": "5.0.7",
     "react-router": "3.2.0",

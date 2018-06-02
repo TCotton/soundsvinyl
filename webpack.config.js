@@ -6,7 +6,8 @@ const webpack = require('webpack');
 module.exports = {
 	resolve: {
 		alias: {
-			AddTodo: path.resolve(__dirname, 'app/components/AddTodo.js'),
+			Nav: path.resolve(__dirname, 'app/front/nav.js'),
+			Main: path.resolve(__dirname, 'app/front/main.js'),
 		}
 	},
 	module: {
