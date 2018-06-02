@@ -664,11 +664,11 @@ caption {
 }
 /* { Box-sizing: Border-box } FTW: http://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
 
-*:not(hr),
+/**:not(hr),
 *:not(hr)::before,
 *:not(hr)::after {
 	box-sizing: border-box;
-}
+}*/
 
 input[type=submit],
 input[type=button],

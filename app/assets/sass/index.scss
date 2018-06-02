@@ -16,3 +16,20 @@ h1, h2, h3, h4, h5 h6 {
 	font-family: 'Roboto Slab', serif;
 	font-weight: 400;
 }
+
+h1, h2, h3, h4, h5 h6 {
+	@include font-calculator($font_family_header, 20px);
+}
+
+.wrapper {
+	width: $media_breakpoint_wide;
+	margin: 10px auto;
+}
+
+nav {
+	font-weight: 500;
+	display: flex;
+	ul {
+		list-style: none;
+	}
+}
