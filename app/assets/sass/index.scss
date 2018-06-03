@@ -29,16 +29,22 @@ h1, h2, h3, h4, h5 h6 {
 nav {
 	font-weight: 500;
 	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-gap: 0;
 	ul {
 		list-style: none;
-		li {
+		a {
 			display: inline-block;
+		}
+		a + a {
+			margin-left: 20px;
 		}
 	}
 }
 
 a:link {
 	color: $linkState;
+	text-decoration: none;
 }
 a:visited {
 	color: $linkState;
@@ -48,8 +54,16 @@ a:focus {
 }
 a:hover {
 	color: $linkState;
-	text-decoration: none;
+	text-decoration: underline;
+	text-decoration-skip: edges;
+	text-decoration-color: $headerColour;
 }
 a:active {
 	color: $linkState;
+}
+
+@supports not (text-decoration-color: $headerColour) {
+	a:hover {
+		color: $headerColour;
+	}
 }

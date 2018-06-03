@@ -22,7 +22,7 @@ class Nav extends React.Component {
 					</a>
 					<a href='/'>
 						<li>
-							data
+							Data
 						</li>
 					</a>
 					<a href='/'>

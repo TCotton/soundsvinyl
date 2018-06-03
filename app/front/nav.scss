@@ -9,5 +9,9 @@
 }
 
 .navRightColumn {
+	text-align: right;
 	background: lightblue;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
 }
