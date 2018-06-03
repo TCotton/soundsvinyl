@@ -23,17 +23,15 @@
     "url": "https://github.com/TCotton/soundsvinyl.co/issues"
   },
   "homepage": "https://github.com/TCotton/soundsvinyl.co#readme",
-	"engines": {
-		"node": "10.3.0",
-		"npm": "6.1.0"
-	},
+  "engines": {
+    "node": "10.3.0",
+    "npm": "6.1.0"
+  },
   "dependencies": {
     "axios": "0.18.0",
+    "classnames": "2.2.5",
     "create-react-class": "15.6.3",
     "express": "4.16.3",
-    "foundation-sites": "6.4.4-rc1",
-    "jquery": "3.3.1",
-    "moment": "2.22.1",
     "node-uuid": "1.4.8",
     "prop-types": "15.6.1",
     "react": "16.3.2",
@@ -42,9 +40,7 @@
     "react-redux": "5.0.7",
     "react-router": "3.2.0",
     "redux": "4.0.0",
-    "redux-thunk": "2.2.0",
-    "script-loader": "0.7.2",
-    "style-loader": "0.21.0"
+    "redux-thunk": "2.2.0"
   },
   "devDependencies": {
     "babel-core": "6.26.3",
@@ -77,9 +73,12 @@
     "postcss-loader": "2.1.5",
     "postcss-scss": "1.0.5",
     "react-css-modules": "4.7.3",
+    "react-svg-loader": "2.1.0",
     "react-test-renderer": "16.4.0",
     "redux-devtools": "3.4.1",
     "sass-loader": "7.0.1",
+    "script-loader": "0.7.2",
+    "style-loader": "0.21.0",
     "svg-inline-loader": "0.8.0",
     "webpack": "4.8.3",
     "webpack-cli": "2.1.3",

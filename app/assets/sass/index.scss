@@ -8,6 +8,10 @@ body {
 	font-weight: 400;
 }
 
+html, body {
+	overflow-x: hidden;
+}
+
 p {
 	@include font-calculator($font_family_body, 14px);
 }
@@ -67,4 +71,10 @@ a:active {
 	a:hover {
 		color: $headerColour;
 	}
+}
+
+header {
+	margin: 0 -9999rem;
+	min-height: 264px;
+	background: lightblue;
 }

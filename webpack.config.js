@@ -1,7 +1,6 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
-const webpack = require('webpack');
 
 module.exports = {
 	resolve: {
@@ -55,7 +54,17 @@ module.exports = {
 			},
 			{
 				test: /\.svg$/,
-				loader: 'svg-inline-loader?classPrefix'
+				use: [
+					{
+						loader: 'babel-loader'
+					},
+					{
+						loader: 'react-svg-loader',
+						options: {
+							jsx: true // true outputs JSX tags
+						}
+					}
+				]
 			},
 			{
 				test: /\.(png|jpg|gif)$/,
@@ -77,9 +86,5 @@ module.exports = {
 			filename: '[name].css',
 			chunkFilename: '[id].css'
 		}),
-		new webpack.ProvidePlugin({
-			$: 'jquery',
-			jQuery: 'jquery'
-		})
 	]
 };
