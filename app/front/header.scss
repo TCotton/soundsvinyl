@@ -1,10 +1,21 @@
 @import '../assets/sass/tools';
 
 .headerLeftColumn {
-	background: transparent;
+	background: lightblue;
 }
 
 .headerRightColumn {
-	background: transparent;
+	background: lightpink;
+
+	h2 {
+		@include font-calculator($font_family_header, 45px, 0);
+		font-weight: 500;
+		color: $secondHeaderColour;
+	}
+	p {
+		@include font-calculator($font_family_header, 22px);
+		color: $paragraphColour;
+		font-weight: 500;
+	}
 }
 

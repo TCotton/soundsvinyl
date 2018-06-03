@@ -6,14 +6,15 @@ import TurntableIllustration from '../assets/graphics/Turntable_illustration.svg
 class Header extends React.Component {
 
 	render () {
-		console.dir(TurntableIllustration);
 		return (
 			<header>
 				<div className={header.headerLeftColumn}>
 					<TurntableIllustration />
 				</div>
 				<div className={header.headerRightColumn}>
-					&nbsp;
+					<h2>Welcome to Soundsvinyl</h2>
+					<p>Nam vel ornare lorem sed eleifend egestas
+						dui eu pretium sem mollis et</p>
 				</div>
 			</header>
 		)
