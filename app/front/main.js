@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Nav from './nav';
+import Header from './header';
 
 class Main extends React.Component {
 
@@ -8,6 +9,7 @@ class Main extends React.Component {
 		return (
 			<div className='wrapper'>
 				<Nav />
+				<Header />
 				<h1>Here is the site</h1>
 				<p>This is a paragraph</p>
 			</div>
