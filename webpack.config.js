@@ -33,7 +33,21 @@ module.exports = {
 				]
 			},
 			{
-				test: /\.scss$/,
+				test: /\.index.scss$/,
+				use: [
+					{
+						loader: MiniCssExtractPlugin.loader
+					},
+					{
+						loader: 'css-loader',
+					},
+					{
+						loader: 'sass-loader' // compiles Sass to CSS
+					}
+				]
+			},
+			{
+				test: /\.(?!.*\.index\.scss$).*\.scss$/,
 				use: [
 					{
 						loader: MiniCssExtractPlugin.loader
