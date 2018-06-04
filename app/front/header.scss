@@ -8,7 +8,7 @@
 	background: lightpink;
 
 	h2 {
-		@include font-calculator($font_family_header, 45px, 0);
+		@include font-calculator($font_family_header, 20px, 0);
 		font-weight: 500;
 		color: $secondHeaderColour;
 	}

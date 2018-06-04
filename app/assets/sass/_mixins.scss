@@ -1,14 +1,13 @@
-@function strip-units($number) {
-	@return $number / ($number * 0 + 1);
-}
-
-// increases margin-bottom if font size is greater than 20px
 @function double-size($fontSize, $marginNumber) {
 	@if strip-units($fontSize) > 20  {
 		@return $marginNumber * 1;
 	} @else {
 		@return $marginNumber;
 	}
+}
+
+@function strip-units($number) {
+	@return $number / ($number * 0 + 1);
 }
 
 @function basefont-to-pixel($baseFS) {
