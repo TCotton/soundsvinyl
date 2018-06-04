@@ -1,5 +1,9 @@
 @import '../assets/sass/tools';
 
+.innerHeader {
+
+}
+
 .headerLeftColumn {
 	background: lightblue;
 }
@@ -8,14 +12,13 @@
 	background: lightpink;
 
 	h2 {
-		@include font-calculator($font_family_header, 20px, 0);
+		@include font-calculator($font_family_header, 45px, 0);
 		font-weight: 500;
 		color: $secondHeaderColour;
 	}
 	p {
-		@include font-calculator($font_family_header, 22px);
+		@include font-calculator($font_family_header, 22px, 0);
 		color: $paragraphColour;
 		font-weight: 500;
 	}
 }
-
