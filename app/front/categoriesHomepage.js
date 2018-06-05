@@ -9,13 +9,31 @@ class CategoriesHomepage extends React.Component {
 											<span class='video-caption'>Video hot mix two</span>
 </div>`;
 
+		const webForm = `<form class='search-form'>
+			<input type="text" ref="location" placeholder="Search for category"/>
+		</form>
+		<div class='search-results'>
+		<span>Result one</span>
+		<span>Result two</span>
+		<span>Result three</span>
+		<span>Result four</span>
+		<span>Result five</span>
+		<span>Result five</span>
+</div>`;
+
 		return (
 			<main>
 				<h3>All categories</h3>
 				<section>
-				{[...Array(9)].map((element, index) => {
-					return <div key={index.toString()} dangerouslySetInnerHTML={{ __html: tempElement }} />;
-				})}
+					{[...Array(9)].map((element, index) => {
+						return (
+							<div key={index}>
+								{index !== 2 ?
+									<div key={index.toString()} dangerouslySetInnerHTML={{__html: tempElement}}/>
+									: <div key={index.toString()} dangerouslySetInnerHTML={{__html: webForm}}/>}
+							</div>
+						)
+					})}
 				</section>
 			</main>
 		)
