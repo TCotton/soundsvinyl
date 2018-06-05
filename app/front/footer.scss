@@ -1,0 +1,21 @@
+@import '../assets/sass/tools';
+
+.innerFooter {
+	background: transparent;
+}
+
+.footerLeftColumn {
+	p {
+		@include font-calculator($font_family_header, 20px, 0);
+		color: $footerLogoColour;
+	}
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.footerRightColumn {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}

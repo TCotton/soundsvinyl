@@ -27,6 +27,8 @@ h1, h2, h3, h4, h5, h6 {
 	@include font-calculator($font_family_header, 20px);
 }
 
+// refactor
+
 nav {
 	font-weight: 500;
 	display: grid;
@@ -47,12 +49,34 @@ nav {
 	}
 }
 
+:global .inner-footer {
+	font-weight: 500;
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-gap: 0;
+	min-height: 70px;
+	ul {
+		list-style: none;
+		li {
+			@include font-calculator($font_family_body, 14px, 0);
+		}
+		a {
+			display: inline-block;
+			color: $footerLinkColour;
+		}
+		a + a {
+			margin-left: 20px;
+		}
+	}
+}
+
 header {
 	margin: 0 -9999rem;
 	background: $headerBackground;
 }
 
 main {
+	margin: 0 0 50px 0;
 	h3 {
 		@include font-calculator($font_family_body, 22px);
 		color: $paragraphColour;
@@ -66,6 +90,11 @@ main {
 	}
 }
 
+footer {
+	margin: 0 -9999rem;
+	background: $footerBackground;
+	border-top: 1px solid $borderBackgroundOne;
+}
 
 a:link {
 	color: $linkState;
@@ -97,7 +126,7 @@ a:active {
 
 :global .wrapper {
 	width: $media_breakpoint_wide;
-	margin: 10px auto;
+	margin: 10px auto 0 auto;
 }
 
 /* selected link */
