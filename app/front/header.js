@@ -4,7 +4,6 @@ import './header.scss';
 import TurntableIllustration from '../assets/graphics/Turntable_illustration.svg';
 
 class Header extends React.Component {
-//c lassName={`${style.panel} ${style.panelDefault} container`}
 	render () {
 		return (
 			<header>
