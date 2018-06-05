@@ -7,6 +7,7 @@ module.exports = {
 		alias: {
 			Nav: path.resolve(__dirname, 'app/front/nav.js'),
 			Main: path.resolve(__dirname, 'app/front/main.js'),
+			HeaderTexture: path.resolve(__dirname, 'app/assets/graphics/HEADER_TEXTURE.png'),
 		}
 	},
 	module: {

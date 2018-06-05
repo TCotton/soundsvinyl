@@ -48,9 +48,10 @@ nav {
 }
 
 header {
-	min-height: 264px;
 	margin: 0 -9999rem;
+	background: $headerBackground;
 }
+
 
 a:link {
 	color: $linkState;
