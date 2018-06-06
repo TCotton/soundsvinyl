@@ -4,7 +4,7 @@
 
 body {
 	font-family: $font_family_body;
-	font-weight: 400;
+	font-weight: 500;
 	font-size: $baseFontSize;
 	line-height: $baseLineHeight;
 }
@@ -17,19 +17,36 @@ p {
 	@include font-calculator($font_family_body, 14px);
 }
 
+@media screen and (min-width: $media_breakpoint_mobile) {
+	span {
+		background: transparent;
+	}
+}
+
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Roboto Slab', serif;
 	font-weight: 400;
+}
+
+@media screen and (min-width: $media_breakpoint_mobile) {
+	span {
+		background: transparent;
+	}
 }
 
 h1, h2, h3, h4, h5, h6 {
 	@include font-calculator($font_family_header, 20px);
 }
 
+@media screen and (min-width: $media_breakpoint_mobile) {
+	span {
+		background: transparent;
+	}
+}
+
 // refactor
 
 nav {
-	font-weight: 500;
 	display: grid;
 	grid-template-columns: 50% 50%;
 	grid-gap: 0;
@@ -48,8 +65,13 @@ nav {
 	}
 }
 
+@media screen and (min-width: $media_breakpoint_mobile) {
+	span {
+		background: transparent;
+	}
+}
+
 :global .inner-footer {
-	font-weight: 500;
 	display: grid;
 	grid-template-columns: 50% 50%;
 	grid-gap: 0;
@@ -69,9 +91,21 @@ nav {
 	}
 }
 
+@media screen and (min-width: $media_breakpoint_mobile) {
+	span {
+		background: transparent;
+	}
+}
+
 header {
-	margin: 0 -9999rem;
-	background: $headerBackground;
+	display: inline-block;
+	background: repeat-x bottom $headerBackground;
+}
+
+@media screen and (min-width: $media_breakpoint_mobile) {
+	header {
+		margin: 0 -9999rem;
+	}
 }
 
 main {
@@ -89,6 +123,12 @@ main {
 	}
 }
 
+@media screen and (min-width: $media_breakpoint_mobile) {
+	span {
+		background: transparent;
+	}
+}
+
 :global .search-form {
 	min-height: 44px;
 	width: 100%;
@@ -99,6 +139,12 @@ main {
 		width: 100%;
 		text-align: center;
 		min-height: 44px;
+	}
+}
+
+@media screen and (min-width: $media_breakpoint_mobile) {
+	span {
+		background: transparent;
 	}
 }
 
@@ -124,11 +170,23 @@ main {
 	}
 }
 
+@media screen and (min-width: $media_breakpoint_mobile) {
+	span {
+		background: transparent;
+	}
+}
+
 footer {
 	display: grid;
 	margin: 0 -9999rem;
 	background: $footerBackground;
 	border-top: 1px solid $borderBackgroundOne;
+}
+
+@media screen and (min-width: $media_breakpoint_mobile) {
+	span {
+		background: transparent;
+	}
 }
 
 a:link {
@@ -164,8 +222,14 @@ a:active {
 // global classes
 
 :global .wrapper {
-	width: $media_breakpoint_wide;
 	margin: 10px auto 0 auto;
+	text-align: center;
+}
+
+@media screen and (min-width: $media_breakpoint_mobile) {
+	:global .wrapper {
+		width: $media_breakpoint_wide;
+	}
 }
 
 /* selected link */
