@@ -1,19 +1,129 @@
 @import '../assets/sass/tools';
 
+@media screen and (min-width: $media_breakpoint_mobile) {
+	nav {
+		display: grid;
+		grid-template-columns: 50% 50%;
+		grid-gap: 0;
+		min-height: 70px;
+	}
+}
+
 .navLeftColumn {
 	h1 {
 		@include font-calculator($font_family_header, 20px, 0);
 		color: $headerColour;
 	}
-
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
 }
 
 .navRightColumn {
+	label {
+		color: transparent;
+	}
+	input[type=checkbox] {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+}
 
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
+@media screen and (max-width: $media_breakpoint_mobile) {
+
+	.navRightColumn {
+		input[type=checkbox] ~ ul {
+			background: $mobileNavBackground;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			padding: 62px 0;
+			text-align: center;
+
+			li {
+				@include font-calculator($font_family_body, 18px, 0.5);
+				font-weight: 300;
+			}
+
+			a:link {
+				color: white;
+				text-decoration: none;
+			}
+
+			a:visited {
+				color: white;
+			}
+
+			a:focus {
+				color: white;
+			}
+
+			a:hover {
+				color: white;
+				text-decoration: underline;
+				text-decoration-skip: edges;
+				text-decoration-color: white;
+			}
+
+			a:active {
+				color: white;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: $media_breakpoint_mobile) {
+
+	.navLeftColumn {
+		h1 {
+			@include font-calculator($font_family_header, 20px, 0);
+			color: $headerColour;
+		}
+
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+	}
+
+	.navRightColumn {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+
+		ul {
+			list-style: none;
+			li {
+				@include font-calculator($font_family_body, 14px, 0);
+			}
+			a {
+				display: inline-block;
+			}
+			a + a {
+				margin-left: 20px;
+			}
+		}
+	}
+
+	a:link {
+		color: $linkState;
+		text-decoration: none;
+	}
+
+	a:visited {
+		color: $linkState;
+	}
+
+	a:focus {
+		color: $linkState;
+	}
+
+	a:hover {
+		color: $linkState;
+		text-decoration: underline;
+		text-decoration-skip: edges;
+		text-decoration-color: $headerColour;
+	}
+
+	a:active {
+		color: $linkState;
+	}
 }

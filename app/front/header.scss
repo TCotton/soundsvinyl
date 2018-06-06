@@ -1,5 +1,23 @@
 @import '../assets/sass/tools';
 
+header {
+	display: inline-block;
+	background: repeat-x bottom $headerBackground;
+	text-align: center;
+	border-top: 1px solid $borderBackgroundOne;
+	border-bottom: 1px solid $borderBackgroundOne;
+}
+
+@media screen and (min-width: $media_breakpoint_mobile) {
+	header {
+		display: block;
+		margin: 0 -9999rem;
+		text-align: initial;
+		border-top: initial;
+		border-bottom: initial;
+	}
+}
+
 .innerHeader {
 }
 

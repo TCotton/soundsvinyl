@@ -44,70 +44,6 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
-// refactor
-
-nav {
-	display: grid;
-	grid-template-columns: 50% 50%;
-	grid-gap: 0;
-	min-height: 70px;
-	ul {
-		list-style: none;
-		li {
-			@include font-calculator($font_family_body, 14px, 0);
-		}
-		a {
-			display: inline-block;
-		}
-		a + a {
-			margin-left: 20px;
-		}
-	}
-}
-
-@media screen and (min-width: $media_breakpoint_mobile) {
-	span {
-		background: transparent;
-	}
-}
-
-:global .inner-footer {
-	display: grid;
-	grid-template-columns: 50% 50%;
-	grid-gap: 0;
-	min-height: 70px;
-	ul {
-		list-style: none;
-		li {
-			@include font-calculator($font_family_body, 14px, 0);
-		}
-		a {
-			display: inline-block;
-			color: $footerLinkColour;
-		}
-		a + a {
-			margin-left: 20px;
-		}
-	}
-}
-
-@media screen and (min-width: $media_breakpoint_mobile) {
-	span {
-		background: transparent;
-	}
-}
-
-header {
-	display: inline-block;
-	background: repeat-x bottom $headerBackground;
-}
-
-@media screen and (min-width: $media_breakpoint_mobile) {
-	header {
-		margin: 0 -9999rem;
-	}
-}
-
 main {
 	margin: 10px 0 50px 0;
 	h3 {
@@ -176,41 +112,10 @@ main {
 	}
 }
 
-footer {
-	display: grid;
-	margin: 0 -9999rem;
-	background: $footerBackground;
-	border-top: 1px solid $borderBackgroundOne;
-}
-
 @media screen and (min-width: $media_breakpoint_mobile) {
-	span {
-		background: transparent;
+	:global .hidden-desktop {
+		display: none;
 	}
-}
-
-a:link {
-	color: $linkState;
-	text-decoration: none;
-}
-
-a:visited {
-	color: $linkState;
-}
-
-a:focus {
-	color: $linkState;
-}
-
-a:hover {
-	color: $linkState;
-	text-decoration: underline;
-	text-decoration-skip: edges;
-	text-decoration-color: $headerColour;
-}
-
-a:active {
-	color: $linkState;
 }
 
 @supports not (text-decoration-color: $headerColour) {
@@ -223,12 +128,13 @@ a:active {
 
 :global .wrapper {
 	margin: 10px auto 0 auto;
-	text-align: center;
+	padding: 0 10px;
 }
 
 @media screen and (min-width: $media_breakpoint_mobile) {
 	:global .wrapper {
 		width: $media_breakpoint_wide;
+		padding: initial;
 	}
 }
 

@@ -9,6 +9,8 @@ class Nav extends React.Component {
 				<h1>soundsvinyl.co</h1>
 			</div>
 			<div styleName='navRightColumn'>
+				<label htmlFor='toggle-1' className='hidden-desktop'>Main Menu</label>
+				<input type='checkbox' id='toggle-1' className='hidden-desktop' />
 				<ul>
 					<a href='/'>
 						<li>
