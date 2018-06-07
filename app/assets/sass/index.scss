@@ -17,31 +17,13 @@ p {
 	@include font-calculator($font_family_body, 14px);
 }
 
-@media screen and (min-width: $media_breakpoint_mobile) {
-	span {
-		background: transparent;
-	}
-}
-
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Roboto Slab', serif;
 	font-weight: 400;
 }
 
-@media screen and (min-width: $media_breakpoint_mobile) {
-	span {
-		background: transparent;
-	}
-}
-
 h1, h2, h3, h4, h5, h6 {
 	@include font-calculator($font_family_header, 20px);
-}
-
-@media screen and (min-width: $media_breakpoint_mobile) {
-	span {
-		background: transparent;
-	}
 }
 
 :global .search-form {
@@ -88,12 +70,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media screen and (min-width: $media_breakpoint_mobile) {
-	span {
-		background: transparent;
-	}
-}
-
-@media screen and (min-width: $media_breakpoint_mobile) {
 	:global .hidden-desktop {
 		display: none;
 	}
@@ -114,11 +90,16 @@ h1, h2, h3, h4, h5, h6 {
 
 @media screen and (min-width: $media_breakpoint_mobile) {
 	:global .wrapper {
-		width: $media_breakpoint_wide;
+		width: $media_breakpoint_mobile;
 		padding: initial;
 	}
 }
 
+@media screen and (min-width: $media_breakpoint_wide) {
+	:global .wrapper {
+		width: $media_breakpoint_wide;
+	}
+}
 /* selected link */
 
 :global .hide {
