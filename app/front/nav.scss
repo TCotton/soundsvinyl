@@ -1,12 +1,10 @@
 @import '../assets/sass/tools';
 
-@media screen and (min-width: $media_breakpoint_mobile) {
-	nav {
-		display: grid;
-		grid-template-columns: 50% 50%;
-		grid-gap: 0;
-		min-height: 70px;
-	}
+nav {
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-gap: 0;
+	min-height: 70px;
 }
 
 .navLeftColumn {
@@ -16,10 +14,26 @@
 	}
 }
 
+// refactor
+:global .display-menu {
+	display: block!important;
+}
+
 .navRightColumn {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+
 	label {
 		color: transparent;
+		font-size: 0;
+		width: 33px;
+		height: 33px;
+		background: no-repeat center center $mobileMenu;
+		background-size: contain;
+		cursor: pointer;
 	}
+
 	input[type=checkbox] {
 		position: absolute;
 		top: -9999px;
@@ -29,15 +43,28 @@
 
 @media screen and (max-width: $media_breakpoint_mobile) {
 
+	.closeMenu {
+		background: no-repeat center center $closeMenu;
+		width: 30px;
+		height: 30px;
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		z-index: 1;
+		cursor: pointer;
+		display: none;
+	}
+
 	.navRightColumn {
 		input[type=checkbox] ~ ul {
-			background: $mobileNavBackground;
 			position: absolute;
 			top: 0;
 			left: 0;
 			width: 100%;
 			padding: 62px 0;
 			text-align: center;
+			background: $mobileNavBackground;
+			display: none;
 
 			li {
 				@include font-calculator($font_family_body, 18px, 0.5);
@@ -88,7 +115,6 @@
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;
-
 		ul {
 			list-style: none;
 			li {
