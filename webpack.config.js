@@ -9,6 +9,7 @@ module.exports = {
 			Main: path.resolve(__dirname, 'app/front/main.js'),
 			Header: path.resolve(__dirname, 'app/front/header.js'),
 			CategoriesHomepage: path.resolve(__dirname, 'app/front/categoriesHomepage.js'),
+			Footer: path.resolve(__dirname, 'app/front/footer.js'),
 		}
 	},
 	module: {
@@ -62,6 +63,9 @@ module.exports = {
 					},
 					{
 						loader: 'sass-loader' // compiles Sass to CSS
+					},
+					{
+						loader: 'postcss-loader'
 					}
 				]
 			},

@@ -23,7 +23,8 @@
 				"exclude": "node_modules",
 				"webpackHotModuleReloading": true,
 				"generateScopedName": "[name]__[local]___[hash:base64:5]"
-			}
+			},
+			"transform-postcss"
 		]
 	]
 }
