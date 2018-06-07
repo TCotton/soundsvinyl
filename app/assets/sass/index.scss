@@ -44,27 +44,6 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
-main {
-	margin: 10px 0 50px 0;
-	h3 {
-		@include font-calculator($font_family_body, 22px);
-		color: $paragraphColour;
-	}
-
-	section {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
-		grid-auto-rows: minmax(100px, auto);
-		grid-gap: 24px;
-	}
-}
-
-@media screen and (min-width: $media_breakpoint_mobile) {
-	span {
-		background: transparent;
-	}
-}
-
 :global .search-form {
 	min-height: 44px;
 	width: 100%;
@@ -75,15 +54,17 @@ main {
 		width: 100%;
 		text-align: center;
 		min-height: 44px;
+		border: 1px solid $mobileSearchBorder;
 	}
 }
 
 @media screen and (min-width: $media_breakpoint_mobile) {
-	span {
-		background: transparent;
+	:global .search-form input {
+		border: none;
 	}
 }
 
+// temp styling
 :global .search-results {
 	max-height: 120px;
 	overflow: hidden;
@@ -218,7 +199,14 @@ main {
 }
 
 :global .video-caption {
-	@include font-calculator($font_family_body, 14px);
+	@include font-calculator($font_family_body, 16px, 0.5);
 	color: $paragraphColour;
+	display: inline-block;
+}
+
+@media screen and (min-width: $media_breakpoint_mobile) {
+	:global .video-caption {
+		@include font-calculator($font_family_body, 14px);
+	}
 }
 
