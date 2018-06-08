@@ -1,46 +1,13 @@
 @import '../assets/sass/tools';
 
-:global .inner-footer {
-	display: grid;
-	grid-template-columns: 50% 50%;
-	grid-gap: 0;
-	min-height: 70px;
-	ul {
-		list-style: none;
-		li {
-			@include font-calculator($font_family_body, 14px, 0);
-		}
-		a {
-			display: inline-block;
-			color: $footerLinkColour;
-		}
-		a + a {
-			margin-left: 20px;
-		}
-	}
-}
-
-footer {
-	display: grid;
-	margin: 0 -9999rem;
-	background: $footerBackground;
-	border-top: 1px solid $borderBackgroundOne;
-}
-
-@media screen and (min-width: $media_breakpoint_mobile) {
-	span {
-		background: transparent;
-	}
-}
-
-@media screen and (min-width: $media_breakpoint_mobile) {
-	span {
-		background: transparent;
-	}
-}
-
 .innerFooter {
-	background: transparent;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+
+	.footerRightColumn {
+		order: -1;
+	}
 }
 
 .footerLeftColumn {
@@ -48,13 +15,81 @@ footer {
 		@include font-calculator($font_family_header, 20px, 0);
 		color: $footerLogoColour;
 	}
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
 }
 
-.footerRightColumn {
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
+:global .inner-footer {
+	ul {
+		list-style: none;
+		li {
+			@include font-calculator($font_family_body, 16px, 0);
+		}
+		a {
+			display: block;
+			color: $footerLinkColour;
+			text-decoration: none;
+		}
+	}
 }
+
+@media screen and (max-width: $media_breakpoint_mobile) {
+	:global .inner-footer {
+		ul {
+			a {
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: $media_breakpoint_mobile) {
+
+	footer {
+		display: grid;
+		margin: 0 -9999rem;
+		background: $footerBackground;
+		border-top: 1px solid $borderBackgroundOne;
+	}
+
+	:global .inner-footer {
+		display: grid;
+		grid-template-columns: 50% 50%;
+		grid-gap: 0;
+		min-height: 70px;
+		ul {
+			a {
+				display: inline-block;
+			}
+			a + a {
+				margin-left: 20px;
+			}
+		}
+	}
+
+	.innerFooter {
+		display: grid;
+		text-align: initial;
+
+		.footerRightColumn {
+			order: initial;
+		}
+	}
+
+	.innerFooter {
+		display: grid;
+		text-align: initial;
+	}
+
+	.footerLeftColumn {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+	}
+
+	.footerRightColumn {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+	}
+}
+
+

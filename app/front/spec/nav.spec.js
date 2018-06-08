@@ -12,5 +12,9 @@ describe('Component', () => {
 		it('should be defined', () => {
 			expect(component).toBeDefined();
 		});
+
+		it('should have state defaults', () => {
+			expect(component.state.isClicked).toEqual(false);
+		});
 	});
 });

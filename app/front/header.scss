@@ -18,16 +18,6 @@ header {
 	}
 }
 
-.innerHeader {
-}
-
-.headerLeftColumn {
-}
-
-.headerRightColumn {
-
-}
-
 .headerRightColumn {
 
 	h2 {
@@ -43,6 +33,7 @@ header {
 }
 
 @media screen and (min-width: $media_breakpoint_mobile) {
+
 	.innerHeader {
 		display: grid;
 		grid-template-columns: 38.197% 61.803%;
