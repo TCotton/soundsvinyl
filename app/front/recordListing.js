@@ -4,8 +4,9 @@ import './recordListing';
 class RecordListing extends React.Component {
 	render () {
 		return (
-			<main>
-				&nbsp;
+			<main styleName='recordListing'>
+				<h1>Al Campbell: Gone Down the Drain</h1>
+				<p>(Reggae Road Production, 1978)</p>
 			</main>
 		)
 	}

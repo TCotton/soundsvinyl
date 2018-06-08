@@ -1,0 +1,12 @@
+@import '../assets/sass/tools';
+
+.recordListing {
+	h1 {
+		@include font-calculator($font_family_header, 45px, 0.5);
+		color: $secondHeaderColour;
+	}
+	p {
+		@include font-calculator($font_family_body, 22px);
+		color: $paragraphColour;
+	}
+}
