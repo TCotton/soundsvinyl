@@ -1,5 +1,5 @@
 import React from 'react';
-import './recordListing';
+import './recordListing.scss';
 
 class RecordListing extends React.Component {
 	render () {
