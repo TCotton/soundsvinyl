@@ -1,14 +1,15 @@
-import Main from '../main.js';
+import Main from '../recordListing.js';
+import RecordListing from '../recordListing.js'
 
 describe('Component', () => {
 
 	let component;
 
 	beforeEach(() => {
-		component = new Main;
+		component = new RecordListing;
 	});
 
-	describe('Main', () => {
+	describe('RecordListing', () => {
 		it('should be defined', () => {
 			expect(component).toBeDefined();
 		});

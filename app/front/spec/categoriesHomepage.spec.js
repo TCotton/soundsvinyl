@@ -1,4 +1,4 @@
-import CategoriesHomepage from '../categoriesHomepage';
+import CategoriesHomepage from '../categoriesHomepage.js';
 
 describe('Component', () => {
 

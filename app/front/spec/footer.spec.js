@@ -1,14 +1,14 @@
-import Main from '../main.js';
+import Footer from '../footer.js';
 
 describe('Component', () => {
 
 	let component;
 
 	beforeEach(() => {
-		component = new Main;
+		component = new Footer;
 	});
 
-	describe('Main', () => {
+	describe('Footer', () => {
 		it('should be defined', () => {
 			expect(component).toBeDefined();
 		});
