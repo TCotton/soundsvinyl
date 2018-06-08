@@ -2,9 +2,20 @@
 
 nav {
 	display: grid;
+	margin: 0 -9999rem;
+	background: $footerBackground;
+	min-height: 70px;
+	border-bottom: 1px solid $borderBackgroundOne;
+}
+
+.innerNav {
+	display: grid;
 	grid-template-columns: 50% 50%;
 	grid-gap: 0;
-	min-height: 70px;
+}
+
+:global .inner-nav {
+	background: transparent;
 }
 
 .navLeftColumn {
@@ -16,7 +27,7 @@ nav {
 
 // refactor
 :global .display-menu {
-	display: block!important;
+	display: block !important;
 }
 
 .navRightColumn {

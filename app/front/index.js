@@ -1,23 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, Router, hashHistory } from 'react-router';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
 import '../assets/sass/index.scss';
 import Main from './main';
+import RecordListing from './recordListing';
+import Error from './error';
+import Footer from './footer'
+import Nav from './nav';
 
 if (!process.env.production) {
 	const a11y = require('react-a11y').default
 	a11y(React, ReactDOM, {
 		rules: {
 			'img-uses-alt': 'warn'
-			, 'redundant-alt': [ 'warn', [ 'image', 'photo', 'foto', 'bild' ]]
+			, 'redundant-alt': ['warn', ['image', 'photo', 'foto', 'bild']]
 		}
 	})
 }
 
 ReactDOM.render(
-	<Router history={hashHistory}>
-		<Route path="/" component={ Main }>
-		</Route>
-	</Router>,
+	<div className='wrapper'>
+		<Nav/>
+		<Router>
+			<Switch>
+				<Route exact path='/' component={Main}/>
+				<Route path='/vinyl' component={RecordListing}/>
+				<Route path='' component={Error}/>
+			</Switch>
+		</Router>
+		<Footer/>
+	</div>,
 	document.getElementById('root'));
