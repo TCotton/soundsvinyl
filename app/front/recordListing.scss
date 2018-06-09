@@ -1,13 +1,8 @@
 @import '../assets/sass/tools';
 
 .recordListing {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-	padding: 40px 0;
 
-	h1 {
+	h2 {
 		@include font-calculator($font_family_header, 45px, 0.5);
 		color: $secondHeaderColour;
 		line-height: 1.2em;
@@ -17,17 +12,27 @@
 		color: $paragraphColour;
 		line-height: 1.3em;
 	}
-
-	section {
-		display: inline-block;
-	}
 }
 
-header.record {
+.description p {
+	@include font-calculator($font_family_body, 18px);
+	font-weight: 300;
+}
 
-}ses
+.categories {
+
+}
 
 @media screen and (min-width: $media_breakpoint_mobile) {
+
+	.recordListing {
+		padding: 40px 0;
+
+		section {
+			display: inline-block;
+		}
+	}
+
 	.recordListing {
 		min-height: 180px;
 		padding: initial;
