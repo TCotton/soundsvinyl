@@ -5,7 +5,6 @@ import sine from '../assets/graphics/Sine_wave_placeholder_pic.png'
 import avatar from '../assets/graphics/Avatar_default_pic.png';
 
 class RecordListing extends React.Component {
-	å
 
 	constructor (props) {
 		super(props);
@@ -53,7 +52,6 @@ class RecordListing extends React.Component {
 							<li>Category three</li>
 						</ul>
 					</div>
-
 				</section>
 
 				<section styleName='commentsForm'>
@@ -110,7 +108,6 @@ class RecordListing extends React.Component {
 							</span>
 						</div>
 					</div>
-
 				</section>
 
 				<section styleName='recommendedVideos'>
@@ -144,9 +141,7 @@ class RecordListing extends React.Component {
 						</div>
 
 					</div>
-
 				</section>
-
 			</main>
 		)
 	}
