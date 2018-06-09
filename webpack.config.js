@@ -10,6 +10,8 @@ module.exports = {
 			Header: path.resolve(__dirname, 'app/front/header.js'),
 			CategoriesHomepage: path.resolve(__dirname, 'app/front/categoriesHomepage.js'),
 			Footer: path.resolve(__dirname, 'app/front/footer.js'),
+			Error: path.resolve(__dirname, 'app/front/error.js'),
+			Error: path.resolve(__dirname, 'app/front/error.js'),
 		}
 	},
 	module: {

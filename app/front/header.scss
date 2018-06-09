@@ -1,6 +1,6 @@
 @import '../assets/sass/tools';
 
-header {
+.header {
 	display: inline-block;
 	background: repeat-x bottom $headerBackground;
 	text-align: center;
@@ -9,7 +9,7 @@ header {
 }
 
 @media screen and (min-width: $media_breakpoint_mobile) {
-	header {
+	.header {
 		display: block;
 		margin: 0 -9999rem;
 		text-align: initial;

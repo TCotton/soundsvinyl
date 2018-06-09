@@ -1,12 +1,35 @@
 @import '../assets/sass/tools';
 
 .recordListing {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 40px 0;
+
 	h1 {
 		@include font-calculator($font_family_header, 45px, 0.5);
 		color: $secondHeaderColour;
+		line-height: 1.2em;
 	}
 	p {
 		@include font-calculator($font_family_body, 22px);
 		color: $paragraphColour;
+		line-height: 1.3em;
+	}
+
+	section {
+		display: inline-block;
+	}
+}
+
+header.record {
+
+}ses
+
+@media screen and (min-width: $media_breakpoint_mobile) {
+	.recordListing {
+		min-height: 180px;
+		padding: initial;
 	}
 }

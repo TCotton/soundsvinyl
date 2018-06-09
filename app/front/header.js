@@ -6,7 +6,7 @@ import TurntableIllustration from '../assets/graphics/Turntable_illustration.svg
 class Header extends React.Component {
 	render () {
 		return (
-			<header>
+			<header styleName='header'>
 				<div styleName='innerHeader' className='wrapper'>
 					<div styleName='headerLeftColumn'>
 						<TurntableIllustration/>

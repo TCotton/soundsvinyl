@@ -1,4 +1,3 @@
-import Main from '../recordListing.js';
 import RecordListing from '../recordListing.js'
 
 describe('Component', () => {
