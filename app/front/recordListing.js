@@ -1,7 +1,7 @@
 import React from 'react';
 import './recordListing.scss';
 import MAIN from '../assets/graphics/MAIN_DUMMY_VIDEO_IMAGE.png';
-import sine from '../assets/graphics/Sine_wave_placeholder_pic.png'
+import sine from '../assets/graphics/Sine_wave_placeholder_pic.png';
 import avatar from '../assets/graphics/Avatar_default_pic.png';
 
 class RecordListing extends React.Component {
@@ -37,13 +37,13 @@ class RecordListing extends React.Component {
 				<section styleName='description'>
 					<p>Al Campbell is one of the few reggae vocalists from the long Jamaican Golden Era whose re-releases I would
 						buy without hesitation. This track, delivered in his usual melodic style, is a curiosity because of
-						differential lyrics.</p>
+						its unusual lyrics.</p>
 
 					<p>Campbell lists Jamaican Black nationalist figures - Marcus Garvey, Paul Bogle and George Gordon - asking
 						‘Do you remember?’ to which he responds ‘They’ve just gone, gone down the drain. When we remember them, they
 						are sometimes like teardrops in the rain”</p>
 
-					<p>The message Campbell delivers is a bleak inversion of the classic Rastafarian positive romanticism.</p>
+					<p>The message Campbell delivers on this track is a bleak inversion of the classic Rastafarian romanticism.</p>
 
 					<div styleName='categories'>
 						<ul>

@@ -28,6 +28,9 @@
 	.recordListing {
 		width: 804px;
 		margin: 0 auto;
+		img {
+			width: 100%;
+		}
 	}
 }
 
@@ -45,6 +48,7 @@
 .categories {
 	background: transparent;
 	text-align: center;
+	margin: 50px 0 0 0;
 	ul {
 		li {
 			color: $categoryText;
@@ -63,7 +67,7 @@
 
 	textarea {
 		border: 1px solid $commentsTextareaBorder;
-		width: calc(100% - 22px);
+		width: 100%;
 		padding: 10px;
 		display: inline-block;
 		font-size: 14px;
@@ -77,6 +81,7 @@
 		padding: 10px 0;
 		display: inline-block;
 		font-weight: 300;
+		border: none;
 	}
 }
 
@@ -94,6 +99,7 @@
 	display: grid;
 	grid-template-columns: 38.197% 61.803%;
 	grid-gap: 0;
+	margin: 30px 0 0 0;
 }
 
 @media screen and (min-width: $media_breakpoint_mobile) {
