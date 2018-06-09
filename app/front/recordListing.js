@@ -10,12 +10,25 @@ class RecordListing extends React.Component {
 		super(props);
 
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleInputChange = this.handleInputChange.bind(this);
 	}
 
 	handleSubmit (e) {
 		e.preventDefault();
 
 		return false;
+	}
+
+	handleInputChange (event) {
+
+		const target = event.target;
+		const value = target.value;
+		const name = target.name;
+
+		this.setState({
+			[name]: value
+		});
+
 	}
 
 	render () {

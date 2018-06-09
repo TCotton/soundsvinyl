@@ -21,7 +21,7 @@
 	ul {
 		list-style: none;
 		li {
-			@include font-calculator($font_family_body, 16px, 0);
+			@include font-calculator($font_family_body, 14px, 0);
 		}
 		a {
 			display: block;

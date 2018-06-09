@@ -9,6 +9,7 @@ import Error from './error';
 import Footer from './footer'
 import Nav from './nav';
 import Contact from './contact';
+import AboutUs from './about';
 
 if (!process.env.production) {
 	const a11y = require('react-a11y').default
@@ -28,6 +29,7 @@ ReactDOM.render(
 				<Route exact path='/' component={Main}/>
 				<Route path='/vinyl' component={RecordListing}/>
 				<Route path='/contact' component={Contact}/>
+				<Route path='/about-us' component={AboutUs}/>
 				<Route path='' component={Error}/>
 			</Switch>
 		</Router>

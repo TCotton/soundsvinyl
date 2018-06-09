@@ -1,0 +1,25 @@
+@import '../assets/sass/tools';
+
+.aboutUs {
+	margin: 50px 0 75px 0;
+
+	h2 {
+		@include font-calculator($font_family_header, 45px, 0.5);
+		color: $secondHeaderColour;
+		line-height: 1.2em;
+	}
+
+	> p {
+		@include font-calculator($font_family_body, 22px, 2);
+		color: $paragraphColour;
+		line-height: 1.3em;
+	}
+
+	section {
+		p {
+			@include font-calculator($font_family_body, 18px);
+			font-weight: 300;
+			line-height: 1.3em;
+		}
+	}
+}
