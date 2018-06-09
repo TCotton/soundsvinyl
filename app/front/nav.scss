@@ -6,6 +6,10 @@ nav {
 	background: $footerBackground;
 	min-height: 70px;
 	border-bottom: 1px solid $borderBackgroundOne;
+
+	svg {
+		opacity: 0.8
+	}
 }
 
 .innerNav {

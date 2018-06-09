@@ -23,6 +23,14 @@
 	}
 }
 
+@media screen and (min-width: $media_breakpoint_wide) {
+
+	.recordListing {
+		width: 804px;
+		margin: 0 auto;
+	}
+}
+
 .record {
 	text-align: center;
 	display: inline-block;
@@ -153,10 +161,6 @@
 
 	.recordListing {
 		padding: 40px 0;
-	}
-
-	.record {
-		text-align: initial;
 	}
 
 	.recordListing {
