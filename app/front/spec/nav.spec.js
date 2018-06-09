@@ -13,8 +13,12 @@ describe('Component', () => {
 			expect(component).toBeDefined();
 		});
 
-		it('should have state defaults', () => {
+		it('should have correct state default values', () => {
 			expect(component.state.isClicked).toEqual(false);
+		});
+
+		it('should have correct state default types', () => {
+			expect(component.state.isClicked).toEqual(jasmine.any(Boolean));
 		});
 	});
 });

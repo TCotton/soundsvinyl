@@ -36,10 +36,14 @@ class RecordListing extends React.Component {
 
 				</section>
 
-				<section styleName='comments-form'>
+				<section styleName='commentsForm'>
 					<h2>Comments</h2>
 
 					<form>
+
+						<textarea></textarea>
+
+						<input type='submit' />
 
 					</form>
 
