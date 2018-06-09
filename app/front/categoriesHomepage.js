@@ -22,7 +22,7 @@ class CategoriesHomepage extends React.Component {
 </div>`;
 
 		return (
-			<main>
+			<main styleName='categories'>
 				<h3>All categories</h3>
 				<section>
 					{[...Array(9)].map((element, index) => {

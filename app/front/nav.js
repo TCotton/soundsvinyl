@@ -20,7 +20,7 @@ class Nav extends React.Component {
 	render () {
 
 		const ulClassName = this.state.isClicked ? 'display-menu' : 'no-menu';
-		const navClasses = cn('inner-footer', 'wrapper');
+		const navClasses = cn('inner-header', 'wrapper');
 
 		return (
 			<nav>

@@ -7,11 +7,26 @@
 		color: $secondHeaderColour;
 		line-height: 1.2em;
 	}
+	h3 {
+		@include font-calculator($font_family_header, 22px);
+		color: $paragraphColour;
+		text-align: center;
+	}
+	h4 {
+		@include font-calculator($font_family_header, 22px);
+		color: $paragraphColour;
+	}
 	p {
 		@include font-calculator($font_family_body, 22px);
 		color: $paragraphColour;
 		line-height: 1.3em;
 	}
+}
+
+.record {
+	text-align: center;
+	display: inline-block;
+	margin: 50px 0 50px 0;
 }
 
 .description p {
@@ -20,21 +35,128 @@
 }
 
 .categories {
-
+	background: transparent;
+	text-align: center;
+	ul {
+		li {
+			color: $categoryText;
+			@include font-calculator($font_family_body, 18px, 0);
+			padding: 5px 10px;
+			margin: 0 5px 10px 0;
+			border: 1px solid $categoryBorder;
+			display: inline-block;
+		}
+	}
 }
 
 .commentsForm {
+	border-top: 1px solid $recordsPageBorder;
+	padding: 20px 0 0 0;
 
+	textarea {
+		border: 1px solid $commentsTextareaBorder;
+		width: calc(100% - 22px);
+		padding: 10px;
+		display: inline-block;
+		font-size: 14px;
+		margin: 0 0 10px 0;
+	}
+	input[type=submit] {
+		@include font-calculator($font_family_body, 18px);
+		background: $commentsSubmitBackground;
+		color: white;
+		width: 100%;
+		padding: 10px 0;
+		display: inline-block;
+		font-weight: 300;
+	}
+}
+
+@media screen and (min-width: $media_breakpoint_mobile) {
+	.commentsForm {
+		margin: 20px 0 0 0;
+	}
+}
+
+.commentsBlock {
+	background: transparent;
+}
+
+.comment {
+	display: grid;
+	grid-template-columns: 38.197% 61.803%;
+	grid-gap: 0;
+}
+
+@media screen and (min-width: $media_breakpoint_mobile) {
+	.comment {
+		grid-template-columns: 20% 80%;
+	}
+}
+
+.commentLeftColumn {
+	text-align: center;
+	img {
+		width: 50%;
+		height: auto;
+	}
+}
+
+@media screen and (min-width: $media_breakpoint_mobile) {
+	.commentLeftColumn {
+		img {
+			max-width: 60px;
+		}
+	}
+}
+
+.commentRightColumn {
+	background: transparent;
+}
+
+.commentName p {
+	@include font-calculator($font_family_body, 18px, 0.5);
+	color: $commentHeader;
+}
+
+.commentText p {
+	@include font-calculator($font_family_body, 18px);
+	font-weight: 300;
+}
+
+.videoSineWave {
+	background: transparent;
+	display: inline-block;
+}
+
+.recommendedVideos {
+	border-top: 1px solid $recordsPageBorder;
+	padding: 20px 0 0 0;
+	text-align: center;
+}
+
+.categoryUnit {
+	background: transparent;
+}
+
+.videoUnits {
+	background: transparent;
+}
+
+.videoCaption {
+	display: block;
+	@include font-calculator($font_family_body, 20px);
+	color: $labelFont;
 }
 
 @media screen and (min-width: $media_breakpoint_mobile) {
 
 	.recordListing {
 		padding: 40px 0;
+	}
 
-		section {
-			display: inline-block;
-		}
+	.record {
+		text-align: initial;
 	}
 
 	.recordListing {

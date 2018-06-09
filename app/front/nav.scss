@@ -52,6 +52,12 @@ nav {
 	}
 }
 
+.navLeftColumn {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
 @media screen and (max-width: $media_breakpoint_mobile) {
 
 	.closeMenu {
@@ -116,16 +122,9 @@ nav {
 			@include font-calculator($font_family_header, 20px, 0);
 			color: $headerColour;
 		}
-
-		display: flex;
-		align-items: center;
-		justify-content: flex-start;
 	}
 
 	.navRightColumn {
-		display: flex;
-		align-items: center;
-		justify-content: flex-end;
 		ul {
 			list-style: none;
 			li {

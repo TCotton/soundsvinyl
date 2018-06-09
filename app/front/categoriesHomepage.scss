@@ -1,6 +1,6 @@
 @import '../assets/sass/tools';
 
-main {
+.categories {
 	text-align: center;
 	margin: 20px 0 25px 0;
 	h3 {
@@ -21,7 +21,7 @@ main {
 
 @media screen and (min-width: $media_breakpoint_mobile) {
 
-	main {
+	.categories {
 		text-align: initial;
 		margin: 10px 0 50px 0;
 
