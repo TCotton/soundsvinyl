@@ -37,7 +37,13 @@
 .record {
 	text-align: center;
 	display: inline-block;
-	margin: 50px 0 50px 0;
+	margin: 50px 0 10px 0;
+}
+
+@media screen and (min-width: $media_breakpoint_wide) {
+	.record {
+		margin: 50px 0 50px 0;
+	}
 }
 
 .description p {

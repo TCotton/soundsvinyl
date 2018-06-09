@@ -4,7 +4,7 @@
   "description": "Music recommendation site",
   "main": "index.js",
   "scripts": {
-    "test": "npm run lint karma start test/karma.conf.js",
+    "test": "karma start test/karma.conf.js",
     "build": "webpack --mode production ./app/front/index.js --output ./dist/bundle.js",
     "start": "webpack-dev-server --mode development ./app/front/index.js --open",
     "lint": "eslint app/**"
