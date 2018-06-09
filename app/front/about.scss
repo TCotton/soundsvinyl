@@ -14,12 +14,4 @@
 		color: $paragraphColour;
 		line-height: 1.3em;
 	}
-
-	section {
-		p {
-			@include font-calculator($font_family_body, 18px);
-			font-weight: 300;
-			line-height: 1.3em;
-		}
-	}
 }

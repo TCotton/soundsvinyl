@@ -1,6 +1,6 @@
 @import '../assets/sass/tools';
 
-.contactPage {
+.myAccount {
 	text-align: center;
 	margin: 50px 0 75px 0;
 
@@ -10,15 +10,25 @@
 		line-height: 1.2em;
 	}
 
-	p {
-		@include font-calculator($font_family_body, 22px);
+	> p {
+		@include font-calculator($font_family_body, 22px, 2);
 		color: $paragraphColour;
 		line-height: 1.3em;
 	}
 
+	section {
+		display: grid;
+		grid-template-columns: 50% 50%;
+		grid-gap: 30px;
+	}
+
 	form {
-		max-width: 480px;
-		margin: 0 auto;
+		text-align: center;
+	}
+
+	legend {
+		display: inline-block;
+		@include font-calculator($font_family_body, 22px);
 	}
 
 	label {
@@ -33,27 +43,17 @@
 		border: 1px solid $contactInputBorder;
 		min-height: 50px;
 		padding: 10px;
-	}
-
-	textarea {
-		display: inline-block;
-		width: 100%;
-		border: 1px solid $contactInputBorder;
-		min-height: 200px;
-		padding: 15px;
-	}
-
-	input, textarea {
 		@include font-calculator($font_family_body, 16px, 0);
 	}
 
 	input:not([type='submit']), textarea {
-		margin-bottom: 30px;
+		margin-bottom: 20px;
 	}
 
 	input[type='submit'] {
 		@include font-calculator($font_family_body, 18px, 0);
 		color: white;
 		background: $commentsSubmitBackground;
+		margin-top: 20px;
 	}
 }

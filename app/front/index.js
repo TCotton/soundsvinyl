@@ -10,6 +10,7 @@ import Footer from './footer'
 import Nav from './nav';
 import Contact from './contact';
 import AboutUs from './about';
+import MyAccount from './account';
 
 if (!process.env.production) {
 	const a11y = require('react-a11y').default
@@ -30,6 +31,7 @@ ReactDOM.render(
 				<Route path='/vinyl' component={RecordListing}/>
 				<Route path='/contact' component={Contact}/>
 				<Route path='/about-us' component={AboutUs}/>
+				<Route path='/my-account' component={MyAccount}/>
 				<Route path='' component={Error}/>
 			</Switch>
 		</Router>
