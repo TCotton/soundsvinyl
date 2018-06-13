@@ -11,7 +11,9 @@ module.exports = {
 			CategoriesHomepage: path.resolve(__dirname, 'app/front/categoriesHomepage.js'),
 			Footer: path.resolve(__dirname, 'app/front/footer.js'),
 			Error: path.resolve(__dirname, 'app/front/error.js'),
-			Error: path.resolve(__dirname, 'app/front/error.js'),
+			RecordListing: path.resolve(__dirname, 'app/front/recordListing.js'),
+			About: path.resolve(__dirname, 'app/front/about.js'),
+			MyAccount: path.resolve(__dirname, 'app/front/account.js'),
 		}
 	},
 	module: {
