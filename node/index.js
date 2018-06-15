@@ -49,7 +49,3 @@ app.use((err, req, res) => {
 
 module.exports = app;
 
-app.listen(3000, () => {
-	console.log('Express server is up on port 3000');
-});
-

@@ -32,7 +32,7 @@ router.post('/adduser', function(req, res) {
 	collection.insert({
 		'username' : userName,
 		'email' : userEmail
-	}, function (err,) {
+	}, function (err) {
 		if (err) {
 			// If it failed, return error
 			res.send('There was a problem adding the information to the database.');
