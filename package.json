@@ -4,7 +4,7 @@
   "description": "Music recommendation site",
   "main": "index.js",
   "scripts": {
-    "test": "karma start test/karma.conf.js",
+    "test": "karma start test/karma.conf.js && ava -v node/test/test.js",
     "build": "webpack --mode production ./app/front/index.js --output ./dist/bundle.js",
     "start:dev": "webpack-dev-server --mode development ./app/front/index.js --open",
     "start": "node ./node/bin/www",
@@ -55,6 +55,7 @@
   "devDependencies": {
     "@types/express": "4.16.0",
     "autoprefixer": "8.6.0",
+    "ava": "0.25.0",
     "babel-core": "6.26.3",
     "babel-eslint": "8.2.3",
     "babel-loader": "7.1.4",
