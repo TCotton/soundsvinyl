@@ -1,0 +1,19 @@
+{
+    "extension": [
+      ".jsx",
+      ".js"
+    ],
+    "exclude": [
+      	"**/*.spec.js",
+      	"**/*.config.js",
+      	"**/*.conf.js",
+      	"build",
+      	"node",
+      	"test"
+    ],
+     "reporter": [
+          "lcov",
+          "text-summary"
+    ]
+}
+

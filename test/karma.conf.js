@@ -34,7 +34,7 @@ module.exports = (config) => {
 			'karma-sourcemap-loader',
 			'karma-jasmine',
 			'karma-chrome-launcher',
-			'karma-spec-reporter'
+			'karma-spec-reporter',
 		]
 	});
 };
