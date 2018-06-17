@@ -2,8 +2,10 @@ const path = require('path');
 
 try {
 
-	const env = process.env.NODE_ENV;
-	global.__base = path.resolve(__dirname, '/');
+	const env = process.env.NODE_ENV.toLowerCase();
+	global.__base = path.resolve(__dirname, '');
+
+	console.dir(env);
 
 	switch (env) {
 		case 'development':
@@ -12,8 +14,6 @@ try {
 		case 'production':
 			module.exports = require('./config/webpack.production');
 			break;
-		case undefined || 'undefined':
-			return Error('No environment has been set');
 	}
 
 } catch (ex) {

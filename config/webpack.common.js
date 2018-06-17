@@ -6,15 +6,15 @@ module.exports = {
 	target: 'web',
 	resolve: {
 		alias: {
-			Nav: path.resolve(global.__base, 'app/front/nav.js'),
-			Main: path.resolve(global.__base, 'app/front/main.js'),
-			Header: path.resolve(global.__base, 'app/front/header.js'),
-			CategoriesHomepage: path.resolve(global.__base, 'app/front/categoriesHomepage.js'),
-			Footer: path.resolve(global.__base, 'app/front/footer.js'),
-			Error: path.resolve(global.__base, 'app/front/error.js'),
-			RecordListing: path.resolve(global.__base, 'app/front/recordListing.js'),
-			About: path.resolve(global.__base, 'app/front/about.js'),
-			MyAccount: path.resolve(global.__base, 'app/front/account.js'),
+			Nav: path.resolve(global.__base, '/app/front/nav.js'),
+			Main: path.resolve(global.__base, '/app/front/main.js'),
+			Header: path.resolve(global.__base, '/app/front/header.js'),
+			CategoriesHomepage: path.resolve(global.__base, '/app/front/categoriesHomepage.js'),
+			Footer: path.resolve(global.__base, '/app/front/footer.js'),
+			Error: path.resolve(global.__base, '/app/front/error.js'),
+			RecordListing: path.resolve(global.__base, '/app/front/recordListing.js'),
+			About: path.resolve(global.__base, '/app/front/about.js'),
+			MyAccount: path.resolve(global.__base, '/app/front/account.js'),
 		}
 	},
 	module: {

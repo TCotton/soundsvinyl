@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const path = require('path');
 const requireFromString = require('require-from-string');
 const MemoryFS = require('memory-fs');
-const serverConfig = require('./config/webpack.production.js');
+const serverConfig = require('./webpack.config.js');
 const fs = new MemoryFS();
 
 const outputErrors = (err, stats) => {

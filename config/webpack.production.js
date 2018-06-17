@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
 const path = require('path');
@@ -6,13 +7,14 @@ const commonConfig = require('./webpack.common.js');
 module.exports = webpackMerge(commonConfig, {
 	target: 'node',
 	externals: [nodeExternals()],
-	entry: path.resolve(global.__base, 'src/server/index.js'),
+	entry: path.resolve(global.__base, '/src/server/index.js'),
+	devtool: 'cheap-module-eval-source-map',
 	output: {
 		path: path.resolve(global.__base, 'dist'),
-		publicPath: '/dist/',
+		publicPath: '',
 		filename: 'server.js',
 		library: 'app',
-		libraryTarget: 'commonjs2'
+		libraryTarget: 'umd'
 	},
 	resolve: {
 		extensions: ['.js']
@@ -39,5 +41,12 @@ module.exports = webpackMerge(commonConfig, {
 				loader: 'url-loader?emitFile=false'
 			}
 		]
-	}
+	},
+	plugins: [
+		new webpack.DefinePlugin({
+			'process.env.NODE_ENV': '"production"',
+			'global': {}, // bizarre lodash(?) webpack workaround
+			'global.GENTLY': false // superagent client fix
+		})
+	],
 });

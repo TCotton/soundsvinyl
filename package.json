@@ -10,7 +10,7 @@
     "start:dev": "cross-env NODE_ENV=development webpack-dev-server --mode development ./app/front/index.js --open",
     "start": "node -r source-map-support/register ./node/bin/www",
     "lint": "eslint app/**",
-		"ssr": "cross-env NODE_ENV=production node ./server.js"
+		"ssr": "cross-env NODE_ENV=production webpack --mode production node ./server.js"
   },
   "repository": {
     "type": "git",
