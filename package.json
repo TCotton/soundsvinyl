@@ -9,7 +9,8 @@
     "build": "cross-env NODE_ENV=production webpack --mode production ./app/front/index.js --output ./dist/bundle.js",
     "start:dev": "cross-env NODE_ENV=development webpack-dev-server --mode development ./app/front/index.js --open",
     "start": "node -r source-map-support/register ./node/bin/www",
-    "lint": "eslint app/**"
+    "lint": "eslint app/**",
+		"ssr": "cross-env NODE_ENV=production node ./server.js"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,7 @@
     "http-errors": "1.6.3",
     "http-express": "0.0.7",
     "jade": "1.11.0",
+    "memory-fs": "^0.4.1",
     "mongodb": "3.0.10",
     "monk": "6.0.6",
     "morgan": "1.9.0",
@@ -50,6 +52,7 @@
     "react-router-dom": "4.3.1",
     "redux": "4.0.0",
     "redux-thunk": "2.2.0",
+    "require-from-string": "^2.0.2",
     "serve-favicon": "2.5.0"
   },
   "devDependencies": {
