@@ -6,6 +6,7 @@ module.exports = {
 	target: 'web',
 	resolve: {
 		alias: {
+			'single-spa': path.resolve(__dirname, 'node_modules/single-spa/lib/single-spa.js'),
 			Nav: path.resolve(global.__base, '/app/front/nav.js'),
 			Main: path.resolve(global.__base, '/app/front/main.js'),
 			Header: path.resolve(global.__base, '/app/front/header.js'),

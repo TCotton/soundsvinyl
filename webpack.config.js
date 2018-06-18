@@ -5,8 +5,6 @@ try {
 	const env = process.env.NODE_ENV.toLowerCase();
 	global.__base = path.resolve(__dirname, '');
 
-	console.dir(env);
-
 	switch (env) {
 		case 'development':
 			module.exports = require('./config/webpack.development');
