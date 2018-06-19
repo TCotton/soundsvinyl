@@ -6,7 +6,7 @@ module.exports = {
 	target: 'web',
 	resolve: {
 		alias: {
-			'single-spa': path.resolve(__dirname, 'node_modules/single-spa/lib/single-spa.js'),
+			'single-spa': path.resolve(global.__base, '/node_modules/single-spa/lib/single-spa.js'),
 			Nav: path.resolve(global.__base, '/app/front/nav.js'),
 			Main: path.resolve(global.__base, '/app/front/main.js'),
 			Header: path.resolve(global.__base, '/app/front/header.js'),
@@ -16,6 +16,7 @@ module.exports = {
 			RecordListing: path.resolve(global.__base, '/app/front/recordListing.js'),
 			About: path.resolve(global.__base, '/app/front/about.js'),
 			MyAccount: path.resolve(global.__base, '/app/front/account.js'),
+			vue: 'vue/dist/vue.js',
 		}
 	},
 	module: {

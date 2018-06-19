@@ -22,19 +22,23 @@ if (!process.env.production) {
 	})
 }
 
-ReactDOM.render(
-	<div className='wrapper'>
-		<Nav/>
-		<Router>
-			<Switch>
-				<Route exact path='/' component={Main}/>
-				<Route path='/vinyl' component={RecordListing}/>
-				<Route path='/contact' component={Contact}/>
-				<Route path='/about-us' component={AboutUs}/>
-				<Route path='/my-account' component={MyAccount}/>
-				<Route path='' component={Error}/>
-			</Switch>
-		</Router>
-		<Footer/>
-	</div>,
-	document.getElementById('root'));
+export default class RootComponent extends React.Component {
+	render() {
+		return (
+			<div className='wrapper'>
+				<Nav/>
+				<Router>
+					<Switch>
+						<Route exact path='/' component={Main}/>
+						<Route path='/vinyl' component={RecordListing}/>
+						<Route path='/contact' component={Contact}/>
+						<Route path='/about-us' component={AboutUs}/>
+						<Route path='/my-account' component={MyAccount}/>
+						<Route path='' component={Error}/>
+					</Switch>
+				</Router>
+				<Footer/>
+			</div>
+		);
+	}
+}

@@ -7,7 +7,7 @@
     "test:front": "cross-env NODE_ENV=test nyc --all karma start --require source-map-support/register test/karma.conf.js",
     "test:back": "ava -v node/test/test.js",
     "build": "cross-env NODE_ENV=production webpack --mode production ./app/front/index.js --output ./dist/bundle.js",
-    "start:dev": "cross-env NODE_ENV=development webpack-dev-server --mode development ./app/front/index.js --open",
+    "start:dev": "cross-env NODE_ENV=development webpack-dev-server --mode development ./app/single-spa-config.js --open",
     "start": "nodemon -r source-map-support/register ./node/bin/www",
     "lint": "eslint app/**",
     "ssr": "cross-env NODE_ENV=production webpack --mode production node ./node/server.js"
@@ -39,7 +39,7 @@
     "http-errors": "1.6.3",
     "http-express": "0.0.7",
     "jade": "1.11.0",
-    "memory-fs": "^0.4.1",
+    "memory-fs": "0.4.1",
     "mongodb": "3.0.10",
     "monk": "6.0.6",
     "morgan": "1.9.0",
@@ -52,10 +52,12 @@
     "react-router-dom": "4.3.1",
     "redux": "4.0.0",
     "redux-thunk": "2.2.0",
-    "require-from-string": "^2.0.2",
+    "require-from-string": "2.0.2",
     "serve-favicon": "2.5.0",
-    "single-spa": "^3.9.1",
-    "single-spa-react": "^2.6.0"
+    "single-spa": "3.9.1",
+    "single-spa-react": "2.6.0",
+    "single-spa-vue": "1.1.0",
+    "vue": "2.5.16"
   },
   "devDependencies": {
     "@types/express": "4.16.0",
