@@ -12,6 +12,10 @@ try {
 		case 'production':
 			module.exports = require('./config/webpack.production');
 			break;
+		case 'test':
+			module.exports = require('./config/webpack.test');
+			break;
+
 	}
 
 } catch (ex) {
