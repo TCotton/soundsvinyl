@@ -13,7 +13,7 @@ import AboutUs from './about';
 import MyAccount from './account';
 
 if (!process.env.production) {
-	const a11y = require('react-a11y').default
+	const a11y = require('').default
 	a11y(React, ReactDOM, {
 		rules: {
 			'img-uses-alt': 'warn'
