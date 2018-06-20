@@ -17,3 +17,4 @@ registerApplication('vue', () => {
 
 start();
 
+
