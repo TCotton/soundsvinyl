@@ -5,9 +5,11 @@
 		"jasmine": true,
 		"node": true
 	},
-	"parser": "babel-eslint",
+	"parser": "vue-eslint-parser",
 	"plugins": [
-		"jasmine"
+		"jasmine",
+		"react",
+		"vue"
 	],
 	"parserOptions": {
 		"sourceType": "module",
@@ -16,10 +18,12 @@
 	},
 	"globals": {
 		"inject": true,
-		"react": true
+		"react": true,
+		"vue": true
 	},
 	"extends": [
 		"eslint:recommended",
-		"plugin:react/recommended"
+		"plugin:react/recommended",
+		"plugin:vue/recommended"
 	]
 }
