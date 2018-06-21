@@ -1,7 +1,3 @@
-<template>
-
-</template>
-
 <script>
 	import Vue from 'vue';
 	import VueRouter from 'vue-router';
@@ -30,7 +26,7 @@
 	// 4. Create and mount root instance.
 	// Make sure to inject the router.
 	// Route components will be rendered inside <router-view>.
-	new Vue({
+	const VueRootComponent = new Vue({
 		router,
 		template: `
     <div id="app">
@@ -48,4 +44,5 @@
   `
 	}).$mount('#app');
 
+	export default RootComponent;
 </script>

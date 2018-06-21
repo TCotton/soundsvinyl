@@ -17,7 +17,8 @@
     "url": "git+https://github.com/TCotton/soundsvinyl.co.git"
   },
   "keywords": [
-    "react"
+    "react",
+    "vue"
   ],
   "author": "Andy Walpole",
   "license": "CC-BY-NC-4.0",
@@ -111,7 +112,10 @@
     "source-map-support": "0.5.6",
     "style-loader": "0.21.0",
     "svg-inline-loader": "0.8.0",
-    "vue-eslint-parser": "^2.0.3",
+    "vue-eslint-parser": "2.0.3",
+    "vue-loader": "15.2.4",
+    "vue-style-loader": "4.1.0",
+    "vue-template-compiler": "2.5.16",
     "webpack": "4.8.3",
     "webpack-cli": "2.1.3",
     "webpack-dev-server": "3.1.4",

@@ -1,5 +1,6 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const path = require('path');
 
 module.exports = {
@@ -17,7 +18,9 @@ module.exports = {
 			About: path.resolve(global.__base, '/app/front/about.js'),
 			MyAccount: path.resolve(global.__base, '/app/front/account.js'),
 			vue: 'vue/dist/vue.js',
-		}
+			VueRootComponent: path.resolve(global.__base, '/app/admin/index.vue'),
+		},
+		extensions: ['*', '.js', '.vue', '.json']
 	},
 	module: {
 		rules: [
@@ -54,6 +57,9 @@ module.exports = {
 							sourceMap: true,
 							localIdentName: '[name]__[local]___[hash:base64:5]'
 						}
+					},
+					{
+						loader: 'postcss-loader'
 					}
 				]
 			},
@@ -114,5 +120,6 @@ module.exports = {
 			filename: '[name].css',
 			chunkFilename: '[id].css'
 		}),
+		new VueLoaderPlugin(),
 	]
 };
