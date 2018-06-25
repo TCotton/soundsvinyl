@@ -52,7 +52,6 @@ module.exports = {
 					{
 						loader: 'css-loader',
 						options: {
-							root: '.',
 							importLoaders: 2,
 							modules: true,
 							sourceMap: true,

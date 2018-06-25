@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import singleSpaVue from 'single-spa-vue';
-import App from './App';
+import App from './index';
 import router from './router';
+import '../assets/sass/index.scss';
 
 const vueLifecycles = singleSpaVue({
 	Vue,
