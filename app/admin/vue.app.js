@@ -10,7 +10,7 @@ const vueLifecycles = singleSpaVue({
 		data: {
 			message: 'Welcome to the admin section'
 		},
-		template: '<div>{{message}}</div>'
+		template: '<div></div>'
 	}
 });
 

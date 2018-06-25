@@ -29,7 +29,7 @@
 	const VueRootComponent = new Vue({
 		router,
 		template: `
-    <div id="app">
+    <div id="root">
       <h1>Basic</h1>
       <ul>
         <li><router-link to="/">/</router-link></li>
