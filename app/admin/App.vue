@@ -1,6 +1,6 @@
 <template>
 	<div id="root">
-		<router-view/>
+		<router-view />
 	</div>
 </template>
 
@@ -10,8 +10,10 @@
 	}
 </script>
 
-<style>
-	#app {
+<style lang="scss">
+	@import '../assets/sass/tools';
+	@import '../assets/sass/starter';
+	#root {
 		font-family: 'Avenir', Helvetica, Arial, sans-serif;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;

@@ -24,8 +24,6 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-	@import '../../assets/sass/tools';
-	@import '../../assets/sass/starter';
 	h1, h2 {
 		font-weight: normal;
 	}
