@@ -1,16 +1,19 @@
-import About from '../about.js';
+import AboutUs from '../about.js';
 
 describe('Component', () => {
 
 	let component;
 
 	beforeEach(() => {
-		component = new About;
+		component = new AboutUs;
 	});
 
-	describe('About', () => {
+	describe('AboutUs', () => {
 		it('should be defined', () => {
 			expect(component).toBeDefined();
 		});
+		it('has a created hook', () => {
+			expect(component.render).toEqual(jasmine.any(Function));
+		})
 	});
 });

@@ -14,7 +14,7 @@ describe('Component Pages', () => {
 
 	// Inspect the raw component options
 	it('has a created hook', () => {
-		expect(typeof component.mounted).toBe('function');
+		expect(component.mounted).toEqual(jasmine.any(Function));
 	})
 
 	// Evaluate the results of functions in

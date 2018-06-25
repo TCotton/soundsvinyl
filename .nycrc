@@ -1,7 +1,8 @@
 {
     "extension": [
       ".jsx",
-      ".js"
+      ".js",
+      ".vue"
     ],
     "exclude": [
       	"**/*.spec.js",

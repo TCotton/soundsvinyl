@@ -13,6 +13,10 @@ describe('Component', () => {
 			expect(component).toBeDefined();
 		});
 
+		it('has created a hook', () => {
+			expect(component.render).toEqual(jasmine.any(Function));
+		})
+
 		it('should have correct state default values', () => {
 			expect(component.state.isClicked).toEqual(false);
 		});

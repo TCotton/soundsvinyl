@@ -1,11 +1,11 @@
-import HelloWorld from '../HelloWorld.vue';
+import Home from '../Home.vue';
 
-describe('Component HelloWorld', () => {
+describe('Component Home', () => {
 
 	let component;
 
 	beforeEach(() => {
-		component = HelloWorld;
+		component = Home;
 	});
 
 	it('should be defined', () => {
@@ -14,7 +14,7 @@ describe('Component HelloWorld', () => {
 
 	// Inspect the raw component options
 	it('has a created hook', () => {
-		expect(typeof component.mounted).toBe('function');
+		expect(component.mounted).toEqual(jasmine.any(Function));
 	})
 
 	// Evaluate the results of functions in
@@ -22,6 +22,6 @@ describe('Component HelloWorld', () => {
 	it('sets the correct default data', () => {
 		expect(typeof component.data).toBe('function');
 		const defaultData = component.data();
-		expect(defaultData.msg).toBe('Welcome to Your Vue.js App');
+		expect(defaultData.msg).toBe('Welcome to Your Homepage');
 	})
 });
