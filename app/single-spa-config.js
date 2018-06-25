@@ -6,13 +6,13 @@ registerApplication('react', () => {
 	return import('./front/react.app.js');
 }, () => {
 	findRootElement();
-	return !location.href.endsWith('admin');
+	return !location.href.includes('admin');
 });
 
 registerApplication('vue', () => {
 	return import('./admin/vue.app.js');
 }, () => {
-	return location.href.endsWith('admin');
+	return location.href.includes('admin');
 });
 
 start();

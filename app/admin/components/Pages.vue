@@ -1,7 +1,7 @@
 <template>
 	<div class="hello">
 		<h1>{{ msg }}</h1>
-		<h2>Essential Links</h2>
+		<h2>Pages</h2>
 		<ul>
 			<li>Here is the list</li>
 		</ul>
@@ -10,36 +10,33 @@
 
 <script>
 	export default {
-		name: 'HelloWorld',
+		name: 'Pages',
 		data () {
 			return {
-				msg: 'Welcome to Your Vue.js App',
+				msg: 'Welcome to Your Pages section'
 			}
 		},
-		mounted () {
-			console.log('the Hello World is mounted');
+		mounted() {
+			console.log('the pages section is mounted');
 		}
 	}
 </script>
 
 <style lang="scss" module>
 	@import '../../assets/sass/tools';
-
 	h1, h2 {
 		font-weight: normal;
 	}
-
 	ul {
 		list-style-type: none;
 		padding: 0;
 	}
-
 	li {
 		display: inline-block;
 		margin: 0 10px;
 	}
-
 	a {
 		color: #42b983;
 	}
 </style>
+
