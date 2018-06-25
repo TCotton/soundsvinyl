@@ -1,16 +1,15 @@
 import Vue from 'vue';
 import singleSpaVue from 'single-spa-vue';
-import Header from './Header';
+import App from './App';
+import router from './router';
 
 const vueLifecycles = singleSpaVue({
 	Vue,
 	appOptions: {
 		el: '#root',
-		data: {
-			message: 'Welcome to the admin section'
-		},
-		components: {},
-		template: '<div>{{message}}</div>'
+		router,
+		components: { App },
+		template: '<App/>'
 	}
 });
 
