@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import singleSpaVue from 'single-spa-vue';
-import VueRootComponent from './whatever';
-console.dir(VueRootComponent);
+import Header from './Header';
 
 const vueLifecycles = singleSpaVue({
 	Vue,
@@ -10,7 +9,8 @@ const vueLifecycles = singleSpaVue({
 		data: {
 			message: 'Welcome to the admin section'
 		},
-		template: '<div></div>'
+		components: {},
+		template: '<div>{{message}}</div>'
 	}
 });
 

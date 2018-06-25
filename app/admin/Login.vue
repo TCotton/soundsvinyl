@@ -1,5 +1,9 @@
 <template>
-	
+	<header>
+		<div class="navLeftColumn">
+			<h1>soundsvinyl.co</h1>
+		</div>
+	</header>
 </template>
 
 <script>
