@@ -4,7 +4,7 @@
   "description": "Music recommendation site",
   "main": "index.js",
   "scripts": {
-    "test:front": "cross-env NODE_ENV=test nyc --all karma start --require source-map-support/register test/karma.conf.js",
+    "test:front": "cross-env NODE_ENV=test karma start --require source-map-support/register test/karma.conf.js",
     "test:back": "ava -v node/test/test.js",
     "build": "cross-env NODE_ENV=production webpack --mode production ./app/front/index.js --output ./dist/bundle.js",
     "start:dev": "cross-env NODE_ENV=development webpack-dev-server --mode development ./app/single-spa-config.js --open",
@@ -92,6 +92,7 @@
     "karma": "2.0.2",
     "karma-chrome-launcher": "2.2.0",
     "karma-cli": "1.0.1",
+    "karma-coverage": "^1.1.2",
     "karma-jasmine": "1.1.2",
     "karma-sourcemap-loader": "0.3.7",
     "karma-spec-reporter": "0.0.32",

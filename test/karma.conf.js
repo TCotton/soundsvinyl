@@ -14,7 +14,7 @@ module.exports = (config) => {
 		webpack: Object.assign({
 			mode: 'development'
 		}, webpackConfig),
-		reporters: ['spec'],
+		reporters: ['spec', 'coverage'],
 		browsers: ['ChromeHeadless'],
 		logLevel: config.LOG_INFO,
 		autoWatch: false,
@@ -23,12 +23,27 @@ module.exports = (config) => {
 		webpackServer: {
 			noInfo: true,
 		},
+		coverageReporter: {
+			check: {
+				global: {
+					excludes: [
+						'app/**/**/**.spec.js'
+					]
+				}
+			},
+			dir: './coverage',
+			reporters: [
+				{ type: 'lcov', subdir: '.' },
+				{ type: 'text-summary' }
+			]
+		},
 		plugins: [
 			'karma-webpack',
 			'karma-sourcemap-loader',
 			'karma-jasmine',
 			'karma-chrome-launcher',
 			'karma-spec-reporter',
+			'karma-coverage'
 		]
 	});
 };
