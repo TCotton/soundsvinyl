@@ -5,7 +5,8 @@
 		<ul>
 			<li> <router-link to="/admin/pages">List of pages</router-link> </li>
 			<li> <router-link to="/admin/users">List of users</router-link> </li>
-			<li> <router-link to="/admin/users">Add a page</router-link> </li>
+			<li> <router-link to="/admin/add-page">Add a page</router-link> </li>
+			<li> <router-link to="/admin/add-user">Add a user</router-link> </li>
 		</ul>
 	</div>
 </template>
@@ -24,7 +25,7 @@
 	}
 </script>
 
-<style lang="scss" module>
+<style lang="scss" data-module>
 	@import '../../assets/sass/tools';
 
 	ul {

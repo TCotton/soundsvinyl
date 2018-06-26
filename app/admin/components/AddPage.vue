@@ -1,5 +1,6 @@
 <template>
-
+	<div class="add-page">
+	</div>
 </template>
 
 <script>
@@ -8,6 +9,6 @@
 	}
 </script>
 
-<style scoped>
+<style data-module>
 
 </style>

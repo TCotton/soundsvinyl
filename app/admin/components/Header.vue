@@ -27,6 +27,6 @@
 	}
 </script>
 
-<style lang="scss" module>
+<style lang="scss" data-module>
 	@import '../../assets/sass/tools';
 </style>

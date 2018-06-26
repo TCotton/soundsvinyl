@@ -22,7 +22,7 @@
 	}
 </script>
 
-<style lang="scss" module>
+<style lang="scss" data-module>
 	@import '../../assets/sass/tools';
 	h1, h2 {
 		font-weight: normal;

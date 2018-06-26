@@ -28,11 +28,6 @@ export default new Router({
 			component: Page
 		},
 		{
-			path: '/admin/pages/:id',
-			name: 'Page',
-			component: Page
-		},
-		{
 			path: '/admin/users',
 			name: 'Users',
 			component: Users
