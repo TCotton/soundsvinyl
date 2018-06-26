@@ -16,7 +16,7 @@
 	}
 </script>
 
-<style lang="scss" data-module>
+<style lang="scss" module>
 	@import '../assets/sass/tools';
 
 	a:link {

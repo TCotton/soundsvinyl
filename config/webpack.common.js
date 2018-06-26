@@ -5,6 +5,9 @@ const path = require('path');
 
 module.exports = {
 	target: 'web',
+	devServer: {
+		historyApiFallback: true
+	},
 	resolve: {
 		alias: {
 			'single-spa': path.resolve(global.__base, '/node_modules/single-spa/lib/single-spa.js'),

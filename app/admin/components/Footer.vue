@@ -13,6 +13,6 @@
 	}
 </script>
 
-<style data-module>
+<style module>
 
 </style>
