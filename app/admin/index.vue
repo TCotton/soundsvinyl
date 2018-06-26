@@ -11,11 +11,12 @@
 
 <script>
 	export default {
-		name: 'App'
+		name: 'App',
+		mode: 'history',
 	}
 </script>
 
-<style lang="scss" module>
+<style lang="scss" data-module>
 	@import '../assets/sass/tools';
 
 	a:link {

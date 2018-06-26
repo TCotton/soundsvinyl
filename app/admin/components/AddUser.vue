@@ -1,12 +1,13 @@
 <template>
-	<div class="add-page">
+	<div class="add-page" :class="$style.addPage">
+		<h1>Add a new user</h1>
 		<form
 			id="addUser"
 			name="addUser"
 			method="post"
 			novalidate
-			@submit="onSubmit"
-		>
+			@submit="onSubmit" >
+
 			<label for="addUserEmail">User email which will be their username</label>
 			<input
 				v-model="addUserEmail"
@@ -44,8 +45,7 @@
 			<input
 				type="submit"
 				name="addUserSubmit"
-				value="Submit User"
-			>
+				value="Submit User" >
 		</form>
 	</div>
 </template>
@@ -69,7 +69,7 @@
 				this.errors = [];
 
 				if (!this.name) {
-					this.errors.push("Name required.");
+					this.errors.push('Name required.');
 				}
 				if (!this.email) {
 					this.errors.push('Email required.');
@@ -84,14 +84,19 @@
 				console.dir(this);
 			},
 			validEmail: function (email) {
-				const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+				const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; // eslint-disable-line
 				return re.test(email);
 			}
 		}
 	}
 </script>
 
-<style lang="scss" data-module>
+<style lang="scss"
+ data-module>
 	@import '../../assets/sass/tools';
+
+	.addPage {
+
+	}
 
 </style>

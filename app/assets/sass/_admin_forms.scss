@@ -1,0 +1,14 @@
+@import 'variables';
+@import 'mixins';
+
+h2 {
+	@include font-calculator($font_family_header, 45px, 0.5);
+	color: $secondHeaderColour;
+	line-height: 1.2em;
+}
+
+p {
+	@include font-calculator($font_family_body, 22px);
+	color: $paragraphColour;
+	line-height: 1.3em;
+}
