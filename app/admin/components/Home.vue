@@ -3,7 +3,9 @@
 		<h1>{{ msg }}</h1>
 		<h2>Essential Links</h2>
 		<ul>
-			<li>Here is the list</li>
+			<li> <router-link to="/admin/pages">List of pages</router-link> </li>
+			<li> <router-link to="/admin/users">List of users</router-link> </li>
+			<li> <router-link to="/admin/users">Add a page</router-link> </li>
 		</ul>
 	</div>
 </template>
@@ -24,4 +26,10 @@
 
 <style lang="scss" module>
 	@import '../../assets/sass/tools';
+
+	ul {
+		li {
+			display: inline-block;
+		}
+	}
 </style>

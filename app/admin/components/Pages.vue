@@ -3,7 +3,7 @@
 		<h1>{{ msg }}</h1>
 		<h2>Pages</h2>
 		<ul>
-			<li>Here is the list</li>
+			<li>here is the list</li>
 		</ul>
 	</div>
 </template>
@@ -24,19 +24,5 @@
 
 <style lang="scss" module>
 	@import '../../assets/sass/tools';
-	h1, h2 {
-		font-weight: normal;
-	}
-	ul {
-		list-style-type: none;
-		padding: 0;
-	}
-	li {
-		display: inline-block;
-		margin: 0 10px;
-	}
-	a {
-		color: #42b983;
-	}
 </style>
 

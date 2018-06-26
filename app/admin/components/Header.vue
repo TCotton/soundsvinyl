@@ -10,20 +10,23 @@
 					dui eu pretium sem mollis et</p>
 			</div>
 
-			
+			<p :class="$style.whatever">
+				This should be red
+			</p>
+
 		</div>
 	</header>
 </template>
 
 <script>
 	export default {
-		name: 'Header.vue',
+		name: 'Header',
 		mounted() {
 			console.log('Simple Component mounted.')
 		}
 	}
 </script>
 
-<style scoped>
-
+<style lang="scss" module>
+	@import '../../assets/sass/tools';
 </style>

@@ -11,7 +11,7 @@ const vueLifecycles = singleSpaVue({
 	appOptions: {
 		el: '#root',
 		router,
-		components: { App },
+		components: {App},
 		template: '<App/>'
 	}
 });

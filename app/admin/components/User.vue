@@ -2,9 +2,7 @@
 	<div class="hello">
 		<h1>{{ msg }}</h1>
 		<h2>User</h2>
-		<ul>
-			<li>Here is the list</li>
-		</ul>
+		<p>This is a user</p>
 	</div>
 </template>
 
@@ -24,18 +22,4 @@
 
 <style lang="scss" module>
 	@import '../../assets/sass/tools';
-	h1, h2 {
-		font-weight: normal;
-	}
-	ul {
-		list-style-type: none;
-		padding: 0;
-	}
-	li {
-		display: inline-block;
-		margin: 0 10px;
-	}
-	a {
-		color: #42b983;
-	}
 </style>
