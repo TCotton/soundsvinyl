@@ -63,16 +63,16 @@
 		},
 		created () {
 			const userPromise = new Promise((resolve, reject) => {
-				console.log("It is done.");
+				console.log('It is done.');
 				// Succeed half of the time.
 				if (Math.random() > .5) {
-					resolve("SUCCESS")
+					resolve('SUCCESS')
 				} else {
-					reject("FAILURE")
+					reject('FAILURE')
 				}
 			});
 
-			promise.then(() => {
+			userPromise.then(() => {
 				console.log('success');
 			}, () => {
 				console.log('failure');
@@ -89,21 +89,17 @@
 
 <style lang="scss" module>
 	@import '../../assets/sass/tools';
-
 	h1, h2 {
 		font-weight: normal;
 	}
-
 	ul {
 		list-style-type: none;
 		padding: 0;
 	}
-
 	li {
 		display: inline-block;
 		margin: 0 10px;
 	}
-
 	a {
 		color: #42b983;
 	}

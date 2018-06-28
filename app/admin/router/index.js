@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import VueSuperagent from 'vue-superagent'
 import Home from '../components/Home';
 import Pages from '../components/Pages';
 import Page from '../components/Page';
@@ -8,7 +9,7 @@ import User from '../components/User';
 import AddUser from '../components/AddUser';
 import AddPage from '../components/AddPage';
 
-Vue.use(Router);
+Vue.use(Router, VueSuperagent);
 
 export default new Router({
 	routes: [

@@ -4,7 +4,7 @@
 			<router-view/>
 			<p :class="$style.whatever">
 				This should be red
-			</p>
+			</p>f
 		</div>
 	</div>
 </template>

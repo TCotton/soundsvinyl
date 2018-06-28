@@ -59,8 +59,12 @@
 				errors: [],
 				addUserEmail: null,
 				addUserPasswordOne: null,
-				addUserPasswordTwo: null
+				addUserPasswordTwo: null,
+				msg: 'Welcome to Add User section'
 			}
+		},
+		mounted () {
+			console.log('the add user section is mounted');
 		},
 		methods: {
 			onSubmit: function (event) {
@@ -80,8 +84,6 @@
 				if (!this.errors.length) {
 					return true;
 				}
-				console.dir(event);
-				console.dir(this);
 			},
 			validEmail: function (email) {
 				const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; // eslint-disable-line
@@ -95,7 +97,7 @@
 	@import '../../assets/sass/tools';
 
 	.addPage {
-
+		background: transparent;
 	}
 
 </style>

@@ -31,7 +31,6 @@
     "npm": "6.1.0"
   },
   "dependencies": {
-    "axios": "0.18.0",
     "classnames": "2.2.5",
     "cookie-parser": "1.4.3",
     "create-react-class": "15.6.3",
@@ -60,12 +59,21 @@
     "single-spa": "3.9.1",
     "single-spa-react": "2.6.0",
     "single-spa-vue": "1.1.0",
+    "superagent": "3.8.3",
+    "superagent-cache": "3.0.1",
+    "superagent-cache-plugin": "2.0.0",
+    "superagent-mock": "3.7.0",
+    "superagent-prefix": "0.0.2",
+    "superagent-serializer": "0.2.2",
+    "superagent-suffix": "0.1.0",
     "uniqid": "5.0.3",
     "vue": "2.5.16",
-    "vue-router": "3.0.1"
+    "vue-router": "3.0.1",
+    "vue-superagent": "1.2.0"
   },
   "devDependencies": {
     "@types/express": "4.16.0",
+    "@vue/test-utils": "^1.0.0-beta.20",
     "autoprefixer": "8.6.0",
     "ava": "0.25.0",
     "babel-core": "6.26.3",
@@ -114,6 +122,7 @@
     "source-map-support": "0.5.6",
     "style-loader": "0.21.0",
     "svg-inline-loader": "0.8.0",
+    "vue-devtools": "^4.1.4",
     "vue-eslint-parser": "2.0.3",
     "vue-loader": "15.2.4",
     "vue-style-loader": "4.1.0",
