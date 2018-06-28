@@ -13,8 +13,29 @@
 		name: 'Users',
 		data () {
 			return {
-				msg: 'Welcome to Your Users section'
+				msg: 'Welcome to Your Users section',
+				Users: []
 			}
+		},
+		created() {
+			const userPromise = new Promise((resolve, reject) => {
+					console.log("It is done.");
+					// Succeed half of the time.
+					if (Math.random() > .5) {
+						resolve("SUCCESS")
+					} else {
+						reject("FAILURE")
+					}
+				});
+
+			promise.then(() => {
+				console.log('success');
+			}, () => {
+				console.log('failure');
+			});
+
+
+			// https://api.mockaroo.com/api/35094270?count=20&key=004476f0
 		},
 		mounted() {
 			console.log('the pages section is mounted');

@@ -13,7 +13,8 @@
 		name: 'Pages',
 		data () {
 			return {
-				msg: 'Welcome to Your Pages section'
+				msg: 'Welcome to Your Pages section',
+				Pages: []
 			}
 		},
 		mounted() {
