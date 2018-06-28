@@ -5,13 +5,13 @@
 		"jasmine": true,
 		"node": true
 	},
-	"parser": "vue-eslint-parser",
 	"plugins": [
 		"jasmine",
 		"react",
 		"vue"
 	],
 	"parserOptions": {
+		"parser": "babel-eslint",
 		"sourceType": "module",
 		"allowImportExportEverywhere": false,
 		"codeFrame": false
