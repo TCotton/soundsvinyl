@@ -10,6 +10,7 @@
     "start:dev": "cross-env NODE_ENV=development webpack-dev-server --mode development ./app/single-spa-config.js --open",
     "start": "nodemon -r source-map-support/register ./node/bin/www",
     "lint": "eslint app/**",
+		"sass-lint": "sass-lint  --config .sasslintrc '**/*.scss' --verbose --no-exit --ignore './node_modules/**/**/**/**/*.scss'",
     "ssr": "cross-env NODE_ENV=production webpack --mode production node ./node/server.js"
   },
   "repository": {
@@ -117,6 +118,7 @@
     "react-svg-loader": "2.1.0",
     "react-test-renderer": "16.4.0",
     "redux-devtools": "3.4.1",
+    "sass-lint": "^1.12.1",
     "sass-loader": "7.0.1",
     "script-loader": "0.7.2",
     "source-map-support": "0.5.6",
