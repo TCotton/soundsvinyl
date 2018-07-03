@@ -1,5 +1,5 @@
 <template>
-	<div class="hello">
+	<div :class="$style.user">
 		<h1>{{ msg }}</h1>
 		<h2>User</h2>
 		<p>This is a user</p>
@@ -11,6 +11,20 @@
 		name: 'User',
 		data () {
 			return {
+				props: {
+					id: {
+						type: Number,
+						required: true,
+					},
+					email: {
+						type: String,
+						required: true,
+					},
+					password: {
+						type: String,
+						required: true,
+					}
+				},
 				msg: 'Welcome to Your User section'
 			}
 		},
@@ -22,4 +36,8 @@
 
 <style lang="scss" module>
 	@import '../../assets/sass/tools';
+
+	.user {
+		background: transparent;
+	}
 </style>

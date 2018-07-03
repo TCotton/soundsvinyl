@@ -1,5 +1,5 @@
 <template>
-	<div class="hello">
+	<div :class="$style.pages">
 		<h1>{{ msg }}</h1>
 		<h2>Pages</h2>
 		<ul>
@@ -16,53 +16,27 @@
 		name: 'Pages',
 		data () {
 			return {
-
-				props: {
-					// Basic type check (`null` matches any type)
-					id: {
-						type: Number,
-						required: true,
-					},
-					// Multiple possible types
-					title: {
-						type: String,
-						required: true,
-					},
-					// Required string
-					subTitle: {
-						type: String,
-						required: true
-					},
-					// Number with a default value
-					videoLink: {
-						type: Number,
-						default: true // there must a fallback url here
-					},
-					// Object with a default value
-					description: {
-						type: String,
-						// Object or array defaults must be returned from
-						// a factory function
-						default: true
-					},
-					// Custom validator function
-					categories: {
-						type: Array,
-						default: true,
-					}
-				},
-
 				msg: 'Welcome to Your Pages section',
 				Pages: []
 			}
 		},
-		mounted() {
-			console.log('the pages section is mounted');
+		created () {
+			request
+				.get(dummy.users)
+				.end((err, res) => {
+					if (err) {
+						new Error(err);
+					}
+					this.Pages = res.body;
+				});
 		}
 	}
 </script>
 
 <style lang="scss" module>
 	@import '../../assets/sass/tools';
+	.pages {
+		background: transparent;
+	}
 </style>
 

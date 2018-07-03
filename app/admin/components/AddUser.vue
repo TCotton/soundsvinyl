@@ -1,5 +1,5 @@
 <template>
-	<div class="add-page" :class="$style.addPage">
+	<div class="add-page" :class="$style.addUser">
 		<h1>Add a new user</h1>
 		<form
 			id="addUser"
@@ -96,7 +96,7 @@
 <style lang="scss" module>
 	@import '../../assets/sass/tools';
 
-	.addPage {
+	.addUser {
 		background: transparent;
 	}
 

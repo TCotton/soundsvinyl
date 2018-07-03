@@ -31,21 +31,6 @@
 		name: 'Users',
 		data () {
 			return {
-				props: {
-					id: {
-						type: Number,
-						required: true,
-					},
-					email: {
-						type: String,
-						required: true,
-					},
-					password: {
-						type: String,
-						required: true,
-					}
-				},
-
 				msg: 'Welcome to Your Users section',
 				Users: []
 			}
@@ -55,14 +40,10 @@
 				.get(dummy.users)
 				.end((err, res) => {
 					if (err) {
-						throw new Error();
+						new Error(err);
 					}
 					this.Users = res.body;
 				});
-		},
-
-		mounted () {
-			console.log('the pages section is mounted');
 		}
 	}
 </script>

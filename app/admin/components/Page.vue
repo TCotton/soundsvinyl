@@ -1,5 +1,5 @@
 <template>
-	<div class="hello">
+	<div :class="$style.page">
 		<h1>{{ msg }}</h1>
 		<h2>Page</h2>
 		<p>This is a page</p>
@@ -22,4 +22,7 @@
 
 <style lang="scss" module>
 	@import '../../assets/sass/tools';
+	.page {
+		background: transparent;
+	}
 </style>

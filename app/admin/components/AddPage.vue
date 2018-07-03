@@ -1,6 +1,6 @@
 <template>
-	<div class="add-page">
-		&nbsp;
+	<div :class="$style.addPage">
+		&nbsp;&nbsp;
 	</div>
 </template>
 
@@ -20,4 +20,8 @@
 
 <style lang="scss" module>
 	@import '../../assets/sass/tools';
+
+	.addPage {
+		background: transparent;
+	}
 </style>
