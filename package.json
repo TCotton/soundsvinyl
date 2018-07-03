@@ -10,7 +10,7 @@
     "start:dev": "cross-env NODE_ENV=development webpack-dev-server --mode development ./app/single-spa-config.js --open",
     "start": "nodemon -r source-map-support/register ./node/bin/www",
     "lint": "eslint app/**",
-		"sass-lint": "sass-lint  --config .sasslintrc '**/*.scss' --verbose --no-exit --ignore './node_modules/**/**/**/**/*.scss'",
+    "sass-lint": "sass-lint  --config .sasslintrc '**/*.scss' --verbose --no-exit --ignore './node_modules/**/**/**/**/*.scss'",
     "ssr": "cross-env NODE_ENV=production webpack --mode production node ./node/server.js"
   },
   "repository": {
