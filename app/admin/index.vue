@@ -1,10 +1,12 @@
 <template>
 	<div id="root">
 		<div class="wrapper">
-			<router-view/>
+			<router-view name="Header" />
+			<router-view />
+			<router-view name="Footer" />
 			<p :class="$style.whatever">
 				This should be red
-			</p>f
+			</p>
 		</div>
 	</div>
 </template>

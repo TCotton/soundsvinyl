@@ -9,6 +9,9 @@
 </template>
 
 <script>
+	import request from 'superagent';
+	import { dummy } from '../../helper_constants';
+
 	export default {
 		name: 'Users',
 		data () {
@@ -20,41 +23,15 @@
 						required: true,
 					},
 					// Multiple possible types
-					title: {
+					email: {
 						type: String,
 						required: true,
 					},
-					// Required string
-					subTitle: {
+					password: {
 						type: String,
-						required: true
-					},
-					// Number with a default value
-					videoLink: {
-						type: Number,
-						default: true // there must a fallback url here
-					},
-					// Object with a default value
-					description: {
-						type: String,
-						// Object or array defaults must be returned from
-						// a factory function
-						default: true
-						/*default: function () {
-							return {
-								message: 'hello'
-							}
-						}*/
-					},
-					// Custom validator function
-					categories: {
-						type: Array,
-						default: true,
-					/*	validator: function (value) {
-							// The value must match one of these strings
-							return ['success', 'warning', 'danger'].indexOf(value) !== -1
-						}*/
+						required: true,
 					}
+
 				},
 
 				msg: 'Welcome to Your Users section',
@@ -62,23 +39,14 @@
 			}
 		},
 		created () {
-			const userPromise = new Promise((resolve, reject) => {
-				console.log('It is done.');
-				// Succeed half of the time.
-				if (Math.random() > .5) {
-					resolve('SUCCESS')
-				} else {
-					reject('FAILURE')
-				}
-			});
-
-			userPromise.then(() => {
-				console.log('success');
-			}, () => {
-				console.log('failure');
-			});
-
-			// https://api.mockaroo.com/api/35094270?count=20&key=004476f0
+			request
+				.get(dummy.users)
+				.end((err, res) => {
+					if(err) {
+						throw new Error();
+					}
+					console.dir(res);
+				});
 		},
 
 		mounted () {

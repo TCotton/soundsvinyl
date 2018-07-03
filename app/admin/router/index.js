@@ -8,6 +8,8 @@ import Users from '../components/Users';
 import User from '../components/User';
 import AddUser from '../components/AddUser';
 import AddPage from '../components/AddPage';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 Vue.use(Router, VueSuperagent);
 
@@ -16,37 +18,65 @@ export default new Router({
 		{
 			path: '/admin',
 			name: 'Home',
-			component: Home
+			components: {
+				default: Home,
+				Header: Header,
+				Footer: Footer,
+			}
 		},
 		{
 			path: '/admin/pages',
 			name: 'Pages',
-			component: Pages
+			components: {
+				default: Pages,
+				Header: Header,
+				Footer: Footer,
+			}
 		},
 		{
 			path: '/admin/pages/:id',
 			name: 'Page',
-			component: Page
+			components: {
+				default: Page,
+				Header: Header,
+				Footer: Footer,
+			}
 		},
 		{
 			path: '/admin/users',
 			name: 'Users',
-			component: Users
+			components: {
+				default: Users,
+				Header: Header,
+				Footer: Footer,
+			}
 		},
 		{
 			path: '/admin/users/:id',
 			name: 'User',
-			component: User
+			components: {
+				default: User,
+				Header: Header,
+				Footer: Footer,
+			}
 		},
 		{
 			path: '/admin/add-user',
 			name: 'AddUser',
-			component: AddUser
+			components: {
+				default: AddUser,
+				Header: Header,
+				Footer: Footer,
+			}
 		},
 		{
 			path: '/admin/add-page',
 			name: 'AddPage',
-			component: AddPage
+			components: {
+				default: AddPage,
+				Header: Header,
+				Footer: Footer,
+			}
 		}
 	]
 })

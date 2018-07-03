@@ -1,18 +1,18 @@
 <template>
 	<footer>
-		&nbsp;
+		&nbsp;<p>This is a footer</p>
 	</footer>
 </template>
 
 <script>
 	export default {
-		name: 'Header',
-		mounted() {
-			console.log('Simple Component mounted.');
+		name: 'Footer',
+		mounted () {
+			console.log('Simple Footer Component mounted.');
 		}
 	}
 </script>
 
-<style module>
-
+<style lang="scss" module>
+	@import '../../assets/sass/tools';
 </style>

@@ -6,7 +6,7 @@
 
 <script>
 	export default {
-		name: "AddPage",
+		name: 'AddPage',
 		data () {
 			return {
 				msg: 'Welcome to Add Page section'
