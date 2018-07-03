@@ -1,10 +1,10 @@
 <template>
 	<header :class="$style.navHeader">
 		<div :class="$style.navLeftColumn">
-			<h1>soundsvinyl.co</h1>
+			<router-link to="/admin"><h1>soundsvinyl.co</h1></router-link>
 		</div>
 		<div :class="$style.navRightColumn">
-			<h1>soundsvinyl.co</h1>
+			<router-link to="/admin"><p>Logout</p></router-link>
 		</div>
 	</header>
 </template>
@@ -36,6 +36,6 @@
 	.navRightColumn {
 		display: flex;
 		align-items: center;
-		justify-content: flex-start;
+		justify-content: flex-end;
 	}
 </style>

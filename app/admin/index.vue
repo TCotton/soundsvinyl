@@ -4,9 +4,6 @@
 			<router-view name="Header" />
 			<router-view />
 			<router-view name="Footer" />
-			<p :class="$style.whatever">
-				This should be red
-			</p>
 		</div>
 	</div>
 </template>
@@ -43,9 +40,5 @@
 
 	a:active {
 		color: $linkState;
-	}
-
-	.whatever {
-		background: red;
 	}
 </style>

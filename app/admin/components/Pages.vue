@@ -44,20 +44,11 @@
 						// Object or array defaults must be returned from
 						// a factory function
 						default: true
-						/*default: function () {
-							return {
-								message: 'hello'
-							}
-						}*/
 					},
 					// Custom validator function
 					categories: {
 						type: Array,
 						default: true,
-						/*	validator: function (value) {
-							  // The value must match one of these strings
-							  return ['success', 'warning', 'danger'].indexOf(value) !== -1
-						  }*/
 					}
 				},
 

@@ -1,9 +1,8 @@
 <template>
-	<div class="hello">
+	<div :class="$style.hello">
 		<h1>{{ msg }}</h1>
 		<h2>Essential Links</h2>
 		<ul>
-			<li> <router-link to="/admin/pages">List of pages</router-link> </li>
 			<li> <router-link to="/admin/pages">List of pages</router-link> </li>
 			<li> <router-link to="/admin/users">List of users</router-link> </li>
 			<li> <router-link to="/admin/add-page">Add a page</router-link> </li>
@@ -50,9 +49,14 @@
 <style lang="scss" module>
 	@import '../../assets/sass/tools';
 
+	.homepage {
+		background: transparent;
+	}
+
 	ul {
 		li {
-			display: inline-block;
+			@include font-calculator($font_family_body, 16px, 0);
+			display: block;
 		}
 	}
 </style>
