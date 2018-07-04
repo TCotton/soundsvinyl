@@ -11,6 +11,8 @@ import AddUser from '../components/AddUser';
 import AddPage from '../components/AddPage';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import Comments from '../components/Comments';
+import Comment from '../components/Comment';
 
 Vue.use(Router);
 Vue.use(VuePaginate);
@@ -77,6 +79,24 @@ export default new Router({
 			name: 'AddPage',
 			components: {
 				default: AddPage,
+				Header: Header,
+				Footer: Footer,
+			}
+		},
+		{
+			path: '/admin/comments',
+			name: 'Comments',
+			components: {
+				default: Comments,
+				Header: Header,
+				Footer: Footer,
+			}
+		},
+		{
+			path: '/admin/comment/:id',
+			name: 'Comment',
+			components: {
+				default: Comment,
 				Header: Header,
 				Footer: Footer,
 			}

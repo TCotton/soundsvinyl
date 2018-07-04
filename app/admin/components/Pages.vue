@@ -41,7 +41,7 @@
 			:show-step-links="true"
 			for="Pages"
 		/>
-	</div :class="$style.pages">
+	</div>
 </template>
 
 <script>
