@@ -41,4 +41,31 @@
 	a:active {
 		color: $linkState;
 	}
+
+	table {
+		text-align: left;
+		table-layout: fixed;
+		width: 100%;
+		white-space: nowrap;
+	}
+
+	caption {
+		@include font-calculator($font_family_body, 16px, 0.5);
+		text-align: left;
+	}
+
+	th {
+		@include font-calculator($font_family_body, 14px, 0.25);
+		font-weight: 500;
+		padding: 0 10px 0 0;
+	}
+
+	td {
+		@include font-calculator($font_family_body, 14px, 0.25);
+		padding: 0 10px 0 0;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		word-wrap: break-word;
+	}
 </style>

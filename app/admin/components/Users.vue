@@ -69,24 +69,4 @@
 		color: #42b983;
 	}
 
-	table {
-		text-align: left;
-	}
-
-	caption {
-		@include font-calculator($font_family_body, 16px, 0.5);
-		text-align: left;
-	}
-
-	th {
-		@include font-calculator($font_family_body, 14px, 0.25);
-		font-weight: 500;
-		padding: 0 10px 0 0;
-	}
-
-	td {
-		@include font-calculator($font_family_body, 14px, 0.25);
-		padding: 0 10px 0 0;
-	}
-
 </style>

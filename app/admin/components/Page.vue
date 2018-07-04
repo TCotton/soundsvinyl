@@ -11,6 +11,32 @@
 		name: 'Page',
 		data () {
 			return {
+				props: {
+					_id: {
+						type: Number,
+						required: true,
+					},
+					title: {
+						type: String,
+						required: true,
+					},
+					subTitle: {
+						type: String,
+						required: true
+					},
+					videoLink: {
+						type: Number,
+						default: true
+					},
+					description: {
+						type: String,
+						default: true
+					},
+					categories: {
+						type: Array,
+						default: true,
+					}
+				},
 				msg: 'Welcome to Your Page section'
 			}
 		},
