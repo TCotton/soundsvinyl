@@ -1,12 +1,12 @@
 <template>
-	<div class="add-page" :class="$style.addUser">
+	<div :class="$style.addUser">
 		<h1>Add a new user</h1>
 		<form
 			id="addUser"
 			name="addUser"
 			method="post"
 			novalidate
-			@submit="onSubmit" >
+			@submit="onSubmit">
 
 			<label for="addUserEmail">User email which will be their username</label>
 			<input
@@ -45,7 +45,7 @@
 			<input
 				type="submit"
 				name="addUserSubmit"
-				value="Submit User" >
+				value="Submit User">
 		</form>
 	</div>
 </template>
@@ -97,7 +97,31 @@
 	@import '../../assets/sass/tools';
 
 	.addUser {
-		background: transparent;
+		form {
+			display: grid;
+			grid-template-columns: 400px 1fr;
+			grid-gap: 16px;
+		}
+		label {
+			grid-column: 1 / 2;
+			@include font-calculator($font_family_body, 14px, 0);
+		}
+
+		input {
+			grid-column: 2 / 3;
+			@include font-calculator($font_family_body, 14px, 0);
+			&:not([type=submit]) {
+				padding: 10px;
+			}
+		}
+
+		input[type=submit] {
+			width: 200px;
+			background: none;
+			&:hover {
+				background: $formSubmitHover;
+			}
+		}
 	}
 
 </style>
