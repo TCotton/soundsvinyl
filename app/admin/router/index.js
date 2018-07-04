@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import VueSuperagent from 'vue-superagent'
+import VuePaginate from 'vue-paginate';
 import Home from '../components/Home';
 import Pages from '../components/Pages';
 import Page from '../components/Page';
@@ -11,7 +12,9 @@ import AddPage from '../components/AddPage';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-Vue.use(Router, VueSuperagent);
+Vue.use(Router);
+Vue.use(VuePaginate);
+Vue.use(VueSuperagent);
 
 export default new Router({
 	routes: [
