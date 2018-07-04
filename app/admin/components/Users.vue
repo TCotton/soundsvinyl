@@ -13,9 +13,9 @@
 
 			<tr
 				v-for="user in Users"
-				:key="user.id">
+				:key="user._id">
 				<th scope="row">{{ user.email }}</th>
-				<td>Edit</td>
+				<td><router-link :to="{ name: 'User', params: { id: user._id }}">Edit</router-link></td>
 				<td>Delete</td>
 			</tr>
 

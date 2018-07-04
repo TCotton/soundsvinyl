@@ -29,7 +29,7 @@
 					<td>{{ page.videoLink }}</td>
 					<td>{{ page.description }}</td>
 					<td>{{ page.categories }}</td>
-					<td>Edit</td>
+					<td><router-link :to="{ name: 'Page', params: { id: page._id }}">Edit</router-link></td>
 					<td>Delete</td>
 				</tr>
 			</table>
