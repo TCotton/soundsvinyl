@@ -11,10 +11,7 @@
 
 <script>
 	export default {
-		name: 'Header',
-		mounted() {
-			console.log('Simple Header Component mounted.');
-		}
+		name: 'Header'
 	}
 </script>
 

@@ -6,10 +6,7 @@
 
 <script>
 	export default {
-		name: 'Footer',
-		mounted () {
-			console.log('Simple Footer Component mounted.');
-		}
+		name: 'Footer'
 	}
 </script>
 
