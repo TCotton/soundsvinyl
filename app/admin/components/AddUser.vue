@@ -10,9 +10,9 @@
 
 			<label for="addUserEmail">User email which will be their username</label>
 			<input
+				id="addUserEmail"
 				v-model="addUserEmail"
 				type="email"
-				id="addUserEmail"
 				name="addUserEmail"
 				maxlength="64"
 				required
@@ -22,8 +22,8 @@
 
 			<label for="addUserPasswordOne">Password</label>
 			<input
-				v-model="addUserPasswordOne"
 				id="addUserPasswordOne"
+				v-model="addUserPasswordOne"
 				type="password"
 				maxlength="64"
 				required
@@ -33,8 +33,8 @@
 
 			<label for="addUserPasswordTwo">Same password again (must match)</label>
 			<input
-				v-model="addUserPasswordTwo"
 				id="addUserPasswordTwo"
+				v-model="addUserPasswordTwo"
 				type="password"
 				maxlength="64"
 				required
