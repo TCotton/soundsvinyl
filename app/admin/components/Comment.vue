@@ -1,7 +1,7 @@
 <template>
 	<div :class="$style.comment">
 
-		<h1>{{ msg }}</h1>
+		<h2>{{ msg }}</h2>
 
 	</div>
 </template>

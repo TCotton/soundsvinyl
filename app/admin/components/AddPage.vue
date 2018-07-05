@@ -1,6 +1,6 @@
 <template>
 	<div :class="$style.addPage">
-		&nbsp;&nbsp;
+		&nbsp;<h2>Add a new page</h2>
 		<form
 			id="addPage"
 			name="addPage"

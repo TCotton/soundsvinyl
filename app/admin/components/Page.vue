@@ -1,7 +1,7 @@
 <template>
 	<div :class="$style.page">
-		<h1>{{ msg }}</h1>
-		<h2>Page</h2>
+		<h2>{{ msg }}</h2>
+		<h3>Page</h3>
 		<p>This is a page</p>
 	</div>
 </template>

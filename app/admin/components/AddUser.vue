@@ -1,6 +1,6 @@
 <template>
 	<div :class="$style.addUser">
-		<h1>Add a new user</h1>
+		<h2>Add a new user</h2>
 		<form
 			id="addUser"
 			name="addUser"

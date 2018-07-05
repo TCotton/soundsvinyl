@@ -1,7 +1,7 @@
 <template>
 	<div :class="$style.user">
-		<h1>{{ msg }}</h1>
-		<h2>User</h2>
+		<h2>{{ msg }}</h2>
+		<h3>User</h3>
 		<p>This is a user</p>
 	</div>
 </template>

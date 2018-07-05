@@ -1,6 +1,7 @@
 <template>
 	<div :class="$style.pages">
-		<h1>{{ msg }}</h1>
+		<h2>{{ msg }}</h2>
+		<p v-if="ok"></p>
 		<paginate
 			:list="Pages"
 			:per="10"
@@ -29,7 +30,9 @@
 					<td>{{ page.videoLink }}</td>
 					<td>{{ page.description }}</td>
 					<td>{{ page.categories }}</td>
-					<td><router-link :to="{ name: 'Page', params: { id: page._id }}">Edit</router-link></td>
+					<td>
+						<router-link :to="{ name: 'Page', params: { id: page._id }}">Edit</router-link>
+					</td>
 					<td>Delete</td>
 				</tr>
 			</table>
@@ -52,10 +55,14 @@
 		name: 'Pages',
 		data () {
 			return {
+				noContent: false,
 				msg: 'Welcome to Your Pages section',
 				paginate: ['Pages'],
 				Pages: []
 			}
+		},
+		beforeCreate () {
+			this.noContent = false
 		},
 		created () {
 			request
@@ -65,6 +72,10 @@
 						new Error(err);
 					}
 					this.Pages = res.body;
+
+					if (res.body.length === 0) {
+						this.noContent = true;
+					}
 				});
 		}
 	}

@@ -1,6 +1,6 @@
 <template>
 	<div :class="$style.users">
-		<h1>{{ msg }}</h1>
+		<h2>{{ msg }}</h2>
 
 		<table>
 			<caption>Users list</caption>

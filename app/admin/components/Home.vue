@@ -1,7 +1,7 @@
 <template>
 	<div :class="$style.hello">
-		<h1>{{ msg }}</h1>
-		<h2>Essential Links</h2>
+		<h2>{{ msg }}</h2>
+		<h3>Essential Links</h3>
 		<ul>
 			<li> <router-link to="/admin/pages">List of pages</router-link> </li>
 			<li> <router-link to="/admin/users">List of users</router-link> </li>
