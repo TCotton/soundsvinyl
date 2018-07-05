@@ -8,7 +8,9 @@
     "test:back": "ava -v node/test/test.js",
     "build": "cross-env NODE_ENV=production webpack --mode production ./app/front/index.js --output ./dist/bundle.js",
     "start:dev": "cross-env NODE_ENV=development webpack-dev-server --mode development ./app/single-spa-config.js --open",
-    "start": "nodemon -r source-map-support/register --experimental-modules ./node/bin/www",
+    "start": "node --experimental-modules ./server.js",
+		"start:nodeDev": "nodemon --experimental-modules  ./server.js",
+		"start:static": "nodemon -r source-map-support/register --experimental-modules ./node/bin/www",
     "lint": "eslint app/**",
     "sass-lint": "sass-lint  --config .sasslintrc '**/*.scss' --verbose --no-exit --ignore './node_modules/**/**/**/**/*.scss'",
     "ssr": "cross-env NODE_ENV=production webpack --mode production node ./node/server.js"
