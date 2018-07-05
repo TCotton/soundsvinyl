@@ -21,4 +21,5 @@ yarn-debug.log*
 data
 dist/
 test/coverage/
+nodeService/config/*
 
