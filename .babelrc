@@ -17,6 +17,7 @@
 		}
 	},
 	"plugins": [
+		"syntax-dynamic-import",
 		[
 			"react-css-modules",
 			{

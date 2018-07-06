@@ -35,7 +35,10 @@ module.exports = {
 				test: /\.(js|jsx)$/,
 				exclude: (/node_modules/),
 				use: {
-					loader: 'babel-loader'
+					loader: 'babel-loader',
+					options: {
+						cacheDirectory: true
+					}
 				}
 			},
 			{
@@ -120,7 +123,7 @@ module.exports = {
 			template: 'src/index.html',
 		}),
 		new MiniCssExtractPlugin({
-			filename: '[name].css',
+			filename: '[name].[chunkhash].css',
 			chunkFilename: '[id].css'
 		}),
 		new VueLoaderPlugin(),
