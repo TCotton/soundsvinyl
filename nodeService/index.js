@@ -1,5 +1,7 @@
 const express = require('express');
 const http = require('http');
+const https = require('https');
+const fs = require('fs');
 const createError = require('http-errors');
 const path = require('path');
 // const favicon = require('serve-favicon');
@@ -50,8 +52,25 @@ app.use((err, req, res) => {
 	res.render('error');
 });
 
-http.createServer(app).listen(app.get('port'), () => {
-	console.log('Express server listening on port ' + app.get('port'));
-});
+if (app.get('env') === 'development' && fs.existsSync(`${__dirname}/config/key.pem`) && fs.existsSync(`${__dirname}/config/cert.pem`)) {
+
+	const httpsOptions = {
+		key: fs.readFileSync(`${__dirname}/config/key.pem`),
+		cert: fs.readFileSync(`${__dirname}/config/cert.pem`)
+	}
+
+	https.createServer(httpsOptions, app).listen(app.get('port'), () => {
+		console.log('server running at ' + app.get('port'));
+	})
+
+} else {
+
+	http.createServer(app).listen(app.get('port'), () => {
+		console.log('Express server listening on port ' + app.get('port'));
+	});
+
+}
+
+
 
 
