@@ -24,7 +24,7 @@ app.set('port', process.env.PORT || 3000);
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded( { extended: false }));
+app.use(express.urlencoded({extended: false}));
 app.use(cookieParser);
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -45,14 +45,22 @@ app.use((req, res, next) => {
 app.use((err, req, res) => {
 	// set locals, only providing error in development
 	res.locals.message = err.message;
-	res.locals.error = req.app.get('env') === 'development' ? err: {};
+	res.locals.error = req.app.get('env') === 'development' ? err : {};
 
 	// render the error page
 	res.status(err.status || 500);
 	res.render('error');
 });
 
-if (app.get('env') === 'development' && fs.existsSync(`${__dirname}/config/key.pem`) && fs.existsSync(`${__dirname}/config/cert.pem`)) {
+// routes based category
+require('./routes')(app);
+
+// miscellaneous routes based on use
+require('./misc/logger');
+
+if (app.get('env') === 'development' &&
+	fs.existsSync(`${__dirname}/config/key.pem`) &&
+	fs.existsSync(`${__dirname}/config/cert.pem`)) {
 
 	const httpsOptions = {
 		key: fs.readFileSync(`${__dirname}/config/key.pem`),
@@ -61,7 +69,7 @@ if (app.get('env') === 'development' && fs.existsSync(`${__dirname}/config/key.p
 
 	https.createServer(httpsOptions, app).listen(app.get('port'), () => {
 		console.log('server running at ' + app.get('port'));
-	})
+	});
 
 } else {
 
