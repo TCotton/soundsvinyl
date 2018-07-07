@@ -9,8 +9,9 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 // const mongo = require('mongodb');
-const monk = require('monk');
-const db = monk('localhost:27017/soundsvinyl');
+const mongoose = require('mongoose');
+const db = mongoose.connect('mongodb://localhost:27017/soundsvinyl', { useNewUrlParser: true });
+// MongoClient.connect("mongodb://localhost:27017/YourDB", { useNewUrlParser: true })
 
 // const indexRouter = require('./routes/index');
 // const usersRouter = require('./routes/users');
@@ -24,7 +25,9 @@ app.set('port', process.env.PORT || 3000);
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({
+	extended: false
+}));
 app.use(cookieParser);
 app.use(express.static(path.join(__dirname, 'public')));
 

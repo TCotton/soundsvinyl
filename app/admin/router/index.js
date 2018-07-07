@@ -16,7 +16,10 @@ import Comment from '../components/Comment';
 
 Vue.use(Router);
 Vue.use(VuePaginate);
-Vue.use(VueSuperagent);
+const serviceURI = window.location.protocol + '//' + window.location.hostname + ':3000' + '/apiV1';
+Vue.use(VueSuperagent, {
+	baseUrl: serviceURI
+})
 
 export default new Router({
 	routes: [

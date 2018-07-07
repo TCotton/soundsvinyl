@@ -13,7 +13,7 @@ import AboutUs from './about';
 import MyAccount from './account';
 
 if (!process.env.production) {
-	const a11y = require('').default
+	const a11y = require('react-a11y').default;
 	a11y(React, ReactDOM, {
 		rules: {
 			'img-uses-alt': 'warn'
@@ -22,7 +22,7 @@ if (!process.env.production) {
 	})
 }
 
-export default class RootComponent extends React.Component {
+export default class rootComponent extends React.Component {
 	render() {
 		return (
 			<div className='wrapper'>
