@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import VueSuperagent from 'vue-superagent'
+import VueResource from 'vue-resource';
 import VuePaginate from 'vue-paginate';
 import Home from '../components/Home';
 import Pages from '../components/Pages';
@@ -16,10 +16,7 @@ import Comment from '../components/Comment';
 
 Vue.use(Router);
 Vue.use(VuePaginate);
-const serviceURI = window.location.protocol + '//' + window.location.hostname + ':3000' + '/apiV1';
-Vue.use(VueSuperagent, {
-	baseUrl: serviceURI
-})
+Vue.use(VueResource);
 
 export default new Router({
 	routes: [

@@ -91,6 +91,8 @@
 </template>
 
 <script>
+	import { homeURI } from '../../helper_constants';
+
 	export default {
 		name: 'AddPage',
 		data () {
@@ -116,8 +118,11 @@
 				this.errors = [];
 			},
 			onPost () {
-
-				this.$http.post('/page/add', this.AddPageForm).then((response) => {
+				this.$http.post(`${homeURI}/page/add`, JSON.stringify(this.AddPageForm), {
+					headers: {
+						'Content-Type': 'multipart/form-data'
+					}
+				}).then((response) => {
 					console.log(response.data);
 				}, (response) => {
 					console.log(response.data);
