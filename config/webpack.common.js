@@ -6,7 +6,9 @@ const path = require('path');
 module.exports = {
 	target: 'web',
 	devServer: {
-		historyApiFallback: true
+		historyApiFallback: true,
+		compress: true,
+		port: 3000
 	},
 	resolve: {
 		alias: {

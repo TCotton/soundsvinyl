@@ -17,8 +17,8 @@ const db = mongoose.connect('mongodb://localhost:27017/soundsvinyl', { useNewUrl
 
 const app = express();
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+/*app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');*/
 
 app.set('port', process.env.PORT || 8443);
 
@@ -54,15 +54,37 @@ app.use((err, req, res) => {
 	res.render('error');
 });
 
+
+if (app.get('env') === 'development') {
+
+	console.dir('development');
+
+	app.use(express.static(__dirname + '/src'));
+
+	app.get('/*', function (req, res, next) {
+
+		console.dir(req.url);
+
+		if (!req.url.includes('/apiV1/')) {
+			console.dir('not apiV1');
+			res.sendFile(__dirname + '/src/index.html');
+		}
+
+		if (req.url.includes('/apiV1/')) {
+			console.dir('yes apiV1');
+			next();
+		}
+
+	});
+}
+
 // routes based category
 require('./routes')(app);
 
 // miscellaneous routes based on use
 require('./misc/logger');
 
-app.get('/', function(req, res){
-	res.send('hello world');
-});
+module.exports = app;
 
 if (app.get('env') === 'development' &&
 	fs.existsSync(`${__dirname}/config/server.key`) &&
