@@ -5,7 +5,6 @@
 			id="addPage"
 			name="addPage"
 			method="post"
-			novalidate
 			@submit="onSubmit">
 
 			<label for="addPageTitle">Record title</label>
@@ -76,7 +75,7 @@
 			<input
 				id="addPageCategories"
 				v-model="AddPageForm.addPageCategories"
-				type="url"
+				type="text"
 				required
 				autocorrect="off"
 				autocapitalize="off"
@@ -118,10 +117,15 @@
 				this.errors = [];
 			},
 			onPost () {
-				this.$http.post(`${homeURI}/page/add`, JSON.stringify(this.AddPageForm), {
+/*				console.dir(JSON.stringify(this.AddPageForm));
+				console.dir(this.AddPageForm);*/
+				this.$http.post(`${homeURI}/page/add`, {
+					params: this.AddPageForm,
+				}, {
 					headers: {
 						'Content-Type': 'multipart/form-data'
-					}
+					},
+					emulateJSON: true
 				}).then((response) => {
 					console.log(response.data);
 				}, (response) => {
@@ -158,6 +162,7 @@
 			grid-column: 2 / 3;
 			min-height: 150px;
 			padding: 10px;
+			@include font-calculator($font_family_body, 14px, 0);
 		}
 
 		input[type=submit] {

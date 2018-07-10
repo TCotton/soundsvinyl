@@ -2,76 +2,64 @@ const express = require('express');
 const http = require('http');
 const https = require('https');
 const fs = require('fs');
-const createError = require('http-errors');
+// const createError = require('http-errors');
 const path = require('path');
+const bodyParser = require('body-parser');
 // const favicon = require('serve-favicon');
-const cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser'); // this is causing server to fail
 const logger = require('morgan');
-
-// const mongo = require('mongodb');
+const compress = require('compression');
 const mongoose = require('mongoose');
-const db = mongoose.connect('mongodb://localhost:27017/soundsvinyl', { useNewUrlParser: true });
 
-// const indexRouter = require('./routes/index');
-// const usersRouter = require('./routes/users');
+const db = mongoose.connect('mongodb://localhost:27017/soundsvinyl', {
+	useNewUrlParser: true
+});
 
 const app = express();
 
-/*app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');*/
+if (app.get('env') === 'development') {
+	mongoose.set('debug', true) // enable logging collection methods + arguments to the console
+}
 
 app.set('port', process.env.PORT || 8443);
 
+app.use(cookieParser())
 app.use(logger('dev'));
-app.use(express.json());
+app.use(compress());
+app.use(bodyParser.urlencoded({
+	extended: true
+}));
+app.use(bodyParser.json());
 app.use(express.urlencoded({
 	extended: false
 }));
-app.use(cookieParser);
-app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(express.static(path.join(global.__base, 'public')));
 
 app.use((req, res, next) => {
 	req.db = db;
 	next();
 });
 
-// app.use('/', indexRouter);
-// app.use('/users', usersRouter);
-
-// catch 404 and forward to error handler
-app.use((req, res, next) => {
-	next(createError(404));
+app.get('/', function (req, res) {
+	res.send('Hello World!');
 });
-
-// error handler
-app.use((err, req, res) => {
-	// set locals, only providing error in development
-	res.locals.message = err.message;
-	res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-	// render the error page
-	res.status(err.status || 500);
-	res.render('error');
-});
-
 
 if (app.get('env') === 'development') {
 
-	console.dir('development');
+	// app.use(express.static(__dirname + '/src'));
 
-	app.use(express.static(__dirname + '/src'));
+	app.all('/', function (req, res, next) {
 
-	app.get('/*', function (req, res, next) {
+		console.dir('development');
 
 		console.dir(req.url);
 
 		if (!req.url.includes('/apiV1/')) {
-			console.dir('not apiV1');
-			res.sendFile(__dirname + '/src/index.html');
+			res.sendFile(path.join(global.__base, '/src/index.html'));
 		}
 
 		if (req.url.includes('/apiV1/')) {
-			console.dir('yes apiV1');
 			next();
 		}
 
@@ -80,11 +68,35 @@ if (app.get('env') === 'development') {
 
 // routes based category
 require('./routes')(app);
+require('./routes/page')(app);
 
 // miscellaneous routes based on use
 require('./misc/logger');
 
 module.exports = app;
+
+// error handler
+app.use((err, req, res) => {
+	// set locals, only providing error in development
+
+	if (!res.locals) {
+		res.locals = {};
+	}
+
+	res.locals.message = err.message;
+	res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+	// render the error page
+	res.status(err.status || 500);
+	res.render('error');
+});
+
+// catch 404 and forward to error handler
+/*
+app.use((req, res, next) => {
+	next(createError(404));
+});
+*/
 
 if (app.get('env') === 'development' &&
 	fs.existsSync(`${__dirname}/config/server.key`) &&
@@ -106,7 +118,3 @@ if (app.get('env') === 'development' &&
 	});
 
 }
-
-
-
-

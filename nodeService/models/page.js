@@ -1,37 +1,48 @@
-/*eslint no-undef:0*/
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const PageSchema = new Schema({
 	title: {
-		type: String,
+		type: mongoose.Schema.Types.String,
 		trim: true,
 		required: true
 	},
 	subTitle: {
-		type: String,
+		type: mongoose.Schema.Types.String,
 		trim: true,
 	},
 	videoLink: {
-		type: String,
+		type: mongoose.Schema.Types.String,
 		trim: true,
 		required: true,
 		maxlength: 2083
 	},
 	categories: {
-		type: Array,
+		type: mongoose.Schema.Types.Array,
 	},
 	userId: {
-		type: ObjectId,
+		type: mongoose.Schema.Types.Oid,
+	},
+	addPageDescriptionOne: {
+		type: mongoose.Schema.Types.String,
+		trim: true
+	},
+	addPageDescriptionTwo: {
+		type: mongoose.Schema.Types.String,
+		trim: true
+	},
+	addPageDescriptionThree: {
+		type: mongoose.Schema.Types.String,
+		trim: true
 	},
 	date: {
-		type: Date,
+		type: mongoose.Schema.Types.Date,
 		default: Date.now
 	},
 	updated: {
-		type: Date,
+		type: mongoose.Schema.Types.Date,
 		default: Date.now
 	},
 });
 
-export default mongoose.model('Page', PageSchema);
+module.exports = mongoose.model('Page', PageSchema);

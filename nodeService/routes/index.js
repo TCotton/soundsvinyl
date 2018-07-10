@@ -7,6 +7,16 @@ module.exports = (app) => {
 			res.setHeader('Cache-Control', 'no-cache');
 			next();
 		});
+
+		// Error Handling
+		app.use(function (err, req, res, next) {
+			if (err) {
+				next(err);
+			} else {
+				next();
+			}
+		});
+
 	}
 
 	app.all('*', function (req, res, next) {
@@ -14,5 +24,4 @@ module.exports = (app) => {
 		res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With');
 		next();
 	});
-
 };

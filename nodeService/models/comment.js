@@ -1,30 +1,29 @@
-/*eslint no-undef:0*/
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const CommentSchema = new Schema({
 	comment: {
-		type: String,
+		type: mongoose.Schema.Types.String,
 		trim: true,
 		maxlength: 24,
 		required: true
 	},
 	articleId: {
-		type: ObjectId,
+		type: mongoose.Schema.Types.Oid,
 		required: true
 	},
 	userId: {
-		type: ObjectId,
+		type: mongoose.Schema.Types.Oid,
 		required: true
 	},
 	date: {
-		type: Date,
+		type: mongoose.Schema.Types.Date,
 		default: Date.now
 	},
 	updated: {
-		type: Date,
+		type: mongoose.Schema.Types.Date,
 		default: Date.now
 	},
 });
 
-export default mongoose.model('Comment', CommentSchema);
+module.exports = mongoose.model('Comment', CommentSchema);
