@@ -1,7 +1,6 @@
 <template>
 	<div :class="$style.pages">
 		<h2>{{ msg }}</h2>
-		<p v-if="ok"></p>
 		<paginate
 			:list="Pages"
 			:per="10"

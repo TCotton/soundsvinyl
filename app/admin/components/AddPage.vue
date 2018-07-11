@@ -22,6 +22,7 @@
 			<input
 				id="addPageSubTitle"
 				v-model="AddPageForm.addPageSubTitle"
+				name="addPageSubTitle"
 				type="text"
 				required
 				autocorrect="off"
@@ -32,6 +33,7 @@
 			<input
 				id="addPageVideoLink"
 				v-model="AddPageForm.addPageVideoLink"
+				name="addPageVideoLink"
 				type="url"
 				required
 				autocorrect="off"
@@ -75,6 +77,7 @@
 			<input
 				id="addPageCategories"
 				v-model="AddPageForm.addPageCategories"
+				name="addPageCategories"
 				type="text"
 				required
 				autocorrect="off"

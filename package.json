@@ -46,6 +46,7 @@
     "jade": "1.11.0",
     "lodash": "4.17.10",
     "memory-fs": "0.4.1",
+    "moment": "2.22.2",
     "mongodb": "3.0.10",
     "mongoose": "5.2.1",
     "monk": "6.0.6",

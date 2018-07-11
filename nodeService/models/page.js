@@ -15,7 +15,7 @@ const PageSchema = new Schema({
 		type: mongoose.Schema.Types.String,
 		trim: true,
 		required: true,
-		maxlength: 2083
+		maxlength: 2083,
 	},
 	categories: {
 		type: mongoose.Schema.Types.Array,
@@ -25,23 +25,22 @@ const PageSchema = new Schema({
 	},
 	addPageDescriptionOne: {
 		type: mongoose.Schema.Types.String,
-		trim: true
+		trim: true,
 	},
 	addPageDescriptionTwo: {
 		type: mongoose.Schema.Types.String,
-		trim: true
+		trim: true,
 	},
 	addPageDescriptionThree: {
 		type: mongoose.Schema.Types.String,
-		trim: true
+		trim: true,
 	},
 	date: {
 		type: mongoose.Schema.Types.Date,
-		default: Date.now
+		default: Date.now,
 	},
 	updated: {
 		type: mongoose.Schema.Types.Date,
-		default: Date.now
 	},
 });
 
