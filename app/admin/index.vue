@@ -58,6 +58,10 @@
 		@include font-calculator($font_family_body, 14px, 0.25);
 		font-weight: 500;
 		padding: 0 10px 0 0;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		word-wrap: break-word;
 	}
 
 	td {

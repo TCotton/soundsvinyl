@@ -117,15 +117,14 @@
 				this.errors = [];
 			},
 			onPost () {
-/*				console.dir(JSON.stringify(this.AddPageForm));
-				console.dir(this.AddPageForm);*/
-				this.$http.post(`${homeURI}/page/add`, {
-					params: this.AddPageForm,
-				}, {
+
+				// use if statement to check if there is a comma-separated list of words
+				// this.AddPageForm.addPageCategories = this.AddPageForm.addPageCategories.split(',');
+
+				this.$http.post(`${homeURI}/page/add`, JSON.stringify(this.AddPageForm), {
 					headers: {
-						'Content-Type': 'multipart/form-data'
-					},
-					emulateJSON: true
+						'Content-Type': 'application/x-www-form-urlencoded'
+					}
 				}).then((response) => {
 					console.log(response.data);
 				}, (response) => {

@@ -18,6 +18,8 @@ Vue.use(Router);
 Vue.use(VuePaginate);
 Vue.use(VueResource);
 
+Vue.http.options.emulateJSON = true;
+
 export default new Router({
 	routes: [
 		{

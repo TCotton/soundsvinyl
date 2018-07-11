@@ -49,7 +49,7 @@
 
 <script>
 	import request from 'superagent';
-	import { dummy } from '../../helper_constants';
+	import { homeURI } from '../../helper_constants';
 
 	export default {
 		name: 'Pages',
@@ -66,7 +66,7 @@
 		},
 		created () {
 			request
-				.get(dummy.pages)
+				.get(`${homeURI}/page/get`)
 				.end((err, res) => {
 					if (err) {
 						new Error(err);

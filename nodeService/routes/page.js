@@ -4,38 +4,45 @@ module.exports = (app) => {
 
 	app.route('/apiV1/page/add').post((req, res) => {
 
-		console.dir(req.params);
+		// wtf is this??
+		// data is being passed incorrectly in Vue
+		const ObjectKeys = Object.keys(req.body)[0];
+		const body = JSON.parse(ObjectKeys);
 
-		/**
-		 * {"addPageTitle":"Here is the record title","addPageSubTitle":"here is the record label",
-		 * "addPageVideoLink":"https://stackoverflow.com/questions/30379127/how-to-install-earlier-version-of-mongodb-with-homebrew",
-		 * "addPageDescriptionOne":"This is the first paragraph description","addPageDescriptionTwo":"This is the second paragraph description",
-		 * "addPageDescriptionThree":"This is the third paragraph description","addPageCategories":"this, is, a, list"}
-		 */
+		if (app.get('env') === 'development') {
+			if(!body.userId) {
+				body.userId =  Math.random().toString(36).substring(10);
+			}
+		}
 
 		Page.create({
-			title: req.body.addPageTitle,
-			subTitle: req.body.subTitle,
-			videoLink: req.body.videoLink,
-			categories: req.body.categories,
-			addPageDescriptionOne: req.body.addPageDescriptionOne,
-			addPageDescriptionTwo: req.body.addPageDescriptionTwo,
-			addPageDescriptionThree: req.body.addPageDescriptionThree,
-			userId: req.body.userId,
-			date: req.body.date,
-			updated: req.body.updated,
+			title: body.addPageTitle,
+			subTitle: body.addPageSubTitle,
+			videoLink: body.addPageVideoLink,
+			categories: body.addPageCategories,
+			addPageDescriptionOne: body.addPageDescriptionOne,
+			addPageDescriptionTwo: body.addPageDescriptionTwo,
+			addPageDescriptionThree: body.addPageDescriptionThree,
+			userId: body.userId,
+			date: Date.now(),
 		}, (err, page) => {
 
-			if (err) {
-				res.send(err);
-			}
-
-			if (page.length > 0) {
+			if (!err){
 				res.json(page);
+			} else {
+				throw err;
 			}
-
 		});
-
 	});
 
+	app.route('/apiV1/page/get').get((req, res) => {
+
+		Page.find({}, function(err, pages) {
+			if (!err){
+				res.json(pages);
+			} else {
+				throw err;
+			}
+		});
+	});
 };

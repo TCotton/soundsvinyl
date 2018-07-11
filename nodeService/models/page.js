@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
+//mongoose.Schema.Types.Oid
 const PageSchema = new Schema({
 	title: {
 		type: mongoose.Schema.Types.String,
@@ -21,7 +21,7 @@ const PageSchema = new Schema({
 		type: mongoose.Schema.Types.Array,
 	},
 	userId: {
-		type: mongoose.Schema.Types.Oid,
+		type: mongoose.Schema.Types.String,
 	},
 	addPageDescriptionOne: {
 		type: mongoose.Schema.Types.String,
