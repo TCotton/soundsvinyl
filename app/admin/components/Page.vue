@@ -173,19 +173,19 @@
 			onPost() {
 
 				const formData = new FormData();
-				formData.append('id', this.EditPageForm.editPageId);
-				formData.append('title', this.EditPageForm.editPageTitle);
-				formData.append('subTitle', this.EditPageForm.editPageSubTitle);
-				formData.append('videoLink', this.EditPageForm.editPageVideoLink);
-				formData.append('categories', this.EditPageForm.editPageCategories);
-				formData.append('addPageDescriptionOne', this.EditPageForm.editPageDescriptionOne);
-				formData.append('addPageDescriptionTwo', this.EditPageForm.editPageDescriptionTwo);
-				formData.append('addPageDescriptionThree', this.EditPageForm.editPageDescriptionThree);
-				formData.append('updated', this.EditPageForm.editUpdate);
+				formData.set('id', this.EditPageForm.editPageId);
+				formData.set('title', this.EditPageForm.editPageTitle);
+				formData.set('subTitle', this.EditPageForm.editPageSubTitle);
+				formData.set('videoLink', this.EditPageForm.editPageVideoLink);
+				formData.set('categories', this.EditPageForm.editPageCategories);
+				formData.set('addPageDescriptionOne', this.EditPageForm.editPageDescriptionOne);
+				formData.set('addPageDescriptionTwo', this.EditPageForm.editPageDescriptionTwo);
+				formData.set('addPageDescriptionThree', this.EditPageForm.editPageDescriptionThree);
+				formData.set('updated', this.EditPageForm.editUpdate);
 
 				this.$http.put(`${homeURI}/page/update`, formData, {
 					headers: {
-						'Content-Type': 'application/form-data'
+						'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
 					}
 				}).then((response) => {
 					return response;

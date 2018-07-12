@@ -66,7 +66,6 @@
 						new Error(err);
 					}
 					this.Comments = res.body;
-					console.dir(res.body);
 				});
 		}
 	}

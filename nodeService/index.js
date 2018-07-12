@@ -44,10 +44,6 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.get('/', (req, res) => {
-	res.send('Hello World!');
-});
-
 app.use((req, res, next) => {
 	res.header('Access-Control-Allow-Origin', '*');
 	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
@@ -83,6 +79,7 @@ if (app.get('env') === 'development') {
 // routes based category
 require('./routes')(app);
 require('./routes/page')(app);
+require('./routes/user')(app);
 
 // miscellaneous routes based on use
 require('./misc/logger');

@@ -1,43 +1,55 @@
 <template>
 	<div :class="$style.addUser">
 		<h2>Add a new user</h2>
+
 		<form
 			id="addUser"
+			:action="actionURL"
 			name="addUser"
 			method="post"
-			novalidate
-			@submit="onSubmit">
+			@submit.prevent="validateBeforeSubmit">
 
 			<label for="addUserEmail">User email which will be their username</label>
 			<input
+				v-validate="{ required: true, email: true }"
 				id="addUserEmail"
-				v-model="addUserEmail"
+				v-model="addUser.email"
 				type="email"
-				name="addUserEmail"
+				name="email"
 				maxlength="64"
-				required
 				autocorrect="off"
 				autocapitalize="off"
 				value="">
+
+			<span
+				v-show="errors.has('addUserEmail')"
+				:class="$style.error">{{ errors.first('addUserEmail') }}</span>
 
 			<label for="addUserPasswordOne">Password</label>
 			<input
+				v-validate="{ required: true, confirmed: 'confirmation' }"
 				id="addUserPasswordOne"
-				v-model="addUserPasswordOne"
+				v-model="addUser.password"
 				type="password"
+				name="password"
 				maxlength="64"
-				required
 				autocorrect="off"
 				autocapitalize="off"
 				value="">
 
+			<span
+				v-show="errors.has('addUserPasswordOne')"
+				:class="$style.error">{{ errors.first('addUserPasswordOne') }}</span>
+
 			<label for="addUserPasswordTwo">Same password again (must match)</label>
 			<input
+				v-validate="'required'"
 				id="addUserPasswordTwo"
-				v-model="addUserPasswordTwo"
+				ref="confirmation"
+				v-model="addUser.passwordTwo"
 				type="password"
+				name="addUserPasswordTwo"
 				maxlength="64"
-				required
 				autocorrect="off"
 				autocapitalize="off"
 				value="">
@@ -51,32 +63,40 @@
 </template>
 
 <script>
+	import { homeURI } from '../../helper_constants';
+
 	export default {
 		name: 'AddUser',
 		data () {
 			return {
-				errors: [],
-				addUserEmail: null,
-				addUserPasswordOne: null,
-				addUserPasswordTwo: null,
-				msg: 'Welcome to Add User section'
+				addUser: {
+					email: '',
+					password: '',
+					passwordTwo: '',
+				},
+				msg: 'Welcome to Add User section',
+				actionURL: `${homeURI}/user/add`,
 			}
 		},
 		methods: {
-			onSubmit (event) {
-				event.preventDefault();
-				this.validatePassword();
-			},
-			validatePassword () {
 
-				const addUserPasswordOne = document.getElementById('addUserPasswordOne');
-				const addUserPasswordTwo = document.getElementById('addUserPasswordTwo');
+			validateBeforeSubmit () {
+				this.$validator.validateAll().then((result) => {
 
-				if (addUserPasswordOne.value !== addUserPasswordTwo.value) {
-					addUserPasswordTwo.setCustomValidity('Passwords Don\'t Match');
-				} else {
-					addUserPasswordTwo.setCustomValidity('');
-				}
+					if (result) {
+						this.$http.post(this.actionURL,  JSON.stringify(this.addUser), {
+							headers: {
+								'Content-Type': 'application/json'
+							}
+						}).then((response) => {
+							return response;
+						}, (response) => {
+							throw Error(response.data);
+						});
+
+					}
+
+				});
 			}
 		}
 	}
@@ -110,6 +130,11 @@
 			&:hover {
 				background: $formSubmitHover;
 			}
+		}
+
+		.error {
+			@include font-calculator($font_family_body, 14px);
+			color: $error;
 		}
 	}
 </style>

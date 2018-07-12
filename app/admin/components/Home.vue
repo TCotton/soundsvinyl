@@ -58,6 +58,7 @@
 		li {
 			@include font-calculator($font_family_body, 16px, 0);
 			display: block;
+			margin: 0;
 		}
 	}
 </style>

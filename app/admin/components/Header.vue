@@ -4,6 +4,8 @@
 			<router-link to="/admin"><h1>soundsvinyl.co</h1></router-link>
 		</div>
 		<div :class="$style.navRightColumn">
+			<router-link to="/admin"><p>Home</p></router-link>
+			<p><a @click="$router.go(-1)">Back</a></p>
 			<router-link to="/admin"><p>Logout</p></router-link>
 		</div>
 	</header>
@@ -34,5 +36,13 @@
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;
+
+		> p {
+			padding: 0 20px 0 0;
+		}
+
+		> a:first-of-type p {
+			padding: 0 20px 0 0;
+		}
 	}
 </style>

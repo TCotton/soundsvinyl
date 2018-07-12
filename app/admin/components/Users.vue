@@ -15,7 +15,9 @@
 				v-for="user in Users"
 				:key="user._id">
 				<th scope="row">{{ user.email }}</th>
-				<td><router-link :to="{ name: 'User', params: { id: user._id }}">Edit</router-link></td>
+				<td>
+					<router-link :to="{ name: 'User', params: { id: user._id }}">Edit</router-link>
+				</td>
 				<td>Delete</td>
 			</tr>
 
@@ -56,7 +58,7 @@
 	}
 
 	ul {
-		list-style-type: none;
+		list-style: none;
 		padding: 0;
 	}
 
