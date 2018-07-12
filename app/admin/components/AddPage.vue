@@ -129,9 +129,9 @@
 						'Content-Type': 'application/x-www-form-urlencoded'
 					}
 				}).then((response) => {
-					console.log(response.data);
+					return response;
 				}, (response) => {
-					console.log(response.data);
+					throw Error(response.data);
 				});
 			}
 		}

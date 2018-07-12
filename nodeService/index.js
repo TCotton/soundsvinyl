@@ -44,15 +44,26 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
 	res.send('Hello World!');
+});
+
+app.use((req, res, next) => {
+	res.header('Access-Control-Allow-Origin', '*');
+	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
+	res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+	if (req.method === 'OPTIONS') {
+		res.send(200);
+	} else {
+		next();
+	}
 });
 
 if (app.get('env') === 'development') {
 
 	// app.use(express.static(__dirname + '/src'));
 
-	app.all('/', function (req, res, next) {
+	app.all('/', (req, res, next) => {
 
 		console.dir('development');
 
@@ -90,8 +101,6 @@ module.exports = app;
 	res.locals.error = req.app.get('env') === 'development' ? err : {};
 
 	// render the error page
-
-
 
 	if (!err.status) {
 		err.status = 500;

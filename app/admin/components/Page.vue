@@ -120,6 +120,7 @@
 </template>
 
 <script>
+	import moment from 'moment';
 	import { homeURI } from '../../helper_constants';
 
 	export default {
@@ -153,7 +154,7 @@
 					editPageDescriptionTwo: response.data.addPageDescriptionTwo,
 					editPageDescriptionThree: response.data.addPageDescriptionThree,
 					editPageCategories: response.data.categories,
-					editDate: response.data.date,
+					editDate: moment(response.data.date).format('h:mm:ss a, MMMM Do YYYY'),
 					editUpdate: new Date().toISOString(),
 					editUserId: response.data.userId,
 				};
@@ -170,7 +171,27 @@
 				this.errors = [];
 			},
 			onPost() {
-				return true;
+
+				const formData = new FormData();
+				formData.append('id', this.EditPageForm.editPageId);
+				formData.append('title', this.EditPageForm.editPageTitle);
+				formData.append('subTitle', this.EditPageForm.editPageSubTitle);
+				formData.append('videoLink', this.EditPageForm.editPageVideoLink);
+				formData.append('categories', this.EditPageForm.editPageCategories);
+				formData.append('addPageDescriptionOne', this.EditPageForm.editPageDescriptionOne);
+				formData.append('addPageDescriptionTwo', this.EditPageForm.editPageDescriptionTwo);
+				formData.append('addPageDescriptionThree', this.EditPageForm.editPageDescriptionThree);
+				formData.append('updated', this.EditPageForm.editUpdate);
+
+				this.$http.put(`${homeURI}/page/update`, formData, {
+					headers: {
+						'Content-Type': 'application/form-data'
+					}
+				}).then((response) => {
+					return response;
+				}, (response) => {
+					throw Error(response.data);
+				});
 			}
 		}
 	}

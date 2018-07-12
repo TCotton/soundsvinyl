@@ -58,4 +58,33 @@ module.exports = (app) => {
 
 		});
 	});
+
+	app.route('/apiV1/page/update').put((req, res) => {
+
+		console.dir(req.body);
+
+		Page.findById(req.body.id, (err, page) => {
+
+			if (err) {
+				res.send(err);
+			}
+
+			if (!page) {
+				return new Error('Could not load Page document');
+
+			} else {
+
+				Object.assign(page, req.body);
+				page.save((err) => {
+
+					if (err) {
+						res.send(err);
+					} else {
+						res.json('Success');
+					}
+
+				});
+			}
+		});
+	});
 };

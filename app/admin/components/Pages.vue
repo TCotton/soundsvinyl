@@ -14,8 +14,9 @@
 					<th scope="col">Title</th>
 					<th scope="col">Sub-title</th>
 					<th scope="col">Video link</th>
-					<th scope="col">Description</th>
-					<th scope="col">Categories</th>
+					<th scope="col">Description Paragraph One</th>
+					<th scope="col">Description Paragraph Two</th>
+					<th scope="col">Description Paragraph Three</th>
 					<th scope="col">Edit</th>
 					<th scope="col">Delete</th>
 				</tr>
@@ -27,8 +28,9 @@
 					<td>{{ page.title }}</td>
 					<td>{{ page.subTitle }}</td>
 					<td>{{ page.videoLink }}</td>
-					<td>{{ page.description }}</td>
-					<td>{{ page.categories }}</td>
+					<td>{{ page.addPageDescriptionOne }}</td>
+					<td>{{ page.addPageDescriptionTwo }}</td>
+					<td>{{ page.addPageDescriptionThree }}</td>
 					<td>
 						<router-link :to="{ name: 'Page', params: { id: page._id }}">Edit</router-link>
 					</td>
@@ -47,7 +49,6 @@
 </template>
 
 <script>
-	import request from 'superagent';
 	import { homeURI } from '../../helper_constants';
 
 	export default {
@@ -64,18 +65,18 @@
 			this.noContent = false
 		},
 		created () {
-			request
-				.get(`${homeURI}/page/get`)
-				.end((err, res) => {
-					if (err) {
-						new Error(err);
-					}
-					this.Pages = res.body;
+			this.$http.get(`${homeURI}/page/get`).then(res => {
 
-					if (res.body.length === 0) {
-						this.noContent = true;
-					}
-				});
+				this.Pages = res.body;
+
+				if (res.body.length === 0) {
+					this.noContent = true;
+				}
+
+			}, response => {
+				new Error(response);
+			});
+
 		}
 	}
 </script>

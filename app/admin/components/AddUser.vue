@@ -51,7 +51,6 @@
 </template>
 
 <script>
-	/* eslint eqeqeq: "off", curly: "error" */
 	export default {
 		name: 'AddUser',
 		data () {
