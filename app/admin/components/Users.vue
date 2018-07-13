@@ -26,26 +26,31 @@
 </template>
 
 <script>
-	import request from 'superagent';
 	import { dummy } from '../../helper_constants';
 
 	export default {
 		name: 'Users',
 		data () {
 			return {
+				URL: `${homeURI}/user/get`,
 				msg: 'Welcome to Your Users section',
 				Users: []
 			}
 		},
 		created () {
-			request
-				.get(dummy.users)
-				.end((err, res) => {
-					if (err) {
-						new Error(err);
-					}
-					this.Users = res.body;
-				});
+
+
+			this.$http.post(this.actionURL,  JSON.stringify(this.addUser), {
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			}).then((response) => {
+				return response;
+			}, (response) => {
+				console.dir(response);
+				throw Error(response.data);
+			});
+
 		}
 	}
 </script>

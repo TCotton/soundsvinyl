@@ -1,7 +1,5 @@
 const User = require('../models/user');
-const { createPasswordHash } = require('../misc/helper_functions');
-
-console.log(typeof createPasswordHash);
+const { createPasswordHash } = require('../misc/helper_functions')
 
 module.exports = (app) => {
 
@@ -41,5 +39,14 @@ module.exports = (app) => {
 			}
 
 		});
+	});
+
+	app.route('/apiV1/user/get').get((req, res) => {
+
+		if (!err) {
+			res.json(page);
+		} else {
+			throw err;
+		}
 	});
 };

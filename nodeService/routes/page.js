@@ -13,7 +13,6 @@ module.exports = (app) => {
 			if (!body.userId) {
 				let newString = Math.random().toString(36).substring(10);
 				body.userId = newString.substring(0, newString.length - 3) + 'tEsT';
-				console.dir(body.userId);
 			}
 		}
 
@@ -64,8 +63,6 @@ module.exports = (app) => {
 	});
 
 	app.route('/apiV1/page/update').put((req, res) => {
-
-		console.dir(req.body);
 
 		Page.findById(req.body.id, (err, page) => {
 
