@@ -144,6 +144,8 @@
 		},
 		mounted() {
 
+			// REFACTOR TO MOVE METHODS OUT OF MOUNTED
+
 			this.$http.get(`${homeURI}/page/get/${this.$route.params.id}`).then((response) => {
 
 				this.EditPageForm = {

@@ -43,10 +43,13 @@ module.exports = (app) => {
 
 	app.route('/apiV1/user/get').get((req, res) => {
 
-		if (!err) {
-			res.json(page);
-		} else {
-			throw err;
-		}
+		User.find({}, function (err, user) {
+
+			if (!err) {
+				res.json(user);
+			} else {
+				throw err;
+			}
+		});
 	});
 };

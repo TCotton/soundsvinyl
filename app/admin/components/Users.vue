@@ -26,7 +26,7 @@
 </template>
 
 <script>
-	import { dummy } from '../../helper_constants';
+	import { homeURI } from '../../helper_constants';
 
 	export default {
 		name: 'Users',
@@ -39,15 +39,9 @@
 		},
 		created () {
 
-
-			this.$http.post(this.actionURL,  JSON.stringify(this.addUser), {
-				headers: {
-					'Content-Type': 'application/json'
-				}
-			}).then((response) => {
-				return response;
+			this.$http.get(`${homeURI}/user/get`).then((response) => {
+				this.Users = response.data;
 			}, (response) => {
-				console.dir(response);
 				throw Error(response.data);
 			});
 
