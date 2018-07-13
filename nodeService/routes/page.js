@@ -10,8 +10,10 @@ module.exports = (app) => {
 		const body = JSON.parse(ObjectKeys);
 
 		if (app.get('env') === 'development') {
-			if(!body.userId) {
-				body.userId =  Math.random().toString(36).substring(10);
+			if (!body.userId) {
+				let newString = Math.random().toString(36).substring(10);
+				body.userId = newString.substring(0, newString.length - 3) + 'tEsT';
+				console.dir(body.userId);
 			}
 		}
 
@@ -24,10 +26,11 @@ module.exports = (app) => {
 			addPageDescriptionTwo: body.addPageDescriptionTwo,
 			addPageDescriptionThree: body.addPageDescriptionThree,
 			userId: body.userId,
-			date: Date.now(),
+			date: body.date ? body.date : Date.now(),
+			updated: body.updated ? body.updated : Date.now(),
 		}, (err, page) => {
 
-			if (!err){
+			if (!err) {
 				res.json(page);
 			} else {
 				throw err;
@@ -37,8 +40,9 @@ module.exports = (app) => {
 
 	app.route('/apiV1/page/get').get((req, res) => {
 
-		Page.find({}, function(err, pages) {
-			if (!err){
+		Page.find({}, function (err, pages) {
+
+			if (!err) {
 				res.json(pages);
 			} else {
 				throw err;
@@ -50,7 +54,7 @@ module.exports = (app) => {
 
 		Page.findOne({_id: req.params.id}, (err, page) => {
 
-			if (!err){
+			if (!err) {
 				res.json(page);
 			} else {
 				throw err;

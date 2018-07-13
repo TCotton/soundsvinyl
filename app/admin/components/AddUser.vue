@@ -91,6 +91,7 @@
 						}).then((response) => {
 							return response;
 						}, (response) => {
+							console.dir(response);
 							throw Error(response.data);
 						});
 

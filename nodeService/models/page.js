@@ -23,15 +23,15 @@ const PageSchema = new Schema({
 	userId: {
 		type: mongoose.Schema.Types.String,
 	},
-	addPageDescriptionOne: {
+	descriptionOne: {
 		type: mongoose.Schema.Types.String,
 		trim: true,
 	},
-	addPageDescriptionTwo: {
+	descriptionTwo: {
 		type: mongoose.Schema.Types.String,
 		trim: true,
 	},
-	addPageDescriptionThree: {
+	descriptionThree: {
 		type: mongoose.Schema.Types.String,
 		trim: true,
 	},

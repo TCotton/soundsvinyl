@@ -1,62 +1,45 @@
 const User = require('../models/user');
+const { createPasswordHash } = require('../misc/helper_functions');
+
+console.log(typeof createPasswordHash);
 
 module.exports = (app) => {
 
 	app.route('/apiV1/user/add').post((req, res) => {
 
-		console.dir(req.body);
+		const body = req.body;
 
-		res.send('Hello World!');
+		User.find({email: req.body.email}, (err, user) => {
+			// needs refactoring so that if a duplicate is found tha
+			// that information is send to the front to be used in
+			// UI error messages
 
-	/*	// wtf is this??
-		// data is being passed incorrectly in Vue
-		const ObjectKeys = Object.keys(req.body)[0];
-		const body = JSON.parse(ObjectKeys);
+			// 409 is a status error code for conflict
+			if (!err) {
 
-		if (app.get('env') === 'development') {
-			if(!body.userId) {
-				body.userId =  Math.random().toString(36).substring(10);
-			}
-		}*/
+				if (user.length > 0) {
+					console.log('not found user');
+					console.dir(user.length);
+				}
 
-		/**
-		 * 	email: {
-		type: mongoose.Schema.Types.String,
-		default: '',
-		required: true
-	},
-		 password: {
-		type: mongoose.Schema.Types.String,
-		default: '',
-		required: true
-	},
-		 date: {
-		type: mongoose.Schema.Types.Date,
-		default: Date.now
-	},
-		 updated: {
-		type: mongoose.Schema.Types.Date,
-	},
-		 */
+				User.create({
+					email: body.email,
+					password: createPasswordHash(body.password),
+					date: Date.now(),
+				}, (err, page) => {
 
-/*		User.create({
-			email: body.addPageTitle,
-			subTitle: body.addPageSubTitle,
-			videoLink: body.addPageVideoLink,
-			categories: body.addPageCategories,
-			addPageDescriptionOne: body.addPageDescriptionOne,
-			addPageDescriptionTwo: body.addPageDescriptionTwo,
-			addPageDescriptionThree: body.addPageDescriptionThree,
-			userId: body.userId,
-			date: Date.now(),
-		}, (err, page) => {
+					if (!err) {
+						res.json(page);
+					} else {
+						throw err;
+					}
 
-			if (!err){
-				res.json(page);
+				});
+
 			} else {
 				throw err;
 			}
-		});*/
-	});
 
-}
+		});
+	});
+};

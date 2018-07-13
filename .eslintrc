@@ -24,7 +24,7 @@
 	"extends": [
 		"eslint:recommended",
 		"plugin:react/recommended",
-		"plugin:vue/recommended"
+		"plugin:vue/strongly-recommended"
 	],
 	"rules": {
 		"vue/html-indent": 0

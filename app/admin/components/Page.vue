@@ -10,7 +10,7 @@
 			<label for="editPageId">PageId (cannot edit)</label>
 			<input
 				id="editPageId"
-				v-model="EditPageForm.editPageId"
+				v-model="EditPageForm._id"
 				type="text"
 				name="editPageId"
 				disabled
@@ -19,7 +19,7 @@
 			<label for="editPageTitle">Record title</label>
 			<input
 				id="editPageTitle"
-				v-model="EditPageForm.editPageTitle"
+				v-model="EditPageForm.title"
 				type="text"
 				name="editPageTitle"
 				required
@@ -30,7 +30,7 @@
 			<label for="editPageSubTitle">Records label details</label>
 			<input
 				id="editPageSubTitle"
-				v-model="EditPageForm.editPageSubTitle"
+				v-model="EditPageForm.subTitle"
 				name="editPageSubTitle"
 				type="text"
 				required
@@ -41,7 +41,7 @@
 			<label for="editPageVideoLink">Link to video page</label>
 			<input
 				id="editPageVideoLink"
-				v-model="EditPageForm.editPageVideoLink"
+				v-model="EditPageForm.videoLink"
 				name="editPageVideoLink"
 				type="url"
 				required
@@ -52,7 +52,7 @@
 			<label for="editPageDescriptionOne">First paragraph of description</label>
 			<textarea
 				id="editPageDescriptionOne"
-				v-model="EditPageForm.editPageDescriptionOne"
+				v-model="EditPageForm.descriptionOne"
 				name="editPageDescriptionOne"
 				required
 				cols="10"
@@ -63,7 +63,7 @@
 			<label for="editPageDescriptionTwo">Second paragraph of description</label>
 			<textarea
 				id="editPageDescriptionTwo"
-				v-model="EditPageForm.editPageDescriptionTwo"
+				v-model="EditPageForm.descriptionTwo"
 				name="editPageDescriptionTwo"
 				required
 				cols="10"
@@ -74,7 +74,7 @@
 			<label for="editPageDescriptionThree">Three paragraph of description</label>
 			<textarea
 				id="editPageDescriptionThree"
-				v-model="EditPageForm.editPageDescriptionThree"
+				v-model="EditPageForm.descriptionThree"
 				name="editPageDescriptionThree"
 				required
 				cols="10"
@@ -85,7 +85,7 @@
 			<label for="editPageCategories">Categories (comma-separated list)</label>
 			<input
 				id="editPageCategories"
-				v-model="EditPageForm.editPageCategories"
+				v-model="EditPageForm.categories"
 				name="editPageCategories"
 				type="text"
 				required
@@ -128,16 +128,17 @@
 		data () {
 			return {
 				EditPageForm: {
-					editPageId: null,
-					editPageTitle: null,
-					editPageSubTitle: null,
-					editPageVideoLink: null,
-					editPageDescriptionOne: null,
-					editPageDescriptionTwo: null,
-					editPageDescriptionThree: null,
-					editPageCategories: null,
+					id: null,
+					title: null,
+					subTitle: null,
+					videoLink: null,
+					descriptionOne: null,
+					descriptionTwo: null,
+					descriptionThree: null,
+					categories: null,
 					editDate: null,
 				},
+				originalCreationDate: null,
 				msg: 'Welcome to Your Page section'
 			}
 		},
@@ -146,19 +147,20 @@
 			this.$http.get(`${homeURI}/page/get/${this.$route.params.id}`).then((response) => {
 
 				this.EditPageForm = {
-					editPageId: response.data._id,
-					editPageTitle: response.data.title,
-					editPageSubTitle: response.data.subTitle,
-					editPageVideoLink: response.data.videoLink,
-					editPageDescriptionOne: response.data.addPageDescriptionOne,
-					editPageDescriptionTwo: response.data.addPageDescriptionTwo,
-					editPageDescriptionThree: response.data.addPageDescriptionThree,
-					editPageCategories: response.data.categories,
-					editDate: moment(response.data.date).format('h:mm:ss a, MMMM Do YYYY'),
-					editUpdate: new Date().toISOString(),
+					_id: response.data._id,
+					title: response.data.title,
+					subTitle: response.data.subTitle,
+					videoLink: response.data.videoLink,
+					descriptionOne: response.data.addPageDescriptionOne,
+					descriptionTwo: response.data.addPageDescriptionTwo,
+					descriptionThree: response.data.addPageDescriptionThree,
+					categories: response.data.categories,
+					date: moment(response.data.date).format('h:mm:ss a, MMMM Do YYYY'),
+					updated: new Date().toISOString(),
 					editUserId: response.data.userId,
 				};
 
+				this.originalCreationDate = response.data.date;
 			}, (response) => {
 				throw Error(response);
 			});
@@ -172,20 +174,12 @@
 			},
 			onPost() {
 
-				const formData = new FormData();
-				formData.set('id', this.EditPageForm.editPageId);
-				formData.set('title', this.EditPageForm.editPageTitle);
-				formData.set('subTitle', this.EditPageForm.editPageSubTitle);
-				formData.set('videoLink', this.EditPageForm.editPageVideoLink);
-				formData.set('categories', this.EditPageForm.editPageCategories);
-				formData.set('addPageDescriptionOne', this.EditPageForm.editPageDescriptionOne);
-				formData.set('addPageDescriptionTwo', this.EditPageForm.editPageDescriptionTwo);
-				formData.set('addPageDescriptionThree', this.EditPageForm.editPageDescriptionThree);
-				formData.set('updated', this.EditPageForm.editUpdate);
+				// revert date back to UTC format
+				this.EditPageForm.date = this.originalCreationDate;
 
-				this.$http.put(`${homeURI}/page/update`, formData, {
+				this.$http.put(`${homeURI}/page/update`, JSON.stringify(this.EditPageForm), {
 					headers: {
-						'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+						'Content-Type': 'application/json'
 					}
 				}).then((response) => {
 					return response;

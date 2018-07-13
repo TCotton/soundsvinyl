@@ -5,7 +5,8 @@ const UserSchema = new Schema({
 	email: {
 		type: mongoose.Schema.Types.String,
 		default: '',
-		required: true
+		required: true,
+		unique: true,
 	},
 	password: {
 		type: mongoose.Schema.Types.String,
@@ -14,7 +15,6 @@ const UserSchema = new Schema({
 	},
 	date: {
 		type: mongoose.Schema.Types.Date,
-		default: Date.now
 	},
 	updated: {
 		type: mongoose.Schema.Types.Date,
@@ -22,5 +22,3 @@ const UserSchema = new Schema({
 });
 
 module.exports = mongoose.model('User', UserSchema);
-
-
