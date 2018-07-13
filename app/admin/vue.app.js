@@ -16,6 +16,9 @@ const vueLifecycles = singleSpaVue({
 			App,
 			'page': Page
 		},
+		data: {
+			showModal: false,
+		},
 		template: '<App/>'
 	}
 });

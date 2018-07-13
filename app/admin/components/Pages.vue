@@ -36,7 +36,9 @@
 					<td>
 						<router-link :to="{ name: 'Page', params: { id: page._id }}">Edit</router-link>
 					</td>
-					<td>Delete</td>
+					<td>
+						<span @click="show">Delete</span>
+					</td>
 				</tr>
 			</table>
 
@@ -58,9 +60,9 @@
 		data () {
 			return {
 				noContent: false,
-				msg: 'Welcome to Your Pages section',
+				msg: 'Welcome to the page section',
 				paginate: ['Pages'],
-				Pages: []
+				Pages: [],
 			}
 		},
 		beforeCreate () {
@@ -78,7 +80,38 @@
 			}, response => {
 				new Error(response);
 			});
+			console.log('created');
+		},
+		mounted() {
+			console.log('mounted');
+			this.$on('close', function () {
+				console.log('closed')
+			})
+		},
+		methods: {
+			show () {
 
+				this.$modal.show({
+					template: `
+    <div>
+      <h1>This is created inline</h1>
+      <p>{{ text }}</p>
+      <button @click="$emit('close')">Close</button>
+    </div>
+  `,
+					props: ['text']
+				}, {
+					text: 'Close using this button'
+				}, {
+					height: 'auto'
+				}, {
+					'before-close': (event) => {
+						// this is where the AJAX call is made !!!
+						console.log('this will be called before the modal closes');
+					}
+				})
+
+			}
 		}
 	}
 </script>
@@ -92,6 +125,11 @@
 				display: inline-block;
 			}
 		}
+	}
+
+	:global .pages-modal {
+		background: gray;
+		height: 100%;
 	}
 </style>
 

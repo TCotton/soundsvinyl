@@ -30,7 +30,7 @@
 			return true;
 		},
 		mounted () {
-			console.log('the Hello World is mounted');
+			return true;
 		},
 		beforeUpdate () {
 			return true;

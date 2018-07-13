@@ -29,8 +29,12 @@
 					<td>{{ comment.comment }}</td>
 					<td>{{ comment.date }}</td>
 					<td>{{ comment.userId }}</td>
-					<td><router-link :to="{ name: 'Comment', params: { id: comment._id }}">Edit</router-link></td>
-					<td>Delete</td>
+					<td>
+						<router-link :to="{ name: 'Comment', params: { id: comment._id }}">Edit</router-link>
+					</td>
+					<td>
+						Delete
+					</td>
 				</tr>
 			</table>
 

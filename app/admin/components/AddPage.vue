@@ -10,7 +10,7 @@
 			<label for="addPageTitle">Record title</label>
 			<input
 				id="addPageTitle"
-				v-model="AddPageForm.addPageTitle"
+				v-model="AddPageForm.title"
 				type="text"
 				name="addPageTitle"
 				required
@@ -21,7 +21,7 @@
 			<label for="addPageSubTitle">Records label details</label>
 			<input
 				id="addPageSubTitle"
-				v-model="AddPageForm.addPageSubTitle"
+				v-model="AddPageForm.subTitle"
 				name="addPageSubTitle"
 				type="text"
 				required
@@ -32,7 +32,7 @@
 			<label for="addPageVideoLink">Link to video page</label>
 			<input
 				id="addPageVideoLink"
-				v-model="AddPageForm.addPageVideoLink"
+				v-model="AddPageForm.videoLink"
 				name="addPageVideoLink"
 				type="url"
 				required
@@ -43,7 +43,7 @@
 			<label for="addPageDescriptionOne">First paragraph of description</label>
 			<textarea
 				id="addPageDescriptionOne"
-				v-model="AddPageForm.addPageDescriptionOne"
+				v-model="AddPageForm.descriptionOne"
 				name="addPageDescriptionOne"
 				required
 				cols="10"
@@ -54,7 +54,7 @@
 			<label for="addPageDescriptionTwo">Second paragraph of description</label>
 			<textarea
 				id="addPageDescriptionTwo"
-				v-model="AddPageForm.addPageDescriptionTwo"
+				v-model="AddPageForm.descriptionOne"
 				name="addPageDescriptionTwo"
 				required
 				cols="10"
@@ -65,7 +65,7 @@
 			<label for="addPageDescriptionThree">Three paragraph of description</label>
 			<textarea
 				id="addPageDescriptionThree"
-				v-model="AddPageForm.addPageDescriptionThree"
+				v-model="AddPageForm.descriptionOne"
 				name="addPageDescriptionThree"
 				required
 				cols="10"
@@ -76,7 +76,7 @@
 			<label for="addPageCategories">Categories (comma-separated list)</label>
 			<input
 				id="addPageCategories"
-				v-model="AddPageForm.addPageCategories"
+				v-model="AddPageForm.categories"
 				name="addPageCategories"
 				type="text"
 				required
@@ -99,15 +99,14 @@
 		name: 'AddPage',
 		data () {
 			return {
-				errors: [],
 				AddPageForm: {
-					addPageTitle: null,
-					addPageSubTitle: null,
-					addPageVideoLink: null,
-					addPageDescriptionOne: null,
-					addPageDescriptionTwo: null,
-					addPageDescriptionThree: null,
-					addPageCategories: null,
+					title: null,
+					subTitle: null,
+					videoLink: null,
+					descriptionOne: null,
+					descriptionTwo: null,
+					descriptionThree: null,
+					categories: null,
 				},
 				msg: 'Welcome to Add Page section'
 			}
@@ -116,8 +115,6 @@
 			onSubmit (event) {
 				event.preventDefault();
 				this.onPost();
-
-				this.errors = [];
 			},
 			onPost () {
 

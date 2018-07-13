@@ -68,10 +68,7 @@ module.exports = (app) => {
 
 	app.route('/apiV1/user/update').put((req, res) => {
 
-		console.dir(req.body);
-
 		User.findById(req.body._id, (err, user) => {
-
 			if (err) {
 				res.send(err);
 			}

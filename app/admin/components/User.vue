@@ -2,6 +2,10 @@
 	<div :class="$style.user">
 		<h2>{{ msg }}</h2>
 
+		<p
+			:class="$style.success"
+			v-show="success">{{ successMsg }}</p>
+
 		<form
 			id="editUser"
 			:action="actionURL"
@@ -87,6 +91,8 @@
 					passwordTwo: '',
 				},
 				msg: 'Welcome to the individual user section',
+				successMsg: 'You have successfully updated the user details',
+				success: false,
 				originalCreationDate: ''
 			}
 		},
@@ -175,6 +181,10 @@
 		.error {
 			@include font-calculator($font_family_body, 14px);
 			color: $error;
+		}
+
+		.success {
+			color: $success;
 		}
 	}
 </style>
