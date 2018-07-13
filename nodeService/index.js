@@ -67,7 +67,7 @@ if (app.get('env') === 'development') {
 
 // routes based category
 require('./routes')(app);
-require('./routes/page')(app);
+// require('./routes/page')(app);
 require('./routes/user')(app);
 
 // miscellaneous routes based on use

@@ -139,7 +139,7 @@
 					editDate: null,
 				},
 				originalCreationDate: null,
-				msg: 'Welcome to Your Page section'
+				msg: 'Welcome the individual page section'
 			}
 		},
 		mounted() {
@@ -153,9 +153,9 @@
 					title: response.data.title,
 					subTitle: response.data.subTitle,
 					videoLink: response.data.videoLink,
-					descriptionOne: response.data.addPageDescriptionOne,
-					descriptionTwo: response.data.addPageDescriptionTwo,
-					descriptionThree: response.data.addPageDescriptionThree,
+					descriptionOne: response.data.descriptionOne,
+					descriptionTwo: response.data.descriptionTwo,
+					descriptionThree: response.data.descriptionThree,
 					categories: response.data.categories,
 					date: moment(response.data.date).format('h:mm:ss a, MMMM Do YYYY'),
 					updated: new Date().toISOString(),
@@ -164,7 +164,7 @@
 
 				this.originalCreationDate = response.data.date;
 			}, (response) => {
-				throw Error(response);
+				throw Error(response.body);
 			});
 		},
 		methods: {

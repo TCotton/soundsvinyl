@@ -52,4 +52,49 @@ module.exports = (app) => {
 			}
 		});
 	});
+
+	app.route('/apiV1/user/get/:id').get((req, res) => {
+
+		User.findOne({_id: req.params.id}, (err, page) => {
+
+			if (!err) {
+				res.json(page);
+			} else {
+				throw err;
+			}
+
+		});
+	});
+
+	app.route('/apiV1/user/update').put((req, res) => {
+
+		console.dir(req.body);
+
+		User.findById(req.body._id, (err, user) => {
+
+			if (err) {
+				res.send(err);
+			}
+
+			if (!user) {
+				return new Error('Could not load User document');
+
+			} else {
+
+				Object.assign(user, req.body);
+				user.save((err) => {
+
+					if (err) {
+						res.send(err);
+					} else {
+						res.json('Success');
+					}
+
+				});
+			}
+		});
+
+
+		console.log(`'/apiV1/user/update' here is the put request for update`);
+	});
 };
