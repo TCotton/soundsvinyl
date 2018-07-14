@@ -84,9 +84,6 @@
 		},
 		mounted() {
 			console.log('mounted');
-			this.$on('close', function () {
-				console.log('closed')
-			})
 		},
 		methods: {
 			show () {
