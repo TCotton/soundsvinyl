@@ -37,8 +37,10 @@
 						<router-link :to="{ name: 'Page', params: { id: page._id }}">Edit</router-link>
 					</td>
 					<td>
-						<div @click="show" :class="$style.delete">Delete</div>
-						<modals-container data-id="whatever" />
+						<div
+							@click="show"
+							:class="$style.delete">Delete</div>
+						<modals-container width="300" />
 					</td>
 				</tr>
 			</table>
@@ -119,7 +121,6 @@
 						console.log('this will be called before the modal CLOSES');
 					}
 				})
-
 			}
 		}
 	}
