@@ -1,6 +1,6 @@
 import Comment from '../Comment.vue';
 
-fdescribe('Component Comment', () => {
+describe('Component Comment', () => {
 
 	let component;
 

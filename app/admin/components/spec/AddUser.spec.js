@@ -13,8 +13,8 @@ describe('Component AddUser', () => {
 	});
 
 	// Inspect the raw component options
-	it('has a created hook', () => {
-		expect(component.mounted).toEqual(jasmine.any(Function));
+	it('has a created methods object', () => {
+		expect(component.methods).toEqual(jasmine.any(Object));
 	})
 
 	// Evaluate the results of functions in
@@ -23,10 +23,9 @@ describe('Component AddUser', () => {
 		expect(typeof component.data).toBe('function');
 		const defaultData = component.data();
 		expect(defaultData.msg).toBe('Welcome to Add User section');
-		expect(defaultData.errors).toEqual(jasmine.any(Array));
-		expect(defaultData.addUserEmail).toBeNull();
-		expect(defaultData.addUserPasswordOne).toBeNull();
-		expect(defaultData.addUserPasswordTwo).toBeNull();
+		expect(defaultData.addUser.email).toEqual(jasmine.any(String));
+		expect(defaultData.addUser.password).toEqual(jasmine.any(String));
+		expect(defaultData.addUser.passwordTwo).toEqual(jasmine.any(String));
 	})
 
 	/*xit('sets the correct default methods', () => {

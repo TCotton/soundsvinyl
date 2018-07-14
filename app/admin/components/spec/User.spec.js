@@ -1,11 +1,17 @@
 import User from '../User.vue';
 
-describe('Component Users', () => {
+describe('Component User', () => {
 
 	let component;
+	const $route = {
+		params: {
+			id: ''
+		}
+	}
 
 	beforeEach(() => {
 		component = User;
+		component.$route = $route;
 	});
 
 	it('should be defined', () => {
@@ -22,6 +28,9 @@ describe('Component Users', () => {
 	it('sets the correct default data', () => {
 		expect(typeof component.data).toBe('function');
 		const defaultData = component.data();
-		expect(defaultData.msg).toBe('Welcome to Your User section');
+		expect(defaultData.msg).toBe('Welcome to the individual user section');
+		expect(defaultData.editUser.email).toEqual(jasmine.any(String));
+		expect(defaultData.editUser.password).toEqual(jasmine.any(String));
+		expect(defaultData.editUser.passwordTwo).toEqual(jasmine.any(String));
 	})
 });

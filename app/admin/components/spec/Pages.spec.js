@@ -22,6 +22,6 @@ describe('Component Pages', () => {
 	it('sets the correct default data', () => {
 		expect(typeof component.data).toBe('function');
 		const defaultData = component.data();
-		expect(defaultData.msg).toBe('Welcome to Your Pages section');
+		expect(defaultData.msg).toBe('Welcome to the page section');
 	})
 });

@@ -100,13 +100,13 @@
 		data () {
 			return {
 				AddPageForm: {
-					title: null,
-					subTitle: null,
-					videoLink: null,
-					descriptionOne: null,
-					descriptionTwo: null,
-					descriptionThree: null,
-					categories: null,
+					title: '',
+					subTitle: '',
+					videoLink: '',
+					descriptionOne: '',
+					descriptionTwo: '',
+					descriptionThree: '',
+					categories: '',
 				},
 				msg: 'Welcome to Add Page section'
 			}
