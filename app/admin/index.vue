@@ -1,11 +1,45 @@
 <template>
-	<div id="root">
-		<div class="wrapper">
-			<router-view name="Header" />
-			<router-view />
-			<router-view name="Footer" />
-		</div>
-	</div>
+
+<div id="root">
+    <div class="wrapper">
+        <router-view name="Header" />
+        <router-view />
+        <router-view name="Footer" />
+    </div>
+
+    <script
+			type="text/x-template"
+			id="modal-template">
+
+        <transition name="modal">
+            <div class="modal-mask">
+                <div class="modal-wrapper">
+                    <div class="modal-container">
+
+                        <div class="modal-header">
+                            <slot name="header">
+                                default header
+                            </slot>
+                        </div>
+
+                        <div class="modal-footer">
+                            <slot name="footer">
+                                <button class="modal-default-button" @click="$emit('close', [true])">
+                                    Yes
+                                </button>
+                                <button class="modal-default-button" @click="$emit('close', [false])">
+                                    No
+                                </button>
+                            </slot>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </transition>
+
+    </script>
+
+</div>
 </template>
 
 <script>
@@ -71,17 +105,5 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		word-wrap: break-word;
-	}
-
-	:global .admin-modal {
-		padding: 20px;
-	}
-
-	:global .admin-modal-top {
-		background: transparent;
-	}
-
-	:global .admin-modal-bottom {
-		background: transparent;
 	}
 </style>

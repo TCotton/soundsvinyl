@@ -76,12 +76,37 @@ module.exports = (app) => {
 				page.save((err) => {
 
 					if (err) {
-						res.send(err);
+						throw err;
 					} else {
 						res.json('Success');
 					}
 
 				});
+			}
+		});
+	});
+
+	app.route('/apiV1/delete/:id').delete(function(req, res) {
+
+		Page.remove({
+
+			_id: req.params.id
+
+		}, (err, blogs) => {
+
+			if (err) {
+				throw err;
+			} else {
+
+				Page.find({}, function (err, pages) {
+
+					if (!err) {
+						res.json(pages);
+					} else {
+						throw err;
+					}
+				});
+
 			}
 		});
 	});

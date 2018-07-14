@@ -149,8 +149,6 @@
 
 			this.$http.get(`${homeURI}/page/get/${this.$route.params.id}`).then((response) => {
 
-				console.dir(response.data);
-
 				this.EditPageForm = {
 					_id: response.data._id,
 					title: response.data.title,
@@ -197,6 +195,7 @@
 
 <style lang="scss" module>
 	@import '../../assets/sass/tools';
+
 	.page {
 		form {
 			display: grid;

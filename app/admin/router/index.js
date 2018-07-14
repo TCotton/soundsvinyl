@@ -3,7 +3,6 @@ import Router from 'vue-router';
 import VueResource from 'vue-resource';
 import VuePaginate from 'vue-paginate';
 import VeeValidate from 'vee-validate';
-import VModal from 'vue-js-modal';
 import Home from '../components/Home';
 import Pages from '../components/Pages';
 import Page from '../components/Page';
@@ -15,13 +14,14 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Comments from '../components/Comments';
 import Comment from '../components/Comment';
+import '../components/Modal';
 
 Vue.use(Router);
 Vue.use(VuePaginate);
 Vue.use(VueResource);
 Vue.use(VeeValidate);
-Vue.use(VModal, { dynamic: true });
 
+// do i *really* need this??
 Vue.http.options.emulateJSON = true;
 
 export default new Router({
