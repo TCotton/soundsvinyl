@@ -23,5 +23,15 @@ describe('Component Page', () => {
 		expect(typeof component.data).toBe('function');
 		const defaultData = component.data();
 		expect(defaultData.msg).toBe('Welcome the individual page section');
+		expect(defaultData.EditPageForm._id).toEqual(jasmine.any(String));
+		expect(defaultData.EditPageForm.title).toEqual(jasmine.any(String));
+		expect(defaultData.EditPageForm.subTitle).toEqual(jasmine.any(String));
+		expect(defaultData.EditPageForm.videoLink).toEqual(jasmine.any(String));
+		expect(defaultData.EditPageForm.descriptionOne).toEqual(jasmine.any(String));
+		expect(defaultData.EditPageForm.descriptionTwo).toEqual(jasmine.any(String));
+		expect(defaultData.EditPageForm.descriptionTwo).toEqual(jasmine.any(String));
+		expect(defaultData.EditPageForm.categories).toEqual(jasmine.any(String));
+		expect(defaultData.EditPageForm.date).toEqual(jasmine.any(String));
+		expect(defaultData.EditPageForm.editUserId).toEqual(jasmine.any(String));
 	})
 });

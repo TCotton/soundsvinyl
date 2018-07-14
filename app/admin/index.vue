@@ -72,4 +72,16 @@
 		text-overflow: ellipsis;
 		word-wrap: break-word;
 	}
+
+	:global .admin-modal {
+		padding: 20px;
+	}
+
+	:global .admin-modal-top {
+		background: transparent;
+	}
+
+	:global .admin-modal-bottom {
+		background: transparent;
+	}
 </style>

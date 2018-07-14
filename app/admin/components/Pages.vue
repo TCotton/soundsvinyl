@@ -29,15 +29,16 @@
 					<td>{{ page.title }}</td>
 					<td>{{ page.subTitle }}</td>
 					<td>{{ page.videoLink }}</td>
-					<td>{{ page.addPageDescriptionOne }}</td>
-					<td>{{ page.addPageDescriptionTwo }}</td>
-					<td>{{ page.addPageDescriptionThree }}</td>
+					<td>{{ page.descriptionOne }}</td>
+					<td>{{ page.descriptionTwo }}</td>
+					<td>{{ page.descriptionThree }}</td>
 					<td>{{ page.date }}</td>
 					<td>
 						<router-link :to="{ name: 'Page', params: { id: page._id }}">Edit</router-link>
 					</td>
 					<td>
-						<span @click="show">Delete</span>
+						<div @click="show" :class="$style.delete">Delete</div>
+						<modals-container data-id="whatever" />
 					</td>
 				</tr>
 			</table>
@@ -90,21 +91,32 @@
 
 				this.$modal.show({
 					template: `
-    <div role="alert">
-      <h1>This is created inline</h1>
-      <p>{{ text }}</p>
-      <button @click="$emit('close')">Close</button>
+    <div role="alert" class="admin-modal">
+    	<div class="admin-modal-top">
+      	<p>{{ text }}</p>
+    	</div>
+    	<div class="admin-modal-bottom">
+      	<button @click="$emit('close')">Yes</button>
+      	<button @click="$emit('close')">No</button>
+    	</div>
     </div>
   `,
-					props: ['text']
+					props: ['text', 'id']
 				}, {
-					text: 'Close using this button'
+					text: 'Are you sure you want to delete this post?',
+					id: null
 				}, {
 					height: 'auto'
 				}, {
-					'before-close': (event) => {
+					'before-open': (event) => {
+						console.dir(event);
 						// this is where the AJAX call is made !!!
-						console.log('this will be called before the modal closes');
+						console.log('this will be called before the modal OPENS');
+					},
+					'before-close': (event) => {
+						console.dir(event);
+						// this is where the AJAX call is made !!!
+						console.log('this will be called before the modal CLOSES');
 					}
 				})
 
@@ -122,11 +134,10 @@
 				display: inline-block;
 			}
 		}
-	}
 
-	:global .pages-modal {
-		background: gray;
-		height: 100%;
+		.delete {
+			cursor: pointer;
+		}
 	}
 </style>
 

@@ -20,7 +20,7 @@ Vue.use(Router);
 Vue.use(VuePaginate);
 Vue.use(VueResource);
 Vue.use(VeeValidate);
-Vue.use(VModal, { dynamic: true, injectModalsContainer: true });
+Vue.use(VModal, { dynamic: true });
 
 Vue.http.options.emulateJSON = true;
 

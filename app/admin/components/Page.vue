@@ -96,7 +96,7 @@
 			<label for="editDate">Date created (cannot edit)</label>
 			<input
 				id="editDate"
-				v-model="EditPageForm.editDate"
+				v-model="EditPageForm.date"
 				type="text"
 				name="editDate"
 				disabled
@@ -128,17 +128,18 @@
 		data () {
 			return {
 				EditPageForm: {
-					id: null,
-					title: null,
-					subTitle: null,
-					videoLink: null,
-					descriptionOne: null,
-					descriptionTwo: null,
-					descriptionThree: null,
-					categories: null,
-					editDate: null,
+					_id: '',
+					title: '',
+					subTitle: '',
+					videoLink: '',
+					descriptionOne: '',
+					descriptionTwo: '',
+					descriptionThree: '',
+					categories: '',
+					date: '',
+					editUserId: '',
 				},
-				originalCreationDate: null,
+				originalCreationDate: '',
 				msg: 'Welcome the individual page section'
 			}
 		},
@@ -147,6 +148,8 @@
 			// REFACTOR TO MOVE METHODS OUT OF MOUNTED
 
 			this.$http.get(`${homeURI}/page/get/${this.$route.params.id}`).then((response) => {
+
+				console.dir(response.data);
 
 				this.EditPageForm = {
 					_id: response.data._id,
@@ -175,7 +178,6 @@
 				this.errors = [];
 			},
 			onPost() {
-
 				// revert date back to UTC format
 				this.EditPageForm.date = this.originalCreationDate;
 

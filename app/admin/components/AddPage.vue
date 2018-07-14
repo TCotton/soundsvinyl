@@ -54,7 +54,7 @@
 			<label for="addPageDescriptionTwo">Second paragraph of description</label>
 			<textarea
 				id="addPageDescriptionTwo"
-				v-model="AddPageForm.descriptionOne"
+				v-model="AddPageForm.descriptionTwo"
 				name="addPageDescriptionTwo"
 				required
 				cols="10"
@@ -65,7 +65,7 @@
 			<label for="addPageDescriptionThree">Three paragraph of description</label>
 			<textarea
 				id="addPageDescriptionThree"
-				v-model="AddPageForm.descriptionOne"
+				v-model="AddPageForm.descriptionThree"
 				name="addPageDescriptionThree"
 				required
 				cols="10"
@@ -123,7 +123,7 @@
 
 				this.$http.post(`${homeURI}/page/add`, JSON.stringify(this.AddPageForm), {
 					headers: {
-						'Content-Type': 'application/x-www-form-urlencoded'
+						'Content-Type': 'application/json'
 					}
 				}).then((response) => {
 					return response;
