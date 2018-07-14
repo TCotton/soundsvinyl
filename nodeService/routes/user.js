@@ -90,33 +90,28 @@ module.exports = (app) => {
 				});
 			}
 		});
+	});
 
-		app.route('/apiV1/user/delete/:id').delete((req, res) => {
+	app.route('/apiV1/user/delete/:id').delete((req, res) => {
 
-			console.dir(req.params.id);
-			res.json('Success');
-			return;
+		User.remove({
+			_id: req.params.id
+		}, (err) => {
 
-			User.remove({
-				_id: req.params.id
-			}, (err) => {
+			if (err) {
+				throw err;
+			} else {
 
-				if (err) {
-					throw err;
-				} else {
+				User.find({}, (err, users) => {
 
-					User.find({}, (err, users) => {
+					if (!err) {
+						res.json(users);
+					} else {
+						throw err;
+					}
+				});
 
-						if (!err) {
-							res.json(users);
-						} else {
-							throw err;
-						}
-					});
-
-				}
-			});
+			}
 		});
-
 	});
 };
