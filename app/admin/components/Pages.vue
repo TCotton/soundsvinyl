@@ -90,7 +90,7 @@
 
 				this.$modal.show({
 					template: `
-    <div>
+    <div role="alert">
       <h1>This is created inline</h1>
       <p>{{ text }}</p>
       <button @click="$emit('close')">Close</button>
