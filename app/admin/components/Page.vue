@@ -183,8 +183,8 @@
 					headers: {
 						'Content-Type': 'application/json'
 					}
-				}).then((response) => {
-					return response;
+				}).then(() => {
+					this.$router.push('Page');
 				}, (response) => {
 					throw Error(response.data);
 				});
