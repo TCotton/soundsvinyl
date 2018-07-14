@@ -86,16 +86,16 @@
 					this.noContent = true;
 				}
 
-			}, response => {
+			}, (response) => {
 				new Error(response);
 			});
 		},
 		methods: {
 			deletePage (...args) {
-				this.showModal = false
+				this.showModal = false;
 
 				if (arguments[0]) {
-					this.$http.delete(`${homeURI}/delete/${this.deleteId}`).then(res => {
+					this.$http.delete(`${homeURI}/page/delete/${this.deleteId}`).then(res => {
 
 						this.Pages = res.body;
 

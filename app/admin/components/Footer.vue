@@ -1,6 +1,6 @@
 <template>
 	<footer :class="$style.footer">
-		&nbsp;<p>This is a footer</p>
+		&nbsp;<p>Add footer links here</p>
 	</footer>
 </template>
 

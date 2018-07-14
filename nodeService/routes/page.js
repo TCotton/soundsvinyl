@@ -86,19 +86,17 @@ module.exports = (app) => {
 		});
 	});
 
-	app.route('/apiV1/delete/:id').delete(function(req, res) {
+	app.route('/apiV1/page/delete/:id').delete((req, res) => {
 
 		Page.remove({
-
 			_id: req.params.id
-
-		}, (err, blogs) => {
+		}, (err) => {
 
 			if (err) {
 				throw err;
 			} else {
 
-				Page.find({}, function (err, pages) {
+				Page.find({}, (err, pages) => {
 
 					if (!err) {
 						res.json(pages);
@@ -106,7 +104,6 @@ module.exports = (app) => {
 						throw err;
 					}
 				});
-
 			}
 		});
 	});

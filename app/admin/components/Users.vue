@@ -7,6 +7,7 @@
 
 			<tr>
 				<th scope="col">Email</th>
+				<th scope="col">Id</th>
 				<th scope="col">Edit</th>
 				<th scope="col">Delete</th>
 			</tr>
@@ -15,13 +16,26 @@
 				v-for="user in Users"
 				:key="user._id">
 				<th scope="row">{{ user.email }}</th>
+				<td>{{ user._id }}</td>
 				<td>
 					<router-link :to="{ name: 'User', params: { id: user._id }}">Edit</router-link>
 				</td>
-				<td>Delete</td>
+				<td>
+					<div
+						@click="showModal = true, deleteId = user._id"
+						:class="$style.delete">Delete
+					</div>
+				</td>
 			</tr>
 
 		</table>
+
+		<modal
+			v-if="showModal"
+			@close="deletePage">
+			<h3 slot="header">Are you sure you want to delete this user?</h3>
+		</modal>
+
 	</div>
 </template>
 
@@ -34,7 +48,9 @@
 			return {
 				URL: `${homeURI}/user/get`,
 				msg: 'Welcome to Your Users section',
-				Users: []
+				Users: [],
+				showModal: false,
+				deleteId: '',
 			}
 		},
 		created () {
@@ -45,7 +61,23 @@
 				throw Error(response.data);
 			});
 
+		},
+		methods: {
+			deletePage (...args) {
+				this.showModal = false;
+
+				if (arguments[0]) {
+					this.$http.delete(`${homeURI}/user/delete/${this.deleteId}`).then(res => {
+
+						this.Users = res.body;
+
+					}, response => {
+						new Error(response);
+					});
+				}
+			}
 		}
+
 	}
 </script>
 
@@ -68,6 +100,10 @@
 
 	a {
 		color: #42b983;
+	}
+
+	.delete {
+		cursor: pointer;
 	}
 
 </style>

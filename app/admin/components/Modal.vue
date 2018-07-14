@@ -35,7 +35,6 @@
 		border-radius: 2px;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
 		transition: all .3s ease;
-		font-family: Helvetica, Arial, sans-serif;
 	}
 
 	:global .modal-header h3 {
@@ -46,8 +45,23 @@
 		margin: 20px 0;
 	}
 
-	:global .modal-default-button {
-
+	:global .modal-footer {
+		display: grid;
+		grid-template-columns: calc(50% - 15px) calc(50% - 15px);
+		grid-gap: 30px;
+		button {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			@include font-calculator($font_family_body, 14px, 0);
+			padding: 5px 0;
+			background: $footerAdminBackground;
+			box-shadow: none;
+			border: 1px solid $formSubmitHover;
+			&:hover {
+				background: $formSubmitHover;
+			}
+		}
 	}
 
 	/*

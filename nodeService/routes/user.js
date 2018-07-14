@@ -91,7 +91,32 @@ module.exports = (app) => {
 			}
 		});
 
+		app.route('/apiV1/user/delete/:id').delete((req, res) => {
 
-		console.log(`'/apiV1/user/update' here is the put request for update`);
+			console.dir(req.params.id);
+			res.json('Success');
+			return;
+
+			User.remove({
+				_id: req.params.id
+			}, (err) => {
+
+				if (err) {
+					throw err;
+				} else {
+
+					User.find({}, (err, users) => {
+
+						if (!err) {
+							res.json(users);
+						} else {
+							throw err;
+						}
+					});
+
+				}
+			});
+		});
+
 	});
 };

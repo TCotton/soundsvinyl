@@ -5,8 +5,6 @@ import Page from './components/Page';
 import router from './router';
 import '../assets/sass/index.scss';
 
-console.log('VUE');
-
 const vueLifecycles = singleSpaVue({
 	Vue,
 	appOptions: {
