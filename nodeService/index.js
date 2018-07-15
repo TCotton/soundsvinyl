@@ -12,7 +12,11 @@ const compress = require('compression');
 const mongoose = require('mongoose');
 const mongoURI = require('./config/mongoDB');
 
-const db = mongoose.connect(mongoURI.productionURI);
+const db = mongoose.connect(mongoURI.productionURI,
+	{useNewUrlParser: true},
+	err => {
+		if (err) throw err;
+	});
 
 const app = express();
 
@@ -57,6 +61,10 @@ if (app.get('env') === 'development') {
 
 	});
 }
+
+app.route(/.admin$/).get((req, res) => {
+	console.log('admin');
+});
 
 // routes based category
 require('./routes')(app);
