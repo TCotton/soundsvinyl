@@ -45,6 +45,7 @@
     "http-errors": "1.6.3",
     "jade": "1.11.0",
     "lodash": "4.17.10",
+    "lodash-es": "4.17.10",
     "memory-fs": "0.4.1",
     "moment": "2.22.2",
     "mongodb": "3.0.10",

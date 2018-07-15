@@ -63,6 +63,7 @@
 </template>
 
 <script>
+	// import sortBy from 'lodash-es/sortBy';
 	import { homeURI } from '../../helper_constants';
 
 	export default {

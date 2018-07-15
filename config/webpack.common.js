@@ -116,6 +116,10 @@ module.exports = {
 						options: {}
 					}
 				]
+			},
+			{
+				include: path.resolve('node_modules', 'lodash'),
+				sideEffects: false
 			}
 		]
 	},
