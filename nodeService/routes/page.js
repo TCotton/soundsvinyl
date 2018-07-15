@@ -1,4 +1,4 @@
-const Page = require('../models/page');
+const Page = new require('../models/page');
 
 module.exports = (app) => {
 

@@ -9,7 +9,7 @@ module.exports = (app) => {
 		});
 
 		// Error Handling
-		app.use(function (err, req, res, next) {
+		app.use((err, req, res, next) => {
 			if (err) {
 				next(err);
 			} else {

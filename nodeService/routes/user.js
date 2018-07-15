@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const User = new require('../models/user');
 const { createPasswordHash } = require('../misc/helper_functions')
 
 module.exports = (app) => {
