@@ -1,12 +1,13 @@
 <template>
 	<div :class="$style.pages">
 		<h2>{{ msg }}</h2>
+		<p v-show="noContent">There are no pages in database</p>
 		<paginate
 			:list="Pages"
 			:per="10"
 			name="Pages"
 		>
-			<table>
+			<table v-show="!noContent">
 				<caption>Pages list</caption>
 
 				<tr>

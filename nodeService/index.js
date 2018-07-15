@@ -10,10 +10,9 @@ const cookieParser = require('cookie-parser'); // this is causing server to fail
 const logger = require('morgan');
 const compress = require('compression');
 const mongoose = require('mongoose');
+const mongoURI = require('./config/mongoDB');
 
-const db = mongoose.connect('mongodb://localhost:27017/soundsvinyl', {
-	useNewUrlParser: true
-});
+const db = mongoose.connect(mongoURI.productionURI);
 
 const app = express();
 
@@ -46,13 +45,7 @@ app.use((req, res, next) => {
 
 if (app.get('env') === 'development') {
 
-	// app.use(express.static(__dirname + '/src'));
-
 	app.all('/', (req, res, next) => {
-
-		console.dir('development');
-
-		console.dir(req.url);
 
 		if (!req.url.includes('/apiV1/')) {
 			res.sendFile(path.join(global.__base, '/src/index.html'));
