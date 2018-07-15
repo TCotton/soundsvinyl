@@ -2,6 +2,12 @@
 	<div :class="$style.addUser">
 		<h2>Add a new user</h2>
 
+		<p
+			:class="$style.error"
+			v-show="errorMsg">
+			{{ errorMsg }}
+		</p>
+
 		<form
 			id="addUser"
 			:action="actionURL"
@@ -54,6 +60,16 @@
 				autocapitalize="off"
 				value="">
 
+			<label for="addUserLevel">Administration level</label>
+			<input
+				v-validate="{ required: true, numeric: true }"
+				id="addUserLevel"
+				v-model="addUser.userLevel"
+				type="number"
+				name="addUserPasswordTwo"
+				autocorrect="off"
+				autocapitalize="off"
+				value="">
 			<input
 				type="submit"
 				name="addUserSubmit"
@@ -74,25 +90,28 @@
 					email: '',
 					password: '',
 					passwordTwo: '',
+					userLevel: 1
 				},
 				msg: 'Welcome to Add User section',
 				actionURL: `${homeURI}/user/add`,
+				errorMsg: null,
 			}
 		},
 		methods: {
 
 			validateBeforeSubmit () {
 				this.$validator.validateAll().then((result) => {
+					this.errorMsg = null;
 
 					if (result) {
-						this.$http.post(this.actionURL,  JSON.stringify(this.addUser), {
+						this.$http.post(this.actionURL, JSON.stringify(this.addUser), {
 							headers: {
 								'Content-Type': 'application/json'
 							}
 						}).then(() => {
 							this.$router.push('Users');
 						}, (response) => {
-							throw Error(response.data);
+							this.errorMsg = response.data;
 						});
 
 					}

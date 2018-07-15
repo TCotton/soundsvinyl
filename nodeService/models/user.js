@@ -13,6 +13,11 @@ const UserSchema = new Schema({
 		default: '',
 		required: true
 	},
+	userLevel: {
+		type: mongoose.Schema.Types.Number,
+		default: 2,
+		required: true
+	},
 	date: {
 		type: mongoose.Schema.Types.Date,
 	},

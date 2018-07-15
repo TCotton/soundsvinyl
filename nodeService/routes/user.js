@@ -1,5 +1,7 @@
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const secret = require('../config/salt');
 const User = new require('../models/user');
-const { createPasswordHash } = require('../misc/helper_functions')
 
 module.exports = (app) => {
 
@@ -16,26 +18,31 @@ module.exports = (app) => {
 			if (!err) {
 
 				if (user.length > 0) {
-					console.log('not found user');
-					console.dir(user.length);
+					return res.status(409).send('Email address is already registered');
 				}
 
 				User.create({
 					email: body.email,
-					password: createPasswordHash(body.password),
+					password: bcrypt.hashSync(body.password, 8),
 					date: Date.now(),
-				}, (err, page) => {
+					userLevel: body.userLevel ? body.userLevel : 2,
+				}, (err, user) => {
 
 					if (!err) {
-						res.json(page);
+						// create a token
+						const token = jwt.sign({ id: user._id }, secret.salt, {
+							expiresIn: 86400 // expires in 24 hours
+						});
+						res.status(200).send({ auth: true, token: token });
+
 					} else {
-						throw err;
+						if (err) return res.status(500).send('There was a problem registering the user.');
 					}
 
 				});
 
 			} else {
-				throw err;
+				if (err) return res.status(500).send('There was a problem registering the user.');
 			}
 
 		});
