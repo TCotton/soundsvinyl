@@ -26,20 +26,35 @@ module.exports = (app) => {
 					password: bcrypt.hashSync(body.password, 8),
 					date: Date.now(),
 					userLevel: body.userLevel ? body.userLevel : 2,
-				}, (err, user) => {
+				}, (err) => {
 
 					if (!err) {
-						// create a token
-						const token = jwt.sign({ id: user._id }, secret.salt, {
-							expiresIn: 86400 // expires in 24 hours
-						});
-						res.status(200).send({ auth: true, token: token });
-
+						res.status(200).send({ auth: true });
 					} else {
 						if (err) return res.status(500).send('There was a problem registering the user.');
 					}
 
 				});
+
+			} else {
+				if (err) return res.status(500).send('There was a problem registering the user.');
+			}
+
+		});
+	});
+
+	app.route('/apiV1/user/find').post(function(req, res) {
+
+		const hash = bcrypt.hashSync(req.body.password, 8);
+
+		User.findOne({email: req.body.email, password: hash}, (err, user) => {
+
+			if (!err) {
+				// create a token
+				const token = jwt.sign({ id: user._id }, secret.salt, {
+					expiresIn: 86400 // expires in 24 hours
+				});
+				res.status(200).send({ auth: true, token: token });
 
 			} else {
 				if (err) return res.status(500).send('There was a problem registering the user.');

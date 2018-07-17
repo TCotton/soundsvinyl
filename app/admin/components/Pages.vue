@@ -61,8 +61,6 @@
 </template>
 
 <script>
-	import { homeURI } from '../../helper_constants';
-
 	export default {
 		name: 'Pages',
 		data () {

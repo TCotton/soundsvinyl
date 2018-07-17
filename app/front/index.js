@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import '../assets/sass/index.scss';
 import Main from './main';
@@ -23,22 +23,22 @@ if (!process.env.production) {
 }
 
 export default class rootComponent extends React.Component {
-	render() {
+	render () {
 		return (
-			<div className='wrapper'>
-				<Nav/>
-				<Router>
+			<Router>
+				<div className='wrapper'>
+					<Nav/>
 					<Switch>
 						<Route exact path='/' component={Main}/>
-						<Route path='/vinyl' component={RecordListing}/>
-						<Route path='/contact' component={Contact}/>
-						<Route path='/about-us' component={AboutUs}/>
-						<Route path='/my-account' component={MyAccount}/>
+						<Route path='/vinyl/:id' component={RecordListing}/>
+						<Route exact path='/contact' component={Contact}/>
+						<Route exact path='/about-us' component={AboutUs}/>
+						<Route exact path='/my-account' component={MyAccount}/>
 						<Route path='' component={Error}/>
 					</Switch>
-				</Router>
-				<Footer/>
-			</div>
+					<Footer/>
+				</div>
+			</Router>
 		);
 	}
 }

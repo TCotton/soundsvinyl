@@ -1,6 +1,7 @@
 import React from 'react';
 import './nav.scss';
 import cn from 'classnames';
+import { Link } from 'react-router-dom';
 
 class Nav extends React.Component {
 	constructor () {
@@ -35,29 +36,24 @@ class Nav extends React.Component {
 						<ul className={ulClassName}>
 							<a href='/'>
 								<li>
-									Vinyl
+									Home
 								</li>
 							</a>
-							<a href='/'>
+							<Link to='/about-us'>
 								<li>
 									About
 								</li>
-							</a>
-							<a href='/'>
-								<li>
-									Data
-								</li>
-							</a>
-							<a href='/'>
+							</Link>
+							<Link to='/contact'>
 								<li>
 									Contact
 								</li>
-							</a>
-							<a href='/'>
+							</Link>
+							<Link to='/my-account'>
 								<li>
 									My account
 								</li>
-							</a>
+							</Link>
 						</ul>
 					</div>
 				</div>
