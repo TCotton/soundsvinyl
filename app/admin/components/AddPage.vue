@@ -121,7 +121,7 @@
 				// use if statement to check if there is a comma-separated list of words
 				// this.AddPageForm.addPageCategories = this.AddPageForm.addPageCategories.split(',');
 
-				this.$http.post(`${homeURI}/page/add`, JSON.stringify(this.AddPageForm), {
+				this.$http.post(`page/add`, JSON.stringify(this.AddPageForm), {
 					headers: {
 						'Content-Type': 'application/json'
 					}

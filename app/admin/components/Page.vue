@@ -121,7 +121,6 @@
 
 <script>
 	import moment from 'moment';
-	import { homeURI } from '../../helper_constants';
 
 	export default {
 		name: 'Page',
@@ -147,7 +146,7 @@
 
 			// REFACTOR TO MOVE METHODS OUT OF MOUNTED
 
-			this.$http.get(`${homeURI}/page/get/${this.$route.params.id}`).then((response) => {
+			this.$http.get(`page/get/${this.$route.params.id}`).then((response) => {
 
 				this.EditPageForm = {
 					_id: response.data._id,
@@ -179,7 +178,7 @@
 				// revert date back to UTC format
 				this.EditPageForm.date = this.originalCreationDate;
 
-				this.$http.put(`${homeURI}/page/update`, JSON.stringify(this.EditPageForm), {
+				this.$http.put(`page/update`, JSON.stringify(this.EditPageForm), {
 					headers: {
 						'Content-Type': 'application/json'
 					}

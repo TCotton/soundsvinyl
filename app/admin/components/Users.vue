@@ -40,13 +40,12 @@
 </template>
 
 <script>
-	import { homeURI } from '../../helper_constants';
 
 	export default {
 		name: 'Users',
 		data () {
 			return {
-				URL: `${homeURI}/user/get`,
+				URL: `user/get`,
 				msg: 'Welcome to Your Users section',
 				Users: [],
 				showModal: false,
@@ -55,7 +54,7 @@
 		},
 		created () {
 
-			this.$http.get(`${homeURI}/user/get`).then((response) => {
+			this.$http.get(`user/get`).then((response) => {
 				this.Users = response.data;
 			}, (response) => {
 				throw Error(response.data);
@@ -67,7 +66,7 @@
 				this.showModal = false;
 
 				if (arguments[0]) {
-					this.$http.delete(`${homeURI}/user/delete/${this.deleteId}`).then(res => {
+					this.$http.delete(`user/delete/${this.deleteId}`).then(res => {
 
 						this.Users = res.body;
 

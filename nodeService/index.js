@@ -12,11 +12,8 @@ const compress = require('compression');
 const mongoose = require('mongoose');
 const mongoURI = require('./config/mongoDB');
 
-const db = mongoose.connect(mongoURI.productionURI,
-	{useNewUrlParser: true},
-	err => {
-		if (err) throw err;
-	});
+const db = mongoose.connect(mongoURI.productionURI);
+// investigate why useNewUrlParser is important
 
 const app = express();
 
@@ -24,8 +21,8 @@ if (app.get('env') === 'development') {
 	mongoose.set('debug', true) // enable logging collection methods + arguments to the console
 }
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+/*app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');*/
 
 app.set('port', process.env.PORT || 8443);
 
@@ -40,12 +37,17 @@ app.use(express.urlencoded({
 	extended: false
 }));
 
-app.use(express.static(path.join(global.__base, 'public')));
+// app.use(express.static(path.join(global.__base, 'public')));
 
 app.use((req, res, next) => {
 	req.db = db;
 	next();
 });
+
+app.use(/admin/, function (req, res, next) {
+	console.log('Request Type:', req.method)
+	next();
+})
 
 if (app.get('env') === 'development') {
 
@@ -62,9 +64,15 @@ if (app.get('env') === 'development') {
 	});
 }
 
-app.route(/.admin$/).get((req, res) => {
-	console.log('admin');
-});
+app.use(/admin/, function (req, res, next) {
+	console.log('Request URL:', req.originalUrl)
+	next()
+}, function (req, res, next) {
+	console.log('Request Type:', req.method)
+	next()
+})
+
+
 
 // routes based category
 require('./routes')(app);

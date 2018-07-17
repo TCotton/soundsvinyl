@@ -78,13 +78,12 @@
 
 <script>
 	import moment from 'moment';
-	import { homeURI } from '../../helper_constants';
 
 	export default {
 		name: 'User',
 		data () {
 			return {
-				actionURL: `${homeURI}/user/get/${this.$route.params.id}`,
+				actionURL: `user/get/${this.$route.params.id}`,
 				editUser: {
 					email: '',
 					password: '',
@@ -121,7 +120,7 @@
 						// revert date back to UTC format
 						this.editUser.date = this.originalCreationDate;
 
-						this.$http.put(`${homeURI}/user/update`, JSON.stringify(this.editUser), {
+						this.$http.put(`user/update`, JSON.stringify(this.editUser), {
 							headers: {
 								'Content-Type': 'application/json'
 							}

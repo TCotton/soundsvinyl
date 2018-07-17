@@ -80,7 +80,6 @@
 
 <script>
 	// import sortBy from 'lodash-es/sortBy';
-	import { homeURI } from '../../helper_constants';
 
 	export default {
 		name: 'AddUser',
@@ -93,7 +92,7 @@
 					userLevel: 1
 				},
 				msg: 'Welcome to Add User section',
-				actionURL: `${homeURI}/user/add`,
+				actionURL: `user/add`,
 				errorMsg: null,
 			}
 		},

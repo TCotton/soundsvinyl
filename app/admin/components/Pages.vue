@@ -79,7 +79,7 @@
 			this.noContent = false
 		},
 		created () {
-			this.$http.get(`${homeURI}/page/get`).then(res => {
+			this.$http.get(`page/get`).then(res => {
 
 				this.Pages = res.body;
 
@@ -96,7 +96,7 @@
 				this.showModal = false;
 
 				if (arguments[0]) {
-					this.$http.delete(`${homeURI}/page/delete/${this.deleteId}`).then(res => {
+					this.$http.delete(`page/delete/${this.deleteId}`).then(res => {
 
 						this.Pages = res.body;
 

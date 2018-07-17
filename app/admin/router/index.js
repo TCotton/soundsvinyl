@@ -21,8 +21,10 @@ Vue.use(VuePaginate);
 Vue.use(VueResource);
 Vue.use(VeeValidate);
 
+Vue.http.options.root = window.location.protocol + '//' + window.location.hostname + ':8443' + '/apiV1/';
 // do i *really* need this??
 Vue.http.options.emulateJSON = true;
+
 
 export default new Router({
 	routes: [
