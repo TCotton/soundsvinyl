@@ -25,7 +25,6 @@ Vue.http.options.root = window.location.protocol + '//' + window.location.hostna
 // do i *really* need this??
 Vue.http.options.emulateJSON = true;
 
-
 export default new Router({
 	routes: [
 		{

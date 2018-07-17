@@ -34,11 +34,11 @@ class Nav extends React.Component {
 						<input type='checkbox' id='toggle-1' className='hidden-desktop' onChange={this.handleClicked}/>
 						<div styleName='closeMenu' className={cn('hidden-desktop', ulClassName)} onClick={this.handleClicked}/>
 						<ul className={ulClassName}>
-							<a href='/'>
+							<Link to='/'>
 								<li>
 									Home
 								</li>
-							</a>
+							</Link>
 							<Link to='/about-us'>
 								<li>
 									About

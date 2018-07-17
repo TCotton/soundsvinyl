@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import { homeURI } from '../helper_constants';
 import './account.scss';
 
 class MyAccount extends React.Component {
@@ -19,6 +21,16 @@ class MyAccount extends React.Component {
 
 	handleSubmit (e) {
 		e.preventDefault();
+
+		if (this.state.loginName && this.state.loginPassword) {
+			axios.post(`${homeURI}/user/find`, {email: this.state.loginName, password: this.state.loginPassword})
+				.then(res => {
+					console.log(res);
+					console.log(res.data);
+				})
+		}
+
+		console.dir(e.target);
 	}
 
 	handleInputChange (event) {
@@ -45,10 +57,12 @@ class MyAccount extends React.Component {
 							<legend>Login</legend>
 
 							<label htmlFor='loginName'>Your email</label>
-							<input type='text' id='loginName' name='loginName' value={this.state.loginName} onChange={this.handleInputChange} required/>
+							<input type='text' id='loginName' name='loginName' value={this.state.loginName}
+										 onChange={this.handleInputChange} required/>
 
 							<label htmlFor='loginPassword'>Your password</label>
-							<input type='password' id='loginPassword' name='loginPassword' value={this.state.loginPassword} onChange={this.handleInputChange} required/>
+							<input type='password' id='loginPassword' name='loginPassword' value={this.state.loginPassword}
+										 onChange={this.handleInputChange} required/>
 
 							<input type='submit' name='loginSubmit' value='Login'/>
 
@@ -60,10 +74,12 @@ class MyAccount extends React.Component {
 							<legend>Register</legend>
 
 							<label htmlFor='registerName'>Your email</label>
-							<input type='text' id='registerName' name='registerName' value={this.state.registerName} onChange={this.handleInputChange} required/>
+							<input type='text' id='registerName' name='registerName' value={this.state.registerName}
+										 onChange={this.handleInputChange} required/>
 
 							<label htmlFor='registerPassword'>Your password</label>
-							<input type='password' id='registerPassword' name='registerPassword' value={this.state.registerPassword} onChange={this.handleInputChange} required/>
+							<input type='password' id='registerPassword' name='registerPassword' value={this.state.registerPassword}
+										 onChange={this.handleInputChange} required/>
 
 							<input type='submit' name='registerSubmit' value='Register'/>
 

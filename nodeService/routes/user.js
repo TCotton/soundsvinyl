@@ -21,18 +21,22 @@ module.exports = (app) => {
 					return res.status(409).send('Email address is already registered');
 				}
 
-				User.create({
-					email: body.email,
-					password: bcrypt.hashSync(body.password, 8),
-					date: Date.now(),
-					userLevel: body.userLevel ? body.userLevel : 2,
-				}, (err) => {
+				bcrypt.hash(body.password, secret.saltRounds).then((hash) => {
 
-					if (!err) {
-						res.status(200).send({ auth: true });
-					} else {
-						if (err) return res.status(500).send('There was a problem registering the user.');
-					}
+					User.create({
+						email: body.email,
+						password: hash,
+						date: Date.now(),
+						userLevel: body.userLevel ? body.userLevel : 2,
+					}, (err) => {
+
+						if (!err) {
+							res.status(200).send({auth: true});
+						} else {
+							if (err) return res.status(500).send('There was a problem registering the user.');
+						}
+
+					});
 
 				});
 
@@ -43,21 +47,44 @@ module.exports = (app) => {
 		});
 	});
 
-	app.route('/apiV1/user/find').post(function(req, res) {
+	app.route('/apiV1/user/find').post((req, res) => {
 
-		const hash = bcrypt.hashSync(req.body.password, 8);
-
-		User.findOne({email: req.body.email, password: hash}, (err, user) => {
+		User.findOne({email: req.body.email}, (err, user) => {
 
 			if (!err) {
-				// create a token
-				const token = jwt.sign({ id: user._id }, secret.salt, {
-					expiresIn: 86400 // expires in 24 hours
+
+				if (!user) {
+					if (err) return res.status(200).send('Email address not found');
+				}
+
+				bcrypt.compare(req.body.password, user.password, (err, response) => {
+
+					if (!err) {
+
+						if (response) {
+
+							const token = jwt.sign({id: user._id}, secret.salt, {
+								expiresIn: 86400 // expires in 24 hours
+							});
+
+							const send = {
+								auth: true, token: token
+							}
+
+							res.json(send);
+
+						} else {
+							return res.status(200).send('Password is incorrect');
+						}
+
+					} else {
+						throw err;
+					}
+
 				});
-				res.status(200).send({ auth: true, token: token });
 
 			} else {
-				if (err) return res.status(500).send('There was a problem registering the user.');
+				if (err) return res.status(500).send('There was a problem finding the user');
 			}
 
 		});
@@ -65,7 +92,7 @@ module.exports = (app) => {
 
 	app.route('/apiV1/user/get').get((req, res) => {
 
-		User.find({}, function (err, user) {
+		User.find({}, (err, user) => {
 
 			if (!err) {
 				res.json(user);
