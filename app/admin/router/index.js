@@ -113,6 +113,12 @@ const router = new Router({
 	]
 });
 
+/**
+ * This is a poor man's authentication system, to be removed when server-side rendering is used
+ * BEFORE, the page is loaded in the admin section a POST call is being made to verify the JWT token
+ * This should be done as a header and with a regular request
+ */
+
 router.beforeEach((to, from, next) => {
 
 	const oReq = new XMLHttpRequest();
