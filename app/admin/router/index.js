@@ -21,11 +21,13 @@ Vue.use(VuePaginate);
 Vue.use(VueResource);
 Vue.use(VeeValidate);
 
-Vue.http.options.root = window.location.protocol + '//' + window.location.hostname + ':8443' + '/apiV1/';
+const root = window.location.protocol + '//' + window.location.hostname + ':8443' + '/apiV1/';
+Vue.http.options.root = root;
 // do i *really* need this??
 Vue.http.options.emulateJSON = true;
 
-export default new Router({
+const router = new Router({
+	linkActiveClass: 'active',
 	routes: [
 		{
 			path: '/admin',
@@ -34,7 +36,7 @@ export default new Router({
 				default: Home,
 				Header: Header,
 				Footer: Footer,
-			}
+			},
 		},
 		{
 			path: '/admin/pages',
@@ -109,4 +111,25 @@ export default new Router({
 			}
 		}
 	]
+});
+
+router.beforeEach((to, from, next) => {
+
+	function reqListener () {
+		console.log(this.responseText);
+		if(this.responseText === 'Forbidden') {
+			console.log('This is forbidden');
+		}
+	}
+
+	const oReq = new XMLHttpRequest();
+	const token = window.localStorage.token;
+	oReq.addEventListener('load', reqListener);
+	oReq.open('get', `${root}jwt/generate/${token}`);
+	oReq.send();
+
+	next();
 })
+
+export default router;
+

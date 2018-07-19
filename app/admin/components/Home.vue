@@ -23,7 +23,7 @@
 		beforeCreate () {
 			return true;
 		},
-		created () {
+		created() {
 			return true;
 		},
 		beforeMount() {

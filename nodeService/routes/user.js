@@ -33,7 +33,7 @@ module.exports = (app) => {
 						if (!err) {
 							res.status(200).send({auth: true});
 						} else {
-							if (err) return res.status(500).send('There was a problem registering the user.');
+							return res.status(500).send('There was a problem registering the user.');
 						}
 
 					});
@@ -41,7 +41,7 @@ module.exports = (app) => {
 				});
 
 			} else {
-				if (err) return res.status(500).send('There was a problem registering the user.');
+				return res.status(500).send('There was a problem registering the user.');
 			}
 
 		});
@@ -54,7 +54,7 @@ module.exports = (app) => {
 			if (!err) {
 
 				if (!user) {
-					if (err) return res.status(200).send('Email address not found');
+					return res.status(200).send('Email address not found');
 				}
 
 				bcrypt.compare(req.body.password, user.password, (err, response) => {
@@ -63,12 +63,13 @@ module.exports = (app) => {
 
 						if (response) {
 
-							const token = jwt.sign({id: user._id}, secret.salt, {
+							const token = jwt.sign({...user}, secret.salt, {
 								expiresIn: 86400 // expires in 24 hours
 							});
 
 							const send = {
-								auth: true, token: token
+								auth: true,
+								token
 							}
 
 							res.json(send);
@@ -84,7 +85,7 @@ module.exports = (app) => {
 				});
 
 			} else {
-				if (err) return res.status(500).send('There was a problem finding the user');
+				return res.status(500).send('There was a problem finding the user');
 			}
 
 		});
@@ -100,6 +101,33 @@ module.exports = (app) => {
 				throw err;
 			}
 		});
+	});
+
+	// FORMAT OF TOKEN
+	// Authorization: Bearer <access_token>
+
+	app.route('/apiV1/jwt/generate/:token').get((req, res) => {
+		// Get auth header value
+		const bearerHeader = req.params.token;
+		// check if bearer is undefined
+		if (typeof bearerHeader !== 'undefined') {
+			// Split at the space
+			const bearer = bearerHeader.split(' ');
+			// Get token from array
+			const bearerToken = bearer[1];
+			// Set the token
+			jwt.verify(bearerToken, secret.salt, (err, authData) => {
+				if (!err) {
+					res.json({authData});
+				} else {
+					res.sendStatus(403);
+				}
+			});
+
+		} else {
+			res.sendStatus(403);
+		}
+
 	});
 
 	app.route('/apiV1/user/get/:id').get((req, res) => {
