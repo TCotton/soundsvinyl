@@ -2,10 +2,11 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const secret = require('../config/salt');
 const User = new require('../models/user');
+const verifyToken = require('./jwt');
 
 module.exports = (app) => {
 
-	app.route('/apiV1/user/add').post((req, res) => {
+	app.route('/apiV1/user/add').post(verifyToken, (req, res) => {
 
 		const body = req.body;
 
@@ -91,7 +92,7 @@ module.exports = (app) => {
 		});
 	});
 
-	app.route('/apiV1/user/get').get((req, res) => {
+	app.route('/apiV1/user/get').get(verifyToken, (req, res) => {
 
 		User.find({}, (err, user) => {
 
@@ -106,21 +107,23 @@ module.exports = (app) => {
 	// FORMAT OF TOKEN
 	// Authorization: Bearer <access_token>
 
-	app.route('/apiV1/jwt/generate/:token').get((req, res) => {
+	app.route('/apiV1/jwt/generate').post((req, res) => {
 		// Get auth header value
-		const bearerHeader = req.params.token;
+		const bearerBody = req.body.token;
 		// check if bearer is undefined
-		if (typeof bearerHeader !== 'undefined') {
-			// Split at the space
-			const bearer = bearerHeader.split(' ');
-			// Get token from array
-			const bearerToken = bearer[1];
+		if (typeof bearerBody !== 'undefined') {
 			// Set the token
-			jwt.verify(bearerToken, secret.salt, (err, authData) => {
+			jwt.verify(bearerBody, secret.salt, (err, authData) => {
 				if (!err) {
-					res.json({authData});
+
+					if (authData._doc.userLevel === 1) {
+						res.json({authData});
+					} else {
+						res.status(403).send('You do not have the right role level permissions');
+					}
+
 				} else {
-					res.sendStatus(403);
+					res.status(403).send(err.message);
 				}
 			});
 
@@ -130,7 +133,7 @@ module.exports = (app) => {
 
 	});
 
-	app.route('/apiV1/user/get/:id').get((req, res) => {
+	app.route('/apiV1/user/get/:id').get(verifyToken, (req, res) => {
 
 		User.findOne({_id: req.params.id}, (err, page) => {
 
@@ -143,7 +146,7 @@ module.exports = (app) => {
 		});
 	});
 
-	app.route('/apiV1/user/update').put((req, res) => {
+	app.route('/apiV1/user/update').put(verifyToken, (req, res) => {
 
 		User.findById(req.body._id, (err, user) => {
 			if (err) {
@@ -169,7 +172,7 @@ module.exports = (app) => {
 		});
 	});
 
-	app.route('/apiV1/user/delete/:id').delete((req, res) => {
+	app.route('/apiV1/user/delete/:id').delete(verifyToken, (req, res) => {
 
 		User.remove({
 			_id: req.params.id

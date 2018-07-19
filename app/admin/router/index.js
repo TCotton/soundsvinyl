@@ -115,20 +115,22 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
 
-	function reqListener () {
-		console.log(this.responseText);
-		if(this.responseText === 'Forbidden') {
-			console.log('This is forbidden');
+	const oReq = new XMLHttpRequest();
+	const token = window.localStorage.token;
+	oReq.open('POST', `${root}jwt/generate`);
+	//Send the proper header information along with the request
+	oReq.setRequestHeader('Content-Type', 'application/json');
+
+	oReq.onreadystatechange = function () {
+		if (this.readyState === XMLHttpRequest.DONE && this.status === 403) {
+			document.location.href = '/';
+		}
+		if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+			next();
 		}
 	}
 
-	const oReq = new XMLHttpRequest();
-	const token = window.localStorage.token;
-	oReq.addEventListener('load', reqListener);
-	oReq.open('get', `${root}jwt/generate/${token}`);
-	oReq.send();
-
-	next();
+	oReq.send(JSON.stringify({token: token}));
 })
 
 export default router;
