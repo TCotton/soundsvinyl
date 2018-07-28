@@ -76,7 +76,7 @@ module.exports = (app) => {
 							res.json(send);
 
 						} else {
-							return res.status(200).send('Password is incorrect');
+							return res.status(200).json({error: 'Password is incorrect'});
 						}
 
 					} else {

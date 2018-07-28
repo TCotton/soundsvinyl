@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-//mongoose.Schema.Types.Oid
+
+const tagSchema = new require('./tags');
+
 const PageSchema = new Schema({
 	title: {
 		type: mongoose.Schema.Types.String,
@@ -17,11 +19,9 @@ const PageSchema = new Schema({
 		required: true,
 		maxlength: 2083,
 	},
-	categories: {
-		type: mongoose.Schema.Types.Array,
-	},
+	categories: [tagSchema],
 	userId: {
-		type: mongoose.Schema.Types.String,
+		type: mongoose.Schema.Types.ObjectId,
 	},
 	descriptionOne: {
 		type: mongoose.Schema.Types.String,

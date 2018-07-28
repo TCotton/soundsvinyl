@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Page = new require('../models/page');
 
 module.exports = (app) => {
@@ -8,10 +9,16 @@ module.exports = (app) => {
 
 		if (app.get('env') === 'development') {
 			if (!body.userId) {
-				let newString = Math.random().toString(36).substring(10);
-				body.userId = newString.substring(0, newString.length - 3);
+				// if not userId, then just generate a false id
+				body.userId = mongoose.Types.ObjectId('4edd40c86762e0fb12000003');
 			}
 		}
+
+		body.categories = body.categories.replace(/\s/g, '').split(',').map((tag) => {
+			return {'name': tag};
+		});
+
+		console.dir(body.categories);
 
 		Page.create({
 			title: body.title,

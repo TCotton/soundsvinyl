@@ -136,7 +136,12 @@ router.beforeEach((to, from, next) => {
 		}
 	}
 
-	oReq.send(JSON.stringify({token: token}));
+	try {
+		oReq.send(JSON.stringify({token: token}));
+	}
+	catch (e) {
+		document.location.href = '/';
+	}
 })
 
 export default router;

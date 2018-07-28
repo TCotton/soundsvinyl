@@ -93,8 +93,6 @@
 </template>
 
 <script>
-	import { homeURI } from '../../helper_constants';
-
 	export default {
 		name: 'AddPage',
 		data () {
@@ -117,10 +115,6 @@
 				this.onPost();
 			},
 			onPost () {
-
-				// use if statement to check if there is a comma-separated list of words
-				// this.AddPageForm.addPageCategories = this.AddPageForm.addPageCategories.split(',');
-
 				this.$http.post(`page/add`, JSON.stringify(this.AddPageForm), {
 					headers: {
 						'Content-Type': 'application/json'
