@@ -1,11 +1,18 @@
 <template>
 	<div :class="$style.page">
 		<h2>{{ msg }}</h2>
+
+		<p
+			:class="$style.error"
+			v-show="errorMsg">
+			{{ errorMsg }}
+		</p>
+
 		<form
 			id="editPage"
 			name="editPage"
 			method="post"
-			@submit="onSubmit">
+			@submit.prevent="validateBeforeSubmit">
 
 			<label for="editPageId">PageId (cannot edit)</label>
 			<input
@@ -22,18 +29,20 @@
 				v-model="EditPageForm.title"
 				type="text"
 				name="editPageTitle"
-				required
 				autocorrect="off"
 				autocapitalize="off"
 				value="">
 
-			<label for="editPageSlug">SEO slug (delete to automatic regenerate on save)</label>
+			<span
+				v-show="errors.has('editPageTitle')"
+				:class="$style.error">{{ errors.first('editPageTitle') }}</span>
+
+			<label for="editPageSlug">SEO slug <br> (deleting will automatically regenerate on save)</label>
 			<input
 				id="editPageSlug"
 				v-model="EditPageForm.slug"
 				type="text"
 				name="editPageSlug"
-				required
 				autocorrect="off"
 				autocapitalize="off"
 				value="">
@@ -44,10 +53,13 @@
 				v-model="EditPageForm.subTitle"
 				name="editPageSubTitle"
 				type="text"
-				required
 				autocorrect="off"
 				autocapitalize="off"
 				value="">
+
+			<span
+				v-show="errors.has('editPageSubTitle')"
+				:class="$style.error">{{ errors.first('editPageSubTitle') }}</span>
 
 			<label for="editPageVideoLink">Link to video page</label>
 			<input
@@ -60,26 +72,30 @@
 				autocapitalize="off"
 				value="">
 
+			<span
+				v-show="errors.has('editPageVideoLink')"
+				:class="$style.error">{{ errors.first('editPageVideoLink') }}</span>
+
 			<label for="editPageDescriptionOne">First paragraph of description</label>
 			<textarea
 				id="editPageDescriptionOne"
 				v-model="EditPageForm.descriptionOne"
 				name="editPageDescriptionOne"
-				required
 				cols="10"
 				rows="10"
-				maxlength="280"
 			/>
+
+			<span
+				v-show="errors.has('editPageDescriptionOne')"
+				:class="$style.error">{{ errors.first('editPageDescriptionOne') }}</span>
 
 			<label for="editPageDescriptionTwo">Second paragraph of description</label>
 			<textarea
 				id="editPageDescriptionTwo"
 				v-model="EditPageForm.descriptionTwo"
 				name="editPageDescriptionTwo"
-				required
 				cols="10"
 				rows="10"
-				maxlength="280"
 			/>
 
 			<label for="editPageDescriptionThree">Three paragraph of description</label>
@@ -87,10 +103,8 @@
 				id="editPageDescriptionThree"
 				v-model="EditPageForm.descriptionThree"
 				name="editPageDescriptionThree"
-				required
 				cols="10"
 				rows="10"
-				maxlength="280"
 			/>
 
 			<label for="editPageCategories">Categories (comma-separated list)</label>
@@ -99,10 +113,13 @@
 				v-model="EditPageForm.categories"
 				name="editPageCategories"
 				type="text"
-				required
 				autocorrect="off"
 				autocapitalize="off"
 				value="">
+
+			<span
+				v-show="errors.has('addPageCategories')"
+				:class="$style.error">{{ errors.first('addPageCategories') }}</span>
 
 			<label for="editDate">Date created (cannot edit)</label>
 			<input
@@ -110,6 +127,15 @@
 				v-model="EditPageForm.date"
 				type="text"
 				name="editDate"
+				disabled
+				value="">
+
+			<label for="editDate">Date last updated (cannot edit)</label>
+			<input
+				id="editUpdated"
+				v-model="EditPageForm.date"
+				type="text"
+				name="editUpdated"
 				disabled
 				value="">
 
@@ -140,6 +166,7 @@
 				EditPageForm: {
 					_id: '',
 					title: '',
+					slug: '',
 					subTitle: '',
 					videoLink: '',
 					descriptionOne: '',
@@ -150,24 +177,28 @@
 					editUserId: '',
 				},
 				originalCreationDate: '',
-				msg: 'Welcome the individual page section'
+				msg: 'Welcome the individual page section',
+				errorMsg: null,
 			}
 		},
-		mounted() {
+		mounted () {
 
 			this.$http.get(`page/get/${this.$route.params.id}`).then((response) => {
 
-				console.dir(response);
+				const categories = response.data.categories.map((element, index) => {
+					return response.data.categories[index].name;
+				}).join();
 
 				this.EditPageForm = {
 					_id: response.data._id,
 					title: response.data.title,
+					slug: response.data.slug,
 					subTitle: response.data.subTitle,
 					videoLink: response.data.videoLink,
 					descriptionOne: response.data.descriptionOne,
 					descriptionTwo: response.data.descriptionTwo,
 					descriptionThree: response.data.descriptionThree,
-					categories: response.data.categories,
+					categories: categories,
 					date: moment(response.data.date).format('h:mm:ss a, MMMM Do YYYY'),
 					updated: new Date().toISOString(),
 					editUserId: response.data.userId,
@@ -179,24 +210,26 @@
 			});
 		},
 		methods: {
-			onSubmit (event) {
-				event.preventDefault();
-				this.onPost();
 
-				this.errors = [];
-			},
-			onPost() {
-				// revert date back to UTC format
-				this.EditPageForm.date = this.originalCreationDate;
+			validateBeforeSubmit () {
+				this.$validator.validateAll().then((result) => {
+					this.errorMsg = null;
 
-				this.$http.put(`page/update`, JSON.stringify(this.EditPageForm), {
-					headers: {
-						'Content-Type': 'application/json'
+					if (result) {
+
+						// revert date back to UTC format
+						this.EditPageForm.date = this.originalCreationDate;
+
+						this.$http.put(`page/update`, JSON.stringify(this.EditPageForm), {
+							headers: {
+								'Content-Type': 'application/json'
+							}
+						}).then(() => {
+							this.$router.push('Page');
+						}, (response) => {
+							throw Error(response.data);
+						});
 					}
-				}).then(() => {
-					this.$router.push('Page');
-				}, (response) => {
-					throw Error(response.data);
 				});
 			}
 		}
@@ -209,7 +242,7 @@
 	.page {
 		form {
 			display: grid;
-			grid-template-columns: 400px 1fr;
+			grid-template-columns: 450px 1fr;
 			grid-gap: 16px;
 		}
 		label {

@@ -141,7 +141,6 @@
 			validateBeforeSubmit () {
 				this.$validator.validateAll().then((result) => {
 					this.errorMsg = null;
-					console.dir(result);
 
 					if (result) {
 
@@ -152,7 +151,6 @@
 						}).then((response) => {
 
 							if (response.data) {
-								console.dir(response.data);
 								this.$router.push('Pages');
 							}
 
@@ -160,6 +158,7 @@
 							this.errorMsg = response.data;
 						});
 					}
+
 				});
 			}
 		}

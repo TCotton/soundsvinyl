@@ -20,6 +20,16 @@ module.exports = (app) => {
 
 		console.dir(body.categories);
 
+		// slug defaults
+		slug.defaults.modes['pretty'] = {
+			replacement: '-',
+			symbols: true,
+			remove: /[.]/g,
+			lower: true,
+			charmap: slug.charmap,
+			multicharmap: slug.multicharmap
+		};
+
 		Page.create({
 			title: body.title,
 			slug: slug(body.title, ['pretty' || 'replacement']),
