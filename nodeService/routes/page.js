@@ -18,8 +18,6 @@ module.exports = (app) => {
 			return {'name': tag};
 		});
 
-		console.dir(body.categories);
-
 		// slug defaults
 		slug.defaults.modes['pretty'] = {
 			replacement: '-',
@@ -79,20 +77,38 @@ module.exports = (app) => {
 
 	app.route('/apiV1/page/update').put((req, res) => {
 
-		Page.findById(req.body.id, (err, page) => {
+		console.dir(req.body._id);
+
+		Page.findById(req.body._id, (err, page) => {
 
 			if (err) {
-				res.send(err);
+				return res.status(500).send(err);
 			}
 
 			if (!page) {
-				return new Error('Could not load Page document');
+				return res.status(500).send('Could not load Page document');
 
 			} else {
+
+				// slug defaults
+				slug.defaults.modes['pretty'] = {
+					replacement: '-',
+					symbols: true,
+					remove: /[.]/g,
+					lower: true,
+					charmap: slug.charmap,
+					multicharmap: slug.multicharmap
+				};
 
 				Object.assign(page, req.body);
 				page.slug = req.body.slug ? req.body.slug : slug(req.body.title, ['pretty' || 'replacement']);
 				page.updated = Date.now();
+				page.categories = req.body.categories.replace(/\s/g, '').split(',').map((tag) => {
+					return {'name': tag};
+				});
+
+				console.dir(page);
+
 				page.save((err) => {
 
 					if (err) {

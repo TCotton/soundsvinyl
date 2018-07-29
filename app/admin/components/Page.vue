@@ -133,7 +133,7 @@
 			<label for="editDate">Date last updated (cannot edit)</label>
 			<input
 				id="editUpdated"
-				v-model="EditPageForm.date"
+				v-model="EditPageForm.updated"
 				type="text"
 				name="editUpdated"
 				disabled
@@ -174,6 +174,7 @@
 					descriptionThree: '',
 					categories: '',
 					date: '',
+					updated: null,
 					editUserId: '',
 				},
 				originalCreationDate: '',
