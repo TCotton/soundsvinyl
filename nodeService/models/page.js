@@ -9,6 +9,12 @@ const PageSchema = new Schema({
 		trim: true,
 		required: true
 	},
+	slug: {
+		type: mongoose.Schema.Types.String,
+		trim: true,
+		required: true,
+		maxlength: 2083,
+	},
 	subTitle: {
 		type: mongoose.Schema.Types.String,
 		trim: true,

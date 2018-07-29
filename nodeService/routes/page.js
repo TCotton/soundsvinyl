@@ -1,5 +1,6 @@
-const mongoose = require('mongoose');
 const Page = new require('../models/page');
+const slug = require('slug');
+const mongoose = require('mongoose');
 
 module.exports = (app) => {
 
@@ -9,8 +10,7 @@ module.exports = (app) => {
 
 		if (app.get('env') === 'development') {
 			if (!body.userId) {
-				// if not userId, then just generate a false id
-				body.userId = mongoose.Types.ObjectId('4edd40c86762e0fb12000003');
+				body.userId = new mongoose.mongo.ObjectId();
 			}
 		}
 
@@ -22,6 +22,7 @@ module.exports = (app) => {
 
 		Page.create({
 			title: body.title,
+			slug: slug(body.title, ['pretty' || 'replacement']),
 			subTitle: body.subTitle,
 			videoLink: body.videoLink,
 			categories: body.categories,
@@ -80,6 +81,8 @@ module.exports = (app) => {
 			} else {
 
 				Object.assign(page, req.body);
+				page.slug = req.body.slug ? req.body.slug : slug(req.body.title, ['pretty' || 'replacement']);
+				page.updated = Date.now();
 				page.save((err) => {
 
 					if (err) {

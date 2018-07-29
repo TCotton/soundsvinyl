@@ -27,6 +27,17 @@
 				autocapitalize="off"
 				value="">
 
+			<label for="editPageSlug">SEO slug (delete to automatic regenerate on save)</label>
+			<input
+				id="editPageSlug"
+				v-model="EditPageForm.slug"
+				type="text"
+				name="editPageSlug"
+				required
+				autocorrect="off"
+				autocapitalize="off"
+				value="">
+
 			<label for="editPageSubTitle">Records label details</label>
 			<input
 				id="editPageSubTitle"

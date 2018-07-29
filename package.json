@@ -76,6 +76,7 @@
     "single-spa": "3.9.1",
     "single-spa-react": "2.6.0",
     "single-spa-vue": "1.1.0",
+    "slug": "^0.9.1",
     "superagent": "3.8.3",
     "superagent-cache": "3.0.1",
     "superagent-cache-plugin": "2.0.0",
