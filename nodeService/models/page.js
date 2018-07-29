@@ -25,6 +25,7 @@ const PageSchema = new Schema({
 	},
 	descriptionOne: {
 		type: mongoose.Schema.Types.String,
+		required: true,
 		trim: true,
 	},
 	descriptionTwo: {
@@ -38,9 +39,11 @@ const PageSchema = new Schema({
 	date: {
 		type: mongoose.Schema.Types.Date,
 		default: Date.now,
+		required: true,
 	},
 	updated: {
 		type: mongoose.Schema.Types.Date,
+		default: Date.now,
 	},
 });
 

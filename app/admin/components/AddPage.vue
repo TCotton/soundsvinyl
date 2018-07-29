@@ -1,62 +1,85 @@
 <template>
 	<div :class="$style.addPage">
 		&nbsp;<h2>Add a new page</h2>
+
+		<p
+			:class="$style.error"
+			v-show="errorMsg">
+			{{ errorMsg }}
+		</p>
+
 		<form
 			id="addPage"
+			:action="actionURL"
 			name="addPage"
 			method="post"
-			@submit="onSubmit">
+			@submit.prevent="validateBeforeSubmit">
 
 			<label for="addPageTitle">Record title</label>
 			<input
+				v-validate="{ required: true }"
 				id="addPageTitle"
 				v-model="AddPageForm.title"
 				type="text"
 				name="addPageTitle"
-				required
 				autocorrect="off"
 				autocapitalize="off"
 				value="">
 
-			<label for="addPageSubTitle">Records label details</label>
+			<span
+				v-show="errors.has('addPageTitle')"
+				:class="$style.error">{{ errors.first('addPageTitle') }}</span>
+
+			<label for="addPageSubTitle">Records release details (label, year)</label>
 			<input
+				v-validate="{ required: true }"
 				id="addPageSubTitle"
 				v-model="AddPageForm.subTitle"
 				name="addPageSubTitle"
 				type="text"
-				required
 				autocorrect="off"
 				autocapitalize="off"
 				value="">
 
+			<span
+				v-show="errors.has('addPageSubTitle')"
+				:class="$style.error">{{ errors.first('addPageSubTitle') }}</span>
+
 			<label for="addPageVideoLink">Link to video page</label>
 			<input
+				v-validate="{ required: true, url: true, regex: /^https/ }"
 				id="addPageVideoLink"
 				v-model="AddPageForm.videoLink"
 				name="addPageVideoLink"
 				type="url"
-				required
 				autocorrect="off"
 				autocapitalize="off"
 				value="">
 
+			<span
+				v-show="errors.has('addPageVideoLink')"
+				:class="$style.error">{{ errors.first('addPageVideoLink') }}</span>
+
 			<label for="addPageDescriptionOne">First paragraph of description</label>
 			<textarea
+				v-validate="{ required: true }"
 				id="addPageDescriptionOne"
 				v-model="AddPageForm.descriptionOne"
 				name="addPageDescriptionOne"
-				required
 				cols="10"
 				rows="10"
 				maxlength="280"
 			/>
+
+			<span
+				v-show="errors.has('addPageDescriptionOne')"
+				:class="$style.error">{{ errors.first('addPageDescriptionOne') }}</span>
 
 			<label for="addPageDescriptionTwo">Second paragraph of description</label>
 			<textarea
 				id="addPageDescriptionTwo"
 				v-model="AddPageForm.descriptionTwo"
 				name="addPageDescriptionTwo"
-				required
 				cols="10"
 				rows="10"
 				maxlength="280"
@@ -67,7 +90,6 @@
 				id="addPageDescriptionThree"
 				v-model="AddPageForm.descriptionThree"
 				name="addPageDescriptionThree"
-				required
 				cols="10"
 				rows="10"
 				maxlength="280"
@@ -79,10 +101,13 @@
 				v-model="AddPageForm.categories"
 				name="addPageCategories"
 				type="text"
-				required
 				autocorrect="off"
 				autocapitalize="off"
 				value="">
+
+			<span
+				v-show="errors.has('addPageCategories')"
+				:class="$style.error">{{ errors.first('addPageCategories') }}</span>
 
 			<input
 				type="submit"
@@ -106,23 +131,35 @@
 					descriptionThree: '',
 					categories: '',
 				},
-				msg: 'Welcome to Add Page section'
+				msg: 'Welcome to Add Page section',
+				actionURL: `page/add`,
+				errorMsg: null,
 			}
 		},
 		methods: {
-			onSubmit (event) {
-				event.preventDefault();
-				this.onPost();
-			},
-			onPost () {
-				this.$http.post(`page/add`, JSON.stringify(this.AddPageForm), {
-					headers: {
-						'Content-Type': 'application/json'
+
+			validateBeforeSubmit () {
+				this.$validator.validateAll().then((result) => {
+					this.errorMsg = null;
+					console.dir(result);
+
+					if (result) {
+
+						this.$http.post(this.actionURL, JSON.stringify(this.AddPageForm), {
+							headers: {
+								'Content-Type': 'application/json'
+							}
+						}).then((response) => {
+
+							if (response.data) {
+								console.dir(response.data);
+								// this.$router.push('Pages');
+							}
+
+						}, (response) => {
+							this.errorMsg = response.data;
+						});
 					}
-				}).then(() => {
-					this.$router.push('Pages');
-				}, (response) => {
-					throw Error(response.data);
 				});
 			}
 		}
@@ -156,6 +193,7 @@
 			min-height: 150px;
 			padding: 10px;
 			@include font-calculator($font_family_body, 14px, 0);
+			line-height: 2;
 		}
 
 		input[type=submit] {
@@ -164,6 +202,11 @@
 			&:hover {
 				background: $formSubmitHover;
 			}
+		}
+
+		.error {
+			@include font-calculator($font_family_body, 14px);
+			color: $error;
 		}
 	}
 </style>

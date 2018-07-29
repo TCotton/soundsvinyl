@@ -5,7 +5,6 @@ const TagsSchema = new Schema({
 	name: {
 		type: mongoose.Schema.Types.String,
 		required: true,
-		unique: true,
 	},
 });
 

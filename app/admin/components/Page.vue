@@ -144,9 +144,9 @@
 		},
 		mounted() {
 
-			// REFACTOR TO MOVE METHODS OUT OF MOUNTED
-
 			this.$http.get(`page/get/${this.$route.params.id}`).then((response) => {
+
+				console.dir(response);
 
 				this.EditPageForm = {
 					_id: response.data._id,
@@ -222,6 +222,7 @@
 			min-height: 150px;
 			padding: 10px;
 			@include font-calculator($font_family_body, 14px, 0);
+			line-height: 2;
 		}
 
 		input[type=submit] {

@@ -62,7 +62,7 @@
 
 			<label for="addUserLevel">Administration level</label>
 			<input
-				v-validate="{ required: true, numeric: true }"
+				v-validate="{ required: true, numeric: true, min: 1, max: 2 }"
 				id="addUserLevel"
 				v-model="addUser.userLevel"
 				type="number"
@@ -70,10 +70,12 @@
 				autocorrect="off"
 				autocapitalize="off"
 				value="">
+
 			<input
 				type="submit"
 				name="addUserSubmit"
 				value="Submit User">
+
 		</form>
 	</div>
 </template>
@@ -97,7 +99,6 @@
 			}
 		},
 		methods: {
-
 			validateBeforeSubmit () {
 				this.$validator.validateAll().then((result) => {
 					this.errorMsg = null;
