@@ -111,10 +111,9 @@
 						}).then((response) => {
 
 							if (response.data.auth) {
-								// response.data.token
+								this.$router.push('Users');
 							}
 
-							// this.$router.push('Users');
 						}, (response) => {
 							this.errorMsg = response.data;
 						});

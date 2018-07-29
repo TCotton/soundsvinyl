@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Cookies from 'universal-cookie';
 import { homeURI } from '../helper_constants';
 import './account.scss';
 
@@ -36,8 +37,26 @@ class MyAccount extends React.Component {
 
 					if (res.data.auth) {
 
-						window.localStorage.token = res.data.token;
-						window.location.href = window.location.protocol + '//' + window.location.host + '/#/admin';
+						const cookies = new Cookies();
+						const now = new Date();
+						let time = now.getTime();
+						time += 3600 * 1000 * 24;
+						now.setTime(time);
+
+						const tomorrow = now.toUTCString();
+
+						if (res.data.auth) {
+
+							cookies.set('token', res.data.token, {
+								expires: new Date(tomorrow),
+								path: '/',
+								domain: window.location.host,
+								secure: true,
+							});
+
+							window.location.href = window.location.protocol + '//' + window.location.host + '/#/admin';
+						}
+
 					}
 
 				});
@@ -77,10 +96,12 @@ class MyAccount extends React.Component {
 							<legend>Login</legend>
 
 							<label htmlFor='loginName'>Your email</label>
-							<input type='text' id='loginName' name='loginName' value={this.state.loginName} onChange={this.handleInputChange} required/>
+							<input type='text' id='loginName' name='loginName' value={this.state.loginName}
+										 onChange={this.handleInputChange} required/>
 
 							<label htmlFor='loginPassword'>Your password</label>
-							<input type='password' id='loginPassword' name='loginPassword' value={this.state.loginPassword} onChange={this.handleInputChange} required/>
+							<input type='password' id='loginPassword' name='loginPassword' value={this.state.loginPassword}
+										 onChange={this.handleInputChange} required/>
 
 							<input type='submit' name='loginSubmit' value='Login'/>
 
@@ -92,10 +113,12 @@ class MyAccount extends React.Component {
 							<legend>Register</legend>
 
 							<label htmlFor='registerName'>Your email</label>
-							<input type='text' id='registerName' name='registerName' value={this.state.registerName} onChange={this.handleInputChange} required/>
+							<input type='text' id='registerName' name='registerName' value={this.state.registerName}
+										 onChange={this.handleInputChange} required/>
 
 							<label htmlFor='registerPassword'>Your password</label>
-							<input type='password' id='registerPassword' name='registerPassword' value={this.state.registerPassword} onChange={this.handleInputChange} required/>
+							<input type='password' id='registerPassword' name='registerPassword' value={this.state.registerPassword}
+										 onChange={this.handleInputChange} required/>
 
 							<input type='submit' name='registerSubmit' value='Register'/>
 

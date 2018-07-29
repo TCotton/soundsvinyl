@@ -153,7 +153,7 @@
 
 							if (response.data) {
 								console.dir(response.data);
-								// this.$router.push('Pages');
+								this.$router.push('Pages');
 							}
 
 						}, (response) => {
