@@ -72,8 +72,6 @@ app.use(/admin/, function (req, res, next) {
 	next()
 })
 
-
-
 // routes based category
 require('./routes')(app);
 require('./routes/page')(app);
