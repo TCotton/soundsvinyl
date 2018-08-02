@@ -102,6 +102,7 @@ module.exports = (app) => {
 
 				Object.assign(page, req.body);
 				page.slug = req.body.slug ? req.body.slug : slug(req.body.title, ['pretty' || 'replacement']);
+				console.log(page.slug);
 				page.updated = Date.now();
 				page.categories = req.body.categories.replace(/\s/g, '').split(',').map((tag) => {
 					return {'name': tag};
