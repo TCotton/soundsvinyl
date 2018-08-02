@@ -8,7 +8,8 @@
 	"plugins": [
 		"jasmine",
 		"react",
-		"vue"
+		"vue",
+		"security"
 	],
 	"parserOptions": {
 		"parser": "babel-eslint",
@@ -24,7 +25,8 @@
 	"extends": [
 		"eslint:recommended",
 		"plugin:react/recommended",
-		"plugin:vue/strongly-recommended"
+		"plugin:vue/strongly-recommended",
+		"plugin:security/recommended"
 	],
 	"rules": {
 		"vue/html-indent": 0

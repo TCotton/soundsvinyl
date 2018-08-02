@@ -11,7 +11,7 @@
     "start": "node --experimental-modules ./server.js",
     "start:nodeDev": "nodemon --experimental-modules  ./server.js",
     "start:static": "nodemon -r source-map-support/register --experimental-modules ./node/bin/www",
-    "lint": "eslint app/**",
+    "lint": "eslint app/** nodeService/**",
     "sass-lint": "sass-lint  --config .sasslintrc '**/*.scss' --verbose --no-exit --ignore './node_modules/**/**/**/**/*.scss'",
     "ssr": "cross-env NODE_ENV=production webpack --mode production node ./node/server.js",
     "singel": "singel ./app/front/**.js --ignore ./app/front/spec/**"
@@ -121,6 +121,7 @@
     "eslint-plugin-jasmine": "2.10.1",
     "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-react": "7.8.2",
+    "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-vue": "4.5.0",
     "file-loader": "1.1.11",
     "html-loader": "0.5.5",
