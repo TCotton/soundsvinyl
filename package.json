@@ -121,7 +121,7 @@
     "eslint-plugin-jasmine": "2.10.1",
     "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-react": "7.8.2",
-    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-security": "1.4.0",
     "eslint-plugin-vue": "4.5.0",
     "file-loader": "1.1.11",
     "html-loader": "0.5.5",
