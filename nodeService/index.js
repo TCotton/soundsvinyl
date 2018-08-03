@@ -76,6 +76,10 @@ app.use(/admin/, function (req, res, next) {
 })
 
 
+if (app.get('env') === 'production') {
+	require('./misc/security')(app);
+}
+
 
 // routes based category
 require('./routes')(app);
