@@ -1,15 +1,39 @@
 import React from 'react';
-import './nav.scss';
-import cn from 'classnames';
+import { instanceOf } from 'prop-types';
+import { withCookies, Cookies } from 'react-cookie';
 import { Link } from 'react-router-dom';
+import cn from 'classnames';
+import LogoutButton from './components/logged0ut';
+import LoginButton from './components/loggedIn';
+import './nav.scss';
 
 class Nav extends React.Component {
-	constructor () {
-		super();
+
+	static propTypes = {
+		cookies: instanceOf(Cookies).isRequired
+	};
+
+	constructor (props) {
+		super(props);
+
+		const { cookies } = props;
+
 		this.state = {
 			isClicked: false,
+			loggedIn: cookies.get('token') || false,
 		};
+
 		this.handleClicked = this.handleClicked.bind(this);
+		this.logout = this.logout.bind(this);
+	}
+
+	logout() {
+		const { cookies } = this.props;
+
+		cookies.remove('token');
+		this.setState({
+			loggedIn: cookies.get('token') || false,
+		});
 	}
 
 	handleClicked () {
@@ -23,11 +47,22 @@ class Nav extends React.Component {
 		const ulClassName = this.state.isClicked ? 'display-menu' : 'no-menu';
 		const navClasses = cn('inner-header', 'wrapper');
 
+		const isLoggedIn = this.state.loggedIn;
+		let button;
+
+		if (isLoggedIn) {
+			button = <LoginButton onClick={this.logout} />;
+		} else {
+			button = <LogoutButton />;
+		}
+
 		return (
 			<nav>
 				<div styleName='innerNav' className={navClasses}>
 					<div styleName='navLeftColumn'>
-						<h1>soundsvinyl.co</h1>
+						<Link to='/'>
+							<h1>soundsvinyl.co</h1>
+						</Link>
 					</div>
 					<div styleName='navRightColumn'>
 						<label htmlFor='toggle-1' className='hidden-desktop'>Main Menu</label>
@@ -49,11 +84,7 @@ class Nav extends React.Component {
 									Contact
 								</li>
 							</Link>
-							<Link to='/my-account'>
-								<li>
-									My account
-								</li>
-							</Link>
+							{button}
 						</ul>
 					</div>
 				</div>
@@ -62,4 +93,4 @@ class Nav extends React.Component {
 	}
 }
 
-export default Nav;
+export default withCookies(Nav);

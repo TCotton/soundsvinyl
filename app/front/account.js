@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
+import moment from 'moment';
 import { homeURI } from '../helper_constants';
 import './account.scss';
 
@@ -38,25 +39,15 @@ class MyAccount extends React.Component {
 					if (res.data.auth) {
 
 						const cookies = new Cookies();
-						const now = new Date();
-						let time = now.getTime();
-						time += 3600 * 1000 * 24;
-						now.setTime(time);
 
-						const tomorrow = now.toUTCString();
+						cookies.set('token', res.data.token, {
+							expires: moment().add(1, 'days').toDate(),
+							path: '/',
+							domain: window.location.hostname,
+							secure: true,
+						});
 
-						if (res.data.auth) {
-
-							cookies.set('token', res.data.token, {
-								expires: new Date(tomorrow),
-								path: '/',
-								domain: window.location.host,
-								secure: true,
-							});
-
-							window.location.href = window.location.protocol + '//' + window.location.host + '/#/admin';
-						}
-
+						window.location.href = window.location.protocol + '//' + window.location.host + '/#/admin';
 					}
 
 				});

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 
 import '../assets/sass/index.scss';
 import Main from './main';
@@ -25,20 +26,22 @@ if (!process.env.production) {
 export default class rootComponent extends React.Component {
 	render () {
 		return (
-			<Router>
-				<div className='wrapper'>
-					<Nav/>
-					<Switch>
-						<Route exact path='/' component={Main}/>
-						<Route path='/vinyl/:id' component={RecordListing}/>
-						<Route exact path='/contact' component={Contact}/>
-						<Route exact path='/about-us' component={AboutUs}/>
-						<Route exact path='/my-account' component={MyAccount}/>
-						<Route path='' component={Error}/>
-					</Switch>
-					<Footer/>
-				</div>
-			</Router>
+			<CookiesProvider>
+				<Router>
+					<div className='wrapper'>
+						<Nav/>
+						<Switch>
+							<Route exact path='/' component={Main}/>
+							<Route path='/vinyl/:id' component={RecordListing}/>
+							<Route exact path='/contact' component={Contact}/>
+							<Route exact path='/about-us' component={AboutUs}/>
+							<Route exact path='/my-account' component={MyAccount}/>
+							<Route path='' component={Error}/>
+						</Switch>
+						<Footer/>
+					</div>
+				</Router>
+			</CookiesProvider>
 		);
 	}
 }

@@ -13,8 +13,7 @@ class Header extends React.Component {
 					</div>
 					<div styleName='headerRightColumn'>
 						<h2>Welcome to Soundsvinyl</h2>
-						<p>Nam vel ornare lorem sed eleifend egestas
-							dui eu pretium sem mollis et</p>
+						<p>Music from the archives</p>
 					</div>
 				</div>
 			</header>

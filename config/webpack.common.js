@@ -1,3 +1,5 @@
+import LoginButton from '../app/front/components/loggedIn'
+
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
@@ -24,6 +26,8 @@ module.exports = {
 			MyAccount: path.resolve(global.__base, '/app/front/account.js'),
 			vue: 'vue/dist/vue.js',
 			VueRootComponent: path.resolve(global.__base, '/app/admin/index.vue'),
+			LogoutButton: path.resolve(global.__base, '/app/front/components/logged0ut.js'),
+			LoginButton: path.resolve(global.__base, '/app/front/components/loggedIn.js'),
 		},
 		extensions: ['*', '.js', '.vue', '.json']
 	},
