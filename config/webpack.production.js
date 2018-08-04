@@ -1,4 +1,40 @@
+const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common.js');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-module.exports = webpackMerge(commonConfig, {});
+// the path(s) that should be cleaned
+const pathsToClean = [
+	'dist',
+	'build'
+]
+
+module.exports = webpackMerge(commonConfig, {
+	mode: 'production',
+	stats: {
+		colors: false,
+		hash: true,
+		timings: true,
+		assets: true,
+		chunks: true,
+		chunkModules: true,
+		modules: true,
+		children: true,
+	},
+	devtool: 'hidden-source-map',
+	plugins: [
+		new CleanWebpackPlugin(pathsToClean),
+
+		// below works for React, but don't know what will happen with vueJS:
+		// https://medium.com/@rajaraodv/two-quick-ways-to-reduce-react-apps-size-in-production-82226605771a
+
+		new webpack.DefinePlugin({ // <-- key to reducing React's size
+			'process.env': {
+				'NODE_ENV': JSON.stringify('production')
+			}
+		}),
+		new webpack.optimize.DedupePlugin(), //dedupe similar code
+		new webpack.optimize.UglifyJsPlugin(), //minify everything
+		new webpack.optimize.AggressiveMergingPlugin()//Merge chunks
+	]
+});

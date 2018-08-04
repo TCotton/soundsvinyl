@@ -63,6 +63,7 @@ module.exports = {
 							importLoaders: 2,
 							modules: true,
 							sourceMap: true,
+							minimize: false,
 							localIdentName: '[name]__[local]___[hash:base64:5]'
 						}
 					},
@@ -83,6 +84,7 @@ module.exports = {
 							importLoaders: 2,
 							modules: true,
 							sourceMap: true,
+							minimize: false,
 							localIdentName: '[name]__[local]___[hash:base64:5]'
 						}
 					},
@@ -123,7 +125,7 @@ module.exports = {
 			}
 		]
 	},
-	devtool: 'inline-source-map',
+	devtool: 'eval-source-map',
 	plugins: [
 		new HtmlWebPackPlugin({
 			template: 'src/index.html',
