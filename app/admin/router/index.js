@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import VueResource from 'vue-resource';
 import VuePaginate from 'vue-paginate';
 import VeeValidate from 'vee-validate';
+import VueCookies from 'vue-cookies';
 import Home from '../components/Home';
 import Pages from '../components/Pages';
 import Page from '../components/Page';
@@ -20,11 +21,23 @@ Vue.use(Router);
 Vue.use(VuePaginate);
 Vue.use(VueResource);
 Vue.use(VeeValidate);
+Vue.use(VueCookies);
 
 const root = window.location.protocol + '//' + window.location.hostname + ':8443' + '/apiV1/';
 Vue.http.options.root = root;
 // do i *really* need this??
 Vue.http.options.emulateJSON = true;
+
+function getCookieValue (a) {
+	const b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
+	return b ? b.pop() : '';
+}
+
+Vue.http.interceptors.push(function(request) {
+	// modify headers
+	const token = getCookieValue('token');
+	request.headers.set('Authorization', `Bearer ${token}`);
+});
 
 const router = new Router({
 	linkActiveClass: 'active',
@@ -122,7 +135,7 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
 
 	const oReq = new XMLHttpRequest();
-	const token = window.localStorage.token;
+	const token = getCookieValue('token');
 	oReq.open('POST', `${root}jwt/generate`);
 	//Send the proper header information along with the request
 	oReq.setRequestHeader('Content-Type', 'application/json');

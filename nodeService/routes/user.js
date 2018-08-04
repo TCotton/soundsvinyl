@@ -6,7 +6,7 @@ const verifyToken = require('./jwt');
 
 module.exports = (app) => {
 
-	app.route('/apiV1/user/add').post(verifyToken, (req, res) => {
+	app.route('/apiV1/user/add').post((req, res) => {
 
 		const body = req.body;
 
@@ -133,7 +133,7 @@ module.exports = (app) => {
 
 	});
 
-	app.route('/apiV1/user/get/:id').get(verifyToken, (req, res) => {
+	app.route('/apiV1/user/get/:id').get((req, res) => {
 
 		User.findOne({_id: req.params.id}, (err, page) => {
 
@@ -146,7 +146,7 @@ module.exports = (app) => {
 		});
 	});
 
-	app.route('/apiV1/user/update').put(verifyToken, (req, res) => {
+	app.route('/apiV1/user/update').put((req, res) => {
 
 		User.findById(req.body._id, (err, user) => {
 			if (err) {
@@ -172,7 +172,7 @@ module.exports = (app) => {
 		});
 	});
 
-	app.route('/apiV1/user/delete/:id').delete(verifyToken, (req, res) => {
+	app.route('/apiV1/user/delete/:id').delete((req, res) => {
 
 		User.remove({
 			_id: req.params.id
