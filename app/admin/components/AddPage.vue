@@ -68,7 +68,6 @@
 				name="addPageDescriptionOne"
 				cols="10"
 				rows="10"
-				maxlength="280"
 			/>
 
 			<span
@@ -82,7 +81,6 @@
 				name="addPageDescriptionTwo"
 				cols="10"
 				rows="10"
-				maxlength="280"
 			/>
 
 			<label for="addPageDescriptionThree">Three paragraph of description</label>
@@ -92,11 +90,11 @@
 				name="addPageDescriptionThree"
 				cols="10"
 				rows="10"
-				maxlength="280"
 			/>
 
 			<label for="addPageCategories">Categories (comma-separated list)</label>
 			<input
+				v-validate="{ required: true }"
 				id="addPageCategories"
 				v-model="AddPageForm.categories"
 				name="addPageCategories"
@@ -141,7 +139,6 @@
 			validateBeforeSubmit () {
 				this.$validator.validateAll().then((result) => {
 					this.errorMsg = null;
-					console.dir(result);
 
 					if (result) {
 
@@ -152,7 +149,6 @@
 						}).then((response) => {
 
 							if (response.data) {
-								console.dir(response.data);
 								this.$router.push('Pages');
 							}
 

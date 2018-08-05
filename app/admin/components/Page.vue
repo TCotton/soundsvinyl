@@ -1,11 +1,19 @@
 <template>
 	<div :class="$style.page">
 		<h2>{{ msg }}</h2>
+
+		<p
+			:class="$style.error"
+			v-show="errorMsg">
+			{{ errorMsg }}
+		</p>
+
 		<form
 			id="editPage"
+			:action="actionURL"
 			name="editPage"
 			method="post"
-			@submit="onSubmit">
+			@submit.prevent="validateBeforeSubmit">
 
 			<label for="editPageId">PageId (cannot edit)</label>
 			<input
@@ -18,17 +26,22 @@
 
 			<label for="editPageTitle">Record title</label>
 			<input
+				v-validate="{ required: true }"
 				id="editPageTitle"
 				v-model="EditPageForm.title"
 				type="text"
 				name="editPageTitle"
-				required
 				autocorrect="off"
 				autocapitalize="off"
 				value="">
 
-			<label for="editPageSubTitle">Records label details</label>
+			<span
+				v-show="errors.has('editPageTitle')"
+				:class="$style.error">{{ errors.first('editPageTitle') }}</span>
+
+			<label for="editPageSubTitle">Records release details (label, year)</label>
 			<input
+				v-validate="{ required: true }"
 				id="editPageSubTitle"
 				v-model="EditPageForm.subTitle"
 				name="editPageSubTitle"
@@ -38,26 +51,34 @@
 				autocapitalize="off"
 				value="">
 
+			<span
+				v-show="errors.has('editPageSubTitle')"
+				:class="$style.error">{{ errors.first('editPageSubTitle') }}</span>
+
 			<label for="editPageVideoLink">Link to video page</label>
 			<input
+				v-validate="{ required: true, url: true, regex: /^https/ }"
 				id="editPageVideoLink"
 				v-model="EditPageForm.videoLink"
 				name="editPageVideoLink"
 				type="url"
-				required
 				autocorrect="off"
 				autocapitalize="off"
 				value="">
 
+			<span
+				v-show="errors.has('editPageVideoLink')"
+				:class="$style.error">{{ errors.first('editPageVideoLink') }}</span>
+
 			<label for="editPageDescriptionOne">First paragraph of description</label>
 			<textarea
+				v-validate="{ required: true }"
 				id="editPageDescriptionOne"
 				v-model="EditPageForm.descriptionOne"
 				name="editPageDescriptionOne"
 				required
 				cols="10"
 				rows="10"
-				maxlength="280"
 			/>
 
 			<label for="editPageDescriptionTwo">Second paragraph of description</label>
@@ -65,25 +86,26 @@
 				id="editPageDescriptionTwo"
 				v-model="EditPageForm.descriptionTwo"
 				name="editPageDescriptionTwo"
-				required
 				cols="10"
 				rows="10"
-				maxlength="280"
 			/>
+
+			<span
+				v-show="errors.has('editPageDescriptionTwo')"
+				:class="$style.error">{{ errors.first('editPageDescriptionTwo') }}</span>
 
 			<label for="editPageDescriptionThree">Three paragraph of description</label>
 			<textarea
 				id="editPageDescriptionThree"
 				v-model="EditPageForm.descriptionThree"
 				name="editPageDescriptionThree"
-				required
 				cols="10"
 				rows="10"
-				maxlength="280"
 			/>
 
 			<label for="editPageCategories">Categories (comma-separated list)</label>
 			<input
+				v-validate="{ required: true }"
 				id="editPageCategories"
 				v-model="EditPageForm.categories"
 				name="editPageCategories"
@@ -92,6 +114,10 @@
 				autocorrect="off"
 				autocapitalize="off"
 				value="">
+
+			<span
+				v-show="errors.has('editPageCategories')"
+				:class="$style.error">{{ errors.first('editPageCategories') }}</span>
 
 			<label for="editDate">Date created (cannot edit)</label>
 			<input
@@ -138,15 +164,19 @@
 					date: '',
 					editUserId: '',
 				},
+				actionURL: `page/update`,
 				originalCreationDate: '',
-				msg: 'Welcome the individual page section'
+				msg: 'Welcome the individual page section',
+				errorMsg: null,
 			}
 		},
 		mounted() {
 
 			this.$http.get(`page/get/${this.$route.params.id}`).then((response) => {
 
-				console.dir(response);
+				const catReduce = response.data.categories.reduce((accumulator, currentValue) => {
+					return accumulator.concat(currentValue.name);
+				}, []);
 
 				this.EditPageForm = {
 					_id: response.data._id,
@@ -156,7 +186,7 @@
 					descriptionOne: response.data.descriptionOne,
 					descriptionTwo: response.data.descriptionTwo,
 					descriptionThree: response.data.descriptionThree,
-					categories: response.data.categories,
+					categories: catReduce.join() || '',
 					date: moment(response.data.date).format('h:mm:ss a, MMMM Do YYYY'),
 					updated: new Date().toISOString(),
 					editUserId: response.data.userId,
@@ -168,24 +198,27 @@
 			});
 		},
 		methods: {
-			onSubmit (event) {
-				event.preventDefault();
-				this.onPost();
 
-				this.errors = [];
-			},
-			onPost() {
-				// revert date back to UTC format
-				this.EditPageForm.date = this.originalCreationDate;
+			validateBeforeSubmit () {
+				this.$validator.validateAll().then((result) => {
+					this.errorMsg = null;
 
-				this.$http.put(`page/update`, JSON.stringify(this.EditPageForm), {
-					headers: {
-						'Content-Type': 'application/json'
+					if (result) {
+
+						// revert date back to UTC format
+						this.EditPageForm.date = this.originalCreationDate;
+
+						this.$http.put(this.actionURL, JSON.stringify(this.EditPageForm), {
+							headers: {
+								'Content-Type': 'application/json'
+							}
+						}).then(() => {
+							this.$router.push('Page');
+						}, (response) => {
+							throw Error(response.data);
+						});
+
 					}
-				}).then(() => {
-					this.$router.push('Page');
-				}, (response) => {
-					throw Error(response.data);
 				});
 			}
 		}
@@ -232,6 +265,10 @@
 			&:hover {
 				background: $formSubmitHover;
 			}
+		}
+		.error {
+			@include font-calculator($font_family_body, 14px);
+			color: $error;
 		}
 	}
 </style>

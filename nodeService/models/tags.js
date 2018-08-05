@@ -6,6 +6,11 @@ const TagsSchema = new Schema({
 		type: mongoose.Schema.Types.String,
 		required: true,
 	},
+	date: {
+		type: mongoose.Schema.Types.Date,
+		default: Date.now,
+		required: true,
+	},
 });
 
 module.exports = TagsSchema;

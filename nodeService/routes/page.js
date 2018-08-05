@@ -18,6 +18,8 @@ module.exports = (app) => {
 			return {'name': tag};
 		});
 
+		console.dir(body.categories);
+
 		Page.create({
 			title: body.title,
 			subTitle: body.subTitle,
@@ -66,7 +68,13 @@ module.exports = (app) => {
 
 	app.route('/apiV1/page/update').put((req, res) => {
 
-		Page.findById(req.body.id, (err, page) => {
+		const body = req.body;
+
+		body.categories = body.categories.replace(/\s/g, '').split(',').map((tag) => {
+			return {'name': tag};
+		});
+
+		Page.findById(body._id, (err, page) => {
 
 			if (err) {
 				res.send(err);
@@ -77,7 +85,7 @@ module.exports = (app) => {
 
 			} else {
 
-				Object.assign(page, req.body);
+				Object.assign(page, body);
 				page.save((err) => {
 
 					if (err) {

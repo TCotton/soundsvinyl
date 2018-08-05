@@ -1,5 +1,3 @@
-import LoginButton from '../app/front/components/loggedIn'
-
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
