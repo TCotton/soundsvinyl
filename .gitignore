@@ -25,3 +25,4 @@ nodeService/config/*
 nodeService/logs/*
 combined.log
 error.log
+nodeService/thumbnails

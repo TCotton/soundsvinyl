@@ -8,6 +8,12 @@
 			{{ errorMsg }}
 		</p>
 
+		<h3>Thumbnail</h3>
+
+		<img
+			src=""
+			alt="" >
+
 		<form
 			id="editPage"
 			:action="actionURL"
@@ -168,6 +174,7 @@
 				originalCreationDate: '',
 				msg: 'Welcome the individual page section',
 				errorMsg: null,
+				thumbnail: window.location.protocol + '//' + window.location.hostname + ':8443/' + `thumbnail-${this.EditPageForm._id}.png`,
 			}
 		},
 		mounted() {

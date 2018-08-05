@@ -18,8 +18,6 @@ module.exports = (app) => {
 			return {'name': tag};
 		});
 
-		console.dir(body.categories);
-
 		Page.create({
 			title: body.title,
 			subTitle: body.subTitle,
