@@ -26,6 +26,7 @@ module.exports = {
 			VueRootComponent: path.resolve(global.__base, '/app/admin/index.vue'),
 			LogoutButton: path.resolve(global.__base, '/app/front/components/logged0ut.js'),
 			LoginButton: path.resolve(global.__base, '/app/front/components/loggedIn.js'),
+			Thumbnail: path.resolve(global.__base, '/app/admin/components/jsComponents/ThumbnailComponent.js'),
 		},
 		extensions: ['*', '.js', '.vue', '.json']
 	},

@@ -13,6 +13,11 @@ const PageSchema = new Schema({
 		type: mongoose.Schema.Types.String,
 		trim: true,
 	},
+	slug: {
+		type: mongoose.Schema.Types.String,
+		required: true,
+		trim: true,
+	},
 	videoLink: {
 		type: mongoose.Schema.Types.String,
 		trim: true,

@@ -10,9 +10,9 @@
 
 		<h3>Thumbnail</h3>
 
-		<img
-			src=""
-			alt="" >
+		<thumbnail thumbnail-url="thumbnail" :class="$style.thumbnail" />
+
+		<h4>Edit page</h4>
 
 		<form
 			id="editPage"
@@ -60,6 +60,22 @@
 			<span
 				v-show="errors.has('editPageSubTitle')"
 				:class="$style.error">{{ errors.first('editPageSubTitle') }}</span>
+
+			<label for="slug">SEO friendly page title slug</label>
+			<input
+				v-validate="{ required: true }"
+				id="slug"
+				v-model="EditPageForm.slug"
+				name="slug"
+				type="text"
+				required
+				autocorrect="off"
+				autocapitalize="off"
+				value="">
+
+			<span
+				v-show="errors.has('editPageVideoLink')"
+				:class="$style.error">{{ errors.first('editPageVideoLink') }}</span>
 
 			<label for="editPageVideoLink">Link to video page</label>
 			<input
@@ -169,12 +185,13 @@
 					categories: '',
 					date: '',
 					editUserId: '',
+					slug: ''
 				},
 				actionURL: `page/update`,
 				originalCreationDate: '',
 				msg: 'Welcome the individual page section',
 				errorMsg: null,
-				thumbnail: window.location.protocol + '//' + window.location.hostname + ':8443/' + `thumbnail-${this.EditPageForm._id}.png`,
+				thumbnail: ''
 			}
 		},
 		mounted() {
@@ -189,6 +206,7 @@
 					_id: response.data._id,
 					title: response.data.title,
 					subTitle: response.data.subTitle,
+					slug: response.data.slug,
 					videoLink: response.data.videoLink,
 					descriptionOne: response.data.descriptionOne,
 					descriptionTwo: response.data.descriptionTwo,
@@ -200,6 +218,9 @@
 				};
 
 				this.originalCreationDate = response.data.date;
+				this.thumbnail = 	window.location.protocol + '//' + window.location.hostname + ':8443/' + `thumbnails/thumbnail-${this.EditPageForm._id}.png`;
+				console.log('here it is');
+				console.log(this.thumbnail.toString());
 			}, (response) => {
 				throw Error(response.body);
 			});
@@ -236,6 +257,11 @@
 	@import '../../assets/sass/tools';
 
 	.page {
+
+		h3 {
+			@include font-calculator($font_family_header, 20px, 0);
+		}
+
 		form {
 			display: grid;
 			grid-template-columns: 400px 1fr;
@@ -276,6 +302,9 @@
 		.error {
 			@include font-calculator($font_family_body, 14px);
 			color: $error;
+		}
+		.thumbnail {
+			margin: 0 0 20px 0;
 		}
 	}
 </style>

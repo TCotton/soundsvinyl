@@ -16,6 +16,7 @@ import Footer from '../components/Footer';
 import Comments from '../components/Comments';
 import Comment from '../components/Comment';
 import '../components/Modal';
+import '../components/jsComponents/ThumbnailComponent';
 
 Vue.use(Router);
 Vue.use(VuePaginate);

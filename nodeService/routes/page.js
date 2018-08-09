@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Page = new require('../models/page');
+const slugify = require('slugify');
 
 module.exports = (app) => {
 
@@ -21,6 +22,7 @@ module.exports = (app) => {
 		Page.create({
 			title: body.title,
 			subTitle: body.subTitle,
+			slug: slugify(body.title.toLowerCase()),
 			videoLink: body.videoLink,
 			categories: body.categories,
 			descriptionOne: body.descriptionOne,

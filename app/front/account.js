@@ -29,7 +29,7 @@ class MyAccount extends React.Component {
 
 			this.setState({error: null}); // place this in a lifecycle hook
 
-			axios.post(`${homeURI}/user/find`, {email: this.state.loginName, password: this.state.loginPassword})
+			axios.post(`${homeURI}/apiV1/user/find`, {email: this.state.loginName, password: this.state.loginPassword})
 				.then(res => {
 
 					if (res.data.error) {
@@ -77,7 +77,7 @@ class MyAccount extends React.Component {
 		return (
 			<main styleName='myAccount'>
 				<h2>My Account</h2>
-				<p>Nam vel ornare lorem sed eleifend egestas</p>
+				<p>Either login or register an account with soundsvinyl.con from this page</p>
 
 				{error()}
 
