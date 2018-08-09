@@ -1,6 +1,6 @@
 const ffmpeg = require('fluent-ffmpeg');
 
-const takeScreenshots = function takeScreenshots (file, fileName) {
+const takeScreenshots = (file, fileName) => {
 
 	ffmpeg(file).on('filenames', function (filenames) {
 		console.log('Will generate ' + filenames.join(', '));

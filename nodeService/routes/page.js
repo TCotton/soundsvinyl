@@ -32,6 +32,12 @@ module.exports = (app) => {
 		}, (err, page) => {
 
 			if (!err) {
+
+				const takeScreenshots = require('../misc/takeScreenshots');
+				if (page.videoLink) {
+					takeScreenshots(page.videoLink, page._id);
+				}
+
 				res.json(page);
 			} else {
 				throw err;
