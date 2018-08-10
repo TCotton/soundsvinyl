@@ -25,11 +25,13 @@
 
 	.footer {
 		margin: 50px 0 0 0;
-		padding: 0 0 20px 0;
+		padding: 10px 0 20px 0;
 		text-align: center;
 		background: $footerAdminBackground;
+		border-top: 1px solid $borderBackgroundOne;
 		p {
-			@include font-calculator($font_family_body, 12px, 0);
+			@include font-calculator($font_family_body, 11px, 0);
+			font-weight: 300;
 		}
 	}
 </style>

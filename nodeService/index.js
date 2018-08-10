@@ -49,7 +49,10 @@ const options = {
 	}
 }
 
-app.use(express.static(path.join(__dirname, 'thumbnails'), options));
+const htmlPath = path.join(__dirname, 'thumbnails');
+console.dir(htmlPath);
+
+app.use(express.static(htmlPath, options));
 
 app.use(favicon(path.join(__dirname, 'files', 'favicon.ico')));
 

@@ -96,8 +96,6 @@
 			}
 		},
 		mounted () {
-
-			// REFACTOR TO MOVE METHODS OUT OF MOUNTED
 			this.$http.get(this.actionURL).then((response) => {
 
 				this.editUser = {
