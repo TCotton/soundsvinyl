@@ -1,6 +1,6 @@
 [![Build Status][ci-img]][ci]
-[![Dependency Status](https://david-dm.org/tcotton/soundsvinyl.svg?style=flat-square)](https://david-dm.org/tcotton/soundsvinyl)
-[![devDependency Status](https://david-dm.org/tcotton/soundsvinyl/dev-status.svg?style=flat-square)](https://david-dm.org/tcotton/soundsvinyl#info=devDependencies)
+[![dependencies Status](https://david-dm.org/tcotton/soundsvinyl/status.svg)](https://david-dm.org/tcotton/soundsvinyl)
+[![devDependencies Status](https://david-dm.org/tcotton/soundsvinyl/dev-status.svg)](https://david-dm.org/tcotton/soundsvinyl?type=dev)
 
 [ci-img]: https://travis-ci.org/TCotton/soundsvinyl.svg
 [ci]: https://travis-ci.org/TCotton/soundsvinyl
