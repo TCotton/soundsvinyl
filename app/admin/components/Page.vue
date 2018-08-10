@@ -219,7 +219,7 @@
 
 				this.originalCreationDate = response.data.date;
 				this.thumbnail = 	window.location.protocol + '//' + window.location.hostname + ':8443/' + `thumbnails/thumbnail-${this.EditPageForm._id}.png`;
-				console.log('here it is');
+				console.log('here it is the thumbnail');
 				console.log(this.thumbnail.toString());
 			}, (response) => {
 				throw Error(response.body);

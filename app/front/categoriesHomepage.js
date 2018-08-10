@@ -10,7 +10,7 @@ class CategoriesHomepage extends React.Component {
 </div>`;
 
 		const webForm = `<form class='search-form'>
-			<input type="text" ref="location" placeholder="Search for category"/>
+			<input type="text" ref="location" placeholder="Search by category"/>
 		</form>
 		<div class='search-results'>
 		<span>Result one</span>

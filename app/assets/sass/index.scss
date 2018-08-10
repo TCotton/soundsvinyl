@@ -27,7 +27,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 :global .search-form {
-	min-height: 44px;
+	min-height: 22px;
 	width: 100%;
 
 	input {
@@ -35,7 +35,7 @@ h1, h2, h3, h4, h5, h6 {
 		color: $inputFont;
 		width: 100%;
 		text-align: center;
-		min-height: 44px;
+		min-height: 22px;
 		border: 1px solid $mobileSearchBorder;
 	}
 }
