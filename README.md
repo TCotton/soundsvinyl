@@ -1,5 +1,9 @@
+[![Build Status][ci-img]][ci]
 [![Dependency Status](https://david-dm.org/tcotton/soundsvinyl.svg?style=flat-square)](https://david-dm.org/tcotton/soundsvinyl)
 [![devDependency Status](https://david-dm.org/tcotton/soundsvinyl/dev-status.svg?style=flat-square)](https://david-dm.org/tcotton/soundsvinyl#info=devDependencies)
+
+[ci-img]: https://travis-ci.org/TCotton/soundsvinyl.svg
+[ci]: https://travis-ci.org/TCotton/soundsvinyl
 
 # soundsvinyl.co
 
