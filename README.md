@@ -1,6 +1,7 @@
 [![Build Status][ci-img]][ci]
 [![dependencies Status](https://david-dm.org/tcotton/soundsvinyl/status.svg)](https://david-dm.org/tcotton/soundsvinyl)
 [![devDependencies Status](https://david-dm.org/tcotton/soundsvinyl/dev-status.svg)](https://david-dm.org/tcotton/soundsvinyl?type=dev)
+[![Coverage Status](https://coveralls.io/repos/github/TCotton/soundsvinyl/badge.svg?branch=master)](https://coveralls.io/github/TCotton/soundsvinyl?branch=master)
 
 [ci-img]: https://travis-ci.org/TCotton/soundsvinyl.svg
 [ci]: https://travis-ci.org/TCotton/soundsvinyl
