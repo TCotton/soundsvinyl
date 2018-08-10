@@ -1,12 +1,22 @@
 <template>
 	<footer :class="$style.footer">
-		&nbsp;<p>Add footer links here</p>
+		<p> {{ current }} </p>
 	</footer>
 </template>
 
 <script>
+	import moment from 'moment';
+
 	export default {
-		name: 'Footer'
+		name: 'Footer',
+		data () {
+			return {
+				current: '',
+			}
+		},
+		created () {
+			this.current = moment().format('h:mm:ss a, MMMM Do YYYY');
+		}
 	}
 </script>
 

@@ -1,19 +1,30 @@
 <template>
 	<header :class="$style.navHeader">
 		<div :class="$style.navLeftColumn">
-			<router-link to="/admin"><h1>soundsvinyl.co</h1></router-link>
+			<router-link to="/"><h1>soundsvinyl.co</h1></router-link>
 		</div>
 		<div :class="$style.navRightColumn">
 			<router-link to="/admin"><p>Home</p></router-link>
 			<p><a @click="$router.go(-1)">Back</a></p>
-			<router-link to="/admin"><p>Logout</p></router-link>
+			<router-link to="/admin"><p @click="logout">Logout</p></router-link>
 		</div>
 	</header>
 </template>
 
 <script>
 	export default {
-		name: 'Header'
+		name: 'Header',
+		methods: {
+			logout (e) {
+				e.preventDefault();
+
+				if (this.$cookies.isKey('token')) {
+					this.$cookies.remove('token');
+				}
+
+				this.$router.push('Home');
+			}
+		}
 	}
 </script>
 
