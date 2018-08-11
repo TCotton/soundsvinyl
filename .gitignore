@@ -26,3 +26,4 @@ nodeService/logs/*
 combined.log
 error.log
 nodeService/thumbnails
+test/reports

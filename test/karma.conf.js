@@ -24,17 +24,10 @@ module.exports = (config) => {
 			noInfo: true,
 		},
 		coverageReporter: {
-			check: {
-				global: {
-					excludes: [
-						'app/**/**/**.spec.js'
-					]
-				}
-			},
-			dir: './coverage',
+			dir: 'reports/coverage',
 			reporters: [
-				{ type: 'lcov', subdir: '.' },
-				{ type: 'text-summary' }
+				{ type: 'text-summary' },
+				{ type: 'html', subdir: 'report-html' },
 			]
 		},
 		plugins: [

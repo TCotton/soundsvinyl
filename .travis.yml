@@ -2,5 +2,6 @@ sudo: required
 addons:
 	chrome: stable
 language: node_js
-node_js:
-- "10.8.0"
+before_install:
+- npm i -g npm@6.3.0
+after_success: npm run coverage
