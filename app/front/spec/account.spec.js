@@ -23,6 +23,7 @@ describe('Component', () => {
 		expect(component.state.loginPassword).toEqual('');
 		expect(component.state.registerName).toEqual('');
 		expect(component.state.registerPassword).toEqual('');
+		expect(component.state.error).toEqual(null);
 	});
 
 	it('should have correct state default types', () => {
@@ -30,5 +31,6 @@ describe('Component', () => {
 		expect(component.state.loginPassword).toEqual(jasmine.any(String));
 		expect(component.state.registerName).toEqual(jasmine.any(String));
 		expect(component.state.registerPassword).toEqual(jasmine.any(String));
+		expect(component.state.error).not.toEqual(jasmine.any(String));
 	});
 });

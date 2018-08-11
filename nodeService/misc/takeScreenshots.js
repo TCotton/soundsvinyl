@@ -3,7 +3,7 @@ const ffmpeg = require('fluent-ffmpeg');
 const takeScreenshots = (file, fileName) => {
 
 	ffmpeg(file).on('filenames', function (filenames) {
-		console.log('Will generate ' + filenames.join(', '));
+		console.log('Will generate ' + filenames.join(', '));  // eslint-disable-line  no-console
 	}).on('end', function () {
 		return true;
 	}).takeScreenshots({
