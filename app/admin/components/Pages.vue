@@ -79,7 +79,9 @@
 		created () {
 			this.$http.get(`page/get`).then(res => {
 
-				this.Pages = res.body;
+				this.Pages = res.body.sort((a, b) => {
+					return new Date(b.date) - new Date(a.date);
+				});
 
 				if (res.body.length === 0) {
 					this.noContent = true;
