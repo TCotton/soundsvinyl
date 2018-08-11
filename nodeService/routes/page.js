@@ -15,8 +15,8 @@ module.exports = (app) => {
 			}
 		}
 
-		body.categories = body.categories.replace(/\s/g, '').split(',').map((tag) => {
-			return {'name': tag};
+		body.categories = body.categories.split(',').map((tag) => {
+			return {'name': tag.trim()};
 		});
 
 		Page.create({
@@ -76,8 +76,8 @@ module.exports = (app) => {
 
 		const body = req.body;
 
-		body.categories = body.categories.replace(/\s/g, '').split(',').map((tag) => {
-			return {'name': tag};
+		body.categories = body.categories.split(',').map((tag) => {
+			return {'name': tag.trim()};
 		});
 
 		Page.findById(body._id, (err, page) => {

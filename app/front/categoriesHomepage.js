@@ -13,15 +13,10 @@ class CategoriesHomepage extends React.Component {
 			<input type="text" ref="location" placeholder="Search by category"/>
 		</form>
 		<div class='search-results'>
-		<span>Result one</span>
-		<span>Result two</span>
-		<span>Result three</span>
-		<span>Result four</span>
-		<span>Result five</span>
-		<span>Result five</span>
 </div>`;
 
 		return (
+			// 	<span>Result one</span>
 			<main styleName='categories'>
 				<h3>All categories</h3>
 				<section>
