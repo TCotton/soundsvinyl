@@ -13,8 +13,7 @@
     "start:static": "nodemon -r source-map-support/register --experimental-modules ./node/bin/www",
     "lint": "eslint app/** nodeService/**",
     "sass-lint": "sass-lint  --config .sasslintrc '**/*.scss' --verbose --no-exit --ignore './node_modules/**/**/**/**/*.scss'",
-    "ssr": "cross-env NODE_ENV=production webpack --mode production node ./node/server.js",
-    "singel": "singel ./app/front/**.js --ignore ./app/front/spec/**"
+    "ssr": "cross-env NODE_ENV=production webpack --mode production node ./node/server.js"
   },
   "repository": {
     "type": "git",
@@ -163,7 +162,6 @@
     "sass-lint": "1.12.1",
     "sass-loader": "7.0.1",
     "script-loader": "0.7.2",
-    "singel": "0.5.2",
     "source-map-support": "0.5.6",
     "style-loader": "0.21.0",
     "svg-inline-loader": "0.8.0",
