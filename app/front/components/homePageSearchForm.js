@@ -6,10 +6,11 @@ import ExtendedPropTypes from 'extended-proptypes';
 */
 
 function HomePageSearchForm () {
+	// ref={(c) => { this.location = c; }}
 	return (
 		<div>
 			<form className='search-form'>
-				<input type="text" ref={(c) => { this.location = c; }} placeholder="Search by category"/>
+				<input type="text" placeholder="Search by category"/>
 			</form>
 			<div className='search-results'>
 			</div>

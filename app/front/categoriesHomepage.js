@@ -4,7 +4,8 @@ import './categoriesHomepage.scss';
 import { homeURI } from '../helper_constants';
 import Cookies from 'universal-cookie';
 import moment from 'moment';
-import pageUnit from './components/pageUnit';
+import PageUnit from './components/pageUnit';
+import HomePageSearchForm from './components/homePageSearchForm';
 
 class CategoriesHomepage extends React.Component {
 
@@ -36,8 +37,6 @@ class CategoriesHomepage extends React.Component {
 
 	render () {
 
-		const webForm = ``;
-
 		const requestCompleted = this.state.requestCompleted;
 		let arrayMap;
 
@@ -53,8 +52,13 @@ class CategoriesHomepage extends React.Component {
 				return (
 					<div key={index}>
 						{
-							index !== 2 ? pageUnit(element) :
-								<div key={index.toString()} dangerouslySetInnerHTML={{__html: webForm}}/>
+							index !== 2 ?
+								<PageUnit
+								title={element.title}
+								thumbnailUrl={element.thumbnailUrl}
+								slug={element.slug}
+								shortSlug={element.shortSlug}
+								id={element._id} /> : <HomePageSearchForm />
 						}
 					</div>
 				)

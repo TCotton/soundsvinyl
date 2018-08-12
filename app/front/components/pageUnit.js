@@ -11,7 +11,7 @@ import { thumbnailOne } from '../../alternative_default_thumbnails';
 
 function PageUnit (props) {
 	return (
-		<a href={`/${props.slug}/${props._id}`} className='pageUnit'>
+		<a href={`/${props.slug}/${props.id}`} className='pageUnit'>
 			<img src={props.thumbnailUrl} alt={props.title} onError={(e) => {e.target.src = thumbnailOne}}/>
 			<span className='video-title'>{props.title}</span>
 		</a>
@@ -23,7 +23,7 @@ PageUnit.propTypes = {
 	thumbnailUrl: PropTypes.string.isRequired,
 	slug: PropTypes.string.isRequired,
 	shortSlug: PropTypes.string.isRequired,
-	_id: ExtendedPropTypes.mongoId.isRequired,
+	id: ExtendedPropTypes.mongoId.isRequired,
 };
 
 export default PageUnit;
