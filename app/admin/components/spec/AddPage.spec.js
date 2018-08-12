@@ -1,6 +1,6 @@
 import AddPage from '../AddPage.vue';
 
-fdescribe('Component AddPage', () => {
+describe('Component AddPage', () => {
 
 	let component;
 
@@ -54,9 +54,9 @@ fdescribe('Component AddPage', () => {
 			expect(typeof component.methods.validateBeforeSubmit).toBe('function');
 		});
 
-		it('sets correct component types', () => {
+		/*it('sets correct component types', () => {
 			// Object.assign(component, $validator);
 			component.methods.validateBeforeSubmit();
-		});
+		});*/
 	});
 });
