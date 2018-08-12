@@ -47,7 +47,16 @@ class CategoriesHomepage extends React.Component {
 
 		if (requestCompleted) {
 			const pageList = this.state.pages;
+
 			arrayMap = pageList.map((element, index) => {
+
+/*				console.dir(`thumbnails/thumbnail-${element._id}.png`);
+				console.dir(element);*/
+				Object.assign(element, {
+					thumbnailUrl: window.location.protocol + '//' + window.location.hostname + ':8443/' + `thumbnails/thumbnail-${element._id}.png`
+				});
+
+				// const thumbnail = window.location.protocol + '//' + window.location.hostname + ':8443/' + `thumbnails/thumbnail-${element._id}.png`;
 
 				return (
 					<div key={index}>
