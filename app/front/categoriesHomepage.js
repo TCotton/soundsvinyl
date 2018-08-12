@@ -2,9 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import './categoriesHomepage.scss';
 import { homeURI } from '../helper_constants'
-import Cookies from 'universal-cookie'
+/*import Cookies from 'universal-cookie'
 import moment from 'moment'
-import pageUnit from './components/pageUnit';
+import pageUnit from './components/pageUnit';*/
 
 class CategoriesHomepage extends React.Component {
 
