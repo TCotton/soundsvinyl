@@ -1,23 +1,12 @@
 const mongoose = require('mongoose');
 const Page = new require('../models/page');
-const slugify = require('slugify');
+const {
+	createStringSlug,
+	createNumberSlug,
+	createCategories
+} = require('./routes_helper_functions');
 
 module.exports = (app) => {
-
-	const createSlug = (body) => {
-
-		const categories = body.categories.split(',').map((tag) => {
-			return {'name': tag.toLowerCase().trim()};
-		});
-		const stringSlug = slugify(body.title.toLowerCase());
-		const numberSlug = Number.parseInt(body._id.toLowerCase().reverse().substr(13, 24), 10);
-
-		return {
-			categories,
-			stringSlug,
-			numberSlug,
-		}
-	}
 
 	app.route('/apiV1/page/add').post((req, res) => {
 
@@ -30,17 +19,16 @@ module.exports = (app) => {
 			}
 		}
 
-		body.categories = body.categories.split(',').map((tag) => {
-			return {'name': tag.trim()};
-		});
+		const _id = mongoose.Types.ObjectId();
 
 		Page.create({
+			_id,
 			title: body.title,
 			subTitle: body.subTitle,
-			slug: createSlug(body).stringSlug,
-			numberSlug: createSlug(body).numberSlug,
+			slug: createStringSlug(body),
+			numberSlug: createNumberSlug(_id),
 			videoLink: body.videoLink,
-			categories: createSlug(body).categories,
+			categories: createCategories(body),
 			descriptionOne: body.descriptionOne,
 			descriptionTwo: body.descriptionTwo,
 			descriptionThree: body.descriptionThree,
@@ -115,7 +103,6 @@ module.exports = (app) => {
 					} else {
 						res.json('Success');
 					}
-
 				});
 			}
 		});
@@ -142,4 +129,5 @@ module.exports = (app) => {
 			}
 		});
 	});
+
 };
