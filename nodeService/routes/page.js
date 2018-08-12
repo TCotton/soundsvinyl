@@ -4,6 +4,21 @@ const slugify = require('slugify');
 
 module.exports = (app) => {
 
+	const createSlug = (body) => {
+
+		const categories = body.categories.split(',').map((tag) => {
+			return {'name': tag.toLowerCase().trim()};
+		});
+		const stringSlug = slugify(body.title.toLowerCase());
+		const numberSlug = Number.parseInt(body._id.toLowerCase().reverse().substr(13, 24), 10);
+
+		return {
+			categories,
+			stringSlug,
+			numberSlug,
+		}
+	}
+
 	app.route('/apiV1/page/add').post((req, res) => {
 
 		const body = req.body;
@@ -22,9 +37,10 @@ module.exports = (app) => {
 		Page.create({
 			title: body.title,
 			subTitle: body.subTitle,
-			slug: slugify(body.title.toLowerCase()),
+			slug: createSlug(body).stringSlug,
+			numberSlug: createSlug(body).numberSlug,
 			videoLink: body.videoLink,
-			categories: body.categories,
+			categories: createSlug(body).categories,
 			descriptionOne: body.descriptionOne,
 			descriptionTwo: body.descriptionTwo,
 			descriptionThree: body.descriptionThree,

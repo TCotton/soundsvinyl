@@ -1,7 +1,36 @@
 import React from 'react';
+import axios from 'axios';
 import './categoriesHomepage.scss';
+import { homeURI } from '../helper_constants'
+import Cookies from 'universal-cookie'
+import moment from 'moment'
+import pageUnit from './components/pageUnit';
 
 class CategoriesHomepage extends React.Component {
+
+	constructor (props) {
+		super(props);
+
+		this.state = {
+			pages: [],
+			error: null
+		};
+	}
+
+	componentDidMount () {
+
+		axios.get(`${homeURI}/apiV1/page/get`)
+			.then(res => {
+
+				if (res.data.error) {
+					this.setState({error: res.data.error});
+				}
+
+				this.setState({
+					pages: res.data
+				});
+			});
+	}
 
 	render () {
 		const tempElement = `<div class='pageUnit'>
@@ -15,16 +44,28 @@ class CategoriesHomepage extends React.Component {
 		<div class='search-results'>
 </div>`;
 
+		const pageList = this.state.pages;
+/*		if(pageList.length > 0) {
+			console.dir(pageList[1]._id.length.reverse().substr(13, 24));
+		}*/
+
 		return (
 			<main styleName='categories'>
 				<h3>All categories</h3>
 				<section>
-					{[...Array(9)].map((element, index) => {
+
+					{pageList.map((element, index) => {
+
 						return (
+
 							<div key={index}>
-								{index !== 2 ?
-									<div key={index.toString()} dangerouslySetInnerHTML={{__html: tempElement}}/>
-									: <div key={index.toString()} dangerouslySetInnerHTML={{__html: webForm}}/>}
+								{
+									index !== 2 ?
+
+									<div key={index.toString()} dangerouslySetInnerHTML={{__html: tempElement}}/> :
+
+										<div key={index.toString()} dangerouslySetInnerHTML={{__html: webForm}}/>
+								}
 							</div>
 						)
 					})}
