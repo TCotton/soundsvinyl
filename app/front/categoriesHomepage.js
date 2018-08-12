@@ -36,11 +36,7 @@ class CategoriesHomepage extends React.Component {
 
 	render () {
 
-		const webForm = `<form class='search-form'>
-			<input type="text" ref="location" placeholder="Search by category"/>
-		</form>
-		<div class='search-results'>
-</div>`;
+		const webForm = ``;
 
 		const requestCompleted = this.state.requestCompleted;
 		let arrayMap;
@@ -53,7 +49,7 @@ class CategoriesHomepage extends React.Component {
 				Object.assign(element, {
 					thumbnailUrl: window.location.protocol + '//' + window.location.hostname + ':8443/' + `thumbnails/thumbnail-${element._id}.png`
 				});
-				
+
 				return (
 					<div key={index}>
 						{

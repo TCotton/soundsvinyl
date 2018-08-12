@@ -10,8 +10,6 @@ import { thumbnailOne } from '../../alternative_default_thumbnails';
  */
 
 function PageUnit (props) {
-
-	console.dir(props);
 	return (
 		<a href={`/${props.slug}/${props._id}`} className='pageUnit'>
 			<img src={props.thumbnailUrl} alt={props.title} onError={(e) => {e.target.src = thumbnailOne}}/>
