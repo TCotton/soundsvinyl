@@ -24,6 +24,9 @@ if (app.get('env') === 'development') {
 	mongoose.set('debug', true) // enable logging collection methods + arguments to the console
 }
 
+app.set('view engine', 'bug');
+app.use(express.static(__dirname + '/public'));
+
 app.set('port', process.env.PORT || 8443);
 
 app.use(cookieParser())

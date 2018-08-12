@@ -53,7 +53,7 @@ module.exports = (app) => {
 
 	app.route('/apiV1/page/get').get((req, res) => {
 
-		Page.find({}, function (err, pages) {
+		Page.find({}, (err, pages) => {
 
 			if (!err) {
 				res.json(pages);

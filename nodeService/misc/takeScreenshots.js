@@ -8,7 +8,7 @@ const takeScreenshots = (file, fileName) => {
 		return true;
 	}).takeScreenshots({
 		filename: `thumbnail-${fileName}.png`,
-		folder: global.__base + '/nodeService/thumbnails',
+		folder: global.__base + '/nodeService/public/thumbnails',
 		size: '310x169',
 		count: 1,
 	});
