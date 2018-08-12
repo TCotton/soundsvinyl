@@ -61,7 +61,7 @@
 				v-show="errors.has('editPageSubTitle')"
 				:class="$style.error">{{ errors.first('editPageSubTitle') }}</span>
 
-			<label for="slug">SEO friendly page title slug</label>
+			<label for="slug">SEO friendly page title slug - human-friendly</label>
 			<input
 				v-validate="{ required: true }"
 				id="slug"
@@ -74,8 +74,24 @@
 				value="">
 
 			<span
-				v-show="errors.has('editPageVideoLink')"
-				:class="$style.error">{{ errors.first('editPageVideoLink') }}</span>
+				v-show="errors.has('slug')"
+				:class="$style.error">{{ errors.first('slug') }}</span>
+
+			<label for="shortSlug">SEO friendly page title slug - machine-friendly</label>
+			<input
+				v-validate="{ required: true }"
+				id="shortSlug"
+				v-model="EditPageForm.shortSlug"
+				name="shortSlug"
+				type="text"
+				required
+				autocorrect="off"
+				autocapitalize="off"
+				value="">
+
+			<span
+				v-show="errors.has('shortSlug')"
+				:class="$style.error">{{ errors.first('shortSlug') }}</span>
 
 			<label for="editPageVideoLink">Link to video page</label>
 			<input
@@ -185,7 +201,8 @@
 					categories: '',
 					date: '',
 					editUserId: '',
-					slug: ''
+					slug: '',
+					shortSlug: ''
 				},
 				actionURL: `page/update`,
 				originalCreationDate: '',
@@ -207,6 +224,7 @@
 					title: response.data.title,
 					subTitle: response.data.subTitle,
 					slug: response.data.slug,
+					shortSlug: response.data.shortSlug,
 					videoLink: response.data.videoLink,
 					descriptionOne: response.data.descriptionOne,
 					descriptionTwo: response.data.descriptionTwo,
@@ -219,8 +237,6 @@
 
 				this.originalCreationDate = response.data.date;
 				this.thumbnail = 	window.location.protocol + '//' + window.location.hostname + ':8443/' + `thumbnails/thumbnail-${this.EditPageForm._id}.png`;
-				console.log('here it is the thumbnail');
-				console.log(this.thumbnail.toString());
 			}, (response) => {
 				throw Error(response.body);
 			});

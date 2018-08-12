@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Page = new require('../models/page');
 const {
 	createStringSlug,
-	createNumberSlug,
+	createShortSlug,
 	createCategories
 } = require('./routes_helper_functions');
 
@@ -26,7 +26,7 @@ module.exports = (app) => {
 			title: body.title,
 			subTitle: body.subTitle,
 			slug: createStringSlug(body),
-			numberSlug: createNumberSlug(_id),
+			shortSlug: createShortSlug(_id),
 			videoLink: body.videoLink,
 			categories: createCategories(body),
 			descriptionOne: body.descriptionOne,

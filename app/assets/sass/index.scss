@@ -179,14 +179,14 @@ h1, h2, h3, h4, h5, h6 {
 	max-width: 15rem;
 }
 
-:global .video-caption {
+:global .video-title {
 	@include font-calculator($font_family_body, 16px, 0.5);
 	color: $paragraphColour;
 	display: inline-block;
 }
 
 @media screen and (min-width: $media_breakpoint_mobile) {
-	:global .video-caption {
+	:global .video-title {
 		@include font-calculator($font_family_body, 14px);
 	}
 }

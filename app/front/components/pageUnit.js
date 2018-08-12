@@ -1,5 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ExtendedPropTypes from 'extended-proptypes';
+import {
+	componentDidMount
+} from 'react-pure-lifecycle';
 import { thumbnailOne } from '../../alternative_default_thumbnails';
 
 /**
@@ -12,21 +16,24 @@ function PageUnit (props) {
 
 	let imageURI = props.thumbnailUrl;
 
-	const onError = () => {
+	const onImageError = () => {
 		imageURI = thumbnailOne;
-	}
+	};
 
 	return (
-		<div className='pageUnit'>
-			<img src={imageURI} alt={props.title} onError={onError}/>
-			<span className='video-caption'>{props.title}</span>
-		</div>
+		<a href={`/${props.slug}/${props._id}`} className='pageUnit'>
+			<img src={imageURI} alt={props.title} onError={onImageError}/>
+			<span className='video-title'>{props.title}</span>
+		</a>
 	);
 }
 
 PageUnit.propTypes = {
-	title: PropTypes.string,
-	thumbnailUrl: PropTypes.string,
+	title: PropTypes.string.isRequired,
+	thumbnailUrl: PropTypes.string.isRequired,
+	slug: PropTypes.string.isRequired,
+	shortSlug: PropTypes.string.isRequired,
+	_id: ExtendedPropTypes.mongoId.isRequired,
 };
 
-export default PageUnit;
+export default componentDidMount(onImageError)(PageUnit);

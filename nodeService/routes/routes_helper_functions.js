@@ -4,8 +4,13 @@ const createStringSlug = (body) => {
 	return slugify(body.title.toLowerCase());
 }
 
-const createNumberSlug = (id) => {
-	return Number.parseInt(id.reverse().substr(13, 24),10);
+const createShortSlug = (id) => {
+
+	const splitString = id.toString().split('');
+	const reverseArray = splitString.reverse();
+	const joinArray = reverseArray.join('');
+
+	return joinArray.substr(13, 24);
 };
 
 const createCategories = (body) => {
@@ -16,6 +21,6 @@ const createCategories = (body) => {
 
 module.exports = {
 	createStringSlug,
-	createNumberSlug,
+	createShortSlug,
 	createCategories
 }

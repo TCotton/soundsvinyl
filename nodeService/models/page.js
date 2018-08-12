@@ -18,8 +18,8 @@ const PageSchema = new Schema({
 		required: true,
 		trim: true,
 	},
-	numberSlug: {
-		type: mongoose.Schema.Types.Number,
+	shortSlug: {
+		type: mongoose.Schema.Types.String,
 		required: true,
 		trim: true,
 	},
