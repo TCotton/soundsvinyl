@@ -20,6 +20,11 @@ class Footer extends React.Component {
 									Current top 30 vinyl singles chart
 								</li>
 							</a>
+							<a href='/'>
+								<li>
+									Sitemap
+								</li>
+							</a>
 							<a href='https://github.com/TCotton/soundsvinyl' rel='noreferrer'>
 								<li>
 									Code (CC BY-NC 4.0 license)
