@@ -32,7 +32,7 @@ export default class rootComponent extends React.Component {
 						<Nav/>
 						<Switch>
 							<Route exact path='/' component={Main}/>
-							<Route path='/vinyl/:id' component={RecordListing}/>
+							<Route path='/:slug/:id' component={RecordListing}/>
 							<Route exact path='/contact' component={Contact}/>
 							<Route exact path='/about-us' component={AboutUs}/>
 							<Route exact path='/my-account' component={MyAccount}/>

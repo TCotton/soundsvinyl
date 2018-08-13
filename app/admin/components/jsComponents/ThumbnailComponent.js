@@ -17,7 +17,6 @@ Vue.component('thumbnail', {
   `,
 	created () {
 		this.imageURI = this.thumbnailUrl;
-		console.log(this.thumbnailUrl);
 	},
 	methods: {
 		imageLoadOnError () {

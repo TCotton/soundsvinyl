@@ -111,6 +111,8 @@ module.exports = (app) => {
 		});
 	});
 
+	/* eslint-disable security/detect-non-literal-fs-filename */
+
 	app.route('/apiV1/page/delete/:id').delete((req, res) => {
 
 		Page.remove({
@@ -123,11 +125,23 @@ module.exports = (app) => {
 
 				Page.find({}, (err, pages) => {
 
-					const id = req.params.id;
-					const file = global.__base + '/nodeService/public/thumbnails' + `thumbnail-${id}.png`;
+					if (err) {
+						throw err;
+					}
 
-					fs.unlink(file, (err) => {
-						if (err) throw err;
+					const file = global.__base + '/nodeService/public/thumbnails/thumbnail-' + pages._id + '.png';
+
+					fs.stat(file, function (err) {
+
+						if (err) {
+							throw err;
+						}
+
+						fs.unlink(file, function (err) {
+							if (err) {
+								throw err;
+							}
+						});
 					});
 
 					if (!err) {
@@ -139,5 +153,7 @@ module.exports = (app) => {
 			}
 		});
 	});
+
+	/* eslint-enable security/detect-non-literal-fs-filename */
 
 };

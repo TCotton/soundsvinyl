@@ -3,7 +3,7 @@
 .recordListing {
 
 	h2 {
-		@include font-calculator($font_family_header, 45px, 0.5);
+		@include font-calculator($font_family_header, 35px, 0.5);
 		color: $secondHeaderColour;
 		line-height: 1.2em;
 	}
