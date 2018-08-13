@@ -5,6 +5,7 @@ const {
 	createShortSlug,
 	createCategories
 } = require('./routes_helper_functions');
+const fs = require('fs');
 
 module.exports = (app) => {
 
@@ -119,6 +120,13 @@ module.exports = (app) => {
 			} else {
 
 				Page.find({}, (err, pages) => {
+
+					const id = req.params.id;
+					const file = global.__base + '/nodeService/public/thumbnails' + `thumbnail-${id}.png`;
+
+					let unlink = fs.unlink(file, (err) => {
+						if (err) throw err;
+					})
 
 					if (!err) {
 						res.json(pages);
