@@ -13,6 +13,10 @@ class RecordListing extends React.Component {
 		this.handleInputChange = this.handleInputChange.bind(this);
 	}
 
+	componentWillMount() {
+
+	}
+
 	handleSubmit (e) {
 		e.preventDefault();
 

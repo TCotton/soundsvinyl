@@ -20,7 +20,7 @@
 		"test": "cross-env NODE_ENV=test karma start --require source-map-support/register test/karma.conf.js",
 		"test:back": "ava -v node/test/test.js",
 		"build": "cross-env NODE_ENV=production webpack --mode production ./app/front/index.js --output ./dist/bundle.js",
-		"start:dev": "cross-env NODE_ENV=development webpack-dev-server --https --cert ./nodeService/config/server.crt --key ./nodeService/config/server.key --mode development ./app/single-spa-config.js --open",
+		"start:dev": "cross-env NODE_ENV=development webpack-dev-server --https --cert ./nodeService/config/server.crt --key ./nodeService/config/server.key --mode development ./app/single-spa-config.js",
 		"start": "node --experimental-modules ./server.js",
 		"start:nodeDev": "nodemon --inspect --experimental-modules  ./server.js",
 		"start:static": "nodemon -r source-map-support/register --experimental-modules ./node/bin/www",

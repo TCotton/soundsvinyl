@@ -17,12 +17,12 @@ class Footer extends React.Component {
 						<ul>
 							<a href='/'>
 								<li>
-									Link one
+									Current top 30 vinyl singles chart
 								</li>
 							</a>
-							<a href='/'>
+							<a href='https://github.com/TCotton/soundsvinyl' rel='noreferrer'>
 								<li>
-									Link two
+									Code (CC BY-NC 4.0 license)
 								</li>
 							</a>
 						</ul>
