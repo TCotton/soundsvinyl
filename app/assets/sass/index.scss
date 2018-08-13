@@ -180,16 +180,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 :global .video-title {
-	@include font-calculator($font_family_body, 16px, 0.5);
+	@include font-calculator($font_family_body, 12px, 0);
 	color: $paragraphColour;
 	display: inline-block;
 	line-height: 1.2em;
 	margin: 10px 0 0;
 }
 
+:global .video-subtitle {
+	@include font-calculator($font_family_body, 10px, 0.5);
+	font-weight: 300;
+	color: $paragraphColour;
+	display: block;
+	line-height: 1.4em;
+}
+
 @media screen and (min-width: $media_breakpoint_mobile) {
 	:global .video-title {
-		@include font-calculator($font_family_body, 14px);
+		@include font-calculator($font_family_body, 12px, 0);
 	}
 }
 

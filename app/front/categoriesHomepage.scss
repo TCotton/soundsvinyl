@@ -16,6 +16,14 @@
 				order: -1;
 			}
 		}
+
+		img {
+			filter: grayscale(50%);
+			transition: all 2s;
+			&:hover {
+				filter: grayscale(0%);
+			}
+		}
 	}
 }
 

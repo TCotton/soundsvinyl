@@ -55,6 +55,7 @@ class CategoriesHomepage extends React.Component {
 							index !== 2 ?
 								<PageUnit
 								title={element.title}
+								subtitle={element.subTitle}
 								thumbnailUrl={element.thumbnailUrl}
 								slug={element.slug}
 								shortSlug={element.shortSlug}

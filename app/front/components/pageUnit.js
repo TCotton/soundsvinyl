@@ -18,12 +18,14 @@ function PageUnit (props) {
 		<a href={`/${props.slug}/${props.id}`} className='pageUnit'>
 			<img src={props.thumbnailUrl} alt={props.title} onError={(e) => {e.target.src = thumbnailDefault}}/>
 			<span className='video-title'>{props.title}</span>
+			<span className='video-subtitle'>{props.subtitle}</span>
 		</a>
 	);
 }
 
 PageUnit.propTypes = {
 	title: PropTypes.string.isRequired,
+	subtitle: PropTypes.string.isRequired,
 	thumbnailUrl: PropTypes.string.isRequired,
 	slug: PropTypes.string.isRequired,
 	shortSlug: PropTypes.string.isRequired,
