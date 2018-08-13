@@ -7,7 +7,8 @@ const PageSchema = new Schema({
 	title: {
 		type: mongoose.Schema.Types.String,
 		trim: true,
-		required: true
+		required: true,
+		unique: true,
 	},
 	subTitle: {
 		type: mongoose.Schema.Types.String,

@@ -10,7 +10,7 @@ const createShortSlug = (id) => {
 	const reverseArray = splitString.reverse();
 	const joinArray = reverseArray.join('');
 
-	return joinArray.substr(13, 24);
+	return joinArray.substr(13, 24).toLowerCase();
 };
 
 const createCategories = (body) => {

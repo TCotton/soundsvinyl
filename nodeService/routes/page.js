@@ -85,6 +85,8 @@ module.exports = (app) => {
 			return {'name': tag.trim()};
 		});
 
+		body.updated = Date.now;
+
 		Page.findById(body._id, (err, page) => {
 
 			if (err) {
@@ -124,9 +126,9 @@ module.exports = (app) => {
 					const id = req.params.id;
 					const file = global.__base + '/nodeService/public/thumbnails' + `thumbnail-${id}.png`;
 
-					let unlink = fs.unlink(file, (err) => {
+					fs.unlink(file, (err) => {
 						if (err) throw err;
-					})
+					});
 
 					if (!err) {
 						res.json(pages);
