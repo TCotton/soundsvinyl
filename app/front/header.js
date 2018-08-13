@@ -12,8 +12,8 @@ class Header extends React.Component {
 						<TurntableIllustration/>
 					</div>
 					<div styleName='headerRightColumn'>
-						<h2>Welcome to Soundsvinyl</h2>
-						<p>Music from the archives</p>
+						<h2>Welcome to Soundsvinyl.co</h2>
+						<p>Vinyl forever, music for all</p>
 					</div>
 				</div>
 			</header>

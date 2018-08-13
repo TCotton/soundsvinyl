@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ExtendedPropTypes from 'extended-proptypes';
-import { thumbnailOne } from '../../alternative_default_thumbnails';
+import { thumbnailOne, thumbnailTwo, thumbnailThree } from '../../alternative_default_thumbnails';
+import { Link } from 'react-router-dom';
 
 /**
  * props thumbnailUrl is passed by reference to imageURI, so that no thumbnailUrl is mutated
@@ -10,16 +11,22 @@ import { thumbnailOne } from '../../alternative_default_thumbnails';
  */
 
 function PageUnit (props) {
+
+	const myArray = [thumbnailOne, thumbnailTwo, thumbnailThree];
+	const thumbnailDefault = myArray[Math.floor(Math.random() * myArray.length)];
+
 	return (
-		<a href={`/${props.slug}/${props.id}`} className='pageUnit'>
-			<img src={props.thumbnailUrl} alt={props.title} onError={(e) => {e.target.src = thumbnailOne}}/>
+		<Link to={`/${props.slug}/${props.id}`} className='pageUnit'>
+			<img src={props.thumbnailUrl} alt={props.title} onError={(e) => {e.target.src = thumbnailDefault}}/>
 			<span className='video-title'>{props.title}</span>
-		</a>
+			<span className='video-subtitle'>{props.subtitle}</span>
+		</Link>
 	);
 }
 
 PageUnit.propTypes = {
 	title: PropTypes.string.isRequired,
+	subtitle: PropTypes.string.isRequired,
 	thumbnailUrl: PropTypes.string.isRequired,
 	slug: PropTypes.string.isRequired,
 	shortSlug: PropTypes.string.isRequired,

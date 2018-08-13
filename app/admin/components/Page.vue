@@ -10,7 +10,10 @@
 
 		<h3>Thumbnail</h3>
 
-		<thumbnail thumbnail-url="thumbnail" :class="$style.thumbnail" />
+		<thumbnail
+			:thumbnail-url="thumbnail"
+			:class="$style.thumbnail"
+		/>
 
 		<h4>Edit page</h4>
 
@@ -166,6 +169,15 @@
 				disabled
 				value="">
 
+			<label for="editUpdate">Date last updated (cannot edit)</label>
+			<input
+				id="editUpdate"
+				v-model="EditPageForm.updated"
+				type="text"
+				name="editUpdate"
+				disabled
+				value="">
+
 			<label for="editUserId">Created by (cannot edit)</label>
 			<input
 				id="editUserId"
@@ -202,7 +214,8 @@
 					date: '',
 					editUserId: '',
 					slug: '',
-					shortSlug: ''
+					shortSlug: '',
+					updated: ''
 				},
 				actionURL: `page/update`,
 				originalCreationDate: '',
@@ -231,7 +244,7 @@
 					descriptionThree: response.data.descriptionThree,
 					categories: catReduce.join() || '',
 					date: moment(response.data.date).format('h:mm:ss a, MMMM Do YYYY'),
-					updated: new Date().toISOString(),
+					updated: response.data.updated ? moment(response.data.updated).format('h:mm:ss a, MMMM Do YYYY'): null,
 					editUserId: response.data.userId,
 				};
 

@@ -49,24 +49,17 @@ class CategoriesHomepage extends React.Component {
 					thumbnailUrl: window.location.protocol + '//' + window.location.hostname + ':8443/' + `thumbnails/thumbnail-${element._id}.png`
 				});
 
-				// this doesn't work
-				// need to jump inde of 2 which is where the search submit form is
-			/*	if (index >= 3) {
-					element[index] = element[index + 1];
-				}*/
-
-				//console.log(index);
-
 				return (
 					<div key={index}>
 						{
 							index !== 2 ?
 								<PageUnit
-									title={element.title}
-									thumbnailUrl={element.thumbnailUrl}
-									slug={element.slug}
-									shortSlug={element.shortSlug}
-									id={element._id}/> : <HomePageSearchForm/>
+								title={element.title}
+								subtitle={element.subTitle}
+								thumbnailUrl={element.thumbnailUrl}
+								slug={element.slug}
+								shortSlug={element.shortSlug}
+								id={element._id} /> : <HomePageSearchForm />
 						}
 					</div>
 				)

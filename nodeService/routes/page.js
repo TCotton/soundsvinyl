@@ -5,6 +5,7 @@ const {
 	createShortSlug,
 	createCategories
 } = require('./routes_helper_functions');
+const fs = require('fs');
 
 module.exports = (app) => {
 
@@ -53,7 +54,7 @@ module.exports = (app) => {
 
 	app.route('/apiV1/page/get').get((req, res) => {
 
-		Page.find({}, function (err, pages) {
+		Page.find({}, (err, pages) => {
 
 			if (!err) {
 				res.json(pages);
@@ -83,6 +84,8 @@ module.exports = (app) => {
 		body.categories = body.categories.split(',').map((tag) => {
 			return {'name': tag.trim()};
 		});
+
+		body.updated = Date.now;
 
 		Page.findById(body._id, (err, page) => {
 
@@ -119,6 +122,13 @@ module.exports = (app) => {
 			} else {
 
 				Page.find({}, (err, pages) => {
+
+					const id = req.params.id;
+					const file = global.__base + '/nodeService/public/thumbnails' + `thumbnail-${id}.png`;
+
+					fs.unlink(file, (err) => {
+						if (err) throw err;
+					});
 
 					if (!err) {
 						res.json(pages);
