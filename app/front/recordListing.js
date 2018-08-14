@@ -1,30 +1,53 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import queryString from 'query-string';
+import axios from 'axios';
 
 import './recordListing.scss';
-/*import MAIN from '../assets/graphics/MAIN_DUMMY_VIDEO_IMAGE.png';
-import sine from '../assets/graphics/Sine_wave_placeholder_pic.png';*/
 import avatar from '../assets/graphics/Avatar_default_pic.png';
 import PropTypes from 'prop-types'
+import { homeURI } from '../helper_constants'
 
 class RecordListing extends React.Component {
 
 	constructor (props) {
 		super(props);
 
+		this.state = {
+			loaded: false,
+			title: String,
+			subTitle: String,
+			videoLink: String,
+			descriptionOne: String,
+			descriptionTwo: String,
+			descriptionThree: String,
+		}
+
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleInputChange = this.handleInputChange.bind(this);
 	}
 
-	UNSAFE_componentWillMount() {
-		let params = queryString.parse(this.props.location);
-		console.dir(typeof this.props.location);
+	UNSAFE_componentWillMount () {
+		const id = this.props.match.params.id;
 
+		axios.get(`${homeURI}/apiV1/page/get/${id}`)
+			.then(res => {
+
+				this.setState({loaded: true});
+				this.setState({title: res.data.title});
+				this.setState({title: res.data.subTitle});
+				this.setState({title: res.data.videoLink});
+				this.setState({title: res.data.descriptionOne});
+				this.setState({title: res.data.descriptionTwo});
+				this.setState({title: res.data.descriptionThree});
+			});
 	}
 
-	componentDidMount() {
+	componentDidUpdate () {
+		// fires after all setState has been run
+	}
 
+	componentDidMount () {
+		return true;
 	}
 
 	handleSubmit (e) {
@@ -46,31 +69,49 @@ class RecordListing extends React.Component {
 	}
 
 	render () {
+
+		/**
+		 *    this.setState({title: res.data.title});
+		 this.setState({title: res.data.subTitle});
+		 this.setState({title: res.data.videoLink});
+		 this.setState({title: res.data.descriptionOne});
+		 this.setState({title: res.data.descriptionTwo});
+		 this.setState({title: res.data.descriptionThree});
+		 */
+
+		const title = this.state.title;
+		const subTitle = this.state.subTitle;
+		const descriptionOne = this.state.descriptionOne;
+		const descriptionTwo = this.state.descriptionTwo;
+		const descriptionThree = this.state.descriptionThree;
+
 		return (
 			<main styleName='recordListing'>
 				<header styleName='record'>
-					<h2>Al Campbell: Gone Down the Drain</h2>
-					<p>(Reggae Road Production, 1978)</p>
+					<h2>{{title}}</h2>
+					<p>{{subTitle}}</p>
 				</header>
 
 				<section styleName='videoSineWave'>
-					{/* temp markup */}
+
 					<div>
-						<img />
-						<img />
+						<video autoPlay loop muted>
+									<source src='eye-of-the-tiger-video.mp4' type='video/mp4'>
+									<img src='eye-of-the-tiger-fallback.gif'/>
+						</video>
+					</div>
+
+					<div>
+						<img/>
 					</div>
 				</section>
 
 				<section styleName='description'>
-					<p>Al Campbell is one of the few reggae vocalists from the long Jamaican Golden Era whose re-releases I would
-						buy without hesitation. This track, delivered in his usual melodic style, is a curiosity because of
-						its unusual lyrics.</p>
+					<p>{{descriptionOne}}</p>
 
-					<p>Campbell lists Jamaican Black nationalist figures - Marcus Garvey, Paul Bogle and George Gordon - asking
-						‘Do you remember?’ to which he responds ‘They’ve just gone, gone down the drain. When we remember them, they
-						are sometimes like teardrops in the rain”</p>
+					<p>{{descriptionTwo}}</p>
 
-					<p>The message Campbell delivers on this track is a bleak inversion of the classic Rastafarian romanticism.</p>
+					<p>{{descriptionTwo}}</p>
 
 					<div styleName='categories'>
 						<ul>
@@ -144,35 +185,38 @@ class RecordListing extends React.Component {
 					<div styleName='videoUnits'>
 
 						<div styleName='pageUnit'>
-						<img />
+							<img/>
 							<span styleName='videoCaption'>Video hot mix one</span>
 						</div>
 
 						<div styleName='pageUnit'>
-							<img />
+							<img/>
 							<span styleName='videoCaption'>Video hot mix two</span>
 						</div>
 
 						<div styleName='pageUnit'>
-							<img />
+							<img/>
 							<span styleName='videoCaption'>Video hot mix three</span>
 						</div>
 
 						<div styleName='pageUnit'>
-							<img />
+							<img/>
 							<span styleName='videoCaption'>Video hot mix four</span>
 						</div>
 
 					</div>
 				</section>
 			</main>
-		)
+	)
 	}
-}
+	}
 
-RecordListing.propTypes = {
-	location: PropTypes.object,
-};
+	RecordListing.propTypes = {
+		match: PropTypes.shape({
+		params: PropTypes.shape({
+		id: PropTypes.string
+	})
+	})
+	};
 
-
-export default withRouter(RecordListing);
+	export default withRouter(RecordListing);
