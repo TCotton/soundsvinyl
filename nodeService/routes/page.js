@@ -129,12 +129,12 @@ module.exports = (app) => {
 						throw err;
 					}
 
-					const file = global.__base + '/nodeService/public/thumbnails/thumbnail-' + pages._id + '.png';
+					const file = global.__base + '/nodeService/public/thumbnails/thumbnail-' + req.params.id + '.png';
 
-					fs.stat(file, function (err) {
+					fs.access(file, function (err) {
 
 						if (err) {
-							throw err;
+							return;
 						}
 
 						fs.unlink(file, function (err) {
