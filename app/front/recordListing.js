@@ -37,7 +37,10 @@ class RecordListing extends React.Component {
 		axios.get(`${homeURI}/apiV1/page/get/${id}`)
 			.then(res => {
 
-				console.dir(res.data);
+				if(res.data.categories) {
+					console.dir(Array.isArray(res.data.categories));
+					console.dir(res.data.categories);
+				}
 
 				this.setState({loaded: true});
 				this.setState({title: res.data.title});
@@ -46,7 +49,7 @@ class RecordListing extends React.Component {
 				this.setState({descriptionOne: res.data.descriptionOne});
 				this.setState({descriptionTwo: res.data.descriptionTwo});
 				this.setState({descriptionThree: res.data.descriptionThree});
-				// this.setState({categories: res.data.categories});
+				this.setState({categories: res.data.categories});
 			});
 	}
 
@@ -79,12 +82,13 @@ class RecordListing extends React.Component {
 
 		console.dir(videoLink);
 
-		/*	const categoryArray = this.state.categories.reduce((accumulator, currentValue) => {
-				return accumulator.concat(currentValue.name);
-			}, []);
+		console.log(typeof this.state.categories);
 
-			console.dir(categoryArray);
-	*/
+		/*const categoryArray = this.state.categories.reduce((accumulator, currentValue) => {
+			return accumulator.concat(currentValue.name);
+		}, []);
+
+		console.dir(categoryArray);*/
 
 		if (!this.state.loaded) {
 			return null;
@@ -208,9 +212,7 @@ class RecordListing extends React.Component {
 					</section>
 				</main>
 			)
-
 		}
-
 	}
 }
 
