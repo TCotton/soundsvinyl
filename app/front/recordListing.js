@@ -102,7 +102,7 @@ class RecordListing extends React.Component {
 					<section styleName='videoSineWave'>
 
 						<div className='videoContainer'>
-							<video controls width='700'>
+							<video controls width='100%'>
 								<source src={videoLink} type='video/mp4'/>
 								<p>Your browser doesn't support HTML5 video. Here is
 									a <a href={videoLink}>link to the video</a> instead.</p>
