@@ -70,20 +70,17 @@ class RecordListing extends React.Component {
 
 	render () {
 
-		/**
-		 *    this.setState({title: res.data.title});
-		 this.setState({title: res.data.subTitle});
-		 this.setState({title: res.data.videoLink});
-		 this.setState({title: res.data.descriptionOne});
-		 this.setState({title: res.data.descriptionTwo});
-		 this.setState({title: res.data.descriptionThree});
-		 */
-
 		const title = this.state.title;
 		const subTitle = this.state.subTitle;
 		const descriptionOne = this.state.descriptionOne;
 		const descriptionTwo = this.state.descriptionTwo;
 		const descriptionThree = this.state.descriptionThree;
+
+		const categoryArray = response.data.categories.reduce((accumulator, currentValue) => {
+			return accumulator.concat(currentValue.name);
+		}, []);
+
+		console.dir(categoryArray);
 
 		return (
 			<main styleName='recordListing'>
@@ -96,7 +93,7 @@ class RecordListing extends React.Component {
 
 					<div>
 						<video autoPlay loop muted>
-									<source src='eye-of-the-tiger-video.mp4' type='video/mp4'>
+									<source src='eye-of-the-tiger-video.mp4' type='video/mp4' />
 									<img src='eye-of-the-tiger-fallback.gif'/>
 						</video>
 					</div>
@@ -107,11 +104,11 @@ class RecordListing extends React.Component {
 				</section>
 
 				<section styleName='description'>
-					<p>{{descriptionOne}}</p>
+					<p v-show='descriptionOne'>{{descriptionOne}}</p>
 
-					<p>{{descriptionTwo}}</p>
+					<p v-show='descriptionTwo'>{{descriptionTwo}}</p>
 
-					<p>{{descriptionTwo}}</p>
+					<p v-show='descriptionThree'>{{descriptionThree}}</p>
 
 					<div styleName='categories'>
 						<ul>
