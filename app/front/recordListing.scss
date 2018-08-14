@@ -17,9 +17,17 @@
 		color: $paragraphColour;
 	}
 	p {
-		@include font-calculator($font_family_body, 22px);
+		@include font-calculator($font_family_body, 22px, 0.5);
 		color: $paragraphColour;
 		line-height: 1.3em;
+	}
+
+	.hide {
+		display: none;
+	}
+
+	.show {
+		display: inherit;
 	}
 }
 
@@ -99,6 +107,10 @@
 
 .commentsBlock {
 	background: transparent;
+}
+
+.videoContainer {
+	text-align: center;
 }
 
 .comment {

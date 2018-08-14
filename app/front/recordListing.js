@@ -20,26 +20,11 @@ class RecordListing extends React.Component {
 			descriptionOne: String,
 			descriptionTwo: String,
 			descriptionThree: String,
+			categories: Array,
 		}
 
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleInputChange = this.handleInputChange.bind(this);
-	}
-
-	UNSAFE_componentWillMount () {
-		const id = this.props.match.params.id;
-
-		axios.get(`${homeURI}/apiV1/page/get/${id}`)
-			.then(res => {
-
-				this.setState({loaded: true});
-				this.setState({title: res.data.title});
-				this.setState({title: res.data.subTitle});
-				this.setState({title: res.data.videoLink});
-				this.setState({title: res.data.descriptionOne});
-				this.setState({title: res.data.descriptionTwo});
-				this.setState({title: res.data.descriptionThree});
-			});
 	}
 
 	componentDidUpdate () {
@@ -47,7 +32,22 @@ class RecordListing extends React.Component {
 	}
 
 	componentDidMount () {
-		return true;
+		const id = this.props.match.params.id;
+
+		axios.get(`${homeURI}/apiV1/page/get/${id}`)
+			.then(res => {
+
+				console.dir(res.data);
+
+				this.setState({loaded: true});
+				this.setState({title: res.data.title});
+				this.setState({subTitle: res.data.subTitle});
+				this.setState({videoLink: res.data.videoLink});
+				this.setState({descriptionOne: res.data.descriptionOne});
+				this.setState({descriptionTwo: res.data.descriptionTwo});
+				this.setState({descriptionThree: res.data.descriptionThree});
+				// this.setState({categories: res.data.categories});
+			});
 	}
 
 	handleSubmit (e) {
@@ -75,145 +75,151 @@ class RecordListing extends React.Component {
 		const descriptionOne = this.state.descriptionOne;
 		const descriptionTwo = this.state.descriptionTwo;
 		const descriptionThree = this.state.descriptionThree;
+		const videoLink = this.state.videoLink;
 
-		const categoryArray = response.data.categories.reduce((accumulator, currentValue) => {
-			return accumulator.concat(currentValue.name);
-		}, []);
+		console.dir(videoLink);
 
-		console.dir(categoryArray);
+		/*	const categoryArray = this.state.categories.reduce((accumulator, currentValue) => {
+				return accumulator.concat(currentValue.name);
+			}, []);
 
-		return (
-			<main styleName='recordListing'>
-				<header styleName='record'>
-					<h2>{{title}}</h2>
-					<p>{{subTitle}}</p>
-				</header>
+			console.dir(categoryArray);
+	*/
 
-				<section styleName='videoSineWave'>
+		if (!this.state.loaded) {
+			return null;
+		} else {
 
-					<div>
-						<video autoPlay loop muted>
-									<source src='eye-of-the-tiger-video.mp4' type='video/mp4' />
-									<img src='eye-of-the-tiger-fallback.gif'/>
-						</video>
-					</div>
+			return (
+				<main styleName='recordListing'>
+					<header styleName='record'>
 
-					<div>
-						<img/>
-					</div>
-				</section>
+						<h2 className={(title ? 'display' : 'hide')}>{title}</h2>
+						<p className={(subTitle ? 'display' : 'hide')}>{subTitle}</p>
 
-				<section styleName='description'>
-					<p v-show='descriptionOne'>{{descriptionOne}}</p>
+					</header>
 
-					<p v-show='descriptionTwo'>{{descriptionTwo}}</p>
+					<section styleName='videoSineWave'>
 
-					<p v-show='descriptionThree'>{{descriptionThree}}</p>
-
-					<div styleName='categories'>
-						<ul>
-							<li>Category One</li>
-							<li>Category two</li>
-							<li>Category three</li>
-						</ul>
-					</div>
-				</section>
-
-				<section styleName='commentsForm'>
-					<h3>Comments</h3>
-
-					<form onSubmit={this.handleSubmit}>
-
-						<textarea cols='10' rows='10' id='commentsMessage' name='commentsMessage' value=''/>
-						<input type='submit' name='submit' value='Comment'/>
-
-					</form>
-				</section>
-
-				<section styleName='commentsBlock'>
-
-					<div styleName='comment'>
-						<div styleName='commentLeftColumn'>
-							<img src={avatar}/>
+						<div className='videoContainer'>
+							<video controls width='700'>
+								<source src={videoLink} type='video/mp4'/>
+								<p>Your browser doesn't support HTML5 video. Here is
+									a <a href={videoLink}>link to the video</a> instead.</p>
+							</video>
 						</div>
-						<div styleName='commentRightColumn'>
+
+						<div>
+							<img/>
+						</div>
+					</section>
+
+					<section styleName='description'>
+
+						<p className={(descriptionOne ? 'display' : 'hide')}>{descriptionOne}</p>
+						<p className={(descriptionTwo ? 'display' : 'hide')}>{descriptionTwo}</p>
+						<p className={(descriptionThree ? 'display' : 'hide')}>{descriptionThree}</p>
+
+					</section>
+
+					<section styleName='commentsForm'>
+						<h3>Comments</h3>
+
+						<form onSubmit={this.handleSubmit}>
+
+							<textarea cols='10' rows='10' id='commentsMessage' name='commentsMessage' value=''/>
+							<input type='submit' name='submit' value='Comment'/>
+
+						</form>
+					</section>
+
+					<section styleName='commentsBlock'>
+
+						<div styleName='comment'>
+							<div styleName='commentLeftColumn'>
+								<img src={avatar}/>
+							</div>
+							<div styleName='commentRightColumn'>
 							<span styleName='commentName'>
 								<p>Peter Smith</p>
 							</span>
-							<span styleName='commentText'>
+								<span styleName='commentText'>
 								<p>Nam vel ornare lorem. Sed eleifend egestas Nam vel ornare lorem. Sed eleifend egestasNam vel ornare lorem. Sed eleifend egestas</p>
 							</span>
+							</div>
 						</div>
-					</div>
 
-					<div styleName='comment'>
-						<div styleName='commentLeftColumn'>
-							<img src={avatar}/>
-						</div>
-						<div styleName='commentRightColumn'>
+						<div styleName='comment'>
+							<div styleName='commentLeftColumn'>
+								<img src={avatar}/>
+							</div>
+							<div styleName='commentRightColumn'>
 							<span styleName='commentName'>
 								<p>Peter Smith</p>
 							</span>
-							<span styleName='commentText'>
+								<span styleName='commentText'>
 								<p>Nam vel ornare lorem. Sed eleifend egestas Nam vel ornare lorem. Sed eleifend egestasNam vel ornare lorem. Sed eleifend egestas</p>
 							</span>
+							</div>
 						</div>
-					</div>
 
-					<div styleName='comment'>
-						<div styleName='commentLeftColumn'>
-							<img src={avatar}/>
-						</div>
-						<div styleName='commentRightColumn'>
+						<div styleName='comment'>
+							<div styleName='commentLeftColumn'>
+								<img src={avatar}/>
+							</div>
+							<div styleName='commentRightColumn'>
 							<span styleName='commentName'>
 								<p>Peter Smith</p>
 							</span>
-							<span styleName='commentText'>
+								<span styleName='commentText'>
 								<p>Nam vel ornare lorem. Sed eleifend egestas Nam vel ornare lorem. Sed eleifend egestasNam vel ornare lorem. Sed eleifend egestas</p>
 							</span>
+							</div>
 						</div>
-					</div>
-				</section>
+					</section>
 
-				<section styleName='recommendedVideos'>
+					<section styleName='recommendedVideos'>
 
-					<h4>You also might like</h4>
+						<h4>You also might like</h4>
 
-					<div styleName='videoUnits'>
+						<div styleName='videoUnits'>
 
-						<div styleName='pageUnit'>
-							<img/>
-							<span styleName='videoCaption'>Video hot mix one</span>
+							<div styleName='pageUnit'>
+								<img/>
+								<span styleName='videoCaption'>Video hot mix one</span>
+							</div>
+
+							<div styleName='pageUnit'>
+								<img/>
+								<span styleName='videoCaption'>Video hot mix two</span>
+							</div>
+
+							<div styleName='pageUnit'>
+								<img/>
+								<span styleName='videoCaption'>Video hot mix three</span>
+							</div>
+
+							<div styleName='pageUnit'>
+								<img/>
+								<span styleName='videoCaption'>Video hot mix four</span>
+							</div>
+
 						</div>
+					</section>
+				</main>
+			)
 
-						<div styleName='pageUnit'>
-							<img/>
-							<span styleName='videoCaption'>Video hot mix two</span>
-						</div>
+		}
 
-						<div styleName='pageUnit'>
-							<img/>
-							<span styleName='videoCaption'>Video hot mix three</span>
-						</div>
-
-						<div styleName='pageUnit'>
-							<img/>
-							<span styleName='videoCaption'>Video hot mix four</span>
-						</div>
-
-					</div>
-				</section>
-			</main>
-	)
 	}
-	}
+}
 
-	RecordListing.propTypes = {
-		match: PropTypes.shape({
+RecordListing.propTypes = {
+	match: PropTypes.shape({
 		params: PropTypes.shape({
-		id: PropTypes.string
+			id: PropTypes.string
+		})
 	})
-	})
-	};
+};
 
-	export default withRouter(RecordListing);
+export default withRouter(RecordListing);
