@@ -7,7 +7,6 @@ const UserSchema = new Schema({
 		default: '',
 		required: true,
 		unique: true,
-		max: 254,
 	},
 	username: {
 		type: mongoose.Schema.Types.String,

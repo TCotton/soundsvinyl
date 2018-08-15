@@ -18,16 +18,60 @@ class MyAccount extends React.Component {
 			error: null
 		};
 
-		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleSubmitLogin = this.handleSubmitLogin.bind(this);
+		this.handleSubmitRegister = this.handleSubmitRegister.bind(this);
 		this.handleInputChange = this.handleInputChange.bind(this);
 	}
 
-	handleSubmit (e) {
+	handleSubmitRegister (e) {
+		e.preventDefault();
+
+		if (this.state.registerName && this.state.registerPassword) {
+
+			console.log('register');
+
+			this.setState({error: null}); // place this in a lifecycle hook
+
+			axios.post(`${homeURI}/apiV1/user/add`, {email: this.state.registerName, password: this.state.registerPassword})
+				.then(res => {
+
+					console.dir(res);
+
+					if (res.data.error) {
+						this.setState({error: res.data.error});
+					}
+
+					if (res.data.auth) {
+
+						const cookies = new Cookies();
+
+						cookies.set('token', res.data.token, {
+							expires: moment().add(1, 'days').toDate(),
+							path: '/',
+							domain: window.location.hostname,
+							secure: true,
+						});
+
+						window.location.href = window.location.protocol + '//' + window.location.host + '/#/admin';
+					}
+
+				}).catch((e) => {
+				if (e.toString().includes('409')) {
+					this.setState({error: 'This email address is already registered'});
+				}
+			})
+		}
+	}
+
+	handleSubmitLogin (e) {
 		e.preventDefault();
 
 		if (this.state.loginName && this.state.loginPassword) {
 
+			console.log('login');
+
 			this.setState({error: null}); // place this in a lifecycle hook
+			// `user/add`
 
 			axios.post(`${homeURI}/apiV1/user/find`, {email: this.state.loginName, password: this.state.loginPassword})
 				.then(res => {
@@ -82,30 +126,34 @@ class MyAccount extends React.Component {
 				{error()}
 
 				<section>
-					<form onSubmit={this.handleSubmit}>
+					<form onSubmit={this.handleSubmitLogin}>
 						<fieldset>
 							<legend>Login</legend>
 
 							<label htmlFor='loginName'>Your email</label>
-							<input type='text' id='loginName' name='loginName' value={this.state.loginName} onChange={this.handleInputChange} required/>
+							<input type='text' id='loginName' name='loginName' value={this.state.loginName}
+										 onChange={this.handleInputChange} required/>
 
 							<label htmlFor='loginPassword'>Your password</label>
-							<input type='password' id='loginPassword' name='loginPassword' value={this.state.loginPassword} onChange={this.handleInputChange} required/>
+							<input type='password' id='loginPassword' name='loginPassword' value={this.state.loginPassword}
+										 onChange={this.handleInputChange} required/>
 
 							<input type='submit' name='loginSubmit' value='Login'/>
 
 						</fieldset>
 					</form>
 
-					<form onSubmit={this.handleSubmit}>
+					<form onSubmit={this.handleSubmitRegister}>
 						<fieldset>
 							<legend>Register</legend>
 
 							<label htmlFor='registerName'>Your email</label>
-							<input type='text' id='registerName' name='registerName' value={this.state.registerName} onChange={this.handleInputChange} required/>
+							<input type='text' id='registerName' name='registerName' value={this.state.registerName}
+										 onChange={this.handleInputChange} required/>
 
 							<label htmlFor='registerPassword'>Your password</label>
-							<input type='password' id='registerPassword' name='registerPassword' value={this.state.registerPassword} onChange={this.handleInputChange} required/>
+							<input type='password' id='registerPassword' name='registerPassword' value={this.state.registerPassword}
+										 onChange={this.handleInputChange} required/>
 
 							<input type='submit' name='registerSubmit' value='Register'/>
 

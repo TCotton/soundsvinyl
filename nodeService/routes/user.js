@@ -28,7 +28,7 @@ module.exports = (app) => {
 						email: body.email,
 						password: hash,
 						date: Date.now(),
-						userLevel: body.userLevel ? body.userLevel : 2,
+						userLevel: body.userLevel ? body.userLevel : 1,
 					}, (err) => {
 
 						if (!err) {
@@ -58,9 +58,17 @@ module.exports = (app) => {
 					return res.status(200).send('Email address not found');
 				}
 
+				console.dir(req.body.password);
+				console.dir(user.password);
+				console.log(req.body.password === user.password);
+
 				bcrypt.compare(req.body.password, user.password, (err, response) => {
 
+					console.log(err);
+
 					if (!err) {
+
+						console.dir(response);
 
 						if (response) {
 
