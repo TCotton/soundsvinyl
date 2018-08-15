@@ -2,6 +2,10 @@
 	<div :class="$style.addUser">
 		<h2>Add a new user</h2>
 
+		<p>The username is automatically created by using a mixture of part
+			the users email address and the date the account was created
+		</p>
+
 		<p
 			:class="$style.error"
 			v-show="errorMsg">

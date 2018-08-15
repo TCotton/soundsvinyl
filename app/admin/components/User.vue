@@ -33,15 +33,15 @@
 			<input
 				v-validate="{ required: true }"
 				id="editUsername"
-				v-model="editUser.email"
+				v-model="editUser.username"
 				type="email"
 				name="editUserEmail"
 				disabled
 				value="">
 
 			<span
-				v-show="errors.has('editUserEmail')"
-				:class="$style.error">{{ errors.first('editUserEmail') }}</span>
+				v-show="errors.has('editUsername')"
+				:class="$style.error">{{ errors.first('editUsername') }}</span>
 
 			<label for="editUserPasswordOne">Password</label>
 			<input
@@ -132,12 +132,18 @@
 					configurable: false
 				});
 
+				let username = '';
+
+				if (response.data.email) {
+					username = response.data.username ? response.data.username : createUsername(response.data.email);
+				}
+
 				this.editUser = {
 					_id: response.data._id,
 					email: response.data.email,
-					username: response.data.username ? response.data.username : createUsername(this.editUser.email),
+					username,
 					date: moment(response.data.date).format('h:mm:ss a, MMMM Do YYYY'),
-					updated: response.data.date ? moment(response.data.updated).format('h:mm:ss a, MMMM Do YYYY') : moment(Date.now()).format('h:mm:ss a, MMMM Do YYYY'),
+					updated: response.data.updated ? moment(response.data.updated).format('h:mm:ss a, MMMM Do YYYY') : '',
 				}
 
 			}, (response) => {
@@ -151,7 +157,6 @@
 					if (result) {
 						// revert date back to UTC format
 						this.editUser.date = this.originalCreationDate;
-						this.editUser.updated = moment.utc(Date.now())._d;
 
 						this.$http.put(`user/update`, JSON.stringify(this.editUser), {
 							headers: {

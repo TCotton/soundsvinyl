@@ -158,6 +158,7 @@ module.exports = (app) => {
 
 			} else {
 
+				req.body.updated = Date.now();
 				Object.assign(user, req.body);
 				user.save((err) => {
 

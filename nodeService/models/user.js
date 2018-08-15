@@ -13,8 +13,6 @@ const UserSchema = new Schema({
 		type: mongoose.Schema.Types.String,
 		default: '',
 		required: true,
-		unique: true,
-		max: 254,
 	},
 	password: {
 		type: mongoose.Schema.Types.String,
@@ -28,9 +26,11 @@ const UserSchema = new Schema({
 	},
 	date: {
 		type: mongoose.Schema.Types.Date,
+		default: Date.now,
 	},
 	updated: {
 		type: mongoose.Schema.Types.Date,
+		default: Date.now,
 	},
 });
 

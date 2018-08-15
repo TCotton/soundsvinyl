@@ -6,7 +6,7 @@ export const findRootElement = () => {
 	}
 }
 
-// find first part of email address up until @ character and remove all special characters and add creation date
-export const createUsername = (emailAddress, date = moment(Date.now()).format('YYDoMMM')) => {
+// find first part of email address up until @ character, remove all special characters and add specially formatted creation date
+export const createUsername = (emailAddress, date = moment(Date.now()).format('DoMMMYY')) => {
 	return emailAddress.substring(0, emailAddress.indexOf('@')).replace(/[^a-zA-Z]/g, '') + '_' + date;
 }
