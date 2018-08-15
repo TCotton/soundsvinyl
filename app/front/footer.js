@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './footer.scss';
 import cn from 'classnames';
 
@@ -15,11 +16,11 @@ class Footer extends React.Component {
 					</div>
 					<div styleName='footerRightColumn'>
 						<ul>
-							<a href='/'>
+							<Link to='/vinyl-singles-top-30-chart'>
 								<li>
 									Current top 30 vinyl singles chart
 								</li>
-							</a>
+							</Link>
 							<a href='/'>
 								<li>
 									Sitemap

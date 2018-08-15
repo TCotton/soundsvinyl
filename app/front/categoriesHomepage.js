@@ -2,8 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import './categoriesHomepage.scss';
 import { homeURI } from '../helper_constants';
-/*import Cookies from 'universal-cookie';
-import moment from 'moment';*/
 import PageUnit from './components/pageUnit';
 import HomePageSearchForm from './components/homePageSearchForm';
 

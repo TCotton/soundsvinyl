@@ -12,7 +12,8 @@ import Nav from './nav';
 import Contact from './contact';
 import AboutUs from './about';
 import MyAccount from './account';
-import
+import VinylCharts from './vinylCharts';
+import Sitemap from './sitemap';
 
 if (!process.env.production) {
 	const a11y = require('react-a11y').default;
@@ -37,7 +38,8 @@ export default class rootComponent extends React.Component {
 							<Route exact path='/contact' component={Contact}/>
 							<Route exact path='/about-us' component={AboutUs}/>
 							<Route exact path='/my-account' component={MyAccount}/>
-							<Route exact path='/my-account' component={MyAccount}/>
+							<Route exact path='/vinyl-singles-top-30-chart' component={VinylCharts}/>
+							<Route exact path='/sitemap' component={Sitemap}/>
 							<Route path='' component={Error}/>
 						</Switch>
 						<Footer/>
