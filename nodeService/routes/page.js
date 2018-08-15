@@ -54,14 +54,17 @@ module.exports = (app) => {
 
 	app.route('/apiV1/page/get').get((req, res) => {
 
-		Page.find({}, (err, pages) => {
+		Page.find({}).sort({'date': -1})
+			.limit(12)
+			.exec((err, pages) => {
 
-			if (!err) {
-				res.json(pages);
-			} else {
-				throw err;
-			}
-		});
+				if (!err) {
+					res.json(pages);
+				} else {
+					throw err;
+				}
+
+			});
 	});
 
 	app.route('/apiV1/page/get/:id').get((req, res) => {

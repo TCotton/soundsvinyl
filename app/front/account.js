@@ -3,6 +3,7 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 import moment from 'moment';
 import { homeURI } from '../helper_constants';
+import { createUsername } from '../helper_functions';
 import './account.scss';
 
 class MyAccount extends React.Component {
@@ -28,14 +29,14 @@ class MyAccount extends React.Component {
 
 		if (this.state.registerName && this.state.registerPassword) {
 
-			console.log('register');
+			const email = this.state.registerName;
+			const password = this.state.registerPassword;
 
 			this.setState({error: null}); // place this in a lifecycle hook
+			const username = createUsername(email);
 
-			axios.post(`${homeURI}/apiV1/user/add`, {email: this.state.registerName, password: this.state.registerPassword})
+			axios.post(`${homeURI}/apiV1/user/add`, {email, password, username})
 				.then(res => {
-
-					console.dir(res);
 
 					if (res.data.error) {
 						this.setState({error: res.data.error});
@@ -56,9 +57,11 @@ class MyAccount extends React.Component {
 					}
 
 				}).catch((e) => {
+
 				if (e.toString().includes('409')) {
 					this.setState({error: 'This email address is already registered'});
 				}
+
 			})
 		}
 	}

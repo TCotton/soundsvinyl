@@ -29,6 +29,7 @@ module.exports = (app) => {
 						password: hash,
 						date: Date.now(),
 						userLevel: body.userLevel ? body.userLevel : 1,
+						username: body.username,
 					}, (err) => {
 
 						if (!err) {

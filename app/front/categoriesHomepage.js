@@ -30,9 +30,7 @@ class CategoriesHomepage extends React.Component {
 
 				this.setState({
 					requestCompleted: true,
-					pages: res.data.sort((a, b) => {
-						return new Date(b.date) - new Date(a.date);
-					})
+					pages: res.data,
 				})
 			});
 	}
