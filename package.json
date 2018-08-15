@@ -3,19 +3,6 @@
 	"version": "1.0.0",
 	"description": "Music recommendation site",
 	"main": "index.js",
-	"nyc": {
-		"sourceMap": false,
-		"instrument": false,
-		"extension": [
-			".js",
-			".vue",
-			".mjs"
-		],
-		"exclude": [
-			"**/*.spec.js",
-			"build"
-		]
-	},
 	"scripts": {
 		"test": "cross-env NODE_ENV=test karma start --require source-map-support/register test/karma.conf.js",
 		"test:back": "ava -v node/test/test.js",

@@ -1,0 +1,16 @@
+{
+   "description":"NYC settings for package.json",
+   "nyc":{
+      "sourceMap":false,
+      "instrument":false,
+      "extension":[
+         ".js",
+         ".vue",
+         ".mjs"
+      ],
+      "exclude":[
+         "**/*.spec.js",
+         "build"
+      ]
+   }
+}
