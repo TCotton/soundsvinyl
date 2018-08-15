@@ -13,16 +13,30 @@
 			method="post"
 			@submit.prevent="validateBeforeSubmit">
 
-			<label for="editUserEmail">User email which will be their username</label>
+			<label for="editUserEmail">Email address</label>
 			<input
 				v-validate="{ required: true, email: true }"
 				id="editUserEmail"
 				v-model="editUser.email"
 				type="email"
 				name="editUserEmail"
-				maxlength="64"
+				maxlength="254"
 				autocorrect="off"
 				autocapitalize="off"
+				value="">
+
+			<span
+				v-show="errors.has('editUserEmail')"
+				:class="$style.error">{{ errors.first('editUserEmail') }}</span>
+
+			<label for="editUsername">Username (automatically generated)</label>
+			<input
+				v-validate="{ required: true }"
+				id="editUsername"
+				v-model="editUser.email"
+				type="email"
+				name="editUserEmail"
+				disabled
 				value="">
 
 			<span
@@ -67,6 +81,15 @@
 				disabled
 				value="">
 
+			<label for="editUpdated">Date updated (cannot edit)</label>
+			<input
+				id="editUpdated"
+				v-model="editUser.updated"
+				type="text"
+				name="editUpdated"
+				disabled
+				value="">
+
 			<input
 				type="submit"
 				name="editUserSubmit"
@@ -78,6 +101,7 @@
 
 <script>
 	import moment from 'moment';
+	import { createUsername } from '../../helper_functions';
 
 	export default {
 		name: 'User',
@@ -88,6 +112,8 @@
 					email: '',
 					password: '',
 					passwordTwo: '',
+					date: '',
+					updated: '',
 				},
 				msg: 'Welcome to the individual user section',
 				successMsg: 'You have successfully updated the user details',
@@ -98,14 +124,22 @@
 		mounted () {
 			this.$http.get(this.actionURL).then((response) => {
 
+				// this.originalCreationDate is now read only
+				Object.defineProperty(this, 'originalCreationDate', {
+					value: response.data.date,
+					writable: false,
+					enumerable: false,
+					configurable: false
+				});
+
 				this.editUser = {
 					_id: response.data._id,
 					email: response.data.email,
+					username: response.data.username ? response.data.username : createUsername(this.editUser.email),
 					date: moment(response.data.date).format('h:mm:ss a, MMMM Do YYYY'),
-					updated: new Date().toISOString(),
+					updated: response.data.date ? moment(response.data.updated).format('h:mm:ss a, MMMM Do YYYY') : moment(Date.now()).format('h:mm:ss a, MMMM Do YYYY'),
 				}
 
-				this.originalCreationDate = response.data.date;
 			}, (response) => {
 				throw Error(response.body);
 			});
@@ -117,13 +151,14 @@
 					if (result) {
 						// revert date back to UTC format
 						this.editUser.date = this.originalCreationDate;
+						this.editUser.updated = moment.utc(Date.now())._d;
 
 						this.$http.put(`user/update`, JSON.stringify(this.editUser), {
 							headers: {
 								'Content-Type': 'application/json'
 							}
 						}).then(() => {
-							this.$router.push('User');
+							this.$router.push({path: 'Users'});
 						}, (response) => {
 							throw Error(response.body);
 						});

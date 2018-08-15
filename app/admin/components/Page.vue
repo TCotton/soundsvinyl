@@ -224,7 +224,7 @@
 				thumbnail: ''
 			}
 		},
-		mounted() {
+		mounted () {
 
 			this.$http.get(`page/get/${this.$route.params.id}`).then((response) => {
 
@@ -244,12 +244,12 @@
 					descriptionThree: response.data.descriptionThree,
 					categories: catReduce.join() || '',
 					date: moment(response.data.date).format('h:mm:ss a, MMMM Do YYYY'),
-					updated: response.data.updated ? moment(response.data.updated).format('h:mm:ss a, MMMM Do YYYY'): null,
+					updated: response.data.updated ? moment(response.data.updated).format('h:mm:ss a, MMMM Do YYYY') : null,
 					editUserId: response.data.userId,
 				};
 
 				this.originalCreationDate = response.data.date;
-				this.thumbnail = 	window.location.protocol + '//' + window.location.hostname + ':8443/' + `thumbnails/thumbnail-${this.EditPageForm._id}.png`;
+				this.thumbnail = window.location.protocol + '//' + window.location.hostname + ':8443/' + `thumbnails/thumbnail-${this.EditPageForm._id}.png`;
 			}, (response) => {
 				throw Error(response.body);
 			});
@@ -270,7 +270,7 @@
 								'Content-Type': 'application/json'
 							}
 						}).then(() => {
-							this.$router.push('Page');
+							this.$router.push({path: 'Page'});
 						}, (response) => {
 							throw Error(response.data);
 						});

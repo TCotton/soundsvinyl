@@ -13,7 +13,7 @@
 
 <script>
 	export default {
-		name: 'Header',
+		name: 'HeaderAdmin',
 		methods: {
 			logout (e) {
 				e.preventDefault();

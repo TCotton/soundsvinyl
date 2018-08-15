@@ -8,7 +8,7 @@
 	import moment from 'moment';
 
 	export default {
-		name: 'Footer',
+		name: 'FooterAdmin',
 		data () {
 			return {
 				current: '',

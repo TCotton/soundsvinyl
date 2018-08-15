@@ -10,7 +10,11 @@
       ],
       "exclude":[
          "**/*.spec.js",
-         "build"
+         "build",
+         "node_modules",
+         "dist",
+         "coverage",
+         "config"
       ]
    }
 }
