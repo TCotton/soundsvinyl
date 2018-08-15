@@ -51,10 +51,11 @@ h1, h2, h3, h4, h5, h6 {
 	max-height: 120px;
 	overflow: hidden;
 	margin-top: 20px;
+	text-align: center;
 	> span {
 		display: block;
 		color: $formResults;
-		@include font-calculator($font_family_body, 16px, 0.5);
+		@include font-calculator($font_family_body, 12px, 0.5);
 		line-height: 1em;
 	}
 	position: relative;

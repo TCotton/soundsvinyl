@@ -10,9 +10,10 @@ function HomePageSearchForm () {
 	return (
 		<div>
 			<form className='search-form'>
-				<input type="text" placeholder="Search by category"/>
+				<input type="text" placeholder="Search by category" disabled/>
 			</form>
 			<div className='search-results'>
+				<span>Search facility coming soon...</span>
 			</div>
 		</div>
 	);

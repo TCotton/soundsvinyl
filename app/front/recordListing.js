@@ -27,10 +27,6 @@ class RecordListing extends React.Component {
 		this.handleInputChange = this.handleInputChange.bind(this);
 	}
 
-	componentDidUpdate () {
-		// fires after all setState has been run
-	}
-
 	componentDidMount () {
 		const id = this.props.match.params.id;
 
@@ -179,35 +175,6 @@ class RecordListing extends React.Component {
 								<p>Nam vel ornare lorem. Sed eleifend egestas Nam vel ornare lorem. Sed eleifend egestasNam vel ornare lorem. Sed eleifend egestas</p>
 							</span>
 							</div>
-						</div>
-					</section>
-
-					<section styleName='recommendedVideos'>
-
-						<h4>You also might like</h4>
-
-						<div styleName='videoUnits'>
-
-							<div styleName='pageUnit'>
-								<img/>
-								<span styleName='videoCaption'>Video hot mix one</span>
-							</div>
-
-							<div styleName='pageUnit'>
-								<img/>
-								<span styleName='videoCaption'>Video hot mix two</span>
-							</div>
-
-							<div styleName='pageUnit'>
-								<img/>
-								<span styleName='videoCaption'>Video hot mix three</span>
-							</div>
-
-							<div styleName='pageUnit'>
-								<img/>
-								<span styleName='videoCaption'>Video hot mix four</span>
-							</div>
-
 						</div>
 					</section>
 				</main>

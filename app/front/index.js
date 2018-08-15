@@ -12,6 +12,7 @@ import Nav from './nav';
 import Contact from './contact';
 import AboutUs from './about';
 import MyAccount from './account';
+import
 
 if (!process.env.production) {
 	const a11y = require('react-a11y').default;
@@ -35,6 +36,7 @@ export default class rootComponent extends React.Component {
 							<Route path='/:slug/:id' component={RecordListing}/>
 							<Route exact path='/contact' component={Contact}/>
 							<Route exact path='/about-us' component={AboutUs}/>
+							<Route exact path='/my-account' component={MyAccount}/>
 							<Route exact path='/my-account' component={MyAccount}/>
 							<Route path='' component={Error}/>
 						</Switch>
