@@ -28,7 +28,7 @@ module.exports = (app) => {
 						email: body.email,
 						password: hash,
 						date: Date.now(),
-						userLevel: body.userLevel ? body.userLevel : 1,
+						userLevel: body.userLevel ? body.userLevel : 2,
 						username: body.username,
 					}, (err) => {
 

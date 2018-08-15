@@ -3,7 +3,7 @@
 		<h2>Add a new user</h2>
 
 		<p>The username is automatically created by using a mixture of part
-			the users email address and the date the account was created
+			of the users email address and the date the account was created
 		</p>
 
 		<p
@@ -86,6 +86,7 @@
 
 <script>
 	// import sortBy from 'lodash-es/sortBy';
+	import { createUsername } from '../../helper_functions';
 
 	export default {
 		name: 'AddUser',
@@ -106,6 +107,7 @@
 			validateBeforeSubmit () {
 				this.$validator.validateAll().then((result) => {
 					this.errorMsg = null;
+					this.addUser.username = createUsername(this.addUser.email);
 
 					if (result) {
 						this.$http.post(this.actionURL, JSON.stringify(this.addUser), {
@@ -115,7 +117,7 @@
 						}).then((response) => {
 
 							if (response.data.auth) {
-								this.$router.push('Users');
+								this.$router.push({path: 'Users'});
 							}
 
 						}, (response) => {
@@ -134,6 +136,11 @@
 	@import '../../assets/sass/tools';
 
 	.addUser {
+
+		h2 ~ p {
+			line-height: 1.5em;
+		}
+
 		form {
 			display: grid;
 			grid-template-columns: 400px 1fr;
