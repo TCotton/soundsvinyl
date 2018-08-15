@@ -1,0 +1,44 @@
+@import '../../assets/sass/tools';
+
+.comment {
+	display: grid;
+	grid-template-columns: 38.197% 61.803%;
+	grid-gap: 0;
+	margin: 30px 0 0 0;
+}
+
+@media screen and (min-width: $media_breakpoint_mobile) {
+	.comment {
+		grid-template-columns: 20% 80%;
+	}
+}
+
+.commentLeftColumn {
+	text-align: center;
+	img {
+		width: 50%;
+		height: auto;
+	}
+}
+
+@media screen and (min-width: $media_breakpoint_mobile) {
+	.commentLeftColumn {
+		img {
+			max-width: 60px;
+		}
+	}
+}
+
+.commentRightColumn {
+	background: transparent;
+}
+
+.commentName p {
+	@include font-calculator($font_family_body, 18px, 0.5);
+	color: $commentHeader;
+}
+
+.commentText p {
+	@include font-calculator($font_family_body, 18px);
+	font-weight: 300;
+}

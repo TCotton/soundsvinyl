@@ -3,9 +3,8 @@ import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 import './recordListing.scss';
-import avatar from '../assets/graphics/Avatar_default_pic.png';
-import PropTypes from 'prop-types'
-import { homeURI } from '../helper_constants'
+import PropTypes from 'prop-types';
+import { homeURI } from '../helper_constants';
 
 class RecordListing extends React.Component {
 
@@ -75,8 +74,7 @@ class RecordListing extends React.Component {
 		const descriptionTwo = this.state.descriptionTwo;
 		const descriptionThree = this.state.descriptionThree;
 		const videoLink = this.state.videoLink;
-
-		console.dir(videoLink);
+		const disabled = true;
 
 		console.log(typeof this.state.categories);
 
@@ -127,55 +125,14 @@ class RecordListing extends React.Component {
 
 						<form onSubmit={this.handleSubmit}>
 
-							<textarea cols='10' rows='10' id='commentsMessage' name='commentsMessage' value=''/>
-							<input type='submit' name='submit' value='Comment'/>
+							<textarea cols='10' rows='10' id='commentsMessage' name='commentsMessage' maxlength='500' value=''/>
+							<input type='submit' name='submit' value='Comment' disabled={disabled}/>
 
 						</form>
 					</section>
 
 					<section styleName='commentsBlock'>
 
-						<div styleName='comment'>
-							<div styleName='commentLeftColumn'>
-								<img src={avatar}/>
-							</div>
-							<div styleName='commentRightColumn'>
-							<span styleName='commentName'>
-								<p>Peter Smith</p>
-							</span>
-								<span styleName='commentText'>
-								<p>Nam vel ornare lorem. Sed eleifend egestas Nam vel ornare lorem. Sed eleifend egestasNam vel ornare lorem. Sed eleifend egestas</p>
-							</span>
-							</div>
-						</div>
-
-						<div styleName='comment'>
-							<div styleName='commentLeftColumn'>
-								<img src={avatar}/>
-							</div>
-							<div styleName='commentRightColumn'>
-							<span styleName='commentName'>
-								<p>Peter Smith</p>
-							</span>
-								<span styleName='commentText'>
-								<p>Nam vel ornare lorem. Sed eleifend egestas Nam vel ornare lorem. Sed eleifend egestasNam vel ornare lorem. Sed eleifend egestas</p>
-							</span>
-							</div>
-						</div>
-
-						<div styleName='comment'>
-							<div styleName='commentLeftColumn'>
-								<img src={avatar}/>
-							</div>
-							<div styleName='commentRightColumn'>
-							<span styleName='commentName'>
-								<p>Peter Smith</p>
-							</span>
-								<span styleName='commentText'>
-								<p>Nam vel ornare lorem. Sed eleifend egestas Nam vel ornare lorem. Sed eleifend egestasNam vel ornare lorem. Sed eleifend egestas</p>
-							</span>
-							</div>
-						</div>
 					</section>
 				</main>
 			)

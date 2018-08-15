@@ -2,25 +2,21 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const CommentSchema = new Schema({
-	comment: {
+	content: {
 		type: mongoose.Schema.Types.String,
 		trim: true,
-		maxlength: 24,
+		maxlength: 500,
 		required: true
 	},
 	articleId: {
-		type: mongoose.Schema.Types.Oid,
+		type: mongoose.Schema.Types.ObjectId,
 		required: true
 	},
 	userId: {
-		type: mongoose.Schema.Types.Oid,
+		type: mongoose.Schema.Types.ObjectId,
 		required: true
 	},
 	date: {
-		type: mongoose.Schema.Types.Date,
-		default: Date.now
-	},
-	updated: {
 		type: mongoose.Schema.Types.Date,
 		default: Date.now
 	},

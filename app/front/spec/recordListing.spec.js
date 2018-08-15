@@ -1,6 +1,6 @@
 import RecordListing from '../recordListing.js'
 
-describe('Component', () => {
+xdescribe('Component', () => {
 
 	let component;
 
