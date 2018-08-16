@@ -12,3 +12,9 @@ app.route('/apiV1/page/get/:id').get((req, res) => {
 
 	});
 });
+
+
+// add comment
+// list comments
+// delete comment
+

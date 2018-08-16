@@ -24,6 +24,41 @@ if (app.get('env') === 'development') {
 	mongoose.set('debug', true) // enable logging collection methods + arguments to the console
 }
 
+const prerenderToken = './config/prerender.js';
+
+const prerender = require('prerender-node').set('prerenderToken', prerenderToken);
+prerender.crawlerUserAgents.push('googlebot');
+prerender.crawlerUserAgents.push('bingbot');
+prerender.crawlerUserAgents.push('yandex');
+prerender.crawlerUserAgents.push('baiduspider');
+prerender.crawlerUserAgents.push('facebookexternalhit');
+prerender.crawlerUserAgents.push('twitterbot');
+prerender.crawlerUserAgents.push('rogerbot');
+prerender.crawlerUserAgents.push('linkedinbot');
+prerender.crawlerUserAgents.push('embedly');
+prerender.crawlerUserAgents.push('bufferbot');
+prerender.crawlerUserAgents.push('quora link preview');
+prerender.crawlerUserAgents.push('showyoubot');
+prerender.crawlerUserAgents.push('outbrain');
+prerender.crawlerUserAgents.push('pinterest/0.');
+prerender.crawlerUserAgents.push('developers.google.com/+/web/snippet');
+prerender.crawlerUserAgents.push('www.google.com/webmasters/tools/richsnippets');
+prerender.crawlerUserAgents.push('slackbot');
+prerender.crawlerUserAgents.push('vkShare');
+prerender.crawlerUserAgents.push('W3C_Validator');
+prerender.crawlerUserAgents.push('redditbot');
+prerender.crawlerUserAgents.push('Applebot');
+prerender.crawlerUserAgents.push('WhatsApp');
+prerender.crawlerUserAgents.push('flipboard');
+prerender.crawlerUserAgents.push('tumblr');
+prerender.crawlerUserAgents.push('bitlybot');
+prerender.crawlerUserAgents.push('SkypeUriPreview');
+prerender.crawlerUserAgents.push('nuzzel');
+prerender.crawlerUserAgents.push('Discordbot');
+prerender.crawlerUserAgents.push('Google Page Speed');
+prerender.crawlerUserAgents.push('Qwantify');
+app.use(prerender);
+
 app.set('view engine', 'bug');
 app.use(express.static(__dirname + '/public'));
 
