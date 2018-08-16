@@ -95,7 +95,7 @@
 			deletePage (...args) {
 				this.showModal = false;
 
-				if (arguments[0]) {
+				if (arguments[0].toString()) {
 					this.$http.delete(`page/delete/${this.deleteId}`).then(res => {
 
 						this.Pages = res.body;
