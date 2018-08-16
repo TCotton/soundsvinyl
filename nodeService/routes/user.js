@@ -59,17 +59,9 @@ module.exports = (app) => {
 					return res.status(200).send('Email address not found');
 				}
 
-				console.dir(req.body.password);
-				console.dir(user.password);
-				console.log(req.body.password === user.password);
-
 				bcrypt.compare(req.body.password, user.password, (err, response) => {
 
-					console.log(err);
-
 					if (!err) {
-
-						console.dir(response);
 
 						if (response) {
 
@@ -103,14 +95,15 @@ module.exports = (app) => {
 
 	app.route('/apiV1/user/get').get(verifyToken, (req, res) => {
 
-		User.find({}, (err, user) => {
+		User.find({}).sort({'date': -1})
+			.exec((err, pages) => {
 
-			if (!err) {
-				res.json(user);
-			} else {
-				throw err;
-			}
-		});
+				if (!err) {
+					res.json(pages);
+				} else {
+					throw err;
+				}
+			});
 	});
 
 	// FORMAT OF TOKEN
