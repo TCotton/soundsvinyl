@@ -21,8 +21,8 @@ import '../components/jsComponents/ThumbnailComponent';
 Vue.use(Router);
 Vue.use(VuePaginate);
 Vue.use(VueResource);
-Vue.use(VeeValidate);
 Vue.use(VueCookies);
+Vue.use(VeeValidate);
 
 const root = window.location.protocol + '//' + window.location.hostname + ':8443' + '/apiV1/';
 Vue.http.options.root = root;

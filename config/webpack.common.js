@@ -5,10 +5,14 @@ const path = require('path');
 
 module.exports = {
 	target: 'web',
+	context: process.cwd(),
 	devServer: {
 		historyApiFallback: true,
 		compress: true,
 		port: 3000
+	},
+	output: {
+		filename: '[name].bundle.js',
 	},
 	resolve: {
 		alias: {
@@ -30,6 +34,8 @@ module.exports = {
 			Main: path.resolve(global.__base, '/app/front/main.js'),
 			Nav: path.resolve(global.__base, '/app/front/nav.js'),
 			RecordListing: path.resolve(global.__base, '/app/front/recordListing.js'),
+			VinylCharts: path.resolve(global.__base, '/app/front/vinylCharts.js'),
+			Sitemap: path.resolve(global.__base, '/app/front/sitemap.js'),
 
 			// VUE
 			vue: 'vue/dist/vue.js',

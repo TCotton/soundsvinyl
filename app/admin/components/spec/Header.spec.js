@@ -1,11 +1,11 @@
-import Header from '../Header.vue';
+import HeaderAdmin from '../Header.vue';
 
 describe('Component Header', () => {
 
 	let component;
 
 	beforeEach(() => {
-		component = Header;
+		component = HeaderAdmin;
 	});
 
 	it('should be defined', () => {

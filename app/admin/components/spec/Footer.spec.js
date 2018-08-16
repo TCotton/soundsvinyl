@@ -1,11 +1,11 @@
-import Footer from '../Footer.vue';
+import FooterAdmin from '../Footer.vue';
 
 describe('Component Footer', () => {
 
 	let component;
 
 	beforeEach(() => {
-		component = Footer;
+		component = FooterAdmin;
 	});
 
 	it('should be defined', () => {
