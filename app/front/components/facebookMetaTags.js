@@ -13,7 +13,7 @@ function FacebookMetaTags (props) {
   		<meta name=' description' content='{props.faceBookDescription}'>
 		</span>
 		)
-};
+}
 
 FacebookMetaTags.propTypes = {
 	faceBookTitle: PropTypes.string,
