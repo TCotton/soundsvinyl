@@ -7,10 +7,10 @@
 		<meta http-equiv="Content-Security-Policy" content="default-src *; img-src * 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *">
 		<script src="https://cdn.polyfill.io/v2/polyfill.min.js" crossorigin="anonymous"></script>
 
-		<title>React App</title>
+		<title>Soundsvinyl.co - vinyl forever, music for allxw</title>
+		<link my="canonlink"
+
 		<meta name="description" content="">
-		<meta name="keywords" content="">
-		<meta name="author" content="">
 
 		<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
 		<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
@@ -30,7 +30,13 @@
 		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 		<meta name="theme-color" content="#ffffff">
 
+		<meta name="prerender-status-code" content="{{status}}"/>
 		<base href="/" />
+
+		<meta data-ng-if="hideFooter" name="twitter:card" content="summary"/>
+		<meta data-ng-if="hideFooter" name="twitter:site" content="@andywalpole"/>
+		<meta data-ng-if="hideFooter" name="twitter:title" content="{{faceBookTitle}}"/>
+		<meta data-ng-if="hideFooter" name="twitter:description" content="{{faceBookDescription}}"/>
 	</head>
   <body>
     <noscript>
