@@ -9,8 +9,8 @@ function FacebookMetaTags (props) {
   		<meta property=' og:title' content='{props.faceBookTitle}' />
   		<meta property=' og:url' content='{props.canonical}' />
   		<meta property=' og:description' content='{props.faceBookDescription}' />
-  		<meta property="og:type" content='article' />
-  		<meta name=' description' content='{props.faceBookDescription}'>
+  		<meta property='og:type'' content='article' />
+  		<meta name=' description' content='{props.faceBookDescription}' />
 		</span>
 		)
 }
