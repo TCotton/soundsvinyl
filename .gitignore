@@ -6,7 +6,6 @@
 .nyc_output/*
 
 # production
-/build
 
 # misc
 .idea/
