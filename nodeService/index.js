@@ -120,7 +120,7 @@ if (app.get('env') === 'development') {
  * @param next
  * @returns {*}
  */
-function wwwRedirect(req, res, next) {
+function wwwRedirect (req, res, next) {
 	if (req.headers.host.slice(0, 4) === 'www.') {
 		let newHost = req.headers.host.slice(4);
 
@@ -155,7 +155,7 @@ if (app.get('env') === 'production') {
 
 	// production error handler
 	// no stacktraces leaked to user
-	app.use( (err, req, res, next) => {
+	app.use((err, req, res, next) => {
 		if (err) {
 			res.statusCode = (err.status || 500);
 			res.render('error', {
@@ -167,7 +167,6 @@ if (app.get('env') === 'production') {
 		}
 	});
 }
-
 
 /*if (app.get('env') === 'production') {
 	require('./misc/security')(app);
@@ -196,7 +195,9 @@ if (app.get('env') === 'development' &&
 		console.log('server running at ' + app.get('port'));
 	});
 
-} else {
+}
+
+if (app.get('env') === 'production') {
 
 	http.createServer(app).listen(app.get('port'), () => {
 		console.log('Express server listening on port ' + app.get('port'));
