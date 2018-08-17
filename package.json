@@ -20,11 +20,6 @@
 		"type": "git",
 		"url": "git+https://github.com/TCotton/soundsvinyl.co.git"
 	},
-	"keywords": [
-		"react",
-		"vue"
-	],
-	],
 	"author": "Andy Walpole",
 	"license": "CC-BY-NC-4.0",
 	"bugs": {
