@@ -138,8 +138,6 @@ if (app.get('env') === 'production') {
 	app.set('trust proxy', true);
 	app.use(wwwRedirect);
 
-	app.use(favicon(path.join(global.__base, 'dist/favicon.ico')));
-
 	app.use(express.static(global.__base + '/dist'));
 
 	app.all('/*', (req, res, next) => {
