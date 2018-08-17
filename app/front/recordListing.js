@@ -32,10 +32,10 @@ class RecordListing extends React.Component {
 		axios.get(`${homeURI}/apiV1/page/get/${id}`)
 			.then(res => {
 
-			/*	if(res.data.categories) {
-					console.dir(Array.isArray(res.data.categories));
-					console.dir(res.data.categories);
-				}*/
+				/*	if(res.data.categories) {
+						console.dir(Array.isArray(res.data.categories));
+						console.dir(res.data.categories);
+					}*/
 
 				this.setState({loaded: true});
 				this.setState({title: res.data.title});
@@ -76,7 +76,10 @@ class RecordListing extends React.Component {
 		const videoLink = this.state.videoLink;
 		const disabled = true;
 
-		const warningMessage = 'Your browser doesn\'t support HTML5 video. Here is a <a href={videoLink}>link to the video</a> instead.';
+		function createMarkup () {
+			return {
+				__html: 'Your browser doesn\'t support HTML5 video. Here is a <a href={videoLink}>link to the video</a> instead.'
+		}
 
 		/*const categoryArray = this.state.categories.reduce((accumulator, currentValue) => {
 			return accumulator.concat(currentValue.name);
@@ -102,7 +105,7 @@ class RecordListing extends React.Component {
 						<div className='videoContainer'>
 							<video controls width='100%'>
 								<source src={videoLink} type='video/mp4'/>
-								<p dangerouslySetInnerHTML={warningMessage}></p>
+								<p dangerouslySetInnerHTML={createMarkup()}></p>
 							</video>
 						</div>
 
