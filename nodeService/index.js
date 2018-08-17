@@ -114,6 +114,64 @@ if (app.get('env') === 'development') {
 	});
 }
 
+/**
+ * redirect www to non-www domain
+ * @param req
+ * @param res
+ * @param next
+ * @returns {*}
+ */
+function wwwRedirect(req, res, next) {
+	if (req.headers.host.slice(0, 4) === 'www.') {
+		let newHost = req.headers.host.slice(4);
+
+		return res.redirect(301, req.protocol + '://' + newHost + req.originalUrl);
+	}
+	next();
+}
+
+/**
+ * Production Settings
+ */
+if (app.get('env') === 'production') {
+
+	app.set('trust proxy', true);
+	app.use(wwwRedirect);
+
+	app.use(favicon(path.join(global.__base, 'dist/favicon.ico')));
+
+	app.use(express.static(global.__base + '/dist'));
+
+	app.all('/*', (req, res, next) => {
+
+		if (!req.url.includes('/apiV1/')) {
+			res.sendFile(path.join(global.__base, '/src/index.html'));
+		}
+
+		if (req.url.includes('/apiV1/')) {
+			next();
+		}
+
+	});
+
+	// set the static files location /public/img will be /img for users
+
+	// production error handler
+	// no stacktraces leaked to user
+	app.use( (err, req, res, next) => {
+		if (err) {
+			res.statusCode = (err.status || 500);
+			res.render('error', {
+				message: err.message,
+				error: err
+			});
+		} else {
+			next();
+		}
+	});
+}
+
+
 /*if (app.get('env') === 'production') {
 	require('./misc/security')(app);
 }*/
