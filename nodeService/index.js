@@ -140,7 +140,7 @@ if (app.get('env') === 'production') {
 
 	app.use(express.static(global.__base + '/dist'));
 
-	app.all('/*', (req, res, next) => {
+	app.all('/', (req, res, next) => {
 
 		if (!req.url.includes('/apiV1/')) {
 			res.sendFile(path.join(global.__base, '/dist/index.html'));
