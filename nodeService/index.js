@@ -88,7 +88,6 @@ const options = {
 }
 
 const htmlPath = path.join(__dirname, 'thumbnails');
-console.dir(htmlPath);
 
 app.use(express.static(htmlPath, options));
 
