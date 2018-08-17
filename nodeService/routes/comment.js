@@ -1,17 +1,21 @@
+const Comment = new require('../models/comment');
 
+module.exports = (app) => {
 
-app.route('/apiV1/page/get/:id').get((req, res) => {
+/*	app.route('/apiV1/page/get/:id').get((req, res) => {
 
-	Page.findOne({_id: req.params.id}, (err, page) => {
+		Page.findOne({_id: req.params.id}, (err, page) => {
 
-		if (!err) {
-			res.json(page);
-		} else {
-			throw err;
-		}
+			if (!err) {
+				res.json(page);
+			} else {
+				throw err;
+			}
 
-	});
-});
+		});
+	});*/
+
+}
 
 
 // add comment

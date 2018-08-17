@@ -1,5 +1,7 @@
+/* eslint-disable */
+
 import * as React from 'react';
-import { Helmet, HelmetData } from 'react-helmet';
+// import { Helmet, HelmetData } from 'react-helmet';
 
 const Application = () =>
 	<div className="application">
@@ -11,3 +13,5 @@ const Application = () =>
 		</Helmet>
 
 	</div>;
+
+/* eslint-enable */
