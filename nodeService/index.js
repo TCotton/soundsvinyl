@@ -114,9 +114,9 @@ if (app.get('env') === 'development') {
 	});
 }
 
-if (app.get('env') === 'production') {
+/*if (app.get('env') === 'production') {
 	require('./misc/security')(app);
-}
+}*/
 
 // routes based category
 require('./routes')(app);

@@ -2,11 +2,11 @@
 	"name": "soundsvinyl.co",
 	"version": "1.0.0",
 	"description": "Music recommendation site",
-	"main": "index.js",
+	"main": "server.js",
 	"scripts": {
 		"test": "cross-env NODE_ENV=test karma start --require source-map-support/register test/karma.conf.js",
 		"test:back": "ava -v node/test/test.js",
-		"build": "cross-env NODE_ENV=production webpack --mode production ./app/front/index.js --output ./dist/bundle.js",
+		"build": "cross-env NODE_ENV=production webpack --mode production ./app/front/single-spa-config.js --output ./dist/bundle.js",
 		"start:dev": "cross-env NODE_ENV=development webpack-dev-server --https --cert ./nodeService/config/server.crt --key ./nodeService/config/server.key --mode development ./app/single-spa-config.js --open",
 		"start": "node --experimental-modules ./server.js",
 		"start:nodeDev": "nodemon --inspect --experimental-modules  ./server.js",
@@ -23,6 +23,7 @@
 	"keywords": [
 		"react",
 		"vue"
+	],
 	],
 	"author": "Andy Walpole",
 	"license": "CC-BY-NC-4.0",
