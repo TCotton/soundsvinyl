@@ -4,4 +4,4 @@ export const dummy = {
 	users: 'https://api.mockaroo.com/api/35094270?count=20&key=004476f0'
 }
 
-export const homeURI = window.location.protocol + '//' + window.location.hostname + ':8443';
+export const homeURI = window.location.protocol + '//' + window.location.hostname + (window.location.port.length === 0 ? '' : ':8443');

@@ -249,7 +249,7 @@
 				};
 
 				this.originalCreationDate = response.data.date;
-				this.thumbnail = window.location.protocol + '//' + window.location.hostname + ':8443/' + `thumbnails/thumbnail-${this.EditPageForm._id}.png`;
+				this.thumbnail = window.location.protocol + '//' + window.location.hostname + (window.location.port.length === 0 ? '/' : ':8443/') + `thumbnails/thumbnail-${this.EditPageForm._id}.png`;
 			}, (response) => {
 				throw Error(response.body);
 			});

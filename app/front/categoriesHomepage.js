@@ -44,7 +44,7 @@ class CategoriesHomepage extends React.Component {
 			arrayMap = pageList.map((element, index) => {
 
 				Object.assign(element, {
-					thumbnailUrl: window.location.protocol + '//' + window.location.hostname + ':8443/' + `thumbnails/thumbnail-${element._id}.png`
+					thumbnailUrl: window.location.protocol + '//' + window.location.hostname + (window.location.port.length === 0 ? '/' : ':8443/') + `thumbnails/thumbnail-${element._id}.png`
 				});
 
 				return (
@@ -52,12 +52,12 @@ class CategoriesHomepage extends React.Component {
 						{
 							index !== 2 ?
 								<PageUnit
-								title={element.title}
-								subtitle={element.subTitle}
-								thumbnailUrl={element.thumbnailUrl}
-								slug={element.slug}
-								shortSlug={element.shortSlug}
-								id={element._id} /> : <HomePageSearchForm />
+									title={element.title}
+									subtitle={element.subTitle}
+									thumbnailUrl={element.thumbnailUrl}
+									slug={element.slug}
+									shortSlug={element.shortSlug}
+									id={element._id}/> : <HomePageSearchForm/>
 						}
 					</div>
 				)

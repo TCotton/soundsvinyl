@@ -24,7 +24,7 @@ Vue.use(VueResource);
 Vue.use(VueCookies);
 Vue.use(VeeValidate);
 
-const root = window.location.protocol + '//' + window.location.hostname + ':8443' + '/apiV1/';
+const root = window.location.protocol + '//' + window.location.hostname + (window.location.port.length === 0 ? '' : ':8443') + '/apiV1/';
 Vue.http.options.root = root;
 // do i *really* need this??
 Vue.http.options.emulateJSON = true;
