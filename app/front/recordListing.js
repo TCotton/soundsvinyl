@@ -79,6 +79,7 @@ class RecordListing extends React.Component {
 		function createMarkup () {
 			return {
 				__html: 'Your browser doesn\'t support HTML5 video. Here is a <a href={videoLink}>link to the video</a> instead.'
+			}
 		}
 
 		/*const categoryArray = this.state.categories.reduce((accumulator, currentValue) => {
