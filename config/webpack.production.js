@@ -5,8 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 // the path(s) that should be cleaned
 const pathsToClean = [
-	'../dist',
-	'../build'
+	global.__base + '/dist',
 ]
 
 module.exports = webpackMerge(commonConfig, {
