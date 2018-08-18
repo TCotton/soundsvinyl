@@ -27,5 +27,3 @@ error.log
 nodeService/thumbnails
 test/reports
 .idea
-.idea/
-.idea/*

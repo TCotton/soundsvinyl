@@ -9,7 +9,8 @@
 		"jasmine",
 		"react",
 		"vue",
-		"security"
+		"security",
+		"jsx-a11y"
 	],
 	"parserOptions": {
 		"parser": "babel-eslint",
