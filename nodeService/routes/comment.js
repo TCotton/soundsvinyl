@@ -1,20 +1,39 @@
 const Comment = new require('../models/comment');
+const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const secret = require('../config/salt');
+const verifyToken = require('./jwt');
 
 module.exports = (app) => {
 
-/*	app.route('/apiV1/page/get/:id').get((req, res) => {
+	app.route('/apiV1/comment/add').post(verifyToken, (req, res) => {
 
-		Page.findOne({_id: req.params.id}, (err, page) => {
+		const body = req.body;
 
+		jwt.verify(bearerBody, secret.salt, (err, authData) => {
 			if (!err) {
-				res.json(page);
+
+				const content = body.content.length < 497 ? body.content : (body.content.substring(0, 497) + '...');
+
+				const _id = mongoose.Types.ObjectId();
+
+				Comment.create({
+					_id,
+				}, (err, page) => {
+
+					if (!err) {
+						res.json(page);
+					} else {
+						return new Error(err);
+					}
+				});
+
 			} else {
-				throw err;
+				res.status(403).send(err.message);
 			}
-
 		});
-	});*/
-
+	});
 }
 
 

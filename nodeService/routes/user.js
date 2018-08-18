@@ -81,7 +81,7 @@ module.exports = (app) => {
 						}
 
 					} else {
-						throw err;
+						return new Error(err.toString());
 					}
 
 				});
@@ -101,7 +101,7 @@ module.exports = (app) => {
 				if (!err) {
 					res.json(pages);
 				} else {
-					throw err;
+					return new Error(err.toString());
 				}
 			});
 	});
@@ -142,7 +142,7 @@ module.exports = (app) => {
 			if (!err) {
 				res.json(page);
 			} else {
-				throw err;
+				return new Error(err.toString());
 			}
 
 		});
@@ -190,7 +190,7 @@ module.exports = (app) => {
 					if (!err) {
 						res.json(users);
 					} else {
-						throw err;
+						return new Error(err.toString());
 					}
 				});
 

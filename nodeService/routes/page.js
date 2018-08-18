@@ -47,7 +47,7 @@ module.exports = (app) => {
 
 				res.json(page);
 			} else {
-				throw err;
+				return new Error(err.toString());
 			}
 		});
 	});
@@ -61,7 +61,7 @@ module.exports = (app) => {
 				if (!err) {
 					res.json(pages);
 				} else {
-					throw err;
+					return new Error(err.toString());
 				}
 
 			});
@@ -74,7 +74,7 @@ module.exports = (app) => {
 			if (!err) {
 				res.json(page);
 			} else {
-				throw err;
+				return new Error(err.toString());;
 			}
 
 		});
@@ -105,7 +105,7 @@ module.exports = (app) => {
 				page.save((err) => {
 
 					if (err) {
-						throw err;
+						return new Error(err.toString());
 					} else {
 						res.json('Success');
 					}
@@ -129,7 +129,7 @@ module.exports = (app) => {
 				Page.find({}, (err, pages) => {
 
 					if (err) {
-						throw err;
+						return new Error(err.toString());
 					}
 
 					const file = global.__base + '/nodeService/public/thumbnails/thumbnail-' + req.params.id + '.png';
@@ -142,7 +142,7 @@ module.exports = (app) => {
 
 						fs.unlink(file, function (err) {
 							if (err) {
-								throw err;
+								return new Error(err.toString());
 							}
 						});
 					});
@@ -150,7 +150,7 @@ module.exports = (app) => {
 					if (!err) {
 						res.json(pages);
 					} else {
-						throw err;
+						return new Error(err.toString());
 					}
 				});
 			}

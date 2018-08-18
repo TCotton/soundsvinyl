@@ -170,9 +170,9 @@ if (app.get('env') === 'production') {
 }
 
 
-/*if (app.get('env') === 'production') {
+if (app.get('env') === 'production') {
 	require('./misc/security')(app);
-}*/
+}
 
 // routes based category
 require('./routes')(app);
@@ -199,7 +199,7 @@ if (app.get('env') === 'development' &&
 
 } else {
 
-	http.createServer(app).listen(app.get('port'), () => {
+	https.createServer(app).listen(app.get('port'), () => {
 		console.log('Express server listening on port ' + app.get('port'));
 	});
 
