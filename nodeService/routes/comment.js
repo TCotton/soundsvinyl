@@ -11,8 +11,13 @@ module.exports = (app) => {
 
 		const body = req.body;
 
-		jwt.verify(bearerBody, secret.salt, (err, authData) => {
+		jwt.verify(req.token, secret.salt, (err, authData) => {
+
 			if (!err) {
+
+				console.dir(authData);
+				console.dir(body);
+/*
 
 				const content = body.content.length < 497 ? body.content : (body.content.substring(0, 497) + '...');
 
@@ -20,6 +25,9 @@ module.exports = (app) => {
 
 				Comment.create({
 					_id,
+					content: body.content,
+					articleId: body.articleId,
+
 				}, (err, page) => {
 
 					if (!err) {
@@ -28,6 +36,7 @@ module.exports = (app) => {
 						return new Error(err);
 					}
 				});
+*/
 
 			} else {
 				res.status(403).send(err.message);

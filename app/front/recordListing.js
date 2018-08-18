@@ -1,6 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
+import { Link } from 'react-router-dom'
+import { getCookieValue } from '../helper_functions';
+import Video from './components/video';
 
 import './recordListing.scss';
 import PropTypes from 'prop-types';
@@ -15,11 +18,13 @@ class RecordListing extends React.Component {
 			loaded: false,
 			title: String,
 			subTitle: String,
-			videoLink: String,
+			videoLink: 'String',
 			descriptionOne: String,
 			descriptionTwo: String,
 			descriptionThree: String,
 			categories: Array,
+			disabled: true,
+			commentsMessage: '',
 		}
 
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -46,12 +51,31 @@ class RecordListing extends React.Component {
 				this.setState({descriptionThree: res.data.descriptionThree});
 				this.setState({categories: res.data.categories});
 			});
+
+		if (this.checkTokenCookie('token')) {
+			this.setState({disabled: false});
+		}
+	}
+
+	checkTokenCookie () {
+		return getCookieValue('token');
 	}
 
 	handleSubmit (e) {
 		e.preventDefault();
 
-		return false;
+		const content = this.state.content;
+		const articleId = this.props.match.params.id;
+
+		console.log('submit yes');
+
+		if (content.length > 0) {
+			axios.post(`${homeURI}/apiV1/comment/add`, {content, articleId})
+				.then(res => {
+					console.dir(res);
+				});
+		}
+
 	}
 
 	handleInputChange (event) {
@@ -74,12 +98,11 @@ class RecordListing extends React.Component {
 		const descriptionTwo = this.state.descriptionTwo;
 		const descriptionThree = this.state.descriptionThree;
 		const videoLink = this.state.videoLink;
-		const disabled = true;
+		const disabled = this.state.disabled;
+		let videoComponent;
 
-		function createMarkup () {
-			return {
-				__html: 'Your browser doesn\'t support HTML5 video. Here is a <a href={videoLink}>link to the video</a> instead.'
-			}
+		if(videoLink !== '') {
+			videoComponent = <Video videoLink={videoLink} />
 		}
 
 		/*const categoryArray = this.state.categories.reduce((accumulator, currentValue) => {
@@ -96,47 +119,44 @@ class RecordListing extends React.Component {
 				<main styleName='recordListing'>
 					<header styleName='record'>
 
-						<h2 className={(title ? 'display' : 'hide')}>{title}</h2>
-						<p className={(subTitle ? 'display' : 'hide')}>{subTitle}</p>
+						<h2 className={(title ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: title}} />
+						<p className={(subTitle ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: subTitle}} />
 
 					</header>
 
 					<section styleName='videoSineWave'>
 
-						<div className='videoContainer'>
-							<video controls width='100%'>
-								<source src={videoLink} type='video/mp4'/>
-								<p dangerouslySetInnerHTML={createMarkup()}></p>
-							</video>
+						<div styleName='videoContainer'>
+							{videoComponent}
 						</div>
 
-						<div>
-							<img/>
-						</div>
 					</section>
 
 					<section styleName='description'>
 
-						<p className={(descriptionOne ? 'display' : 'hide')}>{descriptionOne}</p>
-						<p className={(descriptionTwo ? 'display' : 'hide')}>{descriptionTwo}</p>
-						<p className={(descriptionThree ? 'display' : 'hide')}>{descriptionThree}</p>
+						<p className={(descriptionOne ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionOne}} />
+						<p className={(descriptionTwo ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionTwo}} />
+						<p className={(descriptionThree ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionThree}} />
 
 					</section>
 
 					<section styleName='commentsForm'>
 						<h3>Comments</h3>
 
+						<p className={(disabled ? 'display' : 'hide')}>You must be <Link to='/my-account'>registered and logged
+							in</Link> to contribute a comment</p>
+
 						<form onSubmit={this.handleSubmit}>
 
-							<textarea cols='10' rows='10' id='commentsMessage' name='commentsMessage' maxLength='500' value=''/>
+							<textarea cols='10' rows='10' id='commentsMessage' name='commentsMessage' maxLength='500'
+												value={this.state.commentsMessage} onChange={this.handleInputChange}/>
 							<input type='submit' name='submit' value='Comment' disabled={disabled}/>
 
 						</form>
 					</section>
 
-					<section styleName='commentsBlock'>
+					<section styleName='commentsBlock'>&nbsp;</section>
 
-					</section>
 				</main>
 			)
 		}

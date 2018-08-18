@@ -74,7 +74,7 @@ module.exports = (app) => {
 			if (!err) {
 				res.json(page);
 			} else {
-				return new Error(err.toString());;
+				return new Error(err.toString());
 			}
 
 		});

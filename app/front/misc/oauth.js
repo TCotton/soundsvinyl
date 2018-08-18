@@ -1,6 +1,4 @@
 import axios from 'axios';
-// You can use any cookie library or whatever
-// library to access your client storage.
 import { getCookieValue } from '../../helper_functions';
 
 axios.interceptors.request.use((config) => {
