@@ -25,6 +25,7 @@ class RecordListing extends React.Component {
 			categories: Array,
 			disabled: true,
 			commentsMessage: '',
+			success: false,
 		}
 
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -64,15 +65,17 @@ class RecordListing extends React.Component {
 	handleSubmit (e) {
 		e.preventDefault();
 
-		const content = this.state.content;
+		const content = this.state.commentsMessage;
 		const articleId = this.props.match.params.id;
 
-		console.log('submit yes');
+		if (content && content.length > 0) {
 
-		if (content.length > 0) {
 			axios.post(`${homeURI}/apiV1/comment/add`, {content, articleId})
 				.then(res => {
-					console.dir(res);
+					if (res.status === 200 && res.data) {
+						this.setState({success: true});
+						this.setState({commentsMessage: ''});
+					}
 				});
 		}
 
@@ -99,10 +102,11 @@ class RecordListing extends React.Component {
 		const descriptionThree = this.state.descriptionThree;
 		const videoLink = this.state.videoLink;
 		const disabled = this.state.disabled;
+		const success = this.state.success;
 		let videoComponent;
 
-		if(videoLink !== '') {
-			videoComponent = <Video videoLink={videoLink} />
+		if (videoLink !== '') {
+			videoComponent = <Video videoLink={videoLink}/>
 		}
 
 		/*const categoryArray = this.state.categories.reduce((accumulator, currentValue) => {
@@ -119,8 +123,8 @@ class RecordListing extends React.Component {
 				<main styleName='recordListing'>
 					<header styleName='record'>
 
-						<h2 className={(title ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: title}} />
-						<p className={(subTitle ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: subTitle}} />
+						<h2 className={(title ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: title}}/>
+						<p className={(subTitle ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: subTitle}}/>
 
 					</header>
 
@@ -134,9 +138,9 @@ class RecordListing extends React.Component {
 
 					<section styleName='description'>
 
-						<p className={(descriptionOne ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionOne}} />
-						<p className={(descriptionTwo ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionTwo}} />
-						<p className={(descriptionThree ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionThree}} />
+						<p className={(descriptionOne ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionOne}}/>
+						<p className={(descriptionTwo ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionTwo}}/>
+						<p className={(descriptionThree ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionThree}}/>
 
 					</section>
 
@@ -145,6 +149,9 @@ class RecordListing extends React.Component {
 
 						<p className={(disabled ? 'display' : 'hide')}>You must be <Link to='/my-account'>registered and logged
 							in</Link> to contribute a comment</p>
+
+						<p className={(success ? 'display' : 'hide')}>Your comment has been submitted and will appear on this page
+							after it has been approved by the admin</p>
 
 						<form onSubmit={this.handleSubmit}>
 

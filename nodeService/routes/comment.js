@@ -15,28 +15,24 @@ module.exports = (app) => {
 
 			if (!err) {
 
-				console.dir(authData);
-				console.dir(body);
-/*
-
 				const content = body.content.length < 497 ? body.content : (body.content.substring(0, 497) + '...');
-
 				const _id = mongoose.Types.ObjectId();
 
 				Comment.create({
 					_id,
-					content: body.content,
+					content,
 					articleId: body.articleId,
-
+					userId: authData._doc._id,
+					userName: authData._doc.username,
+					date: Date.now(),
 				}, (err, page) => {
 
 					if (!err) {
 						res.json(page);
 					} else {
-						return new Error(err);
+						return new Error(err.toString());
 					}
 				});
-*/
 
 			} else {
 				res.status(403).send(err.message);

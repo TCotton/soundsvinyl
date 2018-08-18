@@ -53,7 +53,7 @@ class MyAccount extends React.Component {
 							secure: true,
 						});
 
-						window.location.href = window.location.protocol + '//' + window.location.host + '/#/admin';
+						window.location.href = window.location.protocol + '//' + window.location.host + '/';
 					}
 
 				}).catch((e) => {

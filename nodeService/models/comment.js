@@ -16,6 +16,10 @@ const CommentSchema = new Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		required: true,
 	},
+	userName: {
+		type: mongoose.Schema.Types.String,
+		required: true,
+	},
 	date: {
 		type: mongoose.Schema.Types.Date,
 		default: Date.now,

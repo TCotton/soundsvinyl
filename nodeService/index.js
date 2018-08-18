@@ -178,6 +178,7 @@ if (app.get('env') === 'production') {
 require('./routes')(app);
 require('./routes/page')(app);
 require('./routes/user')(app);
+require('./routes/comment')(app);
 
 // miscellaneous routes based on use
 require('./misc/logger');
