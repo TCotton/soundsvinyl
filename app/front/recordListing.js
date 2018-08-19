@@ -150,8 +150,8 @@ class RecordListing extends React.Component {
 						<p className={(disabled ? 'display' : 'hide')}>You must be <Link to='/my-account'>registered and logged
 							in</Link> to contribute a comment</p>
 
-						<p className={(success ? 'display' : 'hide')}>Your comment has been submitted and will appear on this page
-							after it has been approved by the admin</p>
+						<p className={(success ? 'display' : 'hide')}>Your comment has been submitted and will appear on<br /> this page
+							after it has been approved by the administration</p>
 
 						<form onSubmit={this.handleSubmit}>
 
