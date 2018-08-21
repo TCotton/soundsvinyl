@@ -14,6 +14,7 @@ const logger = require('morgan');
 const compress = require('compression');
 const mongoose = require('mongoose');
 const mongoURI = require('./config/mongoDB');
+const csp = require('helmet-csp')
 
 const db = mongoose.connect(mongoURI.productionURI);
 // investigate why useNewUrlParser is important
@@ -58,6 +59,46 @@ prerender.crawlerUserAgents.push('Discordbot');
 prerender.crawlerUserAgents.push('Google Page Speed');
 prerender.crawlerUserAgents.push('Qwantify');
 app.use(prerender);
+
+/**
+ * 	<meta http-equiv="Content-Security-Policy" content="default-src *; img-src * 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *">
+ */
+app.use(csp({
+	// Specify directives as normal.
+	directives: {
+		defaultSrc: ["'self'", 'soundsvinyl.co'],
+		scriptSrc: ["'self'", "'unsafe-inline'"],
+		styleSrc: ['https://fonts.googleapis.com', 'https://fonts.gstatic.com', 'self', 'unsafe-inline'],
+		fontSrc: ["'self'", 'https://fonts.gstatic.com', 'data:'],
+		imgSrc: ['self', 'data:'],
+		sandbox: ['allow-forms', 'allow-scripts'],
+		reportUri: './report-violation',
+		objectSrc: ["'none'"],
+		upgradeInsecureRequests: true,
+		workerSrc: false  // This is not set.
+	},
+
+	// This module will detect common mistakes in your directives and throw errors
+	// if it finds any. To disable this, enable "loose mode".
+	loose: false,
+
+	// Set to true if you only want browsers to report errors, not block them.
+	// You may also set this to a function(req, res) in order to decide dynamically
+	// whether to use reportOnly mode, e.g., to allow for a dynamic kill switch.
+	reportOnly: true,
+
+	// Set to true if you want to blindly set all headers: Content-Security-Policy,
+	// X-WebKit-CSP, and X-Content-Security-Policy.
+	setAllHeaders: false,
+
+	// Set to true if you want to disable CSP on Android where it can be buggy.
+	disableAndroid: false,
+
+	// Set to false if you want to completely disable any user-agent sniffing.
+	// This may make the headers less compatible but it will be much faster.
+	// This defaults to `true`.
+	browserSniff: true
+}))
 
 app.set('view engine', 'bug');
 app.use(express.static(__dirname + '/public'));
