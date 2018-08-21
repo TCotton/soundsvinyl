@@ -23,8 +23,8 @@ function Comment (props) {
 }
 
 Comment.propTypes = {
-	username: PropTypes.string.isRequired,
-	content: PropTypes.string.isRequired,
+	username: PropTypes.string,
+	content: PropTypes.string,
 };
 
 export default Comment;

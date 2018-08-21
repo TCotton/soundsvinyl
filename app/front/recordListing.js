@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom'
 import { getCookieValue } from '../helper_functions';
 import Video from './components/video';
+import Comment from './components/comment';
 
 import './recordListing.scss';
 import PropTypes from 'prop-types';
@@ -26,6 +27,7 @@ class RecordListing extends React.Component {
 			disabled: true,
 			commentsMessage: '',
 			success: false,
+			comments: Array,
 		}
 
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -52,6 +54,10 @@ class RecordListing extends React.Component {
 				this.setState({descriptionThree: res.data.descriptionThree});
 				this.setState({categories: res.data.categories});
 			});
+
+		axios.get(`${homeURI}/apiV1/page/comment/${id}`).then(res => {
+			this.setState({comments: res.data});
+		});
 
 		if (this.checkTokenCookie('token')) {
 			this.setState({disabled: false});
@@ -103,6 +109,7 @@ class RecordListing extends React.Component {
 		const videoLink = this.state.videoLink;
 		const disabled = this.state.disabled;
 		const success = this.state.success;
+		const comments = this.state.comments;
 		let videoComponent;
 
 		if (videoLink !== '') {
@@ -140,7 +147,8 @@ class RecordListing extends React.Component {
 
 						<p className={(descriptionOne ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionOne}}/>
 						<p className={(descriptionTwo ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionTwo}}/>
-						<p className={(descriptionThree ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionThree}}/>
+						<p className={(descriptionThree ? 'display' : 'hide')}
+							 dangerouslySetInnerHTML={{__html: descriptionThree}}/>
 
 					</section>
 
@@ -150,7 +158,8 @@ class RecordListing extends React.Component {
 						<p className={(disabled ? 'display' : 'hide')}>You must be <Link to='/my-account'>registered and logged
 							in</Link> to contribute a comment</p>
 
-						<p className={(success ? 'display' : 'hide')}>Your comment has been submitted and will appear on<br /> this page
+						<p className={(success ? 'display' : 'hide')}>Your comment has been submitted and will appear on<br/> this
+							page
 							after it has been approved by the administration</p>
 
 						<form onSubmit={this.handleSubmit}>
@@ -162,7 +171,9 @@ class RecordListing extends React.Component {
 						</form>
 					</section>
 
-					<section styleName='commentsBlock'>&nbsp;</section>
+					<section styleName='commentsBlock' className={(comments.length > 0 ? 'display' : 'hide')}>
+						<Comment content='comments'/>
+					</section>
 
 				</main>
 			)

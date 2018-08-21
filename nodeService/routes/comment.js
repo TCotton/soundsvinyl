@@ -40,7 +40,7 @@ module.exports = (app) => {
 		});
 	});
 
-	app.route('/apiV1/comment/get').get((req, res) => {
+	app.route('/apiV1/comment/get').get(verifyToken, (req, res) => {
 
 		Comment.find({}, (err, pages) => {
 
@@ -52,7 +52,19 @@ module.exports = (app) => {
 		});
 	});
 
-	app.route('/apiV1/comment/delete/:id').delete((req, res) => {
+	app.route('/apiV1/comment/get/article').get(verifyToken, (req, res) => {
+
+		Comment.find({}, (err, pages) => {
+
+			if (!err) {
+				res.json(pages);
+			} else {
+				return new Error(err.toString());
+			}
+		});
+	});
+
+	app.route('/apiV1/comment/delete/:id').delete(verifyToken, (req, res) => {
 
 		Comment.remove({
 			_id: req.params.id
@@ -77,8 +89,66 @@ module.exports = (app) => {
 			}
 		});
 	});
-}
 
+	app.route('/apiV1/comment/get/:id').get(verifyToken, (req, res) => {
+
+		Comment.findOne({_id: req.params.id}, (err, page) => {
+
+			if (!err) {
+				res.json(page);
+			} else {
+				return new Error(err.toString());
+			}
+
+		});
+	});
+
+	app.route('/apiV1/comment/update').put(verifyToken, (req, res) => {
+
+		const body = req.body;
+
+		Comment.findById(body._id, (err, comment) => {
+
+			if (err) {
+				return new Error(err.toString());
+			}
+
+			if (!comment) {
+				return new Error('Could not load Commment document');
+
+			} else {
+
+				Object.assign(comment, body);
+				comment.save((err) => {
+
+					if (err) {
+						return new Error(err.toString());
+					} else {
+						res.json('Success');
+					}
+				});
+			}
+		});
+	});
+
+	app.route('/apiV1/page/comment/:id').get((req, res) => {
+
+		Comment.find({articleId: req.params.id}, (err, comment) => {
+
+			if (err) {
+				return new Error(err.toString());
+			}
+
+			if (!err) {
+				res.json(comment);
+			} else {
+				return new Error(err.toString());
+			}
+		});
+
+	});
+
+}
 
 // add comment
 // list comments

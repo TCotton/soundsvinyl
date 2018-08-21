@@ -19,7 +19,7 @@
 					<th scope="col">User name</th>
 					<th scope="col">Comment</th>
 					<th scope="col">Date</th>
-
+					<th scope="col">Published</th>
 					<th scope="col">Edit</th>
 					<th scope="col">Delete</th>
 				</tr>
@@ -31,6 +31,7 @@
 					<td>{{ comment.userName }}</td>
 					<td>{{ comment.content }}</td>
 					<td>{{ comment.date }}</td>
+					<td>{{ comment.published }}</td>
 
 					<td>
 						<router-link :to="{ name: 'Comment', params: { id: comment._id }}">Edit</router-link>
