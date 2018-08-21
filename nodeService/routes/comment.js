@@ -133,7 +133,7 @@ module.exports = (app) => {
 
 	app.route('/apiV1/page/comment/:id').get((req, res) => {
 
-		Comment.find({articleId: req.params.id}, (err, comment) => {
+		Comment.find({articleId: req.params.id, 'published': true}, (err, comment) => {
 
 			if (err) {
 				return new Error(err.toString());

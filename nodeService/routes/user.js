@@ -30,6 +30,7 @@ module.exports = (app) => {
 						date: Date.now(),
 						userLevel: body.userLevel ? body.userLevel : 2,
 						username: body.username,
+						profile: Math.floor(Math.random() * 5 + 1),
 					}, (err) => {
 
 						if (!err) {
@@ -182,7 +183,7 @@ module.exports = (app) => {
 		}, (err) => {
 
 			if (err) {
-				throw err;
+				return new Error(err.toString());
 			} else {
 
 				User.find({}, (err, users) => {
@@ -193,7 +194,6 @@ module.exports = (app) => {
 						return new Error(err.toString());
 					}
 				});
-
 			}
 		});
 	});

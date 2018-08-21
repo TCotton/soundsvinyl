@@ -4,7 +4,7 @@
 	display: grid;
 	grid-template-columns: 38.197% 61.803%;
 	grid-gap: 0;
-	margin: 30px 0 0 0;
+	margin: 30px 0;
 
 	.commentName {
 		@include font-calculator($font_family_body, 16px, 0.5);
