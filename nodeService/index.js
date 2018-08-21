@@ -68,9 +68,9 @@ app.use(csp({
 	directives: {
 		defaultSrc: ["'self'", 'soundsvinyl.co'],
 		scriptSrc: ["'self'", "'unsafe-inline'"],
-		styleSrc: ['https://fonts.googleapis.com', 'https://fonts.gstatic.com', 'self', 'unsafe-inline'],
+		styleSrc: ['https://fonts.googleapis.com', 'https://fonts.gstatic.com', "'self'", "'unsafe-inline'"],
 		fontSrc: ["'self'", 'https://fonts.gstatic.com', 'data:'],
-		imgSrc: ['self', 'data:'],
+		imgSrc: ["'self'", 'data:'],
 		sandbox: ['allow-forms', 'allow-scripts'],
 		reportUri: './report-violation',
 		objectSrc: ["'none'"],
