@@ -150,7 +150,4 @@ module.exports = (app) => {
 
 }
 
-// add comment
-// list comments
-// delete comment
 

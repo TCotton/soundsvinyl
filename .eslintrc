@@ -9,7 +9,6 @@
 		"jasmine",
 		"react",
 		"vue",
-		"security",
 		"jsx-a11y"
 	],
 	"parserOptions": {
@@ -27,7 +26,6 @@
 		"eslint:recommended",
 		"plugin:react/recommended",
 		"plugin:vue/strongly-recommended",
-		"plugin:security/recommended"
 	],
 	"rules": {
 		"vue/html-indent": 0

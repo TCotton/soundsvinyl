@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom'
 import { getCookieValue } from '../helper_functions';
 import Video from './components/video';
-import Comment from './components/comment';
+import Comment from './comment';
 
 import './recordListing.scss';
 import PropTypes from 'prop-types';
@@ -56,7 +56,11 @@ class RecordListing extends React.Component {
 			});
 
 		axios.get(`${homeURI}/apiV1/page/comment/${id}`).then(res => {
-			this.setState({comments: res.data});
+
+			if (Array.isArray(res.data) && res.data.length > 0) {
+				this.setState({comments: res.data});
+			}
+
 		});
 
 		if (this.checkTokenCookie('token')) {
@@ -110,6 +114,7 @@ class RecordListing extends React.Component {
 		const disabled = this.state.disabled;
 		const success = this.state.success;
 		const comments = this.state.comments;
+
 		let videoComponent;
 
 		if (videoLink !== '') {
@@ -172,7 +177,7 @@ class RecordListing extends React.Component {
 					</section>
 
 					<section styleName='commentsBlock' className={(comments.length > 0 ? 'display' : 'hide')}>
-						<Comment content='comments'/>
+						<Comment content={comments}/>
 					</section>
 
 				</main>

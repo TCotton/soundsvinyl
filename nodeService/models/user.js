@@ -31,6 +31,11 @@ const UserSchema = new Schema({
 		type: mongoose.Schema.Types.Date,
 		default: Date.now,
 	},
+	profile: {
+		type: mongoose.Schema.Types.Date,
+		default: Math.floor(Math.random() * 5 + 1),
+		required: true
+	}
 });
 
 module.exports = mongoose.model('User', UserSchema);
