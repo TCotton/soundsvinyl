@@ -1,7 +1,6 @@
 const Comment = new require('../models/comment');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
 const secret = require('../config/salt');
 const verifyToken = require('./jwt');
 

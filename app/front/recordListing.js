@@ -152,8 +152,7 @@ class RecordListing extends React.Component {
 
 						<p className={(descriptionOne ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionOne}}/>
 						<p className={(descriptionTwo ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionTwo}}/>
-						<p className={(descriptionThree ? 'display' : 'hide')}
-							 dangerouslySetInnerHTML={{__html: descriptionThree}}/>
+						<p className={(descriptionThree ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionThree}}/>
 
 					</section>
 

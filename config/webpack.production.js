@@ -23,7 +23,7 @@ module.exports = webpackMerge(commonConfig, {
 	},
 	devtool: 'hidden-source-map',
 	plugins: [
-		new CleanWebpackPlugin(pathsToClean),\
+		new CleanWebpackPlugin(pathsToClean),
 
 		new webpack.DefinePlugin({
 			'process.env': {
