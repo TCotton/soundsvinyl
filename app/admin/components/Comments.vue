@@ -2,17 +2,20 @@
 	<div :class="$style.comments">
 
 		<h2>{{ msg }}</h2>
+
+		<p v-show="noContent">There are no comments in database</p>
+
 		<paginate
 			:list="Comments"
 			:per="10"
 			name="Comments"
 		>
 
-			<table>
+			<table v-show="!noContent">
 				<caption>Comments list</caption>
 
 				<tr>
-					<th scope="col">ID</th>
+					<th scope="col">Article ID</th>
 					<th scope="col">User name</th>
 					<th scope="col">Comment</th>
 					<th scope="col">Date</th>
@@ -33,7 +36,7 @@
 						<router-link :to="{ name: 'Comment', params: { id: comment._id }}">Edit</router-link>
 					</td>
 					<td>
-						Delete
+						<div @click="showModal = true, deleteId = comment._id" :class="$style.delete">Delete</div>
 					</td>
 				</tr>
 			</table>
@@ -46,31 +49,16 @@
 			for="Comments"
 		/>
 
+		<modal
+			v-if="showModal"
+			@close="deleteComment">
+			<h3 slot="header">Are you sure you want to delete this comment?</h3>
+		</modal>
+
 	</div>
 </template>
 
 <script>
-
-	/**
-	 * articleId
-	 :
-	 "5b72d2bf43f503882567d78a"
-	 content
-	 :
-	 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis tempor ultricies. In hac habitasse platea dictumst. Sed non leo eget tortor euismod suscipit. Cras luctus ex mi, in consequat sem imperdiet sed. Mauris nec tincidunt massa. Nam luctus laoreet nisi. Vivamus libero enim, condimentum non enim aliquet, tristique faucibus libero. Donec lobortis semper dictum. Aliquam at sem quis erat lobortis imperdiet at tempor ex."
-	 date
-	 :
-	 "2018-08-18T16:13:23.845Z"
-	 published
-	 :
-	 false
-	 userId
-	 :
-	 "5b749811c48b19e79fb2783f"
-	 userName
-	 :
-	 "me_15thAug18"
-	 */
 
 	export default {
 		name: 'Comments',
@@ -80,6 +68,8 @@
 				paginate: ['Comments'],
 				Comments: [],
 				noContent: false,
+				showModal: false,
+				deleteId: '',
 			}
 		},
 		beforeCreate () {
@@ -89,7 +79,6 @@
 			this.$http.get(`comment/get`).then(res => {
 
 				this.Comments = res.body;
-				console.dir(res.body);
 
 				if (res.body.length === 0) {
 					this.noContent = true;
@@ -99,6 +88,26 @@
 				new Error(response);
 			});
 		},
+
+		methods: {
+			deleteComment (...args) {
+				this.showModal = false;
+
+				if (arguments[0].toString()) {
+					this.$http.delete(`comment/delete/${this.deleteId}`).then(res => {
+
+						this.Comments = res.body;
+
+						if (res.body.length === 0) {
+							this.noContent = true;
+						}
+
+					}, response => {
+						new Error(response);
+					});
+				}
+			}
+		}
 	}
 </script>
 
@@ -110,6 +119,10 @@
 			li {
 				display: inline-block;
 			}
+		}
+
+		.delete {
+			cursor: pointer;
 		}
 	}
 </style>

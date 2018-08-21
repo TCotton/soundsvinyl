@@ -51,6 +51,32 @@ module.exports = (app) => {
 			}
 		});
 	});
+
+	app.route('/apiV1/comment/delete/:id').delete((req, res) => {
+
+		Comment.remove({
+			_id: req.params.id
+		}, (err) => {
+
+			if (err) {
+				throw err;
+			} else {
+
+				Comment.find({}, (err, pages) => {
+
+					if (err) {
+						return new Error(err.toString());
+					}
+
+					if (!err) {
+						res.json(pages);
+					} else {
+						return new Error(err.toString());
+					}
+				});
+			}
+		});
+	});
 }
 
 
