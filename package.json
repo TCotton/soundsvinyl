@@ -1,6 +1,6 @@
 {
 	"name": "soundsvinyl.co",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "Music recommendation site",
 	"main": "server.js",
 	"scripts": {
@@ -160,6 +160,7 @@
 		"source-map-support": "0.5.6",
 		"style-loader": "0.21.0",
 		"svg-inline-loader": "0.8.0",
+		"version-bump-prompt": "^4.1.0",
 		"vue-eslint-parser": "2.0.3",
 		"vue-loader": "15.2.4",
 		"vue-style-loader": "4.1.0",
