@@ -40,8 +40,17 @@ module.exports = (app) => {
 		});
 	});
 
+	app.route('/apiV1/comment/get').get((req, res) => {
 
+		Comment.find({}, (err, pages) => {
 
+			if (!err) {
+				res.json(pages);
+			} else {
+				return new Error(err.toString());
+			}
+		});
+	});
 }
 
 

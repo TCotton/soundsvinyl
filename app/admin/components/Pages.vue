@@ -77,7 +77,7 @@
 			this.noContent = false
 		},
 		created () {
-			this.$http.get(`page/get`).then(res => {
+			this.$http.get(`page/getadmin`).then(res => {
 
 				this.Pages = res.body;
 
