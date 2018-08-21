@@ -13,7 +13,7 @@ import Contact from './contact';
 import AboutUs from './about';
 import MyAccount from './account';
 import VinylCharts from './vinylCharts';
-import Sitemap from './sitemap';
+import Sitemap from './sitemap';å
 
 export default class rootComponent extends React.Component {
 	render () {
