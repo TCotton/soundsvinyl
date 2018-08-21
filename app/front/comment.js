@@ -29,14 +29,13 @@ class Comment extends React.Component {
 
 				const content = this.props.content[i].content;
 				const username = this.props.content[i].userName;
-				const Profile = this.props.content[i].profile || 2;
 				const date = moment(this.props.content[i].data).format('MMMM Do YYYY');
-				const Profilesvg = `Profile${Profile}`;
+				const RandomProfile = ProfileArray[Math.floor(Math.random() * ProfileArray.length)];
 
 				return (
 					<div key={i} styleName='comment'>
 						<div styleName='commentLeftColumn'>
-							<Profilesvg />
+							<RandomProfile />
 						</div>
 						<div styleName='commentRightColumn'>
 							<p styleName='commentName'>{username} / {date}</p>
