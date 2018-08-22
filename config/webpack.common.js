@@ -20,7 +20,7 @@ module.exports = {
 			'single-spa': path.resolve(global.__base, '/node_modules/single-spa/lib/single-spa.js'),
 
 			// REACT
-			HomePageSearchForm: path.resolve(global.__base, '/app/front/components/homePageSearchForm.js'),
+			HomePageSearchForm: path.resolve(global.__base, '/app/front/homePageSearchForm.js'),
 			LogoutButton: path.resolve(global.__base, '/app/front/components/logged0ut.js'),
 			LoginButton: path.resolve(global.__base, '/app/front/components/loggedIn.js'),
 			PageUnit: path.resolve(global.__base, '/app/front/components/pageUnit.js'),
