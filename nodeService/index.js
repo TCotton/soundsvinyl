@@ -5,6 +5,7 @@ const express = require('express');
 const http = require('http');
 const https = require('https');
 const fs = require('fs');
+http.globalAgent.maxSockets = Infinity;
 // const createError = require('http-errors');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -61,7 +62,7 @@ prerender.crawlerUserAgents.push('Qwantify');
 app.use(prerender);
 
 /**
- * 	<meta http-equiv="Content-Security-Policy" content="default-src *; img-src * 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *">
+ *  <meta http-equiv="Content-Security-Policy" content="default-src *; img-src * 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *">
  */
 app.use(csp({
 	// Specify directives as normal.
@@ -162,7 +163,7 @@ if (app.get('env') === 'development') {
  * @param next
  * @returns {*}
  */
-function wwwRedirect(req, res, next) {
+function wwwRedirect (req, res, next) {
 	if (req.headers.host.slice(0, 4) === 'www.') {
 		let newHost = req.headers.host.slice(4);
 
@@ -197,7 +198,7 @@ if (app.get('env') === 'production') {
 
 	// production error handler
 	// no stacktraces leaked to user
-	app.use( (err, req, res, next) => {
+	app.use((err, req, res, next) => {
 		if (err) {
 			res.statusCode = (err.status || 500);
 			res.render('error', {
@@ -209,7 +210,6 @@ if (app.get('env') === 'production') {
 		}
 	});
 }
-
 
 if (app.get('env') === 'production') {
 	require('./misc/security')(app);
@@ -239,9 +239,11 @@ if (app.get('env') === 'development' &&
 		console.log('server running at ' + app.get('port'));
 	});
 
-} else {
+}
 
-	https.createServer(app).listen(app.get('port'), () => {
+if (app.get('env') === 'production') {
+
+	http.createServer(app).listen(app.get('port'), () => {
 		console.log('Express server listening on port ' + app.get('port'));
 	});
 
