@@ -100,30 +100,30 @@ module.exports = (app) => {
 			return {'name': tag.trim()};
 		});
 
-		body.updated = Date.now;
+		body.updated = Date.now();
 
-		Page.findById(body._id, (err, page) => {
+		// This would likely be inside of a PUT request, since we're updating an existing document, hence the req.params.todoId.
+// Find the existing resource by ID
+		Page.findByIdAndUpdate(
+			// the id of the item to find
+			body._id,
 
-			if (err) {
-				res.send(err);
+			// the change to be made. Mongoose will smartly combine your existing
+			// document with this change, which allows for partial updates too
+			body,
+
+			// an option that asks mongoose to return the updated version
+			// of the document instead of the pre-updated one.
+			{new: true},
+
+			// the callback function
+			(err, page) => {
+				console.dir(page);
+				// Handle any possible database errors
+				if (err) return res.status(500).send(err);
+				return res.send(page);
 			}
-
-			if (!page) {
-				return new Error('Could not load Page document');
-
-			} else {
-
-				Object.assign(page, body);
-				page.save((err) => {
-
-					if (err) {
-						return new Error(err.toString());
-					} else {
-						res.json('Success');
-					}
-				});
-			}
-		});
+		)
 	});
 
 	/* eslint-disable security/detect-non-literal-fs-filename */
