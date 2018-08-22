@@ -8,7 +8,7 @@ nav {
 	border-bottom: 1px solid $borderBackgroundOne;
 
 	svg {
-		opacity: 0.8
+		opacity: 0.8;
 	}
 }
 
@@ -21,7 +21,13 @@ nav {
 
 @media screen and (min-width: $media_breakpoint_mobile) {
 	.innerNav {
-		width: 100%;
+		width: $media_breakpoint_mobile;
+	}
+}
+
+@media screen and (min-width: $media_breakpoint_wide) {
+	.innerNav {
+		width: $media_breakpoint_wide;
 	}
 }
 

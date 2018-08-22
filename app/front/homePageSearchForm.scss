@@ -4,7 +4,11 @@
 	background: transparent;
 
 	.searchForm {
-		background: transparent;
+		input[type=text] {
+			min-width: 75%;
+			min-height: 25px;
+			padding: 5px;
+		}
 	}
 
 	.searchName {
@@ -12,9 +16,9 @@
 	}
 
 	h4 {
-		@include font-calculator($font_family_header, 16px);
+		@include font-calculator($font_family_header, 16px, 0.5);
 		color: $secondHeaderColour;
 		font-weight: 300;
-		@include lhCrop(1.2); //line-height: 1.2
+		line-height: 1.1em;
 	}
 }
