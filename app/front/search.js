@@ -1,7 +1,7 @@
 import React from 'react';
 import './contact.scss';
 
-class Contact extends React.Component {
+class Search extends React.Component {
 
 	constructor (props) {
 		super(props);
@@ -37,7 +37,7 @@ class Contact extends React.Component {
 		return (
 			<main styleName='contactPage'>
 				<h2>Contact us</h2>
-				<p>Please contact us if you any recommendations for records to review</p>
+				<p>Nam vel ornare lorem sed eleifend egestas</p>
 
 				<form onSubmit={this.handleSubmit}>
 					<label htmlFor='contactName'>Your name</label>
