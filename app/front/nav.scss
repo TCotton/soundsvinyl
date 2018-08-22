@@ -16,6 +16,13 @@ nav {
 	display: grid;
 	grid-template-columns: 50% 50%;
 	grid-gap: 0;
+	width: 90vw;
+}
+
+@media screen and (min-width: $media_breakpoint_mobile) {
+	.innerNav {
+		width: 100%;
+	}
 }
 
 :global .inner-nav {
@@ -47,6 +54,7 @@ nav {
 		background: no-repeat center center $mobileMenu;
 		background-size: contain;
 		cursor: pointer;
+		opacity: 0.8;
 	}
 
 	input[type=checkbox] {
@@ -119,6 +127,30 @@ nav {
 	}
 }
 
+a:link {
+	color: $linkState;
+	text-decoration: none;
+}
+
+a:visited {
+	color: $linkState;
+}
+
+a:focus {
+	color: $linkState;
+}
+
+a:hover {
+	color: $linkState;
+	text-decoration: underline;
+	text-decoration-skip: edges;
+	text-decoration-color: $headerColour;
+}
+
+a:active {
+	color: $linkState;
+}
+
 @media screen and (min-width: $media_breakpoint_mobile) {
 
 	.navLeftColumn {
@@ -141,29 +173,5 @@ nav {
 				margin-left: 20px;
 			}
 		}
-	}
-
-	a:link {
-		color: $linkState;
-		text-decoration: none;
-	}
-
-	a:visited {
-		color: $linkState;
-	}
-
-	a:focus {
-		color: $linkState;
-	}
-
-	a:hover {
-		color: $linkState;
-		text-decoration: underline;
-		text-decoration-skip: edges;
-		text-decoration-color: $headerColour;
-	}
-
-	a:active {
-		color: $linkState;
 	}
 }

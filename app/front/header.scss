@@ -21,7 +21,7 @@
 .headerRightColumn {
 
 	h2 {
-		@include font-calculator($font_family_header, 45px);
+		@include font-calculator($font_family_header, 40px);
 		color: $secondHeaderColour;
 		line-height: 1.2em;
 	}
