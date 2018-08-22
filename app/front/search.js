@@ -57,4 +57,4 @@ class Search extends React.Component {
 	}
 }
 
-export default Contact;
+export default Search;

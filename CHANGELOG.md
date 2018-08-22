@@ -1,3 +1,7 @@
+## 1.2.0 (August 21, 2018)
+
+* Added search box on front page
+
 ## 1.1.0 (August 21, 2018)
 
 Countless changes to code
