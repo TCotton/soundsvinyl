@@ -239,9 +239,11 @@ if (app.get('env') === 'development' &&
 		console.log('server running at ' + app.get('port'));
 	});
 
-} else {
+}
 
-	https.createServer(app).listen(app.get('port'), () => {
+if (app.get('env') === 'production') {
+
+	http.createServer(app).listen(app.get('port'), () => {
 		console.log('Express server listening on port ' + app.get('port'));
 	});
 
