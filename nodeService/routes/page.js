@@ -118,7 +118,6 @@ module.exports = (app) => {
 
 			// the callback function
 			(err, page) => {
-				console.dir(page);
 				// Handle any possible database errors
 				if (err) return res.status(500).send(err);
 				return res.send(page);
