@@ -7,15 +7,30 @@
 		color: $secondHeaderColour;
 		line-height: 1.2em;
 	}
+
 	h3 {
 		@include font-calculator($font_family_header, 22px);
 		color: $paragraphColour;
 		text-align: center;
+		// needs own class name
+		~ p {
+			@include font-calculator($font_family_body, 14px, 0.5);
+			color: $paragraphColour;
+			text-align: center;
+			a {
+				color: $linkState;
+				text-decoration: underline;
+				text-decoration-skip: edges;
+				text-decoration-color: $headerColour;
+			}
+		}
 	}
+
 	h4 {
 		@include font-calculator($font_family_header, 22px);
 		color: $paragraphColour;
 	}
+
 	p {
 		@include font-calculator($font_family_body, 22px, 0.5);
 		color: $paragraphColour;
@@ -29,6 +44,7 @@
 	.show {
 		display: inherit;
 	}
+
 }
 
 @media screen and (min-width: $media_breakpoint_wide) {
@@ -86,8 +102,10 @@
 		width: 100%;
 		padding: 10px;
 		display: inline-block;
-		font-size: 14px;
+		@include font-calculator($font_family_body, 14px, 0);
 		margin: 0 0 10px 0;
+		line-height: 1.8em;
+		font-weight: 300;
 	}
 	input[type=submit] {
 		@include font-calculator($font_family_body, 18px);
@@ -113,6 +131,7 @@
 
 .videoContainer {
 	text-align: center;
+	margin: 0 0 20px 0;
 }
 
 .videoSineWave {

@@ -10,3 +10,8 @@ export const findRootElement = () => {
 export const createUsername = (emailAddress, date = moment(Date.now()).format('DoMMMYY')) => {
 	return emailAddress.substring(0, emailAddress.indexOf('@')).replace(/[^a-zA-Z]/g, '') + '_' + date;
 }
+
+export const getCookieValue = function (a) {
+	const b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
+	return b ? b.pop() : '';
+}

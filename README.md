@@ -2,6 +2,7 @@
 [![dependencies Status](https://david-dm.org/tcotton/soundsvinyl/status.svg)](https://david-dm.org/tcotton/soundsvinyl)
 [![devDependencies Status](https://david-dm.org/tcotton/soundsvinyl/dev-status.svg)](https://david-dm.org/tcotton/soundsvinyl?type=dev)
 [![Coverage Status](https://coveralls.io/repos/github/TCotton/soundsvinyl/badge.svg?branch=master)](https://coveralls.io/github/TCotton/soundsvinyl?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/cd7f11b5890a4b33bfaee45d239e1668)](https://www.codacy.com/project/TCotton/soundsvinyl/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=TCotton/soundsvinyl&amp;utm_campaign=Badge_Grade_Dashboard)
 
 [ci-img]: https://travis-ci.org/TCotton/soundsvinyl.svg
 [ci]: https://travis-ci.org/TCotton/soundsvinyl

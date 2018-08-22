@@ -6,20 +6,28 @@ const CommentSchema = new Schema({
 		type: mongoose.Schema.Types.String,
 		trim: true,
 		maxlength: 500,
-		required: true
+		required: true,
 	},
 	articleId: {
 		type: mongoose.Schema.Types.ObjectId,
-		required: true
+		required: true,
 	},
 	userId: {
 		type: mongoose.Schema.Types.ObjectId,
-		required: true
+		required: true,
+	},
+	userName: {
+		type: mongoose.Schema.Types.String,
+		required: true,
 	},
 	date: {
 		type: mongoose.Schema.Types.Date,
-		default: Date.now
+		default: Date.now,
 	},
+	published: {
+		type: mongoose.Schema.Types.Boolean,
+		default: false,
+	}
 });
 
 module.exports = mongoose.model('Comment', CommentSchema);

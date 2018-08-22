@@ -17,6 +17,7 @@ import Comments from '../components/Comments';
 import Comment from '../components/Comment';
 import '../components/Modal';
 import '../components/jsComponents/ThumbnailComponent';
+import { getCookieValue } from '../../helper_functions';
 
 Vue.use(Router);
 Vue.use(VuePaginate);
@@ -24,15 +25,10 @@ Vue.use(VueResource);
 Vue.use(VueCookies);
 Vue.use(VeeValidate);
 
-const root = window.location.protocol + '//' + window.location.hostname + ':8443' + '/apiV1/';
+const root = window.location.protocol + '//' + window.location.hostname + (window.location.port.length === 0 ? '' : ':8443') + '/apiV1/';
 Vue.http.options.root = root;
 // do i *really* need this??
 Vue.http.options.emulateJSON = true;
-
-function getCookieValue (a) {
-	const b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
-	return b ? b.pop() : '';
-}
 
 Vue.http.interceptors.push(function(request) {
 	// modify headers

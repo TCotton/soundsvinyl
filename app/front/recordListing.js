@@ -1,6 +1,10 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
+import { Link } from 'react-router-dom'
+import { getCookieValue } from '../helper_functions';
+import Video from './components/video';
+import Comment from './comment';
 
 import './recordListing.scss';
 import PropTypes from 'prop-types';
@@ -15,11 +19,15 @@ class RecordListing extends React.Component {
 			loaded: false,
 			title: String,
 			subTitle: String,
-			videoLink: String,
+			videoLink: 'String',
 			descriptionOne: String,
 			descriptionTwo: String,
 			descriptionThree: String,
 			categories: Array,
+			disabled: true,
+			commentsMessage: '',
+			success: false,
+			comments: Array,
 		}
 
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,10 +40,10 @@ class RecordListing extends React.Component {
 		axios.get(`${homeURI}/apiV1/page/get/${id}`)
 			.then(res => {
 
-				if(res.data.categories) {
-					console.dir(Array.isArray(res.data.categories));
-					console.dir(res.data.categories);
-				}
+				/*	if(res.data.categories) {
+						console.dir(Array.isArray(res.data.categories));
+						console.dir(res.data.categories);
+					}*/
 
 				this.setState({loaded: true});
 				this.setState({title: res.data.title});
@@ -46,12 +54,41 @@ class RecordListing extends React.Component {
 				this.setState({descriptionThree: res.data.descriptionThree});
 				this.setState({categories: res.data.categories});
 			});
+
+		axios.get(`${homeURI}/apiV1/page/comment/${id}`).then(res => {
+
+			if (Array.isArray(res.data) && res.data.length > 0) {
+				this.setState({comments: res.data});
+			}
+
+		});
+
+		if (this.checkTokenCookie('token')) {
+			this.setState({disabled: false});
+		}
+	}
+
+	checkTokenCookie () {
+		return getCookieValue('token');
 	}
 
 	handleSubmit (e) {
 		e.preventDefault();
 
-		return false;
+		const content = this.state.commentsMessage;
+		const articleId = this.props.match.params.id;
+
+		if (content && content.length > 0) {
+
+			axios.post(`${homeURI}/apiV1/comment/add`, {content, articleId})
+				.then(res => {
+					if (res.status === 200 && res.data) {
+						this.setState({success: true});
+						this.setState({commentsMessage: ''});
+					}
+				});
+		}
+
 	}
 
 	handleInputChange (event) {
@@ -74,9 +111,15 @@ class RecordListing extends React.Component {
 		const descriptionTwo = this.state.descriptionTwo;
 		const descriptionThree = this.state.descriptionThree;
 		const videoLink = this.state.videoLink;
-		const disabled = true;
+		const disabled = this.state.disabled;
+		const success = this.state.success;
+		const comments = this.state.comments;
 
-		console.log(typeof this.state.categories);
+		let videoComponent;
+
+		if (videoLink !== '') {
+			videoComponent = <Video videoLink={videoLink}/>
+		}
 
 		/*const categoryArray = this.state.categories.reduce((accumulator, currentValue) => {
 			return accumulator.concat(currentValue.name);
@@ -92,48 +135,50 @@ class RecordListing extends React.Component {
 				<main styleName='recordListing'>
 					<header styleName='record'>
 
-						<h2 className={(title ? 'display' : 'hide')}>{title}</h2>
-						<p className={(subTitle ? 'display' : 'hide')}>{subTitle}</p>
+						<h2 className={(title ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: title}}/>
+						<p className={(subTitle ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: subTitle}}/>
 
 					</header>
 
 					<section styleName='videoSineWave'>
 
-						<div className='videoContainer'>
-							<video controls width='100%'>
-								<source src={videoLink} type='video/mp4'/>
-								<p>Your browser doesn't support HTML5 video. Here is
-									a <a href={videoLink}>link to the video</a> instead.</p>
-							</video>
+						<div styleName='videoContainer'>
+							{videoComponent}
 						</div>
 
-						<div>
-							<img/>
-						</div>
 					</section>
 
 					<section styleName='description'>
 
-						<p className={(descriptionOne ? 'display' : 'hide')}>{descriptionOne}</p>
-						<p className={(descriptionTwo ? 'display' : 'hide')}>{descriptionTwo}</p>
-						<p className={(descriptionThree ? 'display' : 'hide')}>{descriptionThree}</p>
+						<p className={(descriptionOne ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionOne}}/>
+						<p className={(descriptionTwo ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionTwo}}/>
+						<p className={(descriptionThree ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionThree}}/>
 
 					</section>
 
 					<section styleName='commentsForm'>
 						<h3>Comments</h3>
 
+						<p className={(disabled ? 'display' : 'hide')}>You must be <Link to='/my-account'>registered and logged
+							in</Link> to contribute a comment</p>
+
+						<p className={(success ? 'display' : 'hide')}>Your comment has been submitted and will appear on<br/> this
+							page
+							after it has been approved by the administration</p>
+
 						<form onSubmit={this.handleSubmit}>
 
-							<textarea cols='10' rows='10' id='commentsMessage' name='commentsMessage' maxlength='500' value=''/>
+							<textarea cols='10' rows='10' id='commentsMessage' name='commentsMessage' maxLength='500'
+												value={this.state.commentsMessage} onChange={this.handleInputChange}/>
 							<input type='submit' name='submit' value='Comment' disabled={disabled}/>
 
 						</form>
 					</section>
 
-					<section styleName='commentsBlock'>
-
+					<section styleName='commentsBlock' className={(comments.length > 0 ? 'display' : 'hide')}>
+						<Comment content={comments}/>
 					</section>
+
 				</main>
 			)
 		}

@@ -1,14 +1,19 @@
-import HomePageSearchForm from '../HomePageSearchForm';
+import Img from '../img.js';
 
 describe('Component', () => {
 
 	let component;
+	const props = {
+		className: '',
+		src: '',
+		alt: '',
+	}
 
 	beforeEach(() => {
-		component = new HomePageSearchForm();
+		component = new Img(props);
 	});
 
-	describe('Comment', () => {
+	describe('Img', () => {
 		it('should be defined', () => {
 			expect(component).toBeDefined();
 		});

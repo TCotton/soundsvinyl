@@ -30,6 +30,7 @@ module.exports = (app) => {
 						date: Date.now(),
 						userLevel: body.userLevel ? body.userLevel : 2,
 						username: body.username,
+						profile: Math.floor(Math.random() * 5 + 1),
 					}, (err) => {
 
 						if (!err) {
@@ -59,17 +60,9 @@ module.exports = (app) => {
 					return res.status(200).send('Email address not found');
 				}
 
-				console.dir(req.body.password);
-				console.dir(user.password);
-				console.log(req.body.password === user.password);
-
 				bcrypt.compare(req.body.password, user.password, (err, response) => {
 
-					console.log(err);
-
 					if (!err) {
-
-						console.dir(response);
 
 						if (response) {
 
@@ -89,7 +82,7 @@ module.exports = (app) => {
 						}
 
 					} else {
-						throw err;
+						return new Error(err.toString());
 					}
 
 				});
@@ -103,14 +96,15 @@ module.exports = (app) => {
 
 	app.route('/apiV1/user/get').get(verifyToken, (req, res) => {
 
-		User.find({}, (err, user) => {
+		User.find({}).sort({'date': -1})
+			.exec((err, pages) => {
 
-			if (!err) {
-				res.json(user);
-			} else {
-				throw err;
-			}
-		});
+				if (!err) {
+					res.json(pages);
+				} else {
+					return new Error(err.toString());
+				}
+			});
 	});
 
 	// FORMAT OF TOKEN
@@ -149,7 +143,7 @@ module.exports = (app) => {
 			if (!err) {
 				res.json(page);
 			} else {
-				throw err;
+				return new Error(err.toString());
 			}
 
 		});
@@ -189,7 +183,7 @@ module.exports = (app) => {
 		}, (err) => {
 
 			if (err) {
-				throw err;
+				return new Error(err.toString());
 			} else {
 
 				User.find({}, (err, users) => {
@@ -197,10 +191,9 @@ module.exports = (app) => {
 					if (!err) {
 						res.json(users);
 					} else {
-						throw err;
+						return new Error(err.toString());
 					}
 				});
-
 			}
 		});
 	});

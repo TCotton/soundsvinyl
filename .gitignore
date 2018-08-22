@@ -19,11 +19,13 @@
 npm-debug.log*
 yarn-debug.log*
 data
-dist/
 test/coverage/
-nodeService/config/*
 nodeService/logs/*
 combined.log
 error.log
 nodeService/thumbnails
 test/reports
+.idea
+
+nodeService/config
+dist/

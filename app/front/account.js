@@ -53,7 +53,7 @@ class MyAccount extends React.Component {
 							secure: true,
 						});
 
-						window.location.href = window.location.protocol + '//' + window.location.host + '/#/admin';
+						window.location.href = window.location.protocol + '//' + window.location.host + '/';
 					}
 
 				}).catch((e) => {
@@ -70,8 +70,6 @@ class MyAccount extends React.Component {
 		e.preventDefault();
 
 		if (this.state.loginName && this.state.loginPassword) {
-
-			console.log('login');
 
 			this.setState({error: null}); // place this in a lifecycle hook
 			// `user/add`
@@ -94,7 +92,7 @@ class MyAccount extends React.Component {
 							secure: true,
 						});
 
-						window.location.href = window.location.protocol + '//' + window.location.host + '/#/admin';
+						window.location.href = window.location.protocol + '//' + window.location.host + '/';
 					}
 
 				});
@@ -134,12 +132,10 @@ class MyAccount extends React.Component {
 							<legend>Login</legend>
 
 							<label htmlFor='loginName'>Your email</label>
-							<input type='text' id='loginName' name='loginName' value={this.state.loginName}
-										 onChange={this.handleInputChange} required/>
+							<input type='text' id='loginName' name='loginName' value={this.state.loginName} onChange={this.handleInputChange} required/>
 
 							<label htmlFor='loginPassword'>Your password</label>
-							<input type='password' id='loginPassword' name='loginPassword' value={this.state.loginPassword}
-										 onChange={this.handleInputChange} required/>
+							<input type='password' id='loginPassword' name='loginPassword' value={this.state.loginPassword} onChange={this.handleInputChange} required/>
 
 							<input type='submit' name='loginSubmit' value='Login'/>
 
@@ -151,12 +147,10 @@ class MyAccount extends React.Component {
 							<legend>Register</legend>
 
 							<label htmlFor='registerName'>Your email</label>
-							<input type='text' id='registerName' name='registerName' value={this.state.registerName}
-										 onChange={this.handleInputChange} required/>
+							<input type='text' id='registerName' name='registerName' value={this.state.registerName} onChange={this.handleInputChange} required/>
 
 							<label htmlFor='registerPassword'>Your password</label>
-							<input type='password' id='registerPassword' name='registerPassword' value={this.state.registerPassword}
-										 onChange={this.handleInputChange} required/>
+							<input type='password' id='registerPassword' name='registerPassword' value={this.state.registerPassword} onChange={this.handleInputChange} required/>
 
 							<input type='submit' name='registerSubmit' value='Register'/>
 

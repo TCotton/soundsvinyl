@@ -16,7 +16,7 @@ function TwitterMetaTags (props) {
 
 TwitterMetaTags.propTypes = {
 	title: PropTypes.string,
-	subtitle: PropTypes.string,
+	description: PropTypes.string,
 };
 
 export default TwitterMetaTags;
