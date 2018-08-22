@@ -13,9 +13,8 @@
 	}
 
 	h4 {
-		@include lhCrop(4);
-		@include font-calculator($font_family_header, 18px);
+		@include font-calculator($font_family_header, 16px);
 		color: $secondHeaderColour;
-		font-weight: 400;
+		font-weight: 300;
 	}
 }

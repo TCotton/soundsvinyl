@@ -35,7 +35,7 @@ class HomePageSearchForm extends React.Component {
 	render () {
 
 		return (
-			<div sytleName='search'>
+			<div styleName='search'>
 				<h4>Search by category</h4>
 				<form styleName='searchForm' onSubmit={this.handleSubmit}>
 					<label htmlFor='search' className='visuallyhidden'>Your email</label>
