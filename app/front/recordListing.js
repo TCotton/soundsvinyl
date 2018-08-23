@@ -115,6 +115,7 @@ class RecordListing extends React.Component {
 		const disabled = this.state.disabled;
 		const success = this.state.success;
 		const comments = this.state.comments;
+		const categories = this.state.categories;
 
 		let videoComponent;
 
@@ -125,16 +126,28 @@ class RecordListing extends React.Component {
 		let metaHeaderComponent;
 
 		if (title !== '' && title.length > 1) {
-			console.log(title);
-			console.log(title.length);
-			metaHeaderComponent = <MetaHeader title={title} />
+			metaHeaderComponent = <MetaHeader title={title}/>
 		}
 
-		/*const categoryArray = this.state.categories.reduce((accumulator, currentValue) => {
-			return accumulator.concat(currentValue.name);
-		}, []);
+		if (categories && categories.length > 1) {
+			const categoryArray = categories.reduce((accumulator, currentValue) => {
+				return accumulator.concat(currentValue.name);
+			}, []);
 
-		console.dir(categoryArray);*/
+			const liArray = ['one', 'two', 'three'];
+
+			const categories = () => {
+				return (
+					<ul>
+						{
+							liArray.map(function (item, index) {
+								<li key={index.toString()}>{item}</li>
+							})
+						}
+					</ul>
+				)
+			}
+		}
 
 		if (!this.state.loaded) {
 			return null;
@@ -163,9 +176,12 @@ class RecordListing extends React.Component {
 
 						<p className={(descriptionOne ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionOne}}/>
 						<p className={(descriptionTwo ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionTwo}}/>
-						<p className={(descriptionThree ? 'display' : 'hide')}
-							 dangerouslySetInnerHTML={{__html: descriptionThree}}/>
+						<p className={(descriptionThree ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionThree}}/>
 
+					</section>
+
+					<section styleName='categories' className={(categories ? 'display' : 'hide')}>
+						{categories()}
 					</section>
 
 					<section styleName='commentsForm'>
@@ -175,8 +191,7 @@ class RecordListing extends React.Component {
 							in</Link> to contribute a comment</p>
 
 						<p className={(success ? 'display' : 'hide')}>Your comment has been submitted and will appear on<br/> this
-							page
-							after it has been approved by the administration</p>
+							page after it has been approved by the administration</p>
 
 						<form onSubmit={this.handleSubmit}>
 
