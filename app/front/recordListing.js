@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { getCookieValue } from '../helper_functions';
 import Video from './components/video';
 import Comment from './comment';
+import MetaHeader from './components/metaHeader';
 
 import './recordListing.scss';
 import PropTypes from 'prop-types';
@@ -121,6 +122,14 @@ class RecordListing extends React.Component {
 			videoComponent = <Video videoLink={videoLink}/>
 		}
 
+		let metaHeaderComponent;
+
+		if (title !== '' && title.length > 1) {
+			console.log(title);
+			console.log(title.length);
+			metaHeaderComponent = <MetaHeader title={title} />
+		}
+
 		/*const categoryArray = this.state.categories.reduce((accumulator, currentValue) => {
 			return accumulator.concat(currentValue.name);
 		}, []);
@@ -138,6 +147,8 @@ class RecordListing extends React.Component {
 						<h2 className={(title ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: title}}/>
 						<p className={(subTitle ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: subTitle}}/>
 
+						{metaHeaderComponent}
+
 					</header>
 
 					<section styleName='videoSineWave'>
@@ -152,7 +163,8 @@ class RecordListing extends React.Component {
 
 						<p className={(descriptionOne ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionOne}}/>
 						<p className={(descriptionTwo ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionTwo}}/>
-						<p className={(descriptionThree ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionThree}}/>
+						<p className={(descriptionThree ? 'display' : 'hide')}
+							 dangerouslySetInnerHTML={{__html: descriptionThree}}/>
 
 					</section>
 
