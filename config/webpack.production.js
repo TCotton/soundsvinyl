@@ -25,6 +25,7 @@ module.exports = webpackMerge(commonConfig, {
 	devtool: 'hidden-source-map',
 	output: {
 		filename: '[name].[contenthash].js',
+		chunkFilename: '[name].[contenthash].chunk.js',
 		path: path.resolve(global.__base, 'dist')
 	},
 	optimization: {

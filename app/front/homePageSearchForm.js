@@ -39,7 +39,7 @@ class HomePageSearchForm extends React.Component {
 				<h4>Search by category</h4>
 				<form styleName='searchForm' onSubmit={this.handleSubmit}>
 					<label htmlFor='search' className='visuallyhidden'>Your email</label>
-					<input type='text' id='search' name='search' value={this.state.search} onChange={this.handleInputChange} />
+					<input type='text' id='search' name='search' value={this.state.search} onChange={this.handleInputChange} disabled />
 				</form>
 				<div styleName='searchName'>
 					<span>&nbsp;</span>
