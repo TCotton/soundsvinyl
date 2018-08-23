@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common.js');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -22,6 +23,23 @@ module.exports = webpackMerge(commonConfig, {
 		children: true,
 	},
 	devtool: 'hidden-source-map',
+	output: {
+		filename: '[name].[contenthash].js',
+		path: path.resolve(global.__base, 'dist')
+	},
+	optimization: {
+		runtimeChunk: 'single',
+		splitChunks: {
+			cacheGroups: {
+				vendor: {
+					test: /[\\/]node_modules[\\/]/,
+					name: 'vendors',
+					chunks: 'all'
+				}
+			}
+		}
+	},
+
 	plugins: [
 		new CleanWebpackPlugin(pathsToClean),
 
@@ -45,6 +63,8 @@ module.exports = webpackMerge(commonConfig, {
 				to: global.__base + '/dist/app/assets/graphics'
 			}
 		]),
+
+		new webpack.HashedModuleIdsPlugin(),
 
 		// below works for React, but don't know what will happen with vueJS:
 		// https://medium.com/@rajaraodv/two-quick-ways-to-reduce-react-apps-size-in-production-82226605771a
