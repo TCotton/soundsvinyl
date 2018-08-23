@@ -18,6 +18,16 @@
 	}
 }
 
+.headerSVG {
+	opacity: 0.5;
+}
+
+@media screen and (min-width: $media_breakpoint_mobile) {
+	.headerSVG {
+		opacity: 1;
+	}
+}
+
 .headerRightColumn {
 
 	h2 {

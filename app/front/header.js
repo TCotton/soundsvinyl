@@ -9,7 +9,7 @@ class Header extends React.Component {
 			<header styleName='header'>
 				<div styleName='innerHeader' className='wrapper'>
 					<div styleName='headerLeftColumn'>
-						<TurntableIllustration/>
+						<TurntableIllustration styleName='headerSVG'/>
 					</div>
 					<div styleName='headerRightColumn'>
 						<h2>Welcome to Soundsvinyl.co</h2>
