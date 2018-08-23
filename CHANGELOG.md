@@ -1,6 +1,7 @@
-## 1.2.0 (August 21, 2018)
+## 1.1.1 (August 23, 2018)
 
 * Added search box on front page
+* Added react helmet
 
 ## 1.1.0 (August 21, 2018)
 
