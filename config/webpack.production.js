@@ -4,6 +4,7 @@ const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common.js');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const ImageminPlugin = require('imagemin-webpack-plugin');
 
 // the path(s) that should be cleaned
 const pathsToClean = [
@@ -50,6 +51,8 @@ module.exports = webpackMerge(commonConfig, {
 			}
 		}),
 
+		// new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
+
 		new CopyWebpackPlugin([
 			{
 				from: global.__base + '/src/faviconImages',
@@ -65,7 +68,8 @@ module.exports = webpackMerge(commonConfig, {
 			}
 		]),
 
-		new webpack.HashedModuleIdsPlugin(),
+		// new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
+		// new ImageminPlugin({ test: global.__base + '/dist/**' }),
 
 		// below works for React, but don't know what will happen with vueJS:
 		// https://medium.com/@rajaraodv/two-quick-ways-to-reduce-react-apps-size-in-production-82226605771a
