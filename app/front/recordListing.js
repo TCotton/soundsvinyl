@@ -136,7 +136,7 @@ class RecordListing extends React.Component {
 
 			const liArray = ['one', 'two', 'three'];
 
-			const categories = () => {
+			const xf = () => {
 				return (
 					<ul>
 						{
