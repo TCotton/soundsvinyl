@@ -66,8 +66,8 @@ app.use(prerender);
 app.use(csp({
 	// Specify directives as normal.
 	directives: {
-		defaultSrc: ["'self'", 'soundsvinyl.co'],
-		scriptSrc: ["'self'", "'unsafe-inline'"],
+		defaultSrc: ["'self'", 'all-resources.org.uk'],
+		scriptSrc: ["'self'", "'unsafe-inline'", 'cdn.polyfill.io'],
 		styleSrc: ['https://fonts.googleapis.com', 'https://fonts.gstatic.com', "'self'", "'unsafe-inline'"],
 		fontSrc: ["'self'", 'https://fonts.gstatic.com', 'data:'],
 		imgSrc: ["'self'", 'data:'],

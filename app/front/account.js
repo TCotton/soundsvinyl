@@ -53,7 +53,9 @@ class MyAccount extends React.Component {
 							secure: true,
 						});
 
-						window.location.href = window.location.protocol + '//' + window.location.host + '/';
+						// go back to previous page
+						window.location.href = document.referrer;
+						// window.location.href = window.location.protocol + '//' + window.location.host + '/';
 					}
 
 				}).catch((e) => {
@@ -92,7 +94,8 @@ class MyAccount extends React.Component {
 							secure: true,
 						});
 
-						window.location.href = window.location.protocol + '//' + window.location.host + '/';
+						// go back to previous page
+						window.location.href = document.referrer;
 					}
 
 				});
@@ -122,7 +125,7 @@ class MyAccount extends React.Component {
 		return (
 			<main styleName='myAccount'>
 				<h2>My Account</h2>
-				<p>Either login or register an account with soundsvinyl.con from this page</p>
+				<p>Either login or register an account with soundsvinyl.co from this page</p>
 
 				{error()}
 
