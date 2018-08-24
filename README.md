@@ -9,9 +9,9 @@
 
 # soundsvinyl.co
 
-You'll find the author and maintainer and all round good guy _var = DCotton_ AKA _let = DCotton_ AKA _Divisive Cotton_ AKA _tcotton_ over on the Mastodon technology instance: [https://mastodon.technology/@tcotton](https://mastodon.technology/@tcotton). 
+You'll find the author and maintainer and all round good guy _var = DCotton_ AKA _Divisive Cotton_ AKA _tcotton_ over on the Mastodon technology instance: [https://mastodon.technology/@tcotton](https://mastodon.technology/@tcotton). 
 
-Ideas and feedback on this project are always welcome. Please contact me over there.s
+Ideas and feedback on this project are always welcome. Please contact me over there.
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a>
 
