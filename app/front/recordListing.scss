@@ -84,7 +84,7 @@
 	ul {
 		li {
 			color: $categoryText;
-			@include font-calculator($font_family_body, 18px, 0);
+			@include font-calculator($font_family_body, 16px, 0);
 			padding: 5px 10px;
 			margin: 0 5px 10px 0;
 			border: 1px solid $categoryBorder;

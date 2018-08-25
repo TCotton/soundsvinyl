@@ -1,6 +1,7 @@
 ## 1.1.2 (August 25, 2018)
 
 * Added first errorBoundary component - VideoErrorBoundary
+* Displayed song track categories UI
 
 ## 1.1.1 (August 23, 2018)
 
