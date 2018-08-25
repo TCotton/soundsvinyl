@@ -2,6 +2,7 @@
 
 * Added first errorBoundary component - VideoErrorBoundary
 * Displayed song track categories UI
+* Created the 'about us' page
 
 ## 1.1.1 (August 23, 2018)
 
