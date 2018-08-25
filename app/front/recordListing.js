@@ -6,6 +6,7 @@ import { getCookieValue } from '../helper_functions';
 import Video from './components/video';
 import Comment from './comment';
 import MetaHeader from './components/metaHeader';
+import VideoErrorBoundary from './erorrBoundaries/videoErrorBoundary';
 
 import './recordListing.scss';
 import PropTypes from 'prop-types';
@@ -120,7 +121,9 @@ class RecordListing extends React.Component {
 		let videoComponent;
 
 		if (videoLink !== '') {
-			videoComponent = <Video videoLink={videoLink}/>
+			videoComponent = <VideoErrorBoundary>
+				<Video videoLink={videoLink}/>
+			</VideoErrorBoundary>
 		}
 
 		let metaHeaderComponent;
@@ -129,25 +132,25 @@ class RecordListing extends React.Component {
 			metaHeaderComponent = <MetaHeader title={title}/>
 		}
 
-		if (categories && categories.length > 1) {
-			const categoryArray = categories.reduce((accumulator, currentValue) => {
-				return accumulator.concat(currentValue.name);
-			}, []);
+		/*	if (categories && categories.length > 1) {
+				const categoryArray = categories.reduce((accumulator, currentValue) => {
+					return accumulator.concat(currentValue.name);
+				}, []);
 
-			const liArray = ['one', 'two', 'three'];
+				const liArray = ['one', 'two', 'three'];
 
-			const xf = () => {
-				return (
-					<ul>
-						{
-							liArray.map(function (item, index) {
-								<li key={index.toString()}>{item}</li>
-							})
-						}
-					</ul>
-				)
-			}
-		}
+				const categories = () => {
+					return (
+						<ul>
+							{
+								liArray.map(function (item, index) {
+									<li key={index.toString()}>{item}</li>
+								})
+							}
+						</ul>
+					)
+				}
+			}*/
 
 		if (!this.state.loaded) {
 			return null;
@@ -181,7 +184,7 @@ class RecordListing extends React.Component {
 					</section>
 
 					<section styleName='categories' className={(categories ? 'display' : 'hide')}>
-						{categories()}
+
 					</section>
 
 					<section styleName='commentsForm'>

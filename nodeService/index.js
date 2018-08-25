@@ -61,16 +61,32 @@ prerender.crawlerUserAgents.push('Qwantify');
 app.use(prerender);
 
 /**
- * 	<meta http-equiv="Content-Security-Policy" content="default-src *; img-src * 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *">
+ *  <meta http-equiv="Content-Security-Policy" content="default-src *; img-src * 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *">
  */
 app.use(csp({
 	// Specify directives as normal.
 	directives: {
-		defaultSrc: ["'self'", 'all-resources.org.uk'],
-		scriptSrc: ["'self'", "'unsafe-inline'", 'cdn.polyfill.io'],
-		styleSrc: ['https://fonts.googleapis.com', 'https://fonts.gstatic.com', "'self'", "'unsafe-inline'"],
+		defaultSrc: [
+			"'self'"
+		],
+		scriptSrc: [
+			"'self'",
+			"'unsafe-inline'",
+			'https://cdn.polyfill.io/v2/polyfill.min.js',
+			'https://www.google-analytics.com'
+		],
+		styleSrc: [
+			'https://fonts.googleapis.com',
+			'https://fonts.gstatic.com',
+			"'self'",
+			"'unsafe-inline'"
+		],
+		mediaSrc: [
+			'https://all-resources.org.uk',
+			'https://u2f3k8w8.stackpathcdn.com'
+		],
 		fontSrc: ["'self'", 'https://fonts.gstatic.com', 'data:'],
-		imgSrc: ["'self'", 'data:'],
+		imgSrc: ["'self'", 'data:', 'www.google-analytics.com'],
 		sandbox: ['allow-forms', 'allow-scripts'],
 		reportUri: './report-violation',
 		objectSrc: ["'none'"],
@@ -162,7 +178,7 @@ if (app.get('env') === 'development') {
  * @param next
  * @returns {*}
  */
-function wwwRedirect(req, res, next) {
+function wwwRedirect (req, res, next) {
 	if (req.headers.host.slice(0, 4) === 'www.') {
 		let newHost = req.headers.host.slice(4);
 
@@ -197,7 +213,7 @@ if (app.get('env') === 'production') {
 
 	// production error handler
 	// no stacktraces leaked to user
-	app.use( (err, req, res, next) => {
+	app.use((err, req, res, next) => {
 		if (err) {
 			res.statusCode = (err.status || 500);
 			res.render('error', {
@@ -209,7 +225,6 @@ if (app.get('env') === 'production') {
 		}
 	});
 }
-
 
 if (app.get('env') === 'production') {
 	require('./misc/security')(app);

@@ -47,8 +47,7 @@ class Contact extends React.Component {
 					<input type='email' id='contactEmail' name='contactEmail' value={this.state.contactEmail} onChange={this.handleInputChange} required/>
 
 					<label htmlFor='contactMessage'>Your message</label>
-					<textarea id='contactMessage' name='contactMessage' value={this.state.contactMessage}
-										onChange={this.handleInputChange} required/>
+					<textarea id='contactMessage' name='contactMessage' value={this.state.contactMessage} onChange={this.handleInputChange} required/>
 
 					<input type='submit' name='contactSubmit' value='submit'/>
 				</form>

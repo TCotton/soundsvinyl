@@ -55,7 +55,6 @@ class MyAccount extends React.Component {
 
 						// go back to previous page
 						window.location.href = document.referrer;
-						// window.location.href = window.location.protocol + '//' + window.location.host + '/';
 					}
 
 				}).catch((e) => {
