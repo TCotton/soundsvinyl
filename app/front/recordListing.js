@@ -11,6 +11,8 @@ import VideoErrorBoundary from './erorrBoundaries/videoErrorBoundary';
 import './recordListing.scss';
 import PropTypes from 'prop-types';
 import { homeURI } from '../helper_constants';
+import PageUnit from './components/pageUnit'
+import HomePageSearchForm from './homePageSearchForm'
 
 class RecordListing extends React.Component {
 
@@ -132,25 +134,20 @@ class RecordListing extends React.Component {
 			metaHeaderComponent = <MetaHeader title={title}/>
 		}
 
-		/*	if (categories && categories.length > 1) {
-				const categoryArray = categories.reduce((accumulator, currentValue) => {
-					return accumulator.concat(currentValue.name);
-				}, []);
+		let categoryList;
 
-				const liArray = ['one', 'two', 'three'];
+		if (categories && categories.length > 1) {
+			const categoryArray = categories.reduce((accumulator, currentValue) => {
+				return accumulator.concat(currentValue.name);
+			}, []);
 
-				const categories = () => {
-					return (
-						<ul>
-							{
-								liArray.map(function (item, index) {
-									<li key={index.toString()}>{item}</li>
-								})
-							}
-						</ul>
-					)
-				}
-			}*/
+			categoryList = categoryArray.map((element, index) => {
+				return (
+					<li key={index}>{element}</li>
+				)
+			});
+
+		}
 
 		if (!this.state.loaded) {
 			return null;
@@ -184,7 +181,9 @@ class RecordListing extends React.Component {
 					</section>
 
 					<section styleName='categories' className={(categories ? 'display' : 'hide')}>
-
+						<ul>
+							{categoryList}
+						</ul>
 					</section>
 
 					<section styleName='commentsForm'>
@@ -194,7 +193,7 @@ class RecordListing extends React.Component {
 							in</Link> to contribute a comment</p>
 
 						<p className={(success ? 'display' : 'hide')}>Your comment has been submitted and will appear on<br/> this
-							page after it has been approved by the administration</p>
+							page after it has been approved by the administrator</p>
 
 						<form onSubmit={this.handleSubmit}>
 

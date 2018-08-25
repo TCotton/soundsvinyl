@@ -1,7 +1,5 @@
 import React from 'react';
 import './homePageSearchForm.scss';
-import PropTypes from 'prop-types';
-import ExtendedPropTypes from 'extended-proptypes';
 
 class HomePageSearchForm extends React.Component {
 
@@ -38,7 +36,7 @@ class HomePageSearchForm extends React.Component {
 			<div styleName='search'>
 				<h4>Search by category</h4>
 				<form styleName='searchForm' onSubmit={this.handleSubmit}>
-					<label htmlFor='search' className='visuallyhidden'>Your email</label>
+					<label htmlFor='search' className='visuallyhidden'>Your search term</label>
 					<input type='text' id='search' name='search' value={this.state.search} onChange={this.handleInputChange} disabled />
 				</form>
 				<div styleName='searchName'>
@@ -48,14 +46,6 @@ class HomePageSearchForm extends React.Component {
 		)
 	}
 }
-
-HomePageSearchForm.propTypes = {
-	title: PropTypes.string.isRequired,
-	thumbnailUrl: PropTypes.string.isRequired,
-	slug: PropTypes.string.isRequired,
-	shortSlug: PropTypes.string.isRequired,
-	_id: ExtendedPropTypes.mongoId.isRequired,
-};
 
 export default HomePageSearchForm;
 
