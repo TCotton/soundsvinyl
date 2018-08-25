@@ -22,7 +22,7 @@
 
   Examples:
 
-    $ bump --patch
+    $  v --patch
     $ bump --major --tag
     $ bump --patch --tag --all --grep README.md
     $ bump --prompt --tag --push --all
