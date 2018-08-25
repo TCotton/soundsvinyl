@@ -11,8 +11,6 @@ import VideoErrorBoundary from './erorrBoundaries/videoErrorBoundary';
 import './recordListing.scss';
 import PropTypes from 'prop-types';
 import { homeURI } from '../helper_constants';
-import PageUnit from './components/pageUnit'
-import HomePageSearchForm from './homePageSearchForm'
 
 class RecordListing extends React.Component {
 
@@ -43,11 +41,6 @@ class RecordListing extends React.Component {
 
 		axios.get(`${homeURI}/apiV1/page/get/${id}`)
 			.then(res => {
-
-				/*	if(res.data.categories) {
-						console.dir(Array.isArray(res.data.categories));
-						console.dir(res.data.categories);
-					}*/
 
 				this.setState({loaded: true});
 				this.setState({title: res.data.title});
