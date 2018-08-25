@@ -6,7 +6,7 @@ import { getCookieValue } from '../helper_functions';
 import Video from './components/video';
 import Comment from './comment';
 import MetaHeader from './components/metaHeader';
-import VideoErrorBoundary from './erorrBoundaries/videoErrorBoundary';
+import VideoErrorBoundary from './errorBoundaries/videoErrorBoundary';
 
 import './recordListing.scss';
 import PropTypes from 'prop-types';
@@ -21,7 +21,7 @@ class RecordListing extends React.Component {
 			loaded: false,
 			title: String,
 			subTitle: String,
-			videoLink: 'String',
+			videoLink: String,
 			descriptionOne: String,
 			descriptionTwo: String,
 			descriptionThree: String,

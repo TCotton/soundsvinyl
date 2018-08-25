@@ -41,7 +41,7 @@ class Contact extends React.Component {
 
 				<form onSubmit={this.handleSubmit}>
 					<label htmlFor='contactName'>Your name</label>
-					<input type='text' id='contactName' name='contactName' value={this.state.contactName} onChange={this.handleInputChange} required/>
+					<input type='text' id='contactName' name='contactName' value={this.state.contactName} onChange={this.handleInputChange}/>
 
 					<label htmlFor='contactEmail'>Your email</label>
 					<input type='email' id='contactEmail' name='contactEmail' value={this.state.contactEmail} onChange={this.handleInputChange} required/>
@@ -49,7 +49,7 @@ class Contact extends React.Component {
 					<label htmlFor='contactMessage'>Your message</label>
 					<textarea id='contactMessage' name='contactMessage' value={this.state.contactMessage} onChange={this.handleInputChange} required/>
 
-					<input type='submit' name='contactSubmit' value='submit'/>
+					<input type='submit' name='contactSubmit' value='submit (temp disabled)' disabled/>
 				</form>
 			</main>
 		)

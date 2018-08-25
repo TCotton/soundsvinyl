@@ -440,6 +440,7 @@ input[type='submit'] {
 button[disabled],
 html input[disabled] {
 	cursor: default;
+	background: inherit;
 }
 /**
  * 1. Correct the odd appearance in Chrome and Safari.

@@ -9,9 +9,9 @@
 		line-height: 1.2em;
 	}
 
-	> p {
+	p {
 		@include font-calculator($font_family_body, 20px, 2);
 		color: $paragraphColour;
-		line-height: 1.3em;
+		line-height: 1.75em;
 	}
 }
