@@ -27,6 +27,11 @@ h1, h2, h3, h4, h5, h6 {
 	@include font-calculator($font_family_header, 20px);
 }
 
+button[disabled],
+html input[disabled] {
+	background: inherit;
+}
+
 :global .search-form {
 	min-height: 22px;
 	width: 100%;

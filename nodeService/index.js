@@ -14,7 +14,7 @@ const logger = require('morgan');
 const compress = require('compression');
 const mongoose = require('mongoose');
 const mongoURI = require('./config/mongoDB');
-const csp = require('helmet-csp')
+// const csp = require('helmet-csp')
 
 const db = mongoose.connect(mongoURI.productionURI);
 // investigate why useNewUrlParser is important
@@ -63,7 +63,7 @@ app.use(prerender);
 /**
  *  <meta http-equiv="Content-Security-Policy" content="default-src *; img-src * 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *">
  */
-app.use(csp({
+/*app.use(csp({
 	// Specify directives as normal.
 	directives: {
 		defaultSrc: [
@@ -114,7 +114,7 @@ app.use(csp({
 	// This may make the headers less compatible but it will be much faster.
 	// This defaults to `true`.
 	browserSniff: true
-}))
+}))*/
 
 app.set('view engine', 'bug');
 app.use(express.static(__dirname + '/public'));
