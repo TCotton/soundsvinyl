@@ -71,17 +71,23 @@ class Nav extends React.Component {
 						<ul className={ulClassName}>
 							<Link to='/'>
 								<li>
+									<span>
 									Home
+									</span>
 								</li>
 							</Link>
 							<Link to='/about-us'>
 								<li>
+									<span>
 									About
+									</span>
 								</li>
 							</Link>
 							<Link to='/contact'>
 								<li>
+									<span>
 									Contact
+									</span>
 								</li>
 							</Link>
 							{button}

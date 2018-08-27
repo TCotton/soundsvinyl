@@ -6,7 +6,9 @@ function LoginButton (props) {
 	return (
 		<Link to='/' onClick={props.onClick}>
 			<li>
+				<span>
 				Logout
+				</span>
 			</li>
 		</Link>
 	);

@@ -29,7 +29,8 @@ h1, h2, h3, h4, h5, h6 {
 
 button[disabled],
 html input[disabled] {
-	background: inherit;
+	background: white;
+	border: 1ox solid $inputFont;
 }
 
 :global .search-form {
