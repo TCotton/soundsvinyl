@@ -11,7 +11,7 @@
 	}
 
 	p {
-		@include font-calculator($font_family_body, 22px);
+		@include font-calculator($font_family_body, 16px);
 		color: $paragraphColour;
 		line-height: 1.3em;
 	}
