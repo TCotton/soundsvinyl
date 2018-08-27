@@ -1,3 +1,7 @@
+## 1.3.0 (August 27, 2018)
+
+* Responsive design changes
+
 ## 1.2.0 (August 25, 2018)
 
 * Added first errorBoundary component - VideoErrorBoundary
