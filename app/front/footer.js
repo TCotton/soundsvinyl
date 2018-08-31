@@ -12,7 +12,7 @@ class Footer extends React.Component {
 			<footer>
 				<div styleName='innerFooter' className={footerClasses}>
 					<div styleName='footerLeftColumn'>
-						<p>soundsvinyl.co</p>
+						<p>SoundsVinyl</p>
 					</div>
 					<div styleName='footerRightColumn'>
 						<ul>

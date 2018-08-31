@@ -1,7 +1,7 @@
 <template>
 	<header :class="$style.navHeader">
 		<div :class="$style.navLeftColumn">
-			<router-link to="/"><h1>soundsvinyl.co</h1></router-link>
+			<router-link to="/"><h1>SoundsVinyl</h1></router-link>
 		</div>
 		<div :class="$style.navRightColumn">
 			<router-link to="/admin"><p>Home</p></router-link>

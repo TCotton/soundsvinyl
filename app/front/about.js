@@ -6,7 +6,7 @@ class AboutUs extends React.Component {
 
 		return (
 			<main styleName='aboutUs'>
-				<h2>About soundsvinyl.co</h2>
+				<h2>About SoundsVinyl</h2>
 
 				<section>
 
@@ -16,7 +16,7 @@ class AboutUs extends React.Component {
 
 					<p>The sounds highlighted on this site may offer you a different, brief glimpse of sublimity; an emotional epiphany which popular culture is capable of providing just as much as high art can.</p>
 
-					<p>soundsvinyl.co may offer you a snippet of a rhythm or a songwriter’s verse, which may, in turn, inspire you to seek out more from the same artist. But never aim to emulate. What originated from a particular historical era can’t be copied. What has been, has now died and can’t be revived. Sentimental nostalgia is inherently conservative and counter-revolutionary, while hauntology at the end of the second decade of the 21st century is listless to the point of death. Create something new. </p>
+					<p>SoundsVinyl may offer you a snippet of a rhythm or a songwriter’s verse, which may, in turn, inspire you to seek out more from the same artist. But never aim to emulate. What originated from a particular historical era can’t be copied. What has been, has now died and can’t be revived. Sentimental nostalgia is inherently conservative and counter-revolutionary, while hauntology at the end of the second decade of the 21st century is listless to the point of death. Create something new. </p>
 
 					<p>I hope that there may be something on here that inspires you in your endeavours; whether you are a game creator, a writer, or a designer. But if there isn’t, come back and visit again next week or next month, as I regularly update the site with all styles of music.</p>
 

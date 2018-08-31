@@ -124,7 +124,7 @@ class MyAccount extends React.Component {
 		return (
 			<main styleName='myAccount'>
 				<h2>My Account</h2>
-				<p>Either login or register an account with soundsvinyl.co from this page</p>
+				<p>Either login or register an account with SoundsVinyl from this page</p>
 
 				{error()}
 
