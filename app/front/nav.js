@@ -61,7 +61,7 @@ class Nav extends React.Component {
 				<div styleName='innerNav' className={navClasses}>
 					<div styleName='navLeftColumn'>
 						<Link to='/'>
-							<h1>SoundsVinyl.co</h1>
+							<h1>SoundsVinyl</h1>
 						</Link>
 					</div>
 					<div styleName='navRightColumn'>

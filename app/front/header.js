@@ -12,7 +12,7 @@ class Header extends React.Component {
 						<TurntableIllustration styleName='headerSVG'/>
 					</div>
 					<div styleName='headerRightColumn'>
-						<h2>Welcome to Soundsvinyl.co</h2>
+						<h2>Welcome to SoundsVinyl</h2>
 						<p>Vinyl forever, music for all</p>
 					</div>
 				</div>
