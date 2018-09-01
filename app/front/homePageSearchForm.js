@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './homePageSearchForm.scss';
-import MetaHeader from './components/metaHeader'
 
 class HomePageSearchForm extends React.Component {
 
