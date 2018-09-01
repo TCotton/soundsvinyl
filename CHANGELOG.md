@@ -1,3 +1,7 @@
+## 1.5.0 (September 1, 2018)
+
+* Updated "about us" section
+
 ## 1.4.0 (August 31, 2018)
 
 * Changed title from soundsvinyl.co to SoundsVinyl
