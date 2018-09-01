@@ -145,7 +145,6 @@ const options = {
 }
 
 const htmlPath = path.join(__dirname, 'thumbnails');
-console.dir(htmlPath);
 
 app.use(express.static(htmlPath, options));
 
@@ -157,6 +156,8 @@ app.use((req, res, next) => {
 });
 
 if (app.get('env') === 'development') {
+
+	require('./routes/rss')(app);
 
 	app.all('/', (req, res, next) => {
 
@@ -171,13 +172,6 @@ if (app.get('env') === 'development') {
 	});
 }
 
-/**
- * redirect www to non-www domain
- * @param req
- * @param res
- * @param next
- * @returns {*}
- */
 function wwwRedirect (req, res, next) {
 	if (req.headers.host.slice(0, 4) === 'www.') {
 		let newHost = req.headers.host.slice(4);
@@ -187,15 +181,13 @@ function wwwRedirect (req, res, next) {
 	next();
 }
 
-/**
- * Production Settings
- */
 if (app.get('env') === 'production') {
 
 	app.set('trust proxy', true);
 	app.use(wwwRedirect);
 
 	app.use(express.static(global.__base + '/dist'));
+	require('./routes/rss')(app);
 
 	app.all('/*', (req, res, next) => {
 

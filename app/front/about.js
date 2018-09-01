@@ -10,9 +10,11 @@ class AboutUs extends React.Component {
 
 				<section>
 
-					<p>This site isn’t about vinyl, that’s the hook on which to hang it. This site isn’t necessarily about music, and it certainly isn’t intended as a focus for musicology. What underpins our attraction to music – perhaps all art – is the emotion and the memories that we attach to it. Music is both a communal and a solitary experience. We can share it together with thousands of others or experience it on our own on repeat until we drain all feeling from what we are playing.</p>
+					<p>SoundsVinyl started as a music recommendation site that concentrated on 7 inch and 12 inch vinyl single releases; but this site isn’t about vinyl, that’s the hook on which to hang it.</p>
 
 					<p>This site could be interpreted as an exercise in nostalgia. It was never intended to be that. If music doesn’t come up from the streets, it loses its vitality. In fact, a vinyl collectors club has all the cultural buzz only of a stamp collectors club.</p>
+
+					<p>SoundsVinyl is a site about music. What underpins our attraction to music – perhaps all art – is the emotion and the memories that we attach to it. Music is both a communal and a solitary experience. We can share it together with thousands of others or experience it on our own on repeat until we drain all feeling from what we are playing.</p>
 
 					<p>The sounds highlighted on this site may offer you a different, brief glimpse of sublimity; an emotional epiphany which popular culture is capable of providing just as much as high art can.</p>
 
