@@ -14,6 +14,7 @@ class CategoriesHomepage extends React.Component {
 			pages: [],
 			error: null,
 			requestCompleted: false,
+			searchTerm: null
 		};
 	}
 
@@ -31,6 +32,10 @@ class CategoriesHomepage extends React.Component {
 					pages: res.data,
 				})
 			});
+	}
+
+	handleSearch = (search) => {
+		this.setState({searchTerm: search});
 	}
 
 	render () {
@@ -57,7 +62,7 @@ class CategoriesHomepage extends React.Component {
 									thumbnailUrl={element.thumbnailUrl}
 									slug={element.slug}
 									shortSlug={element.shortSlug}
-									id={element._id}/> : <HomePageSearchForm/>
+									id={element._id}/> : <HomePageSearchForm onSearchInput={this.handleSearch}/>
 						}
 					</div>
 				)

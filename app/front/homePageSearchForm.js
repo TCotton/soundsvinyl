@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './homePageSearchForm.scss';
+import MetaHeader from './components/metaHeader'
 
 class HomePageSearchForm extends React.Component {
 
@@ -14,8 +16,10 @@ class HomePageSearchForm extends React.Component {
 		this.handleInputChange = this.handleInputChange.bind(this);
 	}
 
-	handleSubmit (e) {
-		e.preventDefault();
+	handleSubmit (event) {
+		event.preventDefault();
+
+		this.props.onSearchInput(this.state.search);
 	}
 
 	handleInputChange (event) {
@@ -46,6 +50,10 @@ class HomePageSearchForm extends React.Component {
 		)
 	}
 }
+
+HomePageSearchForm.propTypes = {
+	onSearchInput: PropTypes.func,
+};
 
 export default HomePageSearchForm;
 
