@@ -30,7 +30,7 @@ module.exports = webpackMerge(commonConfig, {
 		chunkFilename: '[name].[contenthash].chunk.js',
 		path: path.resolve(global.__base, 'dist')
 	},
-	optimization: {
+/*	optimization: {
 		runtimeChunk: 'single',
 		splitChunks: {
 			cacheGroups: {
@@ -41,7 +41,7 @@ module.exports = webpackMerge(commonConfig, {
 				}
 			}
 		}
-	},
+	},*/
 
 	plugins: [
 		new CleanWebpackPlugin(pathsToClean),
