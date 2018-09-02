@@ -6,7 +6,7 @@ registerApplication('react', () => {
 	return import('./front/react.app.js');
 }, () => {
 	findRootElement();
-	return !location.href.includes('admin');
+	return location.href.includes('about-us') || !location.href.includes('admin');
 });
 
 registerApplication('vue', () => {
