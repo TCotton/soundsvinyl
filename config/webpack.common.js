@@ -55,7 +55,8 @@ module.exports = {
 			Thumbnail: path.resolve(global.__base, '/app/admin/components/jsComponents/ThumbnailComponent.js'),
 
 			// redux
-			// actions: path.resolve(global.__base, '/app/front/actions/actions.js'),
+			actions: path.resolve(global.__base, '/app/front/actions/actions.js'),
+			reducers: path.resolve(global.__base, '/app/front/reducers/reducers.js'),
 		},
 		extensions: ['*', '.js', '.vue', '.json']
 	},
