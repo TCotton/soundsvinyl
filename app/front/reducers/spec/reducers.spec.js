@@ -1,4 +1,5 @@
 import { searchTextReducer } from '../reducers';
+import df from 'deep-freeze-strict';
 
 describe('Reducers', () => {
 
@@ -15,7 +16,7 @@ describe('Reducers', () => {
 				type: 'SET_SEARCH_TEXT',
 			}
 
-			reducer = searchTextReducer('', action);
+			reducer = searchTextReducer(df(''), df(action));
 		});
 
 		it('should be defined', () => {
@@ -38,7 +39,7 @@ describe('Reducers', () => {
 				type: 'NOT_SET_SEARCH_TEXT',
 			}
 
-			reducer = searchTextReducer('', action);
+			reducer = searchTextReducer(df(''), df(action));
 		});
 
 		it('should be defined', () => {
