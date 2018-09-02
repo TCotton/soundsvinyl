@@ -53,6 +53,9 @@ module.exports = {
 			User: path.resolve(global.__base, '/app/admin/components/User.vue'),
 			Users: path.resolve(global.__base, '/app/admin/components/Users.vue'),
 			Thumbnail: path.resolve(global.__base, '/app/admin/components/jsComponents/ThumbnailComponent.js'),
+
+			// redux
+			// actions: path.resolve(global.__base, '/app/front/actions/actions.js'),
 		},
 		extensions: ['*', '.js', '.vue', '.json']
 	},
