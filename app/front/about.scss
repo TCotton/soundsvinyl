@@ -10,7 +10,7 @@
 	}
 
 	p {
-		@include font-calculator($font_family_body, 16px, 2);
+		@include font-calculator($font_family_body, 16px, 1);
 		color: $paragraphColour;
 		line-height: 1.75em;
 	}
