@@ -1,3 +1,8 @@
+## 1.6.0 (September 2, 2018)
+
+* First part of redux added
+* Added "location.href.includes('about-us')" to change single-spa-config to fix rendering error
+
 ## 1.5.0 (September 1, 2018)
 
 * Updated "about us" section
