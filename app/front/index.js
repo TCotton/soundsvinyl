@@ -16,13 +16,13 @@ import VinylCharts from './vinylCharts';
 import Sitemap from './sitemap';
 
 import { setSearchText } from './actions/actions';
-import { configure as store } from './store/configureStore';
+import { store } from './store/configureStore';
 
 store.subscribe(() => {
 	console.log('new store', store.getState());
 });
 
-// store.dispatch(setSearchText('This is a new search term'));
+store.dispatch(setSearchText('This is a new search term'));
 
 export default class rootComponent extends React.Component {
 	render () {
