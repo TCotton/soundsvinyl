@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import axios from 'axios';
 import './categoriesHomepage.scss';
 import { homeURI } from '../helper_constants';
@@ -34,10 +35,6 @@ class CategoriesHomepage extends React.Component {
 			});
 	}
 
-	handleSearch = (search) => {
-		this.setState({searchTerm: search});
-	}
-
 	render () {
 
 		const requestCompleted = this.state.requestCompleted;
@@ -62,7 +59,7 @@ class CategoriesHomepage extends React.Component {
 									thumbnailUrl={element.thumbnailUrl}
 									slug={element.slug}
 									shortSlug={element.shortSlug}
-									id={element._id}/> : <HomePageSearchForm onSearchInput={this.handleSearch}/>
+									id={element._id}/> : <HomePageSearchForm />
 						}
 					</div>
 				)
@@ -80,4 +77,10 @@ class CategoriesHomepage extends React.Component {
 	}
 }
 
-export default CategoriesHomepage;
+export default connect(
+	(state) => {
+		return {
+			searchTerm: state.search
+		};
+	}
+)(CategoriesHomepage);
