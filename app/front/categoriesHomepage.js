@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import axios from 'axios';
 import './categoriesHomepage.scss';
 import { homeURI } from '../helper_constants';
@@ -77,10 +76,4 @@ class CategoriesHomepage extends React.Component {
 	}
 }
 
-export default connect(
-	(state) => {
-		return {
-			searchTerm: state.search
-		};
-	}
-)(CategoriesHomepage);
+export default CategoriesHomepage

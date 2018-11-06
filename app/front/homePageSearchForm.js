@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './homePageSearchForm.scss';
 
@@ -62,5 +61,5 @@ HomePageSearchForm.propTypes = {
 	onSearchInput: PropTypes.func,
 };
 
-export default connect()(HomePageSearchForm);
+export default HomePageSearchForm;
 

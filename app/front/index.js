@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
-import { Provider } from 'react-redux';
 import './misc/oauth';
 
 import '../assets/sass/index.scss';
@@ -16,38 +15,36 @@ import MyAccount from './account';
 import VinylCharts from './vinylCharts';
 import Sitemap from './sitemap';
 
-import { setSearchText } from './actions/actions';
+/*import { setSearchText } from './actions/actions';
 import { store } from './store/configureStore';
 
 store.subscribe(() => {
 	console.log('new store', store.getState());
 });
 
-store.dispatch(setSearchText('This is a new search term'));
+store.dispatch(setSearchText('This is a new search term'));*/
 
 export default class rootComponent extends React.Component {
 	render () {
 		return (
-			<Provider store={store}>
-				<CookiesProvider>
-					<Router>
-						<div className='wrapper'>
-							<Nav/>
-							<Switch>
-								<Route exact path='/' component={Main}/>
-								<Route exact path='/:slug/:id' component={RecordListing}/>
-								<Route exact path='/contact' component={Contact}/>
-								<Route exact path='/about-us' component={AboutUs}/>
-								<Route exact path='/my-account' component={MyAccount}/>
-								<Route exact path='/vinyl-singles-top-30-chart' component={VinylCharts}/>
-								<Route exact path='/sitemap' component={Sitemap}/>
-								<Route path='' component={Error}/>
-							</Switch>
-							<Footer/>
-						</div>
-					</Router>
-				</CookiesProvider>
-			</Provider>
+			<CookiesProvider>
+				<Router>
+					<div className='wrapper'>
+						<Nav/>
+						<Switch>
+							<Route exact path='/' component={Main}/>
+							<Route exact path='/:slug/:id' component={RecordListing}/>
+							<Route exact path='/contact' component={Contact}/>
+							<Route exact path='/about-us' component={AboutUs}/>
+							<Route exact path='/my-account' component={MyAccount}/>
+							<Route exact path='/vinyl-singles-top-30-chart' component={VinylCharts}/>
+							<Route exact path='/sitemap' component={Sitemap}/>
+							<Route path='' component={Error}/>
+						</Switch>
+						<Footer/>
+					</div>
+				</Router>
+			</CookiesProvider>
 		);
 	}
 }
