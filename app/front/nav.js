@@ -24,10 +24,10 @@ class Nav extends React.Component {
 		};
 
 		this.handleClicked = this.handleClicked.bind(this);
-		this.logout = this.logout.bind(this);
+		this.handleLogout = this.handleLogout.bind(this);
 	}
 
-	logout() {
+	handleLogout() {
 		const { cookies } = this.props;
 
 		cookies.remove('token');
@@ -37,8 +37,11 @@ class Nav extends React.Component {
 	}
 
 	handleClicked () {
+
+		const { isClicked } = this.state;
+
 		this.setState({
-			isClicked: !this.state.isClicked
+			isClicked: !isClicked
 		});
 	}
 
@@ -56,7 +59,7 @@ class Nav extends React.Component {
 		let button;
 
 		if (isLoggedIn) {
-			button = <LoginButton onClick={this.logout} />;
+			button = <LoginButton onClick={this.handleLogout} />;
 		} else {
 			button = <LogoutButton />;
 		}

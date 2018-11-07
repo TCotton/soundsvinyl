@@ -215,8 +215,8 @@ class MyAccount extends React.Component {
 
 							<input
 								name='registerSubmit'
-								value='Register'
 								type='submit'
+								value='Register'
 							/>
 
 						</fieldset>

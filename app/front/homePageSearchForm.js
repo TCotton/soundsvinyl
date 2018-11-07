@@ -4,34 +4,36 @@ import './homePageSearchForm.scss';
 
 class HomePageSearchForm extends React.Component {
 
-	constructor (props) {
-		super(props);
+	static propTypes = { onSearchInput: PropTypes.func.isRequired }
+
+	constructor ( props ) {
+		super( props );
 
 		this.state = {
 			search: '',
 		};
 
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.handleInputChange = this.handleInputChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind( this );
+		this.handleInputChange = this.handleInputChange.bind( this );
 	}
 
-	handleSubmit (event) {
+	handleSubmit ( event ) {
 		event.preventDefault();
 		const { onSearchInput } = this.props;
 		const { search } = this.state;
 
-		onSearchInput(search);
+		onSearchInput( search );
 	}
 
-	handleInputChange (event) {
+	handleInputChange ( event ) {
 
 		const target = event.target;
 		const value = target.value;
 		const name = target.name;
 
-		this.setState({
-			[name]: value
-		});
+		this.setState( {
+			[ name ]: value
+		} );
 
 	}
 
@@ -72,7 +74,7 @@ class HomePageSearchForm extends React.Component {
 	}
 }
 
-HomePageSearchForm.propTypes = { onSearchInput: PropTypes.func };
+HomePageSearchForm.propTypes = { onSearchInput: PropTypes.func.isRequired };
 
 export default HomePageSearchForm;
 

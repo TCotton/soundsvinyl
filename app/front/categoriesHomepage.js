@@ -11,9 +11,7 @@ class CategoriesHomepage extends React.Component {
 		super(props);
 
 		this.state = {
-			error: null,
 			pages: [],
-			searchTerm: null,
 			requestCompleted: false,
 		};
 	}
@@ -23,11 +21,11 @@ class CategoriesHomepage extends React.Component {
 		axios.get(`${homeURI}/apiV1/page/get`)
 			.then(res => {
 
-				if (res.data.error) {
+			/*	if (res.data.error) {
 					this.setState({
 						error: res.data.error
 					});
-				}
+				}*/
 
 				this.setState({
 					requestCompleted: true,
@@ -60,7 +58,7 @@ class CategoriesHomepage extends React.Component {
 									subtitle={element.subTitle}
 									thumbnailUrl={element.thumbnailUrl}
 									title={element.title}
-									/> : <HomePageSearchForm />
+								/> : <HomePageSearchForm />
 						}
 					</div>
 				)

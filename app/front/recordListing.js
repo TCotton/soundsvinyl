@@ -263,9 +263,9 @@ class RecordListing extends React.Component {
 RecordListing.propTypes = {
 	match: PropTypes.shape({
 		params: PropTypes.shape({
-			id: PropTypes.string
+			id: PropTypes.string.isRequired
 		})
-	})
+	}).isRequired
 };
 
 export default withRouter(RecordListing);

@@ -62,7 +62,7 @@ class Comment extends React.Component {
 }
 
 Comment.propTypes = {
-	content: PropTypes.any
+	content: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired
 }
 
 export default Comment;

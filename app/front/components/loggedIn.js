@@ -3,11 +3,15 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 function LoginButton (props) {
+	const { onClick } = props;
 	return (
-		<Link to='/' onClick={props.onClick}>
+		<Link
+			onClick={onClick}
+			to='/'
+		>
 			<li>
 				<span>
-				Logout
+					{'Logout'}
 				</span>
 			</li>
 		</Link>
@@ -15,7 +19,7 @@ function LoginButton (props) {
 }
 
 LoginButton.propTypes = {
-	onClick: PropTypes.func,
+	onClick: PropTypes.func.isRequired
 };
 
 export default LoginButton;

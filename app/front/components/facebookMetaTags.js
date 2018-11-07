@@ -3,22 +3,38 @@ import PropTypes from 'prop-types';
 
 function FacebookMetaTags (props) {
 
+	const { faceBookTitle, canonical, faceBookDescription } = props;
+
 	return (
 		<span>
-			<meta property='og:site_name' content='soundsvinyl.co, Vinyl Forever, Music For All'/>
-			<meta property='og:title' content={props.faceBookTitle}/>
-			<meta property='og:url' content={props.canonical}/>
-			<meta property='og:description' content={props.faceBookDescription}/>
-			<meta property='og:type' content='article'/>
+			<meta
+				content='soundsvinyl.co, Vinyl Forever, Music For All'
+				property='og:site_name'
+			/>
+			<meta
+				content={faceBookTitle}
+				property='og:title'
+			/>
+			<meta
+				content={canonical}
+				property='og:url'
+			/>
+			<meta
+				content={faceBookDescription}
+				property='og:description'
+			/>
+			<meta
+				content='article'
+				property='og:type'
+			/>
 		</span>
 	)
 }
 
 FacebookMetaTags.propTypes = {
-	faceBookTitle: PropTypes.string,
-	canonical: PropTypes.string,
-	faceBookDescription: PropTypes.string,
-	description: PropTypes.string,
+	canonical: PropTypes.string.isRequired,
+	faceBookDescription: PropTypes.string.isRequired,
+	faceBookTitle: PropTypes.string.isRequired,
 };
 
 export default FacebookMetaTags;

@@ -86,8 +86,8 @@ class Contact extends React.Component {
 
 					<input
 						disabled
-						type='submit'
 						name='contactSubmit'
+						type='submit'
 						value='submit (temp disabled)'
 					/>
 				</form>

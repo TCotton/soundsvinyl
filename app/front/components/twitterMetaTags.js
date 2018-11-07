@@ -3,20 +3,34 @@ import PropTypes from 'prop-types';
 
 function TwitterMetaTags (props) {
 
+	const { title, description } = props;
+
 	return (
 		<span>
-			<meta name='twitter:card' content='summary'/>
-			<meta name='twitter:site' content='@andywalpole' />
-			<meta name='twitter:title' content={props.title}/>
-			<meta name='twitter:description' content={props.description}/>
+			<meta
+				content='summary'
+				name='twitter:card'
+			/>
+			<meta
+				content='@andywalpole'
+				name='twitter:site'
+			/>
+			<meta
+				content={title}
+				name='twitter:title'
+			/>
+			<meta
+				content={description}
+				name='twitter:description'
+			/>
 		</span>
 	);
 
 }
 
 TwitterMetaTags.propTypes = {
-	title: PropTypes.string,
-	description: PropTypes.string,
+	description: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired
 };
 
 export default TwitterMetaTags;

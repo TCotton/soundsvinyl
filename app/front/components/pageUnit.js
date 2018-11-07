@@ -12,25 +12,40 @@ import { Link } from 'react-router-dom';
 
 function PageUnit (props) {
 
+	const { slug, id, thumbnailUrl, title, subtitle} = props;
+
 	const myArray = [thumbnailOne, thumbnailTwo, thumbnailThree];
 	const thumbnailDefault = myArray[Math.floor(Math.random() * myArray.length)];
 
 	return (
-		<Link to={`/${props.slug}/${props.id}`} className='pageUnit'>
-			<img src={props.thumbnailUrl} alt={props.title} onError={(e) => {e.target.src = thumbnailDefault}}/>
-			<span className='video-title'>{props.title}</span>
-			<span className='video-subtitle'>{props.subtitle}</span>
+		<Link
+			className='pageUnit'
+			to={`/${slug}/${id}`}
+		>
+			<img
+				alt={title}
+				onError={(e) => {e.target.src = thumbnailDefault}} // eslint-disable-line react/jsx-no-bind
+				src={thumbnailUrl}
+			/>
+			<span className='video-title'>
+				{title}
+			</span>
+			<span className='video-subtitle'>
+				{subtitle}
+			</span>
 		</Link>
 	);
 }
 
 PageUnit.propTypes = {
-	title: PropTypes.string.isRequired,
+	id: ExtendedPropTypes.mongoId.isRequired,
+	shortSlug: PropTypes.string,
+	slug: PropTypes.string.isRequired,
 	subtitle: PropTypes.string.isRequired,
 	thumbnailUrl: PropTypes.string.isRequired,
-	slug: PropTypes.string.isRequired,
-	shortSlug: PropTypes.string.isRequired,
-	id: ExtendedPropTypes.mongoId.isRequired,
+	title: PropTypes.string.isRequired,
 };
+
+PageUnit.defaultProps = { shortSlug: '' }
 
 export default PageUnit;

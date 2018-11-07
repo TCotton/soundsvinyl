@@ -30,35 +30,35 @@ export default class rootComponent extends React.Component {
 			<CookiesProvider>
 				<Router>
 					<div className='wrapper'>
-						<Nav/>
+						<Nav />
 						<Switch>
 							<Route
 								component={Main}
-								exact path='/'
+								exact path='/' // eslint-disable-line react/jsx-max-props-per-line
 							/>
 							<Route
 								component={RecordListing}
-								exact path='/:slug/:id'
+								exact path='/:slug/:id' // eslint-disable-line react/jsx-max-props-per-line
 							/>
 							<Route
 								component={Contact}
-								exact path='/contact'
+								exact path='/contact' // eslint-disable-line react/jsx-max-props-per-line
 							/>
 							<Route
 								component={AboutUs}
-								exact path='/about-us'
+								exact path='/about-us' // eslint-disable-line react/jsx-max-props-per-line
 							/>
 							<Route
 								component={MyAccount}
-								exact path='/my-account'
+								exact path='/my-account' // eslint-disable-line react/jsx-max-props-per-line
 							/>
 							<Route
 								component={VinylCharts}
-								exact path='/vinyl-singles-top-30-chart'
+								exact path='/vinyl-singles-top-30-chart' // eslint-disable-line react/jsx-max-props-per-line
 							/>
 							<Route
 								component={Sitemap}
-								exact path='/sitemap'
+								exact path='/sitemap'  // eslint-disable-line react/jsx-max-props-per-line
 							/>
 							<Route
 								component={Error}
