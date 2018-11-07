@@ -7,13 +7,22 @@ class Header extends React.Component {
 	render () {
 		return (
 			<header styleName='header'>
-				<div styleName='innerHeader' className='wrapper'>
+				<div
+					className='wrapper'
+					styleName='innerHeader'
+				>
 					<div styleName='headerLeftColumn'>
-						<TurntableIllustration styleName='headerSVG'/>
+						<TurntableIllustration
+							styleName='headerSVG'
+						/>
 					</div>
 					<div styleName='headerRightColumn'>
-						<h2>Welcome to SoundsVinyl</h2>
-						<p>Vinyl forever, music for all</p>
+						<h2>
+							{'Welcome to SoundsVinyl'}
+						</h2>
+						<p>
+							{'Vinyl forever, music for all'}
+						</p>
 					</div>
 				</div>
 			</header>

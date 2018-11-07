@@ -44,10 +44,15 @@ class Nav extends React.Component {
 
 	render () {
 
-		const ulClassName = this.state.isClicked ? 'display-menu' : 'no-menu';
+		const {
+			isClicked,
+			loggedIn
+		} = this.state;
+
+		const ulClassName = isClicked ? 'display-menu' : 'no-menu';
 		const navClasses = cn('inner-header', 'wrapper');
 
-		const isLoggedIn = this.state.loggedIn;
+		const isLoggedIn = loggedIn;
 		let button;
 
 		if (isLoggedIn) {
@@ -58,35 +63,54 @@ class Nav extends React.Component {
 
 		return (
 			<nav>
-				<div styleName='innerNav' className={navClasses}>
+				<div
+					className={navClasses}
+					styleName='innerNav'
+				>
 					<div styleName='navLeftColumn'>
 						<Link to='/'>
-							<h1>SoundsVinyl</h1>
+							<h1>
+								{'SoundsVinyl'}
+							</h1>
 						</Link>
 					</div>
 					<div styleName='navRightColumn'>
-						<label htmlFor='toggle-1' className='hidden-desktop'>Main Menu</label>
-						<input type='checkbox' id='toggle-1' className='hidden-desktop' onChange={this.handleClicked}/>
-						<div styleName='closeMenu' className={cn('hidden-desktop', ulClassName)} onClick={this.handleClicked}/>
+						<label
+							className='hidden-desktop'
+							htmlFor='toggle-1'
+						>
+							{'Main Menu'}
+						</label>
+						<input
+							className='hidden-desktop'
+							id='toggle-1'
+							onChange={this.handleClicked}
+							type='checkbox'
+						/>
+						<div
+							className={cn('hidden-desktop', ulClassName)}
+							onClick={this.handleClicked}
+							styleName='closeMenu'
+						/>
 						<ul className={ulClassName}>
 							<Link to='/'>
 								<li>
 									<span>
-									Home
+										{'Home'}
 									</span>
 								</li>
 							</Link>
 							<Link to='/about-us'>
 								<li>
 									<span>
-									About
+										{'About'}
 									</span>
 								</li>
 							</Link>
 							<Link to='/contact'>
 								<li>
 									<span>
-									Contact
+										{'Contact'}
 									</span>
 								</li>
 							</Link>

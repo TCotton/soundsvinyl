@@ -10,25 +10,33 @@ class Footer extends React.Component {
 
 		return (
 			<footer>
-				<div styleName='innerFooter' className={footerClasses}>
+				<div
+					className={footerClasses}
+					styleName='innerFooter'
+				>
 					<div styleName='footerLeftColumn'>
-						<p>SoundsVinyl</p>
+						<p>
+							{'SoundsVinyl'}
+						</p>
 					</div>
 					<div styleName='footerRightColumn'>
 						<ul>
 							<Link to='/vinyl-singles-top-30-chart'>
 								<li>
-									Current top 30 vinyl singles chart
+									{'Current top 30 vinyl singles chart'}
 								</li>
 							</Link>
 							<Link to='/sitemap'>
 								<li>
-									Sitemap
+									{'Sitemap'}
 								</li>
 							</Link>
-							<a href='https://github.com/TCotton/soundsvinyl' rel='noreferrer'>
+							<a
+								href='https://github.com/TCotton/soundsvinyl'
+								rel='noreferrer'
+							>
 								<li>
-									Code (CC BY-NC 4.0 license)
+									{'Code (CC BY-NC 4.0 license)'}
 								</li>
 							</a>
 						</ul>

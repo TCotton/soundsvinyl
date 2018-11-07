@@ -11,10 +11,10 @@ class CategoriesHomepage extends React.Component {
 		super(props);
 
 		this.state = {
-			pages: [],
 			error: null,
+			pages: [],
+			searchTerm: null,
 			requestCompleted: false,
-			searchTerm: null
 		};
 	}
 
@@ -24,7 +24,9 @@ class CategoriesHomepage extends React.Component {
 			.then(res => {
 
 				if (res.data.error) {
-					this.setState({error: res.data.error});
+					this.setState({
+						error: res.data.error
+					});
 				}
 
 				this.setState({
@@ -36,29 +38,29 @@ class CategoriesHomepage extends React.Component {
 
 	render () {
 
-		const requestCompleted = this.state.requestCompleted;
+		const { requestCompleted, pages } = this.state;
 		let arrayMap;
 
 		if (requestCompleted) {
-			const pageList = this.state.pages;
 
-			arrayMap = pageList.map((element, index) => {
+			arrayMap = pages.map((element, index) => {
 
 				Object.assign(element, {
 					thumbnailUrl: window.location.protocol + '//' + window.location.hostname + (window.location.port.length === 0 ? '/' : ':8443/') + `thumbnails/thumbnail-${element._id}.png`
 				});
 
 				return (
-					<div key={index}>
+					<div key={element}>
 						{
 							index !== 2 ?
 								<PageUnit
-									title={element.title}
+									id={element._id}
+									shortSlug={element.shortSlug}
+									slug={element.slug}
 									subtitle={element.subTitle}
 									thumbnailUrl={element.thumbnailUrl}
-									slug={element.slug}
-									shortSlug={element.shortSlug}
-									id={element._id}/> : <HomePageSearchForm />
+									title={element.title}
+									/> : <HomePageSearchForm />
 						}
 					</div>
 				)
@@ -67,7 +69,9 @@ class CategoriesHomepage extends React.Component {
 
 		return (
 			<main styleName='categories'>
-				<h3>All categories</h3>
+				<h3>
+					{'All categories'}
+				</h3>
 				<section>
 					{arrayMap}
 				</section>
@@ -76,4 +80,4 @@ class CategoriesHomepage extends React.Component {
 	}
 }
 
-export default CategoriesHomepage
+export default CategoriesHomepage;

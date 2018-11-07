@@ -34,22 +34,62 @@ class Contact extends React.Component {
 
 	render () {
 
+		const {
+			contactEmail,
+			contactName,
+			contactMessage
+		} = this.state;
+
 		return (
 			<main styleName='contactPage'>
-				<h2>Contact us</h2>
-				<p>Please contact us if you any recommendations for records to review</p>
+				<h2>
+					{'Contact us'}
+				</h2>
+				<p>
+					{'Please contact us if you any recommendations for records to review'}
+				</p>
 
 				<form onSubmit={this.handleSubmit}>
-					<label htmlFor='contactName'>Your name</label>
-					<input type='text' id='contactName' name='contactName' value={this.state.contactName} onChange={this.handleInputChange}/>
+					<label htmlFor='contactName'>
+						{'Your name'}
+					</label>
+					<input
+						id='contactName'
+						name='contactName'
+						onChange={this.handleInputChange}
+						type='text'
+						value={contactName}
+					/>
 
-					<label htmlFor='contactEmail'>Your email</label>
-					<input type='email' id='contactEmail' name='contactEmail' value={this.state.contactEmail} onChange={this.handleInputChange} required/>
+					<label htmlFor='contactEmail'>
+						{'Your email'}
+					</label>
+					<input
+						id='contactEmail'
+						name='contactEmail'
+						onChange={this.handleInputChange}
+						required
+						type='email'
+						value={contactEmail}
+					/>
 
-					<label htmlFor='contactMessage'>Your message</label>
-					<textarea id='contactMessage' name='contactMessage' value={this.state.contactMessage} onChange={this.handleInputChange} required/>
+					<label htmlFor='contactMessage'>
+						{'Your message'}
+					</label>
+					<textarea
+						id='contactMessage'
+						name='contactMessage'
+						onChange={this.handleInputChange}
+						required
+						value={contactMessage}
+					/>
 
-					<input type='submit' name='contactSubmit' value='submit (temp disabled)' disabled/>
+					<input
+						disabled
+						type='submit'
+						name='contactSubmit'
+						value='submit (temp disabled)'
+					/>
 				</form>
 			</main>
 		)

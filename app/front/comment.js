@@ -23,13 +23,14 @@ class Comment extends React.Component {
 
 		let values;
 		const ProfileArray = [Profile1, Profile2, Profile3, Profile4, Profile5];
+		const { content } = this.props;
 
-		if (Array.isArray(this.props.content)) {
-			values = this.props.content.map((value, i) => {
+		if (Array.isArray(content)) {
+			values = content.map((value, i) => {
 
-				const content = this.props.content[i].content;
-				const username = this.props.content[i].userName;
-				const date = moment(this.props.content[i].data).format('MMMM Do YYYY');
+				const content = content[i].content;
+				const username = content[i].userName;
+				const date = moment(content[i].data).format('MMMM Do YYYY');
 				const RandomProfile = ProfileArray[Math.floor(Math.random() * ProfileArray.length)];
 
 				return (
@@ -38,8 +39,14 @@ class Comment extends React.Component {
 							<RandomProfile />
 						</div>
 						<div styleName='commentRightColumn'>
-							<p styleName='commentName'>{username} / {date}</p>
-							<p styleName='commentText'>{content}</p>
+							<p styleName='commentName'>
+								{username}
+								{'/'}
+								{date}
+							</p>
+							<p styleName='commentText'>
+								{content}
+							</p>
 						</div>
 					</div>
 				);

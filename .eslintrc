@@ -24,10 +24,24 @@
 	},
 	"extends": [
 		"eslint:recommended",
-		"plugin:react/recommended",
-		"plugin:vue/strongly-recommended",
+		"plugin:react/all",
+		"plugin:vue/strongly-recommended"
 	],
 	"rules": {
-		"vue/html-indent": 0
+		"vue/html-indent": 0,
+		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+		"sort-imports": [0, {
+			"ignoreCase": false,
+			"ignoreMemberSort": false,
+			"memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+		}],
+		"react/prefer-stateless-function": [0, { "ignorePureComponents": true }],
+		"react/jsx-indent": [2, "tab"],
+		"react/jsx-indent-props": [2, "tab"],
+		"react/no-set-state": [0],
+		"react/jsx-max-depth": [2, { "max": 6 }], // temp, chanage back to 2
+		"react/no-unknown-property": [2, { "ignore": [ "fill-rule", "clip-rule" ] }],
+		"react/no-multi-comp": [2, { "ignoreStateless": true }],
+		"react/require-optimization": [0, {}]
 	}
 }

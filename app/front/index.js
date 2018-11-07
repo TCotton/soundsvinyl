@@ -32,16 +32,40 @@ export default class rootComponent extends React.Component {
 					<div className='wrapper'>
 						<Nav/>
 						<Switch>
-							<Route exact path='/' component={Main}/>
-							<Route exact path='/:slug/:id' component={RecordListing}/>
-							<Route exact path='/contact' component={Contact}/>
-							<Route exact path='/about-us' component={AboutUs}/>
-							<Route exact path='/my-account' component={MyAccount}/>
-							<Route exact path='/vinyl-singles-top-30-chart' component={VinylCharts}/>
-							<Route exact path='/sitemap' component={Sitemap}/>
-							<Route path='' component={Error}/>
+							<Route
+								component={Main}
+								exact path='/'
+							/>
+							<Route
+								component={RecordListing}
+								exact path='/:slug/:id'
+							/>
+							<Route
+								component={Contact}
+								exact path='/contact'
+							/>
+							<Route
+								component={AboutUs}
+								exact path='/about-us'
+							/>
+							<Route
+								component={MyAccount}
+								exact path='/my-account'
+							/>
+							<Route
+								component={VinylCharts}
+								exact path='/vinyl-singles-top-30-chart'
+							/>
+							<Route
+								component={Sitemap}
+								exact path='/sitemap'
+							/>
+							<Route
+								component={Error}
+								path=''
+							/>
 						</Switch>
-						<Footer/>
+						<Footer />
 					</div>
 				</Router>
 			</CookiesProvider>

@@ -17,8 +17,10 @@ class HomePageSearchForm extends React.Component {
 
 	handleSubmit (event) {
 		event.preventDefault();
+		const { onSearchInput } = this.props;
+		const { search } = this.state;
 
-		this.props.onSearchInput(this.state.search);
+		onSearchInput(search);
 	}
 
 	handleInputChange (event) {
@@ -34,32 +36,43 @@ class HomePageSearchForm extends React.Component {
 	}
 
 	render () {
+		const { search } = this.state;
 
 		return (
 			<div styleName='search'>
-				<h4>Search by category</h4>
-				<form styleName='searchForm' onSubmit={this.handleSubmit}>
-					<label htmlFor='search' className='visuallyhidden'>Your search term</label>
+				<h4>
+					{'Search by category'}
+				</h4>
+				<form
+					onSubmit={this.handleSubmit}
+					styleName='searchForm'
+				>
+					<label
+						className='visuallyhidden'
+						htmlFor='search'
+					>
+						{'Your search term'}
+					</label>
 					<input
-						type='text'
+						disabled
 						id='search'
 						name='search'
-						value={this.state.search}
 						onChange={this.handleInputChange}
-						disabled
+						type='text'
+						value={search}
 					/>
 				</form>
 				<div styleName='searchName'>
-					<span>&nbsp;</span>
+					<span>
+						{'&nbsp;'}
+					</span>
 				</div>
 			</div>
 		)
 	}
 }
 
-HomePageSearchForm.propTypes = {
-	onSearchInput: PropTypes.func,
-};
+HomePageSearchForm.propTypes = { onSearchInput: PropTypes.func };
 
 export default HomePageSearchForm;
 

@@ -37,7 +37,7 @@ class RecordListing extends React.Component {
 	}
 
 	componentDidMount () {
-		const id = this.props.match.params.id;
+		const id = this.props.match.params.id; // eslint-disable-line
 
 		axios.get(`${homeURI}/apiV1/page/get/${id}`)
 			.then(res => {
@@ -61,7 +61,7 @@ class RecordListing extends React.Component {
 		});
 
 		if (this.checkTokenCookie('token')) {
-			this.setState({disabled: false});
+			this.setState({disabled: false}); // eslint-disable-line
 		}
 	}
 
@@ -72,8 +72,8 @@ class RecordListing extends React.Component {
 	handleSubmit (e) {
 		e.preventDefault();
 
-		const content = this.state.commentsMessage;
-		const articleId = this.props.match.params.id;
+		const { content } = this.state;
+		const articleId = this.props.match.params.id; // eslint-disable-line
 
 		if (content && content.length > 0) {
 
@@ -102,29 +102,37 @@ class RecordListing extends React.Component {
 
 	render () {
 
-		const title = this.state.title;
-		const subTitle = this.state.subTitle;
-		const descriptionOne = this.state.descriptionOne;
-		const descriptionTwo = this.state.descriptionTwo;
-		const descriptionThree = this.state.descriptionThree;
-		const videoLink = this.state.videoLink;
-		const disabled = this.state.disabled;
-		const success = this.state.success;
-		const comments = this.state.comments;
-		const categories = this.state.categories;
+		const {
+			title,
+			subTitle,
+			descriptionOne,
+			descriptionTwo,
+			descriptionThree,
+			videoLink,
+			disabled,
+			success,
+			comments,
+			categories,
+			loaded,
+			commentsMessage
+		} = this.state;
 
 		let videoComponent;
 
 		if (videoLink !== '') {
-			videoComponent = <VideoErrorBoundary>
-				<Video videoLink={videoLink}/>
-			</VideoErrorBoundary>
+			videoComponent = () => {
+				return (
+					<VideoErrorBoundary>
+						<Video videoLink={videoLink} />
+					</VideoErrorBoundary>
+				)
+			}
 		}
 
 		let metaHeaderComponent;
 
 		if (title !== '' && title.length > 1) {
-			metaHeaderComponent = <MetaHeader title={title}/>
+			metaHeaderComponent = <MetaHeader title={title} />
 		}
 
 		let categoryList;
@@ -134,15 +142,17 @@ class RecordListing extends React.Component {
 				return accumulator.concat(currentValue.name);
 			}, []);
 
-			categoryList = categoryArray.map((element, index) => {
+			categoryList = categoryArray.map((element) => {
 				return (
-					<li key={index}>{element}</li>
+					<li key={element}>
+						{element}
+					</li>
 				)
 			});
 
 		}
 
-		if (!this.state.loaded) {
+		if (!loaded) {
 			return null;
 		} else {
 
@@ -150,8 +160,14 @@ class RecordListing extends React.Component {
 				<main styleName='recordListing'>
 					<header styleName='record'>
 
-						<h2 className={(title ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: title}}/>
-						<p className={(subTitle ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: subTitle}}/>
+						<h2
+							className={(title ? 'display' : 'hide')}
+							dangerouslySetInnerHTML={{__html: title}}
+						/>
+						<p
+							className={(subTitle ? 'display' : 'hide')}
+							dangerouslySetInnerHTML={{__html: subTitle}}
+						/>
 
 						{metaHeaderComponent}
 
@@ -160,45 +176,82 @@ class RecordListing extends React.Component {
 					<section styleName='videoSineWave'>
 
 						<div styleName='videoContainer'>
-							{videoComponent}
+							{videoComponent()}
 						</div>
 
 					</section>
 
 					<section styleName='description'>
 
-						<p className={(descriptionOne ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionOne}}/>
-						<p className={(descriptionTwo ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionTwo}}/>
-						<p className={(descriptionThree ? 'display' : 'hide')} dangerouslySetInnerHTML={{__html: descriptionThree}}/>
+						<p
+							className={(descriptionOne ? 'display' : 'hide')}
+							dangerouslySetInnerHTML={{__html: descriptionOne}}
+						/>
+						<p
+							className={(descriptionTwo ? 'display' : 'hide')}
+							dangerouslySetInnerHTML={{__html: descriptionTwo}}
+						/>
+						<p
+							className={(descriptionThree ? 'display' : 'hide')}
+							dangerouslySetInnerHTML={{__html: descriptionThree}}
+						/>
 
 					</section>
 
-					<section styleName='categories' className={(categories ? 'display' : 'hide')}>
+					<section
+						className={(categories ? 'display' : 'hide')}
+						styleName='categories'
+					>
 						<ul>
 							{categoryList}
 						</ul>
 					</section>
 
 					<section styleName='commentsForm'>
-						<h3>Comments</h3>
+						<h3>
+							{'Comments'}
+						</h3>
 
-						<p className={(disabled ? 'display' : 'hide')}>You must be <Link to='/my-account'>registered and logged
-							in</Link> to contribute a comment</p>
+						<p className={(disabled ? 'display' : 'hide')}>
+							{'You must be '}
+							<Link to='/my-account'>
+								{' registered and logged in'}
+							</Link>
+							{'to contribute a comment'}
+						</p>
 
-						<p className={(success ? 'display' : 'hide')}>Your comment has been submitted and will appear on<br/> this
-							page after it has been approved by the administrator</p>
+						<p className={(success ? 'display' : 'hide')}>
+							{'Your comment has been submitted and will appear on<br/> this page after it has been approved by the administrator'}
+						</p>
 
 						<form onSubmit={this.handleSubmit}>
 
-							<textarea cols='10' rows='10' id='commentsMessage' name='commentsMessage' maxLength='500'
-												value={this.state.commentsMessage} onChange={this.handleInputChange}/>
-							<input type='submit' name='submit' value='Comment' disabled={disabled}/>
+							<textarea
+								cols='10'
+								id='commentsMessage'
+								maxLength='500'
+								name='commentsMessage'
+								onChange={this.handleInputChange}
+								rows='10'
+								value={commentsMessage}
+							/>
+							<input
+								disabled={disabled}
+								name='submit'
+								type='submit'
+								value='Comment'
+							/>
 
 						</form>
 					</section>
 
-					<section styleName='commentsBlock' className={(comments.length > 0 ? 'display' : 'hide')}>
-						<Comment content={comments}/>
+					<section
+						className={(comments.length > 0 ? 'display' : 'hide')}
+						styleName='commentsBlock'
+					>
+						<Comment
+							content={comments}
+						/>
 					</section>
 
 				</main>

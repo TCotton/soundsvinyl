@@ -27,10 +27,15 @@ class MyAccount extends React.Component {
 	handleSubmitRegister (e) {
 		e.preventDefault();
 
-		if (this.state.registerName && this.state.registerPassword) {
+		const {
+			registerName,
+			registerPassword
+		} = this.state;
 
-			const email = this.state.registerName;
-			const password = this.state.registerPassword;
+		if (registerName && registerPassword) {
+
+			const email = registerName;
+			const password = registerPassword;
 
 			this.setState({error: null}); // place this in a lifecycle hook
 			const username = createUsername(email);
@@ -70,12 +75,14 @@ class MyAccount extends React.Component {
 	handleSubmitLogin (e) {
 		e.preventDefault();
 
-		if (this.state.loginName && this.state.loginPassword) {
+		const { loginName, loginPassword } = this.state;
+
+		if (loginName && loginPassword) {
 
 			this.setState({error: null}); // place this in a lifecycle hook
 			// `user/add`
 
-			axios.post(`${homeURI}/apiV1/user/find`, {email: this.state.loginName, password: this.state.loginPassword})
+			axios.post(`${homeURI}/apiV1/user/find`, {email: loginName, password: loginPassword})
 				.then(res => {
 
 					if (res.data.error) {
@@ -115,46 +122,102 @@ class MyAccount extends React.Component {
 
 	render () {
 
-		const error = this.state.error ? () => {
+		const { loginName, error, loginPassword, registerName, registerPassword } = this.state;
+
+		const errorFunc = error ? () => {
 			return (
-				<p styleName='error'>{this.state.error}</p>
+				<p styleName='error'>
+					{error}
+				</p>
 			)
 		} : () => { return null };
 
 		return (
 			<main styleName='myAccount'>
-				<h2>My Account</h2>
-				<p>Either login or register an account with SoundsVinyl from this page</p>
+				<h2>
+					{'My Account'}
+				</h2>
+				<p>
+					{'Either login or register an account with SoundsVinyl from this page'}
+				</p>
 
-				{error()}
+				{errorFunc()}
 
 				<section>
 					<form onSubmit={this.handleSubmitLogin}>
 						<fieldset>
-							<legend>Login</legend>
+							<legend>
+								{'Login'}
+							</legend>
 
-							<label htmlFor='loginName'>Your email</label>
-							<input type='text' id='loginName' name='loginName' value={this.state.loginName} onChange={this.handleInputChange} required/>
+							<label htmlFor='loginName'>
+								{'Your email'}
+							</label>
+							<input
+								id='loginName'
+								name='loginName'
+								onChange={this.handleInputChange}
+								required
+								type='text'
+								value={loginName}
+							/>
 
-							<label htmlFor='loginPassword'>Your password</label>
-							<input type='password' id='loginPassword' name='loginPassword' value={this.state.loginPassword} onChange={this.handleInputChange} required/>
+							<label htmlFor='loginPassword'>
+								{'Your password'}
+							</label>
+							<input
+								id='loginPassword'
+								name='loginPassword'
+								onChange={this.handleInputChange}
+								required
+								type='password'
+								value={loginPassword}
+							/>
 
-							<input type='submit' name='loginSubmit' value='Login'/>
+							<input
+								name='loginSubmit'
+								type='submit'
+								value='Login'
+							/>
 
 						</fieldset>
 					</form>
 
 					<form onSubmit={this.handleSubmitRegister}>
 						<fieldset>
-							<legend>Register</legend>
+							<legend>
+								{'Register'}
+							</legend>
 
-							<label htmlFor='registerName'>Your email</label>
-							<input type='text' id='registerName' name='registerName' value={this.state.registerName} onChange={this.handleInputChange} required/>
+							<label htmlFor='registerName'>
+								{'Your email'}
+							</label>
+							<input
+								id='registerName'
+								name='registerName'
+								onChange={this.handleInputChange}
+								required
+								type='text'
+								value={registerName}
+							/>
 
-							<label htmlFor='registerPassword'>Your password</label>
-							<input type='password' id='registerPassword' name='registerPassword' value={this.state.registerPassword} onChange={this.handleInputChange} required/>
+							<label htmlFor='registerPassword'>
+								{'Your password'}
+							</label>
+							<input
+								id='registerPassword'
+								name='registerPassword'
+								onChange={this.handleInputChange}
+								required
+								type='password'
+								value={registerPassword}
+							/>
 
-							<input type='submit' name='registerSubmit' value='Register'/>
+							<input
+								name='registerSubmit'
+								value='Register'
+								type='submit'
+							/>
 
 						</fieldset>
 					</form>
