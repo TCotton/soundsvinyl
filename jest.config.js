@@ -2,10 +2,10 @@ module.exports = {
 	rootDir: './',
 	coverageThreshold: {
 		'global': {
-			'branches': 40,
-			'functions': 40,
-			'lines': 40,
-			'statements': 40
+			'branches': 0,
+			'functions': 0,
+			'lines': 0,
+			'statements': 0
 		}
 	},
 	collectCoverageFrom: [
@@ -15,6 +15,7 @@ module.exports = {
 	moduleFileExtensions: [ 'js', 'json', 'jsx' ],
 	coveragePathIgnorePatterns: [
 		'/node_modules/',
+		'node_modules',
 		'jest.config.js',
 		'server.js',
 		'stylelint.config.js',
@@ -24,13 +25,14 @@ module.exports = {
 		'mock/*',
 		'webpack.config.js',
 		'test/*',
-		'assets/*'
+		'assets/*',
+		'node/__tests__/*'
 	],
 	coverageDirectory: '<rootDir>/test/coverage',
 	moduleNameMapper: {
 		'Mocks(.*)$': '<rootDir>/mock/$1',
-		'\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$': '<rootDir>/mock/fileMock.js',
-		'\\.(css|less|scss|sass)$': 'identity-obj-proxy'
+		'\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$': '<rootDir>/test/mock/fileMock.js',
+		'\\.(css|less|scss|sass)$': '<rootDir>/test/mock/styleMock.js'
 	},
 	transform: {
 		'^.+\\.jsx?$': 'babel-jest',

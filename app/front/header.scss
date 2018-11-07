@@ -18,13 +18,13 @@
 	}
 }
 
-.headerSVG {
+.headerSVG > svg {
 	opacity: 0.75;
 	margin: 10px 0 0 0;
 }
 
 @media screen and (min-width: $media_breakpoint_mobile) {
-	.headerSVG {
+	.headerSVG > svg {
 		opacity: 1;
 	}
 }

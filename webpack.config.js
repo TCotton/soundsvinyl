@@ -13,7 +13,7 @@ try {
 			module.exports = require('./config/webpack.production');
 			break;
 		case 'test':
-			module.exports = require('./config/webpack.test');
+			module.exports = require('./config/webpack.test-config');
 			break;
 
 	}

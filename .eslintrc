@@ -23,6 +23,7 @@
 		"vue": true
 	},
 	"extends": [
+		"plugin:jest/recommended",
 		"eslint:recommended",
 		"plugin:react/all",
 		"plugin:vue/strongly-recommended"

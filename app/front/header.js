@@ -1,9 +1,9 @@
 import React from 'react';
 import './header.scss';
 
-import TurntableIllustration from '../assets/graphics/Turntable_illustration.svg';
+import Turntable from '../assets/icons/Turntable.js';
 
-class Header extends React.Component {
+export default class Header extends React.Component {
 	render () {
 		return (
 			<header styleName='header'>
@@ -12,9 +12,9 @@ class Header extends React.Component {
 					styleName='innerHeader'
 				>
 					<div styleName='headerLeftColumn'>
-						<TurntableIllustration
-							styleName='headerSVG'
-						/>
+						<div styleName='headerSVG'>
+							<Turntable />
+						</div>
 					</div>
 					<div styleName='headerRightColumn'>
 						<h2>
@@ -29,5 +29,3 @@ class Header extends React.Component {
 		)
 	}
 }
-
-export default Header;
