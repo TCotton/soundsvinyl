@@ -4,8 +4,8 @@
 	"description": "Music recommendation site",
 	"main": "server.js",
 	"scripts": {
-		"test": "cross-env NODE_ENV=test karma start --require source-map-support/register test/karma.conf.js",
 		"test:back": "ava -v node/test/test.js",
+		"test:unit": "jest --coverage",
 		"build": "cross-env NODE_ENV=production webpack --mode production ./app/single-spa-config.js --output ./dist/bundle.js",
 		"start:dev": "cross-env NODE_ENV=development webpack-dev-server --https --cert ./nodeService/config/server.crt --key ./nodeService/config/server.key --mode development ./app/single-spa-config.js --open",
 		"start": "node --experimental-modules ./server.js",
