@@ -35,8 +35,9 @@ module.exports = {
 		'\\.(css|less|scss|sass)$': '<rootDir>/test/mock/styleMock.js'
 	},
 	transform: {
-		'^.+\\.jsx?$': 'babel-jest',
+		'^.+\\.js$': 'babel-jest',
 		'^.+\\.svg$': 'jest-svg-transformer'
 	},
-	setupTestFrameworkScriptFile: '<rootDir>/test/setupTests.js'
+	setupTestFrameworkScriptFile: '<rootDir>/test/setupTests.js',
+	transformIgnorePatterns: ['<rootDir>/node_modules/']
 };

@@ -44,5 +44,11 @@
 		"react/no-unknown-property": [2, { "ignore": [ "fill-rule", "clip-rule" ] }],
 		"react/no-multi-comp": [2, { "ignoreStateless": true }],
 		"react/require-optimization": [0, {}]
+	},
+	"settings": {
+		"react": {
+			"pragma": "React",
+			"version": "16.0"
+		}
 	}
 }

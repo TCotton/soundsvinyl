@@ -1,16 +1,11 @@
-{
-	"presets": [
+'use strict'
+
+module.exports = {
+	presets: [
 		"@babel/preset-react",
 		"@babel/preset-env"
 	],
-	"env": {
-		"test": {
-			"plugins": [
-				"istanbul"
-			]
-		}
-	},
-	"plugins": [
+	plugins: [
 		"syntax-dynamic-import",
 		[
 			"react-css-modules",
@@ -26,6 +21,7 @@
 			},
 			"transform-postcss"
 		],
-		"@babel/plugin-proposal-class-properties"
-	]
+		"@babel/plugin-proposal-class-properties",
+		"@babel/plugin-proposal-object-rest-spread"
+	],
 }
