@@ -11,7 +11,7 @@ export const createUsername = (emailAddress, date = moment(Date.now()).format('D
 	return emailAddress.substring(0, emailAddress.indexOf('@')).replace(/[^a-zA-Z]/g, '') + '_' + date;
 }
 
-export const getCookieValue = function (a) {
+export const getCookieValue = (a) => {
 	const b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
 	return b ? b.pop() : '';
 }
