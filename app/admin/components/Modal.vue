@@ -4,6 +4,7 @@
 	Vue.component('modal', {
 		template: '#modal-template'
 	})
+	export default {};
 </script>
 
 <style lang="scss" module>

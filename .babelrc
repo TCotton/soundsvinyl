@@ -1,6 +1,6 @@
 {
 	"presets": [
-		"react",
+		"@babel/preset-react",
 		"@babel/preset-env"
 	],
 	"env": {
@@ -25,6 +25,7 @@
 				"generateScopedName": "[name]__[local]___[hash:base64:5]"
 			},
 			"transform-postcss"
-		]
+		],
+		"@babel/plugin-proposal-class-properties"
 	]
 }
