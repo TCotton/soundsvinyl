@@ -5,7 +5,7 @@
 	"main": "server.js",
 	"scripts": {
 		"test:back": "ava -v node/test/test.js",
-		"test:unit": "NODE_ENV=testing jest",
+		"test:unit": "cross-env NODE_ENV=testing jest",
 		"build": "cross-env NODE_ENV=production webpack --mode production ./app/single-spa-config.js --output ./dist/bundle.js",
 		"start:dev": "cross-env NODE_ENV=development webpack-dev-server --https --cert ./nodeService/config/server.crt --key ./nodeService/config/server.key --mode development ./app/single-spa-config.js --open",
 		"start": "node --experimental-modules ./server.js",
