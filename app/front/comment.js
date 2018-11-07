@@ -34,7 +34,10 @@ class Comment extends React.Component {
 				const RandomProfile = ProfileArray[Math.floor(Math.random() * ProfileArray.length)];
 
 				return (
-					<div key={i} styleName='comment'>
+					<div
+						key={value}
+						styleName='comment'
+					>
 						<div styleName='commentLeftColumn'>
 							<RandomProfile />
 						</div>

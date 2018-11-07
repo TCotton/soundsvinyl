@@ -19,7 +19,7 @@ function PageUnit (props) {
 
 	return (
 		<Link
-			className='pageUnit'
+			styleName='pageUnit'
 			to={`/${slug}/${id}`}
 		>
 			<img
@@ -39,13 +39,10 @@ function PageUnit (props) {
 
 PageUnit.propTypes = {
 	id: ExtendedPropTypes.mongoId.isRequired,
-	shortSlug: PropTypes.string,
 	slug: PropTypes.string.isRequired,
 	subtitle: PropTypes.string.isRequired,
 	thumbnailUrl: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
 };
-
-PageUnit.defaultProps = { shortSlug: '' }
 
 export default PageUnit;

@@ -5,7 +5,7 @@ function LogoutButton () {
 	return (
 		<Link to='/my-account'>
 			<li>
-				My account
+				{'My account'}
 			</li>
 		</Link>
 	);
