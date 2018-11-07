@@ -65,8 +65,12 @@ class Comment extends Component {
 }
 
 Comment.propTypes = {
-	content: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired
-}
+	content: PropTypes.arrayOf( PropTypes.shape({
+		content: PropTypes.string,
+		data: PropTypes.string,
+		userName: PropTypes.string
+	})).isRequired
+};
 
 export default Comment;
 

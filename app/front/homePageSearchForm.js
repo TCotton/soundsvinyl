@@ -65,9 +65,7 @@ class HomePageSearchForm extends React.Component {
 					/>
 				</form>
 				<div styleName='searchName'>
-					<span>
-						{'&nbsp;'}
-					</span>
+					<span />
 				</div>
 			</div>
 		)

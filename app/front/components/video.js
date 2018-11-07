@@ -13,20 +13,28 @@ function Video (props) {
 	}
 
 	return (
-
-		<video
-			controls
-			width='100%'
-		>
-			<source
-				src={videoLink}
-				type='video/mp4'
-			/>
-			<p dangerouslySetInnerHTML={createMarkup()} />
-		</video>
+		<React.Fragment>
+			{typeof videoLink === 'string' &&
+			<video
+				controls
+				width='100%'
+			>
+				<source
+					src={videoLink}
+					type='video/mp4'
+				/>
+				<p dangerouslySetInnerHTML={createMarkup()} />
+			</video>
+			}
+		</React.Fragment>
 	)
 }
 
-Video.propTypes = { videoLink: PropTypes.string.isRequired };
+// why does this render first as a function
+Video.propTypes = {
+	videoLink: PropTypes.oneOfType( [
+		PropTypes.string,
+		PropTypes.func
+	]).isRequired };
 
 export default Video;
