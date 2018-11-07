@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './footer.scss';
 import cn from 'classnames';
 
-class Footer extends React.Component {
+class Footer extends Component {
 	render () {
 
 		const footerClasses = cn('inner-footer', 'wrapper');

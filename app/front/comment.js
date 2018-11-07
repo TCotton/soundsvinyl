@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import shallowCompare from 'react-addons-shallow-compare';
 import './comment.scss';
@@ -9,7 +9,7 @@ import Profile4 from '../assets/graphics/profiles/profile-4.svg';
 import Profile5 from '../assets/graphics/profiles/profile-4.svg';
 import moment from 'moment';
 
-class Comment extends React.Component {
+class Comment extends Component {
 
 	constructor (props) {
 		super(props);

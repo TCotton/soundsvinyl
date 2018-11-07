@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './contact.scss';
 
-class Contact extends React.Component {
+class Contact extends Component {
 
 	constructor (props) {
-		super(props);
+		super( props );
 
 		this.state = {
 			contactName: '',

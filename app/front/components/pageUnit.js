@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ExtendedPropTypes from 'extended-proptypes';
 import { thumbnailOne, thumbnailTwo, thumbnailThree } from '../../alternative_default_thumbnails';
 import { Link } from 'react-router-dom';
+import './pageUnit.scss';
 
 /**
  * props thumbnailUrl is passed by reference to imageURI, so that no thumbnailUrl is mutated

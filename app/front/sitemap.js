@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './sitemap.scss';
 
-class Sitemap extends React.Component {
+class Sitemap extends Component {
 	render () {
 		return (
 			<main styleName='sitemap'>

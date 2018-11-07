@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-class Error extends React.Component {
+class Error extends Component {
 	render () {
 		return (
 			<main>

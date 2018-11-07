@@ -1,5 +1,5 @@
 /* eslint-disable react/no-danger */
-import React from 'react';
+import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
@@ -13,7 +13,7 @@ import './recordListing.scss';
 import PropTypes from 'prop-types';
 import { homeURI } from '../helper_constants';
 
-class RecordListing extends React.Component {
+class RecordListing extends Component {
 
 	constructor (props) {
 		super(props);
@@ -264,9 +264,17 @@ class RecordListing extends React.Component {
 RecordListing.propTypes = {
 	match: PropTypes.shape({
 		params: PropTypes.shape({
-			id: PropTypes.string.isRequired
+			id: PropTypes.string
 		})
-	}).isRequired
+	})
 };
+
+RecordListing.defaultProps = {
+	match: {
+		params: {
+			id: ''
+		}
+	}
+}
 
 export default withRouter(RecordListing);
