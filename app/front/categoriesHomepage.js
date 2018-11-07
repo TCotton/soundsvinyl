@@ -14,6 +14,8 @@ class CategoriesHomepage extends React.Component {
 			pages: [],
 			requestCompleted: false,
 		};
+
+		this.handleSearchResult = this.handleSearchResult.bind( this );
 	}
 
 	componentDidMount () {
@@ -34,6 +36,10 @@ class CategoriesHomepage extends React.Component {
 			});
 	}
 
+	handleSearchResult() {
+		return true;
+	}
+
 	render () {
 
 		const { requestCompleted, pages } = this.state;
@@ -47,8 +53,10 @@ class CategoriesHomepage extends React.Component {
 					thumbnailUrl: window.location.protocol + '//' + window.location.hostname + (window.location.port.length === 0 ? '/' : ':8443/') + `thumbnails/thumbnail-${element._id}.png`
 				});
 
+				const key = index.toString();
+
 				return (
-					<div key={element}>
+					<div key={`${element}${key}`}>
 						{
 							index !== 2 ?
 								<PageUnit
@@ -58,7 +66,7 @@ class CategoriesHomepage extends React.Component {
 									subtitle={element.subTitle}
 									thumbnailUrl={element.thumbnailUrl}
 									title={element.title}
-								/> : <HomePageSearchForm />
+								/> : <HomePageSearchForm onSearchInput={this.handleSearchResult}  />
 						}
 					</div>
 				)
