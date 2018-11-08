@@ -1,16 +1,16 @@
 import React from 'react';
-import Comment from '../comment.js';
+import Wrapper from '../Wrapper';
 import renderer from 'react-test-renderer';
 
 describe( 'Component', () => {
 	let component;
 	beforeEach( () => {
 		component = renderer.create(
-			<Comment content={[]} />
+			<Wrapper />
 		);
 	});
 
-	describe( 'Comment', () => {
+	describe( 'Wrapper', () => {
 		it( 'should be defined', () => {
 			expect( component ).toBeDefined();
 		});

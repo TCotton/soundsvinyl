@@ -1,3 +1,7 @@
+* Added Jest for unit tests
+* Added stricter linting rules
+* Added React.StrictMode  
+
 ## 1.6.0 (September 2, 2018)
 
 * First part of redux added

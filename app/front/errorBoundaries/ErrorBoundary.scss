@@ -1,0 +1,6 @@
+@import '../../assets/sass/tools';
+
+.fragmentDetails {
+	color: $error;
+	@include font-calculator($font_family_header, 16px, 0.5);
+}

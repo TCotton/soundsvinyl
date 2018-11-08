@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
-import LogoutButton from './components/logged0ut';
-import LoginButton from './components/loggedIn';
+import LogoutButton from '../components/logged0ut';
+import LoginButton from '../components/loggedIn';
 import './nav.scss';
+import UnorderedList from './UnorderedList';
 
-class Nav extends React.Component {
+class Nav extends Component {
 
 	static propTypes = {
 		cookies: instanceOf(Cookies).isRequired
@@ -56,7 +57,7 @@ class Nav extends React.Component {
 		const navClasses = cn('inner-header', 'wrapper');
 
 		const isLoggedIn = loggedIn;
-		let button;
+		let button = null;
 
 		if (isLoggedIn) {
 			button = <LoginButton onClick={this.handleLogout} />;
@@ -95,30 +96,10 @@ class Nav extends React.Component {
 							onClick={this.handleClicked}
 							styleName='closeMenu'
 						/>
-						<ul className={ulClassName}>
-							<Link to='/'>
-								<li>
-									<span>
-										{'Home'}
-									</span>
-								</li>
-							</Link>
-							<Link to='/about-us'>
-								<li>
-									<span>
-										{'About'}
-									</span>
-								</li>
-							</Link>
-							<Link to='/contact'>
-								<li>
-									<span>
-										{'Contact'}
-									</span>
-								</li>
-							</Link>
-							{button}
-						</ul>
+						<UnorderedList
+							buttonElement={button}
+							isClicked={ulClassName}
+						/>
 					</div>
 				</div>
 			</nav>
