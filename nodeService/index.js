@@ -203,7 +203,7 @@ if (app.get('env') === 'production') {
 		console.dir(app.get('env'));
 
 		if (!req.url.includes('/apiV1/')) {
-			res.sendFile(path.join(global.__base, '/src/index.html'));
+			res.sendFile(path.join(global.__base, '/dist/src/index.html'));
 		}
 
 		if (req.url.includes('/apiV1/')) {
