@@ -17,7 +17,7 @@ const mongoose = require('mongoose');
 
 const dotenv = require('dotenv');
 
-const result = dotenv.config({ path: './variables.env' })
+const result = dotenv.config({ path: './node-variables.env' })
 if (result.error) {
 	throw result.error;
 }
