@@ -1,5 +1,5 @@
 import React from 'react';
-import MyAccount from '../account';
+import MyAccount from '../MyAccount';
 import renderer from 'react-test-renderer';
 
 describe( 'Component', () => {

@@ -7,6 +7,7 @@ import LogoutButton from '../components/logged0ut';
 import LoginButton from '../components/loggedIn';
 import './nav.scss';
 import UnorderedList from './UnorderedList';
+import H1Element from './H1Element';
 
 class Nav extends Component {
 
@@ -72,11 +73,9 @@ class Nav extends Component {
 					styleName='innerNav'
 				>
 					<div styleName='navLeftColumn'>
-						<Link to='/'>
-							<h1>
-								{'SoundsVinyl'}
-							</h1>
-						</Link>
+						<H1Element
+							text='SoundsVinyl'
+						/>
 					</div>
 					<div styleName='navRightColumn'>
 						<label

@@ -6,7 +6,7 @@ import Main from './main';
 import RecordListing from './recordListing';
 import Contact from './contact';
 import AboutUs from './about';
-import MyAccount from './account';
+import MyAccount from './Account/MyAccount';
 import VinylCharts from './vinylCharts';
 import Sitemap from './sitemap';
 import Error from './error';

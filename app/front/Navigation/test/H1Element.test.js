@@ -1,5 +1,5 @@
 import React from 'react';
-import UnorderedList from '../UnorderedList';
+import H1Element from '../H1Element';
 import renderer from 'react-test-renderer';
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -8,14 +8,14 @@ describe( 'Component', () => {
 	beforeEach( () => {
 		component = renderer.create(
 			<Router>
-				<UnorderedList
-					isClicked='aClassName'
+				<H1Element
+					text='headline text'
 				/>
 			</Router>
 		);
 	});
 
-	describe( 'UnorderedList', () => {
+	describe( 'H1Element', () => {
 		it( 'should be defined', () => {
 			expect( component ).toBeDefined();
 		});
@@ -23,8 +23,8 @@ describe( 'Component', () => {
 		it( 'can be updated', () => {
 			component.update(
 				<Router>
-					<UnorderedList
-						isClicked='aDifferentClassName'
+					<H1Element
+						text='different headline text'
 					/>
 				</Router>
 			);

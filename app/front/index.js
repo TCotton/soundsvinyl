@@ -6,7 +6,6 @@ import './misc/oauth';
 import '../assets/sass/index.scss';
 import Wrapper from './Wrapper';
 
-
 /*import { setSearchText } from './actions/actions';
 import { store } from './store/configureStore';
 
@@ -19,13 +18,11 @@ store.dispatch(setSearchText('This is a new search term'));*/
 export default class rootComponent extends Component {
 	render () {
 		return (
-			<React.StrictMode>
-				<CookiesProvider>
-					<Router>
-						<Wrapper />
-					</Router>
-				</CookiesProvider>
-			</React.StrictMode>
+			<CookiesProvider>
+				<Router>
+					<Wrapper />
+				</Router>
+			</CookiesProvider>
 		);
 	}
 }

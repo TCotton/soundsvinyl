@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import moment from 'moment';
-import { homeURI } from '../helper_constants';
-import { createUsername } from '../helper_functions';
+import { homeURI } from '../../helper_constants';
+import { createUsername } from '../../helper_functions';
 import './account.scss';
+import MyAccountForm from './MyAccountForm';
 
-class MyAccount extends React.Component {
+class MyAccount extends Component {
 
 	constructor (props) {
 		super(props);
@@ -72,9 +73,7 @@ class MyAccount extends React.Component {
 		}
 	}
 
-	handleSubmitLogin (e) {
-		e.preventDefault();
-
+	handleSubmitLogin () {
 		const { loginName, loginPassword } = this.state;
 
 		if (loginName && loginPassword) {
@@ -144,44 +143,15 @@ class MyAccount extends React.Component {
 				{errorFunc()}
 
 				<section>
-					<form onSubmit={this.handleSubmitLogin}>
-						<fieldset>
-							<legend>
-								{'Login'}
-							</legend>
-
-							<label htmlFor='loginName'>
-								{'Your email'}
-							</label>
-							<input
-								id='loginName'
-								name='loginName'
-								onChange={this.handleInputChange}
-								required
-								type='text'
-								value={loginName}
-							/>
-
-							<label htmlFor='loginPassword'>
-								{'Your password'}
-							</label>
-							<input
-								id='loginPassword'
-								name='loginPassword'
-								onChange={this.handleInputChange}
-								required
-								type='password'
-								value={loginPassword}
-							/>
-
-							<input
-								name='loginSubmit'
-								type='submit'
-								value='Login'
-							/>
-
-						</fieldset>
-					</form>
+					<MyAccountForm
+						legend='Login'
+						name={loginName}
+						nameLabel='Your email'
+						onFormSubmit={this.handleSubmitLogin}
+						onInputChange={this.handleInputChange}
+						password={loginPassword}
+						passwordLabel='Your password'
+					/>
 
 					<form onSubmit={this.handleSubmitRegister}>
 						<fieldset>
