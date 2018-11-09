@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './homePageSearchForm.scss';
 
-class HomePageSearchForm extends React.Component {
+class HomePageSearchForm extends Component {
 
 	static propTypes = { onSearchInput: PropTypes.func.isRequired }
 

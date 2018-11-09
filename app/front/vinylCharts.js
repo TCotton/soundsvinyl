@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './vinylCharts.scss';
 
-class VinylCharts extends React.Component {
+class VinylCharts extends Component {
 	render () {
 		return (
 			<main styleName='vinylCharts'>

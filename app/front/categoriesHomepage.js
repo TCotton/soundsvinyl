@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import './categoriesHomepage.scss';
 import { homeURI } from '../helper_constants';
 import PageUnit from './components/pageUnit';
 import HomePageSearchForm from './homePageSearchForm';
 
-class CategoriesHomepage extends React.Component {
+class CategoriesHomepage extends Component {
 
 	constructor (props) {
 		super(props);

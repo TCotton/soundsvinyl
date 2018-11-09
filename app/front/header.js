@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './header.scss';
 
 import Turntable from '../assets/icons/Turntable.js';
 
-export default class Header extends React.Component {
+export default class Header extends Component {
 	render () {
 		return (
 			<header styleName='header'>
