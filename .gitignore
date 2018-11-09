@@ -26,3 +26,6 @@ error.log
 nodeService/thumbnails
 test/reports
 .idea
+
+nodeService/config
+dist/
