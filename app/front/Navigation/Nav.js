@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
-import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import LogoutButton from '../components/logged0ut';
 import LoginButton from '../components/loggedIn';
