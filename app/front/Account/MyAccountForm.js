@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 export default class MyAccountForm extends Component {
 
 	static propTypes = {
+		formName: PropTypes.string.isRequired,
 		legend: PropTypes.string.isRequired,
 		name: PropTypes.string.isRequired,
 		nameLabel: PropTypes.string.isRequired,
@@ -36,34 +37,37 @@ export default class MyAccountForm extends Component {
 	}
 
 	render () {
-		const { name, password, legend, nameLabel, passwordLabel } = this.props;
+		const { name, password, legend, nameLabel, passwordLabel, formName } = this.props;
 
 		return (
 
-			<form onSubmit={this.handleSubmitLogin}>
+			<form
+				name={formName}
+				onSubmit={this.handleSubmitLogin}
+			>
 				<fieldset>
 					<legend>
 						{legend}
 					</legend>
 
-					<label htmlFor='loginName'>
+					<label htmlFor={`${formName}loginName`}>
 						{nameLabel}
 					</label>
 					<input
-						id='loginName'
-						name='loginName'
+						id={`${formName}loginName`}
+						name={`${formName}loginName`}
 						onChange={this.handleInputChange}
 						required
 						type='text'
 						value={name}
 					/>
 
-					<label htmlFor='loginPassword'>
+					<label htmlFor={`${formName}loginPassword`}>
 						{passwordLabel}
 					</label>
 					<input
-						id='loginPassword'
-						name='loginPassword'
+						id={`${formName}loginPassword`}
+						name={`${formName}loginPassword`}
 						onChange={this.handleInputChange}
 						required
 						type='password'

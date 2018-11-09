@@ -13,10 +13,10 @@ class MyAccount extends Component {
 		super(props);
 
 		this.state = {
-			loginName: '',
-			loginPassword: '',
-			registerName: '',
-			registerPassword: '',
+			loginFormloginName: '',
+			loginFormloginPassword: '',
+			registerFormloginName: '',
+			registerFormloginPassword: '',
 			error: null
 		};
 
@@ -29,14 +29,14 @@ class MyAccount extends Component {
 		e.preventDefault();
 
 		const {
-			registerName,
-			registerPassword
+			registerFormloginName,
+			registerFormloginPassword
 		} = this.state;
 
-		if (registerName && registerPassword) {
+		if (registerFormloginName && registerFormloginPassword) {
 
-			const email = registerName;
-			const password = registerPassword;
+			const email = registerFormloginName;
+			const password = registerFormloginPassword;
 
 			this.setState({error: null}); // place this in a lifecycle hook
 			const username = createUsername(email);
@@ -121,7 +121,7 @@ class MyAccount extends Component {
 
 	render () {
 
-		const { loginName, error, loginPassword, registerName, registerPassword } = this.state;
+		const { loginFormloginName, error, loginFormloginPassword, registerFormloginName, registerFormloginPassword } = this.state;
 
 		const errorFunc = error ? () => {
 			return (
@@ -144,53 +144,26 @@ class MyAccount extends Component {
 
 				<section>
 					<MyAccountForm
+						formName='loginForm'
 						legend='Login'
-						name={loginName}
+						name={loginFormloginName}
 						nameLabel='Your email'
 						onFormSubmit={this.handleSubmitLogin}
 						onInputChange={this.handleInputChange}
-						password={loginPassword}
+						password={loginFormloginPassword}
 						passwordLabel='Your password'
 					/>
 
-					<form onSubmit={this.handleSubmitRegister}>
-						<fieldset>
-							<legend>
-								{'Register'}
-							</legend>
-
-							<label htmlFor='registerName'>
-								{'Your email'}
-							</label>
-							<input
-								id='registerName'
-								name='registerName'
-								onChange={this.handleInputChange}
-								required
-								type='text'
-								value={registerName}
-							/>
-
-							<label htmlFor='registerPassword'>
-								{'Your password'}
-							</label>
-							<input
-								id='registerPassword'
-								name='registerPassword'
-								onChange={this.handleInputChange}
-								required
-								type='password'
-								value={registerPassword}
-							/>
-
-							<input
-								name='registerSubmit'
-								type='submit'
-								value='Register'
-							/>
-
-						</fieldset>
-					</form>
+					<MyAccountForm
+						formName='registerForm'
+						legend='Register'
+						name={registerFormloginName}
+						nameLabel='Your email'
+						onFormSubmit={this.handleSubmitRegister}
+						onInputChange={this.handleInputChange}
+						password={registerFormloginPassword}
+						passwordLabel='Your password'
+					/>
 				</section>
 			</main>
 		)
