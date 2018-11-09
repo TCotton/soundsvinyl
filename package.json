@@ -14,7 +14,8 @@
 		"lint": "eslint app/** --ignore-pattern *.spec.js",
 		"sass-lint": "sass-lint  --config .sasslintrc '**/*.scss' --verbose --no-exit --ignore './node_modules/**/**/**/**/*.scss'",
 		"ssr": "cross-env NODE_ENV=production webpack --mode production node ./node/server.js",
-		"coverage": "nyc report --reporter=text-lcov | coveralls"
+		"coverage": "nyc report --reporter=text-lcov | coveralls",
+		"start:prod": "NODE_ENV=production serve --single dist"
 	},
 	"repository": {
 		"type": "git",

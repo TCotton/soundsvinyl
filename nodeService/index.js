@@ -16,6 +16,8 @@ const mongoose = require('mongoose');
 const mongoURI = require('./config/mongoDB');
 // const csp = require('helmet-csp')
 
+// process.env.NODE_ENV = 'production';
+
 const db = mongoose.connect(mongoURI.productionURI);
 // investigate why useNewUrlParser is important
 
@@ -160,6 +162,8 @@ if (app.get('env') === 'development') {
 
 	app.all('/', (req, res, next) => {
 
+		console.dir(app.get('env'));
+
 		if (!req.url.includes('/apiV1/')) {
 			res.sendFile(path.join(global.__base, '/src/index.html'));
 		}
@@ -192,11 +196,16 @@ function wwwRedirect (req, res, next) {
  */
 if (app.get('env') === 'production') {
 
+	console.log('yes');
+	console.dir(app.get('env'));
+
 	app.use(wwwRedirect);
 
-	app.use(express.static(global.__base + '/dist'));
+	// app.use(express.static(global.__base + '/dist'));
 
-	app.all('/*', (req, res, next) => {
+/*	app.all('/!*', (req, res, next) => {
+
+		console.dir(app.get('env'));
 
 		if (!req.url.includes('/apiV1/')) {
 			res.sendFile(path.join(global.__base, '/src/index.html'));
@@ -206,7 +215,7 @@ if (app.get('env') === 'production') {
 			next();
 		}
 
-	});
+	});*/
 
 	// set the static files location /public/img will be /img for users
 
