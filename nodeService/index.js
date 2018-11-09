@@ -201,7 +201,7 @@ if (app.get('env') === 'production') {
 		console.dir(path.join(global.__base, '/src/index.html'));
 
 		if (!req.url.includes('/apiV1/')) {
-			res.sendFile(path.join(global.__base, '/src/index.html'));
+			res.sendFile(path.join(global.__base, '/dist/index.html'));
 		}
 
 		if (req.url.includes('/apiV1/')) {
