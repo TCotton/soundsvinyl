@@ -6,8 +6,8 @@
 	"scripts": {
 		"test:back": "ava -v node/test/test.js",
 		"test:unit": "cross-env NODE_ENV=testing jest",
-		"build": "cross-env NODE_ENV=production webpack --mode production ./app/front/index.js --output ./dist/bundle.js",
-		"start:dev": "cross-env NODE_ENV=development webpack-dev-server --https --cert ./nodeService/config/server.crt --key ./nodeService/config/server.key --mode development ./app/front/index.js --open",
+		"build": "cross-env NODE_ENV=production webpack --mode production ./app/single-spa-config.js --output ./dist/bundle.js",
+		"start:dev": "cross-env NODE_ENV=development webpack-dev-server --https --cert ./nodeService/config/server.crt --key ./nodeService/config/server.key --mode development ./app/single-spa-config.js --open",
 		"start": "node --experimental-modules ./server.js",
 		"start:nodeDev": "nodemon --inspect --experimental-modules  ./server.js",
 		"start:static": "nodemon -r source-map-support/register --experimental-modules ./node/bin/www",
