@@ -16,8 +16,6 @@ const mongoose = require('mongoose');
 const mongoURI = require('./config/mongoDB');
 // const csp = require('helmet-csp')
 
-process.env.NODE_ENV = 'production';
-
 const db = mongoose.connect(mongoURI.productionURI);
 // investigate why useNewUrlParser is important
 
@@ -200,10 +198,10 @@ if (app.get('env') === 'production') {
 
 	app.all('/*', (req, res, next) => {
 
-		console.dir(app.get('env'));
+		console.dir(path.join(global.__base, '/src/index.html'));
 
 		if (!req.url.includes('/apiV1/')) {
-			res.sendFile(path.join(global.__base, '/dist/src/index.html'));
+			res.sendFile(path.join(global.__base, '/src/index.html'));
 		}
 
 		if (req.url.includes('/apiV1/')) {
