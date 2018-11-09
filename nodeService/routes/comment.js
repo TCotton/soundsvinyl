@@ -1,7 +1,6 @@
 const Comment = new require('../models/comment');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
-const secret = require('../config/salt');
 const verifyToken = require('./jwt');
 
 module.exports = (app) => {
@@ -10,7 +9,7 @@ module.exports = (app) => {
 
 		const body = req.body;
 
-		jwt.verify(req.token, secret.salt, (err, authData) => {
+		jwt.verify(req.token, process.env.salt, (err, authData) => {
 
 			if (!err) {
 
@@ -148,5 +147,3 @@ module.exports = (app) => {
 	});
 
 }
-
-

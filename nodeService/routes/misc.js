@@ -3,9 +3,9 @@ const dir = 'log';
 if (!fs.existsSync(dir)) {
 	fs.mkdirSync(dir);
 }
-const postmarkapp = require('./../config/postmark');
+const postmarkapp = process.env.postmark;
 const postmark = require('postmark');
-const client = new postmark.Client(postmarkapp.api);
+const client = new postmark.Client(postmarkapp);
 const winston = require('winston');
 
 const logger = new (winston.Logger)({

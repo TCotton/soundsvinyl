@@ -124,6 +124,7 @@
 		"cross-env": "5.2.0",
 		"css-loader": "1.0.1",
 		"deep-freeze-strict": "1.1.1",
+		"dotenv": "^6.1.0",
 		"eslint": "5.8.0",
 		"eslint-plugin-jasmine": "2.10.1",
 		"eslint-plugin-jest": "^22.0.0",

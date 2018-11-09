@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const secret = require('../config/salt');
 const User = new require('../models/user');
 const verifyToken = require('./jwt');
 
@@ -22,7 +21,7 @@ module.exports = (app) => {
 					return res.status(409).send('Email address is already registered');
 				}
 
-				bcrypt.hash(body.password, secret.saltRounds).then((hash) => {
+				bcrypt.hash(body.password, process.env.saltRounds).then((hash) => {
 
 					User.create({
 						email: body.email,
@@ -66,7 +65,7 @@ module.exports = (app) => {
 
 						if (response) {
 
-							const token = jwt.sign({...user}, secret.salt, {
+							const token = jwt.sign({...user}, process.env.salt, {
 								expiresIn: 86400 // expires in 24 hours
 							});
 
@@ -116,7 +115,7 @@ module.exports = (app) => {
 		// check if bearer is undefined
 		if (typeof bearerBody !== 'undefined') {
 			// Set the token
-			jwt.verify(bearerBody, secret.salt, (err, authData) => {
+			jwt.verify(bearerBody, process.env.salt, (err, authData) => {
 				if (!err) {
 
 					if (authData._doc.userLevel === 1) {

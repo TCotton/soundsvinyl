@@ -13,10 +13,16 @@ const cookieParser = require('cookie-parser'); // this is causing server to fail
 const logger = require('morgan');
 const compress = require('compression');
 const mongoose = require('mongoose');
-const mongoURI = require('./config/mongoDB');
 // const csp = require('helmet-csp')
 
-const db = mongoose.connect(mongoURI.productionURI);
+const dotenv = require('dotenv');
+
+const result = dotenv.config({ path: './variables.env' })
+if (result.error) {
+	throw result.error;
+}
+
+const db = mongoose.connect(process.env.mongoProductionURI);
 // investigate why useNewUrlParser is important
 
 const app = express();
@@ -25,7 +31,7 @@ if (app.get('env') === 'development') {
 	mongoose.set('debug', true) // enable logging collection methods + arguments to the console
 }
 
-const prerenderToken = './config/prerender.js';
+const prerenderToken = process.env.prerenderToken;
 
 const prerender = require('prerender-node').set('prerenderToken', prerenderToken);
 prerender.crawlerUserAgents.push('googlebot');

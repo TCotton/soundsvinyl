@@ -1,9 +1,8 @@
 const crypto = require('crypto');
-const hashing = require('../config/salt');
 
 module.exports = {
 	createPasswordHash: function(password) {
-		const hmac = crypto.createHmac('sha512', hashing.salt);
+		const hmac = crypto.createHmac('sha512', process.env.salt);
 		// change to 'binary' if you want a binary digest
 		hmac.setEncoding('hex');
 		// write in the text that you want the hmac digest for
