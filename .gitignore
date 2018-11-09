@@ -26,4 +26,3 @@ error.log
 nodeService/thumbnails
 test/reports
 .idea
-node-variables.env
