@@ -1,3 +1,9 @@
+## 1.10.0
+
+* Added env file
+
+## 1.7.0
+
 * Added Jest for unit tests
 * Added stricter linting rules
 * Added React.StrictMode  
