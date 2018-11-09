@@ -1,11 +1,24 @@
-'use strict'
-
-module.exports = {
-	presets: [
-		"@babel/preset-react",
-		"@babel/preset-env"
+{
+	"presets": [
+		[
+			"env",
+			{
+				"targets": {
+					"browsers": ["last 2 versions"]
+				}
+			}
+		],
+		"react",
+		"stage-0"
 	],
-	plugins: [
+	"env": {
+		"test": {
+			"plugins": [
+				"istanbul"
+			]
+		}
+	},
+	"plugins": [
 		"syntax-dynamic-import",
 		[
 			"react-css-modules",
@@ -20,8 +33,6 @@ module.exports = {
 				"generateScopedName": "[name]__[local]___[hash:base64:5]"
 			},
 			"transform-postcss"
-		],
-		"@babel/plugin-proposal-class-properties",
-		"@babel/plugin-proposal-object-rest-spread"
-	],
+		]
+	]
 }

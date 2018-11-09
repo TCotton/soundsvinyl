@@ -6,8 +6,8 @@
 	"scripts": {
 		"test:back": "ava -v node/test/test.js",
 		"test:unit": "cross-env NODE_ENV=testing jest",
-		"build": "cross-env NODE_ENV=production webpack --mode production ./app/single-spa-config.js --output ./dist/bundle.js",
-		"start:dev": "cross-env NODE_ENV=development webpack-dev-server --https --cert ./nodeService/config/server.crt --key ./nodeService/config/server.key --mode development ./app/single-spa-config.js --open",
+		"build": "cross-env NODE_ENV=production webpack --mode production ./app/front/index.js --output ./dist/bundle.js",
+		"start:dev": "cross-env NODE_ENV=development webpack-dev-server --https --cert ./nodeService/config/server.crt --key ./nodeService/config/server.key --mode development ./app/front/index.js --open",
 		"start": "node --experimental-modules ./server.js",
 		"start:nodeDev": "nodemon --inspect --experimental-modules  ./server.js",
 		"start:static": "nodemon -r source-map-support/register --experimental-modules ./node/bin/www",
@@ -103,11 +103,6 @@
 		"xmlhttprequest": "1.8.0"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.1.5",
-		"@babel/plugin-proposal-class-properties": "^7.1.0",
-		"@babel/plugin-proposal-object-rest-spread": "^7.0.0",
-		"@babel/preset-env": "^7.1.5",
-		"@babel/preset-react": "^7.0.0",
 		"@types/express": "4.16.0",
 		"@types/mongoose": "5.3.1",
 		"@vue/server-test-utils": "1.0.0-beta.25",
@@ -115,7 +110,7 @@
 		"autoprefixer": "9.3.1",
 		"ava": "0.25.0",
 		"babel-eslint": "10.0.1",
-		"babel-loader": "8.0.4",
+		"babel-loader": "7.1.5",
 		"babel-plugin-react-css-modules": "3.4.2",
 		"babel-plugin-syntax-dynamic-import": "6.18.0",
 		"babel-plugin-transform-postcss": "0.3.0",
