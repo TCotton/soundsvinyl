@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import CategoriesHomepage from './categoriesHomepage';
-import Header from './header';
+import Header from './Header/Header';
 
 class Main extends Component {
 

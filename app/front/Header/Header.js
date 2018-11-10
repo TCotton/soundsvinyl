@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './header.scss';
-
-import Turntable from '../assets/icons/Turntable.js';
+import HeaderLeftColumn from './HeaderLeftColumn';
 
 export default class Header extends Component {
 	render () {
@@ -12,9 +11,7 @@ export default class Header extends Component {
 					styleName='innerHeader'
 				>
 					<div styleName='headerLeftColumn'>
-						<div styleName='headerSVG'>
-							<Turntable />
-						</div>
+						<HeaderLeftColumn />
 					</div>
 					<div styleName='headerRightColumn'>
 						<h2>
