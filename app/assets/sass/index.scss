@@ -114,6 +114,13 @@ html input[disabled] {
 	display: none;
 }
 
+/* error */
+
+:global .error {
+	@include font-calculator($font_family_body, 14px);
+	color: $error;
+}
+
 /*
 * Hide only visually, but have it available for screenreaders: h5bp.com/v
 */

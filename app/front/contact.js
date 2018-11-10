@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import './contact.scss';
+import axios from 'axios';
+import { homeURI } from '../helper_constants';
+import Cookies from 'universal-cookie';
+import moment from 'moment';
 
 class Contact extends Component {
 
@@ -9,7 +13,8 @@ class Contact extends Component {
 		this.state = {
 			contactName: '',
 			contactEmail: '',
-			contactMessage: ''
+			contactMessage: '',
+			error: ''
 		};
 
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,6 +23,23 @@ class Contact extends Component {
 
 	handleSubmit (e) {
 		e.preventDefault();
+
+		const {
+			contactEmail,
+			contactName,
+			contactMessage
+		} = this.state;
+
+		axios.post(`${homeURI}/apiV1/user/add`, {contactEmail, contactName, contactMessage})
+			.then(res => {
+
+				if (res.data.error) {
+					this.setState({error: res.data.error});
+				}
+
+			}).catch((e) => {
+				this.setState();
+		})
 	}
 
 	handleInputChange (event) {
@@ -35,6 +57,7 @@ class Contact extends Component {
 	render () {
 
 		const {
+			error,
 			contactEmail,
 			contactName,
 			contactMessage
@@ -48,6 +71,12 @@ class Contact extends Component {
 				<p>
 					{'Please contact us if you any recommendations for records to review'}
 				</p>
+
+				{error &&
+					<p className='error'>
+						{error}
+					</p>
+				}
 
 				<form onSubmit={this.handleSubmit}>
 					<label htmlFor='contactName'>

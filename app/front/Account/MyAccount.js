@@ -68,7 +68,6 @@ class MyAccount extends Component {
 				if (e.toString().includes('409')) {
 					this.setState({error: 'This email address is already registered'});
 				}
-
 			})
 		}
 	}
