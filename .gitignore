@@ -28,3 +28,4 @@ test/reports
 .idea
 dist/
 node-variables.env
+variables.env

@@ -15,13 +15,13 @@ const compress = require('compression');
 const mongoose = require('mongoose');
 // const csp = require('helmet-csp')
 
-const dotenv = require('dotenv');
-
-const result = dotenv.config({ path: './variables.env' })
-if (result.error) {
-	throw result.error;
+if (fs.existsSync('./node-variables.env')) {
+	const dotenv = require('dotenv');
+	const result = dotenv.config({ path: './node-variables.env' })
+	if (result.error) {
+		throw result.error;
+	}
 }
-
 const db = mongoose.connect(process.env.mongoProductionURI);
 // investigate why useNewUrlParser is important
 

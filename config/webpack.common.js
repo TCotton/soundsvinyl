@@ -2,6 +2,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
 	target: 'web',
@@ -168,5 +169,6 @@ module.exports = {
 			chunkFilename: '[id].css'
 		}),
 		new VueLoaderPlugin(),
+		new Dotenv()
 	],
 };
