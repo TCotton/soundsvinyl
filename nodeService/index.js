@@ -17,9 +17,11 @@ const mongoose = require('mongoose');
 
 const dotenv = require('dotenv');
 
-const result = dotenv.config({ path: './node-variables.env' })
-if (result.error) {
-	throw result.error;
+if (fs.existsSync('./node-variables.env')) {
+	const result = dotenv.config({ path: './node-variables.env' })
+	if (result.error) {
+		throw result.error;
+	}
 }
 
 const db = mongoose.connect(process.env.mongoProductionURI);
