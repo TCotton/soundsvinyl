@@ -241,9 +241,10 @@ require('./routes')(app);
 require('./routes/page')(app);
 require('./routes/user')(app);
 require('./routes/comment')(app);
+require('./routes/contact')(app);
 
 // miscellaneous routes based on use
-require('./misc/logger');
+// require('./misc/logger');
 
 module.exports = app;
 

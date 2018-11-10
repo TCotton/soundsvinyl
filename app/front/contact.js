@@ -85,10 +85,9 @@ class Contact extends Component {
 					/>
 
 					<input
-						disabled
 						name='contactSubmit'
 						type='submit'
-						value='submit (temp disabled)'
+						value='submit'
 					/>
 				</form>
 			</main>
