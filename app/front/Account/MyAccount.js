@@ -74,14 +74,17 @@ class MyAccount extends Component {
 	}
 
 	handleSubmitLogin () {
-		const { loginName, loginPassword } = this.state;
+		const { loginFormloginName, loginFormloginPassword } = this.state;
 
-		if (loginName && loginPassword) {
+		if (loginFormloginName && loginFormloginPassword) {
+
+			console.dir(loginFormloginName);
+			console.dir(loginFormloginPassword);
 
 			this.setState({error: null}); // place this in a lifecycle hook
 			// `user/add`
 
-			axios.post(`${homeURI}/apiV1/user/find`, {email: loginName, password: loginPassword})
+			axios.post(`${homeURI}/apiV1/user/find`, {email: loginFormloginName, password: loginFormloginPassword})
 				.then(res => {
 
 					if (res.data.error) {
