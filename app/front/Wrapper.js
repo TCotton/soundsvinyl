@@ -10,7 +10,7 @@ import MyAccount from './Account/MyAccount';
 import VinylCharts from './vinylCharts';
 import Sitemap from './sitemap';
 import Error from './error';
-import Footer from './footer';
+import Footer from './Footer/Footer';
 import ErrorBoundary from './errorBoundaries/ErrorBoundary';
 
 export default class Wrapper extends Component {

@@ -78,9 +78,6 @@ class MyAccount extends Component {
 
 		if (loginFormloginName && loginFormloginPassword) {
 
-			console.dir(loginFormloginName);
-			console.dir(loginFormloginPassword);
-
 			this.setState({error: null}); // place this in a lifecycle hook
 			// `user/add`
 

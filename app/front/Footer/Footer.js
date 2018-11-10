@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import './footer.scss';
 import cn from 'classnames';
+import FooterUnorderedList from './FooterUnorderedList';
 
 class Footer extends Component {
 	render () {
@@ -20,26 +20,7 @@ class Footer extends Component {
 						</p>
 					</div>
 					<div styleName='footerRightColumn'>
-						<ul>
-							<Link to='/vinyl-singles-top-30-chart'>
-								<li>
-									{'Current top 30 vinyl singles chart'}
-								</li>
-							</Link>
-							<Link to='/sitemap'>
-								<li>
-									{'Sitemap'}
-								</li>
-							</Link>
-							<a
-								href='https://github.com/TCotton/soundsvinyl'
-								rel='noreferrer'
-							>
-								<li>
-									{'Code (CC BY-NC 4.0 license)'}
-								</li>
-							</a>
-						</ul>
+						<FooterUnorderedList />
 					</div>
 				</div>
 			</footer>
