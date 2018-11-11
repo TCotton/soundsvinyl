@@ -1,7 +1,6 @@
 'use strict';
 const fs = require( 'fs' );
 const dir = 'log';
-const cors = require( 'cors' );
 
 if( !fs.existsSync( dir ) ) {
 	fs.mkdirSync( dir );
@@ -21,8 +20,7 @@ const logger = winston.createLogger({
 
 module.exports = ( app ) => {
 
-	app.options( '/apiV1/sendmail' , cors()) // enable pre-flight request for DELETE request
-	app.post( '/apiV1/sendmail' , cors(), ( req, res ) => {
+	app.post( '/apiV1/sendmail' , ( req, res ) => {
 
 		const ipAddress = req.headers[ 'x-forwarded-for' ] || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
 
