@@ -1,8 +1,12 @@
-## 1.10.0
+## 1.13.0 (November 11, 2018)
+
+* Working contact form
+
+## 1.10.0 (November 10, 2018)
 
 * Added env file
 
-## 1.7.0
+## 1.7.0 (November 10, 2018)
 
 * Added Jest for unit tests
 * Added stricter linting rules
