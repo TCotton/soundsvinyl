@@ -216,3 +216,6 @@ html input[disabled] {
 	}
 }
 
+:global .hide {
+	display: none;
+}

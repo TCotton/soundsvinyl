@@ -1,16 +1,16 @@
 import React from 'react';
-import Header from '../contact';
+import Contact from '../Contact';
 import renderer from 'react-test-renderer';
 
 describe( 'Component', () => {
 	let component;
 	beforeEach( () => {
 		component = renderer.create(
-			<Header />
+			<Contact />
 		);
 	});
 
-	describe( 'Header', () => {
+	describe( 'Contact', () => {
 		it( 'should be defined', () => {
 			expect( component ).toBeDefined();
 		});

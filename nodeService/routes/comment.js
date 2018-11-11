@@ -3,19 +3,9 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const verifyToken = require('./jwt');
 
-if (fs.existsSync('./node-variables.env')) {
-	const dotenv = require('dotenv');
-	const result = dotenv.config({ path: './node-variables.env' })
-	if (result.error) {
-		throw result.error;
-	}
-}
-
 module.exports = (app) => {
 
 	app.route('/apiV1/comment/add').post(verifyToken, (req, res) => {
-
-		debugger;
 
 		const body = req.body;
 

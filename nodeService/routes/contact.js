@@ -1,7 +1,3 @@
-/**
- * Created by awalpole on 30/04/2014.
- */
-
 'use strict';
 const fs = require( 'fs' );
 const dir = 'log';
@@ -36,22 +32,22 @@ module.exports = ( app ) => {
 			'From': 'me@andywalpole.me',
 			'To': 'me@andywalpole.me',
 			'Subject': 'Contact from SoundsVinyl',
-			'TextBody': message
+			'HtmlBody': message
 		}, function( error ) {
 			if( error ) {
 
 				logger.log( 'info', 'Unable to send (content form notification) via postmark: ' + error.message );
 
-				res.json( {
-					'success': 'true',
+				res.json({
+					'success': true,
 					'message': 'There has been a problem sending this email. The administrators have been informed'
 				});
 				return;
 			}
 
-			res.json( {
-				'success': 'true',
-				'message': 'Thank you for taking the time to fill out the form. I will contact you as soon as I can!'
+			res.json({
+				'success': true,
+				'message': 'Thank you for taking the time to fill out the form. We will contact you as soon as we can can!'
 			});
 		});
 	});

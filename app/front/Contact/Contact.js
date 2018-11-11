@@ -1,49 +1,53 @@
 import React, { Component } from 'react';
 import './contact.scss';
 import axios from 'axios';
-import { homeURI } from '../helper_constants';
+import { homeURI } from '../../helper_constants';
 
 class Contact extends Component {
 
-	constructor (props) {
+	constructor ( props ) {
 		super( props );
 
 		this.state = {
 			contactName: '',
 			contactEmail: '',
 			contactMessage: '',
-			error: '',
-			message: ''
+			error: null,
+			message: null,
+			zipcode: ''
 		};
 
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.handleInputChange = this.handleInputChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind( this );
+		this.handleInputChange = this.handleInputChange.bind( this );
 	}
 
-	handleSubmit (e) {
+	handleSubmit ( e ) {
 		e.preventDefault();
 
 		const {
 			contactEmail,
 			contactName,
 			contactMessage,
-			message
 		} = this.state;
 
-		axios.post(`${homeURI}/apiV1/user/add`, {contactEmail, contactName, contactMessage})
-			.then(res => {
+		axios.post( `${homeURI}/apiV1/sendmail`, { contactEmail, contactName, contactMessage } )
+			.then( res => {
 
-				if (res.data.error) {
-					this.setState({error: res.data.error});
+				if( res.data.error ) {
+					this.setState( { error: res.data.error } );
 				}
 
-				if (res) {
-					console.dir(res);
+				if( res ) {
+					if( res.data.success ) {
+						this.setState( { message: res.data.message } , () => {
+							document.querySelector('body').scrollTop = 0;
+						});
+					}
 				}
 
-			}).catch((e) => {
-				this.setState({error: e.toString()});
-		})
+			} ).catch( ( e ) => {
+			this.setState( { error: e.toString() } );
+		} )
 	}
 
 	handleInputChange (event) {
@@ -61,10 +65,12 @@ class Contact extends Component {
 	render () {
 
 		const {
+			message,
 			error,
 			contactEmail,
 			contactName,
-			contactMessage
+			contactMessage,
+			zipcode,
 		} = this.state;
 
 		return (
@@ -82,14 +88,22 @@ class Contact extends Component {
 					</p>
 				}
 
+				{message &&
+				<p className='message'>
+					{message}
+				</p>
+				}
+
 				<form onSubmit={this.handleSubmit}>
 					<label htmlFor='contactName'>
 						{'Your name'}
 					</label>
 					<input
 						id='contactName'
+						maxLength='254'
 						name='contactName'
 						onChange={this.handleInputChange}
+						required
 						type='text'
 						value={contactName}
 					/>
@@ -99,6 +113,7 @@ class Contact extends Component {
 					</label>
 					<input
 						id='contactEmail'
+						maxLength='254'
 						name='contactEmail'
 						onChange={this.handleInputChange}
 						required
@@ -111,6 +126,8 @@ class Contact extends Component {
 					</label>
 					<textarea
 						id='contactMessage'
+						maxLength='500'
+						minLength='10'
 						name='contactMessage'
 						onChange={this.handleInputChange}
 						required
@@ -118,10 +135,34 @@ class Contact extends Component {
 					/>
 
 					<input
+						disabled={message}
 						name='contactSubmit'
 						type='submit'
 						value='submit'
 					/>
+
+					<span
+						aria-hidden='true'
+						className='hide'
+					>
+						<label
+							aria-hidden='true'
+							className='hide'
+							htmlFor='zipcode'
+						>
+							{'Your zipcode'}
+						</label>
+						<input
+							aria-hidden='true'
+							className='hide'
+							id='zipcode'
+							name='zipcode'
+							onChange={this.handleInputChange}
+							type='text'
+							value={zipcode}
+						/>
+					</span>
+
 				</form>
 			</main>
 		)

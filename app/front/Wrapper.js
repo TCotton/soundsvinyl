@@ -4,7 +4,7 @@ import Nav from './Navigation/Nav';
 import { Route, Switch } from 'react-router-dom';
 import Main from './main';
 import RecordListing from './recordListing';
-import Contact from './contact';
+import Contact from './Contact/Contact';
 import AboutUs from './about';
 import MyAccount from './Account/MyAccount';
 import VinylCharts from './vinylCharts';
