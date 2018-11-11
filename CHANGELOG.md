@@ -1,3 +1,7 @@
+## 1.14.0 (November 11, 2018)
+
+* Working google analytics script
+
 ## 1.13.0 (November 11, 2018)
 
 * Working contact form
