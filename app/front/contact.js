@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import './contact.scss';
 import axios from 'axios';
 import { homeURI } from '../helper_constants';
-import Cookies from 'universal-cookie';
-import moment from 'moment';
 
 class Contact extends Component {
 
@@ -14,7 +12,8 @@ class Contact extends Component {
 			contactName: '',
 			contactEmail: '',
 			contactMessage: '',
-			error: ''
+			error: '',
+			message: ''
 		};
 
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,7 +26,8 @@ class Contact extends Component {
 		const {
 			contactEmail,
 			contactName,
-			contactMessage
+			contactMessage,
+			message
 		} = this.state;
 
 		axios.post(`${homeURI}/apiV1/user/add`, {contactEmail, contactName, contactMessage})
@@ -37,8 +37,12 @@ class Contact extends Component {
 					this.setState({error: res.data.error});
 				}
 
+				if (res) {
+					console.dir(res);
+				}
+
 			}).catch((e) => {
-				this.setState();
+				this.setState({error: e.toString()});
 		})
 	}
 

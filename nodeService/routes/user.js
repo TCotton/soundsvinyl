@@ -3,6 +3,12 @@ const bcrypt = require('bcryptjs');
 const User = new require('../models/user');
 const verifyToken = require('./jwt');
 
+const fs = require('fs');
+const dir = 'log';
+if (!fs.existsSync(dir)) {
+	fs.mkdirSync(dir);
+}
+
 module.exports = (app) => {
 
 	app.route('/apiV1/user/add').post((req, res) => {
