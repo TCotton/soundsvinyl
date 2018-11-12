@@ -1,3 +1,7 @@
+## 1.15.0 (November 12, 2018)
+
+* Adds working HTML sitemap
+
 ## 1.14.0 (November 11, 2018)
 
 * Working google analytics script
