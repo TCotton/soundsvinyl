@@ -1,3 +1,7 @@
+## 1.16.0 (November 12, 2018)
+
+* Added robots.txt and sitemap.xml
+
 ## 1.15.0 (November 12, 2018)
 
 * Adds working HTML sitemap
