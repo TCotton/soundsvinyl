@@ -1,13 +1,10 @@
 const RateLimit = require('express-rate-limit');
-const helmet = require('helmet');
 const {RateLimiterMemory} = require('rate-limiter-flexible');
 
 module.exports = (app) => {
 
 	// security advice used from https://medium.com/@nodepractices/were-under-attack-23-node-js-security-best-practices-e33c146cb87d
 	// do I need both express-rate-limit && rate-limiter-flexible??
-
-	app.use(helmet());
 
 	app.enable('trust proxy'); // only if you're behind a reverse proxy (Heroku, Bluemix, AWS if you use an ELB, custom Nginx setup, etc)
 
