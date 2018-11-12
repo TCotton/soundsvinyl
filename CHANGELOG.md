@@ -1,3 +1,7 @@
+## 1.17.0
+
+* Fixed bugs in robots.txt and sitemap.xml
+
 ## 1.16.0 (November 12, 2018)
 
 * Added robots.txt and sitemap.xml
