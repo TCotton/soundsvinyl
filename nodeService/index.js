@@ -3,6 +3,7 @@
 // there's too much churn
 const express = require('express');
 const https = require('https');
+const http = require('http');
 const fs = require('fs');
 // const createError = require('http-errors');
 const path = require('path');
@@ -212,7 +213,7 @@ if (app.get('env') === 'development' &&
 
 if (app.get('env') === 'production') {
 
-	spdy.createServer(app).listen(app.get('port'), () => {
+	http.createServer(app).listen(app.get('port'), () => {
 		console.log('Express server listening on port ' + app.get('port'));
 	});
 
