@@ -2,7 +2,6 @@
 // temp turn off eslint rules
 // there's too much churn
 const express = require('express');
-const helmet = require('helmet')
 const https = require('https');
 const fs = require('fs');
 // const createError = require('http-errors');
@@ -27,7 +26,6 @@ const db = mongoose.connect(process.env.mongoProductionURI);
 // investigate why useNewUrlParser is important
 
 const app = express();
-app.use(helmet())
 
 if (app.get('env') === 'development') {
 	mongoose.set('debug', true) // enable logging collection methods + arguments to the console
