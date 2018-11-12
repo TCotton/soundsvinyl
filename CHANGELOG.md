@@ -1,3 +1,7 @@
+## 1.19.0
+
+* Add SPDY npm and optimized images
+
 ## 1.17.0
 
 * Fixed bugs in robots.txt and sitemap.xml
