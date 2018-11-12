@@ -2,7 +2,7 @@
 // temp turn off eslint rules
 // there's too much churn
 const express = require('express');
-const http = require('http');
+const helmet = require('helmet')
 const https = require('https');
 const fs = require('fs');
 // const createError = require('http-errors');
@@ -13,6 +13,7 @@ const cookieParser = require('cookie-parser'); // this is causing server to fail
 const logger = require('morgan');
 const compress = require('compression');
 const mongoose = require('mongoose');
+const spdy = require('spdy');
 // const csp = require('helmet-csp')
 
 if (fs.existsSync('./node-variables.env')) {
@@ -26,6 +27,7 @@ const db = mongoose.connect(process.env.mongoProductionURI);
 // investigate why useNewUrlParser is important
 
 const app = express();
+app.use(helmet())
 
 if (app.get('env') === 'development') {
 	mongoose.set('debug', true) // enable logging collection methods + arguments to the console
@@ -212,7 +214,7 @@ if (app.get('env') === 'development' &&
 
 if (app.get('env') === 'production') {
 
-	http.createServer(app).listen(app.get('port'), () => {
+	spdy.createServer(app).listen(app.get('port'), () => {
 		console.log('Express server listening on port ' + app.get('port'));
 	});
 

@@ -176,6 +176,7 @@ a:active {
 			list-style: none;
 			li {
 				@include font-calculator($font_family_body, 14px, 0);
+				font-weight: 500;
 			}
 			a {
 				display: inline-block;
