@@ -146,6 +146,10 @@ if (app.get('env') === 'production') {
 
 	app.use(express.static(global.__base + '/dist'));
 
+	app.get('/robots.txt', (req, res) => {
+		res.sendFile(path.join(global.__base, '/dist/robots.txt'));
+	})
+
 	app.all('/*', (req, res, next) => {
 
 		if (!req.url.includes('/apiV1/')) {
