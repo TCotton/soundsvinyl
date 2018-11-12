@@ -66,62 +66,6 @@ prerender.crawlerUserAgents.push('Google Page Speed');
 prerender.crawlerUserAgents.push('Qwantify');
 app.use(prerender);
 
-/**
- *  <meta http-equiv="Content-Security-Policy" content="default-src *; img-src * 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *">
- */
-/*app.use(csp({
-	// Specify directives as normal.
-	directives: {
-		defaultSrc: [
-			"'self'"
-		],
-		scriptSrc: [
-			"'self'",
-			"'unsafe-inline'",
-			'https://cdn.polyfill.io/v2/polyfill.min.js',
-			'https://www.google-analytics.com'
-		],
-		styleSrc: [
-			'https://fonts.googleapis.com',
-			'https://fonts.gstatic.com',
-			"'self'",
-			"'unsafe-inline'"
-		],
-		mediaSrc: [
-			'https://all-resources.org.uk',
-			'https://u2f3k8w8.stackpathcdn.com'
-		],
-		fontSrc: ["'self'", 'https://fonts.gstatic.com', 'data:'],
-		imgSrc: ["'self'", 'data:', 'www.google-analytics.com'],
-		sandbox: ['allow-forms', 'allow-scripts'],
-		reportUri: './report-violation',
-		objectSrc: ["'none'"],
-		upgradeInsecureRequests: true,
-		workerSrc: false  // This is not set.
-	},
-
-	// This module will detect common mistakes in your directives and throw errors
-	// if it finds any. To disable this, enable "loose mode".
-	loose: false,
-
-	// Set to true if you only want browsers to report errors, not block them.
-	// You may also set this to a function(req, res) in order to decide dynamically
-	// whether to use reportOnly mode, e.g., to allow for a dynamic kill switch.
-	reportOnly: true,
-
-	// Set to true if you want to blindly set all headers: Content-Security-Policy,
-	// X-WebKit-CSP, and X-Content-Security-Policy.
-	setAllHeaders: false,
-
-	// Set to true if you want to disable CSP on Android where it can be buggy.
-	disableAndroid: false,
-
-	// Set to false if you want to completely disable any user-agent sniffing.
-	// This may make the headers less compatible but it will be much faster.
-	// This defaults to `true`.
-	browserSniff: true
-}))*/
-
 app.set('view engine', 'bug');
 app.use(express.static(__dirname + '/public'));
 
@@ -151,10 +95,7 @@ const options = {
 }
 
 const htmlPath = path.join(__dirname, 'thumbnails');
-console.dir(htmlPath);
-
 app.use(express.static(htmlPath, options));
-
 app.use(favicon(path.join(__dirname, 'files', 'favicon.ico')));
 
 app.use((req, res, next) => {
@@ -244,7 +185,7 @@ require('./routes/comment')(app);
 require('./routes/contact')(app);
 
 // miscellaneous routes based on use
-// require('./misc/logger');
+require('./misc/content-security-policy.js')(app);
 
 module.exports = app;
 
