@@ -103,6 +103,8 @@ app.use((req, res, next) => {
 	next();
 });
 
+require('./routes/sitemap')(app);
+
 if (app.get('env') === 'development') {
 
 	app.all('/', (req, res, next) => {
