@@ -604,8 +604,22 @@ p.videoErrorBoundary__videoErrorBoundary___1O4KK {
 .vinylCharts__vinylCharts___1zgYY {
   background: transparent; }
 
-.sitemap__sitemap___1z_p_ {
-  background: transparent; }
+.sitemap__line-through___25Ggx {
+  text-decoration: line-through;
+  user-select: none; }
+
+.sitemap__sitemap___2mkRz {
+  margin-bottom: 50px; }
+
+.sitemap__sitemapUnorderedList___14wVG {
+  list-style: none; }
+
+.sitemap__sitemapItem___34w4U {
+  font-size: 1.4em;
+  font-family: Roboto Mono, monospace;
+  margin-bottom: 0;
+  color: #6B6A6A;
+  line-height: 1.5em; }
 
 .footer__line-through___2WBHC {
   text-decoration: line-through;
