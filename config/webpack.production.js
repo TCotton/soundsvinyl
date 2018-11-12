@@ -66,6 +66,10 @@ module.exports = webpackMerge(commonConfig, {
 			{
 				from: global.__base + '/app/assets/graphics',
 				to: global.__base + '/dist/app/assets/graphics'
+			},
+			{
+				from: global.__base + '/src/robots.txt',
+				to: global.__base + '/dist/robots.txt'
 			}
 		]),
 
