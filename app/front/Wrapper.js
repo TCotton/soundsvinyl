@@ -8,7 +8,7 @@ import Contact from './Contact/Contact';
 import AboutUs from './about';
 import MyAccount from './Account/MyAccount';
 import VinylCharts from './vinylCharts';
-import Sitemap from './sitemap';
+import Sitemap from './Sitemap/Sitemap';
 import Error from './error';
 import Footer from './Footer/Footer';
 import ErrorBoundary from './errorBoundaries/ErrorBoundary';
@@ -46,10 +46,12 @@ export default class Wrapper extends Component {
 						component={VinylCharts}
 						exact path='/vinyl-singles-top-30-chart'
 					/>
-					<Route
-						component={Sitemap}
-						exact path='/sitemap'
-					/>
+					<ErrorBoundary>
+						<Route
+							component={Sitemap}
+							exact path='/sitemap'
+						/>
+					</ErrorBoundary>
 					<Route
 						component={Error}
 						path=''

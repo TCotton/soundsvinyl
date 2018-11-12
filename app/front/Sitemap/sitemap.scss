@@ -1,0 +1,15 @@
+@import '../../assets/sass/tools';
+
+.sitemap {
+	margin-bottom: 50px;
+}
+
+.sitemapUnorderedList {
+	list-style: none;
+}
+
+.sitemapItem {
+	@include font-calculator($font_family_body, 14px, 0);
+	color: $paragraphColour;
+	line-height: 1.5em;
+}

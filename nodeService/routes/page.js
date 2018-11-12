@@ -67,6 +67,21 @@ module.exports = (app) => {
 			});
 	});
 
+
+	app.route('/apiV1/page/getall').get((req, res) => {
+
+		Page.find({}).sort({'date': -1})
+			.exec((err, pages) => {
+
+				if (!err) {
+					res.json(pages);
+				} else {
+					return new Error(err.toString());
+				}
+
+			});
+	});
+
 	app.route('/apiV1/page/getadmin').get((req, res) => {
 
 		Page.find({}, (err, pages) => {
