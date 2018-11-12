@@ -13,8 +13,6 @@ const cookieParser = require('cookie-parser'); // this is causing server to fail
 const logger = require('morgan');
 const compress = require('compression');
 const mongoose = require('mongoose');
-const spdy = require('spdy');
-// const csp = require('helmet-csp')
 
 if (fs.existsSync('./node-variables.env')) {
 	const dotenv = require('dotenv');
