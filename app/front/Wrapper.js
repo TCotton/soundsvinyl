@@ -12,6 +12,7 @@ import Sitemap from './Sitemap/Sitemap';
 import Error from './error';
 import Footer from './Footer/Footer';
 import ErrorBoundary from './errorBoundaries/ErrorBoundary';
+import CommentsPolicy from './Comments/CommentsPolicy';
 
 export default class Wrapper extends Component {
 
@@ -46,6 +47,12 @@ export default class Wrapper extends Component {
 						component={VinylCharts}
 						exact path='/vinyl-singles-top-30-chart'
 					/>
+					<ErrorBoundary>
+						<Route
+							component={CommentsPolicy}
+							exact path='/comments-policy'
+						/>
+					</ErrorBoundary>
 					<ErrorBoundary>
 						<Route
 							component={Sitemap}

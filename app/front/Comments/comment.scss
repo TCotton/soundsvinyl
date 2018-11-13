@@ -1,5 +1,22 @@
 @import '../../assets/sass/tools';
 
+.commentsPolicy {
+	margin: 50px 0 75px 0;
+
+	h2 {
+		@include font-calculator($font_family_header, 45px);
+		color: $secondHeaderColour;
+		line-height: 1.2em;
+	}
+
+	p {
+		@include font-calculator($font_family_body, 16px, 1);
+		color: $paragraphColour;
+		line-height: 1.75em;
+	}
+}
+
+
 .comment {
 	display: grid;
 	grid-template-columns: 38.197% 61.803%;
