@@ -6,7 +6,7 @@ import { getCookieValue } from '../helper_functions';
 import Video from './components/video';
 import MetaHeader from './components/metaHeader';
 import VideoErrorBoundary from './errorBoundaries/videoErrorBoundary';
-import CommentsForm from './Comments/CommentsForm';
+import Disqus from './Disqus/Disqus';
 
 import './recordListing.scss';
 import PropTypes from 'prop-types';
@@ -107,12 +107,8 @@ class RecordListing extends Component {
 			descriptionTwo,
 			descriptionThree,
 			videoLink,
-			disabled,
-			success,
-			comments,
 			categories,
 			loaded,
-			commentsMessage
 		} = this.state;
 
 		let videoComponent;
@@ -205,14 +201,13 @@ class RecordListing extends Component {
 						</ul>
 					</section>
 
-					<CommentsForm
-						comments={comments}
-						commentsMessage={commentsMessage}
-						disabled={disabled}
-						onFormSubmit={this.handleSubmit}
-						onInputChange={this.handleInputChange}
-						success={success}
-					/>
+					<section>
+						<Disqus
+							id={window.location.pathname.split('/').filter(function(el){ return !!el; }).pop()}
+							path={window.location.pathname}
+							title={title.toString()}
+						/>
+					</section>
 
 				</main>
 			)
