@@ -121,6 +121,10 @@ if (app.get('env') === 'development') {
 }
 
 /**
+ * 	<meta http-equiv="Content-Security-Policy" content="default-src *; img-src * 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *">
+ */
+
+/**
  * redirect www to non-www domain
  * @param req
  * @param res
