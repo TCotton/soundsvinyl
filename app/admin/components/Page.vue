@@ -228,6 +228,8 @@
 					descriptionOne: '',
 					descriptionTwo: '',
 					descriptionThree: '',
+					descriptionFour: '',
+					descriptionFive: '',
 					categories: '',
 					date: '',
 					editUserId: '',

@@ -33,6 +33,8 @@ module.exports = (app) => {
 			descriptionOne: body.descriptionOne,
 			descriptionTwo: body.descriptionTwo,
 			descriptionThree: body.descriptionThree,
+			descriptionFour: body.descriptionFour,
+			descriptionFive: body.descriptionFive,
 			userId: body.userId,
 			date: body.date ? body.date : Date.now(),
 			updated: body.updated ? body.updated : Date.now(),

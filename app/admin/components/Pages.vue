@@ -18,6 +18,8 @@
 					<th scope="col">Description Paragraph One</th>
 					<th scope="col">Description Paragraph Two</th>
 					<th scope="col">Description Paragraph Three</th>
+					<th scope="col">Description Paragraph Four</th>
+					<th scope="col">Description Paragraph Five</th>
 					<th scope="col">Date created</th>
 					<th scope="col">Edit</th>
 					<th scope="col">Delete</th>
@@ -33,6 +35,8 @@
 					<td>{{ page.descriptionOne }}</td>
 					<td>{{ page.descriptionTwo }}</td>
 					<td>{{ page.descriptionThree }}</td>
+					<td>{{ page.descriptionFour }}</td>
+					<td>{{ page.descriptionFive }}</td>
 					<td>{{ page.date }}</td>
 					<td>
 						<router-link :to="{ name: 'Page', params: { id: page._id }}">Edit</router-link>
