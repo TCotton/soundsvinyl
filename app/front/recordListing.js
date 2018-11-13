@@ -2,10 +2,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
-import { Link } from 'react-router-dom'
 import { getCookieValue } from '../helper_functions';
 import Video from './components/video';
-import Comment from './comment';
 import MetaHeader from './components/metaHeader';
 import VideoErrorBoundary from './errorBoundaries/videoErrorBoundary';
 import CommentsForm from 'Comments/CommentsForm';
@@ -16,8 +14,8 @@ import { homeURI } from '../helper_constants';
 
 class RecordListing extends Component {
 
-	constructor (props) {
-		super(props);
+	constructor ( props ) {
+		super( props );
 
 		this.state = {
 			loaded: false,
@@ -34,71 +32,69 @@ class RecordListing extends Component {
 			comments: Array,
 		}
 
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.handleInputChange = this.handleInputChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind( this );
+		this.handleInputChange = this.handleInputChange.bind( this );
 	}
 
 	componentDidMount () {
 		const id = this.props.match.params.id; // eslint-disable-line
 
-		axios.get(`${homeURI}/apiV1/page/get/${id}`)
-			.then(res => {
+		axios.get( `${homeURI}/apiV1/page/get/${id}` )
+			.then( res => {
 
-				this.setState({loaded: true});
-				this.setState({title: res.data.title});
-				this.setState({subTitle: res.data.subTitle});
-				this.setState({videoLink: res.data.videoLink});
-				this.setState({descriptionOne: res.data.descriptionOne});
-				this.setState({descriptionTwo: res.data.descriptionTwo});
-				this.setState({descriptionThree: res.data.descriptionThree});
-				this.setState({categories: res.data.categories});
-			});
+				this.setState( { loaded: true } );
+				this.setState( { title: res.data.title } );
+				this.setState( { subTitle: res.data.subTitle } );
+				this.setState( { videoLink: res.data.videoLink } );
+				this.setState( { descriptionOne: res.data.descriptionOne } );
+				this.setState( { descriptionTwo: res.data.descriptionTwo } );
+				this.setState( { descriptionThree: res.data.descriptionThree } );
+				this.setState( { categories: res.data.categories } );
+			} );
 
-		axios.get(`${homeURI}/apiV1/page/comment/${id}`).then(res => {
+		axios.get( `${homeURI}/apiV1/page/comment/${id}` ).then( res => {
 
-			if (Array.isArray(res.data) && res.data.length > 0) {
-				this.setState({comments: res.data});
+			if( Array.isArray( res.data ) && res.data.length > 0 ) {
+				this.setState( { comments: res.data } );
 			}
 
-		});
+		} );
 
-		if (this.checkTokenCookie('token')) {
-			this.setState({disabled: false}); // eslint-disable-line
+		if( this.checkTokenCookie( 'token' ) ) {
+			this.setState( { disabled: false } ); // eslint-disable-line
 		}
 	}
 
 	checkTokenCookie () {
-		return getCookieValue('token');
+		return getCookieValue( 'token' );
 	}
 
-	handleSubmit (e) {
-		e.preventDefault();
-
+	handleSubmit () {
 		const { content } = this.state;
 		const articleId = this.props.match.params.id; // eslint-disable-line
 
-		if (content && content.length > 0) {
+		if( content && content.length > 0 ) {
 
-			axios.post(`${homeURI}/apiV1/comment/add`, {content, articleId})
-				.then(res => {
-					if (res.status === 200 && res.data) {
-						this.setState({success: true});
-						this.setState({commentsMessage: ''});
+			axios.post( `${homeURI}/apiV1/comment/add`, { content, articleId } )
+				.then( res => {
+					if( res.status === 200 && res.data ) {
+						this.setState( { success: true } );
+						this.setState( { commentsMessage: '' } );
 					}
-				});
+				} );
 		}
 
 	}
 
-	handleInputChange (event) {
+	handleInputChange ( event ) {
 
 		const target = event.target;
 		const value = target.value;
 		const name = target.name;
 
-		this.setState({
-			[name]: value
-		});
+		this.setState( {
+			[ name ]: value
+		} );
 
 	}
 
@@ -121,7 +117,7 @@ class RecordListing extends Component {
 
 		let videoComponent;
 
-		if (videoLink !== '') {
+		if( videoLink !== '' ) {
 			videoComponent = () => {
 				return (
 					<VideoErrorBoundary>
@@ -133,28 +129,28 @@ class RecordListing extends Component {
 
 		let metaHeaderComponent;
 
-		if (title !== '' && title.length > 1) {
+		if( title !== '' && title.length > 1 ) {
 			metaHeaderComponent = <MetaHeader title={title} />
 		}
 
 		let categoryList;
 
-		if (categories && categories.length > 1) {
-			const categoryArray = categories.reduce((accumulator, currentValue) => {
-				return accumulator.concat(currentValue.name);
-			}, []);
+		if( categories && categories.length > 1 ) {
+			const categoryArray = categories.reduce( ( accumulator, currentValue ) => {
+				return accumulator.concat( currentValue.name );
+			}, [] );
 
-			categoryList = categoryArray.map((element) => {
+			categoryList = categoryArray.map( ( element ) => {
 				return (
 					<li key={element}>
 						{element}
 					</li>
 				)
-			});
+			} );
 
 		}
 
-		if (!loaded) {
+		if( !loaded ) {
 			return null;
 		} else {
 
@@ -163,12 +159,12 @@ class RecordListing extends Component {
 					<header styleName='record'>
 
 						<h2
-							className={(title ? 'display' : 'hide')}
-							dangerouslySetInnerHTML={{__html: title}}
+							className={( title ? 'display' : 'hide' )}
+							dangerouslySetInnerHTML={{ __html: title }}
 						/>
 						<p
-							className={(subTitle ? 'display' : 'hide')}
-							dangerouslySetInnerHTML={{__html: subTitle}}
+							className={( subTitle ? 'display' : 'hide' )}
+							dangerouslySetInnerHTML={{ __html: subTitle }}
 						/>
 
 						{metaHeaderComponent}
@@ -186,22 +182,22 @@ class RecordListing extends Component {
 					<section styleName='description'>
 
 						<p
-							className={(descriptionOne ? 'display' : 'hide')}
-							dangerouslySetInnerHTML={{__html: descriptionOne}}
+							className={( descriptionOne ? 'display' : 'hide' )}
+							dangerouslySetInnerHTML={{ __html: descriptionOne }}
 						/>
 						<p
-							className={(descriptionTwo ? 'display' : 'hide')}
-							dangerouslySetInnerHTML={{__html: descriptionTwo}}
+							className={( descriptionTwo ? 'display' : 'hide' )}
+							dangerouslySetInnerHTML={{ __html: descriptionTwo }}
 						/>
 						<p
-							className={(descriptionThree ? 'display' : 'hide')}
-							dangerouslySetInnerHTML={{__html: descriptionThree}}
+							className={( descriptionThree ? 'display' : 'hide' )}
+							dangerouslySetInnerHTML={{ __html: descriptionThree }}
 						/>
 
 					</section>
 
 					<section
-						className={(categories ? 'display' : 'hide')}
+						className={( categories ? 'display' : 'hide' )}
 						styleName='categories'
 					>
 						<ul>
@@ -209,7 +205,14 @@ class RecordListing extends Component {
 						</ul>
 					</section>
 
-					<CommentsForm />
+					<CommentsForm
+						comments={comments}
+						commentsMessage={commentsMessage}
+						disabled={disabled}
+						onFormSubmit={this.handleSubmit}
+						onInputChange={this.handleInputChange}
+						success={success}
+					/>
 
 				</main>
 			)

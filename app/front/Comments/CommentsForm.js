@@ -15,12 +15,34 @@ export default class CommentsForm extends Component {
 		commentsMessage: PropTypes.string.isRequired,
 		disabled: PropTypes.bool.isRequired,
 		onFormSubmit: PropTypes.func.isRequired,
-		onInputChange: PropTypes.func.isRequired
+		onInputChange: PropTypes.func.isRequired,
+		success: PropTypes.bool.isRequired,
 	};
+
+	constructor (props) {
+		super(props);
+
+		this.handleSubmitLogin = this.handleSubmitLogin.bind( this );
+		this.handleInputChange = this.handleInputChange.bind( this );
+	}
+
+	handleSubmitLogin(event) {
+		event.preventDefault();
+
+		const { onFormSubmit } = this.props;
+		onFormSubmit();
+	}
+
+	handleInputChange(event) {
+		event.preventDefault();
+
+		const { onInputChange } = this.props;
+		onInputChange(event);
+	}
 
 	render () {
 
-		const { commentsMessage, comments, disabled } = this.props;
+		const { commentsMessage, comments, disabled, success } = this.props;
 
 		return (
 			<React.Fragment>
@@ -41,7 +63,7 @@ export default class CommentsForm extends Component {
 						{'Your comment has been submitted and will appear on<br/> this page after it has been approved by the administrator'}
 					</p>
 
-					<form onSubmit={this.handleSubmit}>
+					<form onSubmit={this.handleSubmitLogin}>
 
 						<textarea
 							cols='10'
