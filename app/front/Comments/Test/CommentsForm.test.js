@@ -1,5 +1,4 @@
 import React from 'react';
-import Comment from '../Comment';
 import renderer from 'react-test-renderer';
 import CommentsForm from '../CommentsForm'
 import { BrowserRouter as Router } from 'react-router-dom';

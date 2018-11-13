@@ -26,13 +26,8 @@ class RecordListing extends Component {
 			descriptionTwo: String,
 			descriptionThree: String,
 			categories: Array,
-			disabled: true,
-			commentsMessage: '',
-			success: false,
-			comments: Array,
 		}
 
-		this.handleSubmit = this.handleSubmit.bind( this );
 		this.handleInputChange = this.handleInputChange.bind( this );
 	}
 
@@ -52,14 +47,6 @@ class RecordListing extends Component {
 				this.setState( { categories: res.data.categories } );
 			} );
 
-		axios.get( `${homeURI}/apiV1/page/comment/${id}` ).then( res => {
-
-			if( Array.isArray( res.data ) && res.data.length > 0 ) {
-				this.setState( { comments: res.data } );
-			}
-
-		} );
-
 		if( this.checkTokenCookie( 'token' ) ) {
 			this.setState( { disabled: false } ); // eslint-disable-line
 		}
@@ -67,23 +54,6 @@ class RecordListing extends Component {
 
 	checkTokenCookie () {
 		return getCookieValue( 'token' );
-	}
-
-	handleSubmit () {
-		const { content } = this.state;
-		const articleId = this.props.match.params.id; // eslint-disable-line
-
-		if( content && content.length > 0 ) {
-
-			axios.post( `${homeURI}/apiV1/comment/add`, { content, articleId } )
-				.then( res => {
-					if( res.status === 200 && res.data ) {
-						this.setState( { success: true } );
-						this.setState( { commentsMessage: '' } );
-					}
-				} );
-		}
-
 	}
 
 	handleInputChange ( event ) {

@@ -12,7 +12,7 @@ describe( 'Component', () => {
 		};
 
 		component = renderer.create(
-			<Disqus article={article}/>
+			<Disqus article={article} />
 		);
 	});
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import disqus from 'disqus-react';
 import PropTypes from 'prop-types';
 import './disqus.scss';
 const Shortname = 'soundsvinyl';
