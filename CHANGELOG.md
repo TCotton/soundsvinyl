@@ -1,3 +1,7 @@
+## 1.18.0
+
+* Added Disqus commenting service
+
 ## 1.17.0
 
 * Fixed bugs in robots.txt and sitemap.xml
