@@ -29,4 +29,3 @@ test/reports
 node-variables.env
 variables.env
 contact.log
-dist/
