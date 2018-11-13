@@ -51,7 +51,7 @@ const PageSchema = new Schema({
 		type: mongoose.Schema.Types.String,
 		trim: true,
 	},
-	descriptionFive {
+	descriptionFive: {
 		type: mongoose.Schema.Types.String,
 		trim: true,
 	},

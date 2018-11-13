@@ -6,7 +6,7 @@ import { getCookieValue } from '../helper_functions';
 import Video from './components/video';
 import MetaHeader from './components/metaHeader';
 import VideoErrorBoundary from './errorBoundaries/videoErrorBoundary';
-import CommentsForm from 'Comments/CommentsForm';
+import CommentsForm from './Comments/CommentsForm';
 
 import './recordListing.scss';
 import PropTypes from 'prop-types';

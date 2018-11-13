@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './disqus.scss';
 import { Link } from 'react-router-dom'
 import Comment from './Comment';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import './comment.scss';
 
 export default class CommentsForm extends Component {
 

@@ -1,12 +1,14 @@
 import React from 'react';
-import Comment from '../comment.js';
+import Comment from '../Comment';
 import renderer from 'react-test-renderer';
 
 describe( 'Component', () => {
 	let component;
 	beforeEach( () => {
 		component = renderer.create(
-			<Comment content={[]} />
+			<Comment
+				content={[]}
+			/>
 		);
 	});
 

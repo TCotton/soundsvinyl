@@ -1,0 +1,82 @@
+@import '../../assets/sass/tools';
+
+.comment {
+	display: grid;
+	grid-template-columns: 38.197% 61.803%;
+	grid-gap: 0;
+	margin: 30px 0;
+
+	.commentName {
+		@include font-calculator($font_family_body, 16px, 0.5);
+		color: $commentHeader;
+	}
+
+	.commentText {
+		@include font-calculator($font_family_body, 14px);
+		font-weight: 300;
+	}
+}
+
+@media screen and (min-width: $media_breakpoint_mobile) {
+	.comment {
+		grid-template-columns: 20% 80%;
+	}
+}
+
+.commentLeftColumn {
+	text-align: center;
+	svg {
+		margin: 20px 0 0;
+		width: 40%;
+		height: auto;
+	}
+}
+
+@media screen and (min-width: $media_breakpoint_mobile) {
+	.commentLeftColumn {
+		img {
+			max-width: 60px;
+		}
+	}
+}
+
+.commentRightColumn {
+	background: transparent;
+}
+
+
+.commentsForm {
+	border-top: 1px solid $recordsPageBorder;
+	padding: 20px 0 0 0;
+
+	textarea {
+		border: 1px solid $commentsTextareaBorder;
+		width: 100%;
+		padding: 10px;
+		display: inline-block;
+		@include font-calculator($font_family_body, 14px, 0);
+		margin: 0 0 10px 0;
+		line-height: 1.8em;
+		font-weight: 300;
+	}
+	input[type=submit] {
+		@include font-calculator($font_family_body, 18px);
+		background: $commentsSubmitBackground;
+		color: white;
+		width: 100%;
+		padding: 10px 0;
+		display: inline-block;
+		font-weight: 300;
+		border: none;
+	}
+}
+
+@media screen and (min-width: $media_breakpoint_mobile) {
+	.commentsForm {
+		margin: 20px 0 0 0;
+	}
+}
+
+.commentsBlock {
+	background: transparent;
+}
