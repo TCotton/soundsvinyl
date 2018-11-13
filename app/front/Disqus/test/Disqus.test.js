@@ -5,14 +5,12 @@ import renderer from 'react-test-renderer';
 describe( 'Component', () => {
 	let component;
 	beforeEach( () => {
-		const article = {
-			url: 'http://example.co',
-			id: 'asdfsdfasdfasdfasd',
-			title: 'this is a title here'
-		};
-
 		component = renderer.create(
-			<Disqus article={article} />
+			<Disqus
+				id='5b72d35f43f503882567d78d'
+				path='/ltj-bukem-and-tayla-bang-the-drums/5b72d35f43f503882567d78d'
+				title='LTJ Bukem & Tayla ‎– Bang The Drums'
+			/>
 		);
 	});
 
