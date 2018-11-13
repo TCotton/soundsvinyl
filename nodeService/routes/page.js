@@ -158,20 +158,22 @@ module.exports = (app) => {
 						return new Error(err.toString());
 					}
 
-					const file = global.__base + '/nodeService/public/thumbnails/thumbnail-' + req.params.id + '.png';
+					if (fs.existsSync(global.__base + '/nodeService/public/thumbnails/thumbnail-' + req.params.id + '.png')) {
+						const file = global.__base + '/nodeService/public/thumbnails/thumbnail-' + req.params.id + '.png';
 
-					fs.access(file, function (err) {
+						fs.access(file, function (err) {
 
-						if (err) {
-							return;
-						}
-
-						fs.unlink(file, function (err) {
 							if (err) {
-								return new Error(err.toString());
+								return;
 							}
+
+							fs.unlink(file, function (err) {
+								if (err) {
+									return new Error(err.toString());
+								}
+							});
 						});
-					});
+					}
 
 					if (!err) {
 						res.json(pages);

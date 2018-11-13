@@ -92,6 +92,24 @@
 				rows="10"
 			/>
 
+			<label for="addPageDescriptionFour">Fourth paragraph of description</label>
+			<textarea
+				id="addPageDescriptionFour"
+				v-model="AddPageForm.descriptionFour"
+				name="addPageDescriptionFour"
+				cols="10"
+				rows="10"
+			/>
+
+			<label for="addPageDescriptionFive">Fifth paragraph of description</label>
+			<textarea
+				id="addPageDescriptionFive"
+				v-model="AddPageForm.descriptionFive"
+				name="addPageDescriptionFive"
+				cols="10"
+				rows="10"
+			/>
+
 			<label for="addPageCategories">Categories (comma-separated list)</label>
 			<input
 				v-validate="{ required: true }"

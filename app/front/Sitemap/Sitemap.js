@@ -9,7 +9,6 @@ export default class Sitemap extends Component {
 	constructor(props) {
 		super(props);
 
-
 		this.state = {
 			error: null,
 			pages: []

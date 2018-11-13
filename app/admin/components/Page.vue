@@ -144,6 +144,24 @@
 				rows="10"
 			/>
 
+			<label for="editPageDescriptionFour">Fourth paragraph of description</label>
+			<textarea
+				id="editPageDescriptionFour"
+				v-model="EditPageForm.descriptionFour"
+				name="editPageDescriptionFour"
+				cols="10"
+				rows="10"
+			/>
+
+			<label for="editPageDescriptionFive">Fifth paragraph of description</label>
+			<textarea
+				id="editPageDescriptionFive"
+				v-model="EditPageForm.descriptionFive"
+				name="editPageDescriptionFive"
+				cols="10"
+				rows="10"
+			/>
+
 			<label for="editPageCategories">Categories (comma-separated list)</label>
 			<input
 				v-validate="{ required: true }"
@@ -242,6 +260,8 @@
 					descriptionOne: response.data.descriptionOne,
 					descriptionTwo: response.data.descriptionTwo,
 					descriptionThree: response.data.descriptionThree,
+					descriptionFour: response.data.descriptionFour,
+					descriptionFive: response.data.descriptionFive,
 					categories: catReduce.join() || '',
 					date: moment(response.data.date).format('h:mm:ss a, MMMM Do YYYY'),
 					updated: response.data.updated ? moment(response.data.updated).format('h:mm:ss a, MMMM Do YYYY') : null,

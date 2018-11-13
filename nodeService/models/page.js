@@ -47,6 +47,14 @@ const PageSchema = new Schema({
 		type: mongoose.Schema.Types.String,
 		trim: true,
 	},
+	descriptionFour: {
+		type: mongoose.Schema.Types.String,
+		trim: true,
+	},
+	descriptionFive {
+		type: mongoose.Schema.Types.String,
+		trim: true,
+	},
 	date: {
 		type: mongoose.Schema.Types.Date,
 		default: Date.now,

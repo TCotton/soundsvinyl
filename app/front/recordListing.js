@@ -8,6 +8,7 @@ import Video from './components/video';
 import Comment from './comment';
 import MetaHeader from './components/metaHeader';
 import VideoErrorBoundary from './errorBoundaries/videoErrorBoundary';
+import CommentsForm from 'Comments/CommentsForm';
 
 import './recordListing.scss';
 import PropTypes from 'prop-types';
@@ -208,52 +209,7 @@ class RecordListing extends Component {
 						</ul>
 					</section>
 
-					<section styleName='commentsForm'>
-						<h3>
-							{'Comments'}
-						</h3>
-
-						<p className={(disabled ? 'display' : 'hide')}>
-							{'You must be '}
-							<Link to='/my-account'>
-								{' registered and logged in'}
-							</Link>
-							{'to contribute a comment'}
-						</p>
-
-						<p className={(success ? 'display' : 'hide')}>
-							{'Your comment has been submitted and will appear on<br/> this page after it has been approved by the administrator'}
-						</p>
-
-						<form onSubmit={this.handleSubmit}>
-
-							<textarea
-								cols='10'
-								id='commentsMessage'
-								maxLength='500'
-								name='commentsMessage'
-								onChange={this.handleInputChange}
-								rows='10'
-								value={commentsMessage}
-							/>
-							<input
-								disabled={disabled}
-								name='submit'
-								type='submit'
-								value='Comment'
-							/>
-
-						</form>
-					</section>
-
-					<section
-						className={(comments.length > 0 ? 'display' : 'hide')}
-						styleName='commentsBlock'
-					>
-						<Comment
-							content={comments}
-						/>
-					</section>
+					<CommentsForm />
 
 				</main>
 			)
