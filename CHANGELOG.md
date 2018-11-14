@@ -1,3 +1,7 @@
+## 1.20.0
+
+* Refactored homepage content array to include search box
+
 ## 1.19.0
 
 * Added more default video images and CSS filters
