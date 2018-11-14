@@ -29,7 +29,6 @@ export default class Disqus extends Component {
 
 	shouldComponentUpdate ( nextProps ) {
 		const { id, title, path } = nextProps;
-		console.log(id, title, path);
 
 		return (
 			id || title || path
