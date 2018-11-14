@@ -67,6 +67,7 @@ class HomePageSearchForm extends Component {
 				<div styleName='searchName'>
 					<span />
 				</div>
+				<br />
 			</div>
 		)
 	}

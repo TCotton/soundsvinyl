@@ -57,7 +57,7 @@ module.exports = (app) => {
 	app.route('/apiV1/page/get').get((req, res) => {
 
 		Page.find({}).sort({'date': -1})
-			.limit(18)
+			.limit(17)
 			.exec((err, pages) => {
 
 				if (!err) {

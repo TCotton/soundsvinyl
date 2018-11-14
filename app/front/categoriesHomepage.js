@@ -46,7 +46,7 @@ class CategoriesHomepage extends Component {
 		let arrayMap;
 
 		if (requestCompleted) {
-
+			pages.splice(2, 0, ''); // add empty element so that search form can be placed there
 			arrayMap = pages.map((element, index) => {
 
 				Object.assign(element, {
