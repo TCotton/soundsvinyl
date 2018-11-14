@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ExtendedPropTypes from 'extended-proptypes';
-import { thumbnailOne, thumbnailTwo, thumbnailThree } from '../../alternative_default_thumbnails';
+import { thumbnailOne, thumbnailTwo, thumbnailThree, thumbnailFour, thumbnailFive } from '../../alternative_default_thumbnails';
 import { Link } from 'react-router-dom';
 import './pageUnit.scss';
 
@@ -15,8 +15,9 @@ function PageUnit (props) {
 
 	const { slug, id, thumbnailUrl, title, subtitle} = props;
 
-	const myArray = [thumbnailOne, thumbnailTwo, thumbnailThree];
+	const myArray = [thumbnailOne, thumbnailTwo, thumbnailThree, thumbnailFour, thumbnailFive];
 	const thumbnailDefault = myArray[Math.floor(Math.random() * myArray.length)];
+	const randomNumber = Math.floor(Math.random() * 8) + 1;
 
 	return (
 		<Link
@@ -25,7 +26,10 @@ function PageUnit (props) {
 		>
 			<img
 				alt={title}
-				onError={(e) => {e.target.src = thumbnailDefault}} // eslint-disable-line react/jsx-no-bind
+				onError={(e) => { // eslint-disable-line react/jsx-no-bind
+					e.target.className = `random${randomNumber}`
+					e.target.src = thumbnailDefault
+				}} // eslint-disable-line react/jsx-no-bind
 				src={thumbnailUrl}
 			/>
 			<span className='video-title'>
