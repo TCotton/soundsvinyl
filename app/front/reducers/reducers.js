@@ -1,8 +1,13 @@
-export const searchTextReducer = (state = '', action) => {
+export const searchTextReducer = (state = [], action) => {
 	switch (action.type) {
-		case 'SET_SEARCH_TEXT':
-			return action.searchTerm;
+		case 'SET_PAGES':
+			state = Object.assign(state, action.payload);
+			break;
 		default:
 			return state;
 	}
+
+	console.dir(state);
+
+	return state;
 }

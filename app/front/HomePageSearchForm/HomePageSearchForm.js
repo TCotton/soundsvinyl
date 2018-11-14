@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './homePageSearchForm.scss';
 import axios from 'axios';
 import { homeURI } from '../../helper_constants'
+import { connect } from 'react-redux';
 
 class HomePageSearchForm extends Component {
 
@@ -24,10 +25,11 @@ class HomePageSearchForm extends Component {
 	handleSubmit ( event ) {
 		event.preventDefault();
 		const { search, message } = this.state;
+		const { dispatch } = this.props;
 
-		this.setState({
+		this.setState( {
 			message: false
-		});
+		} );
 
 		axios.post( `${homeURI}/apiV1/page/findbytag`, { search } )
 			.then( res => {
@@ -37,13 +39,13 @@ class HomePageSearchForm extends Component {
 				}
 
 				if( Array.isArray( res.data ) && res.data.length === 0 ) {
-					this.setState({
+					this.setState( {
 						message: !message
 					});
 				}
 
 				if( Array.isArray( res.data ) && res.data.length > 0 ) {
-					console.log( 'here it is' );
+					dispatch({ type: 'SET_PAGES', payload: res.data || [] });
 				}
 
 			}).catch( ( e ) => {
@@ -103,5 +105,5 @@ class HomePageSearchForm extends Component {
 	}
 }
 
-export default HomePageSearchForm;
+export default connect()( HomePageSearchForm );
 

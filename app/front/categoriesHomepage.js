@@ -4,6 +4,7 @@ import './categoriesHomepage.scss';
 import { homeURI } from '../helper_constants';
 import PageUnit from './components/pageUnit';
 import HomePageSearchForm from './HomePageSearchForm/HomePageSearchForm';
+import { connect } from 'react-redux';
 
 class CategoriesHomepage extends Component {
 
@@ -20,10 +21,10 @@ class CategoriesHomepage extends Component {
 
 	componentDidMount () {
 
-		axios.get(`${homeURI}/apiV1/page/get`)
-			.then(res => {
+		axios.get( `${homeURI}/apiV1/page/get` )
+			.then( res => {
 
-				this.setState({
+				this.setState( {
 					requestCompleted: true,
 					pages: res.data,
 				})
@@ -80,4 +81,11 @@ class CategoriesHomepage extends Component {
 	}
 }
 
-export default CategoriesHomepage;
+const mapStateToProps = (state) => {
+	console.dir(state);
+	return {
+		pages: state.pages
+	}
+}
+
+export default connect(mapStateToProps)( CategoriesHomepage );
