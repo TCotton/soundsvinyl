@@ -7,7 +7,7 @@ describe( 'Component', () => {
 	beforeEach( () => {
 		component = renderer.create(
 			<HomePageSearchForm
-				onSearchInput={() => {}} // eslint-disable-line
+				dispatch={() => {}} // eslint-disable-line
 			/>
 		);
 	});

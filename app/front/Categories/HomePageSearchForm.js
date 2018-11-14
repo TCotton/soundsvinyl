@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
 class HomePageSearchForm extends Component {
 
-	static propTypes = { onSearchInput: PropTypes.func.isRequired }
+	static propTypes = { dispatch: PropTypes.func.isRequired }
 
 	constructor ( props ) {
 		super( props );
