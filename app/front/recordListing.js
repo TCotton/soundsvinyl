@@ -25,6 +25,8 @@ class RecordListing extends Component {
 			descriptionOne: String,
 			descriptionTwo: String,
 			descriptionThree: String,
+			descriptionFour: String,
+			descriptionFive: String,
 			categories: Array,
 		}
 
@@ -44,6 +46,8 @@ class RecordListing extends Component {
 				this.setState( { descriptionOne: res.data.descriptionOne } );
 				this.setState( { descriptionTwo: res.data.descriptionTwo } );
 				this.setState( { descriptionThree: res.data.descriptionThree } );
+				this.setState( { descriptionFour: res.data.descriptionFour } );
+				this.setState( { descriptionFive: res.data.descriptionFive } );
 				this.setState( { categories: res.data.categories } );
 			} );
 
@@ -76,6 +80,8 @@ class RecordListing extends Component {
 			descriptionOne,
 			descriptionTwo,
 			descriptionThree,
+			descriptionFour,
+			descriptionFive,
 			videoLink,
 			categories,
 			loaded,
@@ -158,6 +164,14 @@ class RecordListing extends Component {
 						<p
 							className={( descriptionThree ? 'display' : 'hide' )}
 							dangerouslySetInnerHTML={{ __html: descriptionThree }}
+						/>
+						<p
+							className={( descriptionFour ? 'display' : 'hide' )}
+							dangerouslySetInnerHTML={{ __html: descriptionFour }}
+						/>
+						<p
+							className={( descriptionFive ? 'display' : 'hide' )}
+							dangerouslySetInnerHTML={{ __html: descriptionFive }}
 						/>
 
 					</section>
