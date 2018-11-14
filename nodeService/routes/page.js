@@ -69,6 +69,21 @@ module.exports = (app) => {
 			});
 	});
 
+	app.route('/apiV1/page/findtag').post((req, res) => {
+
+		const body = req.body;
+
+		Page.find({'categories.name':body.search}).sort({'date': -1})
+			.exec((err, pages) => {
+
+				if (!err) {
+					res.json(pages);
+				} else {
+					return new Error(err.toString());
+				}
+
+			});
+	});
 
 	app.route('/apiV1/page/getall').get((req, res) => {
 

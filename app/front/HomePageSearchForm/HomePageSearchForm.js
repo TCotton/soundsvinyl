@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './homePageSearchForm.scss';
+import axios from 'axios';
+import { homeURI } from '../../helper_constants'
 
 class HomePageSearchForm extends Component {
 
@@ -10,6 +12,8 @@ class HomePageSearchForm extends Component {
 		super( props );
 
 		this.state = {
+			error: null,
+			message: false,
 			search: '',
 		};
 
@@ -20,9 +24,31 @@ class HomePageSearchForm extends Component {
 	handleSubmit ( event ) {
 		event.preventDefault();
 		const { onSearchInput } = this.props;
-		const { search } = this.state;
+		const { search, message } = this.state;
 
-		onSearchInput( search );
+		this.setState({
+			message: false
+		});
+
+		axios.post( `${homeURI}/apiV1/page/findtag`, { search } )
+			.then( res => {
+
+				if( res.data.error ) {
+					this.setState( { error: res.data.error } );
+				}
+
+				if( Array.isArray( res.data ) && res.data.length === 0 ) {
+					this.setState( {
+						message: !message
+					});
+				}
+
+				console.dir( res.data );
+
+			}).catch(( e ) => {
+			this.setState( { error: e.toString() } );
+		})
+
 	}
 
 	handleInputChange ( event ) {
@@ -38,7 +64,7 @@ class HomePageSearchForm extends Component {
 	}
 
 	render () {
-		const { search } = this.state;
+		const { search, error, message } = this.state;
 
 		return (
 			<div styleName='search'>
@@ -56,7 +82,6 @@ class HomePageSearchForm extends Component {
 						{'Your search term'}
 					</label>
 					<input
-						disabled
 						id='search'
 						name='search'
 						onChange={this.handleInputChange}
@@ -65,7 +90,12 @@ class HomePageSearchForm extends Component {
 					/>
 				</form>
 				<div styleName='searchName'>
-					<span />
+					{error}
+					{message &&
+						<p>
+							{'There are no results for that search term'}
+						</p>
+					}
 				</div>
 			</div>
 		)
