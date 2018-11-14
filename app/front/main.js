@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-
-import CategoriesHomepage from './categoriesHomepage';
+import Categories from './Categories/Categories';
 import Header from './Header/Header';
 
 class Main extends Component {
@@ -9,7 +8,7 @@ class Main extends Component {
 		return (
 			<div>
 				<Header />
-				<CategoriesHomepage />
+				<Categories />
 			</div>
 		)
 	}

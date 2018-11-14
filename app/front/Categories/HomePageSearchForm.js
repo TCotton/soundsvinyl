@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './homePageSearchForm.scss';
+import './HomePageSearchForm.scss';
 import axios from 'axios';
 import { homeURI } from '../../helper_constants'
 import { connect } from 'react-redux';

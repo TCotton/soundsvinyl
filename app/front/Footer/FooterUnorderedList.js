@@ -26,11 +26,6 @@ export default class FooterUnorderedList extends Component {
 						text='Code (CC BY-NC 4.0 license)'
 					/>
 				</a>
-				<Link to='/vinyl-singles-top-30-chart'>
-					<FooterListElement
-						text='Current top 30 vinyl singles chart'
-					/>
-				</Link>
 			</ul>
 		)
 	}

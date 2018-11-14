@@ -1,48 +1,37 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import './categoriesHomepage.scss';
-import { homeURI } from '../helper_constants';
-import PageUnit from './components/pageUnit';
-import HomePageSearchForm from './HomePageSearchForm/HomePageSearchForm';
+import PageUnit from '../components/pageUnit';
+import HomePageSearchForm from './HomePageSearchForm';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
 
 class CategoriesHomepage extends Component {
 
+	static propTypes = {
+		requested: PropTypes.bool,
+		search: PropTypes.arrayOf( PropTypes.object, PropTypes.string, PropTypes.number, PropTypes.arrayOf( PropTypes.string, PropTypes.number ) ).isRequired
+	}
+
+	static defaultProps = {
+		requested: true
+	}
+
 	constructor (props) {
 		super(props);
-
-		this.state = {
-			pages: [],
-			requestCompleted: false,
-		};
-
 		this.handleSearchResult = this.handleSearchResult.bind( this );
 	}
 
-	componentDidMount () {
-
-		axios.get( `${homeURI}/apiV1/page/get` )
-			.then( res => {
-
-				this.setState( {
-					requestCompleted: true,
-					pages: res.data,
-				})
-			});
-	}
-
-	handleSearchResult() {
+	handleSearchResult () {
 		return true;
 	}
 
 	render () {
-
-		const { requestCompleted, pages } = this.state;
+		const { search, requested } = this.props;
 		let arrayMap;
 
-		if (requestCompleted) {
+		if (requested) {
 
-			arrayMap = pages.map((element, index) => {
+			arrayMap = search.map((element, index) => {
 
 				Object.assign(element, {
 					thumbnailUrl: window.location.protocol + '//' + window.location.hostname + (window.location.port.length === 0 ? '/' : ':8443/') + `thumbnails/thumbnail-${element._id}.png`
@@ -81,10 +70,11 @@ class CategoriesHomepage extends Component {
 	}
 }
 
-const mapStateToProps = (state) => {
-	console.dir(state);
-	return {
-		pages: state.pages
+const mapStateToProps = ( state ) => {
+	if( state.search.length > 0 ) {
+		return {
+			search: state.search
+		}
 	}
 }
 
