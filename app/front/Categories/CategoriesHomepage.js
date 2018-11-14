@@ -29,9 +29,9 @@ class CategoriesHomepage extends Component {
 		const { search, requested } = this.props;
 		let arrayMap;
 
-		if (requested) {
-
-			arrayMap = search.map((element, index) => {
+		if (requestCompleted) {
+			pages.splice(2, 0, ''); // add empty element so that search form can be placed there
+			arrayMap = pages.map((element, index) => {
 
 				Object.assign(element, {
 					thumbnailUrl: window.location.protocol + '//' + window.location.hostname + (window.location.port.length === 0 ? '/' : ':8443/') + `thumbnails/thumbnail-${element._id}.png`
