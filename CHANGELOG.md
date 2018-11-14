@@ -1,3 +1,7 @@
+## 1.19.0
+
+* Added more default video images and CSS filters
+
 ## 1.18.0
 
 * Added Disqus commenting service
