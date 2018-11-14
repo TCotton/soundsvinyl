@@ -120,17 +120,6 @@ if (app.get('env') === 'development') {
 	});
 }
 
-/**
- * 	<meta http-equiv="Content-Security-Policy" content="default-src *; img-src * 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *">
- */
-
-/**
- * redirect www to non-www domain
- * @param req
- * @param res
- * @param next
- * @returns {*}
- */
 function wwwRedirect (req, res, next) {
 	if (req.headers.host.slice(0, 4) === 'www.') {
 		let newHost = req.headers.host.slice(4);

@@ -6,6 +6,7 @@ const {
 	createCategories
 } = require('./routes_helper_functions');
 const fs = require('fs');
+const extractFrames = require('ffmpeg-extract-frames');
 
 module.exports = (app) => {
 

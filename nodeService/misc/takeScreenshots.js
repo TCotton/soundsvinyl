@@ -5,6 +5,7 @@ const takeScreenshots = (file, fileName) => {
 	ffmpeg(file).on('filenames', function (filenames) {
 		console.log('Will generate ' + filenames.join(', '));  // eslint-disable-line  no-console
 	}).on('end', function () {
+		console.log('Screenshots taken'); // eslint-disable-line  no-console
 		return true;
 	}).takeScreenshots({
 		filename: `thumbnail-${fileName}.png`,
