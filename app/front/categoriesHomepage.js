@@ -23,12 +23,6 @@ class CategoriesHomepage extends Component {
 		axios.get(`${homeURI}/apiV1/page/get`)
 			.then(res => {
 
-			/*	if (res.data.error) {
-					this.setState({
-						error: res.data.error
-					});
-				}*/
-
 				this.setState({
 					requestCompleted: true,
 					pages: res.data,

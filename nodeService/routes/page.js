@@ -69,7 +69,7 @@ module.exports = (app) => {
 			});
 	});
 
-	app.route('/apiV1/page/findtag').post((req, res) => {
+	app.route('/apiV1/page/findbytag').post((req, res) => {
 
 		const body = req.body;
 
@@ -135,7 +135,7 @@ module.exports = (app) => {
 		body.updated = Date.now();
 
 		// This would likely be inside of a PUT request, since we're updating an existing document, hence the req.params.todoId.
-// Find the existing resource by ID
+		// Find the existing resource by ID
 		Page.findByIdAndUpdate(
 			// the id of the item to find
 			body._id,

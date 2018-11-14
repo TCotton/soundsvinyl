@@ -23,14 +23,13 @@ class HomePageSearchForm extends Component {
 
 	handleSubmit ( event ) {
 		event.preventDefault();
-		const { onSearchInput } = this.props;
 		const { search, message } = this.state;
 
 		this.setState({
 			message: false
 		});
 
-		axios.post( `${homeURI}/apiV1/page/findtag`, { search } )
+		axios.post( `${homeURI}/apiV1/page/findbytag`, { search } )
 			.then( res => {
 
 				if( res.data.error ) {
@@ -38,14 +37,16 @@ class HomePageSearchForm extends Component {
 				}
 
 				if( Array.isArray( res.data ) && res.data.length === 0 ) {
-					this.setState( {
+					this.setState({
 						message: !message
 					});
 				}
 
-				console.dir( res.data );
+				if( Array.isArray( res.data ) && res.data.length > 0 ) {
+					console.log( 'here it is' );
+				}
 
-			}).catch(( e ) => {
+			}).catch( ( e ) => {
 			this.setState( { error: e.toString() } );
 		})
 
