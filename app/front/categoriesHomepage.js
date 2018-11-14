@@ -3,7 +3,7 @@ import axios from 'axios';
 import './categoriesHomepage.scss';
 import { homeURI } from '../helper_constants';
 import PageUnit from './components/pageUnit';
-import HomePageSearchForm from './homePageSearchForm';
+import HomePageSearchForm from './HomePageSearchForm/HomePageSearchForm';
 
 class CategoriesHomepage extends Component {
 

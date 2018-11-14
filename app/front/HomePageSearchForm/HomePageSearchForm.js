@@ -72,7 +72,5 @@ class HomePageSearchForm extends Component {
 	}
 }
 
-HomePageSearchForm.propTypes = { onSearchInput: PropTypes.func.isRequired };
-
 export default HomePageSearchForm;
 
