@@ -1,20 +1,24 @@
-## 1.21.0
+## 1.22.0 (November 15, 2018)
+
+* Added first part of redux (to search box on category page)
+
+## 1.21.0 (November 14, 2018)
 
 * Changed CSS filters for missing images
 
-## 1.20.0
+## 1.20.0 (November 14, 2018)
 
 * Refactored homepage content array to include search box
 
-## 1.19.0
+## 1.19.0 (November 13, 2018)
 
 * Added more default video images and CSS filters
 
-## 1.18.0
+## 1.18.0 (November 13, 2018)
 
 * Added Disqus commenting service
 
-## 1.17.0
+## 1.17.0 (November 13, 2018)
 
 * Fixed bugs in robots.txt and sitemap.xml
 
