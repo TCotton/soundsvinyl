@@ -96,7 +96,9 @@ class HomePageSearchForm extends Component {
 					{error}
 					{message &&
 						<p>
-							{'There are no results for that search term'}
+							{'There are no results for that search term.'}
+							<br />
+							{'Try another term.'}
 						</p>
 					}
 				</div>
