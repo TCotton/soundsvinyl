@@ -1,3 +1,7 @@
+## 1.23.0 (November 15, 2018)
+
+* Allow search engines to index home page only
+
 ## 1.22.0 (November 15, 2018)
 
 * Added first part of redux (to search box on category page)
