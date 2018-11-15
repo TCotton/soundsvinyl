@@ -1,5 +1,5 @@
 import React from 'react';
-import PageUnit from '../pageUnit';
+import PageUnit from '../PageUnit';
 import renderer from 'react-test-renderer';
 import { BrowserRouter as Router } from 'react-router-dom';
 
