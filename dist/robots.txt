@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /comments-policy
+Sitemap: https://soundsvinyl.co/sitemap.xml
