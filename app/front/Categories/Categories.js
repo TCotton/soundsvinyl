@@ -9,7 +9,8 @@ export default class Categories extends Component {
 		super(props);
 
 		this.state = {
-			pages: []
+			pages: [],
+			requestCompleted: false
 		};
 	}
 
@@ -20,15 +21,17 @@ export default class Categories extends Component {
 
 				this.setState({
 					pages: res.data,
+					requestCompleted: true
 				})
 			});
 	}
 
 	render () {
-		const { pages } = this.state;
+		const { pages, requestCompleted } = this.state;
 
 		return (
 			<CategoriesHomepage
+				requestCompleted={requestCompleted}
 				search={pages}
 			/>
 		)

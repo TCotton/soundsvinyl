@@ -8,12 +8,12 @@ import PropTypes from 'prop-types'
 class CategoriesHomepage extends Component {
 
 	static propTypes = {
-		requested: PropTypes.bool,
+		requestCompleted: PropTypes.bool,
 		search: PropTypes.arrayOf( PropTypes.object, PropTypes.string, PropTypes.number, PropTypes.arrayOf( PropTypes.string, PropTypes.number ) ).isRequired
 	}
 
 	static defaultProps = {
-		requested: true
+		requestCompleted: false
 	}
 
 	constructor (props) {
@@ -26,12 +26,12 @@ class CategoriesHomepage extends Component {
 	}
 
 	render () {
-		const { search, requested } = this.props;
+		const { search, requestCompleted } = this.props;
 		let arrayMap;
 
 		if (requestCompleted) {
-			pages.splice(2, 0, ''); // add empty element so that search form can be placed there
-			arrayMap = pages.map((element, index) => {
+			search.splice(2, 0, ''); // add empty element so that search form can be placed there
+			arrayMap = search.map((element, index) => {
 
 				Object.assign(element, {
 					thumbnailUrl: window.location.protocol + '//' + window.location.hostname + (window.location.port.length === 0 ? '/' : ':8443/') + `thumbnails/thumbnail-${element._id}.png`
@@ -71,6 +71,7 @@ class CategoriesHomepage extends Component {
 }
 
 const mapStateToProps = ( state ) => {
+  // redux needs refactoring
 	if( state.search.length > 0 ) {
 		return {
 			search: state.search
