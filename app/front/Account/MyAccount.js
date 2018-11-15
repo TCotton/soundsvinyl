@@ -6,6 +6,7 @@ import { homeURI } from '../../helper_constants';
 import { createUsername } from '../../helper_functions';
 import './account.scss';
 import MyAccountForm from './MyAccountForm';
+import ErrorBoundary from '../errorBoundaries/ErrorBoundary';
 
 class MyAccount extends Component {
 
@@ -142,27 +143,31 @@ class MyAccount extends Component {
 				{errorFunc()}
 
 				<section>
-					<MyAccountForm
-						formName='loginForm'
-						legend='Login'
-						name={loginFormloginName}
-						nameLabel='Your email'
-						onFormSubmit={this.handleSubmitLogin}
-						onInputChange={this.handleInputChange}
-						password={loginFormloginPassword}
-						passwordLabel='Your password'
-					/>
+					<ErrorBoundary>
+						<MyAccountForm
+							formName='loginForm'
+							legend='Login'
+							name={loginFormloginName}
+							nameLabel='Your email'
+							onFormSubmit={this.handleSubmitLogin}
+							onInputChange={this.handleInputChange}
+							password={loginFormloginPassword}
+							passwordLabel='Your password'
+						/>
+					</ErrorBoundary>
 
-					<MyAccountForm
-						formName='registerForm'
-						legend='Register'
-						name={registerFormloginName}
-						nameLabel='Your email'
-						onFormSubmit={this.handleSubmitRegister}
-						onInputChange={this.handleInputChange}
-						password={registerFormloginPassword}
-						passwordLabel='Your password'
-					/>
+					<ErrorBoundary>
+						<MyAccountForm
+							formName='registerForm'
+							legend='Register'
+							name={registerFormloginName}
+							nameLabel='Your email'
+							onFormSubmit={this.handleSubmitRegister}
+							onInputChange={this.handleInputChange}
+							password={registerFormloginPassword}
+							passwordLabel='Your password'
+						/>
+					</ErrorBoundary>
 				</section>
 			</main>
 		)

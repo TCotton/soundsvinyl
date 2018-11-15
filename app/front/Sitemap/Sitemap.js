@@ -3,6 +3,7 @@ import './sitemap.scss';
 import axios from 'axios'
 import { homeURI } from '../../helper_constants'
 import SitemapUnorderedList from './SitemapUnorderedList';
+import ErrorBoundary from '../errorBoundaries/ErrorBoundary';
 
 export default class Sitemap extends Component {
 
@@ -46,9 +47,11 @@ export default class Sitemap extends Component {
 						</p>
 					}
 					{!error &&
-						<SitemapUnorderedList
-							data={pages}
-						/>
+						<ErrorBoundary>
+							<SitemapUnorderedList
+								data={pages}
+							/>
+						</ErrorBoundary>
 					}
 				</section>
 			</main>

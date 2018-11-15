@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { homeURI } from '../../helper_constants';
 import CategoriesHomepage from './CategoriesHomepage';
+import ErrorBoundary from '../errorBoundaries/ErrorBoundary';
 
 export class Categories extends Component {
 
@@ -30,10 +31,12 @@ export class Categories extends Component {
 		const { pages, requestCompleted } = this.state;
 
 		return (
-			<CategoriesHomepage
-				requestCompleted={requestCompleted}
-				search={pages}
-			/>
+			<ErrorBoundary>
+				<CategoriesHomepage
+					requestCompleted={requestCompleted}
+					search={pages}
+				/>
+			</ErrorBoundary>
 		)
 	}
 }

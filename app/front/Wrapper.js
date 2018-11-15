@@ -23,30 +23,42 @@ export default class Wrapper extends Component {
 					<Nav />
 				</ErrorBoundary>
 				<Switch>
-					<Route
-						component={Main}
-						exact path='/'
-					/>
-					<Route
-						component={RecordListing}
-						exact path='/:slug/:id'
-					/>
-					<Route
-						component={Contact}
-						exact path='/contact'
-					/>
-					<Route
-						component={AboutUs}
-						exact path='/about-us'
-					/>
-					<Route
-						component={MyAccount}
-						exact path='/my-account'
-					/>
-					<Route
-						component={VinylCharts}
-						exact path='/vinyl-singles-top-30-chart'
-					/>
+					<ErrorBoundary>
+						<Route
+							component={Main}
+							exact path='/'
+						/>
+					</ErrorBoundary>
+					<ErrorBoundary>
+						<Route
+							component={RecordListing}
+							exact path='/:slug/:id'
+						/>
+					</ErrorBoundary>
+					<ErrorBoundary>
+						<Route
+							component={Contact}
+							exact path='/contact'
+						/>
+					</ErrorBoundary>
+					<ErrorBoundary>
+						<Route
+							component={AboutUs}
+							exact path='/about-us'
+						/>
+					</ErrorBoundary>
+					<ErrorBoundary>
+						<Route
+							component={MyAccount}
+							exact path='/my-account'
+						/>
+					</ErrorBoundary>
+					<ErrorBoundary>
+						<Route
+							component={VinylCharts}
+							exact path='/vinyl-singles-top-30-chart'
+						/>
+					</ErrorBoundary>
 					<ErrorBoundary>
 						<Route
 							component={CommentsPolicy}
