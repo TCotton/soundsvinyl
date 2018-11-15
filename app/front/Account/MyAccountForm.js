@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 export default class MyAccountForm extends Component {
 
 	static propTypes = {
+		disabled: PropTypes.bool,
 		formName: PropTypes.string.isRequired,
 		legend: PropTypes.string.isRequired,
 		name: PropTypes.string.isRequired,
@@ -14,6 +15,10 @@ export default class MyAccountForm extends Component {
 		password: PropTypes.string.isRequired,
 		passwordLabel: PropTypes.string.isRequired
 	};
+
+	static defaultProps = {
+		disabled: false
+	}
 
 	constructor (props) {
 		super(props);
@@ -37,7 +42,7 @@ export default class MyAccountForm extends Component {
 	}
 
 	render () {
-		const { name, password, legend, nameLabel, passwordLabel, formName } = this.props;
+		const { name, password, legend, nameLabel, passwordLabel, formName, disabled } = this.props;
 
 		return (
 
@@ -55,6 +60,7 @@ export default class MyAccountForm extends Component {
 						{nameLabel}
 					</label>
 					<input
+						disabled={disabled}
 						id={`${formName}loginName`}
 						name={`${formName}loginName`}
 						onChange={this.handleInputChange}
@@ -67,6 +73,7 @@ export default class MyAccountForm extends Component {
 						{passwordLabel}
 					</label>
 					<input
+						disabled={disabled}
 						id={`${formName}loginPassword`}
 						name={`${formName}loginPassword`}
 						onChange={this.handleInputChange}

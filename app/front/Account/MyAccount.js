@@ -13,8 +13,6 @@ class MyAccount extends Component {
 	constructor (props) {
 		super(props);
 
-		console.dir('yes');
-
 		this.state = {
 			loginFormloginName: '',
 			loginFormloginPassword: '',
@@ -160,6 +158,7 @@ class MyAccount extends Component {
 
 					<ErrorBoundary>
 						<MyAccountForm
+							disabled
 							formName='registerForm'
 							legend='Register'
 							name={registerFormloginName}
