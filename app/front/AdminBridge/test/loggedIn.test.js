@@ -8,9 +8,7 @@ describe( 'Component', () => {
 	beforeEach( () => {
 		component = renderer.create(
 			<Router>
-				<LoginButton
-					onClick={() => {}} // eslint-disable-line
-				/>
+				<LoginButton />
 			</Router>
 		);
 	});

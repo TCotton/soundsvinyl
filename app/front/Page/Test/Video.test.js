@@ -1,8 +1,6 @@
 import React from 'react';
 import Video from '../video';
 import renderer from 'react-test-renderer';
-import { BrowserRouter as Router } from 'react-router-dom'
-import PageUnit from '../PageUnit'
 
 describe( 'Component', () => {
 	let component;
