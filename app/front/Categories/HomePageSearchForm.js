@@ -5,7 +5,7 @@ import axios from 'axios';
 import { homeURI } from '../../helper_constants'
 import { connect } from 'react-redux';
 
-class HomePageSearchForm extends Component {
+export class HomePageSearchForm extends Component {
 
 	static propTypes = { dispatch: PropTypes.func.isRequired }
 
@@ -27,9 +27,9 @@ class HomePageSearchForm extends Component {
 		const { search, message } = this.state;
 		const { dispatch } = this.props;
 
-		this.setState( {
+		this.setState({
 			message: false
-		} );
+		});
 
 		axios.post( `${homeURI}/apiV1/page/findbytag`, { search } )
 			.then( res => {
@@ -85,7 +85,6 @@ class HomePageSearchForm extends Component {
 						{'Your search term'}
 					</label>
 					<input
-						disabled
 						id='search'
 						name='search'
 						onChange={this.handleInputChange}

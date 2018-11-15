@@ -3,7 +3,7 @@ import axios from 'axios';
 import { homeURI } from '../../helper_constants';
 import CategoriesHomepage from './CategoriesHomepage';
 
-export default class Categories extends Component {
+export class Categories extends Component {
 
 	constructor (props) {
 		super(props);
@@ -37,3 +37,5 @@ export default class Categories extends Component {
 		)
 	}
 }
+
+export default Categories;

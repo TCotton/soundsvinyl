@@ -1,9 +1,10 @@
-import React from 'react';
-import { CategoriesHomepage } from '../CategoriesHomepage';
-import renderer from 'react-test-renderer';
+import { searchTextReducer } from '../reducers';
+import df from 'deep-freeze-strict';
 
-describe( 'Component', () => {
-	let component;
+describe( 'Reducers', () => {
+
+	let reducer;
+
 	let searchText = [
 		{
 			_id: '5bec2f2e2edf55248450242f',
@@ -22,18 +23,48 @@ describe( 'Component', () => {
 			__v: 0
 		}
 	]
-	beforeEach( () => {
 
-		component = renderer.create(
-			<CategoriesHomepage
-				search={searchText}
-			/>
-		);
-	} );
+	describe( 'searchTextReducer - correct switch statement', () => {
 
-	describe( 'CategoriesHomepage', () => {
+		let action = {
+			payload: searchText,
+			type: 'SET_PAGES',
+		}
+
+		beforeEach( () => {
+			reducer = searchTextReducer( df( '' ), df( action ) );
+		});
+
 		it( 'should be defined', () => {
-			expect( component ).toBeDefined();
+			expect( reducer ).toBeDefined();
+		});
+
+		it( `should have same value as ${action.type}`, () => {
+			expect( reducer ).toEqual( action.payload );
+			expect( reducer ).toEqual( expect.any( Array ) );
+			expect( reducer.length ).toEqual( action.payload.length );
+		});
+	});
+
+	describe( 'searchTextReducer - default switch statement', () => {
+
+		let action = {
+			payload: searchText,
+			type: 'NOT_SET_PAGES_HERE',
+		}
+
+		beforeEach( () => {
+			reducer = searchTextReducer( df( '' ), df( action ) );
+		});
+
+		it( 'should be defined', () => {
+			expect( reducer ).toBeDefined();
+		});
+
+		it( `should NOT have same value as ${action.type}`, () => {
+			expect( reducer ).not.toEqual( action.payload );
+			expect( reducer ).toEqual( expect.any( Array ) );
+			expect( reducer.length ).not.toEqual( action.payload.length );
 		});
 	});
 });

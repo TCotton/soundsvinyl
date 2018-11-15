@@ -5,7 +5,7 @@ import HomePageSearchForm from './HomePageSearchForm';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 
-class CategoriesHomepage extends Component {
+export class CategoriesHomepage extends Component {
 
 	static propTypes = {
 		requestCompleted: PropTypes.bool,
