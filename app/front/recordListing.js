@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { getCookieValue } from '../helper_functions';
 import Video from './components/video';
-import MetaHeader from './components/metaHeader';
+import MetaHeader from './MetaHeadComponents/metaHeader';
 import VideoErrorBoundary from './errorBoundaries/videoErrorBoundary';
 import Disqus from './Disqus/Disqus';
 
