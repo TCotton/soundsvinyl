@@ -1,3 +1,7 @@
+## 1.21.0
+
+* Changed CSS filters for missing images
+
 ## 1.20.0
 
 * Refactored homepage content array to include search box
