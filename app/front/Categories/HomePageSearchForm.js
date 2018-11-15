@@ -85,6 +85,7 @@ class HomePageSearchForm extends Component {
 						{'Your search term'}
 					</label>
 					<input
+						disabled
 						id='search'
 						name='search'
 						onChange={this.handleInputChange}
