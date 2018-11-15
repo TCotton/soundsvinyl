@@ -20,64 +20,48 @@ export default class Wrapper extends Component {
 		return (
 			<div className='wrapper'>
 				<ErrorBoundary>
-					<Nav/>
+					<Nav />
 				</ErrorBoundary>
 				<Switch>
-					<ErrorBoundary>
-						<Route
-							component={Main}
-							exact path='/'
-						/>
-					</ErrorBoundary>
-					<ErrorBoundary>
-						<Route
-							component={RecordListing}
-							exact path='/:slug/:id'
-						/>
-					</ErrorBoundary>
-					<ErrorBoundary>
-						<Route
-							component={Contact}
-							exact path='/contact'
-						/>
-					</ErrorBoundary>
-					<ErrorBoundary>
-						<Route
-							component={AboutUs}
-							exact path='/about-us'
-						/>
-					</ErrorBoundary>
-
+					<Route
+						component={Main}
+						exact path='/'
+					/>
+					<Route
+						component={RecordListing}
+						exact path='/:slug/:id'
+					/>
+					<Route
+						component={Contact}
+						exact path='/contact'
+					/>
+					<Route
+						component={AboutUs}
+						exact path='/about-us'
+					/>
 					<Route
 						component={MyAccount}
 						exact path='/my-account'
 					/>
-
-					<ErrorBoundary>
-						<Route
-							component={VinylCharts}
-							exact path='/vinyl-singles-top-30-chart'
-						/>
-					</ErrorBoundary>
-					<ErrorBoundary>
-						<Route
-							component={CommentsPolicy}
-							exact path='/comments-policy'
-						/>
-					</ErrorBoundary>
-					<ErrorBoundary>
-						<Route
-							component={Sitemap}
-							exact path='/sitemap'
-						/>
-					</ErrorBoundary>
+					<Route
+						component={VinylCharts}
+						exact path='/vinyl-singles-top-30-chart'
+					/>
+					<Route
+						component={CommentsPolicy}
+						exact path='/comments-policy'
+					/>
+					<Route
+						component={Sitemap}
+						exact path='/sitemap'
+					/>
 					<Route
 						component={Error}
 						path=''
 					/>
 				</Switch>
 				<ErrorBoundary>
-					<Footer/>
+					<Footer />
 				</ErrorBoundary>
 			</div>
 		)

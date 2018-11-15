@@ -38,7 +38,6 @@ class Nav extends Component {
 	}
 
 	handleClicked () {
-
 		const { isClicked } = this.state;
 
 		this.setState({

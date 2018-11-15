@@ -1,33 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-class LoginButton extends Component {
-
-	constructor (props) {
-		super(props);
-
-		this.handleOnClick = this.handleOnClick.bind( this );
-	}
-
-	handleOnClick(e) {
-		e.preventDefault();
-	}
-
-	render () {
-
-		return (
-			<Link
-				onClick={this.handleOnClick}
-				to='/'
-			>
-				<li>
-					<span>
-						{'Logout'}
-					</span>
-				</li>
-			</Link>
-		)
-	}
+function LoginButton (props) {
+	const { onClick } = props;
+	return (
+		<Link
+			onClick={onClick}
+			to='/'
+		>
+			<li>
+				<span>
+					{'Logout'}
+				</span>
+			</li>
+		</Link>
+	);
 }
+
+LoginButton.propTypes = {
+	onClick: PropTypes.func.isRequired
+};
 
 export default LoginButton;
