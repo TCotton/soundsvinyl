@@ -1,5 +1,5 @@
 import React from 'react';
-import TwitterMetaTags from '../twitterMetaTags';
+import TwitterMetaTags from '../TwitterMetaTags';
 import renderer from 'react-test-renderer';
 
 describe( 'Component', () => {
@@ -16,6 +16,17 @@ describe( 'Component', () => {
 
 	describe( 'TwitterMetaTags', () => {
 		it( 'should be defined', () => {
+			expect( component ).toBeDefined();
+		});
+
+		it( 'can be updated', () => {
+			component.update(
+				<TwitterMetaTags
+					description='This is a different description'
+					title='This is a different title'
+				/>
+			);
+
 			expect( component ).toBeDefined();
 		});
 	});
