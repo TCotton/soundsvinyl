@@ -1,5 +1,5 @@
 import React from 'react';
-import MetaHeader from '../metaHeader';
+import MetaHeader from '../MetaHeader';
 import renderer from 'react-test-renderer';
 
 describe( 'Component', () => {
@@ -12,6 +12,14 @@ describe( 'Component', () => {
 
 	describe( 'MetaHeader', () => {
 		it( 'should be defined', () => {
+			expect( component ).toBeDefined();
+		});
+
+		it( 'can be updated', () => {
+			component.update(
+				<MetaHeader title='This is a different title' />
+			);
+
 			expect( component ).toBeDefined();
 		});
 	});
