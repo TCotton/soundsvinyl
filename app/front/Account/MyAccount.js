@@ -13,6 +13,8 @@ class MyAccount extends Component {
 	constructor (props) {
 		super(props);
 
+		console.dir('yes');
+
 		this.state = {
 			loginFormloginName: '',
 			loginFormloginPassword: '',

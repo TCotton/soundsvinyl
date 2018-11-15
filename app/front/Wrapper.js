@@ -20,7 +20,7 @@ export default class Wrapper extends Component {
 		return (
 			<div className='wrapper'>
 				<ErrorBoundary>
-					<Nav />
+					<Nav/>
 				</ErrorBoundary>
 				<Switch>
 					<ErrorBoundary>
@@ -47,12 +47,12 @@ export default class Wrapper extends Component {
 							exact path='/about-us'
 						/>
 					</ErrorBoundary>
-					<ErrorBoundary>
-						<Route
-							component={MyAccount}
-							exact path='/my-account'
-						/>
-					</ErrorBoundary>
+
+					<Route
+						component={MyAccount}
+						exact path='/my-account'
+					/>
+
 					<ErrorBoundary>
 						<Route
 							component={VinylCharts}
@@ -77,7 +77,7 @@ export default class Wrapper extends Component {
 					/>
 				</Switch>
 				<ErrorBoundary>
-					<Footer />
+					<Footer/>
 				</ErrorBoundary>
 			</div>
 		)
