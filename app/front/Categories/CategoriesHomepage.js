@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './categoriesHomepage.scss';
-import PageUnit from '../components/PageUnit';
+import PageUnit from '../Page/PageUnit';
 import HomePageSearchForm from './HomePageSearchForm';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'

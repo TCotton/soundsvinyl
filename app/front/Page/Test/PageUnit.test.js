@@ -24,5 +24,21 @@ describe( 'Component', () => {
 		it( 'should be defined', () => {
 			expect( component ).toBeDefined();
 		});
+
+		it( 'can be updated', () => {
+			component.update(
+				<Router>
+					<PageUnit
+						id='507f191e810c19729da860ea'
+						slug='this-is-another-slug'
+						subtitle='This is anothe subtitle'
+						thumbnailUrl='https://thumbnailurl.co.uk'
+						title='This is another title'
+					/>
+				</Router>
+			);
+
+			expect( component ).toBeDefined();
+		});
 	});
 });
