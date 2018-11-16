@@ -5,9 +5,17 @@ import renderer from 'react-test-renderer';
 describe( 'Component', () => {
 	let component;
 	beforeEach( () => {
+
+		const history = {
+			push: () => {
+				return true;
+			}
+		}
+
 		component = renderer.create(
 			<HomePageSearchForm
 				dispatch={() => {}} // eslint-disable-line
+				history={history} // eslint-disable-line
 			/>
 		);
 	});

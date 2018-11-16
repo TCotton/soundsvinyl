@@ -1,9 +1,10 @@
 import { combineReducers, compose, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { searchTextReducer } from '../reducers/reducers';
+import { searchTextReducer, searchText } from '../reducers/reducers';
 
 const reducer = combineReducers({
 	search: searchTextReducer,
+	searchText
 });
 
 export const store = createStore(

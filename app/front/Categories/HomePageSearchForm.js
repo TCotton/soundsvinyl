@@ -1,13 +1,21 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './HomePageSearchForm.scss';
 import axios from 'axios';
 import { homeURI } from '../../helper_constants'
 import { connect } from 'react-redux';
+import { Redirect, withRouter } from 'react-router-dom';
 
 export class HomePageSearchForm extends Component {
 
-	static propTypes = { dispatch: PropTypes.func.isRequired }
+	// static propTypes = { dispatch: PropTypes.func.isRequired }
+
+	static propTypes = {
+		history: PropTypes.shape({
+			push: PropTypes.func
+		}).isRequired
+	};
 
 	constructor ( props ) {
 		super( props );
@@ -16,6 +24,7 @@ export class HomePageSearchForm extends Component {
 			error: null,
 			message: false,
 			search: '',
+			searchTerm: ''
 		};
 
 		this.handleSubmit = this.handleSubmit.bind( this );
@@ -24,34 +33,13 @@ export class HomePageSearchForm extends Component {
 
 	handleSubmit ( event ) {
 		event.preventDefault();
-		const { search, message } = this.state;
-		const { dispatch } = this.props;
+		const { history: { push } } = this.props;
+		// dispatch({ type: 'SEARCH_TERM', payload: event.target.value || [] });]
 
-		this.setState({
-			message: false
-		});
-
-		axios.post( `${homeURI}/apiV1/page/findbytag`, { search } )
-			.then( res => {
-
-				if( res.data.error ) {
-					this.setState( { error: res.data.error } );
-				}
-
-				if( Array.isArray( res.data ) && res.data.length === 0 ) {
-					this.setState( {
-						message: !message
-					});
-				}
-
-				if( Array.isArray( res.data ) && res.data.length > 0 ) {
-					dispatch({ type: 'SET_PAGES', payload: res.data || [] });
-				}
-
-			}).catch( ( e ) => {
-			this.setState( { error: e.toString() } );
-		})
-
+		if( event.target.elements[ 0 ] && event.target.elements[ 0 ].value && event.target.elements[ 0 ].value.length > 0 ) {
+			const pathname = `/tags/${event.target.elements[0].value}`;
+			push(pathname);
+		}
 	}
 
 	handleInputChange ( event ) {
@@ -95,11 +83,11 @@ export class HomePageSearchForm extends Component {
 				<div styleName='searchName'>
 					{error}
 					{message &&
-						<p>
-							{'There are no results for that search term.'}
-							<br />
-							{'Try another term.'}
-						</p>
+					<p>
+						{'There are no results for that search term.'}
+						<br/>
+						{'Try another term.'}
+					</p>
 					}
 				</div>
 			</div>
@@ -107,5 +95,5 @@ export class HomePageSearchForm extends Component {
 	}
 }
 
-export default connect()( HomePageSearchForm );
+export default connect()( withRouter(HomePageSearchForm) );
 

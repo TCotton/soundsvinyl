@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Nav from './Navigation/Nav';
 import { Route, Switch } from 'react-router-dom';
 import Main from './main';
+import Tags from './Tags';
 import RecordListing from './recordListing';
 import Contact from './Contact/Contact';
 import AboutUs from './about';
@@ -28,12 +29,12 @@ export default class Wrapper extends Component {
 						exact path='/'
 					/>
 					<Route
-						component={RecordListing}
-						exact path='/:slug/:id'
+						component={Tags}
+						exact path='/tags/:tag'
 					/>
 					<Route
 						component={RecordListing}
-						exact path='/tags/:tag'
+						exact path='/:slug/:id'
 					/>
 					<Route
 						component={Contact}

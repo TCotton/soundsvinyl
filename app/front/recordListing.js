@@ -14,6 +14,22 @@ import { homeURI } from '../helper_constants';
 
 class RecordListing extends Component {
 
+	static propTypes = {
+		match: PropTypes.shape({
+			params: PropTypes.shape({
+				id: PropTypes.string
+			})
+		})
+	};
+
+	static defaultProps = {
+		match: {
+			params: {
+				id: ''
+			}
+		}
+	};
+
 	constructor ( props ) {
 		super( props );
 
@@ -198,22 +214,6 @@ class RecordListing extends Component {
 
 				</main>
 			)
-		}
-	}
-}
-
-RecordListing.propTypes = {
-	match: PropTypes.shape({
-		params: PropTypes.shape({
-			id: PropTypes.string
-		})
-	})
-};
-
-RecordListing.defaultProps = {
-	match: {
-		params: {
-			id: ''
 		}
 	}
 }

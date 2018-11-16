@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Home from './Categories/Home';
+import Categories from './Categories/Categories';
 import Header from './Header/Header';
 import ErrorBoundary from './errorBoundaries/ErrorBoundary';
 
@@ -12,7 +12,7 @@ class Tags extends Component {
 					<Header />
 				</ErrorBoundary>
 				<ErrorBoundary>
-					<Home />
+					<Categories />
 				</ErrorBoundary>
 			</div>
 		)
