@@ -28,6 +28,7 @@ export class CategoriesPage extends Component {
 	render () {
 		const { search, requestCompleted } = this.props;
 		let arrayMap;
+		let $title = 'All categories';
 
 		if (requestCompleted) {
 			search.splice(2, 0, ''); // add empty element so that search form can be placed there
@@ -38,6 +39,7 @@ export class CategoriesPage extends Component {
 				});
 
 				const key = index.toString();
+				const searchForm = <HomePageSearchForm onSearchInput={this.handleSearchResult}  />;
 
 				return (
 					<div key={`${element}${key}`}>
@@ -50,7 +52,7 @@ export class CategoriesPage extends Component {
 									subtitle={element.subTitle}
 									thumbnailUrl={element.thumbnailUrl}
 									title={element.title}
-								/> : <HomePageSearchForm onSearchInput={this.handleSearchResult}  />
+								/> : searchForm
 						}
 					</div>
 				)
@@ -60,7 +62,7 @@ export class CategoriesPage extends Component {
 		return (
 			<main styleName='categories'>
 				<h3>
-					{'All categories'}
+					{$title}
 				</h3>
 				<section>
 					{arrayMap}

@@ -30,35 +30,35 @@ export default class Wrapper extends Component {
 					/>
 					<Route
 						component={Tags}
-						exact path='/tags/:tag'
+						path='/tags/:tag'
 					/>
 					<Route
 						component={RecordListing}
-						exact path='/:slug/:id'
+						path='/:slug/:id'
 					/>
 					<Route
 						component={Contact}
-						exact path='/contact'
+						path='/contact'
 					/>
 					<Route
 						component={AboutUs}
-						exact path='/about-us'
+						path='/about-us'
 					/>
 					<Route
 						component={MyAccount}
-						exact path='/my-account'
+						path='/my-account'
 					/>
 					<Route
 						component={VinylCharts}
-						exact path='/vinyl-singles-top-30-chart'
+						path='/vinyl-singles-top-30-chart'
 					/>
 					<Route
 						component={CommentsPolicy}
-						exact path='/comments-policy'
+						path='/comments-policy'
 					/>
 					<Route
 						component={Sitemap}
-						exact path='/sitemap'
+						path='/sitemap'
 					/>
 					<Route
 						component={Error}

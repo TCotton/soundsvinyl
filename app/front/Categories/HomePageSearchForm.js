@@ -2,10 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './HomePageSearchForm.scss';
-import axios from 'axios';
-import { homeURI } from '../../helper_constants'
-import { connect } from 'react-redux';
-import { Redirect, withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 export class HomePageSearchForm extends Component {
 
@@ -33,17 +30,15 @@ export class HomePageSearchForm extends Component {
 
 	handleSubmit ( event ) {
 		event.preventDefault();
-		const { history: { push } } = this.props;
-		// dispatch({ type: 'SEARCH_TERM', payload: event.target.value || [] });]
 
 		if( event.target.elements[ 0 ] && event.target.elements[ 0 ].value && event.target.elements[ 0 ].value.length > 0 ) {
 			const pathname = `/tags/${event.target.elements[0].value}`;
-			push(pathname);
+			// redirect must happen here
+			// return <Link to={pathname}>;
 		}
 	}
 
 	handleInputChange ( event ) {
-
 		const target = event.target;
 		const value = target.value;
 		const name = target.name;
@@ -55,7 +50,7 @@ export class HomePageSearchForm extends Component {
 	}
 
 	render () {
-		const { search, error, message } = this.state;
+		const { search } = this.state;
 
 		return (
 			<div styleName='search'>
@@ -80,20 +75,10 @@ export class HomePageSearchForm extends Component {
 						value={search}
 					/>
 				</form>
-				<div styleName='searchName'>
-					{error}
-					{message &&
-					<p>
-						{'There are no results for that search term.'}
-						<br/>
-						{'Try another term.'}
-					</p>
-					}
-				</div>
 			</div>
 		)
 	}
 }
 
-export default connect()( withRouter(HomePageSearchForm) );
+export default withRouter(HomePageSearchForm);
 

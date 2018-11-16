@@ -30,7 +30,8 @@ export class Categories extends Component {
 
 		this.state = {
 			pages: [],
-			requestCompleted: false
+			requestCompleted: false,
+			tag: 'All categories'
 		};
 	}
 
@@ -40,23 +41,24 @@ export class Categories extends Component {
 		if( tag ) {
 			axios.get( `${homeURI}/apiV1/page/findbytag/${tag}` )
 				.then( res => {
-
 					this.setState( {
 						pages: res.data,
-						requestCompleted: true
+						requestCompleted: true,
+						tag: tag
 					})
 				});
 		}
 	}
 
 	render () {
-		const { pages, requestCompleted } = this.state;
+		const { pages, requestCompleted, tag } = this.state;
 
 		return (
 			<ErrorBoundary>
 				<CategoriesHomepage
 					requestCompleted={requestCompleted}
 					search={pages}
+					tag={tag}
 				/>
 			</ErrorBoundary>
 		)
