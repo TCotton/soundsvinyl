@@ -34,22 +34,25 @@ class RecordListing extends Component {
 	}
 
 	componentDidMount () {
-		const id = this.props.match.params.id; // eslint-disable-line
+		// const id = this.props.match.params.id;
+		const { match: { params: { id } } } = this.props;
 
 		axios.get( `${homeURI}/apiV1/page/get/${id}` )
 			.then( res => {
 
-				this.setState( { loaded: true } );
-				this.setState( { title: res.data.title } );
-				this.setState( { subTitle: res.data.subTitle } );
-				this.setState( { videoLink: res.data.videoLink } );
-				this.setState( { descriptionOne: res.data.descriptionOne } );
-				this.setState( { descriptionTwo: res.data.descriptionTwo } );
-				this.setState( { descriptionThree: res.data.descriptionThree } );
-				this.setState( { descriptionFour: res.data.descriptionFour } );
-				this.setState( { descriptionFive: res.data.descriptionFive } );
-				this.setState( { categories: res.data.categories } );
-			} );
+				this.setState({
+					loaded: true,
+					title: res.data.title,
+					subTitle: res.data.subTitle,
+					videoLink: res.data.videoLink,
+					descriptionOne: res.data.descriptionOne,
+					descriptionTwo: res.data.descriptionTwo,
+					descriptionThree: res.data.descriptionThree,
+					descriptionFour: res.data.descriptionFour,
+					descriptionFive: res.data.descriptionFive,
+					categories: res.data.categories
+				});
+			});
 
 		if( this.checkTokenCookie( 'token' ) ) {
 			this.setState( { disabled: false } ); // eslint-disable-line

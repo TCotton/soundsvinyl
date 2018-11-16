@@ -195,7 +195,7 @@ require('./routes/comment')(app);
 require('./routes/contact')(app);
 
 // miscellaneous routes based on use
-require('./misc/content-security-policy.js')(app);
+require('./misc/content-security-policy')(app);
 
 module.exports = app;
 

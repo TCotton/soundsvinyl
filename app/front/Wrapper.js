@@ -32,6 +32,10 @@ export default class Wrapper extends Component {
 						exact path='/:slug/:id'
 					/>
 					<Route
+						component={RecordListing}
+						exact path='/tags/:tag'
+					/>
+					<Route
 						component={Contact}
 						exact path='/contact'
 					/>

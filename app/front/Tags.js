@@ -3,7 +3,7 @@ import Home from './Categories/Home';
 import Header from './Header/Header';
 import ErrorBoundary from './errorBoundaries/ErrorBoundary';
 
-class Main extends Component {
+class Tags extends Component {
 
 	render () {
 		return (
@@ -19,6 +19,4 @@ class Main extends Component {
 	}
 }
 
-export default Main;
-
-
+export default Tags;

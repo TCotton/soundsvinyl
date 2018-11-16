@@ -85,6 +85,20 @@ module.exports = (app) => {
 			});
 	});
 
+	app.route('/apiV1/page/findbytag/:tag').get((req, res) => {
+
+		Page.find({'categories.name':req.params.tag}).sort({'date': -1})
+			.exec((err, pages) => {
+
+				if (!err) {
+					res.json(pages);
+				} else {
+					return new Error(err.toString());
+				}
+
+			});
+	});
+
 	app.route('/apiV1/page/getall').get((req, res) => {
 
 		Page.find({}).sort({'date': -1})
@@ -201,7 +215,5 @@ module.exports = (app) => {
 			}
 		});
 	});
-
 	/* eslint-enable security/detect-non-literal-fs-filename */
-
 };

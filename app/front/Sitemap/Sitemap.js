@@ -14,6 +14,8 @@ export default class Sitemap extends Component {
 			error: null,
 			pages: []
 		};
+
+		console.dir(this.props);
 	}
 
 	componentWillMount() {

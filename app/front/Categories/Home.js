@@ -4,7 +4,7 @@ import { homeURI } from '../../helper_constants';
 import CategoriesHomepage from './CategoriesHomepage';
 import ErrorBoundary from '../errorBoundaries/ErrorBoundary';
 
-export class Categories extends Component {
+export class Home extends Component {
 
 	constructor (props) {
 		super(props);
@@ -13,17 +13,32 @@ export class Categories extends Component {
 			pages: [],
 			requestCompleted: false
 		};
+	}
 
-		console.dir(this.match);
+	componentDidMount () {
+
+		axios.get( `${homeURI}/apiV1/page/get` )
+			.then( res => {
+
+				this.setState({
+					pages: res.data,
+					requestCompleted: true
+				})
+			});
 	}
 
 	render () {
 		const { pages, requestCompleted } = this.state;
 
 		return (
-			<ErrorBoundary />
+			<ErrorBoundary>
+				<CategoriesHomepage
+					requestCompleted={requestCompleted}
+					search={pages}
+				/>
+			</ErrorBoundary>
 		)
 	}
 }
 
-export default Categories;
+export default Home;
