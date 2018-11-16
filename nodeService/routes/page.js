@@ -6,6 +6,24 @@ const {
 	createCategories
 } = require('./routes_helper_functions');
 const fs = require('fs');
+const mcache = require('memory-cache');
+
+const cache = (duration) => {
+	return (req, res, next) => {
+		let key = '__express__' + req.originalUrl || req.url
+		let cachedBody = mcache.get(key)
+		if (cachedBody) {
+			res.send(cachedBody)
+		} else {
+			res.sendResponse = res.send
+			res.send = (body) => {
+				mcache.put(key, body, duration * 1000);
+				res.sendResponse(body)
+			}
+			next()
+		}
+	}
+}
 
 module.exports = (app) => {
 
@@ -53,8 +71,8 @@ module.exports = (app) => {
 			}
 		});
 	});
-
-	app.route('/apiV1/page/get').get((req, res) => {
+	
+	app.get('/apiV1/page/get', cache(10), (req, res) => {
 
 		Page.find({}).sort({'date': -1})
 			.limit(17)
@@ -85,7 +103,7 @@ module.exports = (app) => {
 			});
 	});
 
-	app.route('/apiV1/page/getall').get((req, res) => {
+	app.get('/apiV1/page/getall', cache(10), (req, res) => {
 
 		Page.find({}).sort({'date': -1})
 			.exec((err, pages) => {
