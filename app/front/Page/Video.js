@@ -25,6 +25,7 @@ class Video extends Component {
 				{typeof videoLink === 'string' &&
 				<video
 					controls
+					id='video'
 					width='100%'
 				>
 					<source

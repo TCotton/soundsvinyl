@@ -5,14 +5,30 @@ import axios from 'axios';
 import { getCookieValue } from '../helper_functions';
 import Video from './Page/Video';
 import MetaHeader from './MetaHeadComponents/metaHeader';
-import VideoErrorBoundary from './errorBoundaries/videoErrorBoundary';
+import ErrorBoundary from './errorBoundaries/ErrorBoundary';
 import Disqus from './Disqus/Disqus';
-
+import WebAudio from './Charts/WebAudio';
 import './recordListing.scss';
 import PropTypes from 'prop-types';
 import { homeURI } from '../helper_constants';
 
 class RecordListing extends Component {
+
+	static propTypes = {
+		match: PropTypes.shape({
+			params: PropTypes.shape({
+				id: PropTypes.string
+			})
+		})
+	};
+
+	static defaultProps = {
+		match: {
+			params: {
+				id: ''
+			}
+		}
+	}
 
 	constructor ( props ) {
 		super( props );
@@ -92,9 +108,9 @@ class RecordListing extends Component {
 		if( videoLink !== '' ) {
 			videoComponent = () => {
 				return (
-					<VideoErrorBoundary>
+					<ErrorBoundary>
 						<Video videoLink={videoLink} />
-					</VideoErrorBoundary>
+					</ErrorBoundary>
 				)
 			}
 		}
@@ -151,6 +167,14 @@ class RecordListing extends Component {
 
 					</section>
 
+					<section styleName='sinewave'>
+						<ErrorBoundary>
+							<WebAudio
+								audioFile={videoLink}
+							/>
+						</ErrorBoundary>
+					</section>
+
 					<section styleName='description'>
 
 						<p
@@ -186,31 +210,17 @@ class RecordListing extends Component {
 					</section>
 
 					<section>
-						<Disqus
-							id={window.location.pathname.split('/').filter(function(el){ return !!el; }).pop()}
-							path={window.location.pathname}
-							title={title.toString()}
-						/>
+						<ErrorBoundary>
+							<Disqus
+								id={window.location.pathname.split('/').filter(function(el){ return !!el; }).pop()}
+								path={window.location.pathname}
+								title={title.toString()}
+							/>
+						</ErrorBoundary>
 					</section>
 
 				</main>
 			)
-		}
-	}
-}
-
-RecordListing.propTypes = {
-	match: PropTypes.shape({
-		params: PropTypes.shape({
-			id: PropTypes.string
-		})
-	})
-};
-
-RecordListing.defaultProps = {
-	match: {
-		params: {
-			id: ''
 		}
 	}
 }
