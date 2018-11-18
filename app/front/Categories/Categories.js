@@ -3,11 +3,20 @@ import axios from 'axios';
 import { homeURI } from '../../helper_constants';
 import CategoriesHomepage from './CategoriesHomepage';
 import ErrorBoundary from '../errorBoundaries/ErrorBoundary';
+import PropTypes from 'prop-types'
 
 export class Categories extends Component {
 
-	constructor (props) {
-		super(props);
+	static propTypes = {
+		category: PropTypes.string,
+	}
+
+	static defaultProps = {
+		category: undefined
+	}
+
+	constructor ( props ) {
+		super( props );
 
 		this.state = {
 			pages: [],
@@ -17,14 +26,31 @@ export class Categories extends Component {
 
 	componentDidMount () {
 
-		axios.get( `${homeURI}/apiV1/page/get` )
-			.then( res => {
+		const { category } = this.props;
 
-				this.setState({
-					pages: res.data,
-					requestCompleted: true
-				})
-			});
+		// refactor
+		if( !category ) {
+			axios.get( `${homeURI}/apiV1/page/get` )
+				.then( res => {
+
+					this.setState( {
+						pages: res.data,
+						requestCompleted: true
+					} )
+				} );
+		}
+
+		if( category ) {
+			axios.get( `${homeURI}/apiV1/page/get` )
+				.then( res => {
+
+					this.setState( {
+						pages: res.data,
+						requestCompleted: true
+					} )
+				} );
+		}
+
 	}
 
 	render () {

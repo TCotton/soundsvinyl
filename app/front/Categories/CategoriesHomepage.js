@@ -3,7 +3,8 @@ import './categoriesHomepage.scss';
 import PageUnit from '../Page/PageUnit';
 import HomePageSearchForm from './HomePageSearchForm';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import CategoriesList from './CategoriesList';
 
 export class CategoriesHomepage extends Component {
 
@@ -63,6 +64,13 @@ export class CategoriesHomepage extends Component {
 					{'All categories'}
 				</h3>
 				<section>
+					{requestCompleted &&
+						<CategoriesList
+							current='1'
+							dataArray={search}
+							pageSize={11}
+						/>
+					}
 					{arrayMap}
 				</section>
 			</main>

@@ -71,7 +71,7 @@ module.exports = (app) => {
 			}
 		});
 	});
-	
+
 	app.get('/apiV1/page/get', cache(10), (req, res) => {
 
 		Page.find({}).sort({'date': -1})
@@ -129,7 +129,7 @@ module.exports = (app) => {
 		});
 	});
 
-	app.route('/apiV1/page/get/:id').get((req, res) => {
+	app.route('/apiV1/page/category/get/:id').get((req, res) => {
 
 		Page.findOne({_id: req.params.id}, (err, page) => {
 

@@ -7,21 +7,20 @@ class Main extends Component {
 
 	constructor ( props ) {
 		super( props );
-		console.dir(this.props.match.params.tag);
 	}
 
 	render () {
-
-
-
-
+		const { match: { params: { tag } } } = this.props;
+		console.dir(tag);
 		return (
 			<div>
 				<ErrorBoundary>
 					<Header />
 				</ErrorBoundary>
 				<ErrorBoundary>
-
+					<Categories
+						catgegory={tag}
+					/>
 				</ErrorBoundary>
 			</div>
 		)
