@@ -28,6 +28,8 @@ export class Categories extends Component {
 
 		const { category } = this.props;
 
+		console.dir(this.props);
+
 		// refactor
 		if( !category ) {
 			axios.get( `${homeURI}/apiV1/page/get` )
@@ -41,7 +43,7 @@ export class Categories extends Component {
 		}
 
 		if( category ) {
-			axios.get( `${homeURI}/apiV1/page/get` )
+			axios.get( `${homeURI}/apiV1/page/findbytag/${category}` )
 				.then( res => {
 
 					this.setState( {

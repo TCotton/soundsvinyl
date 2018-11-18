@@ -11,6 +11,7 @@ class Main extends Component {
 
 	render () {
 		const { match: { params: { tag } } } = this.props;
+		console.dir(tag);
 
 		return (
 			<div>
@@ -19,7 +20,7 @@ class Main extends Component {
 				</ErrorBoundary>
 				<ErrorBoundary>
 					<Categories
-						catgegory={tag}
+						category={tag}
 					/>
 				</ErrorBoundary>
 			</div>

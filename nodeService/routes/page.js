@@ -103,6 +103,22 @@ module.exports = (app) => {
 			});
 	});
 
+	app.route('/apiV1/page/findbytag/:tag').get((req, res) => {
+
+		Page.find({'categories.name':req.params.tag})
+			.sort({'date': -1})
+			.limit(17)
+			.exec((err, pages) => {
+
+				if (!err) {
+					res.json(pages);
+				} else {
+					return new Error(err.toString());
+				}
+
+			});
+	});
+
 	app.get('/apiV1/page/getall', cache(10), (req, res) => {
 
 		Page.find({}).sort({'date': -1})
