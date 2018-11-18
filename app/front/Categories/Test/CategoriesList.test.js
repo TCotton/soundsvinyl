@@ -1,21 +1,17 @@
+/* eslint-disable jest/no-disabled-tests */
 import React from 'react';
-import Pagination from '../Pagination';
+import { CategoriesList } from '../CategoriesList';
 import renderer from 'react-test-renderer';
 
 describe( 'Component', () => {
 	let component;
 	beforeEach( () => {
 		component = renderer.create(
-			<Pagination
-				articlesPerPage={10}
-				current={1}
-				onChangePagination={() => {}} // eslint-disable-line
-				total={10}
-			/>
+			<CategoriesList />
 		);
 	});
 
-	describe( 'Pagination', () => {
+	describe( 'CategoriesList', () => {
 		it( 'should be defined', () => {
 			expect( component ).toBeDefined();
 		});

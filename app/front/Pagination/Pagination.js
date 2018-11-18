@@ -1,17 +1,69 @@
 import React, { Component } from 'react'
 import './Pagination.scss';
+import PropTypes from 'prop-types';
 
 export default class Pagination extends Component {
+
+	static propTypes = {
+		articlesPerPage: PropTypes.number.isRequired,
+		current: PropTypes.number.isRequired,
+		onChangePagination: PropTypes.func.isRequired,
+		total: PropTypes.number.isRequired
+	};
+
 
 	constructor ( props ) {
 		super( props );
 
+		this.handlePaginationChange = this.handlePaginationChange.bind( this );
+	}
+
+	shouldComponentUpdate () {
+		return true;
+	}
+
+	handlePaginationChange ( event ) {
+		const direction = event.target.dataset.direction;
+
+		const { onChangePagination } = this.props;
+		onChangePagination( direction );
 	}
 
 	render () {
-
+		const { articlesPerPage, current, total } = this.props;
+		const maximum = Math.ceil( total / articlesPerPage );
+		// only display if the total is a bigger number than articles per page
 		return (
-			<div styleName='Pagination' />
-		)
+			<React.Fragment>
+				{articlesPerPage < total &&
+				<div
+					styleName='Pagination'
+				>
+					<img
+						alt=''
+						className='PaginationLeft'
+						data-direction='left'
+						onClick={this.handlePaginationChange}
+						src='/src/assets/images/right.svg'
+						styleName={( current === 1 ) ? 'InActive' : 'Active'}
+					/>
+					<div styleName='PaginationText'>
+						{'Page '}
+						{current}
+						{' of '}
+						{maximum}
+					</div>
+					<img
+						alt=''
+						className='PaginationRight'
+						data-direction='right'
+						onClick={this.handlePaginationChange}
+						src='/src/assets/images/right.svg'
+						styleName={( current === 2 ) ? 'InActive' : 'Active'}
+					/>
+				</div>
+				}
+			</React.Fragment>
+		);
 	}
 }

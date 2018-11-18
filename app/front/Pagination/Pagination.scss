@@ -1,3 +1,48 @@
-.pagination {
+@import '../../assets/sass/tools';
+
+.Pagination {
 	background: transparent;
+}
+
+:global .PaginationContainer {
+	display: flex;
+	width: 100%;
+	height: 16px;
+	align-items: center;
+	color: $navColour;
+	font-size: 14px;
+}
+
+:global .PaginationLeft {
+	margin-right: 11px;
+	cursor: pointer;
+	transform: rotate(180deg);
+	min-height: 16px;
+	min-width: 8px;
+}
+
+:global .PaginationRight {
+	margin-left: 11px;
+	cursor: pointer;
+	min-height: 16px;
+	min-width: 8px;
+}
+
+.PaginationText {
+	min-width:73px;
+	text-align: center;
+}
+
+.Active {
+	background: transparent;
+}
+
+.InActive {
+	opacity: .4;
+}
+
+@media only screen and (max-width: $media_breakpoint_tablet) {
+	:global .PaginationContainer {
+		padding: 16px 16px 32px;
+	}
 }

@@ -41,7 +41,7 @@ export default class Disqus extends Component {
 
 	componentWillUnmount () {
 
-		if( doct.getElementById( 'disqus-script' ) ) {
+		if( doc.getElementById( 'disqus-script' ) ) {
 
 			const script = doc.getElementById( 'disqus-script' );
 			script.parentNode.removeChild( script );
