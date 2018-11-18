@@ -8,6 +8,7 @@ function renderDisqus() {
 	if (window.DISQUS === undefined) {
 		const script = document.createElement('script');
 		script.async = true;
+		script.id = 'disqus-script';
 		script.src = 'https://' + Shortname + '.disqus.com/embed.js';
 		document.getElementsByTagName('head')[0].appendChild(script);
 	} else {
@@ -37,6 +38,15 @@ export default class Disqus extends Component {
 
 	componentDidUpdate () {
 		renderDisqus();
+	}
+
+	componentWillUnmount() {
+
+		if (document.getElementById('disqus-script')) {
+
+			const script = document.getElementById('disqus-script');
+			script.parentNode.removeChild(script);
+		}
 	}
 
 	render() {
