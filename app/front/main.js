@@ -5,14 +5,23 @@ import ErrorBoundary from './errorBoundaries/ErrorBoundary';
 
 class Main extends Component {
 
+	constructor ( props ) {
+		super( props );
+		console.dir(this.props.match.params.tag);
+	}
+
 	render () {
+
+
+
+
 		return (
 			<div>
 				<ErrorBoundary>
 					<Header />
 				</ErrorBoundary>
 				<ErrorBoundary>
-					<Categories />
+
 				</ErrorBoundary>
 			</div>
 		)

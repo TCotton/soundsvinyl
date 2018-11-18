@@ -11,7 +11,6 @@ export default class Pagination extends Component {
 		total: PropTypes.number.isRequired
 	};
 
-
 	constructor ( props ) {
 		super( props );
 
@@ -44,7 +43,7 @@ export default class Pagination extends Component {
 						className='PaginationLeft'
 						data-direction='left'
 						onClick={this.handlePaginationChange}
-						src='/src/assets/images/right.svg'
+						src='/app/assets/images/right.svg'
 						styleName={( current === 1 ) ? 'InActive' : 'Active'}
 					/>
 					<div styleName='PaginationText'>
@@ -58,7 +57,7 @@ export default class Pagination extends Component {
 						className='PaginationRight'
 						data-direction='right'
 						onClick={this.handlePaginationChange}
-						src='/src/assets/images/right.svg'
+						src='/app/assets/images/right.svg'
 						styleName={( current === 2 ) ? 'InActive' : 'Active'}
 					/>
 				</div>
