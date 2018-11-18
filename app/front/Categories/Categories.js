@@ -5,6 +5,8 @@ import CategoriesHomepage from './CategoriesHomepage';
 import ErrorBoundary from '../errorBoundaries/ErrorBoundary';
 import PropTypes from 'prop-types'
 
+const articlesPerPage = 10;
+
 export class Categories extends Component {
 
 	static propTypes = {
@@ -17,10 +19,18 @@ export class Categories extends Component {
 
 	constructor ( props ) {
 		super( props );
+		this.state = this.getInitialState();
+	}
 
-		this.state = {
-			pages: [],
-			requestCompleted: false
+	getInitialState () {
+		return {
+			current: 1,
+			error: false,
+			loading: false,
+			dataArray: [],
+			page: [],
+			requestCompleted: false,
+			total: 20
 		};
 	}
 
@@ -28,18 +38,17 @@ export class Categories extends Component {
 
 		const { category } = this.props;
 
-		console.dir(this.props);
-
-		// refactor
+		// refactor both these API request into one request
 		if( !category ) {
 			axios.get( `${homeURI}/apiV1/page/get` )
 				.then( res => {
 
 					this.setState( {
-						pages: res.data,
-						requestCompleted: true
-					} )
-				} );
+						pages: this.addNumberToDataArray(res.data),
+						requestCompleted: true,
+						total: res.data.length
+					})
+				});
 		}
 
 		if( category ) {
@@ -47,16 +56,45 @@ export class Categories extends Component {
 				.then( res => {
 
 					this.setState( {
-						pages: res.data,
-						requestCompleted: true
-					} )
-				} );
+						pages: this.addNumberToDataArray(res.data),
+						requestCompleted: true,
+						total: res.data.length
+					})
+				});
 		}
+	}
 
+	handleOnChange ( direction ) {
+		const { current, total } = this.state;
+		const maximum = Math.ceil( total / articlesPerPage );
+
+		const paginationFunc = ( current ) => {
+			if ( direction === 'left' ) {
+				// current should be a minimum of one
+				return ( current - 1 >= 1 ) ? ( current - 1 ) : 1;
+			}
+			if ( direction === 'right' ) {
+				// current should be maximum of Math.ceil(total / articlesPerPage)
+				return ( current + 1 < maximum ) ? ( current + 1 ) : maximum;
+			}
+		};
+
+		this.setState({ current: paginationFunc( current ) });
+	}
+
+	addNumberToDataArray ([ ...data ]) {
+		data.forEach( ( currentValue, index ) => {
+			data[ index ].position = ( index + 1 );
+		});
+
+		return data;
 	}
 
 	render () {
-		const { pages, requestCompleted } = this.state;
+		const {
+			pages,
+			requestCompleted
+		} = this.state;
 
 		return (
 			<ErrorBoundary>
