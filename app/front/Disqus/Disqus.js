@@ -4,16 +4,18 @@ import './disqus.scss';
 
 const Shortname = 'soundsvinyl';
 const Website_URL = 'https://soundsvinyl.co';
+const doc = document;
+const win = window;
 
 function renderDisqus () {
-	if( window.DISQUS === undefined ) {
-		const script = document.createElement( 'script' );
+	if( win.DISQUS === undefined ) {
+		const script = doc.createElement( 'script' );
 		script.async = true;
 		script.id = 'disqus-script';
-		script.src = 'https://' + Shortname + '.disqus.com/embed.js';
-		document.getElementsByTagName( 'head' )[ 0 ].appendChild( script );
+		script.src = `https://${Shortname}.disqus.com/embed.js`;
+		doc.getElementsByTagName( 'head' )[ 0 ].appendChild( script );
 	} else {
-		window.DISQUS.reset( { reload: true } );
+		win.DISQUS.reset( { reload: true } );
 	}
 }
 
@@ -39,9 +41,9 @@ export default class Disqus extends Component {
 
 	componentWillUnmount () {
 
-		if( document.getElementById( 'disqus-script' ) ) {
+		if( doct.getElementById( 'disqus-script' ) ) {
 
-			const script = document.getElementById( 'disqus-script' );
+			const script = doc.getElementById( 'disqus-script' );
 			script.parentNode.removeChild( script );
 		}
 	}
@@ -50,10 +52,10 @@ export default class Disqus extends Component {
 		let { id, title, path, ...other } = this.props;
 
 		if( process.env.BROWSER ) {
-			window.disqus_shortname = Shortname;
-			window.disqus_identifier = id;
-			window.disqus_title = title;
-			window.disqus_url = Website_URL + path;
+			win.disqus_shortname = Shortname;
+			win.disqus_identifier = id;
+			win.disqus_title = title;
+			win.disqus_url = Website_URL + path;
 		}
 
 		return (
@@ -64,4 +66,3 @@ export default class Disqus extends Component {
 		);
 	}
 }
-
