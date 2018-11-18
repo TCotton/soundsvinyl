@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './disqus.scss';
+
 const Shortname = 'soundsvinyl';
 const Website_URL = 'https://soundsvinyl.co';
 
-function renderDisqus() {
-	if (window.DISQUS === undefined) {
-		const script = document.createElement('script');
+function renderDisqus () {
+	if( window.DISQUS === undefined ) {
+		const script = document.createElement( 'script' );
 		script.async = true;
 		script.id = 'disqus-script';
 		script.src = 'https://' + Shortname + '.disqus.com/embed.js';
-		document.getElementsByTagName('head')[0].appendChild(script);
+		document.getElementsByTagName( 'head' )[ 0 ].appendChild( script );
 	} else {
-		window.DISQUS.reset({ reload: true });
+		window.DISQUS.reset( { reload: true } );
 	}
 }
 
@@ -36,23 +37,19 @@ export default class Disqus extends Component {
 		);
 	}
 
-	componentDidUpdate () {
-		renderDisqus();
-	}
+	componentWillUnmount () {
 
-	componentWillUnmount() {
+		if( document.getElementById( 'disqus-script' ) ) {
 
-		if (document.getElementById('disqus-script')) {
-
-			const script = document.getElementById('disqus-script');
-			script.parentNode.removeChild(script);
+			const script = document.getElementById( 'disqus-script' );
+			script.parentNode.removeChild( script );
 		}
 	}
 
-	render() {
+	render () {
 		let { id, title, path, ...other } = this.props;
 
-		if (process.env.BROWSER) {
+		if( process.env.BROWSER ) {
 			window.disqus_shortname = Shortname;
 			window.disqus_identifier = id;
 			window.disqus_title = title;
