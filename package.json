@@ -55,6 +55,7 @@
 		"jade": "1.11.0",
 		"js-cookie": "2.2.0",
 		"jsonwebtoken": "8.3.0",
+		"lodash": "^4.17.11",
 		"lodash-es": "4.17.11",
 		"memory-cache": "^0.2.0",
 		"memory-fs": "0.4.1",

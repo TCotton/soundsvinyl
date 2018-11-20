@@ -22,7 +22,6 @@ export class CategoriesHomepage extends Component {
 
 	constructor ( props ) {
 		super( props );
-		console.dir( this );
 		this.handleSearchResult = this.handleSearchResult.bind( this );
 	}
 

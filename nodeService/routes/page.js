@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Page = new require('../models/page');
+const Tags = new require('../models/tags');
 const {
 	createStringSlug,
 	createShortSlug,
@@ -143,6 +144,34 @@ module.exports = (app) => {
 
 			});
 	});
+
+	// DEBUG CODE START
+
+	app.get('/apiV1/page/getTags', cache(10), (req, res) => {
+
+		Page.aggregate([
+			{
+				"$unwind": "$categories"
+			},
+			{
+				"$group": {
+					"_id": '$categories',
+					"count": {"$sum": 1}
+				}
+			},
+			{"$sort": {"count": -1}}
+		], function (err, result) {
+
+			if (!err) {
+				res.json(result);
+			} else {
+				return new Error(err.toString());
+			}
+		});
+
+	});
+
+	// DEBUG CODE FINISH
 
 	app.route('/apiV1/page/getadmin').get((req, res) => {
 
