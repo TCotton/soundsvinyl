@@ -34,6 +34,15 @@ export class Categories extends Component {
 		};
 	}
 
+	/*componentDidUpdate(prevProps) {
+
+		const { match: { params: { tag } } } = this.props;
+
+		if (tag !== prevProps.match.params.tag) {
+			console.log('Route change!');
+		}
+	}
+*/
 	componentDidMount () {
 
 		const { category } = this.props;

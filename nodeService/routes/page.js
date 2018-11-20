@@ -8,24 +8,35 @@ const {
 const fs = require('fs');
 const mcache = require('memory-cache');
 
-const cache = (duration) => {
-	return (req, res, next) => {
-		let key = '__express__' + req.originalUrl || req.url
-		let cachedBody = mcache.get(key)
-		if (cachedBody) {
-			res.send(cachedBody)
-		} else {
-			res.sendResponse = res.send
-			res.send = (body) => {
-				mcache.put(key, body, duration * 1000);
-				res.sendResponse(body)
+module.exports = (app) => {
+
+	const cache = (duration) => {
+
+		if( app.get( 'env' ) === 'production' ) {
+
+			return ( req, res, next ) => {
+				let key = '__express__' + req.originalUrl || req.url
+				let cachedBody = mcache.get( key )
+				if( cachedBody ) {
+					res.send( cachedBody )
+				} else {
+					res.sendResponse = res.send
+					res.send = ( body ) => {
+						mcache.put( key, body, duration * 1000 );
+						res.sendResponse( body )
+					}
+					next();
+				}
 			}
-			next()
+		}
+
+		if( app.get( 'env' ) === 'development' ) {
+
+			return ( req, res, next ) => {
+				next();
+			}
 		}
 	}
-}
-
-module.exports = (app) => {
 
 	app.route('/apiV1/page/add').post((req, res) => {
 
@@ -146,6 +157,19 @@ module.exports = (app) => {
 	});
 
 	app.route('/apiV1/page/category/get/:id').get((req, res) => {
+
+		Page.findOne({_id: req.params.id}, (err, page) => {
+
+			if (!err) {
+				res.json(page);
+			} else {
+				return new Error(err.toString());
+			}
+
+		});
+	});
+
+	app.route('/apiV1/page/get/:id').get((req, res) => {
 
 		Page.findOne({_id: req.params.id}, (err, page) => {
 
