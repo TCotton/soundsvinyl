@@ -7,7 +7,11 @@ describe( 'Component', () => {
 	let component;
 	beforeEach( () => {
 		component = renderer.create(
-			<CategoriesList />
+			<CategoriesList
+				current={2}
+				dataArray={[]}
+				pageSize={2}
+			/>
 		);
 	});
 
@@ -17,3 +21,4 @@ describe( 'Component', () => {
 		});
 	});
 });
+
