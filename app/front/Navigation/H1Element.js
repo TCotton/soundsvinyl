@@ -17,11 +17,11 @@ export default class H1Element extends Component {
 		const { text } = this.props;
 
 		return (
-			<Link to='/'>
+			<a href='/'>
 				<h1>
 					{text}
 				</h1>
-			</Link>
+			</a>
 		)
 	}
 }

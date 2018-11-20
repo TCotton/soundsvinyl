@@ -20,6 +20,7 @@ export class CategoriesList extends Component {
 	};
 
 	constructor ( props ) {
+		alert('yes');
 		super( props );
 	}
 

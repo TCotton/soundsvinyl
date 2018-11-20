@@ -4,21 +4,25 @@ import PageUnit from '../Page/PageUnit';
 import HomePageSearchForm from './HomePageSearchForm';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import CategoriesList from './CategoriesList';
+// import CategoriesList from './CategoriesList';
 
 export class CategoriesHomepage extends Component {
 
 	static propTypes = {
+		categories: PropTypes.string, // eslint-disable-line
 		requestCompleted: PropTypes.bool,
-		search: PropTypes.arrayOf( PropTypes.object, PropTypes.string, PropTypes.number, PropTypes.arrayOf( PropTypes.string, PropTypes.number ) ).isRequired
+		search: PropTypes.arrayOf( PropTypes.object, PropTypes.string, PropTypes.number, PropTypes.arrayOf( PropTypes.string, PropTypes.number ) )
 	}
 
 	static defaultProps = {
-		requestCompleted: false
+		categories: undefined,
+		requestCompleted: false,
+		search: null
 	}
 
-	constructor (props) {
-		super(props);
+	constructor ( props ) {
+		super( props );
+		console.dir( this );
 		this.handleSearchResult = this.handleSearchResult.bind( this );
 	}
 
@@ -30,16 +34,19 @@ export class CategoriesHomepage extends Component {
 		const { search, requestCompleted } = this.props;
 		let arrayMap;
 
-		if (requestCompleted) {
-			search.splice(2, 0, ''); // add empty element so that search form can be placed there
-			arrayMap = search.map((element, index) => {
+		if( requestCompleted ) {
 
-				Object.assign(element, {
-					thumbnailUrl: window.location.protocol + '//' + window.location.hostname + (window.location.port.length === 0 ? '/' : ':8443/') + `thumbnails/thumbnail-${element._id}.png`
-				});
+			search.splice( 2, 0, '' ); // add empty element so that search form can be placed there
+
+			arrayMap = search.map( ( element, index ) => {
+
+				Object.assign( element, {
+					thumbnailUrl: window.location.protocol + '//' + window.location.hostname + ( window.location.port.length === 0 ? '/' : ':8443/' ) + `thumbnails/thumbnail-${element._id}.png`
+				} );
 
 				const key = index.toString();
 
+				// only add search box on home page
 				return (
 					<div key={`${element}${key}`}>
 						{
@@ -51,11 +58,12 @@ export class CategoriesHomepage extends Component {
 									subtitle={element.subTitle}
 									thumbnailUrl={element.thumbnailUrl}
 									title={element.title}
-								/> : <HomePageSearchForm onSearchInput={this.handleSearchResult}  />
+								/> : <HomePageSearchForm onSearchInput={this.handleSearchResult} />
 						}
 					</div>
 				)
 			});
+
 		}
 
 		return (
@@ -64,13 +72,6 @@ export class CategoriesHomepage extends Component {
 					{'All categories'}
 				</h3>
 				<section>
-					{requestCompleted &&
-						<CategoriesList
-							current='1'
-							dataArray={search}
-							pageSize={11}
-						/>
-					}
 					{arrayMap}
 				</section>
 			</main>
@@ -78,8 +79,18 @@ export class CategoriesHomepage extends Component {
 	}
 }
 
+/**
+ * 		{requestCompleted &&
+					<CategoriesList
+						current='1'
+						dataArray={search}
+						pageSize={11}
+					/>
+					}
+ */
+
 const mapStateToProps = ( state ) => {
-  // redux needs refactoring
+	// redux needs refactoring
 	if( state.search.length > 0 ) {
 		return {
 			search: state.search
@@ -87,4 +98,4 @@ const mapStateToProps = ( state ) => {
 	}
 }
 
-export default connect(mapStateToProps)( CategoriesHomepage );
+export default connect( mapStateToProps )( CategoriesHomepage );

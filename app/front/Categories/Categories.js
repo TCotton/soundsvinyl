@@ -105,9 +105,12 @@ export class Categories extends Component {
 			requestCompleted
 		} = this.state;
 
+		const { category } = this.props; // refactor -> use redux
+
 		return (
 			<ErrorBoundary>
 				<CategoriesHomepage
+					category={category}
 					requestCompleted={requestCompleted}
 					search={pages}
 				/>

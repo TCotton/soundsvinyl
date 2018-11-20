@@ -11,7 +11,6 @@ class Main extends Component {
 
 	render () {
 		const { match: { params: { tag } } } = this.props;
-		console.dir(tag);
 
 		return (
 			<div>
