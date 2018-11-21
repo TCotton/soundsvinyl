@@ -5,7 +5,13 @@ import PropTypes from 'prop-types';
 class MetaHeader extends Component {
 
 	static propTypes = {
-		title: PropTypes.string.isRequired
+		canonical: PropTypes.string,
+		title: PropTypes.string,
+	}
+
+	static defaultProps = {
+		canonical: '',
+		title: 'Vinyl forever, music for all'
 	}
 
 	constructor ( props ) {
@@ -13,7 +19,7 @@ class MetaHeader extends Component {
 	}
 
 	render () {
-		const { title } = this.props;
+		const { title, canonical } = this.props;
 
 		return (
 			<Helmet>
@@ -21,6 +27,12 @@ class MetaHeader extends Component {
 					{'Soundsvinyl.co: '}
 					{title}
 				</title>
+				{canonical.length > 0 &&
+				<link
+					href={`https://soundsvinyl.co/${canonical}`}
+					rel='canonical'
+				/>
+				}
 			</Helmet>
 		)
 	}

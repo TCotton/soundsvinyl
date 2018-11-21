@@ -49,7 +49,7 @@ export class Categories extends Component {
 		this.getRequestCall();
 	}
 
-	componentDidUpdate(prevProps) {
+	componentDidUpdate( prevProps ) {
 		const { match: { params: { tag } } } = this.props;
 
 		if (tag !== prevProps.match.params.tag) {

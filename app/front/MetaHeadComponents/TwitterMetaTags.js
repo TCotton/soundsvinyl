@@ -35,4 +35,3 @@ class TwitterMetaTags extends Component {
 }
 
 export default TwitterMetaTags;
-

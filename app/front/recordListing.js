@@ -4,9 +4,9 @@ import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { getCookieValue } from '../helper_functions';
 import Video from './Page/Video';
-import MetaHeader from './MetaHeadComponents/metaHeader';
 import VideoErrorBoundary from './errorBoundaries/videoErrorBoundary';
 import Disqus from './Disqus/Disqus';
+import RawMetaTags from './MetaHeadComponents/RawMetaTags';
 
 import './recordListing.scss';
 import PropTypes from 'prop-types';
@@ -15,11 +15,11 @@ import { homeURI } from '../helper_constants';
 class RecordListing extends Component {
 
 	static propTypes = {
-		match: PropTypes.shape({
-			params: PropTypes.shape({
+		match: PropTypes.shape( {
+			params: PropTypes.shape( {
 				id: PropTypes.string
-			})
-		})
+			} )
+		} )
 	};
 
 	static defaultProps = {
@@ -44,6 +44,7 @@ class RecordListing extends Component {
 			descriptionFour: String,
 			descriptionFive: String,
 			categories: Array,
+			slug: String,
 		}
 
 		this.handleInputChange = this.handleInputChange.bind( this );
@@ -65,7 +66,8 @@ class RecordListing extends Component {
 					descriptionThree: res.data.descriptionThree,
 					descriptionFour: res.data.descriptionFour,
 					descriptionFive: res.data.descriptionFive,
-					categories: res.data.categories
+					categories: res.data.categories,
+					slug: res.data.slug
 				} );
 			} ).catch( ( error ) => {
 			new Error( error.toString() )
@@ -113,7 +115,7 @@ class RecordListing extends Component {
 			videoComponent = () => {
 				return (
 					<VideoErrorBoundary>
-						<Video videoLink={videoLink} />
+						<Video videoLink={videoLink}/>
 					</VideoErrorBoundary>
 				)
 			}
@@ -122,7 +124,15 @@ class RecordListing extends Component {
 		let metaHeaderComponent;
 
 		if( title !== '' && title.length > 1 ) {
-			metaHeaderComponent = <MetaHeader title={title} />
+			const { match: { params: { id } } } = this.props;
+			const { slug } = this.state;
+
+			metaHeaderComponent = (
+				<RawMetaTags
+					canonical={`${slug}/${id}`}
+					title={title}
+				/>
+			);
 		}
 
 		let categoryList;
@@ -147,76 +157,77 @@ class RecordListing extends Component {
 		} else {
 
 			return (
-				<main styleName='recordListing'>
-					<header styleName='record'>
+				<React.Fragment>
+					{metaHeaderComponent}
+					<main styleName='recordListing'>
+						<header styleName='record'>
 
-						<h2
-							className={( title ? 'display' : 'hide' )}
-							dangerouslySetInnerHTML={{ __html: title }}
-						/>
-						<p
-							className={( subTitle ? 'display' : 'hide' )}
-							dangerouslySetInnerHTML={{ __html: subTitle }}
-						/>
+							<h2
+								className={( title ? 'display' : 'hide' )}
+								dangerouslySetInnerHTML={{ __html: title }}
+							/>
+							<p
+								className={( subTitle ? 'display' : 'hide' )}
+								dangerouslySetInnerHTML={{ __html: subTitle }}
+							/>
 
-						{metaHeaderComponent}
+						</header>
 
-					</header>
+						<section styleName='videoSineWave'>
 
-					<section styleName='videoSineWave'>
+							<div styleName='videoContainer'>
+								{videoComponent()}
+							</div>
 
-						<div styleName='videoContainer'>
-							{videoComponent()}
-						</div>
+						</section>
 
-					</section>
+						<section styleName='description'>
 
-					<section styleName='description'>
+							<p
+								className={( descriptionOne ? 'display' : 'hide' )}
+								dangerouslySetInnerHTML={{ __html: descriptionOne }}
+							/>
+							<p
+								className={( descriptionTwo ? 'display' : 'hide' )}
+								dangerouslySetInnerHTML={{ __html: descriptionTwo }}
+							/>
+							<p
+								className={( descriptionThree ? 'display' : 'hide' )}
+								dangerouslySetInnerHTML={{ __html: descriptionThree }}
+							/>
+							<p
+								className={( descriptionFour ? 'display' : 'hide' )}
+								dangerouslySetInnerHTML={{ __html: descriptionFour }}
+							/>
+							<p
+								className={( descriptionFive ? 'display' : 'hide' )}
+								dangerouslySetInnerHTML={{ __html: descriptionFive }}
+							/>
 
-						<p
-							className={( descriptionOne ? 'display' : 'hide' )}
-							dangerouslySetInnerHTML={{ __html: descriptionOne }}
-						/>
-						<p
-							className={( descriptionTwo ? 'display' : 'hide' )}
-							dangerouslySetInnerHTML={{ __html: descriptionTwo }}
-						/>
-						<p
-							className={( descriptionThree ? 'display' : 'hide' )}
-							dangerouslySetInnerHTML={{ __html: descriptionThree }}
-						/>
-						<p
-							className={( descriptionFour ? 'display' : 'hide' )}
-							dangerouslySetInnerHTML={{ __html: descriptionFour }}
-						/>
-						<p
-							className={( descriptionFive ? 'display' : 'hide' )}
-							dangerouslySetInnerHTML={{ __html: descriptionFive }}
-						/>
+						</section>
 
-					</section>
+						<section
+							className={( categories ? 'display' : 'hide' )}
+							styleName='categories'
+						>
+							<ul>
+								{categoryList}
+							</ul>
+						</section>
 
-					<section
-						className={( categories ? 'display' : 'hide' )}
-						styleName='categories'
-					>
-						<ul>
-							{categoryList}
-						</ul>
-					</section>
+						<section>
+							<Disqus
+								id={window.location.pathname.split( '/' ).filter( function( el ) { return !!el; } ).pop()}
+								path={window.location.pathname}
+								title={title.toString()}
+							/>
+						</section>
 
-					<section>
-						<Disqus
-							id={window.location.pathname.split('/').filter(function(el){ return !!el; }).pop()}
-							path={window.location.pathname}
-							title={title.toString()}
-						/>
-					</section>
-
-				</main>
+					</main>
+				</React.Fragment>
 			)
 		}
 	}
 }
 
-export default withRouter(RecordListing);
+export default withRouter( RecordListing );
