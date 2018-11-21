@@ -66,8 +66,10 @@ class RecordListing extends Component {
 					descriptionFour: res.data.descriptionFour,
 					descriptionFive: res.data.descriptionFive,
 					categories: res.data.categories
-				});
-			});
+				} );
+			} ).catch( ( error ) => {
+			new Error( error.toString() )
+		} );
 
 		if( this.checkTokenCookie( 'token' ) ) {
 			this.setState( { disabled: false } ); // eslint-disable-line

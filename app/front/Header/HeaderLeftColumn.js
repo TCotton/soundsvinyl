@@ -6,9 +6,11 @@ export default class HeaderLeftColumn extends Component {
 	render () {
 		return (
 			<React.Fragment>
-				<div styleName='headerSVG'>
-					<Turntable />
-				</div>
+				<a href='/'>
+					<div styleName='headerSVG'>
+						<Turntable />
+					</div>
+				</a>
 			</React.Fragment>
 		)
 	}

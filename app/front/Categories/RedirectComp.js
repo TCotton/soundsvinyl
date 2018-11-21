@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './categoriesHomepage.scss';
 import PropTypes from 'prop-types';
-import { Redirect, withRouter, BrowserRouter as Router } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 
 class RedirectComp extends Component {
 

@@ -33,7 +33,7 @@ export class CategoriesHomepage extends Component {
 		const { search, requestCompleted } = this.props;
 		let arrayMap;
 
-		if( requestCompleted ) {
+		if( requestCompleted && Array.isArray(search) && search.length > 0) {
 
 			search.splice( 2, 0, '' ); // add empty element so that search form can be placed there
 
@@ -57,12 +57,20 @@ export class CategoriesHomepage extends Component {
 									subtitle={element.subTitle}
 									thumbnailUrl={element.thumbnailUrl}
 									title={element.title}
-								/> : <HomePageSearchForm onSearchInput={this.handleSearchResult} />
+								/> : <HomePageSearchForm onSearchInput={this.handleSearchResult}/>
 						}
 					</div>
 				)
-			});
+			} );
 
+		}
+
+		if( requestCompleted && Array.isArray(search) && search.length === 0) {
+			arrayMap = (
+				<p className='error'>
+					{'There are no entries for this term'}
+				</p>
+			);
 		}
 
 		return (
@@ -78,19 +86,12 @@ export class CategoriesHomepage extends Component {
 	}
 }
 
-/**
- * 		{requestCompleted &&
-					<CategoriesList
-						current='1'
-						dataArray={search}
-						pageSize={11}
-					/>
-					}
- */
-
 const mapStateToProps = ( state ) => {
+	console.dir(state);
 	// redux needs refactoring
 	if( state.search.length > 0 ) {
+		console.log('LOG HERE!!!!');
+		console.dir(state);
 		return {
 			search: state.search
 		}

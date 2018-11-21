@@ -11,7 +11,7 @@ export default class Header extends Component {
 					styleName='innerHeader'
 				>
 					<div styleName='headerLeftColumn'>
-						<HeaderLeftColumn />
+						a<HeaderLeftColumn />
 					</div>
 					<div styleName='headerRightColumn'>
 						<h2>

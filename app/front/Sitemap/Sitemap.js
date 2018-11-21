@@ -25,13 +25,15 @@ export default class Sitemap extends Component {
 				if( res.data.error ) {
 					this.setState( {
 						error: res.data.error
-					} );
+					});
 				}
 
 				this.setState( {
 					pages: res.data,
-				} )
-			} );
+				})
+			}).catch((error) => {
+			new Error(error.toString())
+		});
 
 		axios.get( `${homeURI}/apiV1/page/getTags` )
 			.then( res => {
@@ -39,7 +41,7 @@ export default class Sitemap extends Component {
 				if( res.data.error ) {
 					this.setState( {
 						error: res.data.error
-					} );
+					});
 				}
 
 				let anArray = []
@@ -53,8 +55,10 @@ export default class Sitemap extends Component {
 
 				this.setState( {
 					customPages: pairs,
-				} )
-			} );
+				})
+			}).catch((error) => {
+			new Error(error.toString())
+		});
 	}
 
 	render () {

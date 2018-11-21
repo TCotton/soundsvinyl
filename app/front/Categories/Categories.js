@@ -57,7 +57,9 @@ export class Categories extends Component {
 						requestCompleted: true,
 						total: res.data.length
 					})
-				});
+				}).catch((error) => {
+				new Error(error.toString())
+			});
 		}
 
 		if( category ) {
@@ -69,7 +71,9 @@ export class Categories extends Component {
 						requestCompleted: true,
 						total: res.data.length
 					})
-				});
+				}).catch(() => {
+				new Error(error.toString())
+			});
 		}
 	}
 

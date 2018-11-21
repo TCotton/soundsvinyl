@@ -45,9 +45,9 @@ class Contact extends Component {
 					}
 				}
 
-			} ).catch( ( e ) => {
+			}).catch( ( e ) => {
 			this.setState( { error: e.toString() } );
-		} )
+		})
 	}
 
 	handleInputChange (event) {
