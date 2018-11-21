@@ -1,3 +1,9 @@
+## 1.24.0 (November 20, 2018)
+
+* Working search box for tags only
+* Complete list of individual pages and categories on sitemap page
+* Opens homepage to search engines
+
 ## 1.23.0 (November 15, 2018)
 
 * Allow search engines to index home page only
