@@ -4,7 +4,8 @@ import axios from 'axios'
 import { homeURI } from '../../helper_constants'
 import SitemapUnorderedList from './SitemapUnorderedList';
 import ErrorBoundary from '../errorBoundaries/ErrorBoundary';
-import _ from 'lodash';
+import groupBy from 'lodash-es/groupBy';
+import sortBy from 'lodash-es/sortBy';
 
 export default class Sitemap extends Component {
 
@@ -50,8 +51,8 @@ export default class Sitemap extends Component {
 					anArray.push(element._id.name);
 				});
 
-				const group = _.groupBy(anArray);
-				const pairs = _.sortBy(group);
+				const group = groupBy(anArray);
+				const pairs = sortBy(group);
 
 				this.setState( {
 					customPages: pairs,
