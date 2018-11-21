@@ -1,3 +1,7 @@
+## 1.27.0 (November 21, 2018)
+
+* CSS and HTML changes for a better mobile user experience
+
 ## 1.26.0 (November 21, 2018
 
 * Added dynamic canonical title and document.title
