@@ -60,6 +60,7 @@ export default class MyAccountForm extends Component {
 						{nameLabel}
 					</label>
 					<input
+						data-autocapitalize='none'
 						disabled={disabled}
 						id={`${formName}loginName`}
 						name={`${formName}loginName`}

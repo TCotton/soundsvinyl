@@ -2,18 +2,20 @@
 
 .search {
 	.searchForm {
-		input[type=text] {
+		input[type=search] {
+			appearance: none;
+			-webkit-appearance: textfield;
 			min-width: 75%;
-			min-height: 25px;
+			height: 30px;
+			line-height: 30px;
 			padding: 5px;
 			border: 1px solid $footerBackground;
+			box-shadow: inset 0 5p 5px darken($footerBackground, 50%);
 			margin-bottom: 50px;
 		}
 	}
 
 	.searchName {
-		background: transparent;
-
 		> p {
 			@include font-calculator($font_family_header, 13px, 1);
 			color: $secondHeaderColour;

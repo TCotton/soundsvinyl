@@ -64,10 +64,11 @@ export class HomePageSearchForm extends Component {
 							{'Your search term'}
 						</label>
 						<input
+							data-autocapitalize='none'
 							id='search'
 							name='search'
 							onChange={this.handleInputChange}
-							type='text'
+							type='search'
 							value={search}
 						/>
 					</form>

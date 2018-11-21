@@ -28,6 +28,16 @@ class Nav extends Component {
 		this.handleLogout = this.handleLogout.bind(this);
 	}
 
+	componentDidUpdate ( prevProps, prevState ) {
+		const { isClicked } = this.state;
+
+		if( isClicked === prevState.isClicked ) {
+			this.setState( { // eslint-disable-line react/no-did-update-set-state
+				isClicked: !isClicked
+			} );
+		}
+	}
+
 	handleLogout() {
 		const { cookies } = this.props;
 
@@ -46,7 +56,6 @@ class Nav extends Component {
 	}
 
 	render () {
-
 		const {
 			isClicked,
 			loggedIn
