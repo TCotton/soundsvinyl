@@ -4,8 +4,8 @@ import axios from 'axios'
 import { homeURI } from '../../helper_constants'
 import SitemapUnorderedList from './SitemapUnorderedList';
 import ErrorBoundary from '../errorBoundaries/ErrorBoundary';
-import groupBy from 'lodash-es/groupBy';
-import sortBy from 'lodash-es/sortBy';
+import groupBy from 'lodash/groupBy';
+import sortBy from 'lodash/sortBy';
 
 export default class Sitemap extends Component {
 
@@ -23,43 +23,38 @@ export default class Sitemap extends Component {
 		axios.get( `${homeURI}/apiV1/page/getall` )
 			.then( res => {
 
-				if( res.data.error ) {
-					this.setState( {
-						error: res.data.error
-					});
-				}
-
 				this.setState( {
 					pages: res.data,
-				})
-			}).catch((error) => {
-			new Error(error.toString())
-		});
+				} )
+			} ).catch( ( error ) => {
+
+			this.setState( {
+				error: res.data.error
+			} );
+			new Error( error.toString() )
+		} );
 
 		axios.get( `${homeURI}/apiV1/page/getTags` )
 			.then( res => {
-
-				if( res.data.error ) {
-					this.setState( {
-						error: res.data.error
-					});
-				}
-
 				let anArray = []
 
-				res.data.forEach((element) => {
-					anArray.push(element._id.name);
-				});
+				res.data.forEach( ( element ) => {
+					anArray.push( element._id.name );
+				} );
 
-				const group = groupBy(anArray);
-				const pairs = sortBy(group);
+				const group = groupBy( anArray );
+				const pairs = sortBy( group );
 
 				this.setState( {
 					customPages: pairs,
-				})
-			}).catch((error) => {
-			new Error(error.toString())
-		});
+				} )
+			} ).catch( ( error ) => {
+
+			this.setState( {
+				error: res.data.error
+			} );
+			new Error( error.toString() )
+		} );
 	}
 
 	render () {

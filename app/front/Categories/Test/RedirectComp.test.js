@@ -1,5 +1,5 @@
 import React from 'react';
-import { RedirectComp } from '../RedirectComp';
+import RedirectComp from '../RedirectComp';
 import renderer from 'react-test-renderer';
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -13,12 +13,12 @@ describe( 'Component', () => {
 				/>
 			</Router>
 		);
-	} );
+	});
 
 	describe( 'RedirectComponent', () => {
 		it( 'should be defined', () => {
 			expect( component ).toBeDefined();
-		} );
+		});
 
 		it( 'can be updated', () => {
 			component.update(
@@ -30,9 +30,7 @@ describe( 'Component', () => {
 			);
 
 			expect( component ).toBeDefined();
-		} );
-
-	} );
-
-} );
+		});
+	});
+});
 
