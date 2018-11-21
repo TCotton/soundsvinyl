@@ -115,7 +115,7 @@ class RecordListing extends Component {
 			videoComponent = () => {
 				return (
 					<VideoErrorBoundary>
-						<Video videoLink={videoLink}/>
+						<Video videoLink={videoLink} />
 					</VideoErrorBoundary>
 				)
 			}

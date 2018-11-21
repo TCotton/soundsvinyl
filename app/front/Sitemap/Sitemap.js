@@ -25,14 +25,14 @@ export default class Sitemap extends Component {
 
 				this.setState( {
 					pages: res.data,
-				} )
-			} ).catch( ( error ) => {
+				})
+			}).catch( ( error ) => {
 
 			this.setState( {
-				error: res.data.error
-			} );
+				error: error.toString()
+			});
 			new Error( error.toString() )
-		} );
+		});
 
 		axios.get( `${homeURI}/apiV1/page/getTags` )
 			.then( res => {
@@ -40,21 +40,21 @@ export default class Sitemap extends Component {
 
 				res.data.forEach( ( element ) => {
 					anArray.push( element._id.name );
-				} );
+				});
 
 				const group = groupBy( anArray );
 				const pairs = sortBy( group );
 
 				this.setState( {
 					customPages: pairs,
-				} )
-			} ).catch( ( error ) => {
+				})
+			}).catch( ( error ) => {
 
 			this.setState( {
-				error: res.data.error
-			} );
+				error: error.toString()
+			});
 			new Error( error.toString() )
-		} );
+		});
 	}
 
 	render () {
