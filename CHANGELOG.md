@@ -1,4 +1,4 @@
-## 1.26.0 (November 21, 2018
+## 1.26.0 (November 21, 2018)
 
 * Added dynamic canonical title and document.title
 
