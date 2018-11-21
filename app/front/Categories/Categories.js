@@ -3,7 +3,8 @@ import axios from 'axios';
 import { homeURI } from '../../helper_constants';
 import CategoriesHomepage from './CategoriesHomepage';
 import ErrorBoundary from '../errorBoundaries/ErrorBoundary';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 const articlesPerPage = 10;
 
@@ -11,10 +12,20 @@ export class Categories extends Component {
 
 	static propTypes = {
 		category: PropTypes.string,
-	}
+		match: PropTypes.shape({
+			params: PropTypes.shape({
+				id: PropTypes.string
+			})
+		})
+	};
 
 	static defaultProps = {
-		category: undefined
+		category: undefined,
+		match: {
+			params: {
+				id: ''
+			}
+		}
 	}
 
 	constructor ( props ) {
@@ -34,16 +45,19 @@ export class Categories extends Component {
 		};
 	}
 
-	/*componentDidUpdate(prevProps) {
+	componentDidMount () {
+		this.getRequestCall();
+	}
 
+	componentDidUpdate(prevProps) {
 		const { match: { params: { tag } } } = this.props;
 
 		if (tag !== prevProps.match.params.tag) {
-			console.log('Route change!');
+			this.getRequestCall();
 		}
 	}
-*/
-	componentDidMount () {
+
+	getRequestCall() {
 
 		const { category } = this.props;
 
@@ -71,10 +85,11 @@ export class Categories extends Component {
 						requestCompleted: true,
 						total: res.data.length
 					})
-				}).catch(() => {
+				}).catch((error) => {
 				new Error(error.toString())
 			});
 		}
+
 	}
 
 	handleOnChange ( direction ) {
@@ -123,4 +138,4 @@ export class Categories extends Component {
 	}
 }
 
-export default Categories;
+export default withRouter(Categories);

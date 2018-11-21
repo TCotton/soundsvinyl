@@ -4,6 +4,7 @@ import PageUnit from '../Page/PageUnit';
 import HomePageSearchForm from './HomePageSearchForm';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom'
 // import CategoriesList from './CategoriesList';
 
 export class CategoriesHomepage extends Component {
@@ -86,16 +87,5 @@ export class CategoriesHomepage extends Component {
 	}
 }
 
-const mapStateToProps = ( state ) => {
-	console.dir(state);
-	// redux needs refactoring
-	if( state.search.length > 0 ) {
-		console.log('LOG HERE!!!!');
-		console.dir(state);
-		return {
-			search: state.search
-		}
-	}
-}
 
-export default connect( mapStateToProps )( CategoriesHomepage );
+export default connect()( withRouter(CategoriesHomepage) );

@@ -5,6 +5,7 @@ import axios from 'axios';
 import { homeURI } from '../../helper_constants'
 import { connect } from 'react-redux';
 import RedirectComp from './RedirectComp';
+import { withRouter } from 'react-router-dom'
 
 export class HomePageSearchForm extends Component {
 
@@ -29,11 +30,11 @@ export class HomePageSearchForm extends Component {
 		const { search, message } = this.state;
 		const { dispatch } = this.props;
 
-		console.dir(search);
+		console.dir( search );
 
-		this.setState({
-			redirectRoute: `category/${search}`
-		});
+		this.setState( {
+			redirectRoute: `/category/${search}`
+		} );
 
 		//const uri = `category/${search}`;
 
@@ -120,5 +121,5 @@ export class HomePageSearchForm extends Component {
 	}
 }
 
-export default connect()( HomePageSearchForm );
+export default connect()( withRouter( HomePageSearchForm ) );
 

@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import './categoriesHomepage.scss';
 import PropTypes from 'prop-types';
-import { Redirect, withRouter } from 'react-router-dom';
+import { Redirect, withRouter, Switch } from 'react-router-dom';
 
 class RedirectComp extends Component {
 
 	static propTypes = {
-		search: PropTypes.oneOfType( [
+		search: PropTypes.oneOfType([
 			PropTypes.string,
 			PropTypes.bool
-		] )
+		])
 	}
 
 	static defaultProps = {
@@ -29,10 +29,11 @@ class RedirectComp extends Component {
 
 		if( search ) {
 			return (
-				<Redirect
-					push
-					exact to={search} // eslint-disable-line
-				/>
+				<Switch>
+					<Redirect
+						push to={search} // eslint-disable-line
+					/>
+				</Switch>
 			)
 		}
 	}
