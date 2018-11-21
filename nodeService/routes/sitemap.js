@@ -1,7 +1,36 @@
 const sMap = require( 'sitemap' );
 const Page = require( '../models/page' );
+const mcache = require( 'memory-cache' );
 
 module.exports = ( app ) => {
+
+	const cache = ( duration ) => {
+
+		if( app.get( 'env' ) === 'production' ) {
+
+			return ( req, res, next ) => {
+				let key = '__express__' + req.originalUrl || req.url
+				let cachedBody = mcache.get( key )
+				if( cachedBody ) {
+					res.send( cachedBody )
+				} else {
+					res.sendResponse = res.send
+					res.send = ( body ) => {
+						mcache.put( key, body, duration * 1000 );
+						res.sendResponse( body )
+					}
+					next();
+				}
+			}
+		}
+
+		if( app.get( 'env' ) === 'development' ) {
+
+			return ( req, res, next ) => {
+				next();
+			}
+		}
+	}
 
 	let tasks;
 	let url;
@@ -70,8 +99,7 @@ module.exports = ( app ) => {
 
 	createSiteLinks();
 
-	app.route( '/sitemap.xml' ).get( ( req, res ) => {
-
+	app.get( '/sitemap.xml', cache( 10 ), ( req, res ) => {
 		sitemap.toXML( ( err, xml ) => {
 			if( err ) {
 				return res.status( 500 ).end();
