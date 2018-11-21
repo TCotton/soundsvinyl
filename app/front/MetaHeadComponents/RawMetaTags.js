@@ -38,7 +38,6 @@ class MetaHeader extends Component {
 		if( document.title ) {
 			document.title = `Soundsvinyl.co: Vinyl forever, music for all`;
 		}
-
 	}
 
 	render () {

@@ -7,6 +7,7 @@ import Video from './Page/Video';
 import VideoErrorBoundary from './errorBoundaries/videoErrorBoundary';
 import Disqus from './Disqus/Disqus';
 import RawMetaTags from './MetaHeadComponents/RawMetaTags';
+import RawTwitterMetaTags from './MetaHeadComponents/RawTwitterMetaTags';
 
 import './recordListing.scss';
 import PropTypes from 'prop-types';
@@ -122,6 +123,7 @@ class RecordListing extends Component {
 		}
 
 		let metaHeaderComponent;
+		let twitterMetaHeaderComponent;
 
 		if( title !== '' && title.length > 1 ) {
 			const { match: { params: { id } } } = this.props;
@@ -133,6 +135,13 @@ class RecordListing extends Component {
 					title={title}
 				/>
 			);
+
+			twitterMetaHeaderComponent = (
+				<RawTwitterMetaTags
+					title={title}
+					description={descriptionOne}
+				/>
+			)
 		}
 
 		let categoryList;
@@ -159,6 +168,7 @@ class RecordListing extends Component {
 			return (
 				<React.Fragment>
 					{metaHeaderComponent}
+					{twitterMetaHeaderComponent}
 					<main styleName='recordListing'>
 						<header styleName='record'>
 
