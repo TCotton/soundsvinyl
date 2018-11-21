@@ -10,13 +10,11 @@ import { withRouter } from 'react-router-dom'
 export class CategoriesHomepage extends Component {
 
 	static propTypes = {
-		categories: PropTypes.string, // eslint-disable-line
 		requestCompleted: PropTypes.bool,
 		search: PropTypes.arrayOf( PropTypes.object, PropTypes.string, PropTypes.number, PropTypes.arrayOf( PropTypes.string, PropTypes.number ) )
 	}
 
 	static defaultProps = {
-		categories: undefined,
 		requestCompleted: false,
 		search: null
 	}

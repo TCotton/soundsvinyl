@@ -31,7 +31,8 @@ class RedirectComp extends Component {
 			return (
 				<Switch>
 					<Redirect
-						push to={search} // eslint-disable-line
+						push
+						to={search}
 					/>
 				</Switch>
 			)

@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-bind */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ExtendedPropTypes from 'extended-proptypes';
@@ -22,13 +21,24 @@ export default class PageUnit extends Component {
 		title: PropTypes.string.isRequired,
 	};
 
-	render () {
+	constructor (props) {
+		super( props );
 
-		const { slug, id, thumbnailUrl, title, subtitle } = this.props;
+		this.handleOnError = this.handleOnError.bind( this );
+	}
 
+	handleOnError(event) {
 		const myArray = [ thumbnailOne, thumbnailTwo, thumbnailThree, thumbnailFour, thumbnailFive ];
 		const thumbnailDefault = myArray[ Math.floor( Math.random() * myArray.length ) ];
 		const randomNumber = Math.floor( Math.random() * 8 ) + 1;
+
+		event.target.className = `random${randomNumber}`
+		event.target.src = thumbnailDefault
+		event.target.alt = ''
+	}
+
+	render () {
+		const { slug, id, thumbnailUrl, title, subtitle } = this.props;
 
 		return (
 			<Link
@@ -37,11 +47,7 @@ export default class PageUnit extends Component {
 			>
 				<img
 					alt={title}
-					onError={( e ) => {
-						e.target.className = `random${randomNumber}`
-						e.target.src = thumbnailDefault
-						e.target.alt = ''
-					}}
+					onError={this.handleOnError}
 					src={thumbnailUrl}
 				/>
 				<span className='video-title'>

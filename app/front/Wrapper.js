@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-max-props-per-line */
 import React, { Component } from 'react';
 import Nav from './Navigation/Nav';
 import { Route, Switch } from 'react-router-dom';
@@ -25,39 +24,48 @@ export default class Wrapper extends Component {
 				<Switch>
 					<Route
 						component={Main}
-						exact path='/'
+						exact
+						path='/'
 					/>
 					<Route
 						component={Main}
-						exact path='/category/:tag'
+						exact
+						path='/category/:tag'
 					/>
 					<Route
 						component={RecordListing}
-						exact path='/:slug/:id'
+						exact
+						path='/:slug/:id'
 					/>
 					<Route
 						component={Contact}
-						exact path='/contact'
+						exact
+						path='/contact'
 					/>
 					<Route
 						component={AboutUs}
-						exact path='/about-us'
+						exact
+						path='/about-us'
 					/>
 					<Route
 						component={MyAccount}
-						exact path='/my-account'
+						exact
+						path='/my-account'
 					/>
 					<Route
 						component={VinylCharts}
-						exact path='/vinyl-singles-top-30-chart'
+						exact
+						path='/vinyl-singles-top-30-chart'
 					/>
 					<Route
 						component={CommentsPolicy}
-						exact path='/comments-policy'
+						exact
+						path='/comments-policy'
 					/>
 					<Route
 						component={Sitemap}
-						exact path='/sitemap'
+						exact 
+						path='/sitemap'
 					/>
 					<Route
 						component={Error}

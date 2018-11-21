@@ -7,8 +7,14 @@ export default class SitemapUnorderedList extends Component {
 
 	static propTypes = {
 		categories: PropTypes.bool,
-		// data: PropTypes.arrayOf( PropTypes.object, PropTypes.string, PropTypes.number, PropTypes.arrayOf( PropTypes.string, PropTypes.number ) )
-		data: PropTypes.any // eslint-disable-line
+		data: PropTypes.arrayOf(
+			PropTypes.object,
+			PropTypes.string,
+			PropTypes.number,
+			PropTypes.node,
+			PropTypes.element,
+			PropTypes.arrayOf( PropTypes.string, PropTypes.number )
+		)
 	};
 
 	static defaultProps = {
