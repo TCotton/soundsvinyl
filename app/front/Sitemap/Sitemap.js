@@ -36,7 +36,10 @@ export default class Sitemap extends Component {
 
 		axios.get( `${homeURI}/apiV1/page/getTags` )
 			.then( res => {
-				let anArray = []
+				let anArray = [];
+
+				// sorting of categories takes place at the API level with the use of aggregate
+				// and then here to place the categories in a readable, clickable order
 
 				res.data.forEach( ( element ) => {
 					anArray.push( element._id.name );

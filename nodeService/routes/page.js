@@ -145,8 +145,6 @@ module.exports = (app) => {
 			});
 	});
 
-	// DEBUG CODE START
-
 	app.get('/apiV1/page/getTags', cache(10), (req, res) => {
 
 		Page.aggregate([
@@ -170,8 +168,6 @@ module.exports = (app) => {
 		});
 
 	});
-
-	// DEBUG CODE FINISH
 
 	app.route('/apiV1/page/getadmin').get((req, res) => {
 
