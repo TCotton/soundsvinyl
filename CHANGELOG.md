@@ -1,3 +1,7 @@
+## 1.26.0 (November 21, 2018
+
+* Added dynamic canonical title and document.title
+
 ## 1.25.0 (November 20, 2018)
 
 * Minor hotfix for search terms
