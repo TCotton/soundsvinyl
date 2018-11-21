@@ -4,6 +4,7 @@ import './HomePageSearchForm.scss';
 import axios from 'axios';
 import { homeURI } from '../../helper_constants'
 import { connect } from 'react-redux';
+import RedirectComp from './RedirectComp';
 
 export class HomePageSearchForm extends Component {
 
@@ -16,6 +17,7 @@ export class HomePageSearchForm extends Component {
 			error: null,
 			message: false,
 			search: '',
+			redirectRoute: false
 		};
 
 		this.handleSubmit = this.handleSubmit.bind( this );
@@ -27,11 +29,15 @@ export class HomePageSearchForm extends Component {
 		const { search, message } = this.state;
 		const { dispatch } = this.props;
 
+		console.dir(search);
+
 		this.setState({
-			message: false
+			redirectRoute: `category/${search}`
 		});
 
-		axios.post( `${homeURI}/apiV1/page/findbytag`, { search } )
+		//const uri = `category/${search}`;
+
+		/*axios.post( `${homeURI}/apiV1/page/findbytag`, { search } )
 			.then( res => {
 
 				if( res.data.error ) {
@@ -46,11 +52,13 @@ export class HomePageSearchForm extends Component {
 
 				if( Array.isArray( res.data ) && res.data.length > 0 ) {
 					dispatch({ type: 'SET_PAGES', payload: res.data || [] });
+					console.dir();
+					// return '<Redirect to=\'dashboard\'>';
 				}
 
 			}).catch( ( e ) => {
 			this.setState( { error: e.toString() } );
-		})
+		})*/
 
 	}
 
@@ -67,42 +75,47 @@ export class HomePageSearchForm extends Component {
 	}
 
 	render () {
-		const { search, error, message } = this.state;
+		const { search, error, message, redirectRoute } = this.state;
 
 		return (
-			<div styleName='search'>
-				<h4>
-					{'Search by category'}
-				</h4>
-				<form
-					onSubmit={this.handleSubmit}
-					styleName='searchForm'
-				>
-					<label
-						className='visuallyhidden'
-						htmlFor='search'
+			<React.Fragment>
+				<RedirectComp
+					search={redirectRoute}
+				/>
+				<div styleName='search'>
+					<h4>
+						{'Search by category'}
+					</h4>
+					<form
+						onSubmit={this.handleSubmit}
+						styleName='searchForm'
 					>
-						{'Your search term'}
-					</label>
-					<input
-						id='search'
-						name='search'
-						onChange={this.handleInputChange}
-						type='text'
-						value={search}
-					/>
-				</form>
-				<div styleName='searchName'>
-					{error}
-					{message &&
+						<label
+							className='visuallyhidden'
+							htmlFor='search'
+						>
+							{'Your search term'}
+						</label>
+						<input
+							id='search'
+							name='search'
+							onChange={this.handleInputChange}
+							type='text'
+							value={search}
+						/>
+					</form>
+					<div styleName='searchName'>
+						{error}
+						{message &&
 						<p>
 							{'There are no results for that search term.'}
 							<br />
 							{'Try another term.'}
 						</p>
-					}
+						}
+					</div>
 				</div>
-			</div>
+			</React.Fragment>
 		)
 	}
 }

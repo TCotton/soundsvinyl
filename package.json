@@ -50,7 +50,7 @@
 		"fluent-ffmpeg": "2.1.2",
 		"helmet": "3.15.0",
 		"helmet-csp": "2.7.1",
-		"history": "4.7.2",
+		"history": "^4.7.2",
 		"http-errors": "1.7.1",
 		"jade": "1.11.0",
 		"js-cookie": "2.2.0",
