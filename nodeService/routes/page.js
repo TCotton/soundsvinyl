@@ -1,17 +1,16 @@
-const mongoose = require('mongoose');
-const Page = new require('../models/page');
-const Tags = new require('../models/tags');
+const mongoose = require( 'mongoose' );
+const Page = new require( '../models/page' );
 const {
 	createStringSlug,
 	createShortSlug,
 	createCategories
-} = require('./routes_helper_functions');
-const fs = require('fs');
-const mcache = require('memory-cache');
+} = require( './routes_helper_functions' );
+const fs = require( 'fs' );
+const mcache = require( 'memory-cache' );
 
-module.exports = (app) => {
+module.exports = ( app ) => {
 
-	const cache = (duration) => {
+	const cache = ( duration ) => {
 
 		if( app.get( 'env' ) === 'production' ) {
 
@@ -39,27 +38,27 @@ module.exports = (app) => {
 		}
 	}
 
-	app.route('/apiV1/page/add').post((req, res) => {
+	app.route( '/apiV1/page/add' ).post( ( req, res ) => {
 
 		const body = req.body;
 
-		if (app.get('env') === 'development') {
-			if (!body.userId) {
+		if( app.get( 'env' ) === 'development' ) {
+			if( !body.userId ) {
 				// if not userId, then just generate a false id
-				body.userId = mongoose.Types.ObjectId('4edd40c86762e0fb12000003');
+				body.userId = mongoose.Types.ObjectId( '4edd40c86762e0fb12000003' );
 			}
 		}
 
 		const _id = mongoose.Types.ObjectId();
 
-		Page.create({
+		Page.create( {
 			_id,
 			title: body.title,
 			subTitle: body.subTitle,
-			slug: createStringSlug(body),
-			shortSlug: createShortSlug(_id),
+			slug: createStringSlug( body ),
+			shortSlug: createShortSlug( _id ),
 			videoLink: body.videoLink,
-			categories: createCategories(body),
+			categories: createCategories( body ),
 			descriptionOne: body.descriptionOne,
 			descriptionTwo: body.descriptionTwo,
 			descriptionThree: body.descriptionThree,
@@ -68,152 +67,152 @@ module.exports = (app) => {
 			userId: body.userId,
 			date: body.date ? body.date : Date.now(),
 			updated: body.updated ? body.updated : Date.now(),
-		}, (err, page) => {
+		}, ( err, page ) => {
 
-			if (!err) {
+			if( !err ) {
 
-				const takeScreenshots = require('../misc/takeScreenshots');
-				if (page.videoLink) {
-					takeScreenshots(page.videoLink, page._id);
+				const takeScreenshots = require( '../misc/takeScreenshots' );
+				if( page.videoLink ) {
+					takeScreenshots( page.videoLink, page._id );
 				}
 
-				res.json(page);
+				res.json( page );
 			} else {
-				return new Error(err.toString());
+				return new Error( err.toString() );
 			}
-		});
-	});
+		} );
+	} );
 
-	app.get('/apiV1/page/get', cache(10), (req, res) => {
+	app.get( '/apiV1/page/get', cache( 10 ), ( req, res ) => {
 
-		Page.find({}).sort({'date': -1})
-			.limit(17)
-			.exec((err, pages) => {
+		Page.find( {} ).sort( { 'date': -1 } )
+			.limit( 17 )
+			.exec( ( err, pages ) => {
 
-				if (!err) {
-					res.json(pages);
+				if( !err ) {
+					res.json( pages );
 				} else {
-					return new Error(err.toString());
+					return new Error( err.toString() );
 				}
 
-			});
-	});
+			} );
+	} );
 
-	app.route('/apiV1/page/findbytag').post((req, res) => {
+	app.route( '/apiV1/page/findbytag' ).post( ( req, res ) => {
 
 		const body = req.body;
 
-		Page.find({'categories.name':body.search}).sort({'date': -1})
-			.exec((err, pages) => {
+		Page.find( { 'categories.name': body.search } ).sort( { 'date': -1 } )
+			.exec( ( err, pages ) => {
 
-				if (!err) {
-					res.json(pages);
+				if( !err ) {
+					res.json( pages );
 				} else {
-					return new Error(err.toString());
+					return new Error( err.toString() );
 				}
 
-			});
-	});
+			} );
+	} );
 
-	app.route('/apiV1/page/findbytag/:tag').get((req, res) => {
+	app.get( '/apiV1/page/findbytag/:tag', cache( 10 ), ( req, res ) => {
 
-		Page.find({'categories.name':req.params.tag})
-			.sort({'date': -1})
-			.limit(17)
-			.exec((err, pages) => {
+		Page.find( { 'categories.name': req.params.tag } )
+			.sort( { 'date': -1 } )
+			.limit( 17 )
+			.exec( ( err, pages ) => {
 
-				if (!err) {
-					res.json(pages);
+				if( !err ) {
+					res.json( pages );
 				} else {
-					return new Error(err.toString());
+					return new Error( err.toString() );
 				}
 
-			});
-	});
+			} );
+	} );
 
-	app.get('/apiV1/page/getall', cache(10), (req, res) => {
+	app.get( '/apiV1/page/getall', cache( 10 ), ( req, res ) => {
 
-		Page.find({}).sort({'date': -1})
-			.exec((err, pages) => {
+		Page.find( {} ).sort( { 'date': -1 } )
+			.exec( ( err, pages ) => {
 
-				if (!err) {
-					res.json(pages);
+				if( !err ) {
+					res.json( pages );
 				} else {
-					return new Error(err.toString());
+					return new Error( err.toString() );
 				}
 
-			});
-	});
+			} );
+	} );
 
-	app.get('/apiV1/page/getTags', cache(10), (req, res) => {
+	app.get( '/apiV1/page/getTags', cache( 10 ), ( req, res ) => {
 
-		Page.aggregate([
+		Page.aggregate( [
 			{
 				"$unwind": "$categories"
 			},
 			{
 				"$group": {
 					"_id": '$categories',
-					"count": {"$sum": 1}
+					"count": { "$sum": 1 }
 				}
 			},
-			{"$sort": {"count": -1}}
-		], function (err, result) {
+			{ "$sort": { "count": -1 } }
+		], function( err, result ) {
 
-			if (!err) {
-				res.json(result);
+			if( !err ) {
+				res.json( result );
 			} else {
-				return new Error(err.toString());
+				return new Error( err.toString() );
 			}
-		});
+		} );
 
-	});
+	} );
 
-	app.route('/apiV1/page/getadmin').get((req, res) => {
+	app.get( '/apiV1/page/getadmin', cache( 10 ), ( req, res ) => {
 
-		Page.find({}, (err, pages) => {
+		Page.find( {}, ( err, pages ) => {
 
-			if (!err) {
-				res.json(pages);
+			if( !err ) {
+				res.json( pages );
 			} else {
-				return new Error(err.toString());
+				return new Error( err.toString() );
 			}
-		});
-	});
+		} );
+	} );
 
-	app.route('/apiV1/page/category/get/:id').get((req, res) => {
+	app.get( '/apiV1/page/category/get/:id', cache( 10 ), ( req, res ) => {
 
-		Page.findOne({_id: req.params.id}, (err, page) => {
+		Page.findOne( { _id: req.params.id }, ( err, page ) => {
 
-			if (!err) {
-				res.json(page);
+			if( !err ) {
+				res.json( page );
 			} else {
-				return new Error(err.toString());
-			}
-
-		});
-	});
-
-	app.route('/apiV1/page/get/:id').get((req, res) => {
-
-		Page.findOne({_id: req.params.id}, (err, page) => {
-
-			if (!err) {
-				res.json(page);
-			} else {
-				return new Error(err.toString());
+				return new Error( err.toString() );
 			}
 
-		});
-	});
+		} );
+	} );
 
-	app.route('/apiV1/page/update').put((req, res) => {
+	app.get( '/apiV1/page/get/:id', cache( 10 ), ( req, res ) => {
+
+		Page.findOne( { _id: req.params.id }, ( err, page ) => {
+
+			if( !err ) {
+				res.json( page );
+			} else {
+				return new Error( err.toString() );
+			}
+
+		} );
+	} );
+
+	app.route( '/apiV1/page/update' ).put( ( req, res ) => {
 
 		const body = req.body;
 
-		body.categories = body.categories.split(',').map((tag) => {
-			return {'name': tag.trim()};
-		});
+		body.categories = body.categories.split( ',' ).map( ( tag ) => {
+			return { 'name': tag.trim() };
+		} );
 
 		body.updated = Date.now();
 
@@ -229,61 +228,61 @@ module.exports = (app) => {
 
 			// an option that asks mongoose to return the updated version
 			// of the document instead of the pre-updated one.
-			{new: true},
+			{ new: true },
 
 			// the callback function
-			(err, page) => {
+			( err, page ) => {
 				// Handle any possible database errors
-				if (err) return res.status(500).send(err);
-				return res.send(page);
+				if( err ) return res.status( 500 ).send( err );
+				return res.send( page );
 			}
 		)
-	});
+	} );
 
 	/* eslint-disable security/detect-non-literal-fs-filename */
 
-	app.route('/apiV1/page/delete/:id').delete((req, res) => {
+	app.route( '/apiV1/page/delete/:id' ).delete( ( req, res ) => {
 
-		Page.remove({
+		Page.remove( {
 			_id: req.params.id
-		}, (err) => {
+		}, ( err ) => {
 
-			if (err) {
+			if( err ) {
 				throw err;
 			} else {
 
-				Page.find({}, (err, pages) => {
+				Page.find( {}, ( err, pages ) => {
 
-					if (err) {
-						return new Error(err.toString());
+					if( err ) {
+						return new Error( err.toString() );
 					}
 
-					if (fs.existsSync(global.__base + '/nodeService/public/thumbnails/thumbnail-' + req.params.id + '.png')) {
+					if( fs.existsSync( global.__base + '/nodeService/public/thumbnails/thumbnail-' + req.params.id + '.png' ) ) {
 						const file = global.__base + '/nodeService/public/thumbnails/thumbnail-' + req.params.id + '.png';
 
-						fs.access(file, function (err) {
+						fs.access( file, function( err ) {
 
-							if (err) {
+							if( err ) {
 								return;
 							}
 
-							fs.unlink(file, function (err) {
-								if (err) {
-									return new Error(err.toString());
+							fs.unlink( file, function( err ) {
+								if( err ) {
+									return new Error( err.toString() );
 								}
-							});
-						});
+							} );
+						} );
 					}
 
-					if (!err) {
-						res.json(pages);
+					if( !err ) {
+						res.json( pages );
 					} else {
-						return new Error(err.toString());
+						return new Error( err.toString() );
 					}
-				});
+				} );
 			}
-		});
-	});
+		} );
+	} );
 
 	/* eslint-enable security/detect-non-literal-fs-filename */
 
