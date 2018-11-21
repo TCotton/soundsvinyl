@@ -1,3 +1,7 @@
+## 1.25.0 (November 20, 2018)
+
+* Minor hotfix for search terms
+
 ## 1.24.0 (November 20, 2018)
 
 * Working search box for tags only
