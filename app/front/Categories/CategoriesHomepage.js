@@ -58,7 +58,7 @@ export class CategoriesHomepage extends Component {
 									subtitle={element.subTitle}
 									thumbnailUrl={element.thumbnailUrl}
 									title={element.title}
-								/> : <HomePageSearchForm onSearchInput={this.handleSearchResult}/>
+								/> : <HomePageSearchForm onSearchInput={this.handleSearchResult} />
 						}
 					</div>
 				)

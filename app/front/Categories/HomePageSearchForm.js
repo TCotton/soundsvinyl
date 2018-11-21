@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import './HomePageSearchForm.scss';
-import axios from 'axios';
-import { homeURI } from '../../helper_constants'
 import { connect } from 'react-redux';
 import RedirectComp from './RedirectComp';
 import { withRouter } from 'react-router-dom'
 
 export class HomePageSearchForm extends Component {
-
-	static propTypes = { dispatch: PropTypes.func.isRequired }
 
 	constructor ( props ) {
 		super( props );
@@ -27,40 +22,11 @@ export class HomePageSearchForm extends Component {
 
 	handleSubmit ( event ) {
 		event.preventDefault();
-		const { search, message } = this.state;
-		const { dispatch } = this.props;
-
-		console.dir( search );
+		const { search } = this.state;
 
 		this.setState( {
 			redirectRoute: `/category/${search}`
 		} );
-
-		//const uri = `category/${search}`;
-
-		/*axios.post( `${homeURI}/apiV1/page/findbytag`, { search } )
-			.then( res => {
-
-				if( res.data.error ) {
-					this.setState( { error: res.data.error } );
-				}
-
-				if( Array.isArray( res.data ) && res.data.length === 0 ) {
-					this.setState( {
-						message: !message
-					});
-				}
-
-				if( Array.isArray( res.data ) && res.data.length > 0 ) {
-					dispatch({ type: 'SET_PAGES', payload: res.data || [] });
-					console.dir();
-					// return '<Redirect to=\'dashboard\'>';
-				}
-
-			}).catch( ( e ) => {
-			this.setState( { error: e.toString() } );
-		})*/
-
 	}
 
 	handleInputChange ( event ) {

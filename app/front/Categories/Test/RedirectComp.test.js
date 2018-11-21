@@ -13,12 +13,12 @@ describe( 'Component', () => {
 				/>
 			</Router>
 		);
-	});
+	} );
 
 	describe( 'RedirectComponent', () => {
 		it( 'should be defined', () => {
 			expect( component ).toBeDefined();
-		});
+		} );
 
 		it( 'can be updated', () => {
 			component.update(
@@ -30,6 +30,9 @@ describe( 'Component', () => {
 			);
 
 			expect( component ).toBeDefined();
-	});
-});
+		} );
+
+	} );
+
+} );
 
