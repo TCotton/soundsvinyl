@@ -19,7 +19,7 @@ function LoginButton (props) {
 }
 
 LoginButton.propTypes = {
-	onClick: PropTypes.func.isRequired
-};
+	onClick: PropTypes.func // eslint-disable-line react/require-default-props
+}; // DON NOT change the above eslint variation
 
 export default LoginButton;

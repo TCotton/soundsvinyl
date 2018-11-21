@@ -64,7 +64,7 @@ export default class Wrapper extends Component {
 					/>
 					<Route
 						component={Sitemap}
-						exact 
+						exact
 						path='/sitemap'
 					/>
 					<Route

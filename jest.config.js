@@ -26,7 +26,8 @@ module.exports = {
 		'webpack.config.js',
 		'test/*',
 		'assets/*',
-		'node/__tests__/*'
+		'node/__tests__/*',
+		'nodeService/*'
 	],
 	coverageDirectory: '<rootDir>/test/coverage',
 	moduleNameMapper: {
