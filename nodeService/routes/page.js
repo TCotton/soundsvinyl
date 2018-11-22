@@ -86,6 +86,10 @@ module.exports = ( app ) => {
 
 	app.get( '/apiV1/page/get', cache( 10 ), ( req, res, next ) => {
 
+		if (app.get('env') === 'production') {
+			res.setHeader('Cache-Control', 'public, max-age=60');
+		}
+
 		(async () => {
 
 			try {
@@ -128,6 +132,10 @@ module.exports = ( app ) => {
 
 	app.get( '/apiV1/page/findbytag/:tag', cache( 10 ), ( req, res ) => {
 
+		if (app.get('env') === 'production') {
+			res.setHeader('Cache-Control', 'public, max-age=60');
+		}
+
 		Page.find( { 'categories.name': req.params.tag } )
 			.sort( { 'date': -1 } )
 			.limit( 17 )
@@ -144,6 +152,10 @@ module.exports = ( app ) => {
 
 	app.get( '/apiV1/page/getall', cache( 10 ), ( req, res ) => {
 
+		if (app.get('env') === 'production') {
+			res.setHeader('Cache-Control', 'public, max-age=60');
+		}
+
 		Page.find( {} ).sort( { 'date': -1 } )
 			.exec( ( err, pages ) => {
 
@@ -157,6 +169,10 @@ module.exports = ( app ) => {
 	} );
 
 	app.get( '/apiV1/page/getTags', cache( 10 ), ( req, res ) => {
+
+		if (app.get('env') === 'production') {
+			res.setHeader('Cache-Control', 'public, max-age=60');
+		}
 
 		Page.aggregate( [
 			{
@@ -194,6 +210,10 @@ module.exports = ( app ) => {
 
 	app.get( '/apiV1/page/category/get/:id', cache( 10 ), ( req, res ) => {
 
+		if (app.get('env') === 'production') {
+			res.setHeader('Cache-Control', 'public, max-age=60');
+		}
+
 		Page.findOne( { _id: req.params.id }, ( err, page ) => {
 
 			if( !err ) {
@@ -206,6 +226,10 @@ module.exports = ( app ) => {
 	} );
 
 	app.get( '/apiV1/page/get/:id', cache( 10 ), ( req, res ) => {
+
+		if (app.get('env') === 'production') {
+			res.setHeader('Cache-Control', 'public, max-age=60');
+		}
 
 		Page.findOne( { _id: req.params.id }, ( err, page ) => {
 
