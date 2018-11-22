@@ -54,6 +54,7 @@ module.exports = webpackMerge(commonConfig, {
 
 		// new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
 
+		// /Applications/MAMP/htdocs/soundsvinyl/app/assets/images
 		new CopyWebpackPlugin([
 			{
 				from: global.__base + '/src/faviconImages',
@@ -70,6 +71,10 @@ module.exports = webpackMerge(commonConfig, {
 			{
 				from: global.__base + '/src/robots.txt',
 				to: global.__base + '/dist/robots.txt'
+			},
+			{
+				from: global.__base + '/app/assets/images',
+				to: global.__base + '/dist/app/assets/images'
 			}
 		]),
 
