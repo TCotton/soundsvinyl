@@ -5,6 +5,7 @@ import CategoriesHomepage from './CategoriesHomepage';
 import ErrorBoundary from '../errorBoundaries/ErrorBoundary';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import Pagination from '/../Pagination/Pagination';
 
 const articlesPerPage = 10;
 
@@ -58,7 +59,6 @@ export class Categories extends Component {
 	}
 
 	getRequestCall() {
-
 		const { category } = this.props;
 
 		const page = 1;
@@ -140,6 +140,10 @@ export class Categories extends Component {
 					requestCompleted={requestCompleted}
 					search={pages}
 				/>
+				<Pagination
+
+				/>
+
 			</ErrorBoundary>
 		)
 	}
