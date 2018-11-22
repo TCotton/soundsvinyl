@@ -83,6 +83,7 @@ module.exports = ( app ) => {
 		} );
 	} );
 
+
 	app.get( '/apiV1/page/get', cache( 10 ), ( req, res, next ) => {
 
 		(async () => {
@@ -98,7 +99,6 @@ module.exports = ( app ) => {
 				}
 
 				const pages = await Page.paginate({}, options);
-				console.dir(pages);
 				return res.json( pages );
 
 			} catch( err ) {
@@ -108,6 +108,7 @@ module.exports = ( app ) => {
 		})();
 
 	});
+
 
 	app.route( '/apiV1/page/findbytag' ).post( ( req, res ) => {
 

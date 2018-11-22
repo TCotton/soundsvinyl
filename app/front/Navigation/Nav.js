@@ -31,7 +31,7 @@ class Nav extends Component {
 	componentDidUpdate ( prevProps, prevState ) {
 		const { isClicked } = this.state;
 
-		if( isClicked === prevState.isClicked ) {
+		if( isClicked === prevState.isClicked && isClicked ) {
 			this.setState( { // eslint-disable-line react/no-did-update-set-state
 				isClicked: !isClicked
 			} );
