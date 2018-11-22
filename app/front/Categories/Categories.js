@@ -63,7 +63,6 @@ export class Categories extends Component {
 	getRequestCall() {
 		const { category } = this.props;
 		const { page } = this.state;
-		console.dir(page);
 
 		// refactor both these API request into one request
 		if( !category ) {

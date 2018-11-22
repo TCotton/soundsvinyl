@@ -138,8 +138,8 @@ class RecordListing extends Component {
 
 			twitterMetaHeaderComponent = (
 				<RawTwitterMetaTags
-					title={title}
 					description={descriptionOne}
+					title={title}
 				/>
 			)
 		}
