@@ -7,10 +7,14 @@
 .sitemapUnorderedList {
 	list-style: none;
 	margin-bottom: 30px;
+	li {
+		display : block;
+	}
 }
 
 .sitemapItem {
 	@include font-calculator($font_family_body, 14px, 0);
 	color: $paragraphColour;
 	line-height: 1.5em;
+	display: inline-block;
 }

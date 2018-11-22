@@ -34,30 +34,28 @@ export default class SitemapUnorderedList extends Component {
 				<ul styleName='sitemapUnorderedList'>
 					{!categories && data.map( data => {
 						return (
-							<Link
-								key={data._id}
-								styleName='sitemapItem'
-								to={`/${data.slug}/${data._id}`}
-							>
-								<li>
+							<li key={data._id}>
+								<Link
+									styleName='sitemapItem'
+									to={`/${data.slug}/${data._id}`}
+								>
 									{data.title}
-								</li>
-							</Link>
+								</Link>
+							</li>
 						)
 					} )}
 
 					{categories && data.map( ( newData, index ) => {
-						const uri = 'category/' + encodeURIComponent(data[index][0]);
+						const uri = 'category/' + encodeURIComponent( data[ index ][ 0 ] );
 						return (
-							<Link
-								key={index.toString()}
-								styleName='sitemapItem'
-								to={uri}
-							>
-								<li>
-									{data[index][0]}
-								</li>
-							</Link>
+							<li key={index.toString()}>
+								<Link
+									styleName='sitemapItem'
+									to={uri}
+								>
+									{data[ index ][ 0 ]}
+								</Link>
+							</li>
 						)
 					} )}
 				</ul>
