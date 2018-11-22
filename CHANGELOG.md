@@ -1,6 +1,12 @@
+## 1.31.0 (November 22, 2018)
+
+* Performance improvements
+	- optimised images
+	- added 'Cache-Control' headers to some GET requests in pages routes
+
 ## 1.30.0 (November 22, 2018)
 
-Production hotfix
+* Production hotfix
 
 ## 1.29.0 (November 22, 2018)
 
