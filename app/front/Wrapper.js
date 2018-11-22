@@ -1,18 +1,19 @@
 import React, { Component, Suspense, lazy } from 'react';
-import Nav from './Navigation/Nav';
 import { Route, Switch } from 'react-router-dom';
-import Main from './main';
-import Contact from './Contact/Contact';
-import AboutUs from './about';
-import MyAccount from './Account/MyAccount';
-import VinylCharts from './vinylCharts';
-import Sitemap from './Sitemap/Sitemap';
-import Error from './error';
+import Nav from './Navigation/Nav';
 import Footer from './Footer/Footer';
 import ErrorBoundary from './errorBoundaries/ErrorBoundary';
-import CommentsPolicy from './Comments/CommentsPolicy';
+import Loading from '../assets/icons/Loading';
 
 const RecordListing = lazy( () => import('./recordListing') );
+const Contact = lazy( () => import('./Contact/Contact') );
+const AboutUs = lazy( () => import('./about') );
+const MyAccount = lazy( () => import('./Account/MyAccount') );
+const VinylCharts = lazy( () => import('./vinylCharts') );
+const CommentsPolicy = lazy( () => import('./Comments/CommentsPolicy') );
+const Sitemap = lazy( () => import('./Sitemap/Sitemap') );
+const Main = lazy( () => import('./main') );
+const Error = lazy( () => import('./error') );
 
 export default class Wrapper extends Component {
 
@@ -23,9 +24,7 @@ export default class Wrapper extends Component {
 					<Nav />
 				</ErrorBoundary>
 				<Suspense fallback={
-					<div>
-						{'Loading...'}
-					</div>
+					<Loading />
 				}
 				>
 					<Switch>
@@ -86,5 +85,4 @@ export default class Wrapper extends Component {
 			</div>
 		)
 	}
-
 }

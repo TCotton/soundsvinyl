@@ -94,6 +94,15 @@ html input[disabled] {
 :global .wrapper {
 	margin: 0 auto;
 	padding: 0 10px;
+	position: relative;
+}
+
+:global .lds-spinner {
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 @media screen and (min-width: $media_breakpoint_mobile) {
