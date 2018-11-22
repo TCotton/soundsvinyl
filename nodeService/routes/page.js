@@ -83,20 +83,30 @@ module.exports = ( app ) => {
 		} );
 	} );
 
-	app.get( '/apiV1/page/get', cache( 10 ), ( req, res ) => {
+	app.get( '/apiV1/page/get', cache( 10 ), ( req, res, next ) => {
 
-		Page.find( {} ).sort( { 'date': -1 } )
-			.limit( 17 )
-			.exec( ( err, pages ) => {
+		(async () => {
 
-				if( !err ) {
-					res.json( pages );
-				} else {
-					return new Error( err.toString() );
+			try {
+
+				const { page, perPage } = req.query;
+
+				const options = {
+					page: Number.parseInt( page, 10 ),
+					limit: Number.parseInt( perPage, 10 ),
+					sort: { 'date': -1 }
 				}
 
-			} );
-	} );
+				const pages = await Page.paginate({}, options);
+				return res.json( pages );
+
+			} catch( err ) {
+				next(err);
+			}
+
+		})();
+
+	});
 
 	app.route( '/apiV1/page/findbytag' ).post( ( req, res ) => {
 

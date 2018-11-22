@@ -61,13 +61,20 @@ export class Categories extends Component {
 
 		const { category } = this.props;
 
+		const page = 1;
+		const perPage = 11;
+
 		// refactor both these API request into one request
 		if( !category ) {
-			axios.get( `${homeURI}/apiV1/page/get` )
+			axios.get( `${homeURI}/apiV1/page/get?page=${page}&perPage=${perPage}` )
 				.then( res => {
 
+					// page, perPage
+
+					console.dir(res.data);
+
 					this.setState( {
-						pages: this.addNumberToDataArray(res.data),
+						pages: res.data.docs,
 						requestCompleted: true,
 						total: res.data.length
 					})

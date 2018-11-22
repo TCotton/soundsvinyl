@@ -8,6 +8,7 @@ export default class Pagination extends Component {
 		articlesPerPage: PropTypes.number.isRequired,
 		current: PropTypes.number.isRequired,
 		onChangePagination: PropTypes.func.isRequired,
+		pages: PropTypes.number.isRequired,
 		total: PropTypes.number.isRequired
 	};
 
