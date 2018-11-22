@@ -1,3 +1,7 @@
+## 1.30.0 (November 22, 2018)
+
+Production hotfix
+
 ## 1.29.0 (November 22, 2018)
 
 * New thumbnails for music video samples
