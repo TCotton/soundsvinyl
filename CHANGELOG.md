@@ -1,3 +1,7 @@
+## 1.28.0 (November )
+
+* Added pagination for homepage
+
 ## 1.27.0 (November 21, 2018)
 
 * CSS and HTML changes for a better mobile user experience
