@@ -1,4 +1,8 @@
-## 1.28.0 (November )
+## 1.28.1 (November 22, 2018)
+
+* Hotfix for production build images
+
+## 1.28.0 (November 22, 2018)
 
 * Added pagination for homepage
 
