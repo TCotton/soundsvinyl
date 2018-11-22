@@ -7,8 +7,8 @@ export default class Pagination extends Component {
 	static propTypes = {
 		articlesPerPage: PropTypes.number.isRequired,
 		current: PropTypes.number.isRequired,
+		maximum: PropTypes.number.isRequired,
 		onChangePagination: PropTypes.func.isRequired,
-		pages: PropTypes.number.isRequired,
 		total: PropTypes.number.isRequired
 	};
 
@@ -30,8 +30,8 @@ export default class Pagination extends Component {
 	}
 
 	render () {
-		const { articlesPerPage, current, total } = this.props;
-		const maximum = Math.ceil( total / articlesPerPage );
+		const { articlesPerPage, current, total, maximum } = this.props;
+
 		// only display if the total is a bigger number than articles per page
 		return (
 			<React.Fragment>

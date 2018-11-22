@@ -5,9 +5,9 @@ import CategoriesHomepage from './CategoriesHomepage';
 import ErrorBoundary from '../errorBoundaries/ErrorBoundary';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import Pagination from '/../Pagination/Pagination';
+import Pagination from '../Pagination/Pagination';
 
-const articlesPerPage = 10;
+const articlesPerPage = 11;
 
 export class Categories extends Component {
 
@@ -32,17 +32,19 @@ export class Categories extends Component {
 	constructor ( props ) {
 		super( props );
 		this.state = this.getInitialState();
+		this.handleOnChange = this.handleOnChange.bind( this );
 	}
 
 	getInitialState () {
 		return {
-			current: 1,
 			error: false,
 			loading: false,
 			dataArray: [],
-			page: [],
+			docs: [],
+			page: 1,
+			pages: Number,
 			requestCompleted: false,
-			total: 20
+			total: Number
 		};
 	}
 
@@ -60,23 +62,19 @@ export class Categories extends Component {
 
 	getRequestCall() {
 		const { category } = this.props;
-
-		const page = 1;
-		const perPage = 11;
+		const { page } = this.state;
+		console.dir(page);
 
 		// refactor both these API request into one request
 		if( !category ) {
-			axios.get( `${homeURI}/apiV1/page/get?page=${page}&perPage=${perPage}` )
+			axios.get( `${homeURI}/apiV1/page/get?page=${page}&perPage=${articlesPerPage}` )
 				.then( res => {
-
-					// page, perPage
-
-					console.dir(res.data);
-
 					this.setState( {
-						pages: res.data.docs,
+						docs: res.data.docs,
+						page: res.data.page,
+						pages: res.data.pages,
 						requestCompleted: true,
-						total: res.data.length
+						total: res.data.total
 					})
 				}).catch((error) => {
 				new Error(error.toString())
@@ -88,7 +86,7 @@ export class Categories extends Component {
 				.then( res => {
 
 					this.setState( {
-						pages: this.addNumberToDataArray(res.data),
+						docs: this.addNumberToDataArray(res.data),
 						requestCompleted: true,
 						total: res.data.length
 					})
@@ -100,21 +98,27 @@ export class Categories extends Component {
 	}
 
 	handleOnChange ( direction ) {
-		const { current, total } = this.state;
-		const maximum = Math.ceil( total / articlesPerPage );
 
-		const paginationFunc = ( current ) => {
+
+		const paginationFunc = ( ) => {
+			const { page, total } = this.state;
+			const maximum = Math.ceil( total / articlesPerPage );
+
 			if ( direction === 'left' ) {
 				// current should be a minimum of one
-				return ( current - 1 >= 1 ) ? ( current - 1 ) : 1;
+				return ( page - 1 >= 1 ) ? ( page - 1 ) : 1;
 			}
 			if ( direction === 'right' ) {
 				// current should be maximum of Math.ceil(total / articlesPerPage)
-				return ( current + 1 < maximum ) ? ( current + 1 ) : maximum;
+				return ( page + 1 < maximum ) ? ( page + 1 ) : maximum;
 			}
 		};
 
-		this.setState({ current: paginationFunc( current ) });
+		this.setState({
+			page: paginationFunc( )
+		}, () => {
+			return this.getRequestCall();
+		});
 	}
 
 	addNumberToDataArray ([ ...data ]) {
@@ -127,8 +131,11 @@ export class Categories extends Component {
 
 	render () {
 		const {
+			docs,
+			page,
 			pages,
-			requestCompleted
+			requestCompleted,
+			total,
 		} = this.state;
 
 		const { category } = this.props; // refactor -> use redux
@@ -138,12 +145,19 @@ export class Categories extends Component {
 				<CategoriesHomepage
 					category={category}
 					requestCompleted={requestCompleted}
-					search={pages}
+					search={docs}
 				/>
-				<Pagination
-
-				/>
-
+				<div className='PaginationContainer'>
+					{requestCompleted &&
+						<Pagination
+							articlesPerPage={articlesPerPage}
+							current={page}
+							maximum={pages}
+							onChangePagination={this.handleOnChange}
+							total={total}
+						/>
+					}
+				</div>
 			</ErrorBoundary>
 		)
 	}

@@ -2,35 +2,39 @@
 
 .Pagination {
 	background: transparent;
+	display: grid;
+	grid-template-columns: 10px 100px 10px;
+	grid-gap: 10px;
 }
 
 :global .PaginationContainer {
-	display: flex;
 	width: 100%;
 	height: 16px;
 	align-items: center;
 	color: $navColour;
 	font-size: 14px;
+	margin: 0 0 50px 0;
 }
 
 :global .PaginationLeft {
-	margin-right: 11px;
 	cursor: pointer;
 	transform: rotate(180deg);
 	min-height: 16px;
 	min-width: 8px;
+	align-self: center;
 }
 
 :global .PaginationRight {
-	margin-left: 11px;
 	cursor: pointer;
 	min-height: 16px;
 	min-width: 8px;
+	align-self: center;
 }
 
 .PaginationText {
-	min-width:73px;
 	text-align: center;
+	justify-self: self-start;
+	align-self: flex-start;
 }
 
 .Active {
@@ -40,9 +44,11 @@
 .InActive {
 	opacity: .4;
 }
+/*
 
 @media only screen and (max-width: $media_breakpoint_tablet) {
 	:global .PaginationContainer {
 		padding: 16px 16px 32px;
 	}
 }
+*/

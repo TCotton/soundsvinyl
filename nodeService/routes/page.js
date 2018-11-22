@@ -98,6 +98,7 @@ module.exports = ( app ) => {
 				}
 
 				const pages = await Page.paginate({}, options);
+				console.dir(pages);
 				return res.json( pages );
 
 			} catch( err ) {
