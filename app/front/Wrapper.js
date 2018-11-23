@@ -4,7 +4,6 @@ import { Route, Switch } from 'react-router-dom';
 import Nav from './Navigation/Nav';
 import Footer from './Footer/Footer';
 import ErrorBoundary from './errorBoundaries/ErrorBoundary';
-import Loading from '../assets/icons/Loading';
 
 const RecordListing = lazy( () => import('./recordListing') );
 const Contact = lazy( () => import('./Contact/Contact') );
@@ -29,12 +28,17 @@ class Wrapper extends Component {
 				<ErrorBoundary>
 					<Nav />
 				</ErrorBoundary>
-				<Suspense fallback={<div>{'Loading...'}</div>}>
+				<Suspense fallback={
+					<div>
+						{'Loading...'}
+					</div>
+				}
+				>
 					<Switch>
 						<Route
-							render={() => <Main />}
 							exact
 							path='/'
+							render={() => <Main />}
 						/>
 						<Route
 							component={() => <Main />}
