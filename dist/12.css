@@ -1,0 +1,86 @@
+.comment__line-through___nzOhL {
+  text-decoration: line-through;
+  user-select: none; }
+
+.comment__commentsPolicy___3yt5n {
+  margin: 50px 0 75px 0; }
+  .comment__commentsPolicy___3yt5n h2 {
+    font-size: 4.5em;
+    font-family: Roboto Slab, serif;
+    margin-bottom: 0.55556em;
+    color: #FF0000;
+    line-height: 1.2em; }
+  .comment__commentsPolicy___3yt5n p {
+    font-size: 1.6em;
+    font-family: Roboto Mono, monospace;
+    margin-bottom: 1.5625em;
+    color: #6B6A6A;
+    line-height: 1.75em; }
+
+.comment__comment___3QTtI {
+  display: grid;
+  grid-template-columns: 38.197% 61.803%;
+  grid-gap: 0;
+  margin: 30px 0; }
+  .comment__comment___3QTtI .comment__commentName___3hcgh {
+    font-size: 1.6em;
+    font-family: Roboto Mono, monospace;
+    margin-bottom: 0.78125em;
+    color: #696969; }
+  .comment__comment___3QTtI .comment__commentText___189Gf {
+    font-size: 1.4em;
+    font-family: Roboto Mono, monospace;
+    margin-bottom: 1.78571em;
+    font-weight: 300; }
+
+@media screen and (min-width: 767px) {
+  .comment__comment___3QTtI {
+    grid-template-columns: 20% 80%; } }
+
+.comment__commentLeftColumn___3LLxh {
+  text-align: center; }
+  .comment__commentLeftColumn___3LLxh svg {
+    margin: 20px 0 0;
+    width: 40%;
+    height: auto; }
+
+@media screen and (min-width: 767px) {
+  .comment__commentLeftColumn___3LLxh img {
+    max-width: 60px; } }
+
+.comment__commentRightColumn___3OIe7 {
+  background: transparent; }
+
+.comment__commentsForm___3YlXN {
+  border-top: 1px solid #E5E5E5;
+  padding: 20px 0 0 0; }
+  .comment__commentsForm___3YlXN textarea {
+    border: 1px solid #d7d7d7;
+    width: 100%;
+    padding: 10px;
+    display: inline-block;
+    font-size: 1.4em;
+    font-family: Roboto Mono, monospace;
+    margin-bottom: 0;
+    margin: 0 0 10px 0;
+    line-height: 1.8em;
+    font-weight: 300; }
+  .comment__commentsForm___3YlXN input[type=submit] {
+    font-size: 1.8em;
+    font-family: Roboto Mono, monospace;
+    margin-bottom: 1.38889em;
+    background: #DA542F;
+    color: white;
+    width: 100%;
+    padding: 10px 0;
+    display: inline-block;
+    font-weight: 300;
+    border: none; }
+
+@media screen and (min-width: 767px) {
+  .comment__commentsForm___3YlXN {
+    margin: 20px 0 0 0; } }
+
+.comment__commentsBlock___1RPmg {
+  background: transparent; }
+
