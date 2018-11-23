@@ -1,0 +1,57 @@
+.account__line-through___3n019 {
+  text-decoration: line-through;
+  user-select: none; }
+
+.account__myAccount___35jgU {
+  text-align: center;
+  margin: 50px 0 75px 0; }
+  .account__myAccount___35jgU h2 {
+    font-size: 4.5em;
+    font-family: Roboto Slab, serif;
+    margin-bottom: 0.27778em;
+    color: #FF0000;
+    line-height: 1.2em; }
+  .account__myAccount___35jgU > p {
+    font-size: 1.6em;
+    font-family: Roboto Mono, monospace;
+    margin-bottom: 3.125em;
+    color: #6B6A6A;
+    line-height: 1.3em; }
+  .account__myAccount___35jgU section {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 30px; }
+  .account__myAccount___35jgU form {
+    text-align: center; }
+  .account__myAccount___35jgU legend {
+    display: inline-block;
+    font-size: 2.2em;
+    font-family: Roboto Mono, monospace;
+    margin-bottom: 1.13636em; }
+  .account__myAccount___35jgU label {
+    display: inline-block;
+    font-size: 1.8em;
+    font-family: Roboto Mono, monospace;
+    margin-bottom: 0.34722em;
+    font-weight: 300; }
+  .account__myAccount___35jgU input {
+    display: inline-block;
+    width: 100%;
+    border: 1px solid #979797;
+    min-height: 50px;
+    padding: 10px;
+    font-size: 1.6em;
+    font-family: Roboto Mono, monospace;
+    margin-bottom: 0; }
+  .account__myAccount___35jgU input:not([type='submit']), .account__myAccount___35jgU textarea {
+    margin-bottom: 20px; }
+  .account__myAccount___35jgU input[type='submit'] {
+    font-size: 1.8em;
+    font-family: Roboto Mono, monospace;
+    margin-bottom: 0;
+    color: white;
+    background: #DA542F;
+    margin-top: 20px; }
+  .account__myAccount___35jgU .account__error___3LR2J {
+    color: #FF0000; }
+

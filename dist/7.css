@@ -1,0 +1,130 @@
+.videoErrorBoundary__line-through___17wFq {
+  text-decoration: line-through;
+  user-select: none; }
+
+p.videoErrorBoundary__videoErrorBoundary___1O4KK {
+  color: #FF0000; }
+
+[id=disqus_thread] {
+  margin: 0 0 50px 0; }
+
+.recordListing__line-through___IiyS_ {
+  text-decoration: line-through;
+  user-select: none; }
+
+.recordListing__recordListing___3bZGY h2 {
+  font-size: 3.5em;
+  font-family: Roboto Slab, serif;
+  margin-bottom: 0.35714em;
+  color: #FF0000;
+  line-height: 1.2em; }
+
+.recordListing__recordListing___3bZGY h3 {
+  font-size: 2.2em;
+  font-family: Roboto Slab, serif;
+  margin-bottom: 1.13636em;
+  color: #6B6A6A;
+  text-align: center; }
+  .recordListing__recordListing___3bZGY h3 ~ p {
+    font-size: 1.4em;
+    font-family: Roboto Mono, monospace;
+    margin-bottom: 0.89286em;
+    color: #6B6A6A;
+    text-align: center; }
+    .recordListing__recordListing___3bZGY h3 ~ p a {
+      color: #636363;
+      text-decoration: underline;
+      -webkit-text-decoration-skip: edges;
+      text-decoration-skip: edges;
+      -webkit-text-decoration-color: #FF001F;
+      text-decoration-color: #FF001F; }
+
+.recordListing__recordListing___3bZGY h4 {
+  font-size: 2.2em;
+  font-family: Roboto Slab, serif;
+  margin-bottom: 1.13636em;
+  color: #6B6A6A; }
+
+.recordListing__recordListing___3bZGY p {
+  font-size: 2.2em;
+  font-family: Roboto Mono, monospace;
+  margin-bottom: 0.56818em;
+  color: #6B6A6A;
+  line-height: 1.3em; }
+
+.recordListing__recordListing___3bZGY .recordListing__hide___3Xbi1 {
+  display: none; }
+
+.recordListing__recordListing___3bZGY .recordListing__show___2r-IT {
+  display: inherit; }
+
+@media screen and (min-width: 979px) {
+  .recordListing__recordListing___3bZGY {
+    width: 804px;
+    margin: 0 auto; }
+    .recordListing__recordListing___3bZGY img {
+      width: 100%; } }
+
+.recordListing__record___O6lV9 {
+  text-align: center;
+  display: inline-block;
+  margin: 50px 0 10px 0;
+  width: 100%; }
+
+@media screen and (min-width: 979px) {
+  .recordListing__record___O6lV9 {
+    margin: 50px 0 50px 0;
+    text-align: center; } }
+
+.recordListing__description___1frDv p {
+  font-size: 1.8em;
+  font-family: Roboto Mono, monospace;
+  margin-bottom: 1.38889em;
+  font-weight: 300; }
+
+.recordListing__categories___anEMX {
+  background: transparent;
+  text-align: center;
+  margin: 50px 0 0 0; }
+  .recordListing__categories___anEMX ul li {
+    color: #959595;
+    font-size: 1.6em;
+    font-family: Roboto Mono, monospace;
+    margin-bottom: 0;
+    padding: 5px 10px;
+    margin: 0 5px 10px 0;
+    border: 1px solid #bdbdbd;
+    display: inline-block; }
+
+.recordListing__videoContainer___2E-IQ {
+  text-align: center;
+  margin: 0 0 20px 0; }
+
+.recordListing__videoSineWave___LMrjh {
+  background: transparent; }
+
+.recordListing__recommendedVideos___3Sy2M {
+  border-top: 1px solid #E5E5E5;
+  padding: 20px 0 0 0;
+  text-align: center; }
+
+.recordListing__pageUnit___rqLt2 {
+  background: transparent; }
+
+.recordListing__videoUnits___2jrZl {
+  background: transparent; }
+
+.recordListing__videoCaption___1XYhC {
+  display: block;
+  font-size: 2em;
+  font-family: Roboto Mono, monospace;
+  margin-bottom: 1.25em;
+  color: #696969; }
+
+@media screen and (min-width: 767px) {
+  .recordListing__recordListing___3bZGY {
+    padding: 40px 0; }
+  .recordListing__recordListing___3bZGY {
+    min-height: 180px;
+    padding: initial; } }
+
