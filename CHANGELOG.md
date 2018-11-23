@@ -1,3 +1,7 @@
+## 1.32.0 (November 23, 2018)
+
+* Added code splitting to app
+
 ## 1.31.0 (November 22, 2018)
 
 * Performance improvements

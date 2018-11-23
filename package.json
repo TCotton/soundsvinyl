@@ -1,6 +1,6 @@
 {
 	"name": "soundsvinyl.co",
-	"version": "1.31.0",
+	"version": "1.32.0",
 	"description": "Music recommendation site",
 	"main": "server.js",
 	"scripts": {
