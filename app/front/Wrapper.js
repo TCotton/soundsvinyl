@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import React, { Component, Suspense, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Nav from './Navigation/Nav';
@@ -15,66 +16,68 @@ const Sitemap = lazy( () => import('./Sitemap/Sitemap') );
 const Main = lazy( () => import('./main') );
 const Error = lazy( () => import('./error') );
 
-export default class Wrapper extends Component {
+class Wrapper extends Component {
+
+	constructor ( props ) {
+		super( props );
+	}
 
 	render () {
+
 		return (
 			<div className='wrapper'>
 				<ErrorBoundary>
 					<Nav />
 				</ErrorBoundary>
-				<Suspense fallback={
-					<Loading />
-				}
-				>
+				<Suspense fallback={<div>{'Loading...'}</div>}>
 					<Switch>
 						<Route
-							component={Main}
+							render={() => <Main />}
 							exact
 							path='/'
 						/>
 						<Route
-							component={Main}
+							component={() => <Main />}
 							exact
 							path='/category/:tag'
 						/>
 						<Route
-							component={RecordListing}
+							component={() => <RecordListing />}
 							exact
 							path='/:slug/:id'
 						/>
 						<Route
-							component={Contact}
+							component={() => <Contact />}
 							exact
 							path='/contact'
 						/>
 						<Route
-							component={AboutUs}
+							component={() => <AboutUs />}
 							exact
 							path='/about-us'
 						/>
 						<Route
-							component={MyAccount}
+							component={() => <MyAccount />}
 							exact
 							path='/my-account'
 						/>
 						<Route
-							component={VinylCharts}
+							component={() => <VinylCharts />}
 							exact
 							path='/vinyl-singles-top-30-chart'
 						/>
 						<Route
-							component={CommentsPolicy}
+							component={() => <CommentsPolicy />}
 							exact
 							path='/comments-policy'
 						/>
 						<Route
-							component={Sitemap}
+							component={() => <Sitemap />}
 							exact
 							path='/sitemap'
 						/>
 						<Route
-							component={Error}
+							component={() => <Error />}
 							path=''
 						/>
 					</Switch>
@@ -86,3 +89,5 @@ export default class Wrapper extends Component {
 		)
 	}
 }
+
+export default Wrapper;
