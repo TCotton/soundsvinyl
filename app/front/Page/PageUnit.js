@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import lozad from 'lozad';
 import ExtendedPropTypes from 'extended-proptypes';
 import {
 	thumbnailOne,
@@ -25,6 +26,11 @@ export default class PageUnit extends Component {
 		super( props );
 
 		this.handleOnError = this.handleOnError.bind( this );
+		this.observer = lozad();
+	}
+
+	componentDidMount() {
+		this.observer.observe();
 	}
 
 	handleOnError(event) {
@@ -47,8 +53,9 @@ export default class PageUnit extends Component {
 			>
 				<img
 					alt={title}
+					className='lozad'
+					data-src={thumbnailUrl}
 					onError={this.handleOnError}
-					src={thumbnailUrl}
 				/>
 				<span className='video-title'>
 					{title}
