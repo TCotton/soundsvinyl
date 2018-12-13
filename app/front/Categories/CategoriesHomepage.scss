@@ -6,6 +6,7 @@
 	h3 {
 		@include font-calculator($font_family_body, 22px);
 		color: $paragraphColour;
+		text-transform: capitalize;
 	}
 
 	section {
@@ -20,7 +21,7 @@
 		img {
 			transition: all 700ms, box-shadow 200ms;
 			&:hover {
-				filter: grayscale(10%) blur(0px);
+				filter: grayscale(0%) blur(0px);
 				transform: scale(1.005);
 				box-shadow: 5px 5px 0 $boxShadowPageUnit;
 			}
