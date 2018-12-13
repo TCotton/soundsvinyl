@@ -1,3 +1,7 @@
+## 1.34.0 (December 13, 2018)
+
+* Added category name for header instead of always using 'All categories'
+
 ## 1.33.0 (December 2, 2018)
 
 * Changed comment policy on site
