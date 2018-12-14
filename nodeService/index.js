@@ -191,6 +191,7 @@ if (app.get('env') === 'production') {
 
 if (app.get('env') === 'production') {
 	require('./misc/security')(app);
+	require('./misc/compression')(app);
 }
 
 // routes based category

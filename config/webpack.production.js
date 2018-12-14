@@ -5,6 +5,7 @@ const commonConfig = require( './webpack.common.js' );
 const CleanWebpackPlugin = require( 'clean-webpack-plugin' );
 const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
 const SizePlugin = require( 'size-plugin' );
+const CompressionPlugin = require( 'compression-webpack-plugin' );
 // const ImageminPlugin = require('imagemin-webpack-plugin');
 
 // the path(s) that should be cleaned
@@ -147,6 +148,14 @@ module.exports = webpackMerge( commonConfig, {
 				to: global.__base + '/dist/app/assets/images'
 			}
 		] ),
+
+		new CompressionPlugin( {
+			filename: '[path].gz[query]',
+			algorithm: 'gzip',
+			test: /\.js$|\.css$|\.html$/,
+			threshold: 10240,
+			minRatio: 0.8
+		}),
 
 		new SizePlugin(),
 
