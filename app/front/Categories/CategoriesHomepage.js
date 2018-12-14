@@ -72,7 +72,8 @@ export class CategoriesHomepage extends Component {
 			);
 		}
 
-		const $title = window.location.href.indexOf('/category/') === -1 ? 'All categories': window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
+		const href = window.location.href;
+		const $title = href.indexOf('/category/') === -1 ? 'All categories': href.substr(href.lastIndexOf('/') + 1);
 
 		return (
 			<main styleName='categories'>

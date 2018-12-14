@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import Pagination from '../Pagination/Pagination';
 
-const articlesPerPage = 14;
+const articlesPerPage = 11;
 
 export class Categories extends Component {
 
