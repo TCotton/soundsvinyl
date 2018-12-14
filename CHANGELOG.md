@@ -1,3 +1,7 @@
+## 1.34.1 (December 14, 2018)
+
+* Fixed pagination bug
+
 ## 1.34.0 (December 13, 2018)
 
 * Added category name for header instead of always using 'All categories'
