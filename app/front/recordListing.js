@@ -8,6 +8,7 @@ import VideoErrorBoundary from './errorBoundaries/videoErrorBoundary';
 import Disqus from './Disqus/Disqus';
 import RawMetaTags from './MetaHeadComponents/RawMetaTags';
 import RawTwitterMetaTags from './MetaHeadComponents/RawTwitterMetaTags';
+import SineWave from './SineWave/SineWave';
 
 import './recordListing.scss';
 import PropTypes from 'prop-types';
@@ -188,6 +189,10 @@ class RecordListing extends Component {
 							<div styleName='videoContainer'>
 								{videoComponent()}
 							</div>
+
+							<SineWave
+								videoURI={videoLink}
+							/>
 
 						</section>
 
