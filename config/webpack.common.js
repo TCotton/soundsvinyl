@@ -18,7 +18,7 @@ module.exports = {
 	resolve: {
 		alias: {
 			// MISC
-			'single-spa': path.resolve(global.__base, '/node_modules/single-spa/lib/single-spa.js'),
+			//'single-spa': path.resolve(global.__base, '/node_modules/single-spa/lib/single-spa.js'),
 
 			// REACT
 			HomePageSearchForm: path.resolve(global.__base, '/app/front/homePageSearchForm.js'),
