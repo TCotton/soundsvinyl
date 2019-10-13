@@ -6,6 +6,7 @@ const CleanWebpackPlugin = require( 'clean-webpack-plugin' );
 const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
 const SizePlugin = require( 'size-plugin' );
 const CompressionPlugin = require( 'compression-webpack-plugin' );
+const TerserPlugin = require('terser-webpack-plugin');
 // const ImageminPlugin = require('imagemin-webpack-plugin');
 
 // the path(s) that should be cleaned
@@ -24,6 +25,27 @@ module.exports = webpackMerge( commonConfig, {
 		chunkModules: true,
 		modules: true,
 		children: true,
+	},
+	optimization: {
+		minimize: true,
+		minimizer: [new TerserPlugin({
+			cache: true,
+			parallel: true,
+			sourceMap: true,
+			extractComments: 'all',
+			warningsFilter: (warning, source) => {
+				if (/Dropping unreachable code/i.test(warning)) {
+					return true;
+				}
+
+				if (/filename\.js/i.test(source)) {
+					return true;
+				}
+
+				return false;
+			},
+		}),
+		],
 	},
 	module: {
 		rules: [
@@ -68,51 +90,6 @@ module.exports = webpackMerge( commonConfig, {
 		chunkFilename: '[name].[contenthash].chunk.js',
 		path: path.resolve( global.__base, 'dist' )
 	},
-	/*	optimization: {
-			runtimeChunk: 'single',
-			splitChunks: {
-				cacheGroups: {
-					vendor: {
-						test: /[\\/]node_modules[\\/]/,
-						name: 'vendors',
-						chunks: 'all'
-					}
-				}
-			}
-		},*/
-
-	/**
-	 * {
-		test: /\.(gif|png|jpe?g|svg)$/i,
-		use: [
-			{
-				loader: 'file-loader'
-			},
-			{
-				loader: 'image-webpack-loader',
-				options: {
-					mozjpeg: {
-						progressive: true,
-						quality: 65
-					},
-					// optipng.enabled: false will disable optipng
-					optipng: {
-						enabled: false,
-					},
-					pngquant: {
-						quality: '65-90',
-						speed: 4
-					},
-					gifsicle: {
-						interlaced: false,
-					},
-					// the webp option will enable WEBP
-					webp: {
-						quality: 75
-					}
-				}
-			},
-	 */
 
 	plugins: [
 		new CleanWebpackPlugin( pathsToClean ),
@@ -122,8 +99,6 @@ module.exports = webpackMerge( commonConfig, {
 				'NODE_ENV': JSON.stringify( 'production' )
 			}
 		} ),
-
-		// new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
 
 		// /Applications/MAMP/htdocs/soundsvinyl/app/assets/images
 		new CopyWebpackPlugin( [
