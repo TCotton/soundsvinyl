@@ -1,8 +1,7 @@
 const fs = require( 'fs' );
-const dir = 'log';
 
-if( !fs.existsSync( dir ) ) {
-	fs.mkdirSync( dir );
+if( !fs.existsSync( 'log' ) ) {
+	fs.mkdirSync( 'log' );
 }
 const postmarkapp = process.env.postmark;
 const postmark = require( 'postmark' );

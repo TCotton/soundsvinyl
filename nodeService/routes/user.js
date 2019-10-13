@@ -4,9 +4,8 @@ const User = new require('../models/user');
 const verifyToken = require('./jwt');
 
 const fs = require('fs');
-const dir = 'log';
-if (!fs.existsSync(dir)) {
-	fs.mkdirSync(dir);
+if (!fs.existsSync('log')) {
+	fs.mkdirSync('log');
 }
 
 module.exports = (app) => {

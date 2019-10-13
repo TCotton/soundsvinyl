@@ -4,3 +4,4 @@
 /nodeService/public/thumbnails/*
 /nodeService/files/*
 /app/assets/graphics/*
+*.scss

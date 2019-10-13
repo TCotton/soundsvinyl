@@ -64,7 +64,7 @@ module.exports = ( app ) => {
 			if( !err ) {
 
 				Object.keys( docs ).forEach( ( key ) => {
-					const pageURl = `/${docs[ key ].slug}/${docs[ key ]._id}`
+					const pageURl = `/${docs[ Number.parseInt(key) ].slug}/${docs[ Number.parseInt(key) ]._id}`
 					url.push( { url: pageURl, changefreq: 'weekly', priority: 0.7 } );
 				} );
 

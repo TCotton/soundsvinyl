@@ -23,7 +23,10 @@
 	"globals": {
 		"inject": true,
 		"react": true,
-		"vue": true
+		"vue": true,
+		"module": true,
+		"process": true,
+		"global": true
 	},
 	"extends": [
 		"plugin:jest/recommended",

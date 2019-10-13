@@ -62,11 +62,14 @@ export default class Sitemap extends Component {
 
 	render () {
 		const { error, pages, customPages } = this.state;
+		const $sitemap = 'Sitemap';
+		const $Categories = 'Categories';
+		const $Tracks = 'Tracks';
 
 		return (
 			<main styleName='sitemap'>
 				<h3>
-					Sitemap
+					{$sitemap}
 				</h3>
 				<section>
 					{error &&
@@ -75,7 +78,7 @@ export default class Sitemap extends Component {
 					</p>}
 					{!error &&
 					<h4>
-							Categories
+						{$Categories}
 					</h4>}
 					{!error &&
 					<ErrorBoundary>
@@ -86,7 +89,7 @@ export default class Sitemap extends Component {
 					</ErrorBoundary>}
 					{!error &&
 					<h4>
-							Tracks
+							{$Tracks}
 					</h4>}
 					{!error &&
 					<ErrorBoundary>
