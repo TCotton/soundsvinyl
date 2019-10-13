@@ -73,6 +73,8 @@ class Nav extends Component {
 			button = <LogoutButton />;
 		}
 
+		const mainMenu = 'Main Menu';
+
 		return (
 			<nav>
 				<div
@@ -89,7 +91,7 @@ class Nav extends Component {
 							className='hidden-desktop'
 							htmlFor='toggle-1'
 						>
-							Main Menu
+							{mainMenu}
 						</label>
 						<input
 							className='hidden-desktop'

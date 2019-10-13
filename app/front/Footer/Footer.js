@@ -7,6 +7,7 @@ class Footer extends Component {
 	render () {
 
 		const footerClasses = cn('inner-footer', 'wrapper');
+		const $soundsVinyl = 'SoundsVinyl';
 
 		return (
 			<footer>
@@ -16,7 +17,7 @@ class Footer extends Component {
 				>
 					<div styleName='footerLeftColumn'>
 						<p>
-							SoundsVinyl
+							{$soundsVinyl}
 						</p>
 					</div>
 					<div styleName='footerRightColumn'>

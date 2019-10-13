@@ -25,12 +25,13 @@ export default class VideoErrorBoundary extends React.Component {
 
 		const { hasError } = this.state;
 		const { children } = this.props;
+		const $Something = 'Something went wrong.';
 
 		if (hasError) {
 			// You can render any custom fallback UI
 			return (
 				<p styleName='videoErrorBoundary'>
-					Something went wrong.
+					{$Something}
 				</p>
 			);
 		}

@@ -4,6 +4,9 @@ import HeaderLeftColumn from './HeaderLeftColumn';
 
 export default class Header extends Component {
 	render () {
+		const $Welcome = 'Welcome to SoundsVinyl';
+		const $Vinyl = 'Vinyl forever, music for all';
+
 		return (
 			<header styleName='header'>
 				<div
@@ -15,10 +18,10 @@ export default class Header extends Component {
 					</div>
 					<div styleName='headerRightColumn'>
 						<h2>
-							Welcome to SoundsVinyl
+							{$Welcome}
 						</h2>
 						<p>
-							Vinyl forever, music for all
+							{$Vinyl}
 						</p>
 					</div>
 				</div>

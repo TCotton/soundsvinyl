@@ -51,12 +51,17 @@
 		"react/no-unknown-property": [2, { "ignore": [ "fill-rule", "clip-rule" ] }],
 		"react/no-multi-comp": [2, { "ignoreStateless": true }],
 		"react/require-optimization": [0, {}],
-		"react/no-danger": [0, {}]
+		"react/no-danger": [0, {}],
+		"react/jsx-fragments": [1, "element"],
+		"react/jsx-no-useless-fragment": [0],
+		"react/jsx-props-no-spreading": [{
+			"html": [0]
+		}]
 	},
 	"settings": {
 		"react": {
 			"pragma": "React",
-			"version": "16.0"
+			"version": "16.10.2"
 		}
 	}
 }

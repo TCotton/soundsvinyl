@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 
 class Video extends Component {
 
+	static createMarkup () {
+		return {
+			__html: 'Your browser doesn\'t support HTML5 video. Here is a <a href={videoLink}>link to the video</a> instead.'
+		}
+	}
+
 	static propTypes = {
 		videoLink: PropTypes.oneOfType( [
 			PropTypes.string,
 			PropTypes.func
 		]).isRequired
 	};
-
-	static createMarkup () {
-		return {
-			__html: 'Your browser doesn\'t support HTML5 video. Here is a <a href={videoLink}>link to the video</a> instead.'
-		}
-	}
 
 	render () {
 		const { videoLink } = this.props;

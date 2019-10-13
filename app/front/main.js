@@ -10,7 +10,8 @@ class Main extends Component {
 	static propTypes = {
 		match: PropTypes.shape({
 			params: PropTypes.shape({
-				id: PropTypes.string
+				id: PropTypes.string,
+				tag: PropTypes.string
 			})
 		})
 	};

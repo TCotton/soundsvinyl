@@ -3,6 +3,16 @@ import PropTypes from 'prop-types';
 import './ErrorBoundary.scss';
 
 export default class ErrorBoundary extends Component {
+
+	static propTypes = {
+		children: PropTypes.oneOfType([
+			PropTypes.arrayOf( PropTypes.node ),
+			PropTypes.node
+		])
+	};
+
+	static defaultProps = { children: null };
+
 	constructor ( props ) {
 		super( props );
 		this.state = { error: null, errorInfo: null };
@@ -38,12 +48,3 @@ export default class ErrorBoundary extends Component {
 		return children;
 	}
 }
-
-ErrorBoundary.propTypes = {
-	children: PropTypes.oneOfType([
-		PropTypes.arrayOf( PropTypes.node ),
-		PropTypes.node
-	])
-};
-
-ErrorBoundary.defaultProps = { children: null };

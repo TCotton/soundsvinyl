@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 
 class Error extends Component {
 	render () {
+		const $error = 'Error path does not exist :(';
 		return (
 			<main>
 				<p>
-					Error path does not exist :(
+					{$error}
 				</p>
 			</main>
 		)
