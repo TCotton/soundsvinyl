@@ -54,9 +54,7 @@
 		"react/no-danger": [0, {}],
 		"react/jsx-fragments": [1, "element"],
 		"react/jsx-no-useless-fragment": [0],
-		"react/jsx-props-no-spreading": [{
-			"html": [0]
-		}]
+		"react/jsx-props-no-spreading": 0,
 	},
 	"settings": {
 		"react": {

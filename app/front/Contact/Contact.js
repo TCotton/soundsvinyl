@@ -73,13 +73,20 @@ class Contact extends Component {
 			zipcode,
 		} = this.state;
 
+		const $contactUs = 'Contact us';
+		const $please = 'Please contact us if you any recommendations for records to review';
+		const $yourName = 'Your name';
+		const $yourEmail = 'Your email';
+		const $yourMessage = 'Your message';
+		const $yourZipcode = 'Your zipcode';
+
 		return (
 			<main styleName='contactPage'>
 				<h2>
-					Contact us
+					{$contactUs}
 				</h2>
 				<p>
-					Please contact us if you any recommendations for records to review
+					{$please}
 				</p>
 
 				{error &&
@@ -94,7 +101,7 @@ class Contact extends Component {
 
 				<form onSubmit={this.handleSubmit}>
 					<label htmlFor='contactName'>
-						Your name
+						{$yourName}
 					</label>
 					<input
 						id='contactName'
@@ -107,7 +114,7 @@ class Contact extends Component {
 					/>
 
 					<label htmlFor='contactEmail'>
-						Your email
+						{$yourEmail}
 					</label>
 					<input
 						id='contactEmail'
@@ -120,7 +127,7 @@ class Contact extends Component {
 					/>
 
 					<label htmlFor='contactMessage'>
-						Your message
+						{$yourMessage}
 					</label>
 					<textarea
 						id='contactMessage'
@@ -148,7 +155,7 @@ class Contact extends Component {
 							className='hide'
 							htmlFor='zipcode'
 						>
-							Your zipcode
+							{$yourZipcode}
 						</label>
 						<input
 							aria-hidden='true'
