@@ -15,6 +15,7 @@ const compress = require('compression');
 const mongoose = require('mongoose');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
+const csp = require('helmet-csp')
 
 if (fs.existsSync('./node-variables.env')) {
 	const dotenv = require('dotenv');
@@ -94,6 +95,43 @@ if (app.get('env') === 'production') {
 	app.use( limiter );
 }
 
+app.use(csp({
+	// Specify directives as normal.
+	directives: {
+		defaultSrc: ["'self'", 'soundsvinyl.co', "'unsafe-inline'"],
+		scriptSrc: ["'self'", "'unsafe-inline'", 'cdn.polyfill.io', 'tagmanager.google.com', 'googletagmanager.com', 'google-analytics.com', 'cdn.polyfill.io'],
+		styleSrc: ["'self'", "'unsafe-inline'", 'fonts.gstatic.com', 'tagmanager.google.com', 'fonts.googleapis.com'],
+		fontSrc: ["'self'", 'fonts.gstatic.com'],
+		imgSrc: ["'unsafe-inline'", 'data:', 'ssl.gstatic.com', 'google-analytics.com', 'google-analytics.com', 'stats.g.doubleclick.net'],
+		sandbox: ['allow-forms', 'allow-scripts'],
+		connectSrc: ['google-analytics.com', 'stats.g.doubleclick.net'],
+		reportUri: '/report-violation',
+		objectSrc: ["'none'"],
+		upgradeInsecureRequests: true,
+		workerSrc: false  // This is not set.
+	},
+
+	// This module will detect common mistakes in your directives and throw errors
+	// if it finds any. To disable this, enable "loose mode".
+	loose: true,
+
+	// Set to true if you only want browsers to report errors, not block them.
+	// You may also set this to a function(req, res) in order to decide dynamically
+	// whether to use reportOnly mode, e.g., to allow for a dynamic kill switch.
+	reportOnly: true,
+
+	// Set to true if you want to blindly set all headers: Content-Security-Policy,
+	// X-WebKit-CSP, and X-Content-Security-Policy.
+	setAllHeaders: false,
+
+	// Set to true if you want to disable CSP on Android where it can be buggy.
+	disableAndroid: true,
+
+	// Set to false if you want to completely disable any user-agent sniffing.
+	// This may make the headers less compatible but it will be much faster.
+	// This defaults to `true`.
+	browserSniff: true
+}))
 
 app.all('*', function (req, res, next) {
 	res.setHeader('Access-Control-Allow-Origin', '*');
