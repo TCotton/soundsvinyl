@@ -15,7 +15,8 @@ export class Categories extends Component {
 		category: PropTypes.string,
 		match: PropTypes.shape({
 			params: PropTypes.shape({
-				id: PropTypes.string
+				id: PropTypes.string,
+				tag: PropTypes.string
 			})
 		})
 	};
@@ -122,7 +123,7 @@ export class Categories extends Component {
 
 	addNumberToDataArray ([ ...data ]) {
 		data.forEach( ( currentValue, index ) => {
-			data[ index ].position = ( index + 1 );
+			data[ Number.parseInt(index)  ].position = ( Number.parseInt(index)  + 1 );
 		});
 
 		return data;

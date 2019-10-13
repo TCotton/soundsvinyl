@@ -64,10 +64,12 @@ export class CategoriesHomepage extends Component {
 
 		}
 
+		const $thereAreNo = 'There are no entries for this term';
+
 		if( requestCompleted && Array.isArray(search) && search.length === 0) {
 			arrayMap = (
 				<p className='error'>
-					There are no entries for this term
+					{$thereAreNo}
 				</p>
 			);
 		}

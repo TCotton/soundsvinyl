@@ -37,8 +37,8 @@
 						<router-link :to="{ name: 'Comment', params: { id: comment._id }}">Edit</router-link>
 					</td>
 					<td>
-						<div 
-@click="showModal = true, deleteId = comment._id" 
+						<div
+@click="showModal = true, deleteId = comment._id"
 :class="$style.delete">Delete</div>
 					</td>
 				</tr>
@@ -93,7 +93,7 @@
 		},
 
 		methods: {
-			deleteComment (...args) {
+			deleteComment () {
 				this.showModal = false;
 
 				if (arguments[0].toString()) {

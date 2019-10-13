@@ -292,7 +292,6 @@
 								'Content-Type': 'application/json'
 							}
 						}).then(() => {
-							console.log('YES!!!');
 							this.$router.push({path: 'Page'});
 						}, (response) => {
 							throw Error(response.data);

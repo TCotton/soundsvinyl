@@ -43,24 +43,29 @@ export default class CommentsForm extends Component {
 	render () {
 
 		const { commentsMessage, comments, disabled, success } = this.props;
+		const $comments = 'Comments';
+		const $YouMustBe = 'You must be';
+		const $registered = 'registered and logged in';
+		const $contribute = 'to contribute a comment';
+		const $yourComment = `Your comment has been submitted and will appear on` + <br /> + `this page after it has been approved by the administrator`;
 
 		return (
 			<React.Fragment>
 				<section styleName='commentsForm'>
 					<h3>
-						Comments
+						{$comments}
 					</h3>
-
+					{$YouMustBe}
 					<p className={( disabled ? 'display' : 'hide' )}>
-						You must be 
+						{$YouMustBe}
 						<Link to='/my-account'>
-							 registered and logged in
+							{$registered}
 						</Link>
-						to contribute a comment
+						{$contribute}
 					</p>
 
 					<p className={( success ? 'display' : 'hide' )}>
-						{'Your comment has been submitted and will appear on<br/> this page after it has been approved by the administrator'}
+						{$yourComment}
 					</p>
 
 					<form onSubmit={this.handleSubmitLogin}>

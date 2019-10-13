@@ -11,6 +11,14 @@ import moment from 'moment';
 
 class Comment extends Component {
 
+	static propTypes = {
+		content: PropTypes.arrayOf( PropTypes.shape({
+			content: PropTypes.string,
+			data: PropTypes.string,
+			userName: PropTypes.string
+		})).isRequired
+	};
+
 	constructor (props) {
 		super(props);
 	}
@@ -28,9 +36,9 @@ class Comment extends Component {
 		if (Array.isArray(content)) {
 			values = content.map((value, i) => {
 
-				const content = content[i].content;
-				const username = content[i].userName;
-				const date = moment(content[i].data).format('MMMM Do YYYY');
+				const content = content[ Number.parseInt(i) ].content;
+				const username = content[ Number.parseInt(i) ].userName;
+				const date = moment(content[ Number.parseInt(i) ].data).format('MMMM Do YYYY');
 				const RandomProfile = ProfileArray[Math.floor(Math.random() * ProfileArray.length)];
 
 				return (
@@ -64,13 +72,6 @@ class Comment extends Component {
 	}
 }
 
-Comment.propTypes = {
-	content: PropTypes.arrayOf( PropTypes.shape({
-		content: PropTypes.string,
-		data: PropTypes.string,
-		userName: PropTypes.string
-	})).isRequired
-};
 
 export default Comment;
 

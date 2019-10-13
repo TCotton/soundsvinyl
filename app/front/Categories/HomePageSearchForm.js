@@ -43,6 +43,10 @@ export class HomePageSearchForm extends Component {
 
 	render () {
 		const { search, error, message, redirectRoute } = this.state;
+		const $search = 'Search by category';
+		const $yourSearchTerm = 'Your search term';
+		const $noResults = 'There are no results for that search term.';
+		const $tryAnotherTerm = 'Try another term.';
 
 		return (
 			<React.Fragment>
@@ -51,7 +55,7 @@ export class HomePageSearchForm extends Component {
 				/>
 				<div styleName='search'>
 					<h4>
-						Search by category
+						{$search}
 					</h4>
 					<form
 						onSubmit={this.handleSubmit}
@@ -61,7 +65,7 @@ export class HomePageSearchForm extends Component {
 							className='visuallyhidden'
 							htmlFor='search'
 						>
-							Your search term
+							{$yourSearchTerm}
 						</label>
 						<input
 							data-autocapitalize='none'
@@ -76,9 +80,9 @@ export class HomePageSearchForm extends Component {
 						{error}
 						{message &&
 						<p>
-							There are no results for that search term.
+							{$noResults}
 							<br />
-							Try another term.
+							{$tryAnotherTerm}
 						</p>}
 					</div>
 				</div>

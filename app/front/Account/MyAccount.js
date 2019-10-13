@@ -122,6 +122,8 @@ class MyAccount extends Component {
 	render () {
 
 		const { loginFormloginName, error, loginFormloginPassword, registerFormloginName, registerFormloginPassword } = this.state;
+		const $myAccount = 'My Account';
+		const $eigherLogin = 'Either login or register an account with SoundsVinyl from this page';
 
 		const errorFunc = error ? () => {
 			return (
@@ -134,10 +136,10 @@ class MyAccount extends Component {
 		return (
 			<main styleName='myAccount'>
 				<h2>
-					My Account
+					{$myAccount}
 				</h2>
 				<p>
-					Either login or register an account with SoundsVinyl from this page
+					{$eigherLogin}
 				</p>
 
 				{errorFunc()}

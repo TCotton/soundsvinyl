@@ -62,7 +62,7 @@
 
 		},
 		methods: {
-			deletePage (...args) {
+			deletePage () {
 				this.showModal = false;
 
 				if (arguments[0].toString()) {

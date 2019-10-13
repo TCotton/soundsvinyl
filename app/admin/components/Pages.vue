@@ -42,8 +42,8 @@
 						<router-link :to="{ name: 'Page', params: { id: page._id }}">Edit</router-link>
 					</td>
 					<td>
-						<div 
-@click="showModal = true, deleteId = page._id" 
+						<div
+@click="showModal = true, deleteId = page._id"
 :class="$style.delete">Delete</div>
 					</td>
 				</tr>
@@ -96,7 +96,7 @@
 			});
 		},
 		methods: {
-			deletePage (...args) {
+			deletePage () {
 				this.showModal = false;
 
 				if (arguments[0].toString()) {

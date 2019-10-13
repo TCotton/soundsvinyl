@@ -19,7 +19,7 @@ export default class Sitemap extends Component {
 		};
 	}
 
-	componentWillMount () {
+	componentDidMount () {
 		axios.get( `${homeURI}/apiV1/page/getall` )
 			.then( res => {
 

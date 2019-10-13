@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 function LoginButton (props) {
 	const { onClick } = props;
+	const $Logout = 'logout';
 	return (
 		<Link
 			onClick={onClick}
@@ -11,7 +12,7 @@ function LoginButton (props) {
 		>
 			<li>
 				<span>
-					Logout
+					{$Logout}
 				</span>
 			</li>
 		</Link>

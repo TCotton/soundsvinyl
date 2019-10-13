@@ -166,8 +166,6 @@
 						// revert date back to UTC format
 						this.EditCommentForm.date = this.originalCreationDate;
 
-						console.dir(this.EditCommentForm);
-
 						this.$http.put(this.actionURL, JSON.stringify(this.EditCommentForm), {
 							headers: {
 								'Content-Type': 'application/json'
