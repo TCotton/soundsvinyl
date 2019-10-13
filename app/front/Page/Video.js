@@ -31,8 +31,7 @@ class Video extends Component {
 						type='video/mp4'
 					/>
 					<p dangerouslySetInnerHTML={Video.createMarkup()} />
-				</video>
-				}
+				</video>}
 			</React.Fragment>
 		)
 	}

@@ -5,7 +5,7 @@ class Error extends Component {
 		return (
 			<main>
 				<p>
-					{'Error path does not exist :('}
+					Error path does not exist :(
 				</p>
 			</main>
 		)

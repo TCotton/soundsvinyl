@@ -67,7 +67,7 @@ export class CategoriesHomepage extends Component {
 		if( requestCompleted && Array.isArray(search) && search.length === 0) {
 			arrayMap = (
 				<p className='error'>
-					{'There are no entries for this term'}
+					There are no entries for this term
 				</p>
 			);
 		}

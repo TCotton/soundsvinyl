@@ -15,10 +15,10 @@ export default class Header extends Component {
 					</div>
 					<div styleName='headerRightColumn'>
 						<h2>
-							{'Welcome to SoundsVinyl'}
+							Welcome to SoundsVinyl
 						</h2>
 						<p>
-							{'Vinyl forever, music for all'}
+							Vinyl forever, music for all
 						</p>
 					</div>
 				</div>

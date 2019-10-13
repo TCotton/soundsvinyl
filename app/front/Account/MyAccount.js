@@ -134,10 +134,10 @@ class MyAccount extends Component {
 		return (
 			<main styleName='myAccount'>
 				<h2>
-					{'My Account'}
+					My Account
 				</h2>
 				<p>
-					{'Either login or register an account with SoundsVinyl from this page'}
+					Either login or register an account with SoundsVinyl from this page
 				</p>
 
 				{errorFunc()}

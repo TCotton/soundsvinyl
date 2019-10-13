@@ -31,8 +31,7 @@ class MetaHeader extends Component {
 				<link
 					href={`https://soundsvinyl.co/${canonical}`}
 					rel='canonical'
-				/>
-				}
+				/>}
 			</Helmet>
 		)
 	}

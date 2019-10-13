@@ -1,3 +1,4 @@
+/* eslint-disable security/detect-object-injection */
 import React, { Component } from 'react';
 import './sitemap.scss';
 import PropTypes from 'prop-types';
@@ -30,36 +31,34 @@ export default class SitemapUnorderedList extends Component {
 		const { categories, data } = this.props;
 
 		return (
-			<React.Fragment>
-				<ul styleName='sitemapUnorderedList'>
-					{!categories && data.map( data => {
-						return (
-							<li key={data._id}>
-								<Link
-									styleName='sitemapItem'
-									to={`/${data.slug}/${data._id}`}
-								>
-									{data.title}
-								</Link>
-							</li>
-						)
-					} )}
+			<ul styleName='sitemapUnorderedList'>
+				{!categories && data.map( data => {
+					return (
+						<li key={data._id}>
+							<Link
+								styleName='sitemapItem'
+								to={`/${data.slug}/${data._id}`}
+							>
+								{data.title}
+							</Link>
+						</li>
+					)
+				} )}
 
-					{categories && data.map( ( newData, index ) => {
-						const uri = 'category/' + encodeURIComponent( data[ index ][ 0 ] );
-						return (
-							<li key={index.toString()}>
-								<Link
-									styleName='sitemapItem'
-									to={uri}
-								>
-									{data[ index ][ 0 ]}
-								</Link>
-							</li>
-						)
-					} )}
-				</ul>
-			</React.Fragment>
+				{categories && data.map( ( newData, index ) => {
+					const uri = 'category/' + encodeURIComponent( data[ index ][ 0 ] );
+					return (
+						<li key={index.toString()}>
+							<Link
+								styleName='sitemapItem'
+								to={uri}
+							>
+								{data[ index ][ 0 ]}
+							</Link>
+						</li>
+					)
+				} )}
+			</ul>
 		)
 	}
 }

@@ -6,7 +6,7 @@ class LogoutButton extends Component {
 		return (
 			<Link to='/my-account'>
 				<li>
-					{'My account'}
+					My account
 				</li>
 			</Link>
 		)

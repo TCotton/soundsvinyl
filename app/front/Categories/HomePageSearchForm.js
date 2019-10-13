@@ -51,7 +51,7 @@ export class HomePageSearchForm extends Component {
 				/>
 				<div styleName='search'>
 					<h4>
-						{'Search by category'}
+						Search by category
 					</h4>
 					<form
 						onSubmit={this.handleSubmit}
@@ -61,7 +61,7 @@ export class HomePageSearchForm extends Component {
 							className='visuallyhidden'
 							htmlFor='search'
 						>
-							{'Your search term'}
+							Your search term
 						</label>
 						<input
 							data-autocapitalize='none'
@@ -76,11 +76,10 @@ export class HomePageSearchForm extends Component {
 						{error}
 						{message &&
 						<p>
-							{'There are no results for that search term.'}
+							There are no results for that search term.
 							<br />
-							{'Try another term.'}
-						</p>
-						}
+							Try another term.
+						</p>}
 					</div>
 				</div>
 			</React.Fragment>

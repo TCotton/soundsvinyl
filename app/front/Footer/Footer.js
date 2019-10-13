@@ -16,7 +16,7 @@ class Footer extends Component {
 				>
 					<div styleName='footerLeftColumn'>
 						<p>
-							{'SoundsVinyl'}
+							SoundsVinyl
 						</p>
 					</div>
 					<div styleName='footerRightColumn'>

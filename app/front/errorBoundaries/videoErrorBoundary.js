@@ -30,7 +30,7 @@ export default class VideoErrorBoundary extends React.Component {
 			// You can render any custom fallback UI
 			return (
 				<p styleName='videoErrorBoundary'>
-					{'Something went wrong.'}
+					Something went wrong.
 				</p>
 			);
 		}

@@ -11,7 +11,7 @@ function LoginButton (props) {
 		>
 			<li>
 				<span>
-					{'Logout'}
+					Logout
 				</span>
 			</li>
 		</Link>

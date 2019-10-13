@@ -61,8 +61,7 @@ export default class Pagination extends Component {
 						src='/app/assets/images/right.svg'
 						styleName={( current === 2 ) ? 'InActive' : 'Active'}
 					/>
-				</div>
-				}
+				</div>}
 			</React.Fragment>
 		);
 	}

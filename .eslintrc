@@ -3,19 +3,22 @@
 		"browser": true,
 		"es6": true,
 		"jasmine": true,
-		"node": true
 	},
 	"plugins": [
 		"jasmine",
 		"react",
 		"vue",
-		"jsx-a11y"
+		"jsx-a11y",
+		"security"
 	],
 	"parserOptions": {
 		"parser": "babel-eslint",
 		"sourceType": "module",
 		"allowImportExportEverywhere": false,
-		"codeFrame": false
+		"codeFrame": false,
+		"ecmaFeatures": {
+			"jsx": true
+		}
 	},
 	"globals": {
 		"inject": true,
@@ -26,7 +29,8 @@
 		"plugin:jest/recommended",
 		"eslint:recommended",
 		"plugin:react/all",
-		"plugin:vue/strongly-recommended"
+		"plugin:vue/strongly-recommended",
+		"plugin:security/recommended"
 	],
 	"rules": {
 		"vue/html-indent": 0,

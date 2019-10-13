@@ -37,7 +37,9 @@
 						<router-link :to="{ name: 'Comment', params: { id: comment._id }}">Edit</router-link>
 					</td>
 					<td>
-						<div @click="showModal = true, deleteId = comment._id" :class="$style.delete">Delete</div>
+						<div 
+@click="showModal = true, deleteId = comment._id" 
+:class="$style.delete">Delete</div>
 					</td>
 				</tr>
 			</table>

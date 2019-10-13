@@ -3,14 +3,16 @@ import './vinylCharts.scss';
 
 class VinylCharts extends Component {
 	render () {
+		const $current = 'Current top 30 vinyl singles charts'
+		const $comingSoon = 'Coming soon';
 		return (
 			<main styleName='vinylCharts'>
 				<h3>
-					{'Current top 30 vinyl singles charts'}
+					{$current}
 				</h3>
 				<section>
 					<p>
-						{'Coming soon'}
+						{$comingSoon}
 					</p>
 				</section>
 			</main>

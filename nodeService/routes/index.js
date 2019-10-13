@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 module.exports = (app) => {
 
 	if (process.env.NODE_ENV !== 'production') {

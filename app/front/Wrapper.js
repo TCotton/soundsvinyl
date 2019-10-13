@@ -23,6 +23,8 @@ class Wrapper extends Component {
 
 	render () {
 
+		const $loading = 'Loading...';
+
 		return (
 			<div className='wrapper'>
 				<ErrorBoundary>
@@ -30,7 +32,7 @@ class Wrapper extends Component {
 				</ErrorBoundary>
 				<Suspense fallback={
 					<div>
-						{'Loading...'}
+						{$loading}
 					</div>
 				}
 				>

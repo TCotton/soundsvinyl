@@ -1,2 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 /app/front/spec/*
+/nodeService/config/*
+/nodeService/public/thumbnails/*
+/nodeService/files/*
+/app/assets/graphics/*

@@ -48,15 +48,15 @@ export default class CommentsForm extends Component {
 			<React.Fragment>
 				<section styleName='commentsForm'>
 					<h3>
-						{'Comments'}
+						Comments
 					</h3>
 
 					<p className={( disabled ? 'display' : 'hide' )}>
-						{'You must be '}
+						You must be 
 						<Link to='/my-account'>
-							{' registered and logged in'}
+							 registered and logged in
 						</Link>
-						{'to contribute a comment'}
+						to contribute a comment
 					</p>
 
 					<p className={( success ? 'display' : 'hide' )}>

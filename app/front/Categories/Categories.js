@@ -154,8 +154,7 @@ export class Categories extends Component {
 							maximum={pages}
 							onChangePagination={this.handleOnChange}
 							total={total}
-						/>
-					}
+						/>}
 				</div>
 			</ErrorBoundary>
 		)

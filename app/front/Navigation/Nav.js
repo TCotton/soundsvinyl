@@ -89,7 +89,7 @@ class Nav extends Component {
 							className='hidden-desktop'
 							htmlFor='toggle-1'
 						>
-							{'Main Menu'}
+							Main Menu
 						</label>
 						<input
 							className='hidden-desktop'

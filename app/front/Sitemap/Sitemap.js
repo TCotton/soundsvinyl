@@ -66,43 +66,34 @@ export default class Sitemap extends Component {
 		return (
 			<main styleName='sitemap'>
 				<h3>
-					{'Sitemap'}
+					Sitemap
 				</h3>
 				<section>
 					{error &&
 					<p>
 						{error}
-					</p>
-					}
+					</p>}
 					{!error &&
-					<React.Fragment>
-						<h4>
-							{'Categories'}
-						</h4>
-					</React.Fragment>
-					}
+					<h4>
+							Categories
+					</h4>}
 					{!error &&
 					<ErrorBoundary>
 						<SitemapUnorderedList
 							categories
 							data={customPages}
 						/>
-					</ErrorBoundary>
-					}
+					</ErrorBoundary>}
 					{!error &&
-					<React.Fragment>
-						<h4>
-							{'Tracks'}
-						</h4>
-					</React.Fragment>
-					}
+					<h4>
+							Tracks
+					</h4>}
 					{!error &&
 					<ErrorBoundary>
 						<SitemapUnorderedList
 							data={pages}
 						/>
-					</ErrorBoundary>
-					}
+					</ErrorBoundary>}
 				</section>
 			</main>
 		)
