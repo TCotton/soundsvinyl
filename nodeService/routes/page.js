@@ -1,5 +1,5 @@
 const mongoose = require( 'mongoose' );
-const Page = new require( '../models/page' );
+const Page = require( '../models/page' );
 const {
 	createStringSlug,
 	createShortSlug,
@@ -82,7 +82,6 @@ module.exports = ( app ) => {
 			}
 		} );
 	} );
-
 
 	app.get( '/apiV1/page/get', cache( 10 ), ( req, res, next ) => {
 

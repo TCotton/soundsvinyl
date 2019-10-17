@@ -33,10 +33,14 @@ if (app.get('env') === 'development') {
 	mongoose.set('debug', true) // enable logging collection methods + arguments to the console
 }
 
-const limiter = rateLimit({
-	windowMs: 15 * 60 * 1000, // 15 minutes
-	max: 100 // limit each IP to 100 requests per windowMs
-});
+let limiter;
+
+if (app.get('env') === 'production') {
+	limiter = rateLimit( {
+		windowMs: 15 * 60 * 1000, // 15 minutes
+		max: 100 // limit each IP to 100 requests per windowMs
+	} );
+}
 
 const prerenderToken = process.env.prerenderToken;
 
@@ -160,7 +164,9 @@ app.use((req, res, next) => {
 	next();
 });
 
-require('./routes/sitemap')(app);
+if (app.get('env') !== 'test') {
+	require( './routes/sitemap' )( app );
+}
 
 if (app.get('env') === 'development') {
 
@@ -254,9 +260,6 @@ require('./routes/page')(app);
 require('./routes/user')(app);
 require('./routes/comment')(app);
 require('./routes/contact')(app);
-
-// miscellaneous routes based on use
-require('./misc/content-security-policy.js')(app);
 
 module.exports = app;
 

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate');
 const Schema = mongoose.Schema;
 
-const tagSchema = new require('./tags');
+const tagSchema = require('./tags');
 
 const PageSchema = new Schema({
 	title: {

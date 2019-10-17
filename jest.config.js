@@ -11,7 +11,6 @@ module.exports = {
 	collectCoverageFrom: [
 		'**/*.{js,jsx}'
 	],
-	testMatch: [ '**/?(*.)+(test).js?(x)' ],
 	moduleFileExtensions: [ 'js', 'json', 'jsx' ],
 	coveragePathIgnorePatterns: [
 		'/node_modules/',
@@ -41,5 +40,6 @@ module.exports = {
 		'^.+\\.js$': 'babel-jest'
 	},
 	setupTestFrameworkScriptFile: '<rootDir>/test/setupTests.js',
-	transformIgnorePatterns: ['<rootDir>/node_modules/']
+	transformIgnorePatterns: ['<rootDir>/node_modules/'],
+	setupFiles: [`<rootDir>/loadershim.js`]
 };

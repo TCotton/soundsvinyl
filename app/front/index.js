@@ -15,7 +15,7 @@ export default class rootComponent extends Component {
 				<Provider store={store}>
 					<CookiesProvider>
 						<Router>
-							<Wrapper/>
+							<Wrapper />
 						</Router>
 					</CookiesProvider>
 				</Provider>
