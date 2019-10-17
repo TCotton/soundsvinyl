@@ -136,8 +136,12 @@ class MyAccount extends Component {
 
 		return (
 			<main styleName='myAccount'>
-				<h2>{$myAccount}</h2>
-				<p>{$eigherLogin}</p>
+				<h2>
+					{$myAccount}
+				</h2>
+				<p>
+					{$eigherLogin}
+				</p>
 
 				{errorFunc()}
 

@@ -1,6 +1,9 @@
 import React from 'react'
 import MyAccountForm from '../MyAccountForm'
-import renderer from 'react-test-renderer'
+import renderer from 'react-test-renderer';
+import { mount, shallow } from 'enzyme';
+import '../../../../enzymeConfig';
+import MyAccount from '../MyAccount'
 
 describe('Component', () => {
 	let component
@@ -42,5 +45,10 @@ describe('Component', () => {
 
 			expect(component).toBeDefined()
 		})
+
+		it('should render correctly', function(){
+			const tree = component.toJSON();
+			expect(tree).toMatchSnapshot();
+		});
 	})
 })

@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component MyAccountForm should render correctly 1`] = `
+<form
+  autoComplete="off"
+  name="loginForm"
+  onSubmit={[Function]}
+>
+  <fieldset>
+    <legend>
+      Login
+    </legend>
+    <label
+      htmlFor="loginFormloginName"
+    >
+      Your email
+    </label>
+    <input
+      data-autocapitalize="none"
+      disabled={true}
+      id="loginFormloginName"
+      name="loginFormloginName"
+      onChange={[Function]}
+      required={true}
+      type="text"
+      value="thisIsAName"
+    />
+    <label
+      htmlFor="loginFormloginPassword"
+    >
+      Your password
+    </label>
+    <input
+      disabled={true}
+      id="loginFormloginPassword"
+      name="loginFormloginPassword"
+      onChange={[Function]}
+      required={true}
+      type="password"
+      value="thisIsAPassword"
+    />
+    <input
+      name="loginSubmit"
+      type="submit"
+      value="Login"
+    />
+  </fieldset>
+</form>
+`;

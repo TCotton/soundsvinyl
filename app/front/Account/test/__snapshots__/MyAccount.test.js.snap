@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component MyAccount should render correctly 1`] = `
+<main
+  className="account__myAccount___35jgU"
+>
+  <h2>
+    My Account
+  </h2>
+  <p>
+    Either login or register an account with SoundsVinyl from this page
+  </p>
+  <section>
+    <form
+      autoComplete="off"
+      name="loginForm"
+      onSubmit={[Function]}
+    >
+      <fieldset>
+        <legend>
+          Login
+        </legend>
+        <label
+          htmlFor="loginFormloginName"
+        >
+          Your email
+        </label>
+        <input
+          data-autocapitalize="none"
+          disabled={false}
+          id="loginFormloginName"
+          name="loginFormloginName"
+          onChange={[Function]}
+          required={true}
+          type="text"
+          value=""
+        />
+        <label
+          htmlFor="loginFormloginPassword"
+        >
+          Your password
+        </label>
+        <input
+          disabled={false}
+          id="loginFormloginPassword"
+          name="loginFormloginPassword"
+          onChange={[Function]}
+          required={true}
+          type="password"
+          value=""
+        />
+        <input
+          name="loginSubmit"
+          type="submit"
+          value="Login"
+        />
+      </fieldset>
+    </form>
+    <form
+      autoComplete="off"
+      name="registerForm"
+      onSubmit={[Function]}
+    >
+      <fieldset>
+        <legend>
+          Register
+        </legend>
+        <label
+          htmlFor="registerFormloginName"
+        >
+          Your email
+        </label>
+        <input
+          data-autocapitalize="none"
+          disabled={true}
+          id="registerFormloginName"
+          name="registerFormloginName"
+          onChange={[Function]}
+          required={true}
+          type="text"
+          value=""
+        />
+        <label
+          htmlFor="registerFormloginPassword"
+        >
+          Your password
+        </label>
+        <input
+          disabled={true}
+          id="registerFormloginPassword"
+          name="registerFormloginPassword"
+          onChange={[Function]}
+          required={true}
+          type="password"
+          value=""
+        />
+        <input
+          name="loginSubmit"
+          type="submit"
+          value="Login"
+        />
+      </fieldset>
+    </form>
+  </section>
+</main>
+`;

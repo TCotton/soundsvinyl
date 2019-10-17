@@ -145,6 +145,8 @@
 		"deep-freeze-strict": "^1.1.1",
 		"dotenv": "^6.1.0",
 		"dotenv-webpack": "^1.5.7",
+		"enzyme": "^3.10.0",
+		"enzyme-adapter-react-16": "^1.15.1",
 		"eslint": "^5.16.0",
 		"eslint-plugin-jasmine": "^2.10.1",
 		"eslint-plugin-jest": "^22.0.0",
