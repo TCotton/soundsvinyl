@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
-import './contact.scss';
-import axios from 'axios';
-import { homeURI } from '../../helper_constants';
+import React, { Component } from 'react'
+import './contact.scss'
+import axios from 'axios'
+import { homeURI } from '../../helper_constants'
 
 class Contact extends Component {
-
-	constructor ( props ) {
-		super( props );
+	constructor (props) {
+		super(props)
 
 		this.state = {
 			contactName: '',
@@ -15,94 +14,80 @@ class Contact extends Component {
 			error: null,
 			message: null,
 			zipcode: ''
-		};
+		}
 
-		this.handleSubmit = this.handleSubmit.bind( this );
-		this.handleInputChange = this.handleInputChange.bind( this );
+		this.handleSubmit = this.handleSubmit.bind(this)
+		this.handleInputChange = this.handleInputChange.bind(this)
 	}
 
-	handleSubmit ( e ) {
-		e.preventDefault();
+	handleSubmit (e) {
+		e.preventDefault()
 
-		const {
-			contactEmail,
-			contactName,
-			contactMessage,
-		} = this.state;
+		const { contactEmail, contactName, contactMessage } = this.state
 
-		axios.post( `${homeURI}/apiV1/sendmail`, { contactEmail, contactName, contactMessage } )
-			.then( res => {
-
-				if( res.data.error ) {
-					this.setState( { error: res.data.error } );
+		axios
+			.post(`${homeURI}/apiV1/sendmail`, {
+				contactEmail,
+				contactName,
+				contactMessage
+			})
+			.then(res => {
+				if (res.data.error) {
+					this.setState({ error: res.data.error })
 				}
 
-				if( res ) {
-					if( res.data.success ) {
-						this.setState( { message: res.data.message } , () => {
-							document.querySelector('body').scrollTop = 0;
-						});
+				if (res) {
+					if (res.data.success) {
+						this.setState({ message: res.data.message }, () => {
+							document.querySelector('body').scrollTop = 0
+						})
 					}
 				}
-
-			}).catch( ( e ) => {
-			this.setState( { error: e.toString() } );
-		})
+			})
+			.catch(e => {
+				this.setState({ error: e.toString() })
+			})
 	}
 
 	handleInputChange (event) {
-
-		const target = event.target;
-		const value = target.value;
-		const name = target.name;
+		const target = event.target
+		const value = target.value
+		const name = target.name
 
 		this.setState({
 			[name]: value
-		});
-
+		})
 	}
 
 	render () {
-
 		const {
 			message,
 			error,
 			contactEmail,
 			contactName,
 			contactMessage,
-			zipcode,
-		} = this.state;
+			zipcode
+		} = this.state
 
-		const $contactUs = 'Contact us';
-		const $please = 'Please contact us if you any recommendations for records to review';
-		const $yourName = 'Your name';
-		const $yourEmail = 'Your email';
-		const $yourMessage = 'Your message';
-		const $yourZipcode = 'Your zipcode';
+		const $contactUs = 'Contact us'
+		const $please =
+			'Please contact us if you any recommendations for records to review'
+		const $yourName = 'Your name'
+		const $yourEmail = 'Your email'
+		const $yourMessage = 'Your message'
+		const $yourZipcode = 'Your zipcode'
 
 		return (
 			<main styleName='contactPage'>
-				<h2>
-					{$contactUs}
-				</h2>
-				<p>
-					{$please}
-				</p>
+				<h2>{$contactUs}</h2>
+				<p>{$please}</p>
 
-				{error &&
-					<p className='error'>
-						{error}
-					</p>}
+				{error && <p className='error'>{error}</p>}
 
-				{message &&
-				<p className='message'>
-					{message}
-				</p>}
+				{message && <p className='message'>{message}</p>}
 
 				<form onSubmit={this.handleSubmit}>
-					<label htmlFor='contactName'>
-						{$yourName}
-					</label>
+					<label htmlFor='contactName'>{$yourName}</label>
 					<input
 						id='contactName'
 						maxLength='254'
@@ -113,9 +98,7 @@ class Contact extends Component {
 						value={contactName}
 					/>
 
-					<label htmlFor='contactEmail'>
-						{$yourEmail}
-					</label>
+					<label htmlFor='contactEmail'>{$yourEmail}</label>
 					<input
 						id='contactEmail'
 						maxLength='254'
@@ -126,9 +109,7 @@ class Contact extends Component {
 						value={contactEmail}
 					/>
 
-					<label htmlFor='contactMessage'>
-						{$yourMessage}
-					</label>
+					<label htmlFor='contactMessage'>{$yourMessage}</label>
 					<textarea
 						id='contactMessage'
 						maxLength='500'
@@ -146,15 +127,8 @@ class Contact extends Component {
 						value='submit'
 					/>
 
-					<span
-						aria-hidden='true'
-						className='hide'
-					>
-						<label
-							aria-hidden='true'
-							className='hide'
-							htmlFor='zipcode'
-						>
+					<span aria-hidden='true' className='hide'>
+						<label aria-hidden='true' className='hide' htmlFor='zipcode'>
 							{$yourZipcode}
 						</label>
 						<input
@@ -167,11 +141,10 @@ class Contact extends Component {
 							value={zipcode}
 						/>
 					</span>
-
 				</form>
 			</main>
 		)
 	}
 }
 
-export default Contact;
+export default Contact

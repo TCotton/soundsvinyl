@@ -1,0 +1,1000 @@
+/******/
+
+// webpackBootstrap
+
+// install a JSONP callback for chunk loading
+
+// The module cache
+
+// object to store loaded CSS chunks
+
+// The require function
+
+// Check if module is in cache
+
+// Create a new module (and put it into the cache)
+
+// Execute the module function
+
+// Return the exports of the module
+
+// Flag the module as loaded
+
+// This file contains only the entry chunk.
+
+// The chunk loading function for additional chunks
+
+// mini-css-extract-plugin CSS loading
+
+// JSONP chunk loading for javascript
+
+// 0 means "already installed".
+
+// a Promise means "currently loading".
+
+// setup Promise in chunk cache
+
+// start chunk loading
+
+// script path function
+
+// create error before stack unwound to get useful stacktrace later
+
+// avoid mem leaks in IE.
+
+// expose the modules object (__webpack_modules__)
+
+// expose the module cache
+
+// define getter function for harmony exports
+
+// define __esModule on exports
+
+// create a fake namespace object
+
+// mode & 1: value is a module id, require it
+
+// mode & 2: merge all properties of value into the ns
+
+// mode & 4: return value when already ns object
+
+// mode & 8|1: behave like require
+
+// getDefaultExport function for compatibility with non-harmony modules
+
+// Object.prototype.hasOwnProperty.call
+
+// __webpack_public_path__
+
+// on error function for async loading
+
+// Load entry module and return exports
+
+/************************************************************************/
+
+/* 0 */
+
+/***/
+
+/* WEBPACK VAR INJECTION */
+
+// This is done to register the method called with moment()
+
+// without creating circular dependencies.
+
+// IE8 will treat undefined and null as object if it wasn't for
+
+// input != null
+
+// Plugins that add properties should also add the key here (null value),
+
+// so we can properly clone ourselves.
+
+// Moment prototype object
+
+// Prevent infinite loop in case updateOffset creates new moment
+
+// objects.
+
+// compare two arrays, return the number of differences
+
+// make sure changes to properties don't modify parent config
+
+// token:    'M'
+
+// padded:   ['MM', 2]
+
+// ordinal:  'Mo'
+
+// callback: function () { this.month() + 1 }
+
+// format date using native date object
+
+//       0 - 9
+
+// Code from http://stackoverflow.com/questions/3561493/is-there-a-regexp-escape-function-in-javascript
+
+// HELPERS
+
+// HOOKS
+
+// FORMATTING
+
+// ALIASES
+
+// PRIORITIES
+
+// PARSING
+
+// MOMENTS
+
+// I know
+
+// PRIORITY
+
+// if we didn't find a month name, mark the date as invalid.
+
+// LOCALES
+
+// this is not used
+
+// No op
+
+// TODO: Another silent failure?
+
+// make the regex if we don't have it already
+
+// Sorting makes sure if one month (or abbr) is a prefix of another it
+
+// will match the longer piece.
+
+// can't just apply() to create a date:
+
+// https://stackoverflow.com/q/181348
+
+// the date constructor remaps years 0-99 to 1900-1999
+
+// preserve leap years using a full 400 year cycle, then reset
+
+// the Date.UTC function remaps years 0-99 to 1900-1999
+
+// start-of-first-week - start-of-year
+
+// first-week day -- which january is always in the first week (4 for iso, 1 for other)
+
+// https://en.wikipedia.org/wiki/ISO_week_date#Calculating_a_date_given_the_year.2C_week_number_and_weekday
+
+// if we didn't get a weekday name, mark the date as invalid
+
+// Sorting makes sure if one weekday (or abbr) is a prefix of another it
+
+// Setting the hour should keep the time, because the user explicitly
+
+// specified which hour they want. So trying to maintain the same hour (in
+
+// a new timezone) makes sense. Adding/subtracting hours does not follow
+
+// this rule.
+
+// Sunday is the first day of the week.
+
+// pick the locale from the array
+
+// try ['en-au', 'en-gb'] as 'en-au', 'en-gb', 'en', as in move through the list trying each
+
+// substring from most specific to least, but move to the next array item if it's a more specific variant than the current root
+
+// TODO: Find a better way to register and load all the locales in Node
+
+// This function will load locale and then set the global locale.  If
+
+// no arguments are passed in, it will simply return the current global
+
+// locale key.
+
+// moment.duration._locale = moment._locale = data;
+
+//warn user if arguments are passed but the locale could not be set
+
+// backwards compat for now: also set the locale
+
+// make sure we set the locale AFTER all child locales have been
+
+// created, so we won't end up with the child locale set.
+
+// useful for testing
+
+// returns locale data
+
+//short-circuit everything else
+
+//the next array item is better than a shallower substring of this one
+
+// Pick the first defined of two or three arguments.
+
+// convert an array to a date.
+
+// the array should mirror the parameters below
+
+// note: all values past the year are optional and will default to the lowest possible value.
+
+// [year, month, day , hour, minute, second, millisecond]
+
+// Default to current date.
+
+// * if no year, month, day of month are given, default to today
+
+// * if day of month is given, default month and year
+
+// * if month is given, default only year
+
+// * if year is given, don't default anything
+
+// hooks is actually the exported moment object
+
+//compute day of the year from weeks and weekdays
+
+// TODO: We need to take the current isoWeekYear, but that depends on
+
+// how we interpret now (local, utc, fixed offset). So create
+
+// a now version of current config (take local/utc/offset flags, and
+
+// create now).
+
+// Default to current week.
+
+// weekday -- low day numbers are considered next week
+
+// local weekday -- counting starts from beginning of week
+
+// default to beginning of week
+
+// iso 8601 regex
+
+// 0000-00-00 0000-W00 or 0000-W00-0 + T + 00 or 00:00 or 00:00:00 or 00:00:00.000 + +00:00 or +0000 or +00)
+
+//if the day of the year is set, figure out what it is
+
+// Zero out whatever was not defaulted, including time
+
+// Check for 24:00:00.000
+
+// Apply timezone offset from input. The actual utcOffset can be changed
+
+// with parseZone.
+
+// check for mismatching day of week
+
+// YYYYMM is NOT allowed by the standard
+
+// date from iso format
+
+// match[2] should be 'T' or space
+
+// RFC 2822 regex: For details see https://tools.ietf.org/html/rfc2822#section-3.3
+
+// date and time from ref 2822 format
+
+// the only allowed military tz is Z
+
+// date from iso format or fallback
+
+// date from string and format string
+
+// TODO: Move this to another part of the creation flow to prevent circular deps
+
+// This array is used to make a Date, either with `new Date` or `Date.UTC`
+
+// console.log('token', token, 'parsedInput', parsedInput,
+
+//         'regex', getParseRegexForToken(token, config));
+
+// don't parse if it's not a known token
+
+// add remaining unparsed input length to the string
+
+// clear _12h flag if hour is <= 12
+
+// handle meridiem
+
+// Fallback
+
+// date from string and array of format strings
+
+// if there is any input that was not parsed add a penalty for that format
+
+//or tokens
+
+// Final attempt, use Input Fallback
+
+// from milliseconds
+
+// object construction must be done this way.
+
+// https://github.com/moment/moment/issues/1423
+
+// Adding is smart enough around DST
+
+// constant that refers to the ISO standard
+
+// constant that refers to the RFC 2822 form
+
+// Pick a moment m from moments so that m[fn](other) is true for all
+
+// other. This relies on the function fn to be transitive.
+
+//
+
+// moments should either be an array of moment objects or an array, whose
+
+// first element is an array of moment objects.
+
+// TODO: Use [].sort instead?
+
+// only allow non-integers for smallest unit
+
+// representation for dateAddRemove
+
+// 1000
+
+// 1000 * 60
+
+//using 1000 * 60 * 60 instead of 36e5 to avoid floating point rounding errors https://github.com/moment/moment/issues/2978
+
+// Because of dateAddRemove treats 24 hours as different from a
+
+// day when working around DST, we need to store them separately
+
+// It is impossible to translate months into days without knowing
+
+// which months you are are talking about, so we have to store
+
+// it separately.
+
+// timezone chunker
+
+// '+10:00' > ['10',  '00']
+
+// '-1530'  > ['-15', '30']
+
+// Return a moment from input, that is local/utc/zone equivalent to model.
+
+// Use low-level api, because this fn is low-level api.
+
+// On Firefox.24 Date#getTimezoneOffset returns a floating point.
+
+// https://github.com/moment/moment/pull/1871
+
+// This function will be called whenever a moment is mutated.
+
+// It is intended to keep the offset in sync with the timezone.
+
+// ASP.NET json date format regex
+
+// from http://docs.closure-library.googlecode.com/git/closure_goog_date_date.js.source.html
+
+// somewhat more in line with 4.4.3.2 2004 spec, but allows decimal anywhere
+
+// and further modified to allow for strings containing both week and day
+
+// matching against regexp is expensive, do it on demand
+
+// checks for null or undefined
+
+// We'd normally use ~~inp for this, but unfortunately it also
+
+// converts floats to ints.
+
+// inp may be undefined, so careful calling replace on it.
+
+// apply sign while we're at it
+
+// TODO: remove 'name' arg after deprecation is removed
+
+//invert the arguments, but complain about it
+
+// difference in months
+
+// b is in (anchor - 1 month, anchor + 1 month)
+
+//check for negative zero, return zero if negative zero
+
+// If passed a locale key, it will set the locale for this
+
+// instance.  Otherwise, it will return the locale configuration
+
+// variables for this instance.
+
+// actual modulo - handles negative numbers (for dates before 1970):
+
+// Date.UTC remaps years 0-99 to 1900-1999
+
+// TODO: Remove "ordinalParse" fallback in next major release.
+
+// We want to compare the start of today, vs this.
+
+// Getting start-of-today depends on whether we're local/utc/offset or not.
+
+// 1000 * 60 * 60
+
+// 1000 * 60 * 60 * 24, negate dst
+
+// 1000 * 60 * 60 * 24 * 7, negate dst
+
+// native implementation is ~50x faster, use it when we can
+
+/**
+     * Return a human readable representation of a moment that can
+     * also be evaluated to get a new moment which is the same
+     *
+     * @link https://nodejs.org/dist/latest/docs/api/util.html#util_custom_inspect_function_on_objects
+     */
+
+// new Date(NaN).toJSON() === null
+
+// behaves the same as moment#day except
+
+// as a getter, returns 7 instead of 0 (1-7 range instead of 0-6)
+
+// as a setter, sunday should belong to the previous week.
+
+// keepLocalTime = true means only change the timezone, without
+
+// affecting the local hour. So 5:31:26 +0300 --[utcOffset(2, true)]-->
+
+// 5:31:26 +0200 It is possible that 5:31:26 doesn't exist with offset
+
+// +0200, so we adjust the time as needed, to be valid.
+
+// Keeping the time actually adds/subtracts (one hour)
+
+// from the actual represented time. That is why we call updateOffset
+
+// a second time. In case it wants us to change the offset again
+
+// _changeInProgress == true case, then we have to adjust, because
+
+// there is no such time in the given timezone.
+
+// ()
+
+// (5)
+
+// (fmt, 5)
+
+// (fmt)
+
+// (true)
+
+// (true, 5)
+
+// (true, fmt, 5)
+
+// (true, fmt)
+
+// Lenient ordinal parsing accepts just a number in addition to
+
+// number + (possibly) stuff coming from _dayOfMonthOrdinalParse.
+
+// TODO: add sorting
+
+// Sorting makes sure if one month (or abbr) is a prefix of another
+
+// see sorting in computeMonthsParse
+
+// test the regex
+
+// IE8 Quirks Mode & IE7 Standards Mode do not allow accessing strings like arrays
+
+// Using charAt should be more compatible.
+
+// Side effect imports
+
+// supports only 2.0-style add(1, 's') or add(duration)
+
+// 400 years have 146097 days (taking into account leap year rules)
+
+// 400 years have 12 months === 4800
+
+// the reverse of daysToMonths
+
+// a few seconds to seconds
+
+// seconds to minute
+
+// minutes to hour
+
+// hours to day
+
+// days to month
+
+// helper function for moment.fn.from, moment.fn.fromNow, and moment.duration.fn.humanize
+
+// for ISO strings we do not use the normal bubbling rules:
+
+//  * milliseconds bubble up until they become hours
+
+//  * days do not bubble at all
+
+//  * months bubble up until they become years
+
+// This is because there is no context-free conversion between hours and days
+
+// (think of clock changes)
+
+// and also not between days and months (28-31 days per month)
+
+// 3600 seconds -> 60 minutes -> 1 hour
+
+// inspired by https://github.com/dordille/moment-isoduration/blob/master/moment.isoduration.js
+
+// this is the same as C#'s (Noda) and python (isodate)...
+
+// but not other JS (goog.date)
+
+// supports only 2.0-style subtract(1, 's') or subtract(duration)
+
+// handle milliseconds separately because of floating point math errors (issue #1867)
+
+// Math.floor prevents floating point math errors here
+
+// TODO: Use this.as('ms')?
+
+// if we have a mix of positive and negative values, bubble down first
+
+// check: https://github.com/moment/moment/issues/2166
+
+// The following code bubbles up values, see the tests for
+
+// examples of what that means.
+
+// convert days to months
+
+// 12 months -> 1 year
+
+// This function allows you to set the rounding function for relative time strings
+
+// MERGE
+
+// pass null for config to unupdate, useful for tests
+
+// This function allows you to set a threshold for relative time strings
+
+// currently HTML5 input type only supports 24-hour formats
+
+// <input type="datetime-local" />
+
+// <input type="datetime-local" step="1" />
+
+// <input type="datetime-local" step="0.001" />
+
+// <input type="date" />
+
+// <input type="time" />
+
+// <input type="time" step="1" />
+
+// <input type="time" step="0.001" />
+
+// <input type="week" />
+
+/* 1 */
+
+// Thanks to Joris Röling : https://github.com/jjupiter
+
+// Maandag is die eerste dag van die week.
+
+/* 2 */
+
+// Saturday is the first day of the week.
+
+/* 3 */
+
+/* 4 */
+
+/* 5 */
+
+/* 6 */
+
+/* 7 */
+
+/* 8 */
+
+// Monday is the first day of the week.
+
+/* 9 */
+
+// special case for zero
+
+/* 10 */
+
+/* 11 */
+
+/* 12 */
+
+/* 13 */
+
+/* 14 */
+
+/* 15 */
+
+/* 16 */
+
+/* 17 */
+
+/* 18 */
+
+// a few seconds / in a few seconds / a few seconds ago
+
+// 9 seconds / in 9 seconds / 9 seconds ago
+
+// a minute / in a minute / a minute ago
+
+// 9 minutes / in 9 minutes / 9 minutes ago
+
+// an hour / in an hour / an hour ago
+
+// 9 hours / in 9 hours / 9 hours ago
+
+// a day / in a day / a day ago
+
+// 9 days / in 9 days / 9 days ago
+
+// a month / in a month / a month ago
+
+// 9 months / in 9 months / 9 months ago
+
+// a year / in a year / a year ago
+
+// 9 years / in 9 years / 9 years ago
+
+// NOTE: 'červen' is substring of 'červenec'; therefore 'červenec' must precede 'červen' in the regex to be fully matched.
+
+// Otherwise parser matches '1. červenec' as '1. červen' + 'ec'.
+
+/* 19 */
+
+/* 20 */
+
+// time formats are the same as en-gb
+
+// traditional ordinal numbers above 31 are not commonly used in colloquial Welsh
+
+// 1af to 10fed
+
+/* 21 */
+
+/* 22 */
+
+/* 23 */
+
+/* 24 */
+
+/* 25 */
+
+/* 26 */
+
+/* 27 */
+
+/* 28 */
+
+/* 29 */
+
+/* 30 */
+
+/* 31 */
+
+/* 32 */
+
+/* 33 */
+
+/* 34 */
+
+//ne 'diurno', ĉar estas uzita por proksimumo
+
+/* 35 */
+
+/* 36 */
+
+/* 37 */
+
+/* 38 */
+
+/* 39 */
+
+/* 40 */
+
+/* 41 */
+
+/* 42 */
+
+/* 43 */
+
+// TODO: Return 'e' when day of month > 1. Move this case inside
+
+// block for masculine words below.
+
+// See https://github.com/moment/moment/issues/3375
+
+// Words with masculine grammatical gender: mois, trimestre, jour
+
+// Words with feminine grammatical gender: semaine
+
+/* 44 */
+
+/* 45 */
+
+/* 46 */
+
+/* 47 */
+
+/* 48 */
+
+/* 49 */
+
+/* 50 */
+
+// the ordinal 'er' only applies to day of the month
+
+/* 51 */
+
+// Gujarati notation for meridiems are quite fuzzy in practice. While there exists
+
+// a rigid notion of a 'Pahar' it is not used as rigidly in modern Gujarati.
+
+/* 52 */
+
+/* 53 */
+
+// Hindi notation for meridiems are quite fuzzy in practice. While there exists
+
+// a rigid notion of a 'Pahar' it is not used as rigidly in modern Hindi.
+
+/* 54 */
+
+/* 55 */
+
+/* 56 */
+
+/* 57 */
+
+/* 58 */
+
+/* 59 */
+
+/* 60 */
+
+/* 61 */
+
+/* 62 */
+
+/* 63 */
+
+/* 64 */
+
+/* 65 */
+
+/* 66 */
+
+/* 67 */
+
+/* 68 */
+
+/* 69 */
+
+/* 70 */
+
+/**
+     * Returns true if the word before the given number loses the '-n' ending.
+     * e.g. 'an 10 Deeg' but 'a 5 Deeg'
+     *
+     * @param number {integer}
+     * @returns {boolean}
+     */
+
+// Negative Number --> always true
+
+// Only 1 digit
+
+// 2 digits
+
+// 3 or 4 digits --> recursively check first digit
+
+// Anything larger than 4 digits: recursively check first n-3 digits
+
+// Different date string for 'Dënschdeg' (Tuesday) and 'Donneschdeg' (Thursday) due to phonological rule
+
+/* 71 */
+
+/* 72 */
+
+/* 73 */
+
+/**
+     * @param withoutSuffix boolean true = a length of time; false = before/after a period of time.
+     */
+
+/* 74 */
+
+//Different grammatical cases
+
+/* 75 */
+
+/* 76 */
+
+/* 77 */
+
+/* 78 */
+
+/* 79 */
+
+/* 80 */
+
+/* 81 */
+
+/* 82 */
+
+/* 83 */
+
+/* 84 */
+
+/* 85 */
+
+/* 86 */
+
+/* 87 */
+
+/* 88 */
+
+/* 89 */
+
+// There are months name as per Nanakshahi Calendar but they are not used as rigidly in modern Punjabi.
+
+// Punjabi notation for meridiems are quite fuzzy in practice. While there exists
+
+// a rigid notion of a 'Pahar' it is not used as rigidly in modern Punjabi.
+
+/* 90 */
+
+/* 91 */
+
+// Saturday + Sunday
+
+// Monday - Friday
+
+/* 92 */
+
+/* 93 */
+
+/* 94 */
+
+// http://new.gramota.ru/spravka/rules/139-prop : § 103
+
+// Сокращения месяцев: http://new.gramota.ru/spravka/buro/search-answer?s=242637
+
+// CLDR data:          http://www.unicode.org/cldr/charts/28/summary/ru.html#1753
+
+// по CLDR именно "июл." и "июн.", но какой смысл менять букву на точку ?
+
+// полные названия с падежами, по три буквы, для некоторых, по 4 буквы, сокращения с точкой и без точки
+
+// копия предыдущего
+
+// полные названия с падежами
+
+// Выражение, которое соотвествует только сокращённым формам
+
+/* 95 */
+
+/* 96 */
+
+/* 97 */
+
+/*jshint -W100*/
+
+/* 98 */
+
+/* 99 */
+
+/* 100 */
+
+/* 101 */
+
+/* 102 */
+
+/* 103 */
+
+/* 104 */
+
+/* 105 */
+
+/* 106 */
+
+// refer http://ta.wikipedia.org/s/1er1
+
+/* 107 */
+
+/* 108 */
+
+/* 109 */
+
+/* 110 */
+
+// yes, three characters difference
+
+/* 111 */
+
+/* 112 */
+
+/* 113 */
+
+/* 114 */
+
+// After the year there should be a slash and the amount of years since December 26, 1979 in Roman numerals.
+
+// This is currently too difficult (maybe even impossible) to add.
+
+/* 115 */
+
+/* 116 */
+
+/* 117 */
+
+// GB/T 7408-1994《数据元和交换格式·信息交换·日期和时间表示法》与ISO 8601:1988等效
+
+/* 118 */
+
+// M. E.: those two are virtually unused but a user might want to implement them for his/her website for some reason
+
+/* 119 */
+
+/* 120 */
+
+/* 121 */
+
+/* 122 */
+
+/* 123 */
+
+/* 124 */
+
+/* 125 */
+
+/* 126 */
+
+/* 127 */
+
+/* 128 */
+
+// find first part of email address up until @ character, remove all special characters and add specially formatted creation date
+
+/* 129 */
+
+// This works in non-strict mode
+
+// This works if eval is allowed (see CSP)
+
+// This works if the window reference is available
+
+// g can still be undefined, but nothing to do about it...
+
+// We return undefined, instead of nothing here, so it's
+
+// easier to handle this case. if(!global) { ...}
+
+/* 130 */
+
+// module.parent = undefined by default
+
+/* 131 */
+
+// single-spa-config.js
+
+/* import() */
+
+/* 132 */
+
+/* harmony export (binding) */
+
+/* 133 */

@@ -2,13 +2,12 @@
 	<div :class="$style.addUser">
 		<h2>Add a new user</h2>
 
-		<p>The username is automatically created by using a mixture of part
-			of the users email address and the date the account was created
+		<p>
+			The username is automatically created by using a mixture of part of the
+			users email address and the date the account was created
 		</p>
 
-		<p
-			:class="$style.error"
-			v-show="errorMsg">
+		<p :class="$style.error" v-show="errorMsg">
 			{{ errorMsg }}
 		</p>
 
@@ -17,8 +16,8 @@
 			:action="actionURL"
 			name="addUser"
 			method="post"
-			@submit.prevent="validateBeforeSubmit">
-
+			@submit.prevent="validateBeforeSubmit"
+		>
 			<label for="addUserEmail">User email which will be their username</label>
 			<input
 				v-validate="{ required: true, email: true }"
@@ -29,11 +28,12 @@
 				maxlength="64"
 				autocorrect="off"
 				autocapitalize="off"
-				value="">
+				value=""
+			/>
 
-			<span
-				v-show="errors.has('addUserEmail')"
-				:class="$style.error">{{ errors.first('addUserEmail') }}</span>
+			<span v-show="errors.has('addUserEmail')" :class="$style.error">{{
+				errors.first('addUserEmail')
+			}}</span>
 
 			<label for="addUserPasswordOne">Password</label>
 			<input
@@ -45,11 +45,12 @@
 				maxlength="64"
 				autocorrect="off"
 				autocapitalize="off"
-				value="">
+				value=""
+			/>
 
-			<span
-				v-show="errors.has('addUserPasswordOne')"
-				:class="$style.error">{{ errors.first('addUserPasswordOne') }}</span>
+			<span v-show="errors.has('addUserPasswordOne')" :class="$style.error">{{
+				errors.first('addUserPasswordOne')
+			}}</span>
 
 			<label for="addUserPasswordTwo">Same password again (must match)</label>
 			<input
@@ -62,7 +63,8 @@
 				maxlength="64"
 				autocorrect="off"
 				autocapitalize="off"
-				value="">
+				value=""
+			/>
 
 			<label for="addUserLevel">Administration level</label>
 			<input
@@ -73,103 +75,100 @@
 				name="addUserPasswordTwo"
 				autocorrect="off"
 				autocapitalize="off"
-				value="">
+				value=""
+			/>
 
-			<input
-				type="submit"
-				name="addUserSubmit"
-				value="Submit User">
-
+			<input type="submit" name="addUserSubmit" value="Submit User" />
 		</form>
 	</div>
 </template>
 
 <script>
-	// import sortBy from 'lodash-es/sortBy';
-	import { createUsername } from '../../helper_functions';
+// import sortBy from 'lodash-es/sortBy';
+import { createUsername } from '../../helper_functions'
 
-	export default {
-		name: 'AddUser',
-		data () {
-			return {
-				addUser: {
-					email: '',
-					password: '',
-					passwordTwo: '',
-					userLevel: 1
-				},
-				msg: 'Welcome to Add User section',
-				actionURL: `user/add`,
-				errorMsg: null,
-			}
-		},
-		methods: {
-			validateBeforeSubmit () {
-				this.$validator.validateAll().then((result) => {
-					this.errorMsg = null;
-					this.addUser.username = createUsername(this.addUser.email);
+export default {
+	name: 'AddUser',
+	data () {
+		return {
+			addUser: {
+				email: '',
+				password: '',
+				passwordTwo: '',
+				userLevel: 1
+			},
+			msg: 'Welcome to Add User section',
+			actionURL: `user/add`,
+			errorMsg: null
+		}
+	},
+	methods: {
+		validateBeforeSubmit () {
+			this.$validator.validateAll().then(result => {
+				this.errorMsg = null
+				this.addUser.username = createUsername(this.addUser.email)
 
-					if (result) {
-						this.$http.post(this.actionURL, JSON.stringify(this.addUser), {
+				if (result) {
+					this.$http
+						.post(this.actionURL, JSON.stringify(this.addUser), {
 							headers: {
 								'Content-Type': 'application/json'
 							}
-						}).then((response) => {
-
-							if (response.data.auth) {
-								this.$router.push({path: 'Users'});
+						})
+						.then(
+							response => {
+								if (response.data.auth) {
+									this.$router.push({ path: 'Users' })
+								}
+							},
+							response => {
+								this.errorMsg = response.data
 							}
-
-						}, (response) => {
-							this.errorMsg = response.data;
-						});
-
-					}
-
-				});
-			}
+						)
+				}
+			})
 		}
 	}
+}
 </script>
 
 <style lang="scss" module>
-	@import '../../assets/sass/tools';
+@import '../../assets/sass/tools';
 
-	.addUser {
+.addUser {
+	h2 ~ p {
+		line-height: 1.5em;
+	}
 
-		h2 ~ p {
-			line-height: 1.5em;
-		}
+	form {
+		display: grid;
+		grid-template-columns: 400px 1fr;
+		grid-gap: 16px;
+	}
+	label {
+		grid-column: 1 / 2;
+		@include font-calculator($font_family_body, 14px, 0);
+	}
 
-		form {
-			display: grid;
-			grid-template-columns: 400px 1fr;
-			grid-gap: 16px;
-		}
-		label {
-			grid-column: 1 / 2;
-			@include font-calculator($font_family_body, 14px, 0);
-		}
-
-		input {
-			grid-column: 2 / 3;
-			@include font-calculator($font_family_body, 14px, 0);
-			&:not([type=submit]) {
-				padding: 10px;
-			}
-		}
-
-		input[type=submit] {
-			width: 200px;
-			background: none;
-			&:hover {
-				background: $formSubmitHover;
-			}
-		}
-
-		.error {
-			@include font-calculator($font_family_body, 14px);
-			color: $error;
+	input {
+		grid-column: 2 / 3;
+		@include font-calculator($font_family_body, 14px, 0);
+		&:not([type='submit']) {
+			padding: 10px;
 		}
 	}
+
+	input[type='submit'] {
+		width: 200px;
+		background: none;
+		&:hover {
+			background: $formSubmitHover;
+		}
+	}
+
+	.error {
+		@include font-calculator($font_family_body, 14px);
+		color: $error;
+	}
+}
 </style>

@@ -1,1 +1,5 @@
-export const homeURI = window.location.protocol + '//' + window.location.hostname + (window.location.port.length === 0 ? '' : ':8443');
+export const homeURI =
+	window.location.protocol +
+	'//' +
+	window.location.hostname +
+	(window.location.port.length === 0 ? '' : ':8443')

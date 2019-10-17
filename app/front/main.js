@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
-import Categories from './Categories/Categories';
-import Header from './Header/Header';
-import ErrorBoundary from './errorBoundaries/ErrorBoundary';
+import React, { Component } from 'react'
+import Categories from './Categories/Categories'
+import Header from './Header/Header'
+import ErrorBoundary from './errorBoundaries/ErrorBoundary'
 import PropTypes from 'prop-types'
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom'
 
 class Main extends Component {
-
 	static propTypes = {
 		match: PropTypes.shape({
 			params: PropTypes.shape({
@@ -14,7 +13,7 @@ class Main extends Component {
 				tag: PropTypes.string
 			})
 		})
-	};
+	}
 
 	static defaultProps = {
 		match: {
@@ -24,12 +23,16 @@ class Main extends Component {
 		}
 	}
 
-	constructor ( props ) {
-		super( props );
+	constructor (props) {
+		super(props)
 	}
 
 	render () {
-		const { match: { params: { tag } } } = this.props;
+		const {
+			match: {
+				params: { tag }
+			}
+		} = this.props
 
 		return (
 			<div>
@@ -37,15 +40,11 @@ class Main extends Component {
 					<Header />
 				</ErrorBoundary>
 				<ErrorBoundary>
-					<Categories
-						category={tag}
-					/>
+					<Categories category={tag} />
 				</ErrorBoundary>
 			</div>
 		)
 	}
 }
 
-export default withRouter(Main);
-
-
+export default withRouter(Main)

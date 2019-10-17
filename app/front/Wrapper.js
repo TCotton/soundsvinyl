@@ -1,72 +1,45 @@
 /* eslint-disable react/jsx-no-bind */
-import React, { Component, Suspense, lazy } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import Nav from './Navigation/Nav';
-import Footer from './Footer/Footer';
-import ErrorBoundary from './errorBoundaries/ErrorBoundary';
+import React, { Component, Suspense, lazy } from 'react'
+import { Route, Switch } from 'react-router-dom'
+import Nav from './Navigation/Nav'
+import Footer from './Footer/Footer'
+import ErrorBoundary from './errorBoundaries/ErrorBoundary'
 
-const RecordListing = lazy( () => import('./recordListing') );
-const Contact = lazy( () => import('./Contact/Contact') );
-const AboutUs = lazy( () => import('./about') );
-const MyAccount = lazy( () => import('./Account/MyAccount') );
-const VinylCharts = lazy( () => import('./vinylCharts') );
-const CommentsPolicy = lazy( () => import('./Comments/CommentsPolicy') );
-const Sitemap = lazy( () => import('./Sitemap/Sitemap') );
-const Main = lazy( () => import('./main') );
-const Error = lazy( () => import('./error') );
+const RecordListing = lazy(() => import('./recordListing'))
+const Contact = lazy(() => import('./Contact/Contact'))
+const AboutUs = lazy(() => import('./about'))
+const MyAccount = lazy(() => import('./Account/MyAccount'))
+const VinylCharts = lazy(() => import('./vinylCharts'))
+const CommentsPolicy = lazy(() => import('./Comments/CommentsPolicy'))
+const Sitemap = lazy(() => import('./Sitemap/Sitemap'))
+const Main = lazy(() => import('./main'))
+const Error = lazy(() => import('./error'))
 
 class Wrapper extends Component {
-
-	constructor ( props ) {
-		super( props );
+	constructor (props) {
+		super(props)
 	}
 
 	render () {
-
-		const $loading = 'Loading...';
+		const $loading = 'Loading...'
 
 		return (
 			<div className='wrapper'>
 				<ErrorBoundary>
 					<Nav />
 				</ErrorBoundary>
-				<Suspense fallback={
-					<div>
-						{$loading}
-					</div>
-				}
-				>
+				<Suspense fallback={<div>{$loading}</div>}>
 					<Switch>
-						<Route
-							exact
-							path='/'
-							render={() => <Main />}
-						/>
-						<Route
-							component={() => <Main />}
-							exact
-							path='/category/:tag'
-						/>
+						<Route exact path='/' render={() => <Main />} />
+						<Route component={() => <Main />} exact path='/category/:tag' />
 						<Route
 							component={() => <RecordListing />}
 							exact
 							path='/:slug/:id'
 						/>
-						<Route
-							component={() => <Contact />}
-							exact
-							path='/contact'
-						/>
-						<Route
-							component={() => <AboutUs />}
-							exact
-							path='/about-us'
-						/>
-						<Route
-							component={() => <MyAccount />}
-							exact
-							path='/my-account'
-						/>
+						<Route component={() => <Contact />} exact path='/contact' />
+						<Route component={() => <AboutUs />} exact path='/about-us' />
+						<Route component={() => <MyAccount />} exact path='/my-account' />
 						<Route
 							component={() => <VinylCharts />}
 							exact
@@ -77,15 +50,8 @@ class Wrapper extends Component {
 							exact
 							path='/comments-policy'
 						/>
-						<Route
-							component={() => <Sitemap />}
-							exact
-							path='/sitemap'
-						/>
-						<Route
-							component={() => <Error />}
-							path=''
-						/>
+						<Route component={() => <Sitemap />} exact path='/sitemap' />
+						<Route component={() => <Error />} path='' />
 					</Switch>
 				</Suspense>
 				<ErrorBoundary>
@@ -96,4 +62,4 @@ class Wrapper extends Component {
 	}
 }
 
-export default Wrapper;
+export default Wrapper

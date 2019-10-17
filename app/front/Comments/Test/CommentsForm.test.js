@@ -1,11 +1,11 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
+import React from 'react'
+import renderer from 'react-test-renderer'
 import CommentsForm from '../CommentsForm'
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom'
 
-describe( 'Component', () => {
-	let component;
-	beforeEach( () => {
+describe('Component', () => {
+	let component
+	beforeEach(() => {
 		component = renderer.create(
 			<Router>
 				<CommentsForm
@@ -17,12 +17,12 @@ describe( 'Component', () => {
 					success
 				/>
 			</Router>
-		);
-	});
+		)
+	})
 
-	describe( 'Comment', () => {
-		it( 'should be defined', () => {
-			expect( component ).toBeDefined();
-		});
-	});
-});
+	describe('Comment', () => {
+		it('should be defined', () => {
+			expect(component).toBeDefined()
+		})
+	})
+})

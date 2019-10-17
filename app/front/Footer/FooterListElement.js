@@ -1,24 +1,19 @@
-import React, { Component } from 'react';
-import './footer.scss';
+import React, { Component } from 'react'
+import './footer.scss'
 import PropTypes from 'prop-types'
 
 export default class FooterListElement extends Component {
-
 	static propTypes = {
-		text: PropTypes.string.isRequired,
-	};
+		text: PropTypes.string.isRequired
+	}
 
 	constructor (props) {
-		super(props);
+		super(props)
 	}
 
 	render () {
-		const { text } = this.props;
+		const { text } = this.props
 
-		return (
-			<li>
-				{text}
-			</li>
-		)
+		return <li>{text}</li>
 	}
 }

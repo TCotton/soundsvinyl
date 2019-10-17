@@ -1,16 +1,17 @@
-import { combineReducers, compose, createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import { searchTextReducer } from '../reducers/reducers';
+import { combineReducers, compose, createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+import { searchTextReducer } from '../reducers/reducers'
 
 const reducer = combineReducers({
-	search: searchTextReducer,
-});
+	search: searchTextReducer
+})
 
 export const store = createStore(
 	reducer,
 	compose(
 		applyMiddleware(thunk),
 		window.devToolsExtenion ? window.devToolsExtenion : f => f
-	));
+	)
+)
 
-export default store;
+export default store

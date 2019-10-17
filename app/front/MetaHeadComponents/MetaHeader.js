@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
-import { Helmet } from 'react-helmet';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import { Helmet } from 'react-helmet'
+import PropTypes from 'prop-types'
 
 class MetaHeader extends Component {
-
 	static propTypes = {
 		canonical: PropTypes.string,
-		title: PropTypes.string,
+		title: PropTypes.string
 	}
 
 	static defaultProps = {
@@ -14,12 +13,12 @@ class MetaHeader extends Component {
 		title: 'Vinyl forever, music for all'
 	}
 
-	constructor ( props ) {
-		super( props );
+	constructor (props) {
+		super(props)
 	}
 
 	render () {
-		const { title, canonical } = this.props;
+		const { title, canonical } = this.props
 
 		return (
 			<Helmet>
@@ -27,14 +26,12 @@ class MetaHeader extends Component {
 					{'Soundsvinyl.co: '}
 					{title}
 				</title>
-				{canonical.length > 0 &&
-				<link
-					href={`https://soundsvinyl.co/${canonical}`}
-					rel='canonical'
-				/>}
+				{canonical.length > 0 && (
+					<link href={`https://soundsvinyl.co/${canonical}`} rel='canonical' />
+				)}
 			</Helmet>
 		)
 	}
 }
 
-export default MetaHeader;
+export default MetaHeader

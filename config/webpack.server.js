@@ -1,8 +1,8 @@
-const webpack = require('webpack');
-const webpackMerge = require('webpack-merge');
-const nodeExternals = require('webpack-node-externals');
-const path = require('path');
-const commonConfig = require('./webpack.common.js');
+const webpack = require('webpack')
+const webpackMerge = require('webpack-merge')
+const nodeExternals = require('webpack-node-externals')
+const path = require('path')
+const commonConfig = require('./webpack.common.js')
 
 module.exports = webpackMerge(commonConfig, {
 	target: 'node',
@@ -23,7 +23,7 @@ module.exports = webpackMerge(commonConfig, {
 		rules: [
 			{
 				test: /\.(js|jsx)$/,
-				exclude: (/node_modules/),
+				exclude: /node_modules/,
 				use: {
 					loader: 'babel-loader'
 				}
@@ -45,8 +45,8 @@ module.exports = webpackMerge(commonConfig, {
 	plugins: [
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': '"production"',
-			'global': {}, // bizarre lodash(?) webpack workaround
+			global: {}, // bizarre lodash(?) webpack workaround
 			'global.GENTLY': false // superagent client fix
 		})
-	],
-});
+	]
+})

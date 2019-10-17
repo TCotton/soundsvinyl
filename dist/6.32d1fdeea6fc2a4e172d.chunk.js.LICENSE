@@ -1,0 +1,11 @@
+/***/
+
+// extracted by mini-css-extract-plugin
+
+// will not pass test if function uses default parameters
+
+/* eslint-disable react/jsx-no-bind */
+
+/* import() */
+
+// eslint-disable-line react/no-did-update-set-state

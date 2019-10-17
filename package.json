@@ -18,7 +18,8 @@
 		"sass-lint": "sass-lint  --config .sasslintrc '**/*.scss' --verbose --no-exit --ignore './node_modules/**/**/**/**/*.scss'",
 		"ssr": "cross-env NODE_ENV=production webpack --mode production node ./node/server.js",
 		"coverage": "nyc report --reporter=text-lcov | coveralls",
-		"clearJest": "jest --clearCache && npm run test -- -u"
+		"clearJest": "jest --clearCache && npm run test -- -u",
+		"format": "prettier-standard --format {app,nodeService}/**/**/**/**/**/*.{js,jsx}"
 	},
 	"repository": {
 		"type": "git",
@@ -179,6 +180,7 @@
 		"postcss-cli": "^6.1.3",
 		"postcss-loader": "^3.0.0",
 		"postcss-scss": "^2.0.0",
+		"prettier-standard": "^15.0.1",
 		"react-css-modules": "^4.7.11",
 		"react-svg-loader": "^2.1.0",
 		"react-test-renderer": "^16.10.2",

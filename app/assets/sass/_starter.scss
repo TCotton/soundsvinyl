@@ -1,5 +1,5 @@
 :root {
-	@include root-prop(--link-colour, #0000FF);
+	@include root-prop(--link-colour, #0000ff);
 	@include root-prop(--selection-colour, #000000);
 	@include root-prop(--selection-bg-colour, #b3d4fc);
 	@include root-prop(--focus-border, #cccccc);
@@ -288,7 +288,7 @@ pre {
  */
 
 q {
-	quotes: "\201C""\201D""\2018""\2019";  // sass-lint:disable-line quotes
+	quotes: '\201C''\201D''\2018''\2019'; // sass-lint:disable-line quotes
 }
 /**
  * Address inconsistent and variable font size in all browsers.
@@ -310,11 +310,11 @@ sup {
 }
 
 sup {
-	top: -.5em;
+	top: -0.5em;
 }
 
 sub {
-	bottom: -.25em;
+	bottom: -0.25em;
 }
 /* ==========================================================================
 	 Embedded content
@@ -633,7 +633,7 @@ body {
 	background: $footerBackground;
 }
 
-[id=root] {
+[id='root'] {
 	background: white;
 }
 
@@ -671,10 +671,10 @@ caption {
 	not all,
 	(min-resolution: 2dppx),
 	(min-resolution: 192dpi) {
-		p,
-		li {
-			letter-spacing: .01rem;
-			word-spacing: .01rem;
+	p,
+	li {
+		letter-spacing: 0.01rem;
+		word-spacing: 0.01rem;
 	}
 }
 /* { Box-sizing: Border-box } FTW: http://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
@@ -685,8 +685,8 @@ caption {
 	box-sizing: border-box;
 }*/
 
-input[type=submit],
-input[type=button],
+input[type='submit'],
+input[type='button'],
 select,
 a {
 	cursor: pointer;
@@ -717,9 +717,9 @@ input[type='search']::-webkit-search-results-decoration {
 }
 /* remove default webkit form field appearance */
 
-input[type=text],
-input[type=email],
-input[type=url],
+input[type='text'],
+input[type='email'],
+input[type='url'],
 textarea {
 	appearance: none;
 	border-radius: 0;

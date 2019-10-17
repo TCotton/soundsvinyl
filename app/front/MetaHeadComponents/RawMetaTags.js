@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class MetaHeader extends Component {
-
 	static propTypes = {
 		canonical: PropTypes.string,
-		title: PropTypes.string,
+		title: PropTypes.string
 	}
 
 	static defaultProps = {
@@ -13,36 +12,37 @@ class MetaHeader extends Component {
 		title: 'Vinyl forever, music for all'
 	}
 
-	constructor ( props ) {
-		super( props );
+	constructor (props) {
+		super(props)
 	}
 
 	componentDidMount () {
-		const { title, canonical } = this.props;
+		const { title, canonical } = this.props
 
-		if( document.querySelector( 'link[rel=\'canonical\']' ) ) {
-			document.querySelector( "link[rel='canonical']" ).href = `https://soundsvinyl.co/${canonical}`
+		if (document.querySelector("link[rel='canonical']")) {
+			document.querySelector(
+				"link[rel='canonical']"
+			).href = `https://soundsvinyl.co/${canonical}`
 		}
 
-		if( document.title ) {
-			document.title = `Soundsvinyl.co: ${title}`;
+		if (document.title) {
+			document.title = `Soundsvinyl.co: ${title}`
 		}
 	}
 
 	componentWillUnmount () {
-
-		if( document.querySelector( 'link[rel=\'canonical\']' ) ) {
-			document.querySelector( "link[rel='canonical']" ).href = 'https://soundsvinyl.co/';
+		if (document.querySelector("link[rel='canonical']")) {
+			document.querySelector("link[rel='canonical']").href =
+				'https://soundsvinyl.co/'
 		}
 
-		if( document.title ) {
-			document.title = `Soundsvinyl.co: Vinyl forever, music for all`;
+		if (document.title) {
+			document.title = `Soundsvinyl.co: Vinyl forever, music for all`
 		}
 	}
 
 	render () {
-
-		const { title, canonical } = this.props;
+		const { title, canonical } = this.props
 
 		return (
 			<React.Fragment>
@@ -50,16 +50,12 @@ class MetaHeader extends Component {
 					{'Soundsvinyl.co: '}
 					{title}
 				</title>
-				{
-					canonical.length > 0 &&
-					<link
-						href={`https://soundsvinyl.co/${canonical}`}
-						rel='canonical'
-					/>
-				}
+				{canonical.length > 0 && (
+					<link href={`https://soundsvinyl.co/${canonical}`} rel='canonical' />
+				)}
 			</React.Fragment>
 		)
 	}
 }
 
-export default MetaHeader;
+export default MetaHeader

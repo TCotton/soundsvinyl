@@ -1,8 +1,8 @@
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const path = require('path');
-const Dotenv = require('dotenv-webpack');
+const HtmlWebPackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const path = require('path')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
 	target: 'web',
@@ -13,7 +13,7 @@ module.exports = {
 		port: 3000
 	},
 	output: {
-		filename: '[name].bundle.js',
+		filename: '[name].bundle.js'
 	},
 	resolve: {
 		alias: {
@@ -21,13 +21,28 @@ module.exports = {
 			//'single-spa': path.resolve(global.__base, '/node_modules/single-spa/lib/single-spa.js'),
 
 			// REACT
-			HomePageSearchForm: path.resolve(global.__base, '/app/front/homePageSearchForm.js'),
-			LogoutButton: path.resolve(global.__base, '/app/front/components/logged0ut.js'),
-			LoginButton: path.resolve(global.__base, '/app/front/components/loggedIn.js'),
-			PageUnit: path.resolve(global.__base, '/app/front/components/pageUnit.js'),
+			HomePageSearchForm: path.resolve(
+				global.__base,
+				'/app/front/homePageSearchForm.js'
+			),
+			LogoutButton: path.resolve(
+				global.__base,
+				'/app/front/components/logged0ut.js'
+			),
+			LoginButton: path.resolve(
+				global.__base,
+				'/app/front/components/loggedIn.js'
+			),
+			PageUnit: path.resolve(
+				global.__base,
+				'/app/front/components/pageUnit.js'
+			),
 			AboutUs: path.resolve(global.__base, '/app/front/about.js'),
 			MyAccount: path.resolve(global.__base, '/app/front/account.js'),
-			CategoriesHomepage: path.resolve(global.__base, '/app/front/categoriesHomepage.js'),
+			CategoriesHomepage: path.resolve(
+				global.__base,
+				'/app/front/categoriesHomepage.js'
+			),
 			Contact: path.resolve(global.__base, '/app/front/categoriesHomepage.js'),
 			Error: path.resolve(global.__base, '/app/front/error.js'),
 			Footer: path.resolve(global.__base, '/app/front/footer.js'),
@@ -44,20 +59,32 @@ module.exports = {
 			AddPage: path.resolve(global.__base, '/app/admin/components/AddPage.vue'),
 			AddUser: path.resolve(global.__base, '/app/admin/components/AddUser.vue'),
 			Comment: path.resolve(global.__base, '/app/admin/components/Comment.vue'),
-			Comments: path.resolve(global.__base, '/app/admin/components/Comments.vue'),
-			FooterAdmin: path.resolve(global.__base, '/app/admin/components/Footer.vue'),
-			HeaderAdmin: path.resolve(global.__base, '/app/admin/components/Header.vue'),
+			Comments: path.resolve(
+				global.__base,
+				'/app/admin/components/Comments.vue'
+			),
+			FooterAdmin: path.resolve(
+				global.__base,
+				'/app/admin/components/Footer.vue'
+			),
+			HeaderAdmin: path.resolve(
+				global.__base,
+				'/app/admin/components/Header.vue'
+			),
 			Home: path.resolve(global.__base, '/app/admin/components/Home.vue'),
 			modal: path.resolve(global.__base, '/app/admin/components/Modal.vue'),
 			Page: path.resolve(global.__base, '/app/admin/components/Page.vue'),
 			Pages: path.resolve(global.__base, '/app/admin/components/Pages.vue'),
 			User: path.resolve(global.__base, '/app/admin/components/User.vue'),
 			Users: path.resolve(global.__base, '/app/admin/components/Users.vue'),
-			Thumbnail: path.resolve(global.__base, '/app/admin/components/jsComponents/ThumbnailComponent.js'),
+			Thumbnail: path.resolve(
+				global.__base,
+				'/app/admin/components/jsComponents/ThumbnailComponent.js'
+			),
 
 			// redux
 			actions: path.resolve(global.__base, '/app/front/actions/actions.js'),
-			reducers: path.resolve(global.__base, '/app/front/reducers/reducers.js'),
+			reducers: path.resolve(global.__base, '/app/front/reducers/reducers.js')
 		},
 		extensions: ['*', '.js', '.vue', '.json']
 	},
@@ -65,11 +92,11 @@ module.exports = {
 		rules: [
 			{
 				test: /\.vue$/,
-				loader: 'vue-loader',
+				loader: 'vue-loader'
 			},
 			{
 				test: /\.(js|jsx)$/,
-				exclude: (/node_modules/),
+				exclude: /node_modules/,
 				use: {
 					loader: 'babel-loader',
 					options: {
@@ -81,7 +108,7 @@ module.exports = {
 				test: /\.html$/,
 				use: [
 					{
-						loader: 'html-loader',
+						loader: 'html-loader'
 					}
 				]
 			},
@@ -162,7 +189,7 @@ module.exports = {
 	devtool: 'eval-source-map',
 	plugins: [
 		new HtmlWebPackPlugin({
-			template: 'src/index.html',
+			template: 'src/index.html'
 		}),
 		new MiniCssExtractPlugin({
 			filename: '[name].[chunkhash].css',
@@ -170,5 +197,5 @@ module.exports = {
 		}),
 		new VueLoaderPlugin(),
 		new Dotenv()
-	],
-};
+	]
+}

@@ -1,31 +1,35 @@
 #!/usr/bin/env bash
-module.exports = (app) => {
-
+module.exports = app => {
 	if (process.env.NODE_ENV !== 'production') {
 		app.all('*', function (req, res, next) {
-			res.setHeader('Cache-Control', 'no-cache');
-			next();
-		});
+			res.setHeader('Cache-Control', 'no-cache')
+			next()
+		})
 
 		// Error Handling
 		app.use((err, req, res, next) => {
 			if (err) {
-				next(err);
+				next(err)
 			} else {
-				next();
+				next()
 			}
-		});
-
+		})
 	}
 
 	app.use((req, res, next) => {
-		res.header('Access-Control-Allow-Origin', '*');
-		res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
-		res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+		res.header('Access-Control-Allow-Origin', '*')
+		res.header(
+			'Access-Control-Allow-Methods',
+			'GET,PUT,POST,DELETE,PATCH,OPTIONS'
+		)
+		res.header(
+			'Access-Control-Allow-Headers',
+			'Content-Type, Authorization, Content-Length, X-Requested-With'
+		)
 		if (req.method === 'OPTIONS') {
-			res.sendStatus(200);
+			res.sendStatus(200)
 		} else {
-			next();
+			next()
 		}
-	});
-};
+	})
+}

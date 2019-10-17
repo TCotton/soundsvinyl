@@ -43,11 +43,13 @@
 		padding: 15px;
 	}
 
-	input, textarea {
+	input,
+	textarea {
 		@include font-calculator($font_family_body, 16px, 0);
 	}
 
-	input:not([type='submit']), textarea {
+	input:not([type='submit']),
+	textarea {
 		margin-bottom: 30px;
 	}
 

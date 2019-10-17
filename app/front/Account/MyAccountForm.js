@@ -1,9 +1,8 @@
 import { Component } from 'react'
 import React from 'react'
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
 export default class MyAccountForm extends Component {
-
 	static propTypes = {
 		disabled: PropTypes.bool,
 		formName: PropTypes.string.isRequired,
@@ -14,51 +13,54 @@ export default class MyAccountForm extends Component {
 		onInputChange: PropTypes.func.isRequired,
 		password: PropTypes.string.isRequired,
 		passwordLabel: PropTypes.string.isRequired
-	};
+	}
 
 	static defaultProps = {
 		disabled: false
 	}
 
 	constructor (props) {
-		super(props);
+		super(props)
 
-		this.handleSubmitLogin = this.handleSubmitLogin.bind( this );
-		this.handleInputChange = this.handleInputChange.bind( this );
+		this.handleSubmitLogin = this.handleSubmitLogin.bind(this)
+		this.handleInputChange = this.handleInputChange.bind(this)
 	}
 
-	handleSubmitLogin(event) {
-		event.preventDefault();
+	handleSubmitLogin (event) {
+		event.preventDefault()
 
-		const { onFormSubmit } = this.props;
-		onFormSubmit();
+		const { onFormSubmit } = this.props
+		onFormSubmit()
 	}
 
-	handleInputChange(event) {
-		event.preventDefault();
+	handleInputChange (event) {
+		event.preventDefault()
 
-		const { onInputChange } = this.props;
-		onInputChange(event);
+		const { onInputChange } = this.props
+		onInputChange(event)
 	}
 
 	render () {
-		const { name, password, legend, nameLabel, passwordLabel, formName, disabled } = this.props;
+		const {
+			name,
+			password,
+			legend,
+			nameLabel,
+			passwordLabel,
+			formName,
+			disabled
+		} = this.props
 
 		return (
-
 			<form
 				autoComplete='off'
 				name={formName}
 				onSubmit={this.handleSubmitLogin}
 			>
 				<fieldset>
-					<legend>
-						{legend}
-					</legend>
+					<legend>{legend}</legend>
 
-					<label htmlFor={`${formName}loginName`}>
-						{nameLabel}
-					</label>
+					<label htmlFor={`${formName}loginName`}>{nameLabel}</label>
 					<input
 						data-autocapitalize='none'
 						disabled={disabled}
@@ -70,9 +72,7 @@ export default class MyAccountForm extends Component {
 						value={name}
 					/>
 
-					<label htmlFor={`${formName}loginPassword`}>
-						{passwordLabel}
-					</label>
+					<label htmlFor={`${formName}loginPassword`}>{passwordLabel}</label>
 					<input
 						disabled={disabled}
 						id={`${formName}loginPassword`}
@@ -83,15 +83,9 @@ export default class MyAccountForm extends Component {
 						value={password}
 					/>
 
-					<input
-						name='loginSubmit'
-						type='submit'
-						value='Login'
-					/>
-
+					<input name='loginSubmit' type='submit' value='Login' />
 				</fieldset>
 			</form>
-
 		)
 	}
 }

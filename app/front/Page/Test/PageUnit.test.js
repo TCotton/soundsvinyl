@@ -1,12 +1,12 @@
-import React from 'react';
-import PageUnit from '../PageUnit';
-import renderer from 'react-test-renderer';
-import { BrowserRouter as Router } from 'react-router-dom';
+import React from 'react'
+import PageUnit from '../PageUnit'
+import renderer from 'react-test-renderer'
+import { BrowserRouter as Router } from 'react-router-dom'
 
-describe( 'Component', () => {
-	let component;
+describe('Component', () => {
+	let component
 
-	beforeEach( () => {
+	beforeEach(() => {
 		component = renderer.create(
 			<Router>
 				<PageUnit
@@ -17,15 +17,15 @@ describe( 'Component', () => {
 					title='This is a title'
 				/>
 			</Router>
-		);
-	});
+		)
+	})
 
-	describe( 'PageUnit', () => {
-		it( 'should be defined', () => {
-			expect( component ).toBeDefined();
-		});
+	describe('PageUnit', () => {
+		it('should be defined', () => {
+			expect(component).toBeDefined()
+		})
 
-		it( 'can be updated', () => {
+		it('can be updated', () => {
 			component.update(
 				<Router>
 					<PageUnit
@@ -36,9 +36,9 @@ describe( 'Component', () => {
 						title='This is another title'
 					/>
 				</Router>
-			);
+			)
 
-			expect( component ).toBeDefined();
-		});
-	});
-});
+			expect(component).toBeDefined()
+		})
+	})
+})

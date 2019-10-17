@@ -1,10 +1,10 @@
-import React from 'react';
-import MyAccountForm from '../MyAccountForm';
-import renderer from 'react-test-renderer';
+import React from 'react'
+import MyAccountForm from '../MyAccountForm'
+import renderer from 'react-test-renderer'
 
-describe( 'Component', () => {
-	let component;
-	beforeEach( () => {
+describe('Component', () => {
+	let component
+	beforeEach(() => {
 		component = renderer.create(
 			<MyAccountForm
 				disabled
@@ -17,15 +17,15 @@ describe( 'Component', () => {
 				password='thisIsAPassword'
 				passwordLabel='Your password'
 			/>
-		);
-	});
+		)
+	})
 
-	describe( 'MyAccountForm', () => {
-		it( 'should be defined', () => {
-			expect( component ).toBeDefined();
-		});
+	describe('MyAccountForm', () => {
+		it('should be defined', () => {
+			expect(component).toBeDefined()
+		})
 
-		it( 'can be updated', () => {
+		it('can be updated', () => {
 			component.update(
 				<MyAccountForm
 					disabled={false}
@@ -38,9 +38,9 @@ describe( 'Component', () => {
 					password='thisIsAnotherPassword'
 					passwordLabel='Another password'
 				/>
-			);
+			)
 
-			expect( component ).toBeDefined();
-		});
-	});
-});
+			expect(component).toBeDefined()
+		})
+	})
+})

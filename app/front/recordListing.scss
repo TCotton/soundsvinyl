@@ -1,7 +1,6 @@
 @import '../assets/sass/tools';
 
 .recordListing {
-
 	h2 {
 		@include font-calculator($font_family_header, 35px, 0.5);
 		color: $secondHeaderColour;
@@ -44,11 +43,9 @@
 	.show {
 		display: inherit;
 	}
-
 }
 
 @media screen and (min-width: $media_breakpoint_wide) {
-
 	.recordListing {
 		width: 804px;
 		margin: 0 auto;
@@ -123,7 +120,6 @@
 }
 
 @media screen and (min-width: $media_breakpoint_mobile) {
-
 	.recordListing {
 		padding: 40px 0;
 	}

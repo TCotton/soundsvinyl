@@ -1,5 +1,9 @@
-import Vue from 'vue';
-import { thumbnailOne, thumbnailTwo, thumbnailThree } from '../../../alternative_default_thumbnails';
+import Vue from 'vue'
+import {
+	thumbnailOne,
+	thumbnailTwo,
+	thumbnailThree
+} from '../../../alternative_default_thumbnails'
 
 /**
  * props thumbnailUrl is passed by reference to imageURI, so that no thumbnailUrl is mutated
@@ -9,26 +13,26 @@ import { thumbnailOne, thumbnailTwo, thumbnailThree } from '../../../alternative
 Vue.component('thumbnail', {
 	data () {
 		return {
-			imageURI: '',
+			imageURI: ''
 		}
 	},
 	template: `  
     <img v-bind:src="imageURI" @error="imageLoadOnError">
   `,
 	created () {
-		this.imageURI = this.thumbnailUrl;
+		this.imageURI = this.thumbnailUrl
 	},
 	methods: {
 		imageLoadOnError () {
 			const myArray = [thumbnailOne, thumbnailTwo, thumbnailThree]
-			this.imageURI = myArray[Math.floor(Math.random() * myArray.length)];
+			this.imageURI = myArray[Math.floor(Math.random() * myArray.length)]
 		}
 	},
 	props: {
 		thumbnailUrl: {
 			type: String,
 			required: true,
-			default: thumbnailOne,
+			default: thumbnailOne
 		}
 	}
-});
+})

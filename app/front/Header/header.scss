@@ -30,7 +30,6 @@
 }
 
 .headerRightColumn {
-
 	h2 {
 		@include font-calculator($font_family_header, 40px);
 		color: $secondHeaderColour;
@@ -44,7 +43,6 @@
 }
 
 @media screen and (min-width: $media_breakpoint_mobile) {
-
 	.innerHeader {
 		display: grid;
 		grid-template-columns: 38.197% 61.803%;

@@ -9,7 +9,8 @@ body {
 	line-height: $baseLineHeight;
 }
 
-html, body {
+html,
+body {
 	overflow-x: hidden;
 }
 
@@ -18,12 +19,22 @@ p {
 	font-weight: 400;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	font-family: 'Roboto Slab', serif;
 	font-weight: 400;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	@include font-calculator($font_family_header, 20px);
 }
 
@@ -73,7 +84,11 @@ html input[disabled] {
 		right: 0;
 		height: 100%;
 		width: 100%;
-		background: linear-gradient(to top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+		background: linear-gradient(
+			to top,
+			rgba(255, 255, 255, 1) 0%,
+			rgba(255, 255, 255, 0) 100%
+		);
 	}
 }
 

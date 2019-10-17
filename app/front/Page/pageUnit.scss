@@ -17,33 +17,42 @@
 }
 
 :global .random4 {
-	filter: brightness(1.2) contrast(.85) saturate(.05) sepia(.2);
+	filter: brightness(1.2) contrast(0.85) saturate(0.05) sepia(0.2);
 }
 
 :global .random6 {
-	filter: brightness(1.25) contrast(.85) grayscale(1);
+	filter: brightness(1.25) contrast(0.85) grayscale(1);
 }
 
 :global .random7 {
-	filter: sepia(.25) contrast(1.2) brightness(1.2) saturate(1.05) hue-rotate(-15deg);
+	filter: sepia(0.25) contrast(1.2) brightness(1.2) saturate(1.05)
+		hue-rotate(-15deg);
 
 	&::before {
-		background: radial-gradient(circle closest-corner, transparent 25%, rgba(25, 62, 167, .25) 100%);
-		content: "";
+		background: radial-gradient(
+			circle closest-corner,
+			transparent 25%,
+			rgba(25, 62, 167, 0.25) 100%
+		);
+		content: '';
 		mix-blend-mode: multiply;
 	}
 }
 
 :global .random8 {
-	filter: sepia(.15) brightness(1.2);
+	filter: sepia(0.15) brightness(1.2);
 
 	&::before {
-		background: radial-gradient(circle closest-corner, rgba(206, 39, 70, .75) 40%, rgba(0, 0, 0, 1) 80%);
-		content: "";
+		background: radial-gradient(
+			circle closest-corner,
+			rgba(206, 39, 70, 0.75) 40%,
+			rgba(0, 0, 0, 1) 80%
+		);
+		content: '';
 		mix-blend-mode: screen;
 	}
 }
 
 :global .random9 {
-	filter: sepia(.75) contrast(.75) brightness(1.25) saturate(1.4);
+	filter: sepia(0.75) contrast(0.75) brightness(1.25) saturate(1.4);
 }

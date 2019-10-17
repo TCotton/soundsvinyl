@@ -63,7 +63,7 @@ nav {
 		opacity: 0.8;
 	}
 
-	input[type=checkbox] {
+	input[type='checkbox'] {
 		position: absolute;
 		top: -9999px;
 		left: -9999px;
@@ -77,7 +77,6 @@ nav {
 }
 
 @media screen and (max-width: $media_breakpoint_mobile) {
-
 	.closeMenu {
 		background: no-repeat center center $closeMenu;
 		width: 30px;
@@ -91,14 +90,15 @@ nav {
 	}
 
 	.navRightColumn {
-		input[type=checkbox] ~ ul {
+		input[type='checkbox'] ~ ul {
 			position: absolute;
 			top: 0;
 			left: 0;
 			width: 100%;
 			padding: 62px 0;
 			text-align: center;
-			background: $mobileNavBackgroundColor no-repeat center center $mobileNavBackground;
+			background: $mobileNavBackgroundColor no-repeat center center
+				$mobileNavBackground;
 			z-index: 1;
 			display: none;
 
@@ -163,7 +163,6 @@ a:active {
 }
 
 @media screen and (min-width: $media_breakpoint_mobile) {
-
 	.navLeftColumn {
 		h1 {
 			@include font-calculator($font_family_header, 20px, 0);

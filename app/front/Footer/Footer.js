@@ -1,24 +1,18 @@
-import React, { Component } from 'react';
-import './footer.scss';
-import cn from 'classnames';
-import FooterUnorderedList from './FooterUnorderedList';
+import React, { Component } from 'react'
+import './footer.scss'
+import cn from 'classnames'
+import FooterUnorderedList from './FooterUnorderedList'
 
 class Footer extends Component {
 	render () {
-
-		const footerClasses = cn('inner-footer', 'wrapper');
-		const $soundsVinyl = 'SoundsVinyl';
+		const footerClasses = cn('inner-footer', 'wrapper')
+		const $soundsVinyl = 'SoundsVinyl'
 
 		return (
 			<footer>
-				<div
-					className={footerClasses}
-					styleName='innerFooter'
-				>
+				<div className={footerClasses} styleName='innerFooter'>
 					<div styleName='footerLeftColumn'>
-						<p>
-							{$soundsVinyl}
-						</p>
+						<p>{$soundsVinyl}</p>
 					</div>
 					<div styleName='footerRightColumn'>
 						<FooterUnorderedList />
@@ -29,4 +23,4 @@ class Footer extends Component {
 	}
 }
 
-export default Footer;
+export default Footer

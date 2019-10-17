@@ -1,23 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import singleSpaReact from 'single-spa-react';
-import rootComponent from './index.js';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import singleSpaReact from 'single-spa-react'
+import rootComponent from './index.js'
 
 const reactLifecycles = singleSpaReact({
 	React,
 	ReactDOM,
 	rootComponent,
 	domElementGetter: () => document.getElementById('root')
-});
+})
 
-export const bootstrap = [
-	reactLifecycles.bootstrap,
-];
+export const bootstrap = [reactLifecycles.bootstrap]
 
-export const mount = [
-	reactLifecycles.mount,
-];
+export const mount = [reactLifecycles.mount]
 
-export const unmount = [
-	reactLifecycles.unmount,
-];
+export const unmount = [reactLifecycles.unmount]
