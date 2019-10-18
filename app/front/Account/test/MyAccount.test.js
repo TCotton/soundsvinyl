@@ -1,7 +1,7 @@
 import React from 'react'
 import MyAccount from '../MyAccount'
 import renderer from 'react-test-renderer';
-import { mount, render } from 'enzyme';
+import { mount } from 'enzyme';
 import '../../../../enzymeConfig';
 
 describe.only('Component', () => {

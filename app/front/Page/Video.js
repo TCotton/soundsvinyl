@@ -20,8 +20,14 @@ class Video extends Component {
 		return (
 			<React.Fragment>
 				{typeof videoLink === 'string' && (
-					<video controls width='100%'>
-						<source src={videoLink} type='video/mp4' />
+					<video
+						controls
+						width='100%'
+					>
+						<source
+							src={videoLink}
+							type='video/mp4'
+						/>
 						<p dangerouslySetInnerHTML={Video.createMarkup()} />
 					</video>
 				)}

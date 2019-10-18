@@ -16,7 +16,10 @@ export default class PageUnit extends Component {
 		id: ExtendedPropTypes.mongoId.isRequired,
 		slug: PropTypes.string.isRequired,
 		subtitle: PropTypes.string.isRequired,
-		thumbnailUrl: PropTypes.string.isRequired,
+		thumbnailUrl: PropTypes.oneOfType([
+			PropTypes.string,
+			PropTypes.func,
+		]).isRequired,
 		title: PropTypes.string.isRequired
 	}
 
@@ -37,19 +40,30 @@ export default class PageUnit extends Component {
 		const thumbnailDefault = myArray[Math.floor(Math.random() * myArray.length)]
 		const randomNumber = Math.floor(Math.random() * 8) + 1
 
-		event.target.className = `random${randomNumber}`
-		event.target.src = thumbnailDefault
-		event.target.alt = ''
+		event.target.className = `random${randomNumber}`;
+		event.target.src = thumbnailDefault;
+		event.target.alt = '';
 	}
 
 	render () {
 		const { slug, id, thumbnailUrl, title, subtitle } = this.props
 
 		return (
-			<Link styleName='pageUnit' to={`/${slug}/${id}`}>
-				<img alt={title} onError={this.handleOnError} src={thumbnailUrl} />
-				<span className='video-title'>{title}</span>
-				<span className='video-subtitle'>{subtitle}</span>
+			<Link
+				styleName='pageUnit'
+				to={`/${slug}/${id}`}
+			>
+				<img
+					alt={title}
+					onError={this.handleOnError}
+					src={thumbnailUrl}
+				/>
+				<span className='video-title'>
+					{title}
+				</span>
+				<span className='video-subtitle'>
+					{subtitle}
+				</span>
 			</Link>
 		)
 	}

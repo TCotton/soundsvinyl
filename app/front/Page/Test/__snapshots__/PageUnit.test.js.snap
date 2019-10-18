@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component PageUnit snapshot 1`] = `
+<a
+  className="pageUnit__pageUnit___mE_Gi"
+  href="/this-is-a-slug/507f191e810c19729de860ea"
+  onClick={[Function]}
+>
+  <img
+    alt="This is a title"
+    onError={[Function]}
+    src="https://thumbnailurl.com"
+  />
+  <span
+    className="video-title"
+  >
+    This is a title
+  </span>
+  <span
+    className="video-subtitle"
+  >
+    This is a subtitle
+  </span>
+</a>
+`;

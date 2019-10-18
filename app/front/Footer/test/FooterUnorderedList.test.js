@@ -1,7 +1,7 @@
 import React from 'react'
 import FooterUnorderedList from '../FooterUnorderedList'
 import renderer from 'react-test-renderer'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { MemoryRouter as Router } from 'react-router-dom'
 
 describe('Component', () => {
 	let component
