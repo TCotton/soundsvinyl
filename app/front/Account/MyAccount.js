@@ -26,7 +26,7 @@ class MyAccount extends Component {
 	}
 
 	handleSubmitRegister (e) {
-		e.preventDefault()
+		e.preventDefault();
 
 		const { registerFormloginName, registerFormloginPassword } = this.state
 
