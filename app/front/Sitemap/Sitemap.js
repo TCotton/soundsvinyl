@@ -68,16 +68,30 @@ export default class Sitemap extends Component {
 
 		return (
 			<main styleName='sitemap'>
-				<h3>{$sitemap}</h3>
+				<h3>
+					{$sitemap}
+				</h3>
 				<section>
-					{error && <p>{error}</p>}
-					{!error && <h4>{$Categories}</h4>}
+					{error &&
+					<p>
+						{error}
+					</p>}
+					{!error &&
+					<h4>
+						{$Categories}
+					</h4>}
 					{!error && (
 						<ErrorBoundary>
-							<SitemapUnorderedList categories data={customPages} />
+							<SitemapUnorderedList
+								categories
+								data={customPages}
+							/>
 						</ErrorBoundary>
 					)}
-					{!error && <h4>{$Tracks}</h4>}
+					{!error &&
+					<h4>
+						{$Tracks}
+					</h4>}
 					{!error && (
 						<ErrorBoundary>
 							<SitemapUnorderedList data={pages} />

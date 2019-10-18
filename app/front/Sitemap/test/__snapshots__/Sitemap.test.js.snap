@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Sitemap snapshot 1`] = `
+<main
+  className="sitemap__sitemap___2mkRz"
+>
+  <h3>
+    Sitemap
+  </h3>
+  <section>
+    <h4>
+      Categories
+    </h4>
+    <ul
+      className="sitemap__sitemapUnorderedList___14wVG"
+    />
+    <h4>
+      Tracks
+    </h4>
+    <ul
+      className="sitemap__sitemapUnorderedList___14wVG"
+    />
+  </section>
+</main>
+`;
