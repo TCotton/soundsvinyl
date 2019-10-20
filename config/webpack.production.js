@@ -8,6 +8,7 @@ const SizePlugin = require('size-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const HtmlWebPackPlugin = require('html-webpack-plugin')
 // const ImageminPlugin = require('imagemin-webpack-plugin');
 
 // the path(s) that should be cleaned
@@ -130,6 +131,18 @@ module.exports = webpackMerge(commonConfig, {
 			test: /\.js$|\.css$|\.html$/,
 			threshold: 10240,
 			minRatio: 0.8
+		}),
+
+		new HtmlWebPackPlugin({
+			template: 'src/index.html',
+			minify: {
+				collapseWhitespace: true,
+				removeComments: true,
+				removeRedundantAttributes: true,
+				removeScriptTypeAttributes: true,
+				removeStyleLinkTypeAttributes: true,
+				useShortDoctype: true
+			},
 		}),
 
 		new SizePlugin(),
