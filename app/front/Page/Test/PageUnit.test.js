@@ -1,7 +1,7 @@
 import React from 'react'
 import PageUnit from '../PageUnit'
 import renderer from 'react-test-renderer'
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import '../../../../enzymeConfig';
 import { MemoryRouter as Router } from 'react-router-dom'
 

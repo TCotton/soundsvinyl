@@ -135,11 +135,17 @@ class RecordListing extends Component {
 			const { slug } = this.state
 
 			metaHeaderComponent = (
-				<RawMetaTags canonical={`${slug}/${id}`} title={title} />
+				<RawMetaTags
+					canonical={`${slug}/${id}`}
+					title={title}
+				/>
 			)
 
 			twitterMetaHeaderComponent = (
-				<RawTwitterMetaTags description={descriptionOne} title={title} />
+				<RawTwitterMetaTags
+					description={descriptionOne}
+					title={title}
+				/>
 			)
 		}
 
@@ -151,7 +157,11 @@ class RecordListing extends Component {
 			}, [])
 
 			categoryList = categoryArray.map(element => {
-				return <li key={element}>{element}</li>
+				return (
+					<li key={element}>
+						{element}
+					</li>
+				)
 			})
 		}
 
@@ -175,7 +185,9 @@ class RecordListing extends Component {
 						</header>
 
 						<section styleName='videoSineWave'>
-							<div styleName='videoContainer'>{videoComponent()}</div>
+							<div styleName='videoContainer'>
+								{videoComponent()}
+							</div>
 						</section>
 
 						<section styleName='description'>
@@ -205,7 +217,9 @@ class RecordListing extends Component {
 							className={categories ? 'display' : 'hide'}
 							styleName='categories'
 						>
-							<ul>{categoryList}</ul>
+							<ul>
+								{categoryList}
+							</ul>
 						</section>
 
 						<section>

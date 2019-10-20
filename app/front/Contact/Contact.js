@@ -137,6 +137,7 @@ class Contact extends Component {
 					/>
 
 					<input
+						data-test-dataid='contactSubmit'
 						disabled={message}
 						name='contactSubmit'
 						type='submit'

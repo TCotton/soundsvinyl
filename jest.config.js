@@ -27,7 +27,8 @@ module.exports = {
 		'assets/*',
 		'node/__tests__/*',
 		'nodeService/*',
-		'dist/*'
+		'dist/*',
+		'node/*'
 	],
 	coverageDirectory: '<rootDir>/test/coverage',
 	moduleNameMapper: {
