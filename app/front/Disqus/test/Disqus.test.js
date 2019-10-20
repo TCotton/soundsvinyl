@@ -1,7 +1,6 @@
 import React from 'react'
 import Disqus from '../Disqus'
 import renderer from 'react-test-renderer'
-import Video from '../../Page/Video'
 
 describe('Component', () => {
 	let component
