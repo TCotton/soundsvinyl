@@ -18,6 +18,11 @@ export default class Sitemap extends Component {
 		}
 	}
 
+	componentDidMount () {
+		this.getAll();
+		this.getTags();
+	}
+
 	getAll() {
 		axios
 			.get(`${homeURI}/apiV1/page/getall`)
@@ -42,8 +47,6 @@ export default class Sitemap extends Component {
 			.then(res => {
 				let anArray = [];
 
-				console.dir(res);
-
 				// sorting of categories takes place at the API level with the use of aggregate
 				// and then here to place the categories in a readable, clickable order
 
@@ -65,14 +68,6 @@ export default class Sitemap extends Component {
 				new Error(error.toString())
 			})
 
-	}
-
-	componentDidMount () {
-		console.log('YES!YES!YES!YES!');
-		console.log(homeURI);
-
-		this.getAll();
-		this.getTags();
 	}
 
 	render () {

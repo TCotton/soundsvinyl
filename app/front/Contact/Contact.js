@@ -79,15 +79,27 @@ class Contact extends Component {
 
 		return (
 			<main styleName='contactPage'>
-				<h2>{$contactUs}</h2>
-				<p>{$please}</p>
+				<h2>
+					{$contactUs}
+				</h2>
+				<p>
+					{$please}
+				</p>
 
-				{error && <p className='error'>{error}</p>}
+				{error &&
+				<p className='error'>
+					{error}
+				</p>}
 
-				{message && <p className='message'>{message}</p>}
+				{message &&
+				<p className='message'>
+					{message}
+				</p>}
 
 				<form onSubmit={this.handleSubmit}>
-					<label htmlFor='contactName'>{$yourName}</label>
+					<label htmlFor='contactName'>
+						{$yourName}
+					</label>
 					<input
 						id='contactName'
 						maxLength='254'
@@ -98,7 +110,9 @@ class Contact extends Component {
 						value={contactName}
 					/>
 
-					<label htmlFor='contactEmail'>{$yourEmail}</label>
+					<label htmlFor='contactEmail'>
+						{$yourEmail}
+					</label>
 					<input
 						id='contactEmail'
 						maxLength='254'
@@ -109,7 +123,9 @@ class Contact extends Component {
 						value={contactEmail}
 					/>
 
-					<label htmlFor='contactMessage'>{$yourMessage}</label>
+					<label htmlFor='contactMessage'>
+						{$yourMessage}
+					</label>
 					<textarea
 						id='contactMessage'
 						maxLength='500'
@@ -127,8 +143,15 @@ class Contact extends Component {
 						value='submit'
 					/>
 
-					<span aria-hidden='true' className='hide'>
-						<label aria-hidden='true' className='hide' htmlFor='zipcode'>
+					<span
+						aria-hidden='true'
+						className='hide'
+					>
+						<label
+							aria-hidden='true'
+							className='hide'
+							htmlFor='zipcode'
+						>
 							{$yourZipcode}
 						</label>
 						<input
