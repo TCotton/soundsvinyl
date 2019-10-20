@@ -8,12 +8,19 @@ export default class FooterUnorderedList extends Component {
 		return (
 			<ul>
 				<Link to='/comments-policy'>
-					<FooterListElement text='Comments Policy' />
+					<FooterListElement
+						text='Comments Policy'
+					/>
 				</Link>
 				<Link to='/sitemap'>
-					<FooterListElement text='Sitemap' />
+					<FooterListElement
+						text='Sitemap'
+					/>
 				</Link>
-				<a href='https://github.com/TCotton/soundsvinyl' rel='noreferrer'>
+				<a
+					href='https://github.com/TCotton/soundsvinyl'
+					rel='noreferrer'
+				>
 					<FooterListElement text='Code (CC BY-NC 4.0 license)' />
 				</a>
 			</ul>

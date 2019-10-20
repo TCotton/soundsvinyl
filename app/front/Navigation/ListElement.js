@@ -16,7 +16,9 @@ export default class ListElement extends Component {
 
 		return (
 			<li>
-				<span>{text}</span>
+				<span>
+					{text}
+				</span>
 			</li>
 		)
 	}

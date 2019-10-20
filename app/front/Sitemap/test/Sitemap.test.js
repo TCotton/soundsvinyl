@@ -3,8 +3,7 @@ import Sitemap from '../sitemap'
 import renderer from 'react-test-renderer'
 import mockAxios from 'jest-mock-axios';
 import { homeURI } from '../../../helper_constants'
-import { mount, shallow } from 'enzyme';
-import { MemoryRouter as Router } from 'react-router-dom';
+import { mount } from 'enzyme';
 import * as axios from "axios";
 import '../../../../enzymeConfig';
 const MockAdapter = require('axios-mock-adapter');
@@ -196,7 +195,7 @@ describe( 'Component', () => {
 			expect( component ).toBeDefined()
 		})
 
-		xit( 'should return data from /apiV1/page/getall get call ', () => {
+		it.skip( 'should return data from /apiV1/page/getall get call ', () => {
 
 			expect( mockAxios.get ).toHaveBeenCalledWith( `${homeURI}/apiV1/page/getall`, { data: dataGetAll } );
 
@@ -214,7 +213,6 @@ describe( 'Component', () => {
 		});
 		it( 'should return data from /apiV1/page/getTags get call ', () => {
 			const mock = new MockAdapter(axios);
-			const data = { data: true };
 			mock.onGet(`${homeURI}/apiV1/page/getTags`).reply(200, dataGetTags);
 			expect( result.customPages ).toEqual( expect.any( Array ) );
 		});

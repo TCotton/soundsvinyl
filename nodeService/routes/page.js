@@ -84,7 +84,7 @@ module.exports = app => {
 			res.setHeader('Cache-Control', 'public, max-age=60')
 		}
 
-		;(async () => {
+		(async () => {
 			try {
 				const { page, perPage } = req.query
 

@@ -32,7 +32,9 @@ export default class ErrorBoundary extends Component {
 		if (errorInfo) {
 			return (
 				<React.Fragment>
-					<h2>{errorMessage}</h2>
+					<h2>
+						{errorMessage}
+					</h2>
 					<details styleName='fragmentDetails'>
 						{error && error.toString()}
 						<br />

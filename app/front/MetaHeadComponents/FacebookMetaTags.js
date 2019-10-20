@@ -21,10 +21,22 @@ class FacebookMetaTags extends Component {
 					content='soundsvinyl.co, Vinyl Forever, Music For All'
 					property='og:site_name'
 				/>
-				<meta content={faceBookTitle} property='og:title' />
-				<meta content={canonical} property='og:url' />
-				<meta content={faceBookDescription} property='og:description' />
-				<meta content='article' property='og:type' />
+				<meta
+					content={faceBookTitle}
+					property='og:title'
+				/>
+				<meta
+					content={canonical}
+					property='og:url'
+				/>
+				<meta
+					content={faceBookDescription}
+					property='og:description'
+				/>
+				<meta
+					content='article'
+					property='og:type'
+				/>
 			</React.Fragment>
 		)
 	}

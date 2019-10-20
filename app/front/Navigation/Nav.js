@@ -27,6 +27,7 @@ class Nav extends Component {
 		this.handleLogout = this.handleLogout.bind(this)
 	}
 
+	// TODO: move update state from componentDidUpdate
 	componentDidUpdate (prevProps, prevState) {
 		const { isClicked } = this.state
 
@@ -74,12 +75,18 @@ class Nav extends Component {
 
 		return (
 			<nav>
-				<div className={navClasses} styleName='innerNav'>
+				<div
+					className={navClasses}
+					styleName='innerNav'
+				>
 					<div styleName='navLeftColumn'>
 						<H1Element text='SoundsVinyl' />
 					</div>
 					<div styleName='navRightColumn'>
-						<label className='hidden-desktop' htmlFor='toggle-1'>
+						<label
+							className='hidden-desktop'
+							htmlFor='toggle-1'
+						>
 							{mainMenu}
 						</label>
 						<input

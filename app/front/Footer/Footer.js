@@ -10,9 +10,14 @@ class Footer extends Component {
 
 		return (
 			<footer>
-				<div className={footerClasses} styleName='innerFooter'>
+				<div
+					className={footerClasses}
+					styleName='innerFooter'
+				>
 					<div styleName='footerLeftColumn'>
-						<p>{$soundsVinyl}</p>
+						<p>
+							{$soundsVinyl}
+						</p>
 					</div>
 					<div styleName='footerRightColumn'>
 						<FooterUnorderedList />

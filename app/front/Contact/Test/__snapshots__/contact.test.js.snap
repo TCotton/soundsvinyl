@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Contact should render correctly 1`] = `
+<main
+  className="contact__contactPage___21tug"
+>
+  <h2>
+    Contact us
+  </h2>
+  <p>
+    Please contact us if you any recommendations for records to review
+  </p>
+  <form
+    onSubmit={[Function]}
+  >
+    <label
+      htmlFor="contactName"
+    >
+      Your name
+    </label>
+    <input
+      id="contactName"
+      maxLength="254"
+      name="contactName"
+      onChange={[Function]}
+      required={true}
+      type="text"
+      value=""
+    />
+    <label
+      htmlFor="contactEmail"
+    >
+      Your email
+    </label>
+    <input
+      id="contactEmail"
+      maxLength="254"
+      name="contactEmail"
+      onChange={[Function]}
+      required={true}
+      type="email"
+      value=""
+    />
+    <label
+      htmlFor="contactMessage"
+    >
+      Your message
+    </label>
+    <textarea
+      id="contactMessage"
+      maxLength="500"
+      minLength="10"
+      name="contactMessage"
+      onChange={[Function]}
+      required={true}
+      value=""
+    />
+    <input
+      data-test-dataid="contactSubmit"
+      disabled={null}
+      name="contactSubmit"
+      type="submit"
+      value="submit"
+    />
+    <span
+      aria-hidden="true"
+      className="hide"
+    >
+      <label
+        aria-hidden="true"
+        className="hide"
+        htmlFor="zipcode"
+      >
+        Your zipcode
+      </label>
+      <input
+        aria-hidden="true"
+        className="hide"
+        id="zipcode"
+        name="zipcode"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </span>
+  </form>
+</main>
+`;

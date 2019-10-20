@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-max-depth */
 import React, { Component } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { CookiesProvider } from 'react-cookie'
@@ -11,13 +12,16 @@ import Wrapper from './Wrapper'
 export default class rootComponent extends Component {
 	render () {
 		return (
-			<Provider store={store}>
-				<CookiesProvider>
-					<Router>
-						<Wrapper/>
-					</Router>
-				</CookiesProvider>
-			</Provider>
+			<React.StrictMode>
+				<Provider store={store}>
+					<CookiesProvider>
+						<Router>
+							<Wrapper />
+						</Router>
+					</CookiesProvider>
+				</Provider>
+			</React.StrictMode>
 		)
 	}
 }
+/* eslint-enable react/jsx-max-depth */

@@ -23,13 +23,27 @@ export default class CommentsPolicy extends Component {
 
 		return (
 			<section styleName='commentsPolicy'>
-				<h2>{$comment}</h2>
-				<p>{$inTheSpringof1976}</p>
-				<p>{$hisSpeechWasAViolent}</p>
-				<p>{$heLaterExlained}</p>
-				<p>{$forHim}</p>
-				<p>{$TheLanguageofXeonphobia}</p>
-				<p>{$noRacism}</p>
+				<h2>
+					{$comment}
+				</h2>
+				<p>
+					{$inTheSpringof1976}
+				</p>
+				<p>
+					{$hisSpeechWasAViolent}
+				</p>
+				<p>
+					{$heLaterExlained}
+				</p>
+				<p>
+					{$forHim}
+				</p>
+				<p>
+					{$TheLanguageofXeonphobia}
+				</p>
+				<p>
+					{$noRacism}
+				</p>
 			</section>
 		)
 	}

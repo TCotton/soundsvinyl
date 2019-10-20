@@ -28,18 +28,44 @@ class Wrapper extends Component {
 				<ErrorBoundary>
 					<Nav />
 				</ErrorBoundary>
-				<Suspense fallback={<div>{$loading}</div>}>
+				<Suspense
+					fallback={
+						<div>
+							{$loading}
+						</div>
+					}
+				>
 					<Switch>
-						<Route exact path='/' render={() => <Main />} />
-						<Route component={() => <Main />} exact path='/category/:tag' />
+						<Route
+							exact
+							path='/'
+							render={() => <Main />}
+						/>
+						<Route
+							component={() => <Main />}
+							exact
+							path='/category/:tag'
+						/>
 						<Route
 							component={() => <RecordListing />}
 							exact
 							path='/:slug/:id'
 						/>
-						<Route component={() => <Contact />} exact path='/contact' />
-						<Route component={() => <AboutUs />} exact path='/about-us' />
-						<Route component={() => <MyAccount />} exact path='/my-account' />
+						<Route
+							component={() => <Contact />}
+							exact
+							path='/contact'
+						/>
+						<Route
+							component={() => <AboutUs />}
+							exact
+							path='/about-us'
+						/>
+						<Route
+							component={() => <MyAccount />}
+							exact
+							path='/my-account'
+						/>
 						<Route
 							component={() => <VinylCharts />}
 							exact
@@ -50,8 +76,15 @@ class Wrapper extends Component {
 							exact
 							path='/comments-policy'
 						/>
-						<Route component={() => <Sitemap />} exact path='/sitemap' />
-						<Route component={() => <Error />} path='' />
+						<Route
+							component={() => <Sitemap />}
+							exact
+							path='/sitemap'
+						/>
+						<Route
+							component={() => <Error />}
+							path=''
+						/>
 					</Switch>
 				</Suspense>
 				<ErrorBoundary>

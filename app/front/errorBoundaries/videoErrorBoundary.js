@@ -27,7 +27,11 @@ export default class VideoErrorBoundary extends React.Component {
 
 		if (hasError) {
 			// You can render any custom fallback UI
-			return <p styleName='videoErrorBoundary'>{$Something}</p>
+			return (
+				<p styleName='videoErrorBoundary'>
+					{$Something}
+				</p>
+			)
 		}
 		return children
 	}

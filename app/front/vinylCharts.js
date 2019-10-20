@@ -7,9 +7,13 @@ class VinylCharts extends Component {
 		const $comingSoon = 'Coming soon'
 		return (
 			<main styleName='vinylCharts'>
-				<h3>{$current}</h3>
+				<h3>
+					{$current}
+				</h3>
 				<section>
-					<p>{$comingSoon}</p>
+					<p>
+						{$comingSoon}
+					</p>
 				</section>
 			</main>
 		)

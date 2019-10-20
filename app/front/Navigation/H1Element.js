@@ -16,7 +16,9 @@ export default class H1Element extends Component {
 
 		return (
 			<a href='/'>
-				<h1>{text}</h1>
+				<h1>
+					{text}
+				</h1>
 			</a>
 		)
 	}

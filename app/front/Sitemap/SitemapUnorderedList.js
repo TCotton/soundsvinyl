@@ -35,7 +35,10 @@ export default class SitemapUnorderedList extends Component {
 					data.map(data => {
 						return (
 							<li key={data._id}>
-								<Link styleName='sitemapItem' to={`/${data.slug}/${data._id}`}>
+								<Link
+									styleName='sitemapItem'
+									to={`/${data.slug}/${data._id}`}
+								>
 									{data.title}
 								</Link>
 							</li>
@@ -47,7 +50,10 @@ export default class SitemapUnorderedList extends Component {
 						const uri = 'category/' + encodeURIComponent(data[index][0])
 						return (
 							<li key={index.toString()}>
-								<Link styleName='sitemapItem' to={uri}>
+								<Link
+									styleName='sitemapItem'
+									to={uri}
+								>
 									{data[index][0]}
 								</Link>
 							</li>
