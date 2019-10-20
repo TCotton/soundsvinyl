@@ -32,8 +32,8 @@ module.exports = {
 	coverageDirectory: '<rootDir>/test/coverage',
 	moduleNameMapper: {
 		'Mocks(.*)$': '<rootDir>/mock/$1',
-		'\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$': '<rootDir>/test/mock/fileMock.js',
-		'\\.(css|less|scss|sass)$': '<rootDir>/test/mock/styleMock.js'
+		'\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$': '<rootDir>/__mocks__/fileMock.js',
+		'\\.(css|less|scss|sass)$': '<rootDir>/__mocks__/styleMock.js'
 	},
 	transform: {
 		'^.+\\.svg$': 'jest-svg-transformer',
