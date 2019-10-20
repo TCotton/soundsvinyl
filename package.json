@@ -182,6 +182,7 @@
 		"karma-spec-reporter": "^0.0.32",
 		"karma-webpack": "^3.0.5",
 		"mini-css-extract-plugin": "^0.4.5",
+		"moxios": "^0.4.0",
 		"node-sass": "^4.12.0",
 		"nodemon": "^1.19.3",
 		"postcss-cli": "^6.1.3",

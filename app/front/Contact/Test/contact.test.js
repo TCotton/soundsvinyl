@@ -1,7 +1,8 @@
 import React from 'react'
 import Contact from '../Contact'
 import renderer from 'react-test-renderer'
-import { mount } from 'enzyme'
+import { mount, shallow } from 'enzyme'
+jest.unmock('axios');
 import '../../../../enzymeConfig';
 
 describe('Component', () => {
@@ -67,35 +68,59 @@ describe('Component', () => {
 	});
 
 	describe('Contact form', () => {
-		it('Should capture contactName correctly in form[0] onChange and change the props accordingly', function(){
+		it('Should capture contactName correctly in form[0] onChange and change the state accordingly', function(){
 
 			const component = mount(	<Contact /> );
 			const input = component.find('form').at(0).find('input').at(0);
 
 			input.instance().value = 'Andy';
 			input.simulate('change');
-			expect(component.find('form').at(0).find('input').at(0).props().value).toEqual('Andy');
+			expect(component.state().contactName).toEqual('Andy');
 		})
 	});
 
-	it('Should capture contactEmail correctly in form[0] onChange and change the props accordingly', function(){
+	it('Should capture contactEmail correctly in form[0] onChange and change the state accordingly', function(){
 
 		const component = mount(	<Contact /> );
 		const input = component.find('form').at(0).find('input').at(1);
 
 		input.instance().value = 'me@andywalpole.me';
 		input.simulate('change');
-		expect(component.find('form').at(0).find('input').at(1).props().value).toEqual('me@andywalpole.me');
+		expect(component.state().contactEmail).toEqual('me@andywalpole.me');
 	})
 
-	it('Should capture contactMessage correctly in form[0] onChange and change the props accordingly', function(){
+	it('Should capture contactMessage correctly in form[0] onChange and change the state accordingly', function(){
 
 		const component = mount(	<Contact /> );
 		const input = component.find('form').at(0).find('textarea').at(0);
 
 		input.instance().value = 'This is a message';
 		input.simulate('change');
-		expect(component.find('form').at(0).find('textarea').at(0).props().value).toEqual('This is a message');
+		expect(component.state().contactMessage).toEqual('This is a message');
 	})
 
+	it('Should capture zipcide correctly in form[0] onChange and change the state accordingly', function(){
+
+		const component = mount(	<Contact /> );
+		const input = component.find('form').at(0).find('input').at(3);
+
+		input.instance().value = 'RM38NB';
+		input.simulate('change');
+		expect(component.state().zipcode).toEqual('RM38NB');
+	})
+
+	it('Should call method handleSubmit on successful form submission', function(){
+		const component = mount(	<Contact /> );
+		const mockPreventDefault = jest.fn();
+		const mockEvent = {
+			preventDefault: mockPreventDefault
+		};
+
+		const spy = jest.spyOn(component.instance(), 'handleSubmit');
+		component.instance().forceUpdate();
+
+		component.instance().handleSubmit(mockEvent);
+		expect(spy).toReturn();
+		expect(mockPreventDefault).toHaveBeenCalled();
+	})
 })

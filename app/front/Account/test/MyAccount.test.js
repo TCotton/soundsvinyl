@@ -4,6 +4,7 @@ import MyAccount from '../MyAccount'
 import renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import '../../../../enzymeConfig';
+import Contact from '../../Contact/Contact'
 
 describe('Component', () => {
 	let component
@@ -22,24 +23,24 @@ describe('Component', () => {
 			expect(tree).toMatchSnapshot();
 		});
 
-		it('Should capture name correctly in form[0] onChange and change the props accordingly', function(){
+		it('Should capture name correctly in form[0] onChange and change the state accordingly', function(){
 
 			const component = mount(<MyAccount />);
 			const input = component.find('form').at(0).find('input').at(0);
 
 			input.instance().value = 'Andy';
 			input.simulate('change');
-			expect(component.find('form').at(0).find('input').at(0).props().value).toEqual('Andy');
+			expect(component.state().loginFormloginName).toEqual('Andy');
 		})
 
-		it('Should capture password correctly in form[0] onChange and change the props accordingly', function(){
+		it('Should capture password correctly in form[0] onChange and change the state accordingly', function(){
 
 			const component = mount(<MyAccount />);
 			const input = component.find('form').at(0).find('input').at(1);
 
 			input.instance().value = 'aPassword';
 			input.simulate('change');
-			expect(component.find('form').at(0).find('input').at(1).props().value).toEqual('aPassword');
+			expect(component.state().loginFormloginPassword).toEqual('aPassword');
 		})
 
 		it('Should work correctly onSubmit for form[0]', function(){
@@ -64,54 +65,41 @@ describe('Component', () => {
 
 		})
 
-		it('Should capture name correctly in form[1] onChange and change the props accordingly', function(){
+		it('Should capture name correctly in form[1] onChange and change the state accordingly', function(){
 
 			const component = mount(<MyAccount />);
 			const input = component.find('form').at(1).find('input').at(0);
 
 			input.instance().value = 'Andy';
 			input.simulate('change');
-			expect(component.find('form').at(1).find('input').at(0).props().value).toEqual('Andy');
+			expect(component.state().registerFormloginName).toEqual('Andy');
 		})
 
-		it('Should capture password correctly in form[1] onChange and change the props accordingly', function(){
+		it('Should capture password correctly in form[1] onChange and change the state accordingly', function(){
 
 			const component = mount(<MyAccount />);
 			const input = component.find('form').at(1).find('input').at(1);
 
 			input.instance().value = 'aPassword';
 			input.simulate('change');
-			expect(component.find('form').at(1).find('input').at(1).props().value).toEqual('aPassword');
+			expect(component.state().registerFormloginPassword).toEqual('aPassword');
 		})
 
 		it.skip('Should work correctly onSubmit for form[1]', function(){
 
 			const component = mount(<MyAccount />);
+			const mockPreventDefault = jest.fn();
+			const mockEvent = {
+				preventDefault: mockPreventDefault
+			};
 
-			// component.prototype.handleSubmitRegister(e);
+			const spy = jest.spyOn(component.instance(), 'handleSubmit');
+			component.instance().forceUpdate();
 
-/*			jest.spyOn(e, component.constructor.handleSubmitRegister)*/
+			component.instance().handleSubmit(mockEvent);
+			expect(spy).toReturn();
+			expect(mockPreventDefault).toHaveBeenCalled();
 
-			const nameInput = component.find('form').at(1).find('input').at(0);
-			nameInput.instance().value = 'Andy';
-			nameInput.simulate('change');
-
-			const passwordInput = component.find('form').at(1).find('input').at(1);
-
-			passwordInput.instance().value = 'aPassword';
-			passwordInput.simulate('change');
-
-			const event = { preventDefault: () => {} }
-			// mocks for this function
-			jest.spyOn(event, 'preventDefault')
-
-			component.find('form').at(1).find('input').at(2).simulate('submit', event);
-
-			expect(component.state().loginFormloginName).toEqual(component);
-			expect(component.state().loginFormloginPassword).toEqual('aPassword');
-
-			// expect(component.prototype.handleSubmitRegister).to.have.property('callCount', 1);
-			component.prototype.handleSubmitRegister.restore();
 
 			/**
 			 * Currently, event simulation for the shallow renderer does not propagate as one would normally expect in a real environment. As a result, one must call .simulate() on the actual node that has the event handler set.

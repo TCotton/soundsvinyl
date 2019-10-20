@@ -31,7 +31,10 @@ module.exports = {
 		'node/*',
 		'app/admin/components/spec/*',
 		'enzymeConfig.js',
-		'loadershim.js'
+		'loadershim.js',
+		'app/admin/vue.app.js',
+		'src/*',
+		'app/front/react.app.js'
 	],
 	coverageDirectory: '<rootDir>/test/coverage',
 	moduleNameMapper: {
