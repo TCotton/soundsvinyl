@@ -7,7 +7,7 @@ import Profile2 from '../../assets/graphics/profiles/profile-2.svg'
 import Profile3 from '../../assets/graphics/profiles/profile-3.svg'
 import Profile4 from '../../assets/graphics/profiles/profile-4.svg'
 import Profile5 from '../../assets/graphics/profiles/profile-4.svg'
-import moment from 'moment'
+import moment from 'moment-mini'
 
 class Comment extends Component {
 	static propTypes = {

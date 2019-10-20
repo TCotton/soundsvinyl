@@ -1,4 +1,4 @@
-import moment from 'moment'
+import moment from 'moment-mini'
 
 export const findRootElement = () => {
 	if (!document.getElementById('root')) {

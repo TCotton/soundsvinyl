@@ -7,6 +7,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const SizePlugin = require('size-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 // const ImageminPlugin = require('imagemin-webpack-plugin');
 
 // the path(s) that should be cleaned
@@ -131,7 +132,9 @@ module.exports = webpackMerge(commonConfig, {
 			minRatio: 0.8
 		}),
 
-		new SizePlugin()
+		new SizePlugin(),
+
+		new BundleAnalyzerPlugin()
 
 		// new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
 		// new ImageminPlugin({ test: global.__base + '/dist/**' }),

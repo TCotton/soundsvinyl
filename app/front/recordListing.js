@@ -35,16 +35,16 @@ class RecordListing extends Component {
 
 		this.state = {
 			loaded: false,
-			title: String,
-			subTitle: String,
-			videoLink: String,
-			descriptionOne: String,
-			descriptionTwo: String,
-			descriptionThree: String,
-			descriptionFour: String,
-			descriptionFive: String,
-			categories: Array,
-			slug: String
+			title: '',
+			subTitle: '',
+			videoLink: '',
+			descriptionOne: '',
+			descriptionTwo: '',
+			descriptionThree: '',
+			descriptionFour: '',
+			descriptionFive: '',
+			categories: [],
+			slug: ''
 		}
 
 		this.handleInputChange = this.handleInputChange.bind(this)

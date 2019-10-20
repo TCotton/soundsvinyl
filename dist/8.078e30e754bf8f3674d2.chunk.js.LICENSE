@@ -1,0 +1,4853 @@
+/***/
+
+/* harmony export (binding) */
+
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+
+// This module is a runtime utility for cleaner component module output and will
+
+// be included in the final webpack user bundle.
+
+/* server only */
+
+/* vue-cli only */
+
+// Vue.extend constructor export interop
+
+// render functions
+
+// functional template
+
+// scopedId
+
+// server build
+
+// 2.3 injection
+
+// functional
+
+// 2.2 with runInNewContext: true
+
+// cached call
+
+// stateful
+
+// inject component styles
+
+// register component module identifier for async chunk inferrence
+
+// used by ssr in case component is cached and beforeCreate
+
+// never gets called
+
+// for template-only hot-reload because in that case the render fn doesn't
+
+// go through the normalizer
+
+// register for functioal component in vue file
+
+// inject component registration as beforeCreate hook
+
+/* WEBPACK VAR INJECTION */
+
+// DOM APIs, for completeness
+
+// Does not start the time, just sets up the members needed.
+
+// setimmediate attaches itself to the global object
+
+// On some exotic environments, it's not clear which object `setimmediate` was
+
+// able to install onto.  Search each possibility in the same order as the
+
+// `setimmediate` library.
+
+// Spec says greater than zero
+
+// Don't get fooled by e.g. browserify environments.
+
+// The test against `importScripts` prevents this implementation from being installed inside a web worker,
+
+// where `global.postMessage` means something completely different and can't be used for this purpose.
+
+// For web workers, where supported
+
+// For IE 6–8
+
+// Create a <script> element; its readystatechange event will be fired asynchronously once it is inserted
+
+// into the document. Do so, thus queuing up the task. Remember to clean up once it's been called.
+
+// For non-IE10 modern browsers
+
+// Callback can either be a function or a string
+
+// Copy function arguments
+
+// Store and register the task
+
+// From the spec: "Wait until any invocations of this algorithm started before this one have completed."
+
+// So if we're currently running a task, we'll need to delay this invocation.
+
+// Delay by doing a setTimeout. setImmediate was tried instead, but in Firefox 7 it generated a
+
+// "too much recursion" error.
+
+// Just a shared object to store the mounted object state
+
+// required opts
+
+// single-spa-vue@>=2 always REPLACES the `el` instead of appending to it.
+
+// We want domEl to stick around and not be replaced. So we tell Vue to mount
+
+// into a container div inside of the main domEl
+
+// _name is to support IE9 too
+
+// used by devtools to display a router-view badge
+
+// directly use parent context's createElement() function
+
+// so that components rendered by router-view can resolve named slots
+
+// render previous view if the tree is inactive and kept-alive
+
+// render empty node if no matched route
+
+// attach instance registration hook
+
+// this will be called in the instance's injected lifecycle hooks
+
+// val could be undefined for unregistration
+
+// also register instance in prepatch hook
+
+// in case the same component instance is reused across different routes
+
+// register instance in init hook
+
+// in case kept-alive component be actived when routes changed
+
+// resolve props
+
+/*  */
+
+// clone to prevent mutation
+
+// pass non-declared props as attrs
+
+// the starting route that represents the initial state
+
+// handle null value #1566
+
+// check nested equality
+
+// remove trailing segment if:
+
+// - not appending
+
+// - appending to trailing slash (last segment is empty)
+
+// resolve relative path
+
+// ensure leading slash
+
+/**
+ * Compile a string to a template function for the path.
+ *
+ * @param  {string}             str
+ * @param  {Object=}            options
+ * @return {!function(Object=, Object=)}
+ */
+
+/**
+ * Prettier encoding of URI path segments.
+ *
+ * @param  {string}
+ * @return {string}
+ */
+
+// Match escaped characters that would otherwise appear in future matches.
+
+// This allows the user to escape special characters that won't transform.
+
+// Match Express-style parameters and un-named parameters with a prefix
+
+// and optional suffixes. Matches appear as:
+
+//
+
+// "/:test(\\d+)?" => ["/", "test", "\d+", undefined, "?", undefined]
+
+// "/route(\\d+)"  => [undefined, undefined, undefined, "\d+", undefined, undefined]
+
+// "/*"            => ["/", undefined, undefined, undefined, undefined, "*"]
+
+/**
+ * Expose `pathToRegexp`.
+ */
+
+/**
+ * Parse a string for the raw tokens.
+ *
+ * @param  {string}  str
+ * @param  {Object=} options
+ * @return {!Array}
+ */
+
+// Ignore already escaped sequences.
+
+// Push the current path onto the tokens.
+
+// Match any characters still remaining.
+
+// If the path exists, push it onto the end.
+
+/**
+ * Encode the asterisk parameter. Similar to `pretty`, but allows slashes.
+ *
+ * @param  {string}
+ * @return {string}
+ */
+
+/**
+ * Expose a method for transforming tokens into the path function.
+ */
+
+// Compile all the patterns before compilation.
+
+// Compile all the tokens into regexps.
+
+// Prepend partial segment prefixes.
+
+/**
+ * Escape a regular expression string.
+ *
+ * @param  {string} str
+ * @return {string}
+ */
+
+/**
+ * Escape the capturing group by escaping special characters and meaning.
+ *
+ * @param  {string} group
+ * @return {string}
+ */
+
+/**
+ * Attach the keys as a property of the regexp.
+ *
+ * @param  {!RegExp} re
+ * @param  {Array}   keys
+ * @return {!RegExp}
+ */
+
+/**
+ * Get the flags for a regexp from the options.
+ *
+ * @param  {Object} options
+ * @return {string}
+ */
+
+/**
+ * Pull out keys from a regexp.
+ *
+ * @param  {!RegExp} path
+ * @param  {!Array}  keys
+ * @return {!RegExp}
+ */
+
+/**
+ * Expose a function for taking tokens and returning a RegExp.
+ *
+ * @param  {!Array}          tokens
+ * @param  {(Array|Object)=} keys
+ * @param  {Object=}         options
+ * @return {!RegExp}
+ */
+
+/** @type {!Object} */
+
+// Iterate over the tokens and create our regexp string.
+
+// In non-strict mode we allow a slash at the end of match. If the path to
+
+// match already ends with a slash, we remove it for consistency. The slash
+
+// is valid at the end of a path match, not in the middle. This is important
+
+// in non-ending mode, where "/test/" shouldn't match "/test//route".
+
+/**
+ * Normalize the given path string, returning a regular expression.
+ *
+ * An empty array can be passed in for the keys, which will hold the
+ * placeholder key descriptions. For example, using `/user/:id`, `keys` will
+ * contain `[{ name: 'id', delimiter: '/', optional: false, repeat: false }]`.
+ *
+ * @param  {(string|RegExp|Array)} path
+ * @param  {(Array|Object)=}       keys
+ * @param  {Object=}               options
+ * @return {!RegExp}
+ */
+
+// Use a negative lookahead to match only capturing groups.
+
+/**
+ * Transform an array into a regexp.
+ *
+ * @param  {!Array}  path
+ * @param  {Array}   keys
+ * @param  {!Object} options
+ * @return {!RegExp}
+ */
+
+/** @type {!Array} */
+
+/**
+ * Create a path regexp from string input.
+ *
+ * @param  {string}  path
+ * @param  {!Array}  keys
+ * @param  {!Object} options
+ * @return {!RegExp}
+ */
+
+/** @type {string} */
+
+// $flow-disable-line
+
+// Fix #2505 resolving asterisk routes { name: 'not-found', params: { pathMatch: '/not-found' }}
+
+// delete the 0 if it was added
+
+// named target
+
+// relative params
+
+// work around weird flow bug
+
+// find the first <a> child and apply listener and href
+
+// in case the <a> is a static node
+
+// transform existing events in both objects into arrays so we can push later
+
+// append new listeners for router-link
+
+// on[event] is always a function
+
+// doesn't have <a> child, apply listener to self
+
+// don't redirect with control keys
+
+// don't redirect on right click
+
+// don't redirect if `target="_blank"`
+
+// this may be a Weex event which doesn't have this method
+
+// don't redirect when preventDefault called
+
+// the path list is used to control path matching priority
+
+// ensure wildcard routes are always at the end
+
+// no match
+
+// resolved named direct
+
+// 1. resolve relative redirect
+
+// use User Timing api (if present) for more accurate key precision
+
+// 2. resolve params
+
+// 3. rematch with existing query and hash
+
+// Fix #1994: using * with props: true generates a param named 0
+
+// Fix for #1585 for Firefox
+
+// Fix for #2195 Add optional third attribute to workaround a bug in safari https://bugs.webkit.org/show_bug.cgi?id=182678
+
+// Fix for #2774 Support for apps loaded from Windows file shares not mapped to network drives: replaced location.origin with
+
+// window.location.protocol + '//' + window.location.host
+
+// location.host contains the port and location.hostname doesn't
+
+// wait until re-render finishes before scrolling
+
+// getElementById would still fail if the selector contains a more complicated query like #main[data-attr]
+
+// but at the same time, it doesn't make much sense to select an element with an id and an extra selector
+
+// try...catch the pushState call to get around Safari
+
+// DOM Exception 18 where it limits to 100 pushState calls
+
+// if it's a function and doesn't have cid attached,
+
+// assume it's an async component resolve function.
+
+// we are not using Vue's default async resolving mechanism because
+
+// we want to halt the navigation until the incoming component has been
+
+// resolved.
+
+// in Webpack 2, require.ensure now also returns a Promise
+
+// so the resolve/reject functions may get called an extra time
+
+// if the user uses an arrow function shorthand that happens to
+
+// return that Promise.
+
+// save resolved on async factory in case it's used elsewhere
+
+// new syntax in Vue 2.3
+
+/*@__PURE__*/
+
+// passing the message to super() doesn't seem to work in the transpiled version
+
+// add a stack property so services like Sentry can correctly display it
+
+// support IE9
+
+// respect <base> tag
+
+// strip full URL origin
+
+// make sure there's the starting slash
+
+// remove trailing slash
+
+// start with a route object that stands for "nowhere"
+
+// extend now so that global mixins are applied.
+
+// fire ready cbs once
+
+// after merging https://github.com/vuejs/vue-router/pull/2771 we
+
+// When the user navigates through history through back/forward buttons
+
+// we do not want to throw the error. We only throw it if directly calling
+
+// push/replace. That's why it's not included in isError
+
+// in the case the route map has been dynamically appended to
+
+// in-component leave guards
+
+// global before hooks
+
+// in-component update hooks
+
+// in-config enter guards
+
+// async components
+
+// next(false) -> abort navigation, ensure current URL
+
+// next('/') or next({ path: '/' }) -> redirect
+
+// confirm transition and pass on the value
+
+// #750
+
+// if a router-view is wrapped with an out-in transition,
+
+// the instance may not have been registered at this time.
+
+// we will need to poll for registration until current route
+
+// is no longer valid.
+
+// somehow flow cannot infer this is a function
+
+// Avoiding first `popstate` event dispatched in some browsers but first
+
+// history route not updated since async guard at the same time.
+
+// check history fallback deeplinking
+
+// this is delayed until the app mounts
+
+// to avoid the hashchange listener being fired too early
+
+// We can't use window.location.hash here because it's not
+
+// consistent across browsers - Firefox will pre-decode it!
+
+// empty path
+
+// decode the hash but not the search or hash
+
+// as search(query) is already decoded
+
+// https://github.com/vuejs/vue-router/issues/2708
+
+// noop
+
+/* Vue component instance */
+
+// main app previously initialized
+
+// return as we don't need to set up new history listener
+
+// set up app destroyed handler
+
+// https://github.com/vuejs/vue-router/issues/2639
+
+// clean out app from this.apps array once destroyed
+
+// ensure we still have a main app or null if no apps
+
+// we do not release the router so it can be reused
+
+// for backwards compat
+
+// use the same hook merging strategy for route hooks
+
+/* harmony default export */
+
+/*!
+ * vue-resource v1.5.1
+ * https://github.com/pagekit/vue-resource
+ * Released under the MIT License.
+ */
+
+/**
+ * Promises/A+ polyfill v1.1.4 (https://github.com/bramstein/promis)
+ */
+
+/**
+ * Promise adapter.
+ */
+
+/**
+ * Utility functions.
+ */
+
+/**
+ * Root Prefix Transform.
+ */
+
+/**
+ * URL Template v2.0.6 (https://github.com/bramstein/url-template)
+ */
+
+/**
+ * URL Template (RFC 6570) Transform.
+ */
+
+/**
+ * Service for URL templating.
+ */
+
+/**
+ * Url options.
+ */
+
+/**
+ * XDomain client (Internet Explorer).
+ */
+
+/**
+ * CORS Interceptor.
+ */
+
+/**
+ * Url transforms.
+ */
+
+/**
+ * Query Parameter Transform.
+ */
+
+/**
+ * Encodes a Url parameter string.
+ *
+ * @param {Object} obj
+ */
+
+/**
+ * Parse a URL and return its components.
+ *
+ * @param {String} url
+ */
+
+/**
+ * JSONP client (Browser).
+ */
+
+/**
+ * JSONP Interceptor.
+ */
+
+/**
+ * XMLHttp client (Browser).
+ */
+
+// IE9 status bug
+
+// deprecated use downloadProgress
+
+// deprecated use uploadProgress
+
+/**
+ * Http client (Node).
+ */
+
+/**
+ * Base client.
+ */
+
+/**
+ * HTTP Headers.
+ */
+
+/**
+ * HTTP Response.
+ */
+
+/**
+ * HTTP Request.
+ */
+
+/**
+ * Service for sending network requests.
+ */
+
+/**
+ * Service for interacting with RESTful services.
+ */
+
+/**
+ * Install plugin.
+ */
+
+/**
+ * Before Interceptor.
+ */
+
+/**
+ * HTTP method override Interceptor.
+ */
+
+/**
+ * Header Interceptor.
+ */
+
+/**
+ * JSON Interceptor.
+ */
+
+/**
+ * Form data Interceptor.
+ */
+
+/**
+ * vue-paginate v3.6.0
+ * (c) 2018 Taha Shashtari
+ * @license MIT
+ */
+
+// Add backward ellipses with first page if needed
+
+// Add ellipses if needed
+
+/**
+   * Mainly used here to check whether the displayed
+   * ellipses is for showing previous or next links
+   */
+
+// it means it's a number
+
+// which is number
+
+/**
+  * vee-validate v2.2.15
+  * (c) 2019 Abdelrahman Awad
+  * @license MIT
+  */
+
+// 
+
+// eslint-disable-next-line
+
+// if both are objects, compare each key recursively.
+
+// check if the fn call was cancelled.
+
+// if falsy value return an empty object.
+
+// $FlowFixMe
+
+// eslint-disable-line
+
+/* istanbul ignore next */
+
+/* istanbul ignore else */
+
+// Skip over if undefined or null
+
+// 524288 is the max on some browsers and test environments.
+
+// fallback to keys()
+
+/**
+ * Gets a specific message for field. falls back to the rule message.
+ */
+
+// make this bag a mirror of the provided one, sharing the same items reference.
+
+/**
+ * Adds an error to the internal array.
+ */
+
+/**
+ * Normalizes passed errors to an error array.
+ */
+
+/**
+ * Regenrates error messages if they have a generator function.
+ */
+
+/**
+ * Updates a field error with the new field scope.
+ */
+
+/**
+ * Gets all error messages from the internal array.
+ */
+
+/**
+ * Checks if there are any errors in the internal array.
+ */
+
+/**
+ * Removes all items from the internal array.
+ */
+
+/**
+ * Collects errors into groups or for a specific field.
+ */
+
+// reduce the collection to be a single array.
+
+/**
+ * Gets the internal array length.
+ */
+
+/**
+ * Finds and fetches the first error message for the specified field id.
+ */
+
+/**
+ * Gets the first error message for a specific field.
+ */
+
+/**
+ * Returns the first error rule for the specified field
+ */
+
+/**
+ * Checks if the internal array has at least one error for the specified field.
+ */
+
+/**
+ * Gets the first error message for a specific field and a rule.
+ */
+
+/**
+ * Gets the first error message for a specific field that not match the rule.
+ */
+
+/**
+ * Removes errors by matching against the id or ids.
+ */
+
+/**
+ * Removes all error messages associated with a specific field.
+ */
+
+// match by id, can be combined with rule selection.
+
+// if no scope specified, make sure the found error has no scope.
+
+// keep going.
+
+// VNode Utils
+
+// Gets the model object on the vnode.
+
+// Component Model
+
+// Resolves v-model config if exists.
+
+// Adds a listener to vnode listener object.
+
+// Has a single listener, convert to array.
+
+// no listeners, create the array.
+
+// Adds a listener to a native HTML vnode.
+
+// Adds a listener to a Vue component vnode.
+
+// Determines if `change` should be used over `input` for listeners.
+
+// Is a component.
+
+// Lazy Models and select tag typically use change event
+
+// is a textual-type input.
+
+// Only render the first item of the node.
+
+// a single node.
+
+/**
+ * Generates the options required to construct a field.
+ */
+
+/**
+ * Resolves the rules defined on an element.
+ */
+
+// If validity is disabled, ignore field rules.
+
+/**
+ * @param {*} vnode
+ */
+
+/**
+ * Resolves the delay value.
+ * @param {*} el
+ * @param {*} vnode
+ * @param {Object} options
+ */
+
+/**
+ * Resolves the events to validate in response to.
+ * @param {*} el
+ * @param {*} vnode
+ */
+
+// resolve it from the root element.
+
+// resolve from data-vv-validate-on if its a vue component.
+
+// resolve it from $_veeValidate options.
+
+// resolve the model event if its configured for custom components.
+
+// if the prop was configured but not the model.
+
+/**
+ * Resolves the scope for the field.
+ * @param {*} el
+ * @param {*} binding
+ */
+
+/**
+ * Checks if the node directives contains a v-model or a specified arg.
+ * Args take priority over models.
+ *
+ * @return {Object}
+ */
+
+// https://github.com/vuejs/vue/blob/dev/src/core/util/lang.js#L26
+
+/**
+ * Resolves the field name to trigger validations.
+ * @return {String} The field name.
+ */
+
+/**
+ * Returns a value getter input type.
+ */
+
+// the control has been blurred
+
+// the control hasn't been blurred
+
+// model is valid
+
+// model is invalid
+
+// control has not been interacted with
+
+// handle too many uses of uniqId, although unlikely.
+
+// shift the template.
+
+// cache initial delay
+
+// set initial value.
+
+/**
+ * Gets the display name (user-friendly name).
+ */
+
+/**
+ * Gets the input value.
+ */
+
+/**
+ * If the field rejects false as a valid value for the required rule.
+ */
+
+/**
+ * Determines if the instance matches the options provided.
+ */
+
+/**
+ * Caches the field id.
+ */
+
+/**
+ * Keeps a reference of the most current validation run.
+ */
+
+/**
+ * Updates the field with changed data.
+ */
+
+// update errors scope if the field scope was changed.
+
+// update required flag flags
+
+// validate if it was validated before and field was updated and there was a rules mutation.
+
+// no need to continue.
+
+/**
+ * Resets field flags and errors.
+ */
+
+// update initial value
+
+/**
+ * Sets the flags and their negated counterparts, and updates the classes and re-adds action listeners.
+ */
+
+// if it has a negation and was not specified, set it as well.
+
+/**
+ * Determines if the field requires references to target fields.
+*/
+
+// reset dependencies.
+
+// we get the selectors for each field.
+
+// must be contained within the same component, so we use the vm root element constrain our dom search.
+
+// probably a component.
+
+/**
+ * Removes listeners.
+ */
+
+/**
+ * Updates the element classes depending on each field flag status.
+ */
+
+// remove valid/invalid classes on reset.
+
+// make sure we don't set any classes if the state is undetermined.
+
+/**
+ * Adds the listeners required for automatic classes and some flags.
+ */
+
+// remove previous listeners.
+
+// only needed once.
+
+// Checkboxes and radio buttons on Mac don't emit blur naturally, so we listen on click instead.
+
+// handle some people initialize the value to null, since text inputs have empty string value.
+
+/**
+ * Determines the suitable primary event to listen for.
+ */
+
+// if its a custom component, use the customized model event or the input event.
+
+/**
+ * Determines the list of events to listen to.
+ */
+
+// if no event is configured, or it is a component or a text input then respect the user choice.
+
+// force suitable event for non-text type fields.
+
+/**
+ * Adds the listeners required for validation.
+ */
+
+// if its a DOM event, resolve the value, otherwise use the first parameter as the value.
+
+// if on input validation is requested.
+
+// if its watchable from the context vm.
+
+// watch it from the custom component vm instead.
+
+// filter out input event when we are watching from the context vm.
+
+// Add events.
+
+// listen for the current element.
+
+// skip if it is added by v-validate and is not the current element.
+
+/**
+ * Updates aria attributes on the element.
+ */
+
+/**
+ * Updates the custom validity for the field.
+ */
+
+/**
+ * Removes all listeners.
+ */
+
+// ignore the result of any ongoing validation.
+
+/**
+ * Gets the current items length.
+ */
+
+/**
+ * Finds the first field that matches the provided matcher object.
+ */
+
+/**
+ * Finds the field with the given id, using a plain object as a map to link
+ * ids to items faster than by looping over the array and matching.
+ */
+
+/**
+ * Filters the items down to the matched fields.
+ */
+
+// multiple matchers to be tried.
+
+/**
+ * Maps the field items using the mapping function.
+ */
+
+/**
+ * Finds and removes the first field that matches the provided matcher object, returns the removed item.
+ */
+
+/**
+ * Adds a field item to the list.
+ */
+
+// create a mirror bag with limited component scope.
+
+// if built in do nothing.
+
+// if its a root instance set the config if it exists.
+
+// if its a root instance, inject anyways, or if it requested a new instance.
+
+// if automatic injection is enabled and no instance was requested.
+
+// don't inject errors or fieldBag as no validator was resolved.
+
+// There is a validator but it isn't injected, mark as reactive.
+
+// the vue constructor.
+
+/**
+ * Finds the requested field by id from the context object.
+ */
+
+// skip if scope hasn't changed.
+
+// only update scope.
+
+// allows the field to re-evaluated once more in the update hook.
+
+// make sure we don't do unneccasary work if no important change was done.
+
+/**
+ * @deprecated
+ */
+
+/**
+ * Getter for the current locale.
+ */
+
+/**
+ * Setter for the validator locale.
+ */
+
+/**
+ * Static constructor.
+ * @deprecated
+ */
+
+/**
+ * Adds a custom validator to the list of validation rules.
+ */
+
+// rules imported from the minimal bundle
+
+// will have the options embedded in them
+
+/**
+ * Removes a rule from the list of validators.
+ * @deprecated
+ */
+
+/**
+ * Adds and sets the current locale for the validator.
+*/
+
+/**
+ * Adds and sets the current locale for the validator.
+ */
+
+// merge the dictionary.
+
+// set the locale.
+
+/**
+ * Registers a field to be validated.
+ */
+
+// We search for a field with the same name & scope, having persist enabled
+
+// We keep the flags of the old field, then we remove its instance
+
+// fixes initial value detection with v-model and select elements.
+
+// validate the field initially
+
+/**
+ * Sets the flags on a field.
+ */
+
+/**
+ * Removes a field from the validator.
+ */
+
+// We destroy/remove the field & error instances if it's not a `persist` one
+
+// two ticks
+
+// reset field flags.
+
+/**
+ * Updates a field, updating both errors and flags.
+ */
+
+// remove old scope.
+
+/**
+ * Validates a value against a registered field validations.
+ */
+
+// overload to validate all.
+
+// overload to validate scope-less fields.
+
+// if scope validation was requested.
+
+// allow next validation to mutate the state.
+
+/**
+ * Pauses the validator.
+ */
+
+/**
+ * Resumes the validator.
+ */
+
+/**
+ * Validates each value against the corresponding field validations.
+ */
+
+/**
+ * Validates all scopes.
+ */
+
+/**
+ * Validates a value against the rules.
+ */
+
+/**
+ * Perform cleanup.
+ */
+
+/**
+ * Creates the fields to be validated.
+ */
+
+/**
+ * Date rules need the existence of a format, so date_format must be supplied.
+ */
+
+/**
+ * Formats an error message for field and a rule.
+ */
+
+/**
+ * We need to convert any object param to an array format since the locales do not handle params as objects yet.
+ */
+
+/**
+ * Translates the parameters passed to the rule (mainly for target fields).
+ */
+
+/**
+ * Resolves an appropriate display name, first checking 'data-as' or the registered 'prettyName'
+ */
+
+/**
+ * Converts an array of params to an object with named properties.
+ * Only works if the rule is configured with a paramNames array.
+ * Returns the same params if it cannot convert it.
+ */
+
+// if it has some of the keys, return it as is.
+
+// otherwise wrap the object in an array.
+
+// Reduce the paramsNames to a param object.
+
+/**
+ * Tests a single input value against a rule.
+ */
+
+// has field dependencies.
+
+// invalidate false if no args were specified and the field rejects false by default.
+
+// If it is a promise.
+
+// Is a single object/boolean.
+
+/**
+ * Merges a validator object into the RULES and Messages.
+ */
+
+/**
+ * Guards from extension violations.
+ */
+
+/**
+ * Creates a Field Error Object.
+ */
+
+/**
+ * Tries different strategies to find a field.
+ */
+
+/**
+ * Handles when a field is not found.
+ */
+
+/**
+ * Handles validation results.
+ */
+
+// remove by name and scope to remove any custom errors added.
+
+// handle flags.
+
+// field is configured to run through the pipeline regardless
+
+// disabled fields are skipped if useConstraintAttrs is enabled in config
+
+// if the field was configured explicitly.
+
+/**
+ * Starts the validation process.
+ */
+
+// use of '.some()' is to break iteration in middle by returning true
+
+// promisify the result.
+
+// fallback to the fallback message
+
+// normalize messages
+
+// i18n doesn't deep merge
+
+// first clone the existing locale (avoid mutations to locale)
+
+// Don't install plugins until vee-validate is installed.
+
+// inject the plugin container statically into the validator class
+
+// i18 is being used for localization.
+
+/**
+ * Formates file size.
+ *
+ * @param {Number|String} size
+ */
+
+/**
+ * Checks if vee-validate is defined globally.
+ */
+
+/**
+ * Google Chrome as of 67.0.3396.87 introduced timezones with offset that includes seconds.
+ * They usually appear for dates that denote time before the timezones were introduced
+ * (e.g. for 'Europe/Prague' timezone the offset is GMT+00:57:44 before 1 October 1891
+ * and GMT+01:00:00 after that date)
+ *
+ * Date#getTimezoneOffset returns the offset in minutes and would return 57 for the example above,
+ * which would lead to incorrect calculations.
+ *
+ * This function returns the timezone offset in milliseconds that takes seconds in account.
+ */
+
+// year tokens
+
+// 0 additional digits
+
+// 1 additional digit
+
+// date tokens
+
+// timezone tokens
+
+/**
+ * @name toDate
+ * @category Common Helpers
+ * @summary Convert the given argument to an instance of Date.
+ *
+ * @description
+ * Convert the given argument to an instance of Date.
+ *
+ * If the argument is an instance of Date, the function returns its clone.
+ *
+ * If the argument is a number, it is treated as a timestamp.
+ *
+ * If an argument is a string, the function tries to parse it.
+ * Function accepts complete ISO 8601 formats as well as partial implementations.
+ * ISO 8601: http://en.wikipedia.org/wiki/ISO_8601
+ * If the function cannot parse the string or the values are invalid, it returns Invalid Date.
+ *
+ * If the argument is none of the above, the function returns Invalid Date.
+ *
+ * **Note**: *all* Date arguments passed to any *date-fns* function is processed by `toDate`.
+ * All *date-fns* functions will throw `RangeError` if `options.additionalDigits` is not 0, 1, 2 or undefined.
+ *
+ * @param {Date|String|Number} argument - the value to convert
+ * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - the additional number of digits in the extended year format
+ * @returns {Date} the parsed date in the local time zone
+ * @throws {TypeError} 1 argument required
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
+ *
+ * @example
+ * // Convert string '2014-02-11T11:30:30' to date:
+ * var result = toDate('2014-02-11T11:30:30')
+ * //=> Tue Feb 11 2014 11:30:30
+ *
+ * @example
+ * // Convert string '+02014101' to date,
+ * // if the additional number of digits in the extended year format is 1:
+ * var result = toDate('+02014101', {additionalDigits: 1})
+ * //=> Fri Apr 11 2014 00:00:00
+ */
+
+// Clone the date
+
+// Prevent the date to lose the milliseconds when passed to new Date() in IE10
+
+// YYYY or ±YYYYY
+
+// YY or ±YYY
+
+// Invalid ISO-formatted year
+
+// YYYY
+
+// YYYY-MM
+
+// YYYY-DDD or YYYYDDD
+
+// YYYY-MM-DD or YYYYMMDD
+
+// YYYY-Www or YYYYWww
+
+// YYYY-Www-D or YYYYWwwD
+
+// Invalid ISO-formatted date
+
+// hh
+
+// hh:mm or hhmm
+
+// hh:mm:ss or hhmmss
+
+// Invalid ISO-formatted time
+
+// Z
+
+// ±hh
+
+// ±hh:mm or ±hhmm
+
+// get offset accurate to hour in timezones that change offset
+
+// Validation functions
+
+/**
+ * @name addMilliseconds
+ * @category Millisecond Helpers
+ * @summary Add the specified number of milliseconds to the given date.
+ *
+ * @description
+ * Add the specified number of milliseconds to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of milliseconds to be added
+ * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * @returns {Date} the new date with the milliseconds added
+ * @throws {TypeError} 2 arguments required
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
+ *
+ * @example
+ * // Add 750 milliseconds to 10 July 2014 12:45:30.000:
+ * var result = addMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)
+ * //=> Thu Jul 10 2014 12:45:30.750
+ */
+
+/**
+ * @name isValid
+ * @category Common Helpers
+ * @summary Is the given date valid?
+ *
+ * @description
+ * Returns false if argument is Invalid Date and true otherwise.
+ * Argument is converted to Date using `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * Invalid Date is a Date, whose time value is NaN.
+ *
+ * Time value of Date: http://es5.github.io/#x15.9.1.1
+ *
+ * @param {*} date - the date to check
+ * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * @returns {Boolean} the date is valid
+ * @throws {TypeError} 1 argument required
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
+ *
+ * @example
+ * // For the valid date:
+ * var result = isValid(new Date(2014, 1, 31))
+ * //=> true
+ *
+ * @example
+ * // For the value, convertable into a date:
+ * var result = isValid('2014-02-31')
+ * //=> true
+ *
+ * @example
+ * // For the invalid date:
+ * var result = isValid(new Date(''))
+ * //=> false
+ */
+
+// If ordinal numbers depend on context, for example,
+
+// if they are different for different grammatical genders,
+
+// use `options.unit`:
+
+//   var options = dirtyOptions || {}
+
+//   var unit = String(options.unit)
+
+// where `unit` can be 'year', 'quarter', 'month', 'week', 'date', 'dayOfYear',
+
+// 'day', 'hour', 'minute', 'second'
+
+/* Sunday */
+
+// This function will be a part of public API when UTC function will be implemented.
+
+// See issue: https://github.com/date-fns/date-fns/issues/376
+
+// Round the number of days to the nearest integer
+
+// because the number of milliseconds in a week is not constant
+
+// (e.g. it's different in the week of the daylight saving time clock shift)
+
+// Test if weekStartsOn is between 0 and 6 _and_ is not NaN
+
+// Test if weekStartsOn is between 1 and 7 _and_ is not NaN
+
+// Era
+
+// AD, BC
+
+// A, B
+
+// Anno Domini, Before Christ
+
+// Year
+
+// From http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_tokens
+
+// | Year     |     y | yy |   yyy |  yyyy | yyyyy |
+
+// |----------|-------|----|-------|-------|-------|
+
+// | AD 1     |     1 | 01 |   001 |  0001 | 00001 |
+
+// | AD 12    |    12 | 12 |   012 |  0012 | 00012 |
+
+// | AD 123   |   123 | 23 |   123 |  0123 | 00123 |
+
+// | AD 1234  |  1234 | 34 |  1234 |  1234 | 01234 |
+
+// | AD 12345 | 12345 | 45 | 12345 | 12345 | 12345 |
+
+// Returns 1 for 1 BC (which is year 0 in JavaScript)
+
+// Two digit year
+
+// Ordinal number
+
+// Local week-numbering year
+
+// ISO week-numbering year
+
+// Padding
+
+// Extended year. This is a single number designating the year of this calendar system.
+
+// The main difference between `y` and `u` localizers are B.C. years:
+
+// | Year | `y` | `u` |
+
+// |------|-----|-----|
+
+// | AC 1 |   1 |   1 |
+
+// | BC 1 |   1 |   0 |
+
+// | BC 2 |   2 |  -1 |
+
+// Also `yy` always returns the last two digits of a year,
+
+// while `uu` pads single digit years to 2 characters and returns other years unchanged.
+
+// Quarter
+
+// 1, 2, 3, 4
+
+// 01, 02, 03, 04
+
+// 1st, 2nd, 3rd, 4th
+
+// Q1, Q2, Q3, Q4
+
+// 1, 2, 3, 4 (narrow quarter; could be not numerical)
+
+// 1st quarter, 2nd quarter, ...
+
+// Stand-alone quarter
+
+// Month
+
+// 1, 2, ..., 12
+
+// 01, 02, ..., 12
+
+// 1st, 2nd, ..., 12th
+
+// Jan, Feb, ..., Dec
+
+// J, F, ..., D
+
+// January, February, ..., December
+
+// Stand-alone month
+
+// Local week of year
+
+// ISO week of year
+
+// Day of the month
+
+// Day of year
+
+// Day of week
+
+// Tue
+
+// T
+
+// Tu
+
+// Tuesday
+
+// Local day of week
+
+// Numerical value (Nth day of week with current locale or weekStartsOn)
+
+// Padded numerical value
+
+// 1st, 2nd, ..., 7th
+
+// Stand-alone local day of week
+
+// Numerical value (same as in `e`)
+
+// Padded numberical value
+
+// ISO day of week
+
+// 2
+
+// 02
+
+// 2nd
+
+// AM or PM
+
+// AM, PM, midnight, noon
+
+// in the morning, in the afternoon, in the evening, at night
+
+// Hour [1-12]
+
+// Hour [0-23]
+
+// Hour [0-11]
+
+// Hour [1-24]
+
+// Minute
+
+// Second
+
+// Fraction of second
+
+// Timezone (ISO-8601. If offset is 0, output is always `'Z'`)
+
+// Hours and optional minutes
+
+// Hours, minutes and optional seconds without `:` delimeter
+
+// Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
+
+// so this token always has the same output as `XX`
+
+// Hours and minutes without `:` delimeter
+
+// Hours, minutes and optional seconds with `:` delimeter
+
+// so this token always has the same output as `XXX`
+
+// Hours and minutes with `:` delimeter
+
+// Timezone (ISO-8601. If offset is 0, output is `'+00:00'` or equivalent)
+
+// so this token always has the same output as `xx`
+
+// so this token always has the same output as `xxx`
+
+// Timezone (GMT)
+
+// Short
+
+// Long
+
+// Timezone (specific non-location)
+
+// Seconds timestamp
+
+// Milliseconds timestamp
+
+/*
+ * |     | Unit                           |     | Unit                           |
+ * |-----|--------------------------------|-----|--------------------------------|
+ * |  a  | AM, PM                         |  A* | Milliseconds in day            |
+ * |  b  | AM, PM, noon, midnight         |  B  | Flexible day period            |
+ * |  c  | Stand-alone local day of week  |  C* | Localized hour w/ day period   |
+ * |  d  | Day of month                   |  D  | Day of year                    |
+ * |  e  | Local day of week              |  E  | Day of week                    |
+ * |  f  |                                |  F* | Day of week in month           |
+ * |  g* | Modified Julian day            |  G  | Era                            |
+ * |  h  | Hour [1-12]                    |  H  | Hour [0-23]                    |
+ * |  i! | ISO day of week                |  I! | ISO week of year               |
+ * |  j* | Localized hour w/ day period   |  J* | Localized hour w/o day period  |
+ * |  k  | Hour [1-24]                    |  K  | Hour [0-11]                    |
+ * |  l* | (deprecated)                   |  L  | Stand-alone month              |
+ * |  m  | Minute                         |  M  | Month                          |
+ * |  n  |                                |  N  |                                |
+ * |  o! | Ordinal number modifier        |  O  | Timezone (GMT)                 |
+ * |  p! | Long localized time            |  P! | Long localized date            |
+ * |  q  | Stand-alone quarter            |  Q  | Quarter                        |
+ * |  r* | Related Gregorian year         |  R! | ISO week-numbering year        |
+ * |  s  | Second                         |  S  | Fraction of second             |
+ * |  t! | Seconds timestamp              |  T! | Milliseconds timestamp         |
+ * |  u  | Extended year                  |  U* | Cyclic year                    |
+ * |  v* | Timezone (generic non-locat.)  |  V* | Timezone (location)            |
+ * |  w  | Local week of year             |  W* | Week of month                  |
+ * |  x  | Timezone (ISO-8601 w/o Z)      |  X  | Timezone (ISO-8601)            |
+ * |  y  | Year (abs)                     |  Y  | Local week-numbering year      |
+ * |  z  | Timezone (specific non-locat.) |  Z* | Timezone (aliases)             |
+ *
+ * Letters marked by * are not implemented but reserved by Unicode standard.
+ *
+ * Letters marked by ! are non-standard, but implemented by date-fns:
+ * - `o` modifies the previous token to turn it into an ordinal (see `format` docs)
+ * - `i` is ISO day of week. For `i` and `ii` is returns numeric ISO week days,
+ *   i.e. 7 for Sunday, 1 for Monday, etc.
+ * - `I` is ISO week of year, as opposed to `w` which is local week of year.
+ * - `R` is ISO week-numbering year, as opposed to `Y` which is local week-numbering year.
+ *   `R` is supposed to be used in conjunction with `I` and `i`
+ *   for universal ISO week-numbering date, whereas
+ *   `Y` is supposed to be used in conjunction with `w` and `e`
+ *   for week-numbering date specific to the locale.
+ * - `P` is long localized date format
+ * - `p` is long localized time format
+ */
+
+/**
+ * @name subMilliseconds
+ * @category Millisecond Helpers
+ * @summary Subtract the specified number of milliseconds from the given date.
+ *
+ * @description
+ * Subtract the specified number of milliseconds from the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of milliseconds to be subtracted
+ * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * @returns {Date} the new date with the milliseconds subtracted
+ * @throws {TypeError} 2 arguments required
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
+ *
+ * @example
+ * // Subtract 750 milliseconds from 10 July 2014 12:45:30.000:
+ * var result = subMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)
+ * //=> Thu Jul 10 2014 12:45:29.250
+ */
+
+// This RegExp consists of three parts separated by `|`:
+
+// - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
+
+//   (one of the certain letters followed by `o`)
+
+// - (\w)\1* matches any sequences of the same letter
+
+// - '' matches two quote characters in a row
+
+// - '(''|[^'])+('|$) matches anything surrounded by two quote characters ('),
+
+//   except a single quote symbol, which ends the sequence.
+
+//   Two quote characters do not end the sequence.
+
+//   If there is no matching single quote
+
+//   then the sequence will continue until the end of the string.
+
+// - . matches any single character unmatched by previous parts of the RegExps
+
+// This RegExp catches symbols escaped by quotes, and also
+
+// sequences of symbols P, p, and the combinations like `PPPPPPPppppp`
+
+/**
+ * @name format
+ * @category Common Helpers
+ * @summary Format the date.
+ *
+ * @description
+ * Return the formatted date string in the given format. The result may vary by locale.
+ *
+ * > ⚠️ Please note that the `format` tokens differ from Moment.js and other libraries.
+ * > See: https://git.io/fxCyr
+ *
+ * The characters wrapped between two single quotes characters (') are escaped.
+ * Two single quotes in a row, whether inside or outside a quoted sequence, represent a 'real' single quote.
+ * (see the last example)
+ *
+ * Format of the string is based on Unicode Technical Standard #35:
+ * https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table
+ * with a few additions (see note 7 below the table).
+ *
+ * Accepted patterns:
+ * | Unit                            | Pattern | Result examples                   | Notes |
+ * |---------------------------------|---------|-----------------------------------|-------|
+ * | Era                             | G..GGG  | AD, BC                            |       |
+ * |                                 | GGGG    | Anno Domini, Before Christ        | 2     |
+ * |                                 | GGGGG   | A, B                              |       |
+ * | Calendar year                   | y       | 44, 1, 1900, 2017                 | 5     |
+ * |                                 | yo      | 44th, 1st, 0th, 17th              | 5,7   |
+ * |                                 | yy      | 44, 01, 00, 17                    | 5     |
+ * |                                 | yyy     | 044, 001, 1900, 2017              | 5     |
+ * |                                 | yyyy    | 0044, 0001, 1900, 2017            | 5     |
+ * |                                 | yyyyy   | ...                               | 3,5   |
+ * | Local week-numbering year       | Y       | 44, 1, 1900, 2017                 | 5     |
+ * |                                 | Yo      | 44th, 1st, 1900th, 2017th         | 5,7   |
+ * |                                 | YY      | 44, 01, 00, 17                    | 5,8   |
+ * |                                 | YYY     | 044, 001, 1900, 2017              | 5     |
+ * |                                 | YYYY    | 0044, 0001, 1900, 2017            | 5,8   |
+ * |                                 | YYYYY   | ...                               | 3,5   |
+ * | ISO week-numbering year         | R       | -43, 0, 1, 1900, 2017             | 5,7   |
+ * |                                 | RR      | -43, 00, 01, 1900, 2017           | 5,7   |
+ * |                                 | RRR     | -043, 000, 001, 1900, 2017        | 5,7   |
+ * |                                 | RRRR    | -0043, 0000, 0001, 1900, 2017     | 5,7   |
+ * |                                 | RRRRR   | ...                               | 3,5,7 |
+ * | Extended year                   | u       | -43, 0, 1, 1900, 2017             | 5     |
+ * |                                 | uu      | -43, 01, 1900, 2017               | 5     |
+ * |                                 | uuu     | -043, 001, 1900, 2017             | 5     |
+ * |                                 | uuuu    | -0043, 0001, 1900, 2017           | 5     |
+ * |                                 | uuuuu   | ...                               | 3,5   |
+ * | Quarter (formatting)            | Q       | 1, 2, 3, 4                        |       |
+ * |                                 | Qo      | 1st, 2nd, 3rd, 4th                | 7     |
+ * |                                 | QQ      | 01, 02, 03, 04                    |       |
+ * |                                 | QQQ     | Q1, Q2, Q3, Q4                    |       |
+ * |                                 | QQQQ    | 1st quarter, 2nd quarter, ...     | 2     |
+ * |                                 | QQQQQ   | 1, 2, 3, 4                        | 4     |
+ * | Quarter (stand-alone)           | q       | 1, 2, 3, 4                        |       |
+ * |                                 | qo      | 1st, 2nd, 3rd, 4th                | 7     |
+ * |                                 | qq      | 01, 02, 03, 04                    |       |
+ * |                                 | qqq     | Q1, Q2, Q3, Q4                    |       |
+ * |                                 | qqqq    | 1st quarter, 2nd quarter, ...     | 2     |
+ * |                                 | qqqqq   | 1, 2, 3, 4                        | 4     |
+ * | Month (formatting)              | M       | 1, 2, ..., 12                     |       |
+ * |                                 | Mo      | 1st, 2nd, ..., 12th               | 7     |
+ * |                                 | MM      | 01, 02, ..., 12                   |       |
+ * |                                 | MMM     | Jan, Feb, ..., Dec                |       |
+ * |                                 | MMMM    | January, February, ..., December  | 2     |
+ * |                                 | MMMMM   | J, F, ..., D                      |       |
+ * | Month (stand-alone)             | L       | 1, 2, ..., 12                     |       |
+ * |                                 | Lo      | 1st, 2nd, ..., 12th               | 7     |
+ * |                                 | LL      | 01, 02, ..., 12                   |       |
+ * |                                 | LLL     | Jan, Feb, ..., Dec                |       |
+ * |                                 | LLLL    | January, February, ..., December  | 2     |
+ * |                                 | LLLLL   | J, F, ..., D                      |       |
+ * | Local week of year              | w       | 1, 2, ..., 53                     |       |
+ * |                                 | wo      | 1st, 2nd, ..., 53th               | 7     |
+ * |                                 | ww      | 01, 02, ..., 53                   |       |
+ * | ISO week of year                | I       | 1, 2, ..., 53                     | 7     |
+ * |                                 | Io      | 1st, 2nd, ..., 53th               | 7     |
+ * |                                 | II      | 01, 02, ..., 53                   | 7     |
+ * | Day of month                    | d       | 1, 2, ..., 31                     |       |
+ * |                                 | do      | 1st, 2nd, ..., 31st               | 7     |
+ * |                                 | dd      | 01, 02, ..., 31                   |       |
+ * | Day of year                     | D       | 1, 2, ..., 365, 366               | 8     |
+ * |                                 | Do      | 1st, 2nd, ..., 365th, 366th       | 7     |
+ * |                                 | DD      | 01, 02, ..., 365, 366             | 8     |
+ * |                                 | DDD     | 001, 002, ..., 365, 366           |       |
+ * |                                 | DDDD    | ...                               | 3     |
+ * | Day of week (formatting)        | E..EEE  | Mon, Tue, Wed, ..., Su            |       |
+ * |                                 | EEEE    | Monday, Tuesday, ..., Sunday      | 2     |
+ * |                                 | EEEEE   | M, T, W, T, F, S, S               |       |
+ * |                                 | EEEEEE  | Mo, Tu, We, Th, Fr, Su, Sa        |       |
+ * | ISO day of week (formatting)    | i       | 1, 2, 3, ..., 7                   | 7     |
+ * |                                 | io      | 1st, 2nd, ..., 7th                | 7     |
+ * |                                 | ii      | 01, 02, ..., 07                   | 7     |
+ * |                                 | iii     | Mon, Tue, Wed, ..., Su            | 7     |
+ * |                                 | iiii    | Monday, Tuesday, ..., Sunday      | 2,7   |
+ * |                                 | iiiii   | M, T, W, T, F, S, S               | 7     |
+ * |                                 | iiiiii  | Mo, Tu, We, Th, Fr, Su, Sa        | 7     |
+ * | Local day of week (formatting)  | e       | 2, 3, 4, ..., 1                   |       |
+ * |                                 | eo      | 2nd, 3rd, ..., 1st                | 7     |
+ * |                                 | ee      | 02, 03, ..., 01                   |       |
+ * |                                 | eee     | Mon, Tue, Wed, ..., Su            |       |
+ * |                                 | eeee    | Monday, Tuesday, ..., Sunday      | 2     |
+ * |                                 | eeeee   | M, T, W, T, F, S, S               |       |
+ * |                                 | eeeeee  | Mo, Tu, We, Th, Fr, Su, Sa        |       |
+ * | Local day of week (stand-alone) | c       | 2, 3, 4, ..., 1                   |       |
+ * |                                 | co      | 2nd, 3rd, ..., 1st                | 7     |
+ * |                                 | cc      | 02, 03, ..., 01                   |       |
+ * |                                 | ccc     | Mon, Tue, Wed, ..., Su            |       |
+ * |                                 | cccc    | Monday, Tuesday, ..., Sunday      | 2     |
+ * |                                 | ccccc   | M, T, W, T, F, S, S               |       |
+ * |                                 | cccccc  | Mo, Tu, We, Th, Fr, Su, Sa        |       |
+ * | AM, PM                          | a..aaa  | AM, PM                            |       |
+ * |                                 | aaaa    | a.m., p.m.                        | 2     |
+ * |                                 | aaaaa   | a, p                              |       |
+ * | AM, PM, noon, midnight          | b..bbb  | AM, PM, noon, midnight            |       |
+ * |                                 | bbbb    | a.m., p.m., noon, midnight        | 2     |
+ * |                                 | bbbbb   | a, p, n, mi                       |       |
+ * | Flexible day period             | B..BBB  | at night, in the morning, ...     |       |
+ * |                                 | BBBB    | at night, in the morning, ...     | 2     |
+ * |                                 | BBBBB   | at night, in the morning, ...     |       |
+ * | Hour [1-12]                     | h       | 1, 2, ..., 11, 12                 |       |
+ * |                                 | ho      | 1st, 2nd, ..., 11th, 12th         | 7     |
+ * |                                 | hh      | 01, 02, ..., 11, 12               |       |
+ * | Hour [0-23]                     | H       | 0, 1, 2, ..., 23                  |       |
+ * |                                 | Ho      | 0th, 1st, 2nd, ..., 23rd          | 7     |
+ * |                                 | HH      | 00, 01, 02, ..., 23               |       |
+ * | Hour [0-11]                     | K       | 1, 2, ..., 11, 0                  |       |
+ * |                                 | Ko      | 1st, 2nd, ..., 11th, 0th          | 7     |
+ * |                                 | KK      | 1, 2, ..., 11, 0                  |       |
+ * | Hour [1-24]                     | k       | 24, 1, 2, ..., 23                 |       |
+ * |                                 | ko      | 24th, 1st, 2nd, ..., 23rd         | 7     |
+ * |                                 | kk      | 24, 01, 02, ..., 23               |       |
+ * | Minute                          | m       | 0, 1, ..., 59                     |       |
+ * |                                 | mo      | 0th, 1st, ..., 59th               | 7     |
+ * |                                 | mm      | 00, 01, ..., 59                   |       |
+ * | Second                          | s       | 0, 1, ..., 59                     |       |
+ * |                                 | so      | 0th, 1st, ..., 59th               | 7     |
+ * |                                 | ss      | 00, 01, ..., 59                   |       |
+ * | Fraction of second              | S       | 0, 1, ..., 9                      |       |
+ * |                                 | SS      | 00, 01, ..., 99                   |       |
+ * |                                 | SSS     | 000, 0001, ..., 999               |       |
+ * |                                 | SSSS    | ...                               | 3     |
+ * | Timezone (ISO-8601 w/ Z)        | X       | -08, +0530, Z                     |       |
+ * |                                 | XX      | -0800, +0530, Z                   |       |
+ * |                                 | XXX     | -08:00, +05:30, Z                 |       |
+ * |                                 | XXXX    | -0800, +0530, Z, +123456          | 2     |
+ * |                                 | XXXXX   | -08:00, +05:30, Z, +12:34:56      |       |
+ * | Timezone (ISO-8601 w/o Z)       | x       | -08, +0530, +00                   |       |
+ * |                                 | xx      | -0800, +0530, +0000               |       |
+ * |                                 | xxx     | -08:00, +05:30, +00:00            | 2     |
+ * |                                 | xxxx    | -0800, +0530, +0000, +123456      |       |
+ * |                                 | xxxxx   | -08:00, +05:30, +00:00, +12:34:56 |       |
+ * | Timezone (GMT)                  | O...OOO | GMT-8, GMT+5:30, GMT+0            |       |
+ * |                                 | OOOO    | GMT-08:00, GMT+05:30, GMT+00:00   | 2     |
+ * | Timezone (specific non-locat.)  | z...zzz | GMT-8, GMT+5:30, GMT+0            | 6     |
+ * |                                 | zzzz    | GMT-08:00, GMT+05:30, GMT+00:00   | 2,6   |
+ * | Seconds timestamp               | t       | 512969520                         | 7     |
+ * |                                 | tt      | ...                               | 3,7   |
+ * | Milliseconds timestamp          | T       | 512969520900                      | 7     |
+ * |                                 | TT      | ...                               | 3,7   |
+ * | Long localized date             | P       | 05/29/1453                        | 7     |
+ * |                                 | PP      | May 29, 1453                      | 7     |
+ * |                                 | PPP     | May 29th, 1453                    | 7     |
+ * |                                 | PPPP    | Sunday, May 29th, 1453            | 2,7   |
+ * | Long localized time             | p       | 12:00 AM                          | 7     |
+ * |                                 | pp      | 12:00:00 AM                       | 7     |
+ * |                                 | ppp     | 12:00:00 AM GMT+2                 | 7     |
+ * |                                 | pppp    | 12:00:00 AM GMT+02:00             | 2,7   |
+ * | Combination of date and time    | Pp      | 05/29/1453, 12:00 AM              | 7     |
+ * |                                 | PPpp    | May 29, 1453, 12:00:00 AM         | 7     |
+ * |                                 | PPPppp  | May 29th, 1453 at ...             | 7     |
+ * |                                 | PPPPpppp| Sunday, May 29th, 1453 at ...     | 2,7   |
+ * Notes:
+ * 1. "Formatting" units (e.g. formatting quarter) in the default en-US locale
+ *    are the same as "stand-alone" units, but are different in some languages.
+ *    "Formatting" units are declined according to the rules of the language
+ *    in the context of a date. "Stand-alone" units are always nominative singular:
+ *
+ *    `format(new Date(2017, 10, 6), 'do LLLL', {locale: cs}) //=> '6. listopad'`
+ *
+ *    `format(new Date(2017, 10, 6), 'do MMMM', {locale: cs}) //=> '6. listopadu'`
+ *
+ * 2. Any sequence of the identical letters is a pattern, unless it is escaped by
+ *    the single quote characters (see below).
+ *    If the sequence is longer than listed in table (e.g. `EEEEEEEEEEE`)
+ *    the output will be the same as default pattern for this unit, usually
+ *    the longest one (in case of ISO weekdays, `EEEE`). Default patterns for units
+ *    are marked with "2" in the last column of the table.
+ *
+ *    `format(new Date(2017, 10, 6), 'MMM') //=> 'Nov'`
+ *
+ *    `format(new Date(2017, 10, 6), 'MMMM') //=> 'November'`
+ *
+ *    `format(new Date(2017, 10, 6), 'MMMMM') //=> 'N'`
+ *
+ *    `format(new Date(2017, 10, 6), 'MMMMMM') //=> 'November'`
+ *
+ *    `format(new Date(2017, 10, 6), 'MMMMMMM') //=> 'November'`
+ *
+ * 3. Some patterns could be unlimited length (such as `yyyyyyyy`).
+ *    The output will be padded with zeros to match the length of the pattern.
+ *
+ *    `format(new Date(2017, 10, 6), 'yyyyyyyy') //=> '00002017'`
+ *
+ * 4. `QQQQQ` and `qqqqq` could be not strictly numerical in some locales.
+ *    These tokens represent the shortest form of the quarter.
+ *
+ * 5. The main difference between `y` and `u` patterns are B.C. years:
+ *
+ *    | Year | `y` | `u` |
+ *    |------|-----|-----|
+ *    | AC 1 |   1 |   1 |
+ *    | BC 1 |   1 |   0 |
+ *    | BC 2 |   2 |  -1 |
+ *
+ *    Also `yy` always returns the last two digits of a year,
+ *    while `uu` pads single digit years to 2 characters and returns other years unchanged:
+ *
+ *    | Year | `yy` | `uu` |
+ *    |------|------|------|
+ *    | 1    |   01 |   01 |
+ *    | 14   |   14 |   14 |
+ *    | 376  |   76 |  376 |
+ *    | 1453 |   53 | 1453 |
+ *
+ *    The same difference is true for local and ISO week-numbering years (`Y` and `R`),
+ *    except local week-numbering years are dependent on `options.weekStartsOn`
+ *    and `options.firstWeekContainsDate` (compare [getISOWeekYear]{@link https://date-fns.org/docs/getISOWeekYear}
+ *    and [getWeekYear]{@link https://date-fns.org/docs/getWeekYear}).
+ *
+ * 6. Specific non-location timezones are currently unavailable in `date-fns`,
+ *    so right now these tokens fall back to GMT timezones.
+ *
+ * 7. These patterns are not in the Unicode Technical Standard #35:
+ *    - `i`: ISO day of week
+ *    - `I`: ISO week of year
+ *    - `R`: ISO week-numbering year
+ *    - `t`: seconds timestamp
+ *    - `T`: milliseconds timestamp
+ *    - `o`: ordinal number modifier
+ *    - `P`: long localized date
+ *    - `p`: long localized time
+ *
+ * 8. These tokens are often confused with others. See: https://git.io/fxCyr
+ *
+ * @param {Date|String|Number} date - the original date
+ * @param {String} format - the string of tokens
+ * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @param {Number} [options.firstWeekContainsDate=1] - the day of January, which is
+ * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
+ * @param {Boolean} [options.awareOfUnicodeTokens=false] - if true, allows usage of Unicode tokens causes confusion:
+ *   - Some of the day of year tokens (`D`, `DD`) that are confused with the day of month tokens (`d`, `dd`).
+ *   - Some of the local week-numbering year tokens (`YY`, `YYYY`) that are confused with the calendar year tokens (`yy`, `yyyy`).
+ *   See: https://git.io/fxCyr
+ * @returns {String} the formatted date string
+ * @throws {TypeError} 2 arguments required
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
+ * @throws {RangeError} `options.locale` must contain `localize` property
+ * @throws {RangeError} `options.locale` must contain `formatLong` property
+ * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
+ * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
+ * @throws {RangeError} `options.awareOfUnicodeTokens` must be set to `true` to use `XX` token; see: https://git.io/fxCyr
+ *
+ * @example
+ * // Represent 11 February 2014 in middle-endian format:
+ * var result = format(
+ *   new Date(2014, 1, 11),
+ *   'MM/dd/yyyy'
+ * )
+ * //=> '02/11/2014'
+ *
+ * @example
+ * // Represent 2 July 2014 in Esperanto:
+ * import { eoLocale } from 'date-fns/locale/eo'
+ * var result = format(
+ *   new Date(2014, 6, 2),
+ *   "do 'de' MMMM yyyy",
+ *   {locale: eoLocale}
+ * )
+ * //=> '2-a de julio 2014'
+ *
+ * @example
+ * // Escape string by single quote characters:
+ * var result = format(
+ *   new Date(2014, 6, 2, 15),
+ *   "h 'o''clock'"
+ * )
+ * //=> "3 o'clock"
+ */
+
+// Convert the date in system timezone to the same date in UTC+00:00 timezone.
+
+// This ensures that when UTC functions will be implemented, locales will be compatible with them.
+
+// See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/376
+
+// Replace two single quote characters with one single quote character
+
+/**
+ * @name isAfter
+ * @category Common Helpers
+ * @summary Is the first date after the second one?
+ *
+ * @description
+ * Is the first date after the second one?
+ *
+ * @param {Date|String|Number} date - the date that should be after the other one to return true
+ * @param {Date|String|Number} dateToCompare - the date to compare with
+ * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * @returns {Boolean} the first date is after the second date
+ * @throws {TypeError} 2 arguments required
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
+ *
+ * @example
+ * // Is 10 July 1989 after 11 February 1987?
+ * var result = isAfter(new Date(1989, 6, 10), new Date(1987, 1, 11))
+ * //=> true
+ */
+
+/**
+ * @name isBefore
+ * @category Common Helpers
+ * @summary Is the first date before the second one?
+ *
+ * @description
+ * Is the first date before the second one?
+ *
+ * @param {Date|String|Number} date - the date that should be before the other one to return true
+ * @param {Date|String|Number} dateToCompare - the date to compare with
+ * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * @returns {Boolean} the first date is before the second date
+ * @throws {TypeError} 2 arguments required
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
+ *
+ * @example
+ * // Is 10 July 1989 before 11 February 1987?
+ * var result = isBefore(new Date(1989, 6, 10), new Date(1987, 1, 11))
+ * //=> false
+ */
+
+/**
+ * @name isEqual
+ * @category Common Helpers
+ * @summary Are the given dates equal?
+ *
+ * @description
+ * Are the given dates equal?
+ *
+ * @param {Date|String|Number} dateLeft - the first date to compare
+ * @param {Date|String|Number} dateRight - the second date to compare
+ * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * @returns {Boolean} the dates are equal
+ * @throws {TypeError} 2 arguments required
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
+ *
+ * @example
+ * // Are 2 July 2014 06:30:45.000 and 2 July 2014 06:30:45.500 equal?
+ * var result = isEqual(
+ *   new Date(2014, 6, 2, 6, 30, 45, 0)
+ *   new Date(2014, 6, 2, 6, 30, 45, 500)
+ * )
+ * //=> false
+ */
+
+// 0 to 12
+
+// 0 to 31
+
+// 0 to 366
+
+// 0 to 53
+
+// 0 to 23
+
+// 0 to 24
+
+// 0 to 11
+
+// 0 to 59
+
+// 0 to 9
+
+// 0 to 99
+
+// 0 to 999
+
+// 0 to 9999
+
+// 0 to 9, -0 to -9
+
+// 0 to 99, -0 to -99
+
+// 0 to 999, -0 to -999
+
+// Input is 'Z'
+
+// Absolute number of the current year:
+
+// 1 -> 1 AC
+
+// 0 -> 1 BC
+
+// -1 -> 2 BC
+
+// User for validation
+
+/*
+ * |     | Unit                           |     | Unit                           |
+ * |-----|--------------------------------|-----|--------------------------------|
+ * |  a  | AM, PM                         |  A* | Milliseconds in day            |
+ * |  b  | AM, PM, noon, midnight         |  B  | Flexible day period            |
+ * |  c  | Stand-alone local day of week  |  C* | Localized hour w/ day period   |
+ * |  d  | Day of month                   |  D  | Day of year                    |
+ * |  e  | Local day of week              |  E  | Day of week                    |
+ * |  f  |                                |  F* | Day of week in month           |
+ * |  g* | Modified Julian day            |  G  | Era                            |
+ * |  h  | Hour [1-12]                    |  H  | Hour [0-23]                    |
+ * |  i! | ISO day of week                |  I! | ISO week of year               |
+ * |  j* | Localized hour w/ day period   |  J* | Localized hour w/o day period  |
+ * |  k  | Hour [1-24]                    |  K  | Hour [0-11]                    |
+ * |  l* | (deprecated)                   |  L  | Stand-alone month              |
+ * |  m  | Minute                         |  M  | Month                          |
+ * |  n  |                                |  N  |                                |
+ * |  o! | Ordinal number modifier        |  O* | Timezone (GMT)                 |
+ * |  p  |                                |  P  |                                |
+ * |  q  | Stand-alone quarter            |  Q  | Quarter                        |
+ * |  r* | Related Gregorian year         |  R! | ISO week-numbering year        |
+ * |  s  | Second                         |  S  | Fraction of second             |
+ * |  t! | Seconds timestamp              |  T! | Milliseconds timestamp         |
+ * |  u  | Extended year                  |  U* | Cyclic year                    |
+ * |  v* | Timezone (generic non-locat.)  |  V* | Timezone (location)            |
+ * |  w  | Local week of year             |  W* | Week of month                  |
+ * |  x  | Timezone (ISO-8601 w/o Z)      |  X  | Timezone (ISO-8601)            |
+ * |  y  | Year (abs)                     |  Y  | Local week-numbering year      |
+ * |  z* | Timezone (specific non-locat.) |  Z* | Timezone (aliases)             |
+ *
+ * Letters marked by * are not implemented but reserved by Unicode standard.
+ *
+ * Letters marked by ! are non-standard, but implemented by date-fns:
+ * - `o` modifies the previous token to turn it into an ordinal (see `parse` docs)
+ * - `i` is ISO day of week. For `i` and `ii` is returns numeric ISO week days,
+ *   i.e. 7 for Sunday, 1 for Monday, etc.
+ * - `I` is ISO week of year, as opposed to `w` which is local week of year.
+ * - `R` is ISO week-numbering year, as opposed to `Y` which is local week-numbering year.
+ *   `R` is supposed to be used in conjunction with `I` and `i`
+ *   for universal ISO week-numbering date, whereas
+ *   `Y` is supposed to be used in conjunction with `w` and `e`
+ *   for week-numbering date specific to the locale.
+ */
+
+// Sets year 10 BC if BC, or 10 AC if AC
+
+// From http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
+
+// Extended year
+
+// 3
+
+// 03
+
+// 3rd
+
+// AM, PM, midnight
+
+// Timezone (ISO-8601. +00:00 is `'Z'`)
+
+// Timezone (ISO-8601)
+
+/**
+ * Custom parse behavior on top of date-fns parse function.
+ */
+
+/**
+ * @name parse
+ * @category Common Helpers
+ * @summary Parse the date.
+ *
+ * @description
+ * Return the date parsed from string using the given format string.
+ *
+ * > ⚠️ Please note that the `format` tokens differ from Moment.js and other libraries.
+ * > See: https://git.io/fxCyr
+ *
+ * The characters in the format string wrapped between two single quotes characters (') are escaped.
+ * Two single quotes in a row, whether inside or outside a quoted sequence, represent a 'real' single quote.
+ *
+ * Format of the format string is based on Unicode Technical Standard #35:
+ * https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table
+ * with a few additions (see note 5 below the table).
+ *
+ * Accepted format string patterns:
+ * | Unit                            |Prior| Pattern | Result examples                   | Notes |
+ * |---------------------------------|-----|---------|-----------------------------------|-------|
+ * | Era                             | 140 | G..GGG  | AD, BC                            |       |
+ * |                                 |     | GGGG    | Anno Domini, Before Christ        | 2     |
+ * |                                 |     | GGGGG   | A, B                              |       |
+ * | Calendar year                   | 130 | y       | 44, 1, 1900, 2017, 9999           | 4     |
+ * |                                 |     | yo      | 44th, 1st, 1900th, 9999999th      | 4,5   |
+ * |                                 |     | yy      | 44, 01, 00, 17                    | 4     |
+ * |                                 |     | yyy     | 044, 001, 123, 999                | 4     |
+ * |                                 |     | yyyy    | 0044, 0001, 1900, 2017            | 4     |
+ * |                                 |     | yyyyy   | ...                               | 2,4   |
+ * | Local week-numbering year       | 130 | Y       | 44, 1, 1900, 2017, 9000           | 4     |
+ * |                                 |     | Yo      | 44th, 1st, 1900th, 9999999th      | 4,5   |
+ * |                                 |     | YY      | 44, 01, 00, 17                    | 4,6   |
+ * |                                 |     | YYY     | 044, 001, 123, 999                | 4     |
+ * |                                 |     | YYYY    | 0044, 0001, 1900, 2017            | 4,6   |
+ * |                                 |     | YYYYY   | ...                               | 2,4   |
+ * | ISO week-numbering year         | 130 | R       | -43, 1, 1900, 2017, 9999, -9999   | 4,5   |
+ * |                                 |     | RR      | -43, 01, 00, 17                   | 4,5   |
+ * |                                 |     | RRR     | -043, 001, 123, 999, -999         | 4,5   |
+ * |                                 |     | RRRR    | -0043, 0001, 2017, 9999, -9999    | 4,5   |
+ * |                                 |     | RRRRR   | ...                               | 2,4,5 |
+ * | Extended year                   | 130 | u       | -43, 1, 1900, 2017, 9999, -999    | 4     |
+ * |                                 |     | uu      | -43, 01, 99, -99                  | 4     |
+ * |                                 |     | uuu     | -043, 001, 123, 999, -999         | 4     |
+ * |                                 |     | uuuu    | -0043, 0001, 2017, 9999, -9999    | 4     |
+ * |                                 |     | uuuuu   | ...                               | 2,4   |
+ * | Quarter (formatting)            | 120 | Q       | 1, 2, 3, 4                        |       |
+ * |                                 |     | Qo      | 1st, 2nd, 3rd, 4th                | 5     |
+ * |                                 |     | QQ      | 01, 02, 03, 04                    |       |
+ * |                                 |     | QQQ     | Q1, Q2, Q3, Q4                    |       |
+ * |                                 |     | QQQQ    | 1st quarter, 2nd quarter, ...     | 2     |
+ * |                                 |     | QQQQQ   | 1, 2, 3, 4                        | 4     |
+ * | Quarter (stand-alone)           | 120 | q       | 1, 2, 3, 4                        |       |
+ * |                                 |     | qo      | 1st, 2nd, 3rd, 4th                | 5     |
+ * |                                 |     | qq      | 01, 02, 03, 04                    |       |
+ * |                                 |     | qqq     | Q1, Q2, Q3, Q4                    |       |
+ * |                                 |     | qqqq    | 1st quarter, 2nd quarter, ...     | 2     |
+ * |                                 |     | qqqqq   | 1, 2, 3, 4                        | 3     |
+ * | Month (formatting)              | 110 | M       | 1, 2, ..., 12                     |       |
+ * |                                 |     | Mo      | 1st, 2nd, ..., 12th               | 5     |
+ * |                                 |     | MM      | 01, 02, ..., 12                   |       |
+ * |                                 |     | MMM     | Jan, Feb, ..., Dec                |       |
+ * |                                 |     | MMMM    | January, February, ..., December  | 2     |
+ * |                                 |     | MMMMM   | J, F, ..., D                      |       |
+ * | Month (stand-alone)             | 110 | L       | 1, 2, ..., 12                     |       |
+ * |                                 |     | Lo      | 1st, 2nd, ..., 12th               | 5     |
+ * |                                 |     | LL      | 01, 02, ..., 12                   |       |
+ * |                                 |     | LLL     | Jan, Feb, ..., Dec                |       |
+ * |                                 |     | LLLL    | January, February, ..., December  | 2     |
+ * |                                 |     | LLLLL   | J, F, ..., D                      |       |
+ * | Local week of year              | 100 | w       | 1, 2, ..., 53                     |       |
+ * |                                 |     | wo      | 1st, 2nd, ..., 53th               | 5     |
+ * |                                 |     | ww      | 01, 02, ..., 53                   |       |
+ * | ISO week of year                | 100 | I       | 1, 2, ..., 53                     | 5     |
+ * |                                 |     | Io      | 1st, 2nd, ..., 53th               | 5     |
+ * |                                 |     | II      | 01, 02, ..., 53                   | 5     |
+ * | Day of month                    |  90 | d       | 1, 2, ..., 31                     |       |
+ * |                                 |     | do      | 1st, 2nd, ..., 31st               | 5     |
+ * |                                 |     | dd      | 01, 02, ..., 31                   |       |
+ * | Day of year                     |  90 | D       | 1, 2, ..., 365, 366               | 6     |
+ * |                                 |     | Do      | 1st, 2nd, ..., 365th, 366th       | 5     |
+ * |                                 |     | DD      | 01, 02, ..., 365, 366             | 6     |
+ * |                                 |     | DDD     | 001, 002, ..., 365, 366           |       |
+ * |                                 |     | DDDD    | ...                               | 2     |
+ * | Day of week (formatting)        |  90 | E..EEE  | Mon, Tue, Wed, ..., Su            |       |
+ * |                                 |     | EEEE    | Monday, Tuesday, ..., Sunday      | 2     |
+ * |                                 |     | EEEEE   | M, T, W, T, F, S, S               |       |
+ * |                                 |     | EEEEEE  | Mo, Tu, We, Th, Fr, Su, Sa        |       |
+ * | ISO day of week (formatting)    |  90 | i       | 1, 2, 3, ..., 7                   | 5     |
+ * |                                 |     | io      | 1st, 2nd, ..., 7th                | 5     |
+ * |                                 |     | ii      | 01, 02, ..., 07                   | 5     |
+ * |                                 |     | iii     | Mon, Tue, Wed, ..., Su            | 5     |
+ * |                                 |     | iiii    | Monday, Tuesday, ..., Sunday      | 2,5   |
+ * |                                 |     | iiiii   | M, T, W, T, F, S, S               | 5     |
+ * |                                 |     | iiiiii  | Mo, Tu, We, Th, Fr, Su, Sa        | 5     |
+ * | Local day of week (formatting)  |  90 | e       | 2, 3, 4, ..., 1                   |       |
+ * |                                 |     | eo      | 2nd, 3rd, ..., 1st                | 5     |
+ * |                                 |     | ee      | 02, 03, ..., 01                   |       |
+ * |                                 |     | eee     | Mon, Tue, Wed, ..., Su            |       |
+ * |                                 |     | eeee    | Monday, Tuesday, ..., Sunday      | 2     |
+ * |                                 |     | eeeee   | M, T, W, T, F, S, S               |       |
+ * |                                 |     | eeeeee  | Mo, Tu, We, Th, Fr, Su, Sa        |       |
+ * | Local day of week (stand-alone) |  90 | c       | 2, 3, 4, ..., 1                   |       |
+ * |                                 |     | co      | 2nd, 3rd, ..., 1st                | 5     |
+ * |                                 |     | cc      | 02, 03, ..., 01                   |       |
+ * |                                 |     | ccc     | Mon, Tue, Wed, ..., Su            |       |
+ * |                                 |     | cccc    | Monday, Tuesday, ..., Sunday      | 2     |
+ * |                                 |     | ccccc   | M, T, W, T, F, S, S               |       |
+ * |                                 |     | cccccc  | Mo, Tu, We, Th, Fr, Su, Sa        |       |
+ * | AM, PM                          |  80 | a..aaa  | AM, PM                            |       |
+ * |                                 |     | aaaa    | a.m., p.m.                        | 2     |
+ * |                                 |     | aaaaa   | a, p                              |       |
+ * | AM, PM, noon, midnight          |  80 | b..bbb  | AM, PM, noon, midnight            |       |
+ * |                                 |     | bbbb    | a.m., p.m., noon, midnight        | 2     |
+ * |                                 |     | bbbbb   | a, p, n, mi                       |       |
+ * | Flexible day period             |  80 | B..BBB  | at night, in the morning, ...     |       |
+ * |                                 |     | BBBB    | at night, in the morning, ...     | 2     |
+ * |                                 |     | BBBBB   | at night, in the morning, ...     |       |
+ * | Hour [1-12]                     |  70 | h       | 1, 2, ..., 11, 12                 |       |
+ * |                                 |     | ho      | 1st, 2nd, ..., 11th, 12th         | 5     |
+ * |                                 |     | hh      | 01, 02, ..., 11, 12               |       |
+ * | Hour [0-23]                     |  70 | H       | 0, 1, 2, ..., 23                  |       |
+ * |                                 |     | Ho      | 0th, 1st, 2nd, ..., 23rd          | 5     |
+ * |                                 |     | HH      | 00, 01, 02, ..., 23               |       |
+ * | Hour [0-11]                     |  70 | K       | 1, 2, ..., 11, 0                  |       |
+ * |                                 |     | Ko      | 1st, 2nd, ..., 11th, 0th          | 5     |
+ * |                                 |     | KK      | 1, 2, ..., 11, 0                  |       |
+ * | Hour [1-24]                     |  70 | k       | 24, 1, 2, ..., 23                 |       |
+ * |                                 |     | ko      | 24th, 1st, 2nd, ..., 23rd         | 5     |
+ * |                                 |     | kk      | 24, 01, 02, ..., 23               |       |
+ * | Minute                          |  60 | m       | 0, 1, ..., 59                     |       |
+ * |                                 |     | mo      | 0th, 1st, ..., 59th               | 5     |
+ * |                                 |     | mm      | 00, 01, ..., 59                   |       |
+ * | Second                          |  50 | s       | 0, 1, ..., 59                     |       |
+ * |                                 |     | so      | 0th, 1st, ..., 59th               | 5     |
+ * |                                 |     | ss      | 00, 01, ..., 59                   |       |
+ * | Fraction of second              |  40 | S       | 0, 1, ..., 9                      |       |
+ * |                                 |     | SS      | 00, 01, ..., 99                   |       |
+ * |                                 |     | SSS     | 000, 0001, ..., 999               |       |
+ * |                                 |     | SSSS    | ...                               | 2     |
+ * | Timezone (ISO-8601 w/ Z)        |  20 | X       | -08, +0530, Z                     |       |
+ * |                                 |     | XX      | -0800, +0530, Z                   |       |
+ * |                                 |     | XXX     | -08:00, +05:30, Z                 |       |
+ * |                                 |     | XXXX    | -0800, +0530, Z, +123456          | 2     |
+ * |                                 |     | XXXXX   | -08:00, +05:30, Z, +12:34:56      |       |
+ * | Timezone (ISO-8601 w/o Z)       |  20 | x       | -08, +0530, +00                   |       |
+ * |                                 |     | xx      | -0800, +0530, +0000               |       |
+ * |                                 |     | xxx     | -08:00, +05:30, +00:00            | 2     |
+ * |                                 |     | xxxx    | -0800, +0530, +0000, +123456      |       |
+ * |                                 |     | xxxxx   | -08:00, +05:30, +00:00, +12:34:56 |       |
+ * | Seconds timestamp               |  10 | t       | 512969520                         |       |
+ * |                                 |     | tt      | ...                               | 2     |
+ * | Milliseconds timestamp          |  10 | T       | 512969520900                      |       |
+ * |                                 |     | TT      | ...                               | 2     |
+ * Notes:
+ * 1. "Formatting" units (e.g. formatting quarter) in the default en-US locale
+ *    are the same as "stand-alone" units, but are different in some languages.
+ *    "Formatting" units are declined according to the rules of the language
+ *    in the context of a date. "Stand-alone" units are always nominative singular.
+ *    In `format` function, they will produce different result:
+ *
+ *    `format(new Date(2017, 10, 6), 'do LLLL', {locale: cs}) //=> '6. listopad'`
+ *
+ *    `format(new Date(2017, 10, 6), 'do MMMM', {locale: cs}) //=> '6. listopadu'`
+ *
+ *    `parse` will try to match both formatting and stand-alone units interchangably.
+ *
+ * 2. Any sequence of the identical letters is a pattern, unless it is escaped by
+ *    the single quote characters (see below).
+ *    If the sequence is longer than listed in table:
+ *    - for numerical units (`yyyyyyyy`) `parse` will try to match a number
+ *      as wide as the sequence
+ *    - for text units (`MMMMMMMM`) `parse` will try to match the widest variation of the unit.
+ *      These variations are marked with "2" in the last column of the table.
+ *
+ * 3. `QQQQQ` and `qqqqq` could be not strictly numerical in some locales.
+ *    These tokens represent the shortest form of the quarter.
+ *
+ * 4. The main difference between `y` and `u` patterns are B.C. years:
+ *
+ *    | Year | `y` | `u` |
+ *    |------|-----|-----|
+ *    | AC 1 |   1 |   1 |
+ *    | BC 1 |   1 |   0 |
+ *    | BC 2 |   2 |  -1 |
+ *
+ *    Also `yy` will try to guess the century of two digit year by proximity with `baseDate`:
+ *
+ *    `parse('50', 'yy', new Date(2018, 0, 1)) //=> Sat Jan 01 2050 00:00:00`
+ *
+ *    `parse('75', 'yy', new Date(2018, 0, 1)) //=> Wed Jan 01 1975 00:00:00`
+ *
+ *    while `uu` will just assign the year as is:
+ *
+ *    `parse('50', 'uu', new Date(2018, 0, 1)) //=> Sat Jan 01 0050 00:00:00`
+ *
+ *    `parse('75', 'uu', new Date(2018, 0, 1)) //=> Tue Jan 01 0075 00:00:00`
+ *
+ *    The same difference is true for local and ISO week-numbering years (`Y` and `R`),
+ *    except local week-numbering years are dependent on `options.weekStartsOn`
+ *    and `options.firstWeekContainsDate` (compare [setISOWeekYear]{@link https://date-fns.org/docs/setISOWeekYear}
+ *    and [setWeekYear]{@link https://date-fns.org/docs/setWeekYear}).
+ *
+ * 5. These patterns are not in the Unicode Technical Standard #35:
+ *    - `i`: ISO day of week
+ *    - `I`: ISO week of year
+ *    - `R`: ISO week-numbering year
+ *    - `o`: ordinal number modifier
+ *
+ * 6. These tokens are often confused with others. See: https://git.io/fxCyr
+ *
+ * Values will be assigned to the date in the descending order of its unit's priority.
+ * Units of an equal priority overwrite each other in the order of appearance.
+ *
+ * If no values of higher priority are parsed (e.g. when parsing string 'January 1st' without a year),
+ * the values will be taken from 3rd argument `baseDate` which works as a context of parsing.
+ *
+ * `baseDate` must be passed for correct work of the function.
+ * If you're not sure which `baseDate` to supply, create a new instance of Date:
+ * `parse('02/11/2014', 'MM/dd/yyyy', new Date())`
+ * In this case parsing will be done in the context of the current date.
+ * If `baseDate` is `Invalid Date` or a value not convertible to valid `Date`,
+ * then `Invalid Date` will be returned.
+ *
+ * The result may vary by locale.
+ *
+ * If `formatString` matches with `dateString` but does not provides tokens, `baseDate` will be returned.
+ *
+ * If parsing failed, `Invalid Date` will be returned.
+ * Invalid Date is a Date, whose time value is NaN.
+ * Time value of Date: http://es5.github.io/#x15.9.1.1
+ *
+ * @param {String} dateString - the string to parse
+ * @param {String} formatString - the string of tokens
+ * @param {Date|String|Number} baseDate - defines values missing from the parsed dateString
+ * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
+ * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @param {1|2|3|4|5|6|7} [options.firstWeekContainsDate=1] - the day of January, which is always in the first week of the year
+ * @param {Boolean} [options.awareOfUnicodeTokens=false] - if true, allows usage of Unicode tokens causes confusion:
+ *   - Some of the day of year tokens (`D`, `DD`) that are confused with the day of month tokens (`d`, `dd`).
+ *   - Some of the local week-numbering year tokens (`YY`, `YYYY`) that are confused with the calendar year tokens (`yy`, `yyyy`).
+ *   See: https://git.io/fxCyr
+ * @returns {Date} the parsed date
+ * @throws {TypeError} 3 arguments required
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
+ * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
+ * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
+ * @throws {RangeError} `options.locale` must contain `match` property
+ * @throws {RangeError} `options.awareOfUnicodeTokens` must be set to `true` to use `XX` token; see: https://git.io/fxCyr
+ *
+ * @example
+ * // Parse 11 February 2014 from middle-endian format:
+ * var result = parse(
+ *   '02/11/2014',
+ *   'MM/dd/yyyy',
+ *   new Date()
+ * )
+ * //=> Tue Feb 11 2014 00:00:00
+ *
+ * @example
+ * // Parse 28th of February in Esperanto locale in the context of 2010 year:
+ * import eo from 'date-fns/locale/eo'
+ * var result = parse(
+ *   '28-a de februaro',
+ *   "do 'de' MMMM",
+ *   new Date(2010, 0, 1),
+ *   {locale: eo}
+ * )
+ * //=> Sun Feb 28 2010 00:00:00
+ */
+
+// If timezone isn't specified, it will be set to the system timezone
+
+// Cut token from string, or, if string doesn't match the token, return Invalid Date
+
+// Check if the remaining input contains something other than whitespace
+
+// See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/37
+
+// if date is not valid or the formatted output after parsing does not match
+
+// the string value passed in (avoids overflows)
+
+// if either is not valid.
+
+// Match at least one locale.
+
+/* eslint-enable max-len */
+
+/* eslint-disable max-len */
+
+// if is 0.
+
+/* eslint-disable prefer-rest-params */
+
+// backwards compatibility: isByteLength(str, min [, max])
+
+/* Remove the optional trailing dot before checking validity */
+
+// disallow spaces
+
+// disallow full-width chars
+
+// initial or final ::
+
+// test for a :: which can not be at the string start/end
+
+// since those cases have been handled above
+
+// multiple :: in address
+
+/* eslint-enable no-control-regex */
+
+// Removing sub-address from username before gmail validation
+
+/*
+      Previously we removed dots for gmail addresses before validating.
+      This was removed because it allows `multiple..dots@gmail.com`
+      to be reported as valid, but it is not.
+      Gmail only normalizes single dots, removing them from here is pointless,
+      should be done in normalizeEmail
+    */
+
+// Dots are not included in gmail length restriction
+
+/* eslint-disable no-control-regex */
+
+// cast to number.
+
+// incase a field considers `false` as an empty value like checkboxes.
+
+/*#__PURE__*/
+
+// scope.
+
+// if field exists
+
+// scopeless fields were selected.
+
+// if it has a scope defined
+
+// an entire scope was selected: scope.*
+
+// Gracefully handle non-existent scoped slots.
+
+// Handle single-root slot.
+
+// cleanup reference.
+
+/**
+ * Determines if a provider needs to run validation.
+ */
+
+// IDs should not be nullable.
+
+// Nothing has changed.
+
+// vid was changed.
+
+// when an immediate/initial validation is needed and wasn't done before.
+
+// when the value changes for whatever reason.
+
+// when it needs validation due to props/cross-fields changes.
+
+// Creates the common handlers for a validatable context.
+
+// Blur event listener.
+
+// Handle debounce changes.
+
+// avoids race conditions between successive validations.
+
+// Cache the handler so we don't create it each time.
+
+// cache the debounce value so we detect if it was changed.
+
+// track and keep the value updated.
+
+// Adds all plugin listeners to the vnode.
+
+// cache the input eventName.
+
+// add the validation listeners.
+
+// save it for the next time.
+
+// Default ctx converts ctx props to component props.
+
+// Props are any attrs not associated with ValidationProvider Plus the model prop.
+
+// WARNING: Accidental prop overwrite will probably happen.
+
+// Merge the english messages.
+
+/**
+ * Vue Cookies v1.5.13
+ * https://github.com/cmp-cc/vue-cookies
+ *
+ * Copyright 2016, cmp-cc
+ * Released under the MIT license
+ */
+
+// install of Vue
+
+// support json object
+
+// get capture number group
+
+// get capture type group , to lower case
+
+// Frequency sorting
+
+// 60 * 60 * 24 * 30
+
+// 60 * 60 * 24
+
+// 60 * 60
+
+// 60
+
+// 60 * 60 * 24 * 30 * 12
+
+// vue-cookies can exist independently,no dependencies library
+
+/*!
+ * Vue.js v2.6.10
+ * (c) 2014-2019 Evan You
+ * Released under the MIT License.
+ */
+
+// These helpers produce better VM code in JS engines due to their
+
+// explicitness and function inlining.
+
+/**
+   * Check if value is primitive.
+   */
+
+/**
+   * Quick object check - this is primarily used to tell
+   * Objects from primitive values when we know the value
+   * is a JSON-compliant type.
+   */
+
+/**
+   * Get the raw type string of a value, e.g., [object Object].
+   */
+
+/**
+   * Strict object type check. Only returns true
+   * for plain JavaScript objects.
+   */
+
+/**
+   * Check if val is a valid array index.
+   */
+
+/**
+   * Convert a value to a string that is actually rendered.
+   */
+
+/**
+   * Convert an input value to a number for persistence.
+   * If the conversion fails, return original string.
+   */
+
+/**
+   * Make a map and return a function for checking if a key
+   * is in that map.
+   */
+
+/**
+   * Check if a tag is a built-in tag.
+   */
+
+/**
+   * Check if an attribute is a reserved attribute.
+   */
+
+/**
+   * Remove an item from an array.
+   */
+
+/**
+   * Check whether an object has the property.
+   */
+
+/**
+   * Create a cached version of a pure function.
+   */
+
+/**
+   * Camelize a hyphen-delimited string.
+   */
+
+/**
+   * Simple bind polyfill for environments that do not support it,
+   * e.g., PhantomJS 1.x. Technically, we don't need this anymore
+   * since native bind is now performant enough in most browsers.
+   * But removing it would mean breaking code that was able to run in
+   * PhantomJS 1.x, so this must be kept for backward compatibility.
+   */
+
+/**
+   * Convert an Array-like object to a real Array.
+   */
+
+/**
+   * Mix properties into target object.
+   */
+
+/**
+   * Merge an Array of Objects into a single Object.
+   */
+
+/* eslint-disable no-unused-vars */
+
+/**
+   * Perform no operation.
+   * Stubbing args to make Flow happy without leaving useless transpiled code
+   * with ...rest (https://flow.org/blog/2017/05/07/Strict-Function-Call-Arity/).
+   */
+
+/**
+   * Always return false.
+   */
+
+/* eslint-enable no-unused-vars */
+
+/**
+   * Return the same value.
+   */
+
+/**
+   * Check if two values are loosely equal - that is,
+   * if they are plain objects, do they have the same shape?
+   */
+
+/**
+   * Return the first index at which a loosely equal value can be
+   * found in the array (if value is a plain object, the array must
+   * contain an object of the same shape), or -1 if it is not present.
+   */
+
+/**
+   * Ensure a function is called only once.
+   */
+
+/**
+     * Option merge strategies (used in core/util/options)
+     */
+
+/**
+     * Whether to suppress warnings.
+     */
+
+/**
+     * Show production mode tip message on boot?
+     */
+
+/**
+     * Whether to enable devtools
+     */
+
+/**
+     * Whether to record perf
+     */
+
+/**
+     * Error handler for watcher errors
+     */
+
+/**
+     * Warn handler for watcher warns
+     */
+
+/**
+     * Ignore certain custom elements
+     */
+
+/**
+     * Custom user key aliases for v-on
+     */
+
+/**
+     * Check if a tag is reserved so that it cannot be registered as a
+     * component. This is platform-dependent and may be overwritten.
+     */
+
+/**
+     * Check if an attribute is reserved so that it cannot be used as a component
+     * prop. This is platform-dependent and may be overwritten.
+     */
+
+/**
+     * Check if a tag is an unknown element.
+     * Platform-dependent.
+     */
+
+/**
+     * Get the namespace of an element
+     */
+
+/**
+     * Parse the real tag name for the specific platform.
+     */
+
+/**
+     * Check if an attribute must be bound using property, e.g. value
+     * Platform-dependent.
+     */
+
+/**
+     * Perform updates asynchronously. Intended to be used by Vue Test Utils
+     * This will significantly reduce performance if set to false.
+     */
+
+/**
+     * Exposed for legacy reasons
+     */
+
+/**
+   * Check if a string starts with $ or _
+   */
+
+/**
+   * Define a property.
+   */
+
+/**
+   * Parse simple path.
+   */
+
+// https://github.com/facebook/flow/issues/285
+
+// this needs to be lazy-evaled because vue may be required before
+
+// vue-server-renderer can set VUE_ENV
+
+/* istanbul ignore if */
+
+// detect devtools
+
+// use native Set when available.
+
+/**
+   * A dep is an observable that can have multiple
+   * directives subscribing to it.
+   */
+
+// stabilize the subscriber list first
+
+// subs aren't sorted in scheduler if not running async
+
+// we need to sort them now to make sure they fire in correct
+
+// order
+
+// The current target watcher being evaluated.
+
+// This is globally unique because only one watcher
+
+// can be evaluated at a time.
+
+// DEPRECATED: alias for componentInstance for backwards compat.
+
+// optimized shallow clone
+
+// used for static nodes and slot nodes because they may be reused across
+
+// multiple renders, cloning them avoids errors when DOM manipulations rely
+
+// on their elm reference.
+
+// #7975
+
+// clone children array to avoid mutating original in case of cloning
+
+// a child.
+
+/*
+   * not type checking this file because flow doesn't play well with
+   * dynamically accessing methods on Array prototype
+   */
+
+/**
+   * Intercept mutating methods and emit events
+   */
+
+// cache original method
+
+// notify change
+
+/**
+   * In some cases we may want to disable observation inside a component's
+   * update computation.
+   */
+
+/**
+   * Observer class that is attached to each observed
+   * object. Once attached, the observer converts the target
+   * object's property keys into getter/setters that
+   * collect dependencies and dispatch updates.
+   */
+
+// helpers
+
+/**
+   * Augment a target Object or Array by intercepting
+   * the prototype chain using __proto__
+   */
+
+/* eslint-disable no-proto */
+
+/* eslint-enable no-proto */
+
+/**
+   * Augment a target Object or Array by defining
+   * hidden properties.
+   */
+
+/**
+   * Attempt to create an observer instance for a value,
+   * returns the new observer if successfully observed,
+   * or the existing observer if the value already has one.
+   */
+
+/**
+   * Walk through all properties and convert them into
+   * getter/setters. This method should only be called when
+   * value type is Object.
+   */
+
+/**
+   * Define a reactive property on an Object.
+   */
+
+// cater for pre-defined getter/setters
+
+/**
+   * Collect dependencies on array elements when the array is touched, since
+   * we cannot intercept array element access like property getters.
+   */
+
+/**
+   * Option overwriting strategies are functions that handle
+   * how to merge a parent option value and a child option
+   * value into the final value.
+   */
+
+/* eslint-disable no-self-compare */
+
+/* eslint-enable no-self-compare */
+
+// #7981: for accessor properties without setter
+
+/**
+   * Set a property on an object. Adds the new property and
+   * triggers change notification if the property doesn't
+   * already exist.
+   */
+
+/**
+   * Delete a property and trigger change if necessary.
+   */
+
+/**
+   * Observe a list of Array items.
+   */
+
+/**
+   * Options with restrictions
+   */
+
+/**
+   * Helper that recursively merges two data objects together.
+   */
+
+// in case the object is already observed...
+
+/**
+   * Data
+   */
+
+// instance merge
+
+// in a Vue.extend merge, both should be functions
+
+/**
+   * Hooks and props are merged as arrays.
+   */
+
+/**
+   * Assets
+   *
+   * When a vm is present (instance creation), we need to do
+   * a three-way merge between constructor options, instance
+   * options and parent options.
+   */
+
+/**
+   * Watchers.
+   *
+   * Watchers hashes should not overwrite one
+   * another, so we merge them as arrays.
+   */
+
+// work around Firefox's Object.prototype.watch...
+
+/**
+   * Other object hashes.
+   */
+
+/**
+   * Default strategy.
+   */
+
+/**
+   * Validate component names
+   */
+
+/**
+   * Ensure all props option syntax are normalized into the
+   * Object-based format.
+   */
+
+/**
+   * Merge two option objects into a new one.
+   * Core utility used in both instantiation and inheritance.
+   */
+
+// Apply extends and mixins on the child options,
+
+// but only if it is a raw options object that isn't
+
+// the result of another mergeOptions call.
+
+// Only merged options has the _base property.
+
+/**
+   * Normalize all injections into Object-based format
+   */
+
+/**
+   * Normalize raw function directives into object format.
+   */
+
+/**
+   * Resolve an asset.
+   * This function is used because child instances need access
+   * to assets defined in its ancestor chain.
+   */
+
+// check local registration variations first
+
+// fallback to prototype chain
+
+// only cast empty string / same name to boolean if
+
+// boolean has higher priority
+
+// check default value
+
+/**
+   * Get the default value of a prop.
+   */
+
+// no default, return undefined
+
+// warn against non-factory defaults for Object & Array
+
+// the raw prop value was also undefined from previous render,
+
+// return previous default value to avoid unnecessary watcher trigger
+
+// call factory function for non-Function types
+
+// a value is Function if its prototype is function even across different execution context
+
+/**
+   * Assert whether a prop is valid.
+   */
+
+// since the default value is a fresh copy,
+
+// make sure to observe it.
+
+// check if we need to specify expected value
+
+// check if we need to specify received value
+
+// for primitive wrapper objects
+
+/**
+   * Use function string name to check built-in types,
+   * because a simple equality check will fail when running
+   * across different vms / iframes.
+   */
+
+// Deactivate deps tracking while processing error handler to avoid possible infinite rendering.
+
+// See: https://github.com/vuejs/vuex/issues/1505
+
+// issue #9511
+
+// avoid catch triggering multiple times when nested calls
+
+// if the user intentionally throws the original error in the handler,
+
+// do not log it twice
+
+// Here we have async deferring wrappers using microtasks.
+
+// In 2.5 we used (macro) tasks (in combination with microtasks).
+
+// However, it has subtle problems when state is changed right before repaint
+
+// (e.g. #6813, out-in transitions).
+
+// Also, using (macro) tasks in event handler would cause some weird behaviors
+
+// that cannot be circumvented (e.g. #7109, #7153, #7546, #7834, #8109).
+
+// So we now use microtasks everywhere, again.
+
+// A major drawback of this tradeoff is that there are some scenarios
+
+// where microtasks have too high a priority and fire in between supposedly
+
+// sequential events (e.g. #4521, #6690, which have workarounds)
+
+// or even between bubbling of the same event (#6566).
+
+// The nextTick behavior leverages the microtask queue, which can be accessed
+
+// via either native Promise.then or MutationObserver.
+
+// MutationObserver has wider support, however it is seriously bugged in
+
+// UIWebView in iOS >= 9.3.3 when triggered in touch event handlers. It
+
+// completely stops working after triggering a few times... so, if native
+
+// Promise is available, we will use it:
+
+/* istanbul ignore next, $flow-disable-line */
+
+// In problematic UIWebViews, Promise.then doesn't completely break, but
+
+// it can get stuck in a weird state where callbacks are pushed into the
+
+// microtask queue but the queue isn't being flushed, until the browser
+
+// needs to do some other work, e.g. handle a timer. Therefore we can
+
+// "force" the microtask queue to be flushed by adding an empty timer.
+
+// PhantomJS and iOS 7.x
+
+// Fallback to setImmediate.
+
+// Techinically it leverages the (macro) task queue,
+
+// but it is still a better choice than setTimeout.
+
+// Use MutationObserver where native Promise is not available,
+
+// e.g. PhantomJS, iOS7, Android 4.4
+
+// (#6466 MutationObserver is unreliable in IE11)
+
+// determine which proxy handler to use
+
+/**
+   * Recursively traverse an object to evoke all converted
+   * getters, so that every nested property inside the object
+   * is collected as a "deep" dependency.
+   */
+
+// Prefixed last, checked first
+
+// return handler return value for single handlers
+
+// important: remove merged hook to ensure it's called only once
+
+// and prevent memory leak
+
+// no existing hook
+
+// already a merged invoker
+
+// existing plain hook
+
+// The template compiler attempts to minimize the need for normalization by
+
+// statically analyzing the template at compile time.
+
+// For plain HTML markup, normalization can be completely skipped because the
+
+// generated render function is guaranteed to return Array<VNode>. There are
+
+// two cases where extra normalization is needed:
+
+// 1. When the children contains components - because a functional component
+
+// may return an Array instead of a single root. In this case, just a simple
+
+// normalization is needed - if any child is an Array, we flatten the whole
+
+// thing with Array.prototype.concat. It is guaranteed to be only 1-level deep
+
+// because functional components already normalize their own children.
+
+// 2. When the children contains constructs that always generated nested Arrays,
+
+// e.g. <template>, <slot>, v-for, or when the children is provided by user
+
+// with hand-written render functions / JSX. In such cases a full normalization
+
+// is needed to cater to all possible types of children values.
+
+//  nested
+
+// merge adjacent text nodes
+
+// this is necessary for SSR hydration because text nodes are
+
+// essentially merged when rendered to HTML strings
+
+// convert primitive to vnode
+
+// default key for nested array children (likely generated by v-for)
+
+// inject is :any because flow is not smart enough to figure out cached
+
+// #6574 in case the inject object is observed...
+
+/**
+   * Runtime helper for resolving raw children VNodes into a slot object.
+   */
+
+// named slots should only be respected if the vnode was rendered in the
+
+// same context.
+
+// remove slot attribute if the node is resolved as a Vue slot node
+
+// ignore slots that contains only whitespace
+
+// fast path 1: child component re-render only, parent did not change
+
+// expose normal slots on scopedSlots
+
+// fast path 2: stable scoped slots w/ no normal slots to proxy,
+
+// only need to normalize once
+
+// avoriaz seems to mock a non-extensible $scopedSlots object
+
+// and when that is passed down this would cause an error
+
+// this is a slot using the new v-slot syntax without scope. although it is
+
+// compiled as a scoped slot, render fn users would expect it to be present
+
+// on this.$slots because the usage is semantically a normal slot.
+
+/**
+   * Runtime helper for rendering v-for lists.
+   */
+
+/**
+   * Runtime helper for rendering <slot>
+   */
+
+// scoped slot
+
+/**
+   * Runtime helper for resolving filters
+   */
+
+/**
+   * Runtime helper for checking keyCodes from config.
+   * exposed as Vue.prototype._k
+   * passing in eventKeyName as last argument separately for backwards compat
+   */
+
+/**
+   * Runtime helper for merging v-bind="object" into a VNode's data.
+   */
+
+/**
+   * Runtime helper for rendering static trees.
+   */
+
+// if has already-rendered static tree and not inside v-for,
+
+// we can reuse the same tree.
+
+// otherwise, render a fresh tree.
+
+/**
+   * Runtime helper for v-once.
+   * Effectively it means marking the node as static with a unique key.
+   */
+
+// see flow/vnode
+
+// the following are added in 2.6
+
+// marker for reverse proxying v-slot without scope on this.$slots
+
+// null is a speical value for explicitly removing a binding
+
+// helper to dynamically append modifier runtime markers to event names.
+
+// ensure only append when value is already string, otherwise it will be cast
+
+// to string and cause the type check to miss.
+
+// the context vm passed in is a functional context as well.
+
+// in this case we want to make sure we are able to get a hold to the
+
+// real context instance.
+
+// support for compiled functional template
+
+// exposing $options for renderStatic()
+
+// pre-resolve slots for renderSlot()
+
+// #7817 clone node before setting fnContext, otherwise if the node is reused
+
+// (e.g. it was from a cached normal slot) the fnContext causes named slots
+
+// that should not be matched to match.
+
+// inline hooks to be invoked on component VNodes during patch
+
+// kept-alive components, treat as a patch
+
+// work around flow
+
+// we know it's MountedComponentVNode but flow doesn't
+
+// check inline-template render functions
+
+// determine whether component has slot children
+
+// we need to do this before overwriting $options._renderChildren.
+
+// check if there are dynamic scopedSlots (hand-written or compiled but with
+
+// dynamic slot names). Static scoped slots compiled from template has the
+
+// "$stable" marker.
+
+// has new static slots
+
+// has old static slots
+
+// update props
+
+// update vm's placeholder node without re-render
+
+// update child tree's parent
+
+// update $attrs and $listeners hash
+
+// these are also reactive so they may trigger child update if the child
+
+// used them during render
+
+// wtf flow?
+
+// keep a copy of raw propsData
+
+// update listeners
+
+// resolve slots + force update if has children
+
+// updated props
+
+// updated listeners
+
+// new parent vnode
+
+// vue-router#1212
+
+// During updates, a kept-alive component's child components may
+
+// change, so directly walking the tree here may call activated hooks
+
+// on incorrect children. Instead we push them into a queue which will
+
+// be processed after the whole patch process ended.
+
+// setting _inactive to false here so that a render function can
+
+// rely on checking whether it's in an inactive tree (e.g. router-view)
+
+/* direct */
+
+// plain options object: turn it into a constructor
+
+// if at this stage it's not a constructor or an async component factory,
+
+// reject.
+
+// async component
+
+// already pending
+
+// cache resolved
+
+// invoke callbacks only if this is not a synchronous resolve
+
+// (async resolves are shimmed as synchronous during SSR)
+
+// return in case resolved synchronously
+
+// () => Promise
+
+// return a placeholder node for async component, which is rendered
+
+// as a comment node but preserves all the raw information for the node.
+
+// the information will be used for async server-rendering and hydration.
+
+// resolve constructor options in case global mixins are applied after
+
+// component constructor creation
+
+// transform component v-model data into props & events
+
+// transform component v-model info (value and callback) into
+
+// prop and event handler respectively.
+
+// extract props
+
+// we are only extracting raw values here.
+
+// validation and default values are handled in the child
+
+// component itself.
+
+// functional component
+
+// extract listeners, since these needs to be treated as
+
+// child component listeners instead of DOM listeners
+
+// replace with listeners with .native modifier
+
+// so it gets processed during parent component patch.
+
+// abstract components do not keep anything
+
+// other than props & listeners & slot
+
+// install component management hooks onto the placeholder node
+
+// return a placeholder vnode
+
+// flow complains about extra args which is why we use any
+
+// wrapper function for providing a more flexible interface
+
+// without getting yelled at by flow
+
+// object syntax in v-bind
+
+// in case of component :is set to falsy value
+
+// warn against non-primitive key
+
+// support single function children as default scoped slot
+
+// platform built-in elements
+
+// direct component options / constructor
+
+// use default namespace inside foreignObject
+
+// ref #5318
+
+// necessary to ensure parent re-render when deep bindings like :style and
+
+// :class are used on slot nodes
+
+// #7573 disable dep collection when invoking lifecycle hooks
+
+// Determine what event timestamp the browser is using. Annoyingly, the
+
+// timestamp can either be hi-res (relative to page load) or low-res
+
+// (relative to UNIX epoch), so in order to compare time we have to use the
+
+// same timestamp type when saving the flush timestamp.
+
+// All IE versions use low-res event timestamps, and have problematic clock
+
+// implementations (#9632)
+
+// if the event timestamp, although evaluated AFTER the Date.now(), is
+
+// smaller than it, it means the event is using a hi-res timestamp,
+
+// and we need to use the hi-res version for event listener timestamps as
+
+// well.
+
+/**
+   * Flush both queues and run the watchers.
+   */
+
+// Sort queue before flush.
+
+// This ensures that:
+
+// 1. Components are updated from parent to child. (because parent is always
+
+//    created before the child)
+
+// 2. A component's user watchers are run before its render watcher (because
+
+//    user watchers are created before the render watcher)
+
+// 3. If a component is destroyed during a parent component's watcher run,
+
+//    its watchers can be skipped.
+
+// do not cache length because more watchers might be pushed
+
+// as we run existing watchers
+
+// in dev build, check and stop circular updates.
+
+// keep copies of post queues before resetting state
+
+// call component updated and activated hooks
+
+/* true */
+
+/**
+   * Push a watcher into the watcher queue.
+   * Jobs with duplicate IDs will be skipped unless it's
+   * pushed when the queue is being flushed.
+   */
+
+/**
+   * Queue a kept-alive component that was activated during patch.
+   * The queue will be processed after the entire tree has been patched.
+   */
+
+// devtool hook
+
+// options
+
+// uid for batching
+
+// for lazy watchers
+
+// parse expression for getter
+
+// can we use __proto__?
+
+/**
+   * A watcher parses an expression, collects dependencies,
+   * and fires callback when the expression value changes.
+   * This is used for both the $watch() api and directives.
+   */
+
+/**
+   * Evaluate the getter, and re-collect dependencies.
+   */
+
+// "touch" every property so they are all tracked as
+
+// dependencies for deep watching
+
+/**
+   * Add a dependency to this directive.
+   */
+
+/**
+   * Clean up for dependency collection.
+   */
+
+/**
+   * Subscriber interface.
+   * Will be called when a dependency changes.
+   */
+
+// if already flushing, splice the watcher based on its id
+
+// if already past its id, it will be run next immediately.
+
+// queue the flush
+
+/**
+   * Scheduler job interface.
+   * Will be called by the scheduler.
+   */
+
+// Deep watchers and watchers on Object/Arrays should fire even
+
+// when the value is the same, because the value may
+
+// have mutated.
+
+// set new value
+
+/**
+   * Evaluate the value of the watcher.
+   * This only gets called for lazy watchers.
+   */
+
+/**
+   * Depend on all deps collected by this watcher.
+   */
+
+/**
+   * Remove self from all dependencies' subscriber list.
+   */
+
+// remove self from vm's watcher list
+
+// this is a somewhat expensive operation so we skip it
+
+// if the vm is being destroyed.
+
+// root instance props should be converted
+
+// static props are already proxied on the component's prototype
+
+// during Vue.extend(). We only need to proxy props defined at
+
+// instantiation here.
+
+// #7573 disable dep collection when invoking data getters
+
+// proxy data on instance
+
+// observe data
+
+/* asRootData */
+
+// computed properties are just getters during SSR
+
+// create internal watcher for the computed property.
+
+// component-defined computed properties are already defined on the
+
+// component prototype. We only need to define computed properties defined
+
+// at instantiation here.
+
+// super option changed,
+
+// need to resolve new options.
+
+// check if there are any late-modified/attached options (#4976)
+
+// update base extend options
+
+/**
+     * Each instance constructor, including Vue, has a unique
+     * cid. This enables us to create wrapped "child
+     * constructors" for prototypal inheritance and cache them.
+     */
+
+/**
+     * Class inheritance
+     */
+
+// For props and computed properties, we define the proxy getters on
+
+// the Vue instances at extension time, on the extended prototype. This
+
+// avoids Object.defineProperty calls for each instance created.
+
+// allow further extension/mixin/plugin usage
+
+// create asset registers, so extended classes
+
+// can have their private assets too.
+
+// enable recursive self-lookup
+
+// keep a reference to the super options at extension time.
+
+// later at instantiation we can check if Super's options have
+
+// been updated.
+
+// cache constructor
+
+// a uid
+
+// a flag to avoid this being observed
+
+// merge options
+
+// optimize internal component instantiation
+
+// since dynamic options merging is pretty slow, and none of the
+
+// internal component options needs special treatment.
+
+// doing this because it's faster than dynamic enumeration.
+
+// expose real self
+
+// locate first non-abstract parent
+
+// init parent attached events
+
+// the root of the child tree
+
+// v-once cached trees
+
+// bind the createElement fn to this instance
+
+// so that we get proper render context inside it.
+
+// args order: tag, data, children, normalizationType, alwaysNormalize
+
+// internal version is used by render functions compiled from templates
+
+// normalization is always applied for the public version, used in
+
+// user-written render functions.
+
+// $attrs & $listeners are exposed for easier HOC creation.
+
+// they need to be reactive so that HOCs using them are always updated
+
+// resolve injections before data/props
+
+// resolve provide after data/props
+
+// flow somehow has problems with directly declared definition object
+
+// when using Object.defineProperty, so we have to procedurally build up
+
+// the object here.
+
+// optimize hook:event cost by using a boolean flag marked at registration
+
+// instead of a hash lookup
+
+// all
+
+// array of events
+
+// specific event
+
+// specific handler
+
+// Vue.prototype.__patch__ is injected in entry points
+
+// based on the rendering backend used.
+
+// updates
+
+/* removeOnly */
+
+// update __vue__ reference
+
+// if parent is an HOC, update its $el as well
+
+// remove self from parent
+
+// teardown watchers
+
+// remove reference from data ob
+
+// frozen object may not have observer.
+
+// call the last hook...
+
+// invoke destroy hooks on current rendered tree
+
+// fire destroyed hook
+
+// turn off all instance listeners.
+
+// remove __vue__ reference
+
+// release circular reference (#6759)
+
+// install runtime convenience helpers
+
+// set parent vnode. this allows render functions to have access
+
+// to the data on the placeholder node.
+
+// There's no need to maintain a stack becaues all render fns are called
+
+// separately from one another. Nested component's render fns are called
+
+// when parent component is patched.
+
+// return error render result,
+
+// or previous vnode to prevent render error causing blank component
+
+// if the returned array contains only a single node, allow it
+
+// return empty vnode in case the render function errored out
+
+// set parent
+
+// check pattern
+
+// not included
+
+// excluded
+
+// make current key freshest
+
+// prune oldest entry
+
+// config
+
+// exposed util methods.
+
+// NOTE: these are not considered part of the public API - avoid relying on
+
+// them unless you are aware of the risk.
+
+// 2.6 explicit observable API
+
+// this is used to identify the "base" constructor to extend all plain-object
+
+// components with in Weex's multi-instance scenarios.
+
+// additional parameters
+
+/**
+     * Create asset registration methods.
+     */
+
+// expose FunctionalRenderContext for ssr runtime helper installation
+
+// these are reserved for web because they are directly compiled away
+
+// during template compilation
+
+// attributes that should be using props for binding
+
+// basic support for MathML
+
+// note it doesn't support other MathML elements being component roots
+
+/**
+   * Query an element selector if it's not an element already.
+   */
+
+// false or null will remove the attribute but undefined will not
+
+/**
+   * Virtual DOM patching algorithm based on Snabbdom by
+   * Simon Friis Vindum (@paldepind)
+   * Licensed under the MIT License
+   * https://github.com/paldepind/snabbdom/blob/master/LICENSE
+   *
+   * modified by Evan You (@yyx990803)
+   *
+   * Not type-checking this because this file is perf-critical and the cost
+   * of making flow understand it is not worth it.
+   */
+
+// existing directive, update
+
+// new directive, bind
+
+// no longer present, unbind
+
+// clone observed objects, as the user probably wants to mutate it
+
+// #4391: in IE9, setting type can reset value for input[type=radio]
+
+// #6666: IE/Edge forces progress value down to 1 before setting a max
+
+// set attribute for blank value
+
+// e.g. <option disabled>Select one</option>
+
+// technically allowfullscreen is a boolean attribute for <iframe>,
+
+// but Flash expects a value of "true" when used on <embed> tag
+
+// #7138: IE10 & 11 fires input event when setting placeholder on
+
+// <textarea>... block the first input event and remove the blocker
+
+// immediately.
+
+// handle transition classes
+
+// set the class
+
+// pipe
+
+// "
+
+// '
+
+// `
+
+// (
+
+// )
+
+// [
+
+// ]
+
+// {
+
+// }
+
+// find first non-whitespace prev char
+
+// /
+
+// first filter, end of expression
+
+// _f: resolveFilter
+
+// add a raw attr (use this in preTransforms)
+
+// mark the event as captured
+
+// warn prevent and passive modifier
+
+// normalize click.right and click.middle since they don't actually fire
+
+// this is technically browser-specific, but at least for now browsers are
+
+// the only target envs that have right/middle clicks.
+
+// check capture modifier
+
+// note: this only removes the attr from the Array (attrsList) so that it
+
+// doesn't get processed by processAttrs.
+
+// By default it does NOT remove it from the map (attrsMap) because the map is
+
+// needed during codegen.
+
+/**
+   * Cross-platform code generation for component v-model
+   */
+
+/**
+   * Cross-platform codegen helper for generating v-model value assignment code.
+   */
+
+// Fix https://github.com/vuejs/vue/pull/7730
+
+// allow v-model="obj.val " (trailing whitespace)
+
+/**
+   * Parse a v-model expression into a base path and a final key segment.
+   * Handles both dot-path and possible square brackets.
+   *
+   * Possible cases:
+   *
+   * - test
+   * - test[key]
+   * - test[test1[key]]
+   * - test["a"][key]
+   * - xxx.test[a[a].test1[key]]
+   * - test.xxx.a["asa"][test1[key]]
+   *
+   */
+
+// in some cases, the event used has to be determined at runtime
+
+// so we used some reserved tokens during compile.
+
+// save current target element in closure
+
+// #9446: Firefox <= 53 (in particular, ESR 52) has incorrect Event.timeStamp
+
+// implementation and does not fire microtasks in between event propagation, so
+
+// safe to exclude.
+
+// async edge case #6566: inner click event triggers patch, event handler
+
+// attached to outer element during patch, and triggered again. This
+
+// happens because browsers fire microtask ticks between event propagation.
+
+// the solution is simple: we save the timestamp when a handler is attached,
+
+// and the handler would only fire if the event passed to it was fired
+
+// AFTER it was attached.
+
+// no bubbling, should always fire.
+
+// this is just a safety net in case event.timeStamp is unreliable in
+
+// certain weird environments...
+
+// event is fired after handler attachment
+
+// bail for environments that have buggy event.timeStamp implementations
+
+// #9462 iOS 9 bug: event.timeStamp is 0 after history.pushState
+
+// #9681 QtWebEngine event.timeStamp is negative value
+
+// #9448 bail if event is fired in another document in a multi-page
+
+// electron/nw.js app, since event.timeStamp will be using a different
+
+// starting reference
+
+// normalize v-model event tokens that can only be determined at runtime.
+
+// it's important to place the event as the first in the array because
+
+// the whole point is ensuring the v-model callback gets called before
+
+// user-attached handlers.
+
+// IE input[type=range] only supports `change` event
+
+// This was originally intended to fix #4521 but no longer necessary
+
+// after 2.5. Keeping it for backwards compat with generated code from < 2.4
+
+// ignore children if the node has textContent or innerHTML,
+
+// as these will throw away existing DOM nodes and cause removal errors
+
+// on subsequent patches (#3360)
+
+// #6601 work around Chrome version <= 55 bug where single textNode
+
+// replaced by innerHTML/textContent retains its parentNode property
+
+// store value as _value as well since
+
+// non-string values will be stringified
+
+// avoid resetting cursor position when value is the same
+
+// IE doesn't support innerHTML for SVG elements
+
+// skip the update if old and new VDOM state is the same.
+
+// `value` is handled separately because the DOM value may be temporarily
+
+// out of sync with VDOM state due to focus, composition and modifiers.
+
+// This  #4521 by skipping the unnecesarry `checked` update.
+
+// some property updates can throw
+
+// e.g. `value` on <progress> w/ non-finite value
+
+// check platforms/web/util/attrs.js acceptValue
+
+// return true when textbox (.number and .trim) loses focus and its value is
+
+// not equal to the updated value
+
+// #6157
+
+// work around IE bug when accessing document.activeElement in an iframe
+
+// injected by v-model runtime
+
+// merge static and dynamic style data on the same vnode
+
+// static style is pre-processed into an object during compilation
+
+// and is always a fresh object, so it's safe to merge into it
+
+// normalize possible array / string values into Object
+
+/**
+   * parent component style should be after child's
+   * so that parent component's style could override it
+   */
+
+// Support values array created by autoprefixer, e.g.
+
+// {display: ["-webkit-box", "-ms-flexbox", "flex"]}
+
+// Set them one by one, and the browser will only set those it can recognize
+
+// store normalized style under a different key for next diff
+
+// make sure to clone it if it's reactive, since the user likely wants
+
+// to mutate it.
+
+// ie9 setting to null has no effect, must use empty string
+
+/**
+   * Add class with compatibility for SVG since classList is not supported on
+   * SVG elements in IE
+   */
+
+/**
+   * Remove class with compatibility for SVG since classList is not supported on
+   * SVG elements in IE
+   */
+
+// binding to window is necessary to make hot reload work in IE in strict mode
+
+// JSDOM may return undefined for transition properties
+
+// Old versions of Chromium (below 61.0.3163.100) formats floating pointer numbers
+
+// in a locale-dependent way, using a comma instead of a dot.
+
+// If comma is not replaced with a dot, the input will be rounded down (i.e. acting
+
+// as a floor function) causing unexpected behaviors
+
+// call leave callback now
+
+// remove pending leave element on enter by injecting an insert hook
+
+// start enter transition
+
+// call enter callback now
+
+// the delayed leave may have already been cancelled
+
+// record leaving element
+
+// only used in dev mode
+
+/**
+   * Normalize a transition hook's argument length. The hook may be:
+   * - a merged hook (invoker) with the original in .fns
+   * - a wrapped component method (check ._length)
+   * - a plain function (.length)
+   */
+
+// element may have already been removed due to v-html / v-text
+
+// for transition enter check
+
+// This vnode was used in a previous render!
+
+// now it's used as a new node, overwriting its elm would cause
+
+// potential patch errors down the road when it's used as an insertion
+
+// reference node. Instead, we clone the node on-demand before creating
+
+// associated DOM element for it.
+
+// after calling the init hook, if the vnode is a child component
+
+// it should've created a child instance and mounted it. the child
+
+// component also has set the placeholder vnode's elm.
+
+// in that case we can just return the element and be done.
+
+/* hydrating */
+
+// hack for #4339: a reactivated component with inner transition
+
+// does not trigger because the inner node's created hooks are not called
+
+// again. It's not ideal to involve module-specific logic in here but
+
+// there doesn't seem to be a better way to do it.
+
+// unlike a newly created component,
+
+// a reactivated keep-alive component doesn't insert itself
+
+// empty component root.
+
+// skip all element-related modules except for ref (#3455)
+
+// make sure to invoke the insert hook
+
+// Reuse variable
+
+// set scope id attribute for scoped CSS.
+
+// this is implemented as a special case to avoid the overhead
+
+// of going through the normal attribute patching process.
+
+// for slot content they should also get the scopeId from the host instance.
+
+// Text node
+
+// we have a recursively passed down rm callback
+
+// increase the listeners count
+
+// directly removing
+
+// recursively invoke hooks on child component root node
+
+// clone reused vnode
+
+// reuse element for static trees.
+
+// note we only do this if the vnode is cloned -
+
+// if the new node is not cloned it means the render functions have been
+
+// reset by the hot-reload-api and we need to do a proper re-render.
+
+// Vnode moved right
+
+// Vnode moved left
+
+// New element
+
+// same key but different element. treat as new element
+
+// delay insert hooks for component root nodes, invoke them after the
+
+// element is really inserted
+
+// list of modules that can skip create hook during hydration because they
+
+// are already rendered on the client or has no need for initialization
+
+// Note: style is excluded because it relies on initial clone for future
+
+// deep updates (#7063).
+
+// Note: this is a browser-only function so we can assume elms are DOM nodes.
+
+// assert node match
+
+// child component. it should have hydrated its own tree.
+
+// empty element, allow client to pick up and populate children
+
+// v-html and domProps: innerHTML
+
+// iterate and compare children lists
+
+// if childNode is not null, it means the actual childNodes list is
+
+// longer than the virtual children list.
+
+// ensure collecting deps for deep class bindings for future updates
+
+// empty mount (likely as component), create new root element
+
+// patch existing root node
+
+// mounting to a real element
+
+// check if this is server-rendered content and if we can perform
+
+// a successful hydration.
+
+// either not server-rendered, or hydration failed.
+
+// create an empty node and replace it
+
+// replacing existing element
+
+// update parent placeholder node element, recursively
+
+// create new node
+
+// extremely rare edge case: do not insert if old element is in a
+
+// leaving transition. Only happens when combining transition +
+
+// keep-alive + HOCs. (#4590)
+
+// #6513
+
+// invoke insert hooks that may have been merged by create hooks.
+
+// e.g. for directives that uses the "inserted" hook.
+
+// start at index 1 to avoid re-invoking component mounted hook
+
+// destroy old node
+
+/**
+   * Not type checking this file because flow doesn't like attaching
+   * properties to Elements.
+   */
+
+// http://www.matts411.com/post/internet-explorer-9-oninput/
+
+// #6903
+
+// Safari < 10.2 & UIWebView doesn't fire compositionend when
+
+// switching focus before confirming composition choice
+
+// this also fixes the issue where some browsers e.g. iOS Chrome
+
+// fires "change" instead of "input" on autocomplete.
+
+// in case the options rendered by v-for have changed,
+
+// it's possible that the value is out-of-sync with the rendered options.
+
+// detect such cases and filter out values that no longer has a matching
+
+// option in the DOM.
+
+// prevent triggering an input event for no reason
+
+// recursively search for possible transition defined inside the component root
+
+// in case the child is also an abstract component, e.g. <keep-alive>
+
+// we want to recursively retrieve the real component to be rendered
+
+// props
+
+// events.
+
+// extract listeners and pass them directly to the transition methods
+
+// filter out text nodes (possible whitespaces)
+
+// warn multiple elements
+
+// warn invalid mode
+
+// if this is a component root node and the component's
+
+// parent container node also has transition, skip.
+
+// apply transition data to child
+
+// use getRealChild() to ignore abstract components e.g. keep-alive
+
+// ensure a key that is unique to the vnode type and to this transition
+
+// component instance. This key will be used to remove pending leaving nodes
+
+// during entering.
+
+// mark v-show
+
+// so that the transition module can hand over the control to the directive
+
+// replace old child transition data with fresh one
+
+// important for dynamic transitions!
+
+// handle transition mode
+
+// return placeholder node and queue update when leave finishes
+
+// force removing pass
+
+// hydrating
+
+// we divide the work into three loops to avoid mixing DOM reads and writes
+
+// in each iteration - which helps prevent layout thrashing.
+
+// force reflow to put everything in position
+
+// assign to this to avoid being removed in tree-shaking
+
+// Detect whether an element with the move class applied has
+
+// CSS transitions. Since the element may be inside an entering
+
+// transition at this very moment, we make a clone of it and remove
+
+// all other transition classes applied to ensure only the move class
+
+// is applied.
+
+// install platform specific utils
+
+// install platform runtime directives & components
+
+// install platform patch function
+
+// public mount method
+
+// we set this to vm._watcher inside the watcher's constructor
+
+// since the watcher's initial patch may call $forceUpdate (e.g. inside child
+
+// component's mounted hook), which relies on vm._watcher being already defined
+
+/* isRenderWatcher */
+
+// manually mounted instance, call mounted on self
+
+// mounted is called for render-created child components in its inserted hook
+
+// devtools global hook
+
+// push text token
+
+// tag token
+
+/* getStatic */
+
+/**
+   * Convert HTML string to AST.
+   */
+
+// tree management
+
+// allow root elements with v-if, v-else-if and v-else
+
+// keep it in the children list so that v-else(-if) conditions can
+
+// find it as the prev node.
+
+// final children cleanup
+
+// filter out scoped slots
+
+// remove trailing whitespace node again
+
+// check pre state
+
+// apply post-transforms
+
+// remove trailing whitespace node
+
+// Make sure we're not in a plaintext content element like script/style
+
+// Comment:
+
+// http://en.wikipedia.org/wiki/Conditional_comment#Downlevel-revealed_conditional_comment
+
+// Doctype:
+
+// End tag:
+
+// Start tag:
+
+// < in plain text, be forgiving and treat it as text
+
+// Clean up any remaining tags
+
+// Find the closest opened tag of the same type
+
+// If no tag name is provided, clean shop
+
+// Close all the open elements, up the stack
+
+// Remove the open elements from the stack
+
+// check namespace.
+
+// inherit parent ns if there is one
+
+// handle IE svg bug
+
+// apply pre-transforms
+
+// non root node in pre blocks with no attributes
+
+// structural directives
+
+// handle content being passed to a component as slot,
+
+// e.g. <template slot="xxx">, <div slot-scope="xxx">
+
+// pop stack
+
+// IE textarea placeholder bug
+
+// condense consecutive whitespaces into single space
+
+// adding anyting as a sibling to the root node is forbidden
+
+// comments should still be allowed, but ignored
+
+// handle <slot/> outlets
+
+/* tip */
+
+// determine whether this is a plain element after
+
+// removing structural attributes
+
+// slot="xxx"
+
+// preserve slot as an attribute for native shadow DOM compat
+
+// only for non-scoped slots.
+
+// v-slot on <template>
+
+// v-slot on component, denotes default slot
+
+// add the component's children to its default slot
+
+// remove children as they are returned from scopedSlots now
+
+// mark el non-plain so data gets generated
+
+// mark element as dynamic
+
+// support .foo shorthand syntax for the .prop modifier
+
+// modifiers
+
+// v-bind
+
+// handler w/ dynamic event name
+
+// v-on
+
+// parse arg
+
+// normal directives
+
+// #6887 firefox doesn't update muted state if set via attribute
+
+// even immediately after element creation
+
+// for script (e.g. type="x/template") or style, do not decode content
+
+// process for on the main node
+
+// prevent it from double-processed
+
+// 2. add radio else-if condition
+
+// 3. other
+
+// inputs with type="file" are read only and setting the input's
+
+// value will throw an error.
+
+// component v-model doesn't need extra runtime
+
+// ensure runtime directive metadata
+
+// warn if v-bind:value conflicts with v-model
+
+// except for inputs with v-bind:type
+
+/**
+   * Generate a string containing static keys from compiler modules.
+   */
+
+/**
+   * Goal of the optimizer: walk the generated template AST tree
+   * and detect sub-trees that are purely static, i.e. parts of
+   * the DOM that never needs to change.
+   *
+   * Once we detect these sub-trees, we can:
+   *
+   * 1. Hoist them into constants, so that we no longer need to
+   *    create fresh nodes for them on each re-render;
+   * 2. Completely skip them in the patching process.
+   */
+
+// first pass: mark all non-static nodes.
+
+// not a built-in
+
+// do not make component slot content static. this avoids
+
+// 1. components not able to mutate slot nodes
+
+// 2. static slot content fails for hot-reloading
+
+// second pass: mark static roots.
+
+// For a node to qualify as a static root, it should have children that
+
+// are not just static text. Otherwise the cost of hoisting out will
+
+// outweigh the benefits and it's better off to just always render it fresh.
+
+// #7880: IE11 and Edge use `Esc` for Escape key name.
+
+// #9112: IE11 uses `Spacebar` for Space key name.
+
+// #7806: IE11 uses key names without `Arrow` prefix for arrow keys.
+
+// #9112: IE11 uses `Del` for Delete key name.
+
+// left/right
+
+// make sure the key filters only apply to KeyboardEvents
+
+// #9441: can't use 'keyCode' in $event because Chrome autofill fires fake
+
+// key events that do not have keyCode property...
+
+// Make sure modifiers like prevent and stop get executed after key filtering
+
+// slot props are camelized
+
+// componentName is el.component, take it as argument to shun flow's pessimistic refinement
+
+// component or element
+
+// module transforms
+
+// hoist static sub-trees out
+
+// Some elements (templates) need to behave differently inside of a v-pre
+
+// node.  All pre nodes are static roots, so we can use this as a location to
+
+// wrap a state change and reset it upon exiting the pre node.
+
+// v-once
+
+// avoid recursion
+
+// v-if with v-once should generate code like (a)?_m(0):_m(1)
+
+// compile-time directive that manipulates AST.
+
+// returns true if it also needs a runtime counterpart.
+
+// directives first.
+
+// directives may mutate the el's other properties before they are generated.
+
+// key
+
+// ref
+
+// pre
+
+// record original tag name for components using "is" attribute
+
+// module data generation functions
+
+// attributes
+
+// inline-template
+
+// DOM props
+
+// event handlers
+
+// slot target
+
+// only for non-scoped slots
+
+// scoped slots
+
+// by default scoped slots are considered "stable", this allows child
+
+// components with only scoped slots to skip forced updates from parent.
+
+// but in some cases we have to bail-out of this optimization
+
+// for example if the slot contains dynamic names, has v-if or v-for on them...
+
+// is passing down slot from parent which may be dynamic
+
+// #9534: if a component with scoped slots is inside a conditional branch,
+
+// it's possible for the same component to be reused but with different
+
+// compiled slot content. To avoid that, we generate a unique key based on
+
+// the generated code of all the slot contents.
+
+// OR when it is inside another scoped slot or v-for (the reactivity may be
+
+// disconnected due to the intermediate scope variable)
+
+// #9438, #9506
+
+// TODO: this can be further optimized by properly analyzing in-scope bindings
+
+// and skip force updating ones that do not actually use scope variables.
+
+// component v-model
+
+// v-bind dynamic argument wrap
+
+// v-bind with dynamic arguments must be applied using the same v-bind object
+
+// merge helper so that class/style/mustUseProp attrs are handled correctly.
+
+// v-bind data wrap
+
+// v-on data wrap
+
+// optimize single v-for
+
+// determine the normalization needed for the children array.
+
+// 0: no normalization needed
+
+// 1: simple normalization needed (possible 1-level deep nested array)
+
+// 2: full normalization needed
+
+// #3895, #4268
+
+// these keywords should not appear inside expressions, but operators like
+
+// typeof, instanceof and in are allowed
+
+// these unary operators should not be used as property/method names
+
+// detect problematic expressions in a template
+
+// detect possible CSP restriction
+
+// check cache
+
+// compile
+
+// check compilation errors/tips
+
+// push underline
+
+// turn code into functions
+
+// `createCompilerCreator` allows creating compilers that use alternative
+
+// parser/optimizer/codegen, e.g the SSR optimizing compiler.
+
+// Here we just export a default compiler using the default parts.
+
+// merge custom modules
+
+// copy other options
+
+// merge custom directives
+
+// #3663: IE encodes newlines inside attribute values while other browsers don't
+
+// #6828: chrome encodes content in a[href]
+
+// resolve template/el and convert to render function
+
+/**
+   * Get outerHTML of elements, taking care
+   * of SVG elements in IE as well.
+   */
+
+// shim for using process in browser
+
+// cached from whatever global is present so that test runners that stub it
+
+// don't break things.  But we need to wrap it in a try catch in case it is
+
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+
+// function because try/catches deoptimize in certain engines.
+
+//normal enviroments in sane situations
+
+// if setTimeout wasn't available but was latter defined
+
+// when when somebody has screwed with setTimeout but no I.E. maddness
+
+// When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+
+// same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+
+// if clearTimeout wasn't available but was latter defined
+
+// When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+
+// same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+
+// Some versions of I.E. have different rules for clearTimeout vs setTimeout
+
+// v8 likes predictible objects
+
+// empty string to avoid regexp issues

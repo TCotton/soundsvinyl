@@ -114,7 +114,7 @@
 </template>
 
 <script>
-import moment from 'moment'
+import moment from 'moment-mini'
 import { createUsername } from '../../helper_functions'
 
 export default {

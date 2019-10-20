@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Cookies from 'universal-cookie'
-import moment from 'moment'
+import moment from 'moment-mini'
 import { homeURI } from '../../helper_constants'
 import { createUsername } from '../../helper_functions'
 import './account.scss'
