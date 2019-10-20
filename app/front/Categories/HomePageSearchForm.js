@@ -49,9 +49,17 @@ export class HomePageSearchForm extends Component {
 			<React.Fragment>
 				<RedirectComp search={redirectRoute} />
 				<div styleName='search'>
-					<h4>{$search}</h4>
-					<form onSubmit={this.handleSubmit} styleName='searchForm'>
-						<label className='visuallyhidden' htmlFor='search'>
+					<h4>
+						{$search}
+					</h4>
+					<form
+						onSubmit={this.handleSubmit}
+						styleName='searchForm'
+					>
+						<label
+							className='visuallyhidden'
+							htmlFor='search'
+						>
 							{$yourSearchTerm}
 						</label>
 						<input

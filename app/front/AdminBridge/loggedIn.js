@@ -6,9 +6,14 @@ function LoginButton (props) {
 	const { onClick } = props
 	const $Logout = 'logout'
 	return (
-		<Link onClick={onClick} to='/'>
+		<Link
+			onClick={onClick}
+			to='/'
+		>
 			<li>
-				<span>{$Logout}</span>
+				<span>
+					{$Logout}
+				</span>
 			</li>
 		</Link>
 	)

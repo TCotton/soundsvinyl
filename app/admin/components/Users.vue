@@ -14,11 +14,15 @@
 				<th scope="col">Delete</th>
 			</tr>
 
-			<tr v-for="user in Users" :key="user._id">
+			<tr
+				v-for="user in Users"
+				:key="user._id"
+			>
 				<th scope="row">{{ user.email }}</th>
 				<td>{{ user._id }}</td>
 				<td>
-					<router-link :to="{ name: 'User', params: { id: user._id } }"
+					<router-link
+						:to="{ name: 'User', params: { id: user._id } }"
 						>Edit</router-link
 					>
 				</td>
@@ -33,7 +37,10 @@
 			</tr>
 		</table>
 
-		<modal v-if="showModal" @close="deletePage">
+		<modal
+			v-if="showModal"
+			@close="deletePage"
+		>
 			<h3 slot="header">Are you sure you want to delete this user?</h3>
 		</modal>
 	</div>

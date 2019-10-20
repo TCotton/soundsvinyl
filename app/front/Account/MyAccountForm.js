@@ -58,9 +58,13 @@ export default class MyAccountForm extends Component {
 				onSubmit={this.handleSubmitLogin}
 			>
 				<fieldset>
-					<legend>{legend}</legend>
+					<legend>
+						{legend}
+					</legend>
 
-					<label htmlFor={`${formName}loginName`}>{nameLabel}</label>
+					<label htmlFor={`${formName}loginName`}>
+						{nameLabel}
+					</label>
 					<input
 						data-autocapitalize='none'
 						disabled={disabled}
@@ -72,7 +76,9 @@ export default class MyAccountForm extends Component {
 						value={name}
 					/>
 
-					<label htmlFor={`${formName}loginPassword`}>{passwordLabel}</label>
+					<label htmlFor={`${formName}loginPassword`}>
+						{passwordLabel}
+					</label>
 					<input
 						disabled={disabled}
 						id={`${formName}loginPassword`}
@@ -83,7 +89,11 @@ export default class MyAccountForm extends Component {
 						value={password}
 					/>
 
-					<input name='loginSubmit' type='submit' value='Login' />
+					<input
+						name='loginSubmit'
+						type='submit'
+						value='Login'
+					/>
 				</fieldset>
 			</form>
 		)

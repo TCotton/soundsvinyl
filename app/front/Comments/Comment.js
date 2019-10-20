@@ -44,7 +44,10 @@ class Comment extends Component {
 					ProfileArray[Math.floor(Math.random() * ProfileArray.length)]
 
 				return (
-					<div key={value} styleName='comment'>
+					<div
+						key={value}
+						styleName='comment'
+					>
 						<div styleName='commentLeftColumn'>
 							<RandomProfile />
 						</div>
@@ -54,14 +57,20 @@ class Comment extends Component {
 								{'/'}
 								{date}
 							</p>
-							<p styleName='commentText'>{content}</p>
+							<p styleName='commentText'>
+								{content}
+							</p>
 						</div>
 					</div>
 				)
 			})
 		}
 
-		return <div>{values}</div>
+		return (
+			<div>
+				{values}
+			</div>
+		)
 	}
 }
 

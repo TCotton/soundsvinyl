@@ -1,3 +1,4 @@
+/* eslint-disable jest/no-disabled-tests */
 import React from 'react'
 import Sitemap from '../sitemap'
 import renderer from 'react-test-renderer'
@@ -218,3 +219,4 @@ describe( 'Component', () => {
 		});
 	});
 })
+/* eslint-enable jest/no-disabled-tests */

@@ -2,7 +2,11 @@
 	<div :class="$style.user">
 		<h2>{{ msg }}</h2>
 
-		<p :class="$style.success" v-show="success">{{ successMsg }}</p>
+		<p
+			:class="$style.success"
+			v-show="success">
+			{{ successMsg }}
+		</p>
 
 		<form
 			id="editUser"
@@ -24,9 +28,12 @@
 				value=""
 			/>
 
-			<span v-show="errors.has('editUserEmail')" :class="$style.error">{{
-				errors.first('editUserEmail')
-			}}</span>
+			<span
+				v-show="errors.has('editUserEmail')"
+				:class="$style.error"
+			>
+				{{ errors.first('editUserEmail') }}
+			</span>
 
 			<label for="editUsername">Username (automatically generated)</label>
 			<input
@@ -39,9 +46,10 @@
 				value=""
 			/>
 
-			<span v-show="errors.has('editUsername')" :class="$style.error">{{
-				errors.first('editUsername')
-			}}</span>
+			<span
+				v-show="errors.has('editUsername')"
+				:class="$style.error"
+			>{{ errors.first('editUsername') }}</span>
 
 			<label for="editUserPasswordOne">Password</label>
 			<input
@@ -56,9 +64,11 @@
 				value=""
 			/>
 
-			<span v-show="errors.has('editUserPasswordTwo')" :class="$style.error">{{
-				errors.first('editUserPasswordTwo')
-			}}</span>
+			<span
+				v-show="errors.has('editUserPasswordTwo')"
+				:class="$style.error">
+				{{ errors.first('editUserPasswordTwo') }}
+			</span>
 
 			<label for="editUserPasswordTwo">Same password again (must match)</label>
 			<input
@@ -94,7 +104,11 @@
 				value=""
 			/>
 
-			<input type="submit" name="editUserSubmit" value="Edit User" />
+			<input
+				type="submit"
+				name="editUserSubmit"
+				value="Edit User"
+			/>
 		</form>
 	</div>
 </template>

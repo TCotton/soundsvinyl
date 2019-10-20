@@ -100,7 +100,10 @@ class Nav extends Component {
 							onClick={this.handleClicked}
 							styleName='closeMenu'
 						/>
-						<UnorderedList buttonElement={button} isClicked={ulClassName} />
+						<UnorderedList
+							buttonElement={button}
+							isClicked={ulClassName}
+						/>
 					</div>
 				</div>
 			</nav>

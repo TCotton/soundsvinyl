@@ -2,13 +2,18 @@
 	<div :class="$style.page">
 		<h2>{{ msg }}</h2>
 
-		<p :class="$style.error" v-show="errorMsg">
+		<p
+			:class="$style.error"
+			v-show="errorMsg">
 			{{ errorMsg }}
 		</p>
 
 		<h3>Thumbnail</h3>
 
-		<thumbnail :thumbnail-url="thumbnail" :class="$style.thumbnail" />
+		<thumbnail
+			:thumbnail-url="thumbnail"
+			:class="$style.thumbnail"
+		/>
 
 		<h4>Edit page</h4>
 
@@ -41,13 +46,14 @@
 				value=""
 			/>
 
-			<span v-show="errors.has('editPageTitle')" :class="$style.error">{{
-				errors.first('editPageTitle')
-			}}</span>
+			<span
+				v-show="errors.has('editPageTitle')"
+				:class="$style.error">
+				{{ errors.first('editPageTitle') }}
+			</span>
 
-			<label for="editPageSubTitle"
-				>Records release details (label, year)</label
-			>
+			<label
+				for="editPageSubTitle">Records release details (label, year)</label>
 			<input
 				v-validate="{ required: true }"
 				id="editPageSubTitle"
@@ -60,9 +66,11 @@
 				value=""
 			/>
 
-			<span v-show="errors.has('editPageSubTitle')" :class="$style.error">{{
-				errors.first('editPageSubTitle')
-			}}</span>
+			<span
+				v-show="errors.has('editPageSubTitle')"
+				:class="$style.error">
+				{{ errors.first('editPageSubTitle') }}
+			</span>
 
 			<label for="slug">SEO friendly page title slug - human-friendly</label>
 			<input
@@ -77,13 +85,14 @@
 				value=""
 			/>
 
-			<span v-show="errors.has('slug')" :class="$style.error">{{
-				errors.first('slug')
-			}}</span>
+			<span
+				v-show="errors.has('slug')"
+				:class="$style.error">
+				{{ errors.first('slug') }}
+			</span>
 
-			<label for="shortSlug"
-				>SEO friendly page title slug - machine-friendly</label
-			>
+			<label
+				for="shortSlug">SEO friendly page title slug - machine-friendly</label>
 			<input
 				v-validate="{ required: true }"
 				id="shortSlug"
@@ -96,9 +105,11 @@
 				value=""
 			/>
 
-			<span v-show="errors.has('shortSlug')" :class="$style.error">{{
-				errors.first('shortSlug')
-			}}</span>
+			<span
+				v-show="errors.has('shortSlug')"
+				:class="$style.error">
+				{{ errors.first('shortSlug') }}
+			</span>
 
 			<label for="editPageVideoLink">Link to video page</label>
 			<input
@@ -112,9 +123,11 @@
 				value=""
 			/>
 
-			<span v-show="errors.has('editPageVideoLink')" :class="$style.error">{{
-				errors.first('editPageVideoLink')
-			}}</span>
+			<span
+				v-show="errors.has('editPageVideoLink')"
+				:class="$style.error">
+				{{ errors.first('editPageVideoLink') }}
+			</span>
 
 			<label for="editPageDescriptionOne">First paragraph of description</label>
 			<textarea
@@ -127,9 +140,8 @@
 				rows="10"
 			/>
 
-			<label for="editPageDescriptionTwo"
-				>Second paragraph of description</label
-			>
+			<label
+				for="editPageDescriptionTwo">Second paragraph of description</label>
 			<textarea
 				id="editPageDescriptionTwo"
 				v-model="EditPageForm.descriptionTwo"
@@ -141,12 +153,10 @@
 			<span
 				v-show="errors.has('editPageDescriptionTwo')"
 				:class="$style.error"
-				>{{ errors.first('editPageDescriptionTwo') }}</span
-			>
+				>{{ errors.first('editPageDescriptionTwo') }}</span>
 
-			<label for="editPageDescriptionThree"
-				>Three paragraph of description</label
-			>
+			<label
+				for="editPageDescriptionThree">Three paragraph of description</label>
 			<textarea
 				id="editPageDescriptionThree"
 				v-model="EditPageForm.descriptionThree"
@@ -155,9 +165,8 @@
 				rows="10"
 			/>
 
-			<label for="editPageDescriptionFour"
-				>Fourth paragraph of description</label
-			>
+			<label
+				for="editPageDescriptionFour">Fourth paragraph of description</label>
 			<textarea
 				id="editPageDescriptionFour"
 				v-model="EditPageForm.descriptionFour"
@@ -166,9 +175,8 @@
 				rows="10"
 			/>
 
-			<label for="editPageDescriptionFive"
-				>Fifth paragraph of description</label
-			>
+			<label
+				for="editPageDescriptionFive">Fifth paragraph of description</label>
 			<textarea
 				id="editPageDescriptionFive"
 				v-model="EditPageForm.descriptionFive"
@@ -190,9 +198,9 @@
 				value=""
 			/>
 
-			<span v-show="errors.has('editPageCategories')" :class="$style.error">{{
-				errors.first('editPageCategories')
-			}}</span>
+			<span
+				v-show="errors.has('editPageCategories')"
+				:class="$style.error">{{ errors.first('editPageCategories') }}</span>
 
 			<label for="editDate">Date created (cannot edit)</label>
 			<input
@@ -224,7 +232,11 @@
 				value=""
 			/>
 
-			<input type="submit" name="addPageSubmit" value="Page submit" />
+			<input
+				type="submit"
+				name="addPageSubmit"
+				value="Page submit"
+			/>
 		</form>
 	</div>
 </template>

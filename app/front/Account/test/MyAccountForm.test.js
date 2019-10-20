@@ -1,9 +1,7 @@
 import React from 'react'
 import MyAccountForm from '../MyAccountForm'
 import renderer from 'react-test-renderer';
-import { mount, shallow } from 'enzyme';
 import '../../../../enzymeConfig';
-import MyAccount from '../MyAccount'
 
 describe('Component', () => {
 	let component

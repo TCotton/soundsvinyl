@@ -5,7 +5,6 @@ import HomePageSearchForm from './HomePageSearchForm'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
-// import CategoriesList from './CategoriesList';
 
 export class CategoriesHomepage extends Component {
 	static propTypes = {
@@ -74,7 +73,7 @@ export class CategoriesHomepage extends Component {
 		const $thereAreNo = 'There are no entries for this term'
 
 		if (requestCompleted && Array.isArray(search) && search.length === 0) {
-			arrayMap = <p className='error'>{$thereAreNo}</p>
+			arrayMap = <p className='error'>{$thereAreNo}</p> // eslint-disable-line react/jsx-one-expression-per-line
 		}
 
 		const href = window.location.href
@@ -85,8 +84,12 @@ export class CategoriesHomepage extends Component {
 
 		return (
 			<main styleName='categories'>
-				<h3>{$title}</h3>
-				<section>{arrayMap}</section>
+				<h3>
+					{$title}
+				</h3>
+				<section>
+					{arrayMap}
+				</section>
 			</main>
 		)
 	}

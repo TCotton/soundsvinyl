@@ -128,11 +128,15 @@ class MyAccount extends Component {
 
 		const errorFunc = error
 			? () => {
-					return <p styleName='error'>{error}</p>
-			  }
+					return (
+						<p styleName='error'>
+							{error}
+						</p>
+					)
+				}
 			: () => {
 					return null
-			  }
+				}
 
 		return (
 			<main styleName='myAccount'>

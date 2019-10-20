@@ -4,7 +4,11 @@
 
 		<p v-show="noContent">There are no comments in database</p>
 
-		<paginate :list="Comments" :per="10" name="Comments">
+		<paginate
+			:list="Comments"
+			:per="10"
+			name="Comments"
+		>
 			<table v-show="!noContent">
 				<caption>
 					Comments list
@@ -20,7 +24,10 @@
 					<th scope="col">Delete</th>
 				</tr>
 
-				<tr v-for="comment in paginated('Comments')" :key="comment._id">
+				<tr
+					v-for="comment in paginated('Comments')"
+					:key="comment._id"
+				>
 					<th scope="row">{{ comment.articleId }}</th>
 					<td>{{ comment.userName }}</td>
 					<td>{{ comment.content }}</td>
@@ -28,9 +35,9 @@
 					<td>{{ comment.published }}</td>
 
 					<td>
-						<router-link :to="{ name: 'Comment', params: { id: comment._id } }"
-							>Edit</router-link
-						>
+						<router-link
+							:to="{ name: 'Comment', params: { id: comment._id } }"
+							>Edit</router-link>
 					</td>
 					<td>
 						<div
@@ -44,9 +51,16 @@
 			</table>
 		</paginate>
 
-		<paginate-links :async="true" :show-step-links="true" for="Comments" />
+		<paginate-links
+			:async="true"
+			:show-step-links="true"
+			for="Comments"
+		/>
 
-		<modal v-if="showModal" @close="deleteComment">
+		<modal
+			v-if="showModal"
+			@close="deleteComment"
+		>
 			<h3 slot="header">Are you sure you want to delete this comment?</h3>
 		</modal>
 	</div>

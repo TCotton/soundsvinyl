@@ -2,7 +2,11 @@
 	<div :class="$style.pages">
 		<h2>{{ msg }}</h2>
 		<p v-show="noContent">There are no pages in database</p>
-		<paginate :list="Pages" :per="10" name="Pages">
+		<paginate
+			:list="Pages"
+			:per="10"
+			name="Pages"
+		>
 			<table v-show="!noContent">
 				<caption>
 					Pages list
@@ -23,7 +27,10 @@
 					<th scope="col">Delete</th>
 				</tr>
 
-				<tr v-for="page in paginated('Pages')" :key="page._id">
+				<tr
+					v-for="page in paginated('Pages')"
+					:key="page._id"
+				>
 					<th scope="row">{{ page._id }}</th>
 					<td>{{ page.title }}</td>
 					<td>{{ page.subTitle }}</td>
@@ -35,9 +42,11 @@
 					<td>{{ page.descriptionFive }}</td>
 					<td>{{ page.date }}</td>
 					<td>
-						<router-link :to="{ name: 'Page', params: { id: page._id } }"
-							>Edit</router-link
-						>
+						<router-link
+							:to="{ name: 'Page', params: { id: page._id } }"
+							>
+							Edit
+						</router-link>
 					</td>
 					<td>
 						<div
@@ -51,9 +60,16 @@
 			</table>
 		</paginate>
 
-		<paginate-links :async="true" :show-step-links="true" for="Pages" />
+		<paginate-links
+			:async="true"
+			:show-step-links="true"
+			for="Pages"
+		/>
 
-		<modal v-if="showModal" @close="deletePage">
+		<modal
+			v-if="showModal"
+			@close="deletePage"
+		>
 			<h3 slot="header">Are you sure you want to delete this page?</h3>
 		</modal>
 	</div>

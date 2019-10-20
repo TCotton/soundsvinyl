@@ -6,7 +6,9 @@ class LogoutButton extends Component {
 		const $myAccount = 'Mu account'
 		return (
 			<Link to='/my-account'>
-				<li>{$myAccount}</li>
+				<li>
+					{$myAccount}
+				</li>
 			</Link>
 		)
 	}

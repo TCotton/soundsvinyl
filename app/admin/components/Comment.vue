@@ -2,7 +2,9 @@
 	<div :class="$style.comment">
 		<h2>{{ msg }}</h2>
 
-		<p :class="$style.error" v-show="errorMsg">
+		<p
+			:class="$style.error"
+			v-show="errorMsg">
 			{{ errorMsg }}
 		</p>
 
@@ -55,9 +57,8 @@
 				value=""
 			/>
 
-			<label for="editCommentAuthorName"
-				>Comment author name (cannot edit)</label
-			>
+			<label
+				for="editCommentAuthorName">Comment author name (cannot edit)</label>
 			<input
 				id="editCommentAuthorName"
 				v-model="EditCommentForm.articleName"
@@ -98,7 +99,11 @@
 				value=""
 			/>
 
-			<input type="submit" name="editCommentSubmit" value="Comment submit" />
+			<input
+				type="submit"
+				name="editCommentSubmit"
+				value="Comment submit"
+			/>
 		</form>
 	</div>
 </template>

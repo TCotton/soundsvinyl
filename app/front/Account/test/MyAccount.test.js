@@ -1,10 +1,11 @@
+/* eslint-disable jest/no-disabled-tests */
 import React from 'react'
 import MyAccount from '../MyAccount'
 import renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import '../../../../enzymeConfig';
 
-describe.only('Component', () => {
+describe('Component', () => {
 	let component
 	beforeEach(() => {
 		component = renderer.create(<MyAccount />)
@@ -83,13 +84,9 @@ describe.only('Component', () => {
 			expect(component.find('form').at(1).find('input').at(1).props().value).toEqual('aPassword');
 		})
 
-		xit('Should work correctly onSubmit for form[1]', function(){
+		it.skip('Should work correctly onSubmit for form[1]', function(){
 
 			const component = mount(<MyAccount />);
-
-			const e = {
-				preventDefault: () => { },
-			};
 
 			// component.prototype.handleSubmitRegister(e);
 
@@ -113,7 +110,7 @@ describe.only('Component', () => {
 			expect(component.state().loginFormloginName).toEqual(component);
 			expect(component.state().loginFormloginPassword).toEqual('aPassword');
 
-			expect(component.prototype.handleSubmitRegister).to.have.property('callCount', 1);
+			// expect(component.prototype.handleSubmitRegister).to.have.property('callCount', 1);
 			component.prototype.handleSubmitRegister.restore();
 
 			/**
@@ -125,3 +122,4 @@ As noted in the function signature above passing a mock event is optional. Keep 
 		})
 	})
 })
+/* eslint-enable jest/no-disabled-tests */

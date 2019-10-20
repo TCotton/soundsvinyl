@@ -6,7 +6,9 @@ class AboutUs extends React.Component {
 	render () {
 		return (
 			<main styleName='aboutUs'>
-				<h2>About SoundsVinyl</h2>
+				<h2>
+					`About SoundsVinyl`
+				</h2>
 
 				<section>
 					<p>

@@ -7,7 +7,9 @@
 			users email address and the date the account was created
 		</p>
 
-		<p :class="$style.error" v-show="errorMsg">
+		<p
+			:class="$style.error"
+			v-show="errorMsg">
 			{{ errorMsg }}
 		</p>
 
@@ -31,9 +33,9 @@
 				value=""
 			/>
 
-			<span v-show="errors.has('addUserEmail')" :class="$style.error">{{
-				errors.first('addUserEmail')
-			}}</span>
+			<span
+				v-show="errors.has('addUserEmail')"
+				:class="$style.error">{{ errors.first('addUserEmail') }}</span>
 
 			<label for="addUserPasswordOne">Password</label>
 			<input
@@ -48,9 +50,9 @@
 				value=""
 			/>
 
-			<span v-show="errors.has('addUserPasswordOne')" :class="$style.error">{{
-				errors.first('addUserPasswordOne')
-			}}</span>
+			<span
+				v-show="errors.has('addUserPasswordOne')"
+				:class="$style.error">{{ errors.first('addUserPasswordOne') }}</span>
 
 			<label for="addUserPasswordTwo">Same password again (must match)</label>
 			<input
@@ -78,7 +80,11 @@
 				value=""
 			/>
 
-			<input type="submit" name="addUserSubmit" value="Submit User" />
+			<input
+				type="submit"
+				name="addUserSubmit"
+				value="Submit User"
+			/>
 		</form>
 	</div>
 </template>

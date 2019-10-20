@@ -3,7 +3,9 @@
 		&nbsp;
 		<h2>Add a new page</h2>
 
-		<p :class="$style.error" v-show="errorMsg">
+		<p
+			:class="$style.error"
+			v-show="errorMsg">
 			{{ errorMsg }}
 		</p>
 
@@ -26,9 +28,9 @@
 				value=""
 			/>
 
-			<span v-show="errors.has('addPageTitle')" :class="$style.error">{{
-				errors.first('addPageTitle')
-			}}</span>
+			<span
+				v-show="errors.has('addPageTitle')"
+				:class="$style.error">{{ errors.first('addPageTitle') }}</span>
 
 			<label for="addPageSubTitle">Records release details (label, year)</label>
 			<input
@@ -42,9 +44,9 @@
 				value=""
 			/>
 
-			<span v-show="errors.has('addPageSubTitle')" :class="$style.error">{{
-				errors.first('addPageSubTitle')
-			}}</span>
+			<span
+				v-show="errors.has('addPageSubTitle')"
+				:class="$style.error">{{ errors.first('addPageSubTitle') }}</span>
 
 			<label for="addPageVideoLink">Link to video page</label>
 			<input
@@ -58,9 +60,9 @@
 				value=""
 			/>
 
-			<span v-show="errors.has('addPageVideoLink')" :class="$style.error">{{
-				errors.first('addPageVideoLink')
-			}}</span>
+			<span
+				v-show="errors.has('addPageVideoLink')"
+				:class="$style.error">{{ errors.first('addPageVideoLink') }}</span>
 
 			<label for="addPageDescriptionOne">First paragraph of description</label>
 			<textarea
@@ -75,8 +77,7 @@
 			<span
 				v-show="errors.has('addPageDescriptionOne')"
 				:class="$style.error"
-				>{{ errors.first('addPageDescriptionOne') }}</span
-			>
+				>{{ errors.first('addPageDescriptionOne') }}</span>
 
 			<label for="addPageDescriptionTwo">Second paragraph of description</label>
 			<textarea
@@ -87,9 +88,8 @@
 				rows="10"
 			/>
 
-			<label for="addPageDescriptionThree"
-				>Three paragraph of description</label
-			>
+			<label
+				for="addPageDescriptionThree">Three paragraph of description</label>
 			<textarea
 				id="addPageDescriptionThree"
 				v-model="AddPageForm.descriptionThree"
@@ -98,9 +98,8 @@
 				rows="10"
 			/>
 
-			<label for="addPageDescriptionFour"
-				>Fourth paragraph of description</label
-			>
+			<label
+				for="addPageDescriptionFour">Fourth paragraph of description</label>
 			<textarea
 				id="addPageDescriptionFour"
 				v-model="AddPageForm.descriptionFour"
@@ -130,11 +129,15 @@
 				value=""
 			/>
 
-			<span v-show="errors.has('addPageCategories')" :class="$style.error">{{
-				errors.first('addPageCategories')
-			}}</span>
+			<span
+				v-show="errors.has('addPageCategories')"
+				:class="$style.error">{{ errors.first('addPageCategories') }}</span>
 
-			<input type="submit" name="addPageSubmit" value="Page submit" />
+			<input
+				type="submit"
+				name="addPageSubmit"
+				value="Page submit"
+			/>
 		</form>
 	</div>
 </template>

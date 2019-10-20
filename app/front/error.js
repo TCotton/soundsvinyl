@@ -5,7 +5,9 @@ class Error extends Component {
 		const $error = 'Error path does not exist :('
 		return (
 			<main>
-				<p>{$error}</p>
+				<p>
+					{$error}
+				</p>
 			</main>
 		)
 	}

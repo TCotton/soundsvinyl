@@ -26,7 +26,10 @@ class RedirectComp extends Component {
 		if (search) {
 			return (
 				<Switch>
-					<Redirect push to={search} />
+					<Redirect
+						push
+						to={search}
+					/>
 				</Switch>
 			)
 		}

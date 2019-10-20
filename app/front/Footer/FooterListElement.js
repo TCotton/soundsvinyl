@@ -14,6 +14,10 @@ export default class FooterListElement extends Component {
 	render () {
 		const { text } = this.props
 
-		return <li>{text}</li>
+		return (
+			<li>
+				{text}
+			</li>
+		)
 	}
 }
