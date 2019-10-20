@@ -10,9 +10,10 @@ const win = window
 function renderDisqus () {
 	if (win.DISQUS === undefined) {
 		const script = doc.createElement('script')
-		script.async = true
-		script.id = 'disqus-script'
-		script.src = `https://${Shortname}.disqus.com/embed.js`
+		script.defer = true;
+		script.async = true;
+		script.id = 'disqus-script';
+		script.src = `https://${Shortname}.disqus.com/embed.js`;
 		doc.getElementsByTagName('head')[0].appendChild(script)
 	} else {
 		win.DISQUS.reset({ reload: true })
