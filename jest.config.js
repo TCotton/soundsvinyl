@@ -28,7 +28,10 @@ module.exports = {
 		'node/__tests__/*',
 		'nodeService/*',
 		'dist/*',
-		'node/*'
+		'node/*',
+		'app/admin/components/spec/*',
+		'enzymeConfig.js',
+		'loadershim.js'
 	],
 	coverageDirectory: '<rootDir>/test/coverage',
 	moduleNameMapper: {
