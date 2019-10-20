@@ -19,6 +19,7 @@ exports[`Component Contact should render correctly 1`] = `
       Your name
     </label>
     <input
+      data-test-dataid="contactName"
       id="contactName"
       maxLength="254"
       name="contactName"
@@ -33,6 +34,7 @@ exports[`Component Contact should render correctly 1`] = `
       Your email
     </label>
     <input
+      data-test-dataid="contactEmail"
       id="contactEmail"
       maxLength="254"
       name="contactEmail"
@@ -47,6 +49,7 @@ exports[`Component Contact should render correctly 1`] = `
       Your message
     </label>
     <textarea
+      data-test-dataid="contactMessage"
       id="contactMessage"
       maxLength="500"
       minLength="10"

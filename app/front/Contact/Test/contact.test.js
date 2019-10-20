@@ -65,4 +65,37 @@ describe('Component', () => {
 			expect( result.message ).toEqual( null );
 		});
 	});
+
+	describe('Contact form', () => {
+		it('Should capture contactName correctly in form[0] onChange and change the props accordingly', function(){
+
+			const component = mount(	<Contact /> );
+			const input = component.find('form').at(0).find('input').at(0);
+
+			input.instance().value = 'Andy';
+			input.simulate('change');
+			expect(component.find('form').at(0).find('input').at(0).props().value).toEqual('Andy');
+		})
+	});
+
+	it('Should capture contactEmail correctly in form[0] onChange and change the props accordingly', function(){
+
+		const component = mount(	<Contact /> );
+		const input = component.find('form').at(0).find('input').at(1);
+
+		input.instance().value = 'me@andywalpole.me';
+		input.simulate('change');
+		expect(component.find('form').at(0).find('input').at(1).props().value).toEqual('me@andywalpole.me');
+	})
+
+	it('Should capture contactMessage correctly in form[0] onChange and change the props accordingly', function(){
+
+		const component = mount(	<Contact /> );
+		const input = component.find('form').at(0).find('textarea').at(0);
+
+		input.instance().value = 'This is a message';
+		input.simulate('change');
+		expect(component.find('form').at(0).find('textarea').at(0).props().value).toEqual('This is a message');
+	})
+
 })

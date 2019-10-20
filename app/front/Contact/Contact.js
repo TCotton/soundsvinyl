@@ -101,6 +101,7 @@ class Contact extends Component {
 						{$yourName}
 					</label>
 					<input
+						data-test-dataid='contactName'
 						id='contactName'
 						maxLength='254'
 						name='contactName'
@@ -114,6 +115,7 @@ class Contact extends Component {
 						{$yourEmail}
 					</label>
 					<input
+						data-test-dataid='contactEmail'
 						id='contactEmail'
 						maxLength='254'
 						name='contactEmail'
@@ -127,6 +129,7 @@ class Contact extends Component {
 						{$yourMessage}
 					</label>
 					<textarea
+						data-test-dataid='contactMessage'
 						id='contactMessage'
 						maxLength='500'
 						minLength='10'
