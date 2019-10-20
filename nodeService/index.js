@@ -16,6 +16,7 @@ const mongoose = require('mongoose')
 const rateLimit = require('express-rate-limit')
 const helmet = require('helmet')
 const csp = require('helmet-csp')
+const spdy = require('spdy');
 
 if (fs.existsSync('./node-variables.env')) {
 	const dotenv = require('dotenv')
@@ -303,9 +304,9 @@ if (
 }
 
 if (app.get('env') === 'production') {
-	http.createServer(app).listen(app.get('port'), () => {
-		console.log('Express server listening on port ' + app.get('port'))
-	})
+	spdy.createServer(app).listen(app.get('port'), function () {
+		console.log('Express server listening on port ' + app.get('port'));
+	});
 }
 
 /* eslint-enable */
