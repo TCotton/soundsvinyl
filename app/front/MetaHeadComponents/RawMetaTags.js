@@ -51,7 +51,10 @@ class MetaHeader extends Component {
 					{title}
 				</title>
 				{canonical.length > 0 && (
-					<link href={`https://soundsvinyl.co/${canonical}`} rel='canonical' />
+					<link
+						href={`https://soundsvinyl.co/${canonical}`}
+						rel='canonical'
+					/>
 				)}
 			</React.Fragment>
 		)

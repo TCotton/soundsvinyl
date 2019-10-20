@@ -11,15 +11,13 @@ import Wrapper from './Wrapper'
 export default class rootComponent extends Component {
 	render () {
 		return (
-			<React.StrictMode>
-				<Provider store={store}>
-					<CookiesProvider>
-						<Router>
-							<Wrapper />
-						</Router>
-					</CookiesProvider>
-				</Provider>
-			</React.StrictMode>
+			<Provider store={store}>
+				<CookiesProvider>
+					<Router>
+						<Wrapper/>
+					</Router>
+				</CookiesProvider>
+			</Provider>
 		)
 	}
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import Disqus from '../Disqus'
 import renderer from 'react-test-renderer'
+import Video from '../../Page/Video'
 
 describe('Component', () => {
 	let component
@@ -16,6 +17,17 @@ describe('Component', () => {
 
 	describe('Disqus', () => {
 		it('should be defined', () => {
+			expect(component).toBeDefined()
+		})
+
+		it('can be updated', () => {
+			component.update(
+				<Disqus
+					id='sfd489hfwenslkdnai'
+					path='/another-title-here/5b72d35f43f503882567d78d'
+					title='Another great song'
+				/>
+			)
 			expect(component).toBeDefined()
 		})
 	})

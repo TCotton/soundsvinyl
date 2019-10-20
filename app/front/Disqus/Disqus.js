@@ -53,6 +53,11 @@ export default class Disqus extends Component {
 			win.disqus_url = Website_URL + path
 		}
 
-		return <div {...other} id='disqus_thread' />
+		return (
+			<div
+				{...other}
+				id='disqus_thread'
+			/>
+		)
 	}
 }

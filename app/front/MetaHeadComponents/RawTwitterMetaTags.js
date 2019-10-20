@@ -36,10 +36,22 @@ class RawTwitterMetaTags extends Component {
 
 		return (
 			<React.Fragment>
-				<meta content='summary' name='twitter:card' />
-				<meta content='@andywalpole' name='twitter:site' />
-				<meta content={title} name='twitter:title' />
-				<meta content={description} name='twitter:description' />
+				<meta
+					content='summary'
+					name='twitter:card'
+				/>
+				<meta
+					content='@andywalpole'
+					name='twitter:site'
+				/>
+				<meta
+					content={title}
+					name='twitter:title'
+				/>
+				<meta
+					content={description}
+					name='twitter:description'
+				/>
 			</React.Fragment>
 		)
 	}
