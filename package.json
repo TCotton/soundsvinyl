@@ -37,6 +37,7 @@
 		"npm": "6.4.1"
 	},
 	"dependencies": {
+		"@loadable/component": "^5.10.3",
 		"@sentry/browser": "^4.6.6",
 		"@websanova/vue-auth": "^2.21.14-beta",
 		"axios": "^0.18.1",
@@ -117,6 +118,7 @@
 		"xmlhttprequest": "^1.8.0"
 	},
 	"devDependencies": {
+		"@babel/plugin-syntax-dynamic-import": "^7.2.0",
 		"@shelf/jest-mongodb": "^1.1.2",
 		"@types/express": "^4.17.1",
 		"@types/jest": "^24.0.19",

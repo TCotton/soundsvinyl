@@ -2,7 +2,6 @@
 import React, { Component, Suspense, lazy } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Nav from './Navigation/Nav'
-import Footer from './Footer/Footer'
 import ErrorBoundary from './errorBoundaries/ErrorBoundary'
 
 const RecordListing = lazy(() => import('./recordListing'))
@@ -14,6 +13,7 @@ const CommentsPolicy = lazy(() => import('./Comments/CommentsPolicy'))
 const Sitemap = lazy(() => import('./Sitemap/Sitemap'))
 const Main = lazy(() => import('./main'))
 const Error = lazy(() => import('./error'))
+const Footer = lazy(() => import('./Footer/Footer'))
 
 class Wrapper extends Component {
 	constructor (props) {
@@ -88,7 +88,15 @@ class Wrapper extends Component {
 					</Switch>
 				</Suspense>
 				<ErrorBoundary>
-					<Footer />
+					<Suspense
+						fallback={
+							<div>
+								{$loading}
+							</div>
+						}
+					>
+						<Footer />
+					</Suspense>
 				</ErrorBoundary>
 			</div>
 		)
