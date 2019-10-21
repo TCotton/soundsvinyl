@@ -280,7 +280,7 @@ if (
 }
 
 if (app.get('env') === 'production') {
-	http.createServer(app).listen(app.get('port'), function () {
+	https.createServer(app).listen(app.get('port'), function () {
 		console.log('Express server listening on port ' + app.get('port'));
 	});
 }
