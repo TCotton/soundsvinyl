@@ -7,13 +7,9 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const SizePlugin = require('size-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebPackPlugin = require('html-webpack-plugin')
-// const ImageminPlugin = require('imagemin-webpack-plugin');
 
 // the path(s) that should be cleaned
-//const pathsToClean = [path.resolve(__dirname , '..') + '/dist']
-
 const basePath = __dirname;
 const targetPath = '../soundsvinyl';
 const targetFolder = 'dist';
