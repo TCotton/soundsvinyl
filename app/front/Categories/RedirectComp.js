@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './categoriesHomepage.scss'
+import './CategoriesHomepage.scss'
 import PropTypes from 'prop-types'
 import { Redirect, withRouter, Switch } from 'react-router-dom'
 
