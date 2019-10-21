@@ -13,7 +13,6 @@ const cookieParser = require('cookie-parser') // this is causing server to fail
 const logger = require('morgan')
 const compress = require('compression')
 const mongoose = require('mongoose')
-const rateLimit = require('express-rate-limit')
 const helmet = require('helmet')
 const csp = require('helmet-csp')
 
@@ -31,15 +30,6 @@ const app = express()
 
 if (app.get('env') === 'development') {
 	mongoose.set('debug', true) // enable logging collection methods + arguments to the console
-}
-
-let limiter
-
-if (app.get('env') === 'production') {
-	limiter = rateLimit({
-		windowMs: 15 * 60 * 1000, // 15 minutes
-		max: 100 // limit each IP to 100 requests per windowMs
-	})
 }
 
 const prerenderToken = process.env.prerenderToken
@@ -100,11 +90,6 @@ app.use(
 	})
 )
 app.use(helmet())
-
-//  apply to all requests
-if (app.get('env') === 'production') {
-	app.use(limiter)
-}
 
 app.use(
 	csp({
