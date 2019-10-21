@@ -27,14 +27,6 @@ export class CategoriesHomepage extends Component {
 		this.handleSearchResult = this.handleSearchResult.bind(this)
 	}
 
-	shouldComponentUpdate(nextProps) {
-		if (this.props.requestCompleted !== nextProps.requestCompleted) {
-			return true;
-		}
-		return false;
-	}
-
-
 	handleSearchResult () {
 		return true
 	}
