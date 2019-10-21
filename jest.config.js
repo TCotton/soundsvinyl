@@ -11,6 +11,7 @@ module.exports = {
 	collectCoverageFrom: [
 		'**/*.{js,jsx}'
 	],
+	collectCoverage:true,
 	moduleFileExtensions: [ 'js', 'json', 'jsx' ],
 	coveragePathIgnorePatterns: [
 		'/node_modules/',

@@ -2,6 +2,7 @@
 
 exports[`Component PageUnit snapshot 1`] = `
 <a
+  aria-label="This is a title"
   className="pageUnit__pageUnit___mE_Gi"
   href="/this-is-a-slug/507f191e810c19729de860ea"
   onClick={[Function]}

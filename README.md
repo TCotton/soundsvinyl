@@ -1,4 +1,4 @@
-[![Build Status][ci-img]][ci]
+[![codecov](https://codecov.io/gh/TCotton/soundsvinyl/branch/master/graph/badge.svg)](https://codecov.io/gh/TCotton/soundsvinyl)
 [![dependencies Status](https://david-dm.org/tcotton/soundsvinyl/status.svg)](https://david-dm.org/tcotton/soundsvinyl)
 [![devDependencies Status](https://david-dm.org/tcotton/soundsvinyl/dev-status.svg)](https://david-dm.org/tcotton/soundsvinyl?type=dev)
 [![Coverage Status](https://coveralls.io/repos/github/TCotton/soundsvinyl/badge.svg?branch=master)](https://coveralls.io/github/TCotton/soundsvinyl?branch=master)
