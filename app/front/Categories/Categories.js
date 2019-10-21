@@ -65,7 +65,7 @@ export class Categories extends Component {
 	}
 
 	getRequestCall () {
-		const { category } = this.props
+		const { category, history, location } = this.props
 		const { page } = this.state
 
 		// refactor both these API request into one request
@@ -82,6 +82,9 @@ export class Categories extends Component {
 						requestCompleted: true,
 						total: res.data.total
 					})
+					if(page !== 1) {
+						history.push(`${location.pathname}?page=${page}`);
+					}
 				})
 				.catch(error => {
 					new Error(error.toString())
