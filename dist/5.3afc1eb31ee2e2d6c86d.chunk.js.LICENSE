@@ -1,0 +1,25 @@
+/***/
+
+// extracted by mini-css-extract-plugin
+
+// refactor both these API request into one request
+
+// refactor -> use redux
+
+// add empty element so that search form can be placed there
+
+// only add search box on home page
+
+// only display if the total is a bigger number than articles per page
+
+// Note:
+
+// Do not use the desctructing syntax with Babel.
+
+// Desctructing adds _slicedToArray helper.
+
+// eslint-disable-next-line no-console
+
+// Remove any styles which could not be found (if handleMissingStyleName === 'ignore')
+
+/* eslint-disable */
