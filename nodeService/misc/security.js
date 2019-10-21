@@ -6,9 +6,10 @@ module.exports = app => {
 	// security advice used from https://medium.com/@nodepractices/were-under-attack-23-node-js-security-best-practices-e33c146cb87d
 	// do I need both express-rate-limit && rate-limiter-flexible??
 
-	app.use(helmet())
+	app.use(helmet());
 
 	app.enable('trust proxy') // only if you're behind a reverse proxy (Heroku, Bluemix, AWS if you use an ELB, custom Nginx setup, etc)
+
 
 	const apiLimiter = new RateLimit({
 		windowMs: 15 * 60 * 1000, // 15 minutes
@@ -17,9 +18,9 @@ module.exports = app => {
 	})
 
 	// only apply to requests that begin with /apiV1/
-	app.use('/apiV1/', apiLimiter)
+	app.use('/apiV1/', apiLimiter);
 
-	const opts = {
+/*	const opts = {
 		points: 5, // 5 points
 		duration: 1, // Per second
 		blockDuration: 300 // block for 5 minutes if more than points consumed
@@ -37,7 +38,7 @@ module.exports = app => {
 			.catch(() => {
 				res.status(429).send('Too Many Requests')
 			})
-	}
+	}*/
 
-	app.use(rateLimiterMiddleware)
+	// app.use(rateLimiterMiddleware)
 }
