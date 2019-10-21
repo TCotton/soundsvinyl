@@ -16,9 +16,6 @@ const Error = lazy(() => import('./error'))
 const Footer = lazy(() => import('./Footer/Footer'))
 
 class Wrapper extends Component {
-	constructor (props) {
-		super(props)
-	}
 
 	render () {
 		const $loading = 'Loading...'
@@ -90,9 +87,7 @@ class Wrapper extends Component {
 				<ErrorBoundary>
 					<Suspense
 						fallback={
-							<div>
-								{$loading}
-							</div>
+							<div />
 						}
 					>
 						<Footer />

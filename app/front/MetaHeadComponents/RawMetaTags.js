@@ -12,10 +12,6 @@ class MetaHeader extends Component {
 		title: 'Vinyl forever, music for all'
 	}
 
-	constructor (props) {
-		super(props)
-	}
-
 	componentDidMount () {
 		const { title, canonical } = this.props
 

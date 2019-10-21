@@ -20,10 +20,6 @@ class Comment extends Component {
 		).isRequired
 	}
 
-	constructor (props) {
-		super(props)
-	}
-
 	shouldComponentUpdate (nextProps, nextState) {
 		return shallowCompare(this, nextProps, nextState)
 	}

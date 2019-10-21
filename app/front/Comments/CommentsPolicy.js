@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 import './comment.scss'
 
 export default class CommentsPolicy extends Component {
-	constructor (props) {
-		super(props)
-	}
-
 	render () {
 		const $comment = 'Comment policy'
 		const $inTheSpringof1976 =

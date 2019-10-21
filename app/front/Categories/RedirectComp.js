@@ -12,10 +12,6 @@ class RedirectComp extends Component {
 		search: false
 	}
 
-	constructor (props) {
-		super(props)
-	}
-
 	render () {
 		const { search } = this.props
 

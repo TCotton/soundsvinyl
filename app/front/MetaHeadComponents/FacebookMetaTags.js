@@ -8,10 +8,6 @@ class FacebookMetaTags extends Component {
 		faceBookTitle: PropTypes.string.isRequired
 	}
 
-	constructor (props) {
-		super(props)
-	}
-
 	render () {
 		const { faceBookTitle, canonical, faceBookDescription } = this.props
 

@@ -15,10 +15,6 @@ export default class UnorderedList extends Component {
 		buttonElement: null
 	}
 
-	constructor (props) {
-		super(props)
-	}
-
 	render () {
 		const { buttonElement, isClicked } = this.props
 

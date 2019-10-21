@@ -7,10 +7,6 @@ export default class ListElement extends Component {
 		text: PropTypes.string.isRequired
 	}
 
-	constructor (props) {
-		super(props)
-	}
-
 	render () {
 		const { text } = this.props
 
