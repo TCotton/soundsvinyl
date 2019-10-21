@@ -20,13 +20,22 @@ export default class UnorderedList extends Component {
 
 		return (
 			<ul className={isClicked}>
-				<Link to='/'>
+				<Link
+					aria-label='Home'
+					to='/'
+				>
 					<ListElement text='Home' />
 				</Link>
-				<Link to='/about-us'>
+				<Link
+					aria-label='About'
+					to='/about-us'
+				>
 					<ListElement text='About' />
 				</Link>
-				<Link to='/contact'>
+				<Link
+					aria-label='Contact'
+					to='/contact'
+				>
 					<ListElement text='Contact' />
 				</Link>
 				{buttonElement}
