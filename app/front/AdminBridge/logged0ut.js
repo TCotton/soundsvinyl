@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 class LogoutButton extends Component {
 	render () {
-		const $myAccount = 'Mu account'
+		const $myAccount = 'My account'
 		return (
 			<Link to='/my-account'>
 				<li>

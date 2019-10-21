@@ -642,14 +642,6 @@ body {
 *::after {
 	box-sizing: border-box;
 }
-
-/* Hack that prevents the jump between scrollbar and no-scrollbar pages.
- http://aykevl.nl/2014/09/fix-jumping-scrollbar */
-
-html {
-	margin-left: calc(100vw - 100%);
-	margin-right: 0;
-}
 h1,
 h2,
 h3,
