@@ -3,5 +3,5 @@ addons:
   chrome: stable
 language: node_js
 before_install:
-  - npm i -g npm@10.13.0
+	- npm i -g npm@6.4.1
 after_success: npm run coverage
