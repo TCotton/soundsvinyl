@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './categoriesHomepage.scss'
+import './CategoriesHomepage.scss'
 import PageUnit from '../Page/PageUnit'
 import HomePageSearchForm from './HomePageSearchForm'
 import { connect } from 'react-redux'

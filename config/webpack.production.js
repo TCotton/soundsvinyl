@@ -12,7 +12,11 @@ const HtmlWebPackPlugin = require('html-webpack-plugin')
 // const ImageminPlugin = require('imagemin-webpack-plugin');
 
 // the path(s) that should be cleaned
-const pathsToClean = [global.__base + '/dist']
+//const pathsToClean = [path.resolve(__dirname , '..') + '/dist']
+
+const basePath = __dirname;
+const targetPath = '../soundsvinyl';
+const targetFolder = 'dist';
 
 module.exports = webpackMerge(commonConfig, {
 	mode: 'production',
@@ -93,7 +97,9 @@ module.exports = webpackMerge(commonConfig, {
 	},
 
 	plugins: [
-		new CleanWebpackPlugin(pathsToClean),
+		new CleanWebpackPlugin([targetFolder], {
+			root: basePath + '/' + targetPath
+		}),
 
 		new webpack.DefinePlugin({
 			'process.env': {

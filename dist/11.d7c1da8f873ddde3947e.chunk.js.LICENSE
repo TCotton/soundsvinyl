@@ -1,0 +1,9 @@
+/***/
+
+// extracted by mini-css-extract-plugin
+
+// sorting of categories takes place at the API level with the use of aggregate
+
+// and then here to place the categories in a readable, clickable order
+
+/* eslint-disable security/detect-object-injection */
