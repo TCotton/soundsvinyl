@@ -147,7 +147,9 @@ module.exports = webpackMerge(commonConfig, {
 			},
 		}),
 
-		new SizePlugin()
+		new SizePlugin(),
+
+		new webpack.optimize.DedupePlugin()
 
 /*		new BundleAnalyzerPlugin()*/
 
