@@ -9,3 +9,5 @@ script:
 	- codecov
 env:
 	CODECOV_TOKEN="170e4b86-a847-42d2-b011-29d9ddf41351"
+after_success:
+	- codecov --file test/coverage/lcov.info --disable search

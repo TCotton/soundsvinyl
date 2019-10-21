@@ -19,7 +19,7 @@
 		"ssr": "cross-env NODE_ENV=production webpack --mode production node ./node/server.js",
 		"coverage": "jest --collectCoverage | coveralls",
 		"clearJest": "jest --clearCache && npm run test -- -u",
-		"format": "prettier-standard --format {app,nodeService}/**/**/**/**/**/*.{js,jsx}"
+		"format": "prettier-standard --format {app,nodeService}/**/**/**/**/**/*.{js,jsx}",
 	},
 	"repository": {
 		"type": "git",
