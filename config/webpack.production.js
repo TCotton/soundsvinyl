@@ -18,6 +18,7 @@ const basePath = __dirname;
 const targetPath = '../soundsvinyl';
 const targetFolder = 'dist';
 
+
 module.exports = webpackMerge(commonConfig, {
 	mode: 'production',
 	stats: {
