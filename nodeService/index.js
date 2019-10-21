@@ -15,6 +15,7 @@ const compress = require('compression')
 const mongoose = require('mongoose')
 const helmet = require('helmet')
 const csp = require('helmet-csp')
+const sslRedirect = require('heroku-ssl-redirect');
 
 if (fs.existsSync('./node-variables.env')) {
 	const dotenv = require('dotenv')
@@ -217,6 +218,9 @@ function wwwRedirect (req, res, next) {
 if (app.get('env') === 'production') {
 	app.set('trust proxy', true)
 	app.use(wwwRedirect)
+
+	// enable ssl redirect
+	app.use(sslRedirect());
 
 	app.use(express.static(global.__base + '/dist'))
 

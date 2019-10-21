@@ -55,6 +55,7 @@
 		"fluent-ffmpeg": "^2.1.2",
 		"helmet": "^3.21.1",
 		"helmet-csp": "^2.9.3",
+		"heroku-ssl-redirect": "0.0.4",
 		"history": "^4.7.2",
 		"http-errors": "^1.7.3",
 		"jade": "^1.11.0",
