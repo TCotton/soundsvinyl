@@ -15,7 +15,10 @@ export default class H1Element extends Component {
 		const { text } = this.props
 
 		return (
-			<a href='/'>
+			<a
+				aria-label='Home page'
+				href='/'
+			>
 				<h1>
 					{text}
 				</h1>

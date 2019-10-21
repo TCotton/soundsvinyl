@@ -5,7 +5,10 @@ import Turntable from '../../assets/icons/Turntable'
 export default class HeaderLeftColumn extends Component {
 	render () {
 		return (
-			<a href='/'>
+			<a
+				aria-label='Home page'
+				href='/'
+			>
 				<div styleName='headerSVG'>
 					<Turntable />
 				</div>

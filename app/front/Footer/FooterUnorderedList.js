@@ -18,6 +18,7 @@ export default class FooterUnorderedList extends Component {
 					/>
 				</Link>
 				<a
+					aria-label='License'
 					href='https://github.com/TCotton/soundsvinyl'
 					rel='noreferrer'
 				>
