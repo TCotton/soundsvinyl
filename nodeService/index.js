@@ -16,7 +16,6 @@ const mongoose = require('mongoose')
 const rateLimit = require('express-rate-limit')
 const helmet = require('helmet')
 const csp = require('helmet-csp')
-const spdy = require('spdy');
 
 if (fs.existsSync('./node-variables.env')) {
 	const dotenv = require('dotenv')
@@ -271,7 +270,6 @@ if (app.get('env') === 'production') {
 }
 
 if (app.get('env') === 'production') {
-	app.use(helmet());
 	app.enable('trust proxy') // only if you're behind a reverse proxy (Heroku, Bluemix, AWS if you use an ELB, custom Nginx setup, etc)
 	require('./misc/compression')(app)
 }
