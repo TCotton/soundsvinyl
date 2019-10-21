@@ -27,6 +27,14 @@ export class CategoriesHomepage extends Component {
 		this.handleSearchResult = this.handleSearchResult.bind(this)
 	}
 
+	shouldComponentUpdate(nextProps) {
+		if (this.props.requestCompleted !== nextProps.requestCompleted) {
+			return true;
+		}
+		return false;
+	}
+
+
 	handleSearchResult () {
 		return true
 	}
@@ -48,7 +56,7 @@ export class CategoriesHomepage extends Component {
 						`thumbnails/thumbnail-${element._id}.png`
 				})
 
-				const key = index.toString()
+				const key = index.toString();
 
 				// only add search box on home page
 				return (

@@ -12,15 +12,24 @@ import { Link } from 'react-router-dom'
 import './pageUnit.scss'
 
 export default class PageUnit extends Component {
+
 	static propTypes = {
-		id: ExtendedPropTypes.mongoId.isRequired,
-		slug: PropTypes.string.isRequired,
-		subtitle: PropTypes.string.isRequired,
+		id: ExtendedPropTypes.mongoId,
+		slug: PropTypes.string,
+		subtitle: PropTypes.string,
 		thumbnailUrl: PropTypes.oneOfType([
 			PropTypes.string,
 			PropTypes.func,
-		]).isRequired,
-		title: PropTypes.string.isRequired
+		]),
+		title: PropTypes.string
+	}
+
+	static defaultProps = {
+		id: '5c131a627ee0194979fa1b21',
+		slug: 'slug',
+		subtitle: 'subtitle',
+		thumbnailUrl: '',
+		title: ''
 	}
 
 	constructor (props) {
@@ -46,7 +55,7 @@ export default class PageUnit extends Component {
 	}
 
 	render () {
-		const { slug, id, thumbnailUrl, title, subtitle } = this.props
+		const { slug, id, thumbnailUrl, title, subtitle } = this.props;
 
 		return (
 			<Link
