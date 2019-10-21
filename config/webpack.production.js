@@ -7,7 +7,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const SizePlugin = require('size-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 // const ImageminPlugin = require('imagemin-webpack-plugin');
 
@@ -145,9 +145,9 @@ module.exports = webpackMerge(commonConfig, {
 			},
 		}),
 
-		new SizePlugin(),
+		new SizePlugin()
 
-		new BundleAnalyzerPlugin()
+/*		new BundleAnalyzerPlugin()*/
 
 		// new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
 		// new ImageminPlugin({ test: global.__base + '/dist/**' }),
