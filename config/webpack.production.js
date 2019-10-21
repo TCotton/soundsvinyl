@@ -147,20 +147,6 @@ module.exports = webpackMerge(commonConfig, {
 			},
 		}),
 
-		new SizePlugin(),
-
-		new webpack.optimize.DedupePlugin()
-
-/*		new BundleAnalyzerPlugin()*/
-
-		// new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
-		// new ImageminPlugin({ test: global.__base + '/dist/**' }),
-
-		// below works for React, but don't know what will happen with vueJS:
-		// https://medium.com/@rajaraodv/two-quick-ways-to-reduce-react-apps-size-in-production-82226605771a
-
-		/*	new webpack.optimize.DedupePlugin(), //dedupe similar code
-			new webpack.optimize.UglifyJsPlugin(), //minify everything
-			new webpack.optimize.AggressiveMergingPlugin()//Merge chunks*/
+		new SizePlugin()
 	]
 })
