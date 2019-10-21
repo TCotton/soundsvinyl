@@ -271,7 +271,8 @@ if (app.get('env') === 'production') {
 }
 
 if (app.get('env') === 'production') {
-	require('./misc/security')(app)
+	app.use(helmet());
+	app.enable('trust proxy') // only if you're behind a reverse proxy (Heroku, Bluemix, AWS if you use an ELB, custom Nginx setup, etc)
 	require('./misc/compression')(app)
 }
 

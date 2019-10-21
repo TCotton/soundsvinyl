@@ -20,7 +20,7 @@ module.exports = app => {
 	// only apply to requests that begin with /apiV1/
 	app.use('/apiV1/', apiLimiter);
 
-/*	const opts = {
+	const opts = {
 		points: 5, // 5 points
 		duration: 1, // Per second
 		blockDuration: 300 // block for 5 minutes if more than points consumed
@@ -38,7 +38,7 @@ module.exports = app => {
 			.catch(() => {
 				res.status(429).send('Too Many Requests')
 			})
-	}*/
+	}
 
-	// app.use(rateLimiterMiddleware)
+	app.use(rateLimiterMiddleware)
 }
