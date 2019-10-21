@@ -50,6 +50,7 @@ export default class PageUnit extends Component {
 
 		return (
 			<Link
+				aria-label={title}
 				styleName='pageUnit'
 				to={`/${slug}/${id}`}
 			>
