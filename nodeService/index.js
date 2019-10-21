@@ -218,9 +218,6 @@ if (app.get('env') === 'production') {
 	app.set('trust proxy', true)
 	app.use(wwwRedirect)
 
-	//  apply to all requests
-	app.use(limiter)
-
 	app.use(express.static(global.__base + '/dist'))
 
 	app.get('/robots.txt', (req, res) => {
@@ -255,7 +252,6 @@ if (app.get('env') === 'production') {
 }
 
 if (app.get('env') === 'production') {
-	app.enable('trust proxy') // only if you're behind a reverse proxy (Heroku, Bluemix, AWS if you use an ELB, custom Nginx setup, etc)
 	require('./misc/compression')(app)
 }
 
