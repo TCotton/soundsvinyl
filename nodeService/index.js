@@ -222,6 +222,11 @@ if (app.get('env') === 'production') {
 	// enable ssl redirect
 	app.use(sslRedirect());
 
+	app.use( (req, res, next) => {
+		res.removeHeader('X-Powered-By');
+		next();
+	});
+
 	app.use(express.static(global.__base + '/dist'))
 
 	app.get('/robots.txt', (req, res) => {
