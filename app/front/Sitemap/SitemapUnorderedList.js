@@ -22,10 +22,6 @@ export default class SitemapUnorderedList extends Component {
 		data: []
 	}
 
-	constructor (props) {
-		super(props)
-	}
-
 	render () {
 		const { categories, data } = this.props
 
