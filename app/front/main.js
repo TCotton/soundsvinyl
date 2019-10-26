@@ -28,7 +28,7 @@ class Main extends Component {
 			match: {
 				params: { tag }
 			}
-		} = this.props
+		} = this.props;
 
 		return (
 			<div>
