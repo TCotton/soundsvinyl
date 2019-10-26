@@ -1,27 +1,28 @@
 import React from 'react'
-import MetaHeader from '../MetaHeader'
+import RawTwitterMetaTags from '../RawTwitterMetaTags'
 import renderer from 'react-test-renderer'
 
 describe('Component', () => {
 	let component
+
 	beforeEach(() => {
 		component = renderer.create(
-			<MetaHeader
-				canonical='http://example.com'
+			<RawTwitterMetaTags
+				description='This is a description'
 				title='This is a title'
 			/>
 		)
 	})
 
-	describe('MetaHeader', () => {
+	describe('RawTwitterMetaTags', () => {
 		it('should be defined', () => {
 			expect(component).toBeDefined()
 		})
 
 		it('can be updated', () => {
-			component = renderer.create(
-				<MetaHeader
-					canonical='http://different-example.com'
+			component.update(
+				<RawTwitterMetaTags
+					description='This is a different description'
 					title='This is a different title'
 				/>
 			)

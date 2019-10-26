@@ -1,16 +1,11 @@
 import React from 'react'
-import MetaHeader from '../MetaHeader'
+import MetaHeader from '../RawMetaTags'
 import renderer from 'react-test-renderer'
 
 describe('Component', () => {
 	let component
 	beforeEach(() => {
-		component = renderer.create(
-			<MetaHeader
-				canonical='http://example.com'
-				title='This is a title'
-			/>
-		)
+		component = renderer.create(<MetaHeader title='This is a title' />)
 	})
 
 	describe('MetaHeader', () => {
@@ -19,12 +14,7 @@ describe('Component', () => {
 		})
 
 		it('can be updated', () => {
-			component = renderer.create(
-				<MetaHeader
-					canonical='http://different-example.com'
-					title='This is a different title'
-				/>
-			)
+			component.update(<MetaHeader title='This is a different title' />)
 
 			expect(component).toBeDefined()
 		})
