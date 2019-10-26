@@ -16,7 +16,7 @@ export default class UnorderedList extends Component {
 	}
 
 	render () {
-		const { buttonElement, isClicked } = this.props
+		const { isClicked } = this.props
 
 		return (
 			<ul className={isClicked}>
@@ -38,7 +38,6 @@ export default class UnorderedList extends Component {
 				>
 					<ListElement text='Contact' />
 				</Link>
-				{buttonElement}
 			</ul>
 		)
 	}
