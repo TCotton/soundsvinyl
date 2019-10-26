@@ -6,22 +6,39 @@ import ErrorBoundary from '../errorBoundaries/ErrorBoundary'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import Pagination from '../Pagination/Pagination'
+import shallowCompare from 'react-addons-shallow-compare'
 
-const articlesPerPage = 11
+const articlesPerPage = 11;
 
 export class Categories extends Component {
 	static propTypes = {
 		category: PropTypes.string,
+		history: PropTypes.shape({
+			push: PropTypes.func
+		}),
+		location: PropTypes.shape({
+				pathname: PropTypes.string,
+				search: PropTypes.string
+		}),
 		match: PropTypes.shape({
 			params: PropTypes.shape({
 				id: PropTypes.string,
 				tag: PropTypes.string
 			})
-		})
+		}),
 	}
 
 	static defaultProps = {
 		category: undefined,
+		history: {
+			push: () => {},
+		},
+		location: {
+			params: {
+				pathname: '',
+				search: ''
+			}
+		},
 		match: {
 			params: {
 				id: ''
@@ -32,7 +49,7 @@ export class Categories extends Component {
 	constructor (props) {
 		super(props)
 		this.state = this.getInitialState()
-		this.handleOnChange = this.handleOnChange.bind(this)
+		this.handleOnChange = this.handleOnChange.bind(this);
 	}
 
 	getInitialState () {
@@ -52,6 +69,10 @@ export class Categories extends Component {
 		this.getRequestCall()
 	}
 
+	shouldComponentUpdate (nextProps, nextState) {
+		return shallowCompare(this, nextProps, nextState);
+	}
+
 	componentDidUpdate (prevProps) {
 		const {
 			match: {
@@ -65,8 +86,10 @@ export class Categories extends Component {
 	}
 
 	getRequestCall () {
-		const { category, history, location } = this.props
-		const { page } = this.state
+		const { category, history, location } = this.props;
+		const { page } = this.state;
+
+		// const currentPage = (page !== 1 ? ); // work out current page here
 
 		// refactor both these API request into one request
 		if (!category) {
@@ -109,16 +132,16 @@ export class Categories extends Component {
 
 	handleOnChange (direction) {
 		const paginationFunc = () => {
-			const { page, total } = this.state
-			const maximum = Math.ceil(total / articlesPerPage)
+			const { page, total } = this.state;
+			const maximum = Math.ceil(total / articlesPerPage);
 
 			if (direction === 'left') {
 				// current should be a minimum of one
-				return page - 1 >= 1 ? page - 1 : 1
+				return page - 1 >= 1 ? page - 1 : 1;
 			}
 			if (direction === 'right') {
 				// current should be maximum of Math.ceil(total / articlesPerPage)
-				return page + 1 < maximum ? page + 1 : maximum
+				return page + 1 < maximum ? page + 1 : maximum;
 			}
 		}
 
@@ -137,13 +160,13 @@ export class Categories extends Component {
 			data[Number.parseInt(index)].position = Number.parseInt(index) + 1
 		})
 
-		return data
+		return data;
 	}
 
 	render () {
-		const { docs, page, pages, requestCompleted, total } = this.state
+		const { docs, page, pages, requestCompleted, total } = this.state;
 
-		const { category } = this.props // refactor -> use redux
+		const { category } = this.props; // refactor -> use redux
 
 		return (
 			<ErrorBoundary>
