@@ -33,6 +33,6 @@ export default class VideoErrorBoundary extends React.Component {
 				</p>
 			)
 		}
-		return children
+		return children;
 	}
 }

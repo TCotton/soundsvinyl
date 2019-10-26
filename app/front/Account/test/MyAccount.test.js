@@ -4,7 +4,6 @@ import MyAccount from '../MyAccount'
 import renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import '../../../../enzymeConfig';
-import Contact from '../../Contact/Contact'
 
 describe('Component', () => {
 	let component
