@@ -2,7 +2,7 @@ const request = require('supertest')
 const app = require('../../index')
 const { createPasswordHash } = require('../../misc/helper_functions')
 
-describe('Helper functions', () => {
+describe.skip('Helper functions', () => {
 	let server, agent
 
 	beforeEach(done => {

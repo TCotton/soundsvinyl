@@ -1,4 +1,4 @@
-const Comment = new require('../models/comment')
+const Comment = require('../models/comment')
 const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
 const verifyToken = require('./jwt')

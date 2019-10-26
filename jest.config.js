@@ -11,6 +11,7 @@ module.exports = {
 	collectCoverageFrom: [
 		'**/*.{js,jsx}'
 	],
+	preset: '@shelf/jest-mongodb',
 	collectCoverage:true,
 	moduleFileExtensions: [ 'js', 'json', 'jsx' ],
 	coveragePathIgnorePatterns: [
