@@ -2,7 +2,6 @@ import React from 'react'
 import VideoErrorBoundary from '../videoErrorBoundary'
 import { mount, shallow } from 'enzyme';
 import '../../../../enzymeConfig';
-import ErrorBoundary from '../ErrorBoundary'
 
 describe('Component', () => {
 	let component
