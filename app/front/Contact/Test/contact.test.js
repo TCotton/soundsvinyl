@@ -2,8 +2,10 @@ import React from 'react'
 import Contact from '../Contact'
 import renderer from 'react-test-renderer'
 import { mount, shallow } from 'enzyme'
-jest.unmock('axios');
+//jest.unmock('axios');
 import '../../../../enzymeConfig';
+import { homeURI } from '../../../helper_constants';
+import mockAxios from 'axios';
 
 describe('Component', () => {
 	let component;
@@ -122,5 +124,36 @@ describe('Component', () => {
 		component.instance().handleSubmit(mockEvent);
 		expect(spy).toReturn();
 		expect(mockPreventDefault).toHaveBeenCalled();
+	})
+
+	describe('When handleSubmit is called', () => {
+		let ContactComponent;
+		const event = {
+			preventDefault: jest.fn()
+		}
+
+		mockAxios.post.mockImplementationOnce(() =>
+			Promise.resolve({
+				data: {
+					error: false,
+					success: true
+				}
+			})
+		);
+
+		beforeAll(() => {
+			ContactComponent = shallow(
+				<Contact />
+			)
+			ContactComponent.instance().state.contactEmail = 'me@andywalpole.me';
+			ContactComponent.instance().state.contactName = 'Andy Walpole';
+			ContactComponent.instance().state.contactMessage = 'This is a message for you rudie';
+			ContactComponent.instance().handleSubmit(event);
+			ContactComponent.update();
+		})
+
+		it(`should call '${homeURI}/apiV1/sendmail`, () => {
+			expect(mockAxios.post).toHaveBeenCalled();
+		});
 	})
 })
