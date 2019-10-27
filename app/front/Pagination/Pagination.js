@@ -42,7 +42,7 @@ export default class Pagination extends Component {
 							data-direction='left'
 							onClick={this.handlePaginationChange}
 							src='/app/assets/images/right.svg'
-							styleName={current === 1 ? 'InActive' : 'Active'}
+							styleName={(current === 1) ? 'InActive' : 'Active'}
 						/>
 						<div styleName='PaginationText'>
 							{'Page '}
@@ -56,7 +56,7 @@ export default class Pagination extends Component {
 							data-direction='right'
 							onClick={this.handlePaginationChange}
 							src='/app/assets/images/right.svg'
-							styleName={current === 2 ? 'InActive' : 'Active'}
+							styleName={(current === maximum) ? 'InActive' : 'Active'}
 						/>
 					</div>
 				)}

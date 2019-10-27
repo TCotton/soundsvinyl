@@ -14,28 +14,29 @@ import './pageUnit.scss'
 export default class PageUnit extends Component {
 
 	static propTypes = {
-		id: ExtendedPropTypes.mongoId,
-		slug: PropTypes.string,
-		subtitle: PropTypes.string,
+		id: ExtendedPropTypes.mongoId.isRequired,
+		slug: PropTypes.string.isRequired,
+		subtitle: PropTypes.string.isRequired,
 		thumbnailUrl: PropTypes.oneOfType([
 			PropTypes.string,
 			PropTypes.func,
-		]),
-		title: PropTypes.string
+		]).isRequired,
+		title: PropTypes.string.isRequired
 	}
-
+/*
 	static defaultProps = {
 		id: '5c131a627ee0194979fa1b21',
 		slug: 'slug',
 		subtitle: 'subtitle',
 		thumbnailUrl: '',
 		title: ''
-	}
+	}*/
 
 	constructor (props) {
 		super(props)
 
 		this.handleOnError = this.handleOnError.bind(this)
+		console.dir(this.props, this.state);
 	}
 
 	handleOnError (event) {
