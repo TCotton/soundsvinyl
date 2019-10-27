@@ -1,7 +1,8 @@
-const RateLimit = require('express-rate-limit')
-const helmet = require('helmet')
-const { RateLimiterMemory } = require('rate-limiter-flexible')
+// const RateLimit = require('express-rate-limit')
+// const helmet = require('helmet')
+// const { RateLimiterMemory } = require('rate-limiter-flexible')
 
+/*
 module.exports = app => {
 	// security advice used from https://medium.com/@nodepractices/were-under-attack-23-node-js-security-best-practices-e33c146cb87d
 	// do I need both express-rate-limit && rate-limiter-flexible??
@@ -42,3 +43,5 @@ module.exports = app => {
 
 	app.use(rateLimiterMiddleware)
 }
+*/
+module.exports = app => { return app };

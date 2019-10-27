@@ -26,13 +26,7 @@ if (fs.existsSync('./node-variables.env')) {
 }
 
 const app = express();
-let db;
-
-if(app.get('env') === 'production') {
-	db = mongoose.connect(process.env.mongoProductionURI)
-} else {
-	db = mongoose.connect(process.env.mongoProductionURI)
-}
+const db = mongoose.connect(process.env.mongoProductionURI)
 
 if (app.get('env') === 'development') {
 	mongoose.set('debug', true) // enable logging collection methods + arguments to the console
