@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import shallowCompare from 'react-addons-shallow-compare'
 import './comment.scss'
 import Profile1 from '../../assets/graphics/profiles/profile-1.svg'
 import Profile2 from '../../assets/graphics/profiles/profile-2.svg'
@@ -18,10 +17,6 @@ class Comment extends Component {
 				userName: PropTypes.string
 			})
 		).isRequired
-	}
-
-	shouldComponentUpdate (nextProps, nextState) {
-		return shallowCompare(this, nextProps, nextState)
 	}
 
 	render () {

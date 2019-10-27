@@ -79,7 +79,7 @@ module.exports = app => {
 		)
 	})
 
-	app.get('/apiV1/page/get', cache(10), (req, res, next) => {
+	app.get('/apiV1/page/get', (req, res, next) => {
 		if (app.get('env') === 'production') {
 			res.setHeader('Cache-Control', 'public, max-age=60')
 		}
@@ -87,6 +87,7 @@ module.exports = app => {
 		(async () => {
 			try {
 				const { page, perPage } = req.query
+				console.dir(page, perPage);
 
 				const options = {
 					page: Number.parseInt(page, 10),
@@ -102,6 +103,29 @@ module.exports = app => {
 		})()
 	})
 
+	app.get('/apiV1/page/get/findAll`', (req, res, next) => {
+		if (app.get('env') === 'production') {
+			res.setHeader('Cache-Control', 'public, max-age=60')
+		}
+
+		(async () => {
+			try {
+
+				Page.find( {} )
+					.sort( { date: -1 } )
+					.exec( ( err, pages ) => {
+						if (!err) {
+							return res.json(pages)
+						}
+					})
+
+			} catch (err) {
+				next(err)
+			}
+		})()
+	})
+
+
 	app.route('/apiV1/page/findbytag').post((req, res) => {
 		const body = req.body
 
@@ -116,7 +140,7 @@ module.exports = app => {
 			})
 	})
 
-	app.get('/apiV1/page/findbytag/:tag', cache(10), (req, res) => {
+	app.get('/apiV1/page/findbytag/:tag', (req, res) => {
 		if (app.get('env') === 'production') {
 			res.setHeader('Cache-Control', 'public, max-age=60')
 		}
@@ -133,23 +157,23 @@ module.exports = app => {
 			})
 	})
 
-	app.get('/apiV1/page/getall', cache(10), (req, res) => {
-		if (app.get('env') === 'production') {
-			res.setHeader('Cache-Control', 'public, max-age=60')
+	app.get( '/apiV1/page/findAll', ( req, res ) => {
+		if( app.get( 'env' ) === 'production' ) {
+			res.setHeader( 'Cache-Control', 'public, max-age=60' )
 		}
 
-		Page.find({})
-			.sort({ date: -1 })
-			.exec((err, pages) => {
-				if (!err) {
-					res.json(pages)
+		Page.find( {} )
+			.sort( { date: -1 } )
+			.exec( ( err, pages ) => {
+				if( !err ) {
+					res.json( pages );
 				} else {
-					return new Error(err.toString())
+					return new Error( err.toString() );
 				}
 			})
 	})
 
-	app.get('/apiV1/page/getTags', cache(10), (req, res) => {
+	app.get('/apiV1/page/getTags', (req, res) => {
 		if (app.get('env') === 'production') {
 			res.setHeader('Cache-Control', 'public, max-age=60')
 		}
@@ -177,7 +201,7 @@ module.exports = app => {
 		)
 	})
 
-	app.get('/apiV1/page/getadmin', cache(10), (req, res) => {
+	app.get('/apiV1/page/getadmin', (req, res) => {
 		Page.find({}, (err, pages) => {
 			if (!err) {
 				res.json(pages)
@@ -187,7 +211,7 @@ module.exports = app => {
 		})
 	})
 
-	app.get('/apiV1/page/category/get/:id', cache(10), (req, res) => {
+	app.get('/apiV1/page/category/get/:id', (req, res) => {
 		if (app.get('env') === 'production') {
 			res.setHeader('Cache-Control', 'public, max-age=60')
 		}
@@ -201,7 +225,7 @@ module.exports = app => {
 		})
 	})
 
-	app.get('/apiV1/page/get/:id', cache(10), (req, res) => {
+	app.get('/apiV1/page/get/:id', (req, res) => {
 		if (app.get('env') === 'production') {
 			res.setHeader('Cache-Control', 'public, max-age=60')
 		}

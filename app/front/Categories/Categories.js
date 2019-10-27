@@ -5,8 +5,8 @@ import CategoriesHomepage from './CategoriesHomepage'
 import ErrorBoundary from '../errorBoundaries/ErrorBoundary'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
-import Pagination from '../Pagination/Pagination'
-import shallowCompare from 'react-addons-shallow-compare'
+import shallowCompare from 'react-addons-shallow-compare';
+// import Pagination from '../Pagination/Pagination'
 
 const articlesPerPage = 11;
 
@@ -53,15 +53,13 @@ export class Categories extends Component {
 	}
 
 	getInitialState () {
+
 		return {
 			error: false,
 			loading: false,
-			dataArray: [],
 			docs: [],
-			page: 1,
-			pages: Number,
 			requestCompleted: false,
-			total: Number
+			total: 0
 		}
 	}
 
@@ -69,7 +67,7 @@ export class Categories extends Component {
 		this.getRequestCall()
 	}
 
-	shouldComponentUpdate (nextProps, nextState) {
+	shouldComponentUpdate(nextProps, nextState) {
 		return shallowCompare(this, nextProps, nextState);
 	}
 
@@ -86,8 +84,7 @@ export class Categories extends Component {
 	}
 
 	getRequestCall () {
-		const { category, history, location } = this.props;
-		const { page } = this.state;
+		const { category } = this.props;
 
 		// const currentPage = (page !== 1 ? ); // work out current page here
 
@@ -95,19 +92,15 @@ export class Categories extends Component {
 		if (!category) {
 			axios
 				.get(
-					`${homeURI}/apiV1/page/get?page=${page}&perPage=${articlesPerPage}`
+					`${homeURI}/apiV1/page/findAll`
 				)
 				.then(res => {
 					this.setState({
-						docs: res.data.docs,
-						page: res.data.page,
-						pages: res.data.pages,
+						docs: res.data,
 						requestCompleted: true,
-						total: res.data.total
+						total: res.data.length
 					})
-					if(page !== 1) {
-						history.push(`${location.pathname}?page=${page}`);
-					}
+					console.dir(this.state);
 				})
 				.catch(error => {
 					new Error(error.toString())
@@ -164,7 +157,8 @@ export class Categories extends Component {
 	}
 
 	render () {
-		const { docs, page, pages, requestCompleted, total } = this.state;
+		const { docs, requestCompleted } = this.state;
+		console.dir({ docs, requestCompleted } );
 
 		const { category } = this.props; // refactor -> use redux
 
@@ -175,17 +169,6 @@ export class Categories extends Component {
 					requestCompleted={requestCompleted}
 					search={docs}
 				/>
-				<div className='PaginationContainer'>
-					{requestCompleted && (
-						<Pagination
-							articlesPerPage={articlesPerPage}
-							current={page}
-							maximum={pages}
-							onChangePagination={this.handleOnChange}
-							total={total}
-						/>
-					)}
-				</div>
 			</ErrorBoundary>
 		)
 	}

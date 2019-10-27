@@ -5,6 +5,7 @@ import HomePageSearchForm from './HomePageSearchForm'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
+import shallowCompare from 'react-addons-shallow-compare';
 
 export class CategoriesHomepage extends Component {
 	static propTypes = {
@@ -27,13 +28,19 @@ export class CategoriesHomepage extends Component {
 		this.handleSearchResult = this.handleSearchResult.bind(this)
 	}
 
+	shouldComponentUpdate(nextProps, nextState) {
+		return shallowCompare(this, nextProps, nextState);
+	}
+
 	handleSearchResult () {
 		return true
 	}
 
 	render () {
-		const { search, requestCompleted } = this.props
-		let arrayMap
+		let { search, requestCompleted } = this.props;
+		let arrayMap;
+
+		console.dir({ search, requestCompleted } );
 
 		if (requestCompleted && Array.isArray(search) && search.length > 0) {
 			search.splice(2, 0, '') // add empty element so that search form can be placed there
