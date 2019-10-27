@@ -6,7 +6,6 @@ import '../../../../enzymeConfig';
 
 describe('Component', () => {
 	let component
-	let spy
 	beforeEach(() => {
 		component = renderer.create(<MetaHeader title='This is a title' />)
 	})
@@ -34,7 +33,7 @@ describe('Component', () => {
 			expect(component).toBeDefined()
 		})
 
-		it('should document.querySelector and change document.title', () => {
+		it('should call document.querySelector and change document.title', () => {
 
 			Object.defineProperty(global.document, 'title', {
 				value: 'title of document',
@@ -58,8 +57,6 @@ describe('Component', () => {
 				value: spyAttrFunc,
 				writable: true
 			});
-
-			console.dir(typeof global.document.querySelector);
 
 			component = shallow(
 				<MetaHeader
