@@ -20,7 +20,7 @@ class MetaHeader extends Component {
 		}
 
 		if (document.querySelector('link[rel=\'canonical\']')) {
-			document.querySelector('link[rel=\'canonical\']').setAttribute('href', `https://soundsvinyl.co/${canonical}`);
+			document.querySelector('link[rel=\'canonical\']').href = `https://soundsvinyl.co/${canonical}`;
 		}
 	}
 
@@ -30,7 +30,7 @@ class MetaHeader extends Component {
 		}
 
 		if (document.querySelector('link[rel=\'canonical\']')) {
-			document.querySelector('link[rel=\'canonical\']').setAttribute('href', `'https://soundsvinyl.co/'`);
+			document.querySelector('link[rel=\'canonical\']').href = 'https://soundsvinyl.co/';
 		}
 	}
 
