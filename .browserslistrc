@@ -1,15 +1,2 @@
 # Browsers that we support
-Last 1 versions
-not Ie > 0
-not Ie_mob > 0
-not Op_mob > 0
-not OperaMini > 0
-not Bb > 0
-not Baidu > 0
-not ie_mob > 0
-not and_chr > 0
-last 2 Edge versions
-not dead
-not and_qq > 0
-not and_uc > 0
-not op_mini > 0
+Last 2 versions
