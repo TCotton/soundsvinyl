@@ -34,8 +34,8 @@
 	"homepage": "https://github.com/TCotton/soundsvinyl.co#readme",
 	"engineStrict": true,
 	"engines": {
-		"node": "10.13.0",
-		"npm": "6.4.1"
+		"node": "12.13.0",
+		"npm": "6.12.0"
 	},
 	"dependencies": {
 		"@loadable/component": "^5.10.3",
