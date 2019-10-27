@@ -44,7 +44,6 @@ export default class PageUnit extends Component {
 			this.element.alt = title;
 			this.element.src = thumbnailUrl;
 			this.element.addEventListener('error', this.handleOnError);
-			// this.observer = this.observer.disconnect();
 		}
 	}
 

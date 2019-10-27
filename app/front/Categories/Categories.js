@@ -94,7 +94,6 @@ export class Categories extends Component {
 						requestCompleted: true,
 						total: res.data.length
 					})
-					console.dir(this.state);
 				})
 				.catch(error => {
 					new Error(error.toString())
@@ -152,7 +151,6 @@ export class Categories extends Component {
 
 	render () {
 		const { docs, requestCompleted } = this.state;
-		console.dir({ docs, requestCompleted } );
 
 		const { category } = this.props; // refactor -> use redux
 
