@@ -5,7 +5,6 @@ import HomePageSearchForm from './HomePageSearchForm'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
-import shallowCompare from 'react-addons-shallow-compare';
 
 export class CategoriesHomepage extends Component {
 	static propTypes = {
@@ -26,10 +25,6 @@ export class CategoriesHomepage extends Component {
 	constructor (props) {
 		super(props)
 		this.handleSearchResult = this.handleSearchResult.bind(this)
-	}
-
-	shouldComponentUpdate(nextProps, nextState) {
-		return shallowCompare(this, nextProps, nextState);
 	}
 
 	handleSearchResult () {

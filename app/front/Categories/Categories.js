@@ -5,8 +5,6 @@ import CategoriesHomepage from './CategoriesHomepage'
 import ErrorBoundary from '../errorBoundaries/ErrorBoundary'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
-import shallowCompare from 'react-addons-shallow-compare';
-// import Pagination from '../Pagination/Pagination'
 
 const articlesPerPage = 11;
 
@@ -65,10 +63,6 @@ export class Categories extends Component {
 
 	componentDidMount () {
 		this.getRequestCall()
-	}
-
-	shouldComponentUpdate(nextProps, nextState) {
-		return shallowCompare(this, nextProps, nextState);
 	}
 
 	componentDidUpdate (prevProps) {
