@@ -2,7 +2,21 @@
 
 .pageUnit {
 	background: transparent;
+	animation-name: opacity;
+	animation-duration: 7s;
+	animation-timing-function: ease-out;
+	animation-delay: 0s;
 }
+
+@keyframes opacity {
+	0% {
+		opacity: 0.1;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 
 :global .random1 {
 	filter: invert(10%) blur(1px);
