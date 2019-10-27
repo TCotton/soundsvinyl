@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import InViewComponent from './IntersectionObserver';
 
 class Video extends Component {
 	static createMarkup () {

@@ -3,7 +3,7 @@ import Categories from './Categories/Categories'
 import Header from './Header/Header'
 import ErrorBoundary from './errorBoundaries/ErrorBoundary'
 import PropTypes from 'prop-types'
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 
 class Main extends Component {
 	static propTypes = {
