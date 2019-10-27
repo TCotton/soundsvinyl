@@ -104,6 +104,7 @@ class Nav extends Component {
 							buttonElement={button}
 							isClicked={ulClassName}
 						/>
+						{button}
 					</div>
 				</div>
 			</nav>
