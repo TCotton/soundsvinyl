@@ -43,4 +43,4 @@ class Main extends Component {
 	}
 }
 
-export default withRouter(Main)
+export default withRouter(Main);

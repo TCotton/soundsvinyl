@@ -10,6 +10,7 @@ import {
 } from '../../alternative_default_thumbnails'
 import { Link } from 'react-router-dom'
 import './pageUnit.scss';
+//  import IntersectionObserver from './IntersectionObserver';
 
 export default class PageUnit extends Component {
 
