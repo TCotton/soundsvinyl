@@ -17,7 +17,7 @@ describe('Component', () => {
 		})
 
 		it( 'can be updated', () => {
-			component.update( <MetaHeader title='This is a different title'/> )
+			component.update( <MetaHeader title='This is a different title' /> )
 
 			expect( component ).toBeDefined()
 		});
@@ -68,8 +68,6 @@ describe('Component', () => {
 				/>
 			)
 
-		/*	component.instance().componentDidMount();
-			component.instance().componentWillUnmount();*/
 			component.instance().componentDidMount();
 			component.update();
 			expect(spyFunc).toHaveBeenCalled();
@@ -123,7 +121,7 @@ describe('Component', () => {
 					title='This is a title'
 				/>
 			)
-			
+
 			component.instance().componentWillUnmount();
 			component.update();
 			expect(spyFunc).toHaveBeenCalled();
