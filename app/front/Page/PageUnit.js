@@ -10,7 +10,7 @@ import {
 } from '../../alternative_default_thumbnails'
 import { Link } from 'react-router-dom'
 import './pageUnit.scss';
-//  import IntersectionObserver from './IntersectionObserver';
+import Observer from '@researchgate/react-intersection-observer';
 
 export default class PageUnit extends Component {
 
@@ -34,8 +34,18 @@ export default class PageUnit extends Component {
 
 	constructor (props) {
 		super(props)
-
 		this.handleOnError = this.handleOnError.bind(this);
+		this.handleIntersection = this.handleIntersection.bind(this);
+	}
+
+	handleIntersection ( event ) {
+		const { thumbnailUrl, title } = this.props;
+		if( event.isIntersecting ) {
+			this.element.alt = title;
+			this.element.src = thumbnailUrl;
+			this.element.addEventListener('error', this.handleOnError);
+			// this.observer = this.observer.disconnect();
+		}
 	}
 
 	handleOnError (event) {
@@ -55,7 +65,14 @@ export default class PageUnit extends Component {
 	}
 
 	render () {
-		const { slug, id, thumbnailUrl, title, subtitle } = this.props;
+		const { slug, id, subtitle , title} = this.props;
+
+		const options = {
+			onChange: this.handleIntersection,
+			rootMargin: '0px 0px 0px 0px',
+			threshold: 1.0,
+			root: document.querySelector('.pageUnit')
+		};
 
 		return (
 			<Link
@@ -63,11 +80,9 @@ export default class PageUnit extends Component {
 				styleName='pageUnit'
 				to={`/${slug}/${id}`}
 			>
-				<img
-					alt={title}
-					onError={this.handleOnError}
-					src={thumbnailUrl}
-				/>
+				<Observer {...options}>
+					<img ref={loadingRef => (this.element = loadingRef)} />
+				</Observer>
 				<span className='video-title'>
 					{title}
 				</span>

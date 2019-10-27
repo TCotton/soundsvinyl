@@ -40,8 +40,6 @@ export class CategoriesHomepage extends Component {
 		let { search, requestCompleted } = this.props;
 		let arrayMap;
 
-		console.dir({ search, requestCompleted } );
-
 		if (requestCompleted && Array.isArray(search) && search.length > 0) {
 			search.splice(2, 0, '') // add empty element so that search form can be placed there
 
@@ -59,7 +57,9 @@ export class CategoriesHomepage extends Component {
 
 				// only add search box on home page
 				return (
-					<div key={`${element}${key}`}>
+					<div
+						key={`${element}${key}`}
+					>
 						{index !== 2 ? (
 							<PageUnit
 								id={element._id}

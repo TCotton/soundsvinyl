@@ -11,12 +11,13 @@ export default class IntersectionObserver extends React.Component {
 	}
 
 	render () {
-		const { children } = this.props
+		const { children } = this.props;
+		const THRESHOLD = [0.25, 0.5, 0.75];
 
 		return (
-			<InView>
+			<InView triggerOnce={true} threshold={THRESHOLD} rootMargin={'200px 0px'} onChange={( inView, entry ) => console.log( 'Inview:', inView, 'Entry', entry)}>
 				{( { inView, ref, entry } ) => (
-					<span ref={ref}  onChange={( inView, entry ) => console.log( 'Inview:', inView, 'Entry', entry)}>
+					<span ref={ref} >
 						{children}
 					</span>
 				)}
