@@ -49,5 +49,5 @@ module.exports = {
 	},
 	setupTestFrameworkScriptFile: '<rootDir>/test/setupTests.js',
 	transformIgnorePatterns: ['<rootDir>/node_modules/'],
-	setupFiles: [`<rootDir>/loadershim.js`]
+	setupFiles: [`<rootDir>/loadershim.js`, `<rootDir>/__mocks__/setupFile.js`]
 };

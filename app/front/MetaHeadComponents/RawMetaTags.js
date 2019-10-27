@@ -13,27 +13,24 @@ class MetaHeader extends Component {
 	}
 
 	componentDidMount () {
-		const { title, canonical } = this.props
-
-		if (document.querySelector("link[rel='canonical']")) {
-			document.querySelector(
-				"link[rel='canonical']"
-			).href = `https://soundsvinyl.co/${canonical}`
-		}
+		const { title, canonical } = this.props;
 
 		if (document.title) {
 			document.title = `Soundsvinyl.co: ${title}`
 		}
+
+		if (document.querySelector('link[rel=\'canonical\']')) {
+			document.querySelector('link[rel=\'canonical\']').setAttribute('href', `https://soundsvinyl.co/${canonical}`);
+		}
 	}
 
 	componentWillUnmount () {
-		if (document.querySelector("link[rel='canonical']")) {
-			document.querySelector("link[rel='canonical']").href =
-				'https://soundsvinyl.co/'
-		}
-
 		if (document.title) {
 			document.title = `Soundsvinyl.co: Vinyl forever, music for all`
+		}
+
+		if (document.querySelector('link[rel=\'canonical\']')) {
+			document.querySelector('link[rel=\'canonical\']').setAttribute('href', `'https://soundsvinyl.co/'`);
 		}
 	}
 
