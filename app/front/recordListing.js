@@ -140,6 +140,7 @@ class RecordListing extends Component {
 		let categoryList
 
 		if (categories && categories.length > 1) {
+			// shifts categories into alphabetical order
 			const categoryArray = categories.reduce((accumulator, currentValue) => {
 				return accumulator.concat(currentValue.name)
 			}, [])
