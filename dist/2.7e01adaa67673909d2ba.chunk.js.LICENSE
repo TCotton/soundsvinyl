@@ -126,6 +126,10 @@
 
 /* 26 */
 
+/* 27 */
+
+/* 28 */
+
 /**
  * Checks if `value` is the
  * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
@@ -152,7 +156,7 @@
  * // => false
  */
 
-/* 27 */
+/* 29 */
 
 /**
  * Checks if `value` is array-like. A value is considered array-like if it's
@@ -180,7 +184,7 @@
  * // => false
  */
 
-/* 28 */
+/* 30 */
 
 /**
  * Creates an list cache object.
@@ -192,7 +196,7 @@
 
 // Add methods to `ListCache`.
 
-/* 29 */
+/* 31 */
 
 /**
  * Gets the index at which the `key` is found in `array` of key-value pairs.
@@ -203,11 +207,11 @@
  * @returns {number} Returns the index of the matched value, else `-1`.
  */
 
-/* 30 */
+/* 32 */
 
 /* Built-in method references that are verified to be native. */
 
-/* 31 */
+/* 33 */
 
 /**
  * Gets the data for `map`.
@@ -218,7 +222,7 @@
  * @returns {*} Returns the map data.
  */
 
-/* 32 */
+/* 34 */
 
 /**
  * Checks if `value` is classified as a `Symbol` primitive or object.
@@ -238,7 +242,7 @@
  * // => false
  */
 
-/* 33 */
+/* 35 */
 
 /** Used as references for various `Number` constants. */
 
@@ -250,7 +254,7 @@
  * @returns {string|symbol} Returns the key.
  */
 
-/* 34 */
+/* 36 */
 
 /**
  * This method returns the first argument it receives.
@@ -268,10 +272,6 @@
  * console.log(_.identity(object) === object);
  * // => true
  */
-
-/* 35 */
-
-/* 36 */
 
 /* 37 */
 

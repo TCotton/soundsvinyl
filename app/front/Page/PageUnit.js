@@ -81,7 +81,10 @@ export default class PageUnit extends Component {
 				to={`/${slug}/${id}`}
 			>
 				<Observer {...options}>
-					<img ref={loadingRef => (this.element = loadingRef)} />
+					<img
+						src='/app/assets/images/placeholder.png'
+						ref={loadingRef => (this.element = loadingRef)}
+					/>
 				</Observer>
 				<span className='video-title'>
 					{title}
