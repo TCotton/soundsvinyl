@@ -38,12 +38,13 @@ export default class PageUnit extends Component {
 		this.handleIntersection = this.handleIntersection.bind(this);
 	}
 
-	handleIntersection ( event ) {
+	handleIntersection ( event, unobserve ) {
 		const { thumbnailUrl, title } = this.props;
 		if( event.isIntersecting ) {
 			this.element.alt = title;
 			this.element.src = thumbnailUrl;
 			this.element.addEventListener('error', this.handleOnError);
+			unobserve(this.element);
 		}
 	}
 
