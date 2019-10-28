@@ -79,7 +79,7 @@ module.exports = app => {
 		)
 	})
 
-	app.get('/apiV1/page/get', (req, res, next) => {
+	app.get('/apiV1/page/get', cache(10), (req, res, next) => {
 		if (app.get('env') === 'production') {
 			res.setHeader('Cache-Control', 'public, max-age=60')
 		}
@@ -103,7 +103,7 @@ module.exports = app => {
 		})()
 	})
 
-	app.get('/apiV1/page/get/findAll`', (req, res, next) => {
+	app.get('/apiV1/page/get/findAll`', cache(10), (req, res, next) => {
 		if (app.get('env') === 'production') {
 			res.setHeader('Cache-Control', 'public, max-age=60')
 		}
@@ -140,7 +140,7 @@ module.exports = app => {
 			})
 	})
 
-	app.get('/apiV1/page/findbytag/:tag', (req, res) => {
+	app.get('/apiV1/page/findbytag/:tag', cache(10), (req, res) => {
 		if (app.get('env') === 'production') {
 			res.setHeader('Cache-Control', 'public, max-age=60')
 		}
@@ -157,7 +157,7 @@ module.exports = app => {
 			})
 	})
 
-	app.get( '/apiV1/page/findAll', ( req, res ) => {
+	app.get( '/apiV1/page/findAll', cache(10), ( req, res ) => {
 		if( app.get( 'env' ) === 'production' ) {
 			res.setHeader( 'Cache-Control', 'public, max-age=60' )
 		}
@@ -173,7 +173,7 @@ module.exports = app => {
 			})
 	})
 
-	app.get('/apiV1/page/getTags', (req, res) => {
+	app.get('/apiV1/page/getTags', cache(10), (req, res) => {
 		if (app.get('env') === 'production') {
 			res.setHeader('Cache-Control', 'public, max-age=60')
 		}
@@ -201,7 +201,7 @@ module.exports = app => {
 		)
 	})
 
-	app.get('/apiV1/page/getadmin', (req, res) => {
+	app.get('/apiV1/page/getadmin', cache(10), (req, res) => {
 		Page.find({}, (err, pages) => {
 			if (!err) {
 				res.json(pages)
@@ -211,7 +211,7 @@ module.exports = app => {
 		})
 	})
 
-	app.get('/apiV1/page/category/get/:id', (req, res) => {
+	app.get('/apiV1/page/category/get/:id', cache(10), (req, res) => {
 		if (app.get('env') === 'production') {
 			res.setHeader('Cache-Control', 'public, max-age=60')
 		}
@@ -225,7 +225,7 @@ module.exports = app => {
 		})
 	})
 
-	app.get('/apiV1/page/get/:id', (req, res) => {
+	app.get('/apiV1/page/get/:id', cache(10), (req, res) => {
 		if (app.get('env') === 'production') {
 			res.setHeader('Cache-Control', 'public, max-age=60')
 		}
