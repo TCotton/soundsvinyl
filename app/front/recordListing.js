@@ -46,8 +46,6 @@ class RecordListing extends Component {
 			categories: [],
 			slug: ''
 		}
-
-		this.handleInputChange = this.handleInputChange.bind(this)
 	}
 
 	componentDidMount () {
@@ -85,16 +83,6 @@ class RecordListing extends Component {
 
 	checkTokenCookie () {
 		return getCookieValue('token')
-	}
-
-	handleInputChange (event) {
-		const target = event.target
-		const value = target.value
-		const name = target.name
-
-		this.setState({
-			[name]: value
-		})
 	}
 
 	render () {
