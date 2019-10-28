@@ -125,6 +125,24 @@ module.exports = app => {
 		})()
 	})
 
+	app.get( '/apiV1/page/getall', cache( 10 ), ( req, res ) => {
+
+		if (app.get('env') === 'production') {
+			res.setHeader('Cache-Control', 'public, max-age=60');
+		}
+
+		Page.find( {} ).sort( { 'date': -1 } )
+			.exec( ( err, pages ) => {
+
+				if( !err ) {
+					res.json( pages );
+				} else {
+					return new Error( err.toString() );
+				}
+
+			});
+	});
+
 
 	app.route('/apiV1/page/findbytag').post((req, res) => {
 		const body = req.body
