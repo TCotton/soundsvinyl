@@ -9,6 +9,10 @@ import './misc/oauth'
 import '../assets/sass/index.scss'
 import Wrapper from './Wrapper'
 
+if ('scrollRestoration' in window.history) {
+	window.history.scrollRestoration = 'manual';
+}
+
 export default class rootComponent extends Component {
 	render () {
 		return (
