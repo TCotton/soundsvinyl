@@ -95,7 +95,11 @@ app.use(
 	csp({
 		// Specify directives as normal.
 		directives: {
-			defaultSrc: ["'self'", 'soundsvinyl.co', "'unsafe-inline'"],
+			defaultSrc: [
+				"'self'",
+				'soundsvinyl.co',
+				"'unsafe-inline'"
+			],
 			scriptSrc: [
 				"'self'",
 				"'unsafe-inline'",
@@ -103,7 +107,9 @@ app.use(
 				'tagmanager.google.com',
 				'googletagmanager.com',
 				'google-analytics.com',
-				'cdn.polyfill.io'
+				'cdn.polyfill.io',
+				'ajax.googleapis.com',
+				'soundsvinyl.disqus.com'
 			],
 			styleSrc: [
 				"'self'",
@@ -112,18 +118,27 @@ app.use(
 				'tagmanager.google.com',
 				'fonts.googleapis.com'
 			],
-			fontSrc: ["'self'", 'fonts.gstatic.com'],
+			fontSrc: [
+				"'self'",
+				'fonts.gstatic.com'
+			],
 			imgSrc: [
+				"'self'",
 				"'unsafe-inline'",
 				'data:',
 				'ssl.gstatic.com',
 				'google-analytics.com',
-				'google-analytics.com',
-				'stats.g.doubleclick.net'
+				'stats.g.doubleclick.net',
+				'soundsvinyl.co',
+			],
+			mediaSrc: [
+				'ssl.cf3.rackcdn.com',
+			],
+			frameSrc: [
+				'disqus.com'
 			],
 			sandbox: ['allow-forms', 'allow-scripts'],
 			connectSrc: ['google-analytics.com', 'stats.g.doubleclick.net'],
-			reportUri: '/report-violation',
 			objectSrc: ["'none'"],
 			upgradeInsecureRequests: true,
 			workerSrc: false // This is not set.
