@@ -98,7 +98,8 @@ app.use(
 			defaultSrc: [
 				"'self'",
 				'soundsvinyl.co',
-				"'unsafe-inline'"
+				"'unsafe-inline'",
+				'https:'
 			],
 			scriptSrc: [
 				"'self'",
@@ -137,6 +138,8 @@ app.use(
 			frameSrc: [
 				'disqus.com'
 			],
+			reportUri: 'report-violations',
+			reportTo: 'report-violations',
 			sandbox: ['allow-forms', 'allow-scripts'],
 			connectSrc: ['google-analytics.com', 'stats.g.doubleclick.net'],
 			objectSrc: ["'none'"],
