@@ -1,4 +1,5 @@
-const sMap = require('sitemap')
+const { SitemapStream, streamToPromise } = require('sitemap')
+const { createGzip } = require('zlib')
 const Page = require('../models/page')
 const mcache = require('memory-cache')
 
@@ -94,13 +95,57 @@ module.exports = app => {
 
 	createSiteLinks()
 
-	app.get('/sitemap.xml', cache(10), (req, res) => {
-		sitemap.toXML((err, xml) => {
-			if (err) {
-				return res.status(500).end()
-			}
-			res.header('Content-Type', 'application/xml')
-			res.send(xml)
-		})
+	// app.get('/sitemap.xml', cache(10), (req, res) => {
+	// 	sitemap.toXML((err, xml) => {
+	// 		if (err) {
+	// 			return res.status(500).end()
+	// 		}
+	// 		res.header('Content-Type', 'application/xml')
+	// 		res.send(xml)
+	// 	})
+	// })
+
+
+	let sitemap
+
+	let hostname
+
+	if (app.get('env') === 'development') {
+		hostname = 'https://localhost:3000'
+	}
+
+	if (app.get('env') === 'production') {
+		hostname = 'https://soundsvinyl.co'
+	}
+
+
+	app.get('/sitemap.xml', function(req, res) {
+		res.header('Content-Type', 'application/xml');
+		res.header('Content-Encoding', 'gzip');
+		// if we have a cached entry send it
+		if (sitemap) {
+			res.send(sitemap)
+			return
+		}
+		try {
+			const smStream = new SitemapStream({ hostname })
+			const pipeline = smStream.pipe(createGzip())
+
+			smStream.write({ url: '/page-1/',  changefreq: 'daily', priority: 0.3 })
+			smStream.write({ url: '/page-2/',  changefreq: 'monthly',  priority: 0.7 })
+			smStream.write({ url: '/page-3/'})    // changefreq: 'weekly',  priority: 0.5
+			smStream.write({ url: '/page-4/',   img: "http://urlTest.com" })
+			smStream.end()
+
+			// cache the response
+			streamToPromise(pipeline).then(sm => sitemap = sm)
+			// stream the response
+			pipeline.pipe(res).on('error', (e) => {throw e})
+		} catch (e) {
+			console.error(e)
+			res.status(500).end()
+		}
 	})
+
+
 }

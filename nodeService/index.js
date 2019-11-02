@@ -185,7 +185,7 @@ if (app.get('env') !== 'test') {
 
 if (app.get('env') === 'development') {
 	app.all('/', (req, res, next) => {
-		if (!req.url.includes('/apiV1/')) {
+		if (!req.url.includes('/apiV1/') && !req.url.includes('/sitemap.xml')) {
 			res.sendFile(path.join(global.__base, '/src/index.html'))
 		}
 
