@@ -1,4 +1,3 @@
-/* eslint-disable jest/no-disabled-tests */
 import React from 'react'
 import Sitemap from '../sitemap'
 import renderer from 'react-test-renderer'
@@ -127,7 +126,7 @@ describe( 'Component', () => {
 			component = renderer.create( <Sitemap /> )
 		})
 
-	describe.skip( 'Sitemap', () => {
+	describe( 'Sitemap', () => {
 
 		it( 'should be defined', () => {
 			expect( component ).toBeDefined()
@@ -145,7 +144,7 @@ describe( 'Component', () => {
 		});
 	})
 
-	describe.skip( 'Sitemap initial state defaults', () => {
+	describe( 'Sitemap initial state defaults', () => {
 
 		beforeEach( () => {
 			component = mount(
@@ -196,22 +195,6 @@ describe( 'Component', () => {
 			expect( component ).toBeDefined()
 		})
 
-		it.skip( 'should return data from /apiV1/page/getall get call ', () => {
-
-			expect( mockAxios.get ).toHaveBeenCalledWith( `${homeURI}/apiV1/page/getall`, { data: dataGetAll } );
-
-			// simulating a server response
-			let responseObj = { data: dataGetAll };
-			mockAxios.mockResponse(responseObj);
-
-			// checking the `then` spy has been called and if the
-			// response from the server was converted to upper case
-			expect(thenFn).toHaveBeenCalledWith(dataGetAll);
-
-			// catch should not have been called
-			expect(catchFn).not.toHaveBeenCalled();
-
-		});
 		it( 'should return data from /apiV1/page/getTags get call ', () => {
 			const mock = new MockAdapter(axios);
 			mock.onGet(`${homeURI}/apiV1/page/getTags`).reply(200, dataGetTags);
@@ -219,4 +202,3 @@ describe( 'Component', () => {
 		});
 	});
 })
-/* eslint-enable jest/no-disabled-tests */
