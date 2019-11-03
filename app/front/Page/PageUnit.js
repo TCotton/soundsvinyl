@@ -83,6 +83,7 @@ export default class PageUnit extends Component {
 			>
 				<Observer {...options}>
 					<img
+						alt=''
 						ref={loadingRef => (this.element = loadingRef)} // eslint-disable-line react/jsx-no-bind
 						src='/app/assets/images/placeholder.png'
 					/>
