@@ -192,7 +192,11 @@ const options = {
 	maxAge: '1d',
 	redirect: false,
 	setHeaders: function (res, path, stat) {
-		res.set('x-timestamp', Date.now())
+		res.set('x-timestamp', Date.now());
+		if (app.get('env') === 'production') {
+			res.setHeader('Cache-Control', 'public, max-age=2592000');
+			res.setHeader('Expires', new Date(Date.now() + 2592000000).toUTCString());
+		}
 	}
 }
 
@@ -221,13 +225,6 @@ if (app.get('env') === 'development') {
 	})
 }
 
-/**
- * redirect www to non-www domain
- * @param req
- * @param res
- * @param next
- * @returns {*}
- */
 function wwwRedirect (req, res, next) {
 	if (req.headers.host.slice(0, 4) === 'www.') {
 		let newHost = req.headers.host.slice(4)
@@ -237,9 +234,6 @@ function wwwRedirect (req, res, next) {
 	next()
 }
 
-/**
- * Production Settings
- */
 if (app.get('env') === 'production') {
 	app.set('trust proxy', true)
 	app.use(wwwRedirect)
@@ -267,16 +261,6 @@ if (app.get('env') === 'production') {
 			next()
 		}
 	})
-
-	app.get('/*', function (req, res, next) {
-
-		if (req.url.indexOf('/thumbnails/') === 0) {
-			res.setHeader('Cache-Control', 'public, max-age=2592000');
-			res.setHeader('Expires', new Date(Date.now() + 2592000000).toUTCString());
-		}
-		next();
-	});
-
 	// production error handler
 	// no stacktraces leaked to user
 	app.use((err, req, res, next) => {
@@ -290,10 +274,8 @@ if (app.get('env') === 'production') {
 			next()
 		}
 	})
-}
 
-if (app.get('env') === 'production') {
-	require('./misc/compression')(app)
+	require('./misc/compression')(app);
 }
 
 // routes based category
