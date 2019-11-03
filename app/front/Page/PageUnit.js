@@ -82,8 +82,8 @@ export default class PageUnit extends Component {
 			>
 				<Observer {...options}>
 					<img
+						ref={loadingRef => (this.element = loadingRef)} // eslint-disable-line react/jsx-no-bind
 						src='/app/assets/images/placeholder.png'
-						ref={loadingRef => (this.element = loadingRef)}
 					/>
 				</Observer>
 				<span className='video-title'>

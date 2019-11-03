@@ -7,11 +7,6 @@ exports[`Component PageUnit snapshot 1`] = `
   href="/this-is-a-slug/507f191e810c19729de860ea"
   onClick={[Function]}
 >
-  <img
-    alt="This is a title"
-    onError={[Function]}
-    src="https://thumbnailurl.com"
-  />
   <span
     className="video-title"
   >
