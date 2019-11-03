@@ -5,7 +5,7 @@
 		<p
 			:class="$style.success"
 			v-show="success"
-			>
+		>
 			{{ successMsg }}
 		</p>
 
@@ -68,9 +68,7 @@
 			<span
 				v-show="errors.has('editUserPasswordTwo')"
 				:class="$style.error"
-			>
-				{{ errors.first('editUserPasswordTwo') }}
-			</span>
+			>{{ errors.first('editUserPasswordTwo') }}</span>
 
 			<label for="editUserPasswordTwo">Same password again (must match)</label>
 			<input

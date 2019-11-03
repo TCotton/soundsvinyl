@@ -32,9 +32,7 @@
 			<span
 				v-show="errors.has('addPageTitle')"
 				:class="$style.error"
-			>
-				{{ errors.first('addPageTitle') }}
-			</span>
+			>{{ errors.first('addPageTitle') }}</span>
 
 			<label for="addPageSubTitle">Records release details (label, year)</label>
 			<input
@@ -51,9 +49,7 @@
 			<span
 				v-show="errors.has('addPageSubTitle')"
 				:class="$style.error"
-			>
-				{{ errors.first('addPageSubTitle') }}
-			</span>
+			>{{ errors.first('addPageSubTitle') }}</span>
 
 			<label for="addPageVideoLink">Link to video page</label>
 			<input
@@ -70,9 +66,7 @@
 			<span
 				v-show="errors.has('addPageVideoLink')"
 				:class="$style.error"
-			>
-				{{ errors.first('addPageVideoLink') }}
-			</span>
+			>{{ errors.first('addPageVideoLink') }}</span>
 
 			<label for="addPageDescriptionOne">First paragraph of description</label>
 			<textarea
@@ -87,9 +81,7 @@
 			<span
 				v-show="errors.has('addPageDescriptionOne')"
 				:class="$style.error"
-			>
-				{{ errors.first('addPageDescriptionOne') }}
-			</span>
+			>{{ errors.first('addPageDescriptionOne') }}</span>
 
 			<label for="addPageDescriptionTwo">Second paragraph of description</label>
 			<textarea
@@ -142,9 +134,7 @@
 			<span
 				v-show="errors.has('addPageCategories')"
 				:class="$style.error"
-			>
-				{{ errors.first('addPageCategories') }}
-			</span>
+			>{{ errors.first('addPageCategories') }}</span>
 
 			<input
 				type="submit"

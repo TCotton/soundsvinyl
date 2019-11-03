@@ -70,9 +70,7 @@
 					<td>{{ page.descriptionFive }}</td>
 					<td>{{ page.date }}</td>
 					<td>
-						<router-link
-							:to="{ name: 'Page', params: { id: page._id } }"
-							>
+						<router-link :to="{ name: 'Page', params: { id: page._id } }">
 							Edit
 						</router-link>
 					</td>

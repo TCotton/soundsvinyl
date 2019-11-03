@@ -98,11 +98,7 @@
 				{{ errors.first('slug') }}
 			</span>
 
-			<label
-				for="shortSlug"
-			>
-				SEO friendly page title slug - machine-friendly
-			</label>
+			<label for="shortSlug">SEO friendly page title slug - machine-friendly</label>
 			<input
 				v-validate="{ required: true }"
 				id="shortSlug"
@@ -118,9 +114,7 @@
 			<span
 				v-show="errors.has('shortSlug')"
 				:class="$style.error"
-			>
-				{{ errors.first('shortSlug') }}
-			</span>
+			>{{ errors.first('shortSlug') }}</span>
 
 			<label for="editPageVideoLink">Link to video page</label>
 			<input
@@ -137,9 +131,7 @@
 			<span
 				v-show="errors.has('editPageVideoLink')"
 				:class="$style.error"
-			>
-				{{ errors.first('editPageVideoLink') }}
-			</span>
+			>{{ errors.first('editPageVideoLink') }}</span>
 
 			<label for="editPageDescriptionOne">First paragraph of description</label>
 			<textarea
@@ -152,11 +144,7 @@
 				rows="10"
 			/>
 
-			<label
-				for="editPageDescriptionTwo"
-			>
-				Second paragraph of description
-			</label>
+			<label for="editPageDescriptionTwo">Second paragraph of description</label>
 			<textarea
 				id="editPageDescriptionTwo"
 				v-model="EditPageForm.descriptionTwo"
@@ -170,11 +158,7 @@
 				:class="$style.error"
 				>{{ errors.first('editPageDescriptionTwo') }}</span>
 
-			<label
-				for="editPageDescriptionThree"
-			>
-				Three paragraph of description
-			</label>
+			<label for="editPageDescriptionThree">Three paragraph of description</label>
 			<textarea
 				id="editPageDescriptionThree"
 				v-model="EditPageForm.descriptionThree"
@@ -183,11 +167,7 @@
 				rows="10"
 			/>
 
-			<label
-				for="editPageDescriptionFour"
-			>
-				Fourth paragraph of description
-			</label>
+			<label for="editPageDescriptionFour">Fourth paragraph of description</label>
 			<textarea
 				id="editPageDescriptionFour"
 				v-model="EditPageForm.descriptionFour"
@@ -196,11 +176,7 @@
 				rows="10"
 			/>
 
-			<label
-				for="editPageDescriptionFive"
-			>
-				Fifth paragraph of description
-			</label>
+			<label for="editPageDescriptionFive">Fifth paragraph of description</label>
 			<textarea
 				id="editPageDescriptionFive"
 				v-model="EditPageForm.descriptionFive"
@@ -209,9 +185,7 @@
 				rows="10"
 			/>
 
-			<label for="editPageCategories">
-				Categories (comma-separated list)
-			</label>
+			<label for="editPageCategories">Categories (comma-separated list)</label>
 			<input
 				v-validate="{ required: true }"
 				id="editPageCategories"
@@ -227,9 +201,7 @@
 			<span
 				v-show="errors.has('editPageCategories')"
 				:class="$style.error"
-			>
-				{{ errors.first('editPageCategories') }}
-			</span>
+			>{{ errors.first('editPageCategories') }}</span>
 
 			<label for="editDate">Date created (cannot edit)</label>
 			<input
