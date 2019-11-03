@@ -174,9 +174,6 @@ describe( 'Component', () => {
 
 	describe( 'Sitemap componentDidMount', () => {
 
-		let catchFn = jest.fn();
-		let thenFn = jest.fn();
-
 		beforeEach( () => {
 			component = mount(
 				<Sitemap />

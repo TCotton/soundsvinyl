@@ -4,9 +4,7 @@ import { homeURI } from '../../helper_constants'
 import CategoriesHomepage from './CategoriesHomepage'
 import ErrorBoundary from '../errorBoundaries/ErrorBoundary'
 import PropTypes from 'prop-types'
-import { withRouter } from 'react-router-dom'
-
-const articlesPerPage = 11;
+import { withRouter } from 'react-router-dom';
 
 export class Categories extends Component {
 	static propTypes = {
@@ -46,8 +44,7 @@ export class Categories extends Component {
 
 	constructor (props) {
 		super(props)
-		this.state = this.getInitialState()
-		this.handleOnChange = this.handleOnChange.bind(this);
+		this.state = this.getInitialState();
 	}
 
 	getInitialState () {
@@ -79,8 +76,6 @@ export class Categories extends Component {
 
 	getRequestCall () {
 		const { category } = this.props;
-
-		// const currentPage = (page !== 1 ? ); // work out current page here
 
 		// refactor both these API request into one request
 		if (!category) {
@@ -116,7 +111,7 @@ export class Categories extends Component {
 		}
 	}
 
-	handleOnChange (direction) {
+/* 	handleOnChange (direction) {
 		const paginationFunc = () => {
 			const { page, total } = this.state;
 			const maximum = Math.ceil(total / articlesPerPage);
@@ -139,7 +134,7 @@ export class Categories extends Component {
 				return this.getRequestCall()
 			}
 		)
-	}
+	} */
 
 	addNumberToDataArray ([...data]) {
 		data.forEach((currentValue, index) => {
