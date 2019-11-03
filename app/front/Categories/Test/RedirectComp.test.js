@@ -21,15 +21,16 @@ describe('Component', () => {
 	beforeEach(() => {
 		component = renderer.create(
 			<Router>
-				<RedirectComp search={randomURI} />
+				<RedirectComp search={false} />
 			</Router>
 		)
 	})
 
+	it('should be defined', () => {
+		expect(component).toBeDefined()
+	})
+
 	describe('RedirectComponent', () => {
-		it('should be defined', () => {
-			expect(component).toBeDefined()
-		})
 
 		it('can be updated', () => {
 			component.update(

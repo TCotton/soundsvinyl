@@ -54,7 +54,6 @@ export class Categories extends Component {
 			loading: false,
 			docs: [],
 			requestCompleted: false,
-			total: 0
 		}
 	}
 
@@ -86,8 +85,7 @@ export class Categories extends Component {
 				.then(res => {
 					this.setState({
 						docs: res.data,
-						requestCompleted: true,
-						total: res.data.length
+						requestCompleted: true
 					})
 				})
 				.catch(error => {
@@ -102,7 +100,6 @@ export class Categories extends Component {
 					this.setState({
 						docs: this.addNumberToDataArray(res.data),
 						requestCompleted: true,
-						total: res.data.length
 					})
 				})
 				.catch(error => {
