@@ -22,14 +22,13 @@ describe('Component', () => {
 			expect(component).toBeDefined();
 		})
 
-		describe.skip('should return null if default (null) state error is unchanged', () => {
+		describe('should return empty div (Object) if default (null) state error is unchanged', () => {
 			beforeEach(() => {
 				render = componentInstance.render()
 			})
 
 			it('', () => {
-
-				expect(render).toEqual(null)
+				expect(render).toEqual(expect.any(Object));
 			})
 		})
 
