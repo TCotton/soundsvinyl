@@ -37,9 +37,7 @@
 			<span
 				v-show="errors.has('addUserEmail')"
 				:class="$style.error"
-			>
-				{{ errors.first('addUserEmail') }}
-			</span>
+			>{{ errors.first('addUserEmail') }}</span>
 
 			<label for="addUserPasswordOne">Password</label>
 			<input
@@ -57,9 +55,7 @@
 			<span
 				v-show="errors.has('addUserPasswordOne')"
 				:class="$style.error"
-			>
-				{{ errors.first('addUserPasswordOne') }}
-			</span>
+			>{{ errors.first('addUserPasswordOne') }}</span>
 
 			<label for="addUserPasswordTwo">Same password again (must match)</label>
 			<input
