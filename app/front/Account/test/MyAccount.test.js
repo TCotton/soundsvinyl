@@ -1,8 +1,9 @@
-/* eslint-disable jest/no-disabled-tests */
 import React from 'react'
 import MyAccount from '../MyAccount'
 import renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
+import Cookies from 'universal-cookie';
+import mockAxios from 'axios';
 import '../../../../enzymeConfig';
 
 describe('Component', () => {
@@ -84,29 +85,55 @@ describe('Component', () => {
 			expect(component.state().registerFormloginPassword).toEqual('aPassword');
 		})
 
-		it.skip('Should work correctly onSubmit for form[1]', function(){
+		it('Should work change state error to null if state registerFormloginName && registerFormloginPassword is true', function(){
 
 			const component = mount(<MyAccount />);
 			const mockPreventDefault = jest.fn();
 			const mockEvent = {
 				preventDefault: mockPreventDefault
-			};
+			}
 
-			const spy = jest.spyOn(component.instance(), 'handleSubmit');
+			component.instance().state.error = 'An error';
+			component.instance().state.registerFormloginName = 'Andy Walpole';
+			component.instance().state.registerFormloginPassword = 'A Password';
+
+
+			jest.spyOn(component.instance(), 'handleSubmitRegister');
 			component.instance().forceUpdate();
 
-			component.instance().handleSubmit(mockEvent);
-			expect(spy).toReturn();
+			component.instance().handleSubmitRegister(mockEvent);
 			expect(mockPreventDefault).toHaveBeenCalled();
+			expect(component.instance().state.error).toBe(null);
+		})
 
+		it('Should work call axios.post if registerFormloginName && registerFormloginPassword is true', function(){
 
-			/**
-			 * Currently, event simulation for the shallow renderer does not propagate as one would normally expect in a real environment. As a result, one must call .simulate() on the actual node that has the event handler set.
-Even though the name would imply this simulates an actual event, .simulate() will in fact target the component's prop based on the event you give it. For example, .simulate('click') will actually get the onClick prop and call it.
-As noted in the function signature above passing a mock event is optional. Keep in mind that if the code you are testing uses the event for something like, calling event.preventDefault() or accessing any of its properties you must provide a mock event object with the properties your code requir
-			 */
+			const component = mount(<MyAccount />);
+			const mockPreventDefault = jest.fn();
+			const mockEvent = {
+				preventDefault: mockPreventDefault
+			}
 
+			mockAxios.post.mockImplementationOnce(() =>
+				Promise.resolve({
+					data: {
+						auth: true,
+						token: 'aTokenRightHere'
+					}
+				})
+			);
+
+			Cookies.get = jest.fn();
+
+			component.instance().state.registerFormloginName = 'Andy Walpole';
+			component.instance().state.registerFormloginPassword = 'A Password';
+
+			jest.spyOn(component.instance(), 'handleSubmitRegister');
+			component.instance().forceUpdate();
+
+			component.instance().handleSubmitRegister(mockEvent);
+			expect(mockPreventDefault).toHaveBeenCalled();
+			expect(mockAxios.post).toHaveBeenCalled();
 		})
 	})
 })
-/* eslint-enable jest/no-disabled-tests */
