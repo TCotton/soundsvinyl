@@ -1,12 +1,16 @@
-/* eslint-disable jest/no-disabled-tests */
 import React from 'react'
 import Main from '../main'
 import renderer from 'react-test-renderer'
+import { MemoryRouter as Router } from 'react-router-dom'
 
-describe.skip('Component', () => {
+describe('Component', () => {
 	let component
 	beforeEach(() => {
-		component = renderer.create(<Main />)
+		component = renderer.create(
+			<Router>
+				<Main />
+			</Router>
+			)
 	})
 
 	describe('Main', () => {
