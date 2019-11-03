@@ -99,7 +99,9 @@ app.use(
 				"'self'",
 				'soundsvinyl.co',
 				"'unsafe-inline'",
-				'https:'
+				'https:',
+				'googletagmanager.com',
+				'google-analytics.com',
 			],
 			scriptSrc: [
 				"'self'",
@@ -131,9 +133,11 @@ app.use(
 				'google-analytics.com',
 				'stats.g.doubleclick.net',
 				'soundsvinyl.co',
+				'google-analytics.com'
 			],
 			mediaSrc: [
 				'ssl.cf3.rackcdn.com',
+				'rackcdn.com'
 			],
 			frameSrc: [
 				'disqus.com'
@@ -141,7 +145,11 @@ app.use(
 			reportUri: 'report-violations',
 			reportTo: 'report-violations',
 			sandbox: ['allow-forms', 'allow-scripts'],
-			connectSrc: ['google-analytics.com', 'stats.g.doubleclick.net'],
+			connectSrc: [
+				'google-analytics.com',
+				'stats.g.doubleclick.net',
+				'soundsvinyl.co'
+			],
 			objectSrc: ["'none'"],
 			upgradeInsecureRequests: true,
 			workerSrc: false // This is not set.
