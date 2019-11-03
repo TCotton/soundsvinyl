@@ -260,7 +260,14 @@ if (app.get('env') === 'production') {
 		}
 	})
 
-	// set the static files location /public/img will be /img for users
+	app.get('/*', function (req, res, next) {
+
+		if (req.url.indexOf('/thumbnails/') === 0) {
+			res.setHeader('Cache-Control', 'public, max-age=2592000');
+			res.setHeader('Expires', new Date(Date.now() + 2592000000).toUTCString());
+		}
+		next();
+	});
 
 	// production error handler
 	// no stacktraces leaked to user
