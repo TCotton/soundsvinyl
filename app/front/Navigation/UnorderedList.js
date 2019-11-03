@@ -7,12 +7,7 @@ import './nav.scss'
 
 export default class UnorderedList extends Component {
 	static propTypes = {
-		buttonElement: PropTypes.oneOfType([PropTypes.node]),
 		isClicked: PropTypes.string.isRequired
-	}
-
-	static defaultProps = {
-		buttonElement: null
 	}
 
 	render () {

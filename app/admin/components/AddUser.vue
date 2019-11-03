@@ -8,8 +8,9 @@
 		</p>
 
 		<p
-			:class="$style.error"
-			v-show="errorMsg">
+		:class="$style.error"
+		v-show="errorMsg"
+		>
 			{{ errorMsg }}
 		</p>
 
@@ -35,7 +36,10 @@
 
 			<span
 				v-show="errors.has('addUserEmail')"
-				:class="$style.error">{{ errors.first('addUserEmail') }}</span>
+				:class="$style.error"
+			>
+				{{ errors.first('addUserEmail') }}
+			</span>
 
 			<label for="addUserPasswordOne">Password</label>
 			<input
@@ -52,7 +56,10 @@
 
 			<span
 				v-show="errors.has('addUserPasswordOne')"
-				:class="$style.error">{{ errors.first('addUserPasswordOne') }}</span>
+				:class="$style.error"
+			>
+				{{ errors.first('addUserPasswordOne') }}
+			</span>
 
 			<label for="addUserPasswordTwo">Same password again (must match)</label>
 			<input

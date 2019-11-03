@@ -5,3 +5,4 @@
 /nodeService/files/*
 /app/assets/graphics/*
 *.scss
+/app/assets/images/*

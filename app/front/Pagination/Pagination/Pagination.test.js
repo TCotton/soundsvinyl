@@ -4,11 +4,9 @@ import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 import '../../../../enzymeConfig';
 import { homeURI } from '../../../helper_constants'
-import Video from '../../Page/Video'
 
 describe('Component', () => {
 	let component;
-	let componentInstance;
 	beforeEach(() => {
 		component = renderer.create(
 			<Pagination

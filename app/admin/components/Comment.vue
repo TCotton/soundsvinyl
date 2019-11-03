@@ -4,7 +4,8 @@
 
 		<p
 			:class="$style.error"
-			v-show="errorMsg">
+			v-show="errorMsg"
+		>
 			{{ errorMsg }}
 		</p>
 
@@ -57,8 +58,7 @@
 				value=""
 			/>
 
-			<label
-				for="editCommentAuthorName">Comment author name (cannot edit)</label>
+			<label for="editCommentAuthorName">Comment author name (cannot edit)</label>
 			<input
 				id="editCommentAuthorName"
 				v-model="EditCommentForm.articleName"

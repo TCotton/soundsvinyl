@@ -16,6 +16,7 @@ export default class PageUnit extends Component {
 
 	static propTypes = {
 		id: ExtendedPropTypes.mongoId,
+		slug: PropTypes.string,
 		subtitle: PropTypes.string,
 		thumbnailUrl: PropTypes.oneOfType([
 			PropTypes.string,

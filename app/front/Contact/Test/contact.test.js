@@ -122,7 +122,7 @@ describe('Component', () => {
 		component.instance().forceUpdate();
 
 		component.instance().handleSubmit(mockEvent);
-		expect(spy).toReturn();
+		expect(spy).toHaveReturned();
 		expect(mockPreventDefault).toHaveBeenCalled();
 	})
 

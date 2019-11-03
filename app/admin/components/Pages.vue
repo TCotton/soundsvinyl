@@ -1,7 +1,9 @@
 <template>
 	<div :class="$style.pages">
 		<h2>{{ msg }}</h2>
-		<p v-show="noContent">There are no pages in database</p>
+		<p v-show="noContent">
+			There are no pages in database
+		</p>
 		<paginate
 			:list="Pages"
 			:per="10"
@@ -13,25 +15,51 @@
 				</caption>
 
 				<tr>
-					<th scope="col">ID</th>
-					<th scope="col">Title</th>
-					<th scope="col">Sub-title</th>
-					<th scope="col">Video link</th>
-					<th scope="col">Description Paragraph One</th>
-					<th scope="col">Description Paragraph Two</th>
-					<th scope="col">Description Paragraph Three</th>
-					<th scope="col">Description Paragraph Four</th>
-					<th scope="col">Description Paragraph Five</th>
-					<th scope="col">Date created</th>
-					<th scope="col">Edit</th>
-					<th scope="col">Delete</th>
+					<th scope="col">
+						ID
+					</th>
+					<th scope="col">
+						Title
+					</th>
+					<th scope="col">
+						Sub-title
+					</th>
+					<th scope="col">
+						Video link
+					</th>
+					<th scope="col">
+						Description Paragraph One
+					</th>
+					<th scope="col">
+						Description Paragraph Two
+					</th>
+					<th scope="col">
+						Description Paragraph Three
+					</th>
+					<th scope="col">
+						Description Paragraph Four
+					</th>
+					<th scope="col">
+						Description Paragraph Five
+					</th>
+					<th scope="col">
+						Date created
+					</th>
+					<th scope="col">
+						Edit
+					</th>
+					<th scope="col">
+						Delete
+					</th>
 				</tr>
 
 				<tr
 					v-for="page in paginated('Pages')"
 					:key="page._id"
 				>
-					<th scope="row">{{ page._id }}</th>
+					<th scope="row">
+						{{ page._id }}
+					</th>
 					<td>{{ page.title }}</td>
 					<td>{{ page.subTitle }}</td>
 					<td>{{ page.videoLink }}</td>
@@ -70,7 +98,9 @@
 			v-if="showModal"
 			@close="deletePage"
 		>
-			<h3 slot="header">Are you sure you want to delete this page?</h3>
+			<h3 slot="header">
+				Are you sure you want to delete this page?
+			</h3>
 		</modal>
 	</div>
 </template>

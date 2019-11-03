@@ -4,7 +4,8 @@
 
 		<p
 			:class="$style.success"
-			v-show="success">
+			v-show="success"
+			>
 			{{ successMsg }}
 		</p>
 
@@ -66,7 +67,8 @@
 
 			<span
 				v-show="errors.has('editUserPasswordTwo')"
-				:class="$style.error">
+				:class="$style.error"
+			>
 				{{ errors.first('editUserPasswordTwo') }}
 			</span>
 

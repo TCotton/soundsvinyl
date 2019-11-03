@@ -3,11 +3,31 @@
 		<h2>{{ msg }}</h2>
 		<h3>Essential Links</h3>
 		<ul>
-			<li><router-link to="/admin/pages">List of pages</router-link></li>
-			<li><router-link to="/admin/users">List of users</router-link></li>
-			<li><router-link to="/admin/comments">List of comments</router-link></li>
-			<li><router-link to="/admin/add-page">Add a page</router-link></li>
-			<li><router-link to="/admin/add-user">Add a user</router-link></li>
+			<li>
+				<router-link to="/admin/pages">
+					List of pages
+				</router-link>
+			</li>
+			<li>
+				<router-link to="/admin/users">
+					List of users
+				</router-link>
+			</li>
+			<li>
+				<router-link to="/admin/comments">
+					List of comments
+				</router-link>
+			</li>
+			<li>
+				<router-link to="/admin/add-page">
+					Add a page
+				</router-link>
+			</li>
+			<li>
+				<router-link to="/admin/add-user">
+					Add a user
+				</router-link>
+			</li>
 		</ul>
 	</div>
 </template>

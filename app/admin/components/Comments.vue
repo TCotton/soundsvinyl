@@ -2,7 +2,9 @@
 	<div :class="$style.comments">
 		<h2>{{ msg }}</h2>
 
-		<p v-show="noContent">There are no comments in database</p>
+		<p v-show="noContent">
+			There are no comments in database
+		</p>
 
 		<paginate
 			:list="Comments"
@@ -15,20 +17,36 @@
 				</caption>
 
 				<tr>
-					<th scope="col">Article ID</th>
-					<th scope="col">User name</th>
-					<th scope="col">Comment</th>
-					<th scope="col">Date</th>
-					<th scope="col">Published</th>
-					<th scope="col">Edit</th>
-					<th scope="col">Delete</th>
+					<th scope="col">
+						Article ID
+					</th>
+					<th scope="col">
+						User name
+					</th>
+					<th scope="col">
+						Comment
+					</th>
+					<th scope="col">
+						Date
+					</th>
+					<th scope="col">
+						Published
+					</th>
+					<th scope="col">
+						Edit
+					</th>
+					<th scope="col">
+						Delete
+					</th>
 				</tr>
 
 				<tr
 					v-for="comment in paginated('Comments')"
 					:key="comment._id"
 				>
-					<th scope="row">{{ comment.articleId }}</th>
+					<th scope="row">
+						{{ comment.articleId }}
+					</th>
 					<td>{{ comment.userName }}</td>
 					<td>{{ comment.content }}</td>
 					<td>{{ comment.date }}</td>
@@ -37,7 +55,9 @@
 					<td>
 						<router-link
 							:to="{ name: 'Comment', params: { id: comment._id } }"
-							>Edit</router-link>
+						>
+							Edit
+						</router-link>
 					</td>
 					<td>
 						<div
@@ -61,7 +81,9 @@
 			v-if="showModal"
 			@close="deleteComment"
 		>
-			<h3 slot="header">Are you sure you want to delete this comment?</h3>
+			<h3 slot="header">
+				Are you sure you want to delete this comment?
+			</h3>
 		</modal>
 	</div>
 </template>

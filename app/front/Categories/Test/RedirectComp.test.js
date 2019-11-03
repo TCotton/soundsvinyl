@@ -3,7 +3,7 @@ import RedirectComp from '../RedirectComp'
 import renderer from 'react-test-renderer'
 import { MemoryRouter as Router } from 'react-router-dom'
 
-const randomString = () => {
+/* const randomString = () => {
 	return (
 		Math.random()
 			.toString(36)
@@ -14,7 +14,7 @@ const randomString = () => {
 
 const randomURI = () => {
 	return (randomString() + randomString() + randomString()).toString()
-}
+} */
 
 describe('Component', () => {
 	let component

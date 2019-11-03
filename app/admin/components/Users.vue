@@ -3,28 +3,39 @@
 		<h2>{{ msg }}</h2>
 
 		<table>
-			<caption>
-				Users list
-			</caption>
+			<caption>Users list</caption>
 
 			<tr>
-				<th scope="col">Email</th>
-				<th scope="col">Id</th>
-				<th scope="col">Edit</th>
-				<th scope="col">Delete</th>
+				<th scope="col">
+				Email
+				</th>
+				<th scope="col">
+				Id
+				</th>
+				<th scope="col">
+				Edit
+				</th>
+				<th scope="col">
+				Delete
+				</th>
 			</tr>
 
 			<tr
 				v-for="user in Users"
 				:key="user._id"
 			>
-				<th scope="row">{{ user.email }}</th>
-				<td>{{ user._id }}</td>
+				<th scope="row">
+				{{ user.email }}
+				</th>
+				<td>
+				{{ user._id }}
+				</td>
 				<td>
 					<router-link
 						:to="{ name: 'User', params: { id: user._id } }"
-						>Edit</router-link
-					>
+						>
+						Edit
+						</router-link>
 				</td>
 				<td>
 					<div
@@ -41,7 +52,9 @@
 			v-if="showModal"
 			@close="deletePage"
 		>
-			<h3 slot="header">Are you sure you want to delete this user?</h3>
+			<h3 slot="header">
+				Are you sure you want to delete this user?
+			</h3>
 		</modal>
 	</div>
 </template>
