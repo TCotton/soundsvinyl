@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component should render correctly 1`] = `
+Array [
+  <h2>
+    Something went wrong.
+  </h2>,
+  <details
+    className="ErrorBoundary__fragmentDetails___2-AcC"
+  >
+    Invariant Violation: Could not find "store" in the context of "Connect(withRouter(CategoriesHomepage))". Either wrap the root component in a &lt;Provider&gt;, or pass a custom React context provider to &lt;Provider&gt; and the corresponding React context consumer to Connect(withRouter(CategoriesHomepage)) in connect options.
+    <br />
+    
+    in ConnectFunction (created by Categories)
+    in ErrorBoundary (created by Categories)
+    in Categories (created by Context.Consumer)
+    in withRouter(Categories)
+    in Router (created by MemoryRouter)
+    in MemoryRouter
+  </details>,
+]
+`;

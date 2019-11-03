@@ -19,7 +19,7 @@ describe('Component', () => {
 		expect(component).toBeDefined()
 	})
 
-	it.skip('should render correctly', function(){
+	it('should render correctly', function(){
 		const component = renderer.create(
 			<Router>
 				<Categories tag='blues' />
