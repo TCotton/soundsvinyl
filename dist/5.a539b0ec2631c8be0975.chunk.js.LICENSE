@@ -1,0 +1,75 @@
+/***/
+
+// extracted by mini-css-extract-plugin
+
+// refactor both these API request into one request
+
+/* 	handleOnChange (direction) {
+  		const paginationFunc = () => {
+  			const { page, total } = this.state;
+  			const maximum = Math.ceil(total / articlesPerPage);
+  
+  			if (direction === 'left') {
+  				// current should be a minimum of one
+  				return page - 1 >= 1 ? page - 1 : 1;
+  			}
+  			if (direction === 'right') {
+  				// current should be maximum of Math.ceil(total / articlesPerPage)
+  				return page + 1 < maximum ? page + 1 : maximum;
+  			}
+  		}
+  
+  		this.setState(
+  			{
+  				page: paginationFunc()
+  			},
+  			() => {
+  				return this.getRequestCall()
+  			}
+  		)
+  	} */
+
+// refactor -> use redux
+
+// add empty element so that search form can be placed there
+
+// only add search box on home page
+
+// eslint-disable-line react/jsx-no-bind
+
+/* eslint-disable */
+
+// EXTERNAL MODULE: ./node_modules/react/index.js
+
+/*#__PURE__*/
+
+// CONCATENATED MODULE: ./node_modules/@researchgate/react-intersection-observer/lib/es/observer.js
+
+/**
+ * The Intersection Observer API callback that is called whenever one element
+ * – namely the target – intersects either the device viewport or a specified element.
+ * Also will get called whenever the visibility of the target element changes and
+ * crosses desired amounts of intersection with the root.
+ * @param {array} changes
+ * @param {IntersectionObserver} observer
+ */
+
+// EXTERNAL MODULE: ./node_modules/invariant/browser.js
+
+// CONCATENATED MODULE: ./node_modules/@researchgate/react-intersection-observer/lib/es/IntersectionObserver.js
+
+/**
+         * Forward hijacked ref to user.
+         */
+
+// check if we didn't unobserve previously due to a prop change
+
+// check we have a previous node we want to unobserve
+
+// CONCATENATED MODULE: ./node_modules/@researchgate/react-intersection-observer/lib/es/index.js
+
+/* concated harmony reexport default */
+
+/* concated harmony reexport parseRootMargin */
+
+/* concated harmony reexport Config */

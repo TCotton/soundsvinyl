@@ -8,6 +8,7 @@ const SizePlugin = require('size-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 // the path(s) that should be cleaned
 const basePath = __dirname;
@@ -147,6 +148,7 @@ module.exports = webpackMerge(commonConfig, {
 			},
 		}),
 
-		new SizePlugin()
+		new SizePlugin(),
+		// new BundleAnalyzerPlugin()
 	]
 })
