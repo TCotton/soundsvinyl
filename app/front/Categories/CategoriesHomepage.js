@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import './CategoriesHomepage.scss'
 import PageUnit from '../Page/PageUnit'
 import HomePageSearchForm from './HomePageSearchForm'
@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 
-export class CategoriesHomepage extends Component {
+export class CategoriesHomepage extends PureComponent {
 	static propTypes = {
 		requestCompleted: PropTypes.bool,
 		search: PropTypes.arrayOf(
@@ -27,6 +27,7 @@ export class CategoriesHomepage extends Component {
 		this.handleSearchResult = this.handleSearchResult.bind(this)
 	}
 
+
 	handleSearchResult () {
 		return true
 	}
@@ -34,7 +35,7 @@ export class CategoriesHomepage extends Component {
 	render () {
 		let { search, requestCompleted } = this.props;
 		let arrayMap;
-
+		console.dir(this.props);
 		if (requestCompleted && Array.isArray(search) && search.length > 0) {
 			search.splice(2, 0, '') // add empty element so that search form can be placed there
 

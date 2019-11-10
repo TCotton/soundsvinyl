@@ -8,6 +8,7 @@ import VideoErrorBoundary from './errorBoundaries/videoErrorBoundary'
 import Disqus from './Disqus/Disqus'
 import RawMetaTags from './MetaHeadComponents/RawMetaTags'
 import RawTwitterMetaTags from './MetaHeadComponents/RawTwitterMetaTags'
+import { Link } from 'react-router-dom'
 
 import './recordListing.scss'
 import PropTypes from 'prop-types'
@@ -148,7 +149,12 @@ class RecordListing extends Component {
 			categoryList = categoryArray.map(element => {
 				return (
 					<li key={element}>
-						{element}
+						<Link
+							aria-label={element}
+							to={`/category/${element}`}
+						>
+							{element}
+						</Link>
 					</li>
 				)
 			})

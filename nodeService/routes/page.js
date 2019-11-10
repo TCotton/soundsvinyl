@@ -165,7 +165,6 @@ module.exports = app => {
 
 		Page.find({ 'categories.name': req.params.tag })
 			.sort({ date: -1 })
-			.limit(17)
 			.exec((err, pages) => {
 				if (!err) {
 					res.json(pages)

@@ -61,7 +61,7 @@ export class Categories extends Component {
 		this.getRequestCall()
 	}
 
-	componentDidUpdate (prevProps) {
+	componentDidUpdate (prevProps, prevState) {
 		const {
 			match: {
 				params: { tag }
@@ -71,6 +71,18 @@ export class Categories extends Component {
 		if (tag !== prevProps.match.params.tag) {
 			this.getRequestCall()
 		}
+
+		let x = 0;
+		let y = 0;
+
+		Object.entries(this.props).forEach(([key, val]) =>
+    	prevProps[key] !== val && console.log(`Prop '${key}' changed %s`, x++)
+  	);
+  	if (this.state) {
+   	 Object.entries(this.state).forEach(([key, val]) =>
+      prevState[key] !== val && console.log(`State '${key}' changed %s`, y++)
+    );
+  }
 	}
 
 	getRequestCall () {
@@ -143,6 +155,7 @@ export class Categories extends Component {
 
 	render () {
 		const { docs, requestCompleted } = this.state;
+		console.dir(this.state);
 
 		const { category } = this.props; // refactor -> use redux
 
@@ -158,4 +171,4 @@ export class Categories extends Component {
 	}
 }
 
-export default withRouter(Categories)
+export default withRouter(Categories);
