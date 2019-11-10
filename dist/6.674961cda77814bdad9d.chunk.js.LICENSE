@@ -1,0 +1,17 @@
+/***/
+
+// extracted by mini-css-extract-plugin
+
+/* eslint-disable react/jsx-max-depth */
+
+/* eslint-enable react/jsx-max-depth */
+
+// will not pass test if function uses default parameters
+
+/* eslint-disable react/jsx-no-bind */
+
+/* import() */
+
+// TODO: move update state from componentDidUpdate
+
+// eslint-disable-line react/no-did-update-set-state
