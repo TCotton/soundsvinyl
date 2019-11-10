@@ -6,6 +6,9 @@ export default class FooterListElement extends Component {
 	static propTypes = {
 		text: PropTypes.string.isRequired
 	}
+	shouldComponentUpdate() {
+		return false;
+	}
 	render () {
 		const { text } = this.props
 

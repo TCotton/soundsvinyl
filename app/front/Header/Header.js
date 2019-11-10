@@ -3,6 +3,9 @@ import './header.scss'
 import HeaderLeftColumn from './HeaderLeftColumn'
 
 export default class Header extends Component {
+	shouldComponentUpdate() {
+		return false;
+	}
 	render () {
 		const $Welcome = 'Welcome to SoundsVinyl'
 		const $Vinyl = 'Vinyl forever, music for all'

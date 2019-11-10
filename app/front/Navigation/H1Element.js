@@ -7,6 +7,10 @@ export default class H1Element extends Component {
 		text: PropTypes.string.isRequired
 	}
 
+	shouldComponentUpdate() {
+		return false;
+	}
+
 	render () {
 		const { text } = this.props
 

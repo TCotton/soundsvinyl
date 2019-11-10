@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
-class TwitterMetaTags extends Component {
+class TwitterMetaTags extends PureComponent {
 	static propTypes = {
 		description: PropTypes.string.isRequired,
 		title: PropTypes.string.isRequired

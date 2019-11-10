@@ -4,6 +4,9 @@ import cn from 'classnames'
 import FooterUnorderedList from './FooterUnorderedList'
 
 class Footer extends Component {
+	shouldComponentUpdate() {
+		return false;
+	}
 	render () {
 		const footerClasses = cn('inner-footer', 'wrapper')
 		const $soundsVinyl = 'SoundsVinyl'

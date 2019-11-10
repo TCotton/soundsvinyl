@@ -3,6 +3,9 @@ import './header.scss'
 import Turntable from '../../assets/icons/Turntable'
 
 export default class HeaderLeftColumn extends Component {
+	shouldComponentUpdate() {
+		return false;
+	}
 	render () {
 		return (
 			<a

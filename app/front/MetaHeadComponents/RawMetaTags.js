@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
-class MetaHeader extends Component {
+class MetaHeader extends PureComponent {
 	static propTypes = {
 		canonical: PropTypes.string,
 		title: PropTypes.string

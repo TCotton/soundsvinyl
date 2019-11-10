@@ -1,10 +1,14 @@
-import { Component } from 'react'
+import { PureComponent } from 'react'
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export default class ListElement extends Component {
+export default class ListElement extends PureComponent {
 	static propTypes = {
 		text: PropTypes.string.isRequired
+	}
+
+	shouldComponentUpdate() {
+		return false;
 	}
 
 	render () {

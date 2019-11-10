@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
-class FacebookMetaTags extends Component {
+class FacebookMetaTags extends PureComponent {
 	static propTypes = {
 		canonical: PropTypes.string.isRequired,
 		faceBookDescription: PropTypes.string.isRequired,

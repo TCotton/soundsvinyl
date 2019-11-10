@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { instanceOf } from 'prop-types'
 import { withCookies, Cookies } from 'react-cookie'
 import cn from 'classnames'
@@ -8,7 +8,7 @@ import './nav.scss'
 import UnorderedList from './UnorderedList'
 import H1Element from './H1Element'
 
-class Nav extends Component {
+class Nav extends PureComponent {
 	static propTypes = {
 		cookies: instanceOf(Cookies).isRequired
 	}

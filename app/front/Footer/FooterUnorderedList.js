@@ -4,6 +4,9 @@ import FooterListElement from './FooterListElement'
 import './footer.scss'
 
 export default class FooterUnorderedList extends Component {
+	shouldComponentUpdate() {
+		return false;
+	}
 	render () {
 		return (
 			<ul>
