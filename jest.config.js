@@ -35,7 +35,8 @@ module.exports = {
 		'loadershim.js',
 		'app/admin/vue.app.js',
 		'src/*',
-		'app/front/react.app.js'
+		'app/front/react.app.js',
+		'cypress/*'
 	],
 	coverageDirectory: '<rootDir>/test/coverage',
 	moduleNameMapper: {

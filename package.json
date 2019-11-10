@@ -21,7 +21,8 @@
     "coverage": "jest --collectCoverage | coveralls",
     "clearJest": "jest --clearCache && npm run test -- -u",
     "format": "prettier-standard --format {app,nodeService}/**/**/**/**/**/*.{js,jsx}",
-    "codecov": "./node_modules/.bin/codecov --token=\"170e4b86-a847-42d2-b011-29d9ddf41351\""
+		"codecov": "./node_modules/.bin/codecov --token=\"170e4b86-a847-42d2-b011-29d9ddf41351\"",
+		"cypress:open": "cypress open"
   },
   "repository": {
     "type": "git",
@@ -152,6 +153,7 @@
     "cors": "^2.8.5",
     "cross-env": "^6.0.3",
     "css-loader": "^1.0.1",
+    "cypress": "^3.6.1",
     "deep-freeze-strict": "^1.1.1",
     "dotenv": "^8.2.0",
     "dotenv-webpack": "^1.5.7",

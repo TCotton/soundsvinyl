@@ -6,3 +6,4 @@
 /app/assets/graphics/*
 *.scss
 /app/assets/images/*
+/app/cypress/*
