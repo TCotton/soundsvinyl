@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom'
 
 export class CategoriesHomepage extends PureComponent {
 	static propTypes = {
-		requestCompleted: PropTypes.bool,
+		loading: PropTypes.bool,
 		search: PropTypes.arrayOf(
 			PropTypes.object,
 			PropTypes.string,
@@ -18,7 +18,7 @@ export class CategoriesHomepage extends PureComponent {
 	}
 
 	static defaultProps = {
-		requestCompleted: false,
+		loading: true,
 		search: null
 	}
 
@@ -27,16 +27,17 @@ export class CategoriesHomepage extends PureComponent {
 		this.handleSearchResult = this.handleSearchResult.bind(this)
 	}
 
-
 	handleSearchResult () {
 		return true
 	}
 
 	render () {
-		let { search, requestCompleted } = this.props;
+		let { search, loading } = this.props;
+		console.dir(search);
+		console.dir(loading);
 		let arrayMap;
-		console.dir(this.props);
-		if (requestCompleted && Array.isArray(search) && search.length > 0) {
+
+		if (!loading && Array.isArray(search) && search.length > 0) {
 			search.splice(2, 0, '') // add empty element so that search form can be placed there
 
 			arrayMap = search.map((element, index) => {
@@ -75,7 +76,7 @@ export class CategoriesHomepage extends PureComponent {
 
 		const $thereAreNo = 'There are no entries for this term'
 
-		if (requestCompleted && Array.isArray(search) && search.length === 0) {
+		if (!loading && Array.isArray(search) && search.length === 0) {
 			arrayMap = <p className='error'>{$thereAreNo}</p> // eslint-disable-line react/jsx-one-expression-per-line
 		}
 

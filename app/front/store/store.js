@@ -1,17 +1,19 @@
-import { combineReducers, compose, createStore, applyMiddleware } from 'redux'
+import { compose, createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import { searchTextReducer } from '../reducers/reducers'
+import rootReducer from '../reducers/reducers'
 
-const reducer = combineReducers({
-	search: searchTextReducer
-})
+const middlewares = [];
 
-export const store = createStore(
-	reducer,
-	compose(
-		applyMiddleware(thunk),
-		window.devToolsExtenion ? window.devToolsExtenion : f => f
-	)
-)
+if (process.env.NODE_ENV === `development`) {
+  const { logger } = require(`redux-logger`); // eslint-disable-line
+  middlewares.push(logger);
+}
 
-export default store
+const storeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(
+	rootReducer,
+	storeEnhancers(compose(applyMiddleware(thunk, ...middlewares)))
+);
+
+export default store;

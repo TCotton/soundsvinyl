@@ -7,7 +7,7 @@
 
 # production
 /build
-
+.history/
 # misc
 .idea/
 .DS_Store

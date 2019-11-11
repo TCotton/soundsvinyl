@@ -1,3 +1,7 @@
+## 1.41.1 (November 11, 2019)
+
+- Removed pagination
+
 ## 1.34.1 (December 14, 2018)
 
 - Fixed pagination bug

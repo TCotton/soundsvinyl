@@ -5,6 +5,8 @@ import CategoriesHomepage from './CategoriesHomepage'
 import ErrorBoundary from '../errorBoundaries/ErrorBoundary'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom';
+import { getDataFindAll } from "../actions/";
+import { connect } from "react-redux";
 
 export class Categories extends Component {
 	static propTypes = {
@@ -48,7 +50,6 @@ export class Categories extends Component {
 	}
 
 	getInitialState () {
-
 		return {
 			error: false,
 			loading: false,
@@ -61,7 +62,7 @@ export class Categories extends Component {
 		this.getRequestCall()
 	}
 
-	componentDidUpdate (prevProps, prevState) {
+	componentDidUpdate (prevProps) {
 		const {
 			match: {
 				params: { tag }
@@ -71,18 +72,6 @@ export class Categories extends Component {
 		if (tag !== prevProps.match.params.tag) {
 			this.getRequestCall()
 		}
-
-		let x = 0;
-		let y = 0;
-
-		Object.entries(this.props).forEach(([key, val]) =>
-    	prevProps[key] !== val && console.log(`Prop '${key}' changed %s`, x++)
-  	);
-  	if (this.state) {
-   	 Object.entries(this.state).forEach(([key, val]) =>
-      prevState[key] !== val && console.log(`State '${key}' changed %s`, y++)
-    );
-  }
 	}
 
 	getRequestCall () {
@@ -90,19 +79,8 @@ export class Categories extends Component {
 
 		// refactor both these API request into one request
 		if (!category) {
-			axios
-				.get(
-					`${homeURI}/apiV1/page/findAll`
-				)
-				.then(res => {
-					this.setState({
-						docs: res.data,
-						requestCompleted: true
-					})
-				})
-				.catch(error => {
-					new Error(error.toString())
-				})
+			const { getDataFindAll } = this.props;
+			getDataFindAll();
 		}
 
 		if (category) {
@@ -120,31 +98,6 @@ export class Categories extends Component {
 		}
 	}
 
-/* 	handleOnChange (direction) {
-		const paginationFunc = () => {
-			const { page, total } = this.state;
-			const maximum = Math.ceil(total / articlesPerPage);
-
-			if (direction === 'left') {
-				// current should be a minimum of one
-				return page - 1 >= 1 ? page - 1 : 1;
-			}
-			if (direction === 'right') {
-				// current should be maximum of Math.ceil(total / articlesPerPage)
-				return page + 1 < maximum ? page + 1 : maximum;
-			}
-		}
-
-		this.setState(
-			{
-				page: paginationFunc()
-			},
-			() => {
-				return this.getRequestCall()
-			}
-		)
-	} */
-
 	addNumberToDataArray ([...data]) {
 		data.forEach((currentValue, index) => {
 			data[Number.parseInt(index)].position = Number.parseInt(index) + 1
@@ -154,16 +107,13 @@ export class Categories extends Component {
 	}
 
 	render () {
-		const { docs, requestCompleted } = this.state;
-		console.dir(this.state);
-
-		const { category } = this.props; // refactor -> use redux
+		const { category, docs, loading } = this.props;
 
 		return (
 			<ErrorBoundary>
 				<CategoriesHomepage
 					category={category}
-					requestCompleted={requestCompleted}
+					loading={loading}
 					search={docs}
 				/>
 			</ErrorBoundary>
@@ -171,4 +121,20 @@ export class Categories extends Component {
 	}
 }
 
-export default withRouter(Categories);
+function mapStateToProps(state) {
+  return {
+		docs: state.docs,
+		loading: state.loading
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+	return({
+		getDataFindAll: () => {dispatch(getDataFindAll())}
+	})
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(Categories));
