@@ -1,4 +1,9 @@
-import { searchTextReducer } from '../reducers'
+import { rootReducer } from '../reducers'
+import {
+	REQUEST_POSTS,
+	GET_REQUEST_CALL_FIND_BY_TAG,
+	GET_REQUEST_CALL_FIND_ALL,
+ } from '../../constants/index';
 import df from 'deep-freeze-strict'
 
 describe('Reducers', () => {
@@ -33,14 +38,14 @@ describe('Reducers', () => {
 		}
 	]
 
-	describe('searchTextReducer - correct switch statement', () => {
+	describe.only('rootReducer - correct switch statement', () => {
 		let action = {
 			payload: searchText,
-			type: 'SET_PAGES'
+			type: GET_REQUEST_CALL_FIND_ALL
 		}
 
 		beforeEach(() => {
-			reducer = searchTextReducer(df(''), df(action))
+			reducer = rootReducer(df(''), df(action))
 		})
 
 		it('should be defined', () => {
@@ -54,7 +59,7 @@ describe('Reducers', () => {
 		})
 	})
 
-	describe('searchTextReducer - default switch statement', () => {
+	describe.skip('searchTextReducer - default switch statement', () => {
 		let action = {
 			payload: searchText,
 			type: 'NOT_SET_PAGES_HERE'

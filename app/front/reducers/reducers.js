@@ -15,6 +15,10 @@ function rootReducer(state = initialState, action) {
 		return { ...state, docs: action.payload, loading: false };
 	}
 
+	if (action.type === GET_REQUEST_CALL_FIND_BY_TAG && action.payload.length > 0) {
+		return { ...state, docs: action.payload, loading: false };
+	}
+
 	if(action.type === REQUEST_POSTS) {
 		return { ...state, loading: true };
 	}

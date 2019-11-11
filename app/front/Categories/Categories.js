@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
-import axios from 'axios'
-import { homeURI } from '../../helper_constants'
 import CategoriesHomepage from './CategoriesHomepage'
 import ErrorBoundary from '../errorBoundaries/ErrorBoundary'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom';
-import { getDataFindAll } from "../actions/";
+import { getDataFindAll, getDataFindByTag } from "../actions/";
 import { connect } from "react-redux";
 
 export class Categories extends Component {
@@ -46,16 +44,6 @@ export class Categories extends Component {
 
 	constructor (props) {
 		super(props)
-		this.state = this.getInitialState();
-	}
-
-	getInitialState () {
-		return {
-			error: false,
-			loading: false,
-			docs: [],
-			requestCompleted: false,
-		}
 	}
 
 	componentDidMount () {
@@ -84,26 +72,10 @@ export class Categories extends Component {
 		}
 
 		if (category) {
-			axios
-				.get(`${homeURI}/apiV1/page/findbytag/${category}`)
-				.then(res => {
-					this.setState({
-						docs: this.addNumberToDataArray(res.data),
-						requestCompleted: true,
-					})
-				})
-				.catch(error => {
-					new Error(error.toString())
-				})
+			const { getDataFindByTag } = this.props;
+			getDataFindByTag(category);
 		}
-	}
 
-	addNumberToDataArray ([...data]) {
-		data.forEach((currentValue, index) => {
-			data[Number.parseInt(index)].position = Number.parseInt(index) + 1
-		})
-
-		return data;
 	}
 
 	render () {
@@ -128,13 +100,14 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-	return({
-		getDataFindAll: () => {dispatch(getDataFindAll())}
-	})
-}
+// function mapDispatchToProps(dispatch) {
+	// return({
+	//	getDataFindAll: () => {dispatch(getDataFindAll())},
+	//	getDataFindByTag: () => {dispatch(getDataFindByTag())}
+	//})
+// }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  {getDataFindAll, getDataFindByTag}
 )(withRouter(Categories));

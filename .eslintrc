@@ -64,7 +64,7 @@
 		"react/jsx-fragments": [1, "element"],
 		"react/jsx-no-useless-fragment": [0],
 		"react/jsx-props-no-spreading": 0,
-		"react/prop-types": [2, { "ignore": [ "getDataFindAll", "docs", "loading" ] }]
+		"react/prop-types": [2, { "ignore": [ "getDataFindAll", "docs", "loading", "getDataFindByTag" ] }]
 	},
 	"settings": {
 		"react": {
