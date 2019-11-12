@@ -43,8 +43,8 @@ export function getDataFindByTag(category) {
 					dispatch({ type: GET_REQUEST_CALL_FIND_BY_TAG, payload: res.data });
 				}).catch(error => {
 					new Error(error.toString())
-			})
-	}
+				})
+		}
 }
 
 export function getDataFindAll() {
@@ -56,5 +56,5 @@ export function getDataFindAll() {
 				}).catch(error => {
 					new Error(error.toString())
 				})
-	}
+		}
 }
