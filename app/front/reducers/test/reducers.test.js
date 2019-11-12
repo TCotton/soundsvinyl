@@ -1,4 +1,4 @@
-import { rootReducer } from '../reducers'
+import rootReducer from '../reducers'
 import {
 	REQUEST_POSTS,
 	GET_REQUEST_CALL_FIND_BY_TAG,
@@ -7,7 +7,8 @@ import {
 import df from 'deep-freeze-strict'
 
 describe('Reducers', () => {
-	let reducer
+	let reducer;
+	let result;
 
 	let searchText = [
 		{
@@ -36,47 +37,98 @@ describe('Reducers', () => {
 			updated: '2018-11-14T14:20:30.310Z',
 			__v: 0
 		}
-	]
+	];
 
-	describe.only('rootReducer - correct switch statement', () => {
+	const initialState = {
+		docs: [],
+		loading: true,
+	};
+
+	describe('rootReducer - fallback to initialState default', () => {
+
 		let action = {
-			payload: searchText,
-			type: GET_REQUEST_CALL_FIND_ALL
+			type: 'NOT_FOUND'
 		}
 
 		beforeEach(() => {
-			reducer = rootReducer(df(''), df(action))
+			result = rootReducer(df(initialState), df(action));
 		})
 
 		it('should be defined', () => {
-			expect(reducer).toBeDefined()
+			expect(result).toBeDefined()
 		})
 
 		it(`should have same value as ${action.type}`, () => {
-			expect(reducer).toEqual(action.payload)
-			expect(reducer).toEqual(expect.any(Array))
-			expect(reducer.length).toEqual(action.payload.length)
+			expect(result.docs).toEqual(expect.any(Array));
+			expect(result.docs.length).toEqual(0);
+			expect(result.loading).toEqual(expect.any(Boolean));
 		})
 	})
 
-	describe.skip('searchTextReducer - default switch statement', () => {
+	describe(`rootReducer - ${REQUEST_POSTS}`, () => {
+
 		let action = {
-			payload: searchText,
-			type: 'NOT_SET_PAGES_HERE'
+			type: 'NOT_FOUND'
 		}
 
 		beforeEach(() => {
-			reducer = searchTextReducer(df(''), df(action))
+			result = rootReducer(df(initialState), df(action));
 		})
 
 		it('should be defined', () => {
-			expect(reducer).toBeDefined()
+			expect(result).toBeDefined()
 		})
 
-		it(`should NOT have same value as ${action.type}`, () => {
-			expect(reducer).not.toEqual(action.payload)
-			expect(reducer).toEqual(expect.any(Array))
-			expect(reducer.length).not.toEqual(action.payload.length)
+		it(`should have same retrn correct object for ${REQUEST_POSTS}`, () => {
+			expect(result.loading).toEqual(expect.any(Boolean));
+			expect(result.loading).toEqual(true);
+		})
+	})
+
+	describe(`rootReducer - ${GET_REQUEST_CALL_FIND_BY_TAG}`, () => {
+
+		let action = {
+			type: GET_REQUEST_CALL_FIND_BY_TAG,
+			payload: searchText
+		}
+
+		beforeEach(() => {
+			result = rootReducer(df(initialState), df(action));
+		})
+
+		it('should be defined', () => {
+			expect(result).toBeDefined()
+		})
+
+		it(`should have same retrn correct object for ${REQUEST_POSTS}`, () => {
+			console.dir(result.docs);
+			expect(result.docs).toEqual(expect.any(Array));
+			expect(result.docs[0]._id).toEqual(searchText[0]._id);
+			expect(result.loading).toEqual(expect.any(Boolean));
+			expect(result.loading).toEqual(false);
+		})
+	})
+
+	describe(`rootReducer - ${GET_REQUEST_CALL_FIND_ALL}`, () => {
+
+		let action = {
+			type: GET_REQUEST_CALL_FIND_ALL,
+			payload: searchText
+		}
+
+		beforeEach(() => {
+			result = rootReducer(df(initialState), df(action));
+		})
+
+		it('should be defined', () => {
+			expect(result).toBeDefined()
+		})
+
+		it(`should have same retrn correct object for ${GET_REQUEST_CALL_FIND_ALL}`, () => {
+			expect(result.docs).toEqual(expect.any(Array));
+			expect(result.docs[0]._id).toEqual(searchText[0]._id);
+			expect(result.loading).toEqual(expect.any(Boolean));
+			expect(result.loading).toEqual(false);
 		})
 	})
 })

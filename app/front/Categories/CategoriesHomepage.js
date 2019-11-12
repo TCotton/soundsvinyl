@@ -33,8 +33,6 @@ export class CategoriesHomepage extends PureComponent {
 
 	render () {
 		let { search, loading } = this.props;
-		console.dir(search);
-		console.dir(loading);
 		let arrayMap;
 
 		if (!loading && Array.isArray(search) && search.length > 0) {
