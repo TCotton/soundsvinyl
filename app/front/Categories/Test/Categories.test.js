@@ -1,10 +1,11 @@
 import React from 'react'
 import Categories from '../Categories'
-import renderer from 'react-test-renderer';
 import { MemoryRouter as Router } from 'react-router-dom'
 import '../../../../enzymeConfig';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
+import { shallow } from 'enzyme';
+jest.mock('../../actions/');
 
 describe('Component', () => {
 	let component;
@@ -13,10 +14,12 @@ describe('Component', () => {
 		const mockStore = configureMockStore();
 		const store = mockStore({});
 
-		component = renderer.create(
+		component = shallow(
 			<Provider store={store}>
 				<Router>
-					<Categories tag='blues' />
+					<Categories
+						tag='blues'
+					/>
 				</Router>
 			</Provider>
 			)

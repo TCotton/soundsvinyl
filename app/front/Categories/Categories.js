@@ -65,7 +65,6 @@ export class Categories extends Component {
 	getRequestCall () {
 		const { category } = this.props;
 
-		// refactor both these API request into one request
 		if (!category) {
 			const { getDataFindAll } = this.props;
 			getDataFindAll();

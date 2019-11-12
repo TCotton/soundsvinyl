@@ -101,7 +101,6 @@ describe('Reducers', () => {
 		})
 
 		it(`should have same retrn correct object for ${REQUEST_POSTS}`, () => {
-			console.dir(result.docs);
 			expect(result.docs).toEqual(expect.any(Array));
 			expect(result.docs[0]._id).toEqual(searchText[0]._id);
 			expect(result.loading).toEqual(expect.any(Boolean));
