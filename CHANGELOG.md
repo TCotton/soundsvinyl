@@ -1,3 +1,7 @@
+## 1.42.0 (November 12, 2019)
+
+- first part of refactor to introduce redux thump
+
 ## 1.41.1 (November 11, 2019)
 
 - Removed pagination
